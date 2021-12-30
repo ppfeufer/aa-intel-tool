@@ -1,0 +1,27 @@
+{% extends 'aa_intel_tool/base.html' %}
+
+{% load evelinks %}
+{% load static %}
+{% load i18n %}
+
+{% block page_title %}{% translate 'Intel Tool' %}{% endblock %}
+
+{% block aa_intel_tool_header %}
+    <header>
+        <h1>Intel Parser</h1>
+    </header>
+
+    <p>Please keep in mind, parsing large amount of data can take some time. Be patient, CCP's API is not the fastest to answer .... </p>
+{% endblock %}
+
+{% block aa_intel_tool_body %}
+    {% include "aa_intel_tool/partials/index/form.html" %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'aa_intel_tool/css/aa-bootstrap-fix.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'aa_intel_tool/css/aa-intel-tool.min.css' %}" type="text/css">
+{% endblock %}
+
+{% block extra_javascript %}
+{% endblock %}

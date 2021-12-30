@@ -1,0 +1,36 @@
+{% load bootstrap %}
+
+<article class="post clearfix">
+    <div class="row">
+        <div class="col-lg-4">
+            <div style="margin-bottom: 2rem;">
+                <header class="entry-header">
+                    <h2 class="entry-title">What can I paste?</h2>
+                </header>
+
+                <ul>
+                    <li>» D-Scan</li>
+{#                    <li>» Chat Memberlist <small>(takes some time to parse)</small></li>#}
+{#                    <li>» Fleet Composition <small>(takes some time to parse)</small></li>#}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <form id="new_intel" name="new_intel" method="post" action="/intel/">
+                {% csrf_token %}
+
+                {{ form|bootstrap }}
+
+                <div class="row form-submit-area">
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-primary" name="submit-form">
+                            Submit
+                        </button>
+                    </div>
+                    <div class="col-sm-10"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</article>
