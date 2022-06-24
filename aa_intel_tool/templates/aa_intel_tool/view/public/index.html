@@ -1,6 +1,7 @@
 {% load humanize %}
 {% load timetags %}
 {% load static %}
+{% load inteltool_versioned_static %}
 {% load i18n %}
 {% load navactive %}
 <!DOCTYPE html>
@@ -47,7 +48,7 @@
 
         {% include 'bundles/bootstrap-js.html' %}
 
-        <link rel="stylesheet" href="{% static 'aa_intel_tool/css/aa-intel-tool.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% aa_intel_tool_static 'aa_intel_tool/css/aa-intel-tool.min.css' %}" type="text/css">
         <script src="{% static 'js/eve-time.js' %}"></script>
     </body>
 </html>
