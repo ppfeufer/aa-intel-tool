@@ -1,0 +1,54 @@
+{% load humanize %}
+{% load timetags %}
+{% load static %}
+{% load inteltool_versioned_static %}
+{% load i18n %}
+{% load navactive %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        {% include 'allianceauth/icons.html' %}
+
+        <title>{% block title %}{% translate "Intel Parser - Alliance Auth" %}{% endblock title %}</title>
+
+        {% include 'bundles/bootstrap-css.html' %}
+        {% include 'bundles/fontawesome.html' %}
+
+        <link href="{% static "allianceauth/css/auth-base.css" %}" type="text/css" rel="stylesheet">
+
+        {% block extra_css %}{% endblock extra_css %}
+    </head>
+
+    <body>
+        <div class="alliance-auth-content">
+            <!-- Navigation -->
+            {% include 'allianceauth/top-menu.html' %}
+
+            <div class="aa-intel-tool">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 content-wrapper">
+                    <div class="aa-intel-tool-header">
+                        <header>
+                            <h1>Intel Parser</h1>
+                        </header>
+
+                        <p>Please keep in mind, parsing large amount of data can take some time. Be patient, CCP's API is not the fastest to answer .... </p>
+                    </div>
+
+                    <div class="aa-intel-tool-body">
+                        {% include "aa_intel_tool/partials/index/form.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'bundles/bootstrap-js.html' %}
+
+        <link rel="stylesheet" href="{% aa_intel_tool_static 'aa_intel_tool/css/aa-intel-tool.min.css' %}" type="text/css">
+        <script src="{% static 'js/eve-time.js' %}"></script>
+    </body>
+</html>

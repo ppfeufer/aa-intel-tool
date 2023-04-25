@@ -1,8 +1,11 @@
 """
-a couple of variable to use throughout the app
+App init
 """
 
-default_app_config: str = "aa_intel_tool.apps.AaIntelToolConfig"
+# Standard Library
+from importlib import metadata
 
-__version__ = "0.1.0-alpha.1"
+__version__ = metadata.version("aa-fleetfinder")
 __title__ = "Intel Tool"
+
+del metadata
