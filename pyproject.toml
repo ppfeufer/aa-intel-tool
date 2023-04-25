@@ -43,7 +43,7 @@ Source = "https://github.com/ppfeufer/aa-intel-tool.git"
 Changelog = "https://github.com/ppfeufer/aa-intel-tool/blob/master/CHANGELOG.md"
 Tracker = "https://github.com/ppfeufer/aa-intel-tool/issues"
 
-[tool.hatch.build.targets.sdist]
+[tool.hatch.build]
 include = [
     "/aa_intel_tool",
 ]
