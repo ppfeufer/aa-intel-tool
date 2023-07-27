@@ -3,4 +3,15 @@
         list-style-type: none;
         padding: 0 0 0 1rem;
     }
+
+    .aa-intel-tool-footer {
+        border-top: 1px solid rgb(236 240 241);
+        font-size: 85%;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    .template-dark-mode .aa-intel-tool-footer {
+        border-color: rgb(70 69 69);
+    }
 }
