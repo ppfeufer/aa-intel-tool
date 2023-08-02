@@ -1,5 +1,5 @@
 """
-app config
+App config
 """
 
 # Django
@@ -12,7 +12,7 @@ from aa_intel_tool import __version__
 
 class AaIntelToolConfig(AppConfig):
     """
-    application config
+    Application config
     """
 
     name = "aa_intel_tool"
