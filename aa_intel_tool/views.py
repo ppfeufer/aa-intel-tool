@@ -1,5 +1,5 @@
 """
-the views ....
+The views …
 """
 
 # Django
@@ -14,22 +14,37 @@ from aa_intel_tool.utils import get_template_view
 
 def index(request: WSGIRequest) -> HttpResponse:
     """
-    intel tool index
-    basically just the form
+    Intel tool index (basically just the form)
+
     :return:
     :rtype:
     """
 
     form = IntelForm()
 
-    context = {"template_view": get_template_view(request), "form": form}
+    context = {"template_view": get_template_view(request=request), "form": form}
 
-    return render(request, "aa_intel_tool/view/index.html", context)
+    return render(
+        request=request, template_name="aa_intel_tool/views/index.html", context=context
+    )
 
 
 def scan(request: WSGIRequest, scan_hash: str):
+    """
+    Scan view
+
+    :param request:
+    :type request:
+    :param scan_hash:
+    :type scan_hash:
+    :return:
+    :rtype:
+    """
+
     context = {
-        "template_view": get_template_view(request),
+        "template_view": get_template_view(request=request),
     }
 
-    return render(request, "aa_intel_tool/view/scan.html", context)
+    return render(
+        request=request, template_name="aa_intel_tool/views/scan.html", context=context
+    )
