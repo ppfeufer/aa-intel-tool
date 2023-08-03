@@ -2,9 +2,13 @@
 /dist/
 /*.egg-info/
 .idea/
+.tox/
+htmlcov/
 
 *.log
 *.tmp
 *.bak
 *.old
 __pycache__
+.coverage
+/coverage.xml
