@@ -74,10 +74,10 @@ class Scan(models.Model):
         """
 
         if self._state.adding is True:
-            self.hash = get_random_string(30)
+            self.hash = Scan.generate_scan_hash()
 
         super().save(*args, **kwargs)
 
         if self.hash == "":
-            self.hash = get_random_string(30)
+            self.hash = Scan.generate_scan_hash()
             self.save()
