@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # AA Intel Tool
+from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.form import IntelForm
 
 
@@ -21,7 +22,7 @@ def index(request: WSGIRequest) -> HttpResponse:
 
     form = IntelForm()
 
-    context = {"form": form}
+    context = {"form": form, "app_settings": AppSettings}
 
     return render(
         request=request, template_name="aa_intel_tool/views/index.html", context=context
