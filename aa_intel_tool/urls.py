@@ -1,24 +1,15 @@
 """
-our urls
+Our URL config
 """
 
 # Django
-# from django.conf.urls import url
 from django.urls import include, path, re_path
 
 # AA Intel Tool
-from aa_intel_tool.constants import INTERNAL_URL_PREFIX
-from aa_intel_tool.views import ajax, general
+from aa_intel_tool.views import general
 
 app_name: str = "aa_intel_tool"
 
-ajax_urls = [
-    path(
-        route="parse-form-data",
-        view=ajax.parse_form_data,
-        name="ajax_parse_form_data",
-    ),
-]
 
 app_urls = [
     path(route="", view=general.index, name="intel_tool_index"),
@@ -31,8 +22,6 @@ app_urls = [
 
 # Put it all together
 urlpatterns = [
-    # Ajax URLs
-    path(f"{INTERNAL_URL_PREFIX}/ajax/", include(ajax_urls)),
     # App URLs
     path("", include(app_urls)),
 ]
