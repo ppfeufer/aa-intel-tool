@@ -1,8 +1,8 @@
 {% extends 'aa_intel_tool/base.html' %}
 
+{% load i18n %}
 {% load evelinks %}
 {% load inteltool_versioned_static %}
-{% load i18n %}
 
 {% block page_title %}{% translate 'Intel Tool' %}{% endblock %}
 
@@ -11,11 +11,10 @@
         <h1>Intel Parser</h1>
     </header>
 
-    <p>Please keep in mind, parsing large amount of data can take some time. Be patient, CCP's API is not the fastest to answer .... </p>
+    <p>{% translate "Please keep in mind, parsing large amount of data can take some time. Be patient, CCP's API is not the fastest to answer …" %}</p>
 {% endblock %}
 
 {% block aa_intel_tool_body %}
-    Scan Internal
 {% endblock %}
 
 {% block extra_css %}

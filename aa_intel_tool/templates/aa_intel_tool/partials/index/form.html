@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load bootstrap %}
 
 <article class="post clearfix">
@@ -5,13 +6,13 @@
         <div class="col-lg-4">
             <div style="margin-bottom: 2rem;">
                 <header class="entry-header">
-                    <h2 class="entry-title">What can I paste?</h2>
+                    <h2 class="entry-title">{% translate "What can I paste?" %}</h2>
                 </header>
 
                 <ul>
-                    <li>» D-Scan</li>
-{#                    <li>» Chat Memberlist <small>(takes some time to parse)</small></li>#}
-{#                    <li>» Fleet Composition <small>(takes some time to parse)</small></li>#}
+                    <li>» {% translate "D-Scan" %}</li>
+                    <li>» {% translate "Chat Memberlist" %}</li>
+                    <li>» {% translate "Fleet Composition" %}</li>
                 </ul>
             </div>
         </div>
@@ -25,7 +26,7 @@
                 <div class="row form-submit-area">
                     <div class="col-sm-2">
                         <button type="submit" class="btn btn-primary" name="submit-form">
-                            Submit
+                            {% translate "Submit" %}
                         </button>
                     </div>
                     <div class="col-sm-10"></div>
