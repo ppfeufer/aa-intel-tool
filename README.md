@@ -28,6 +28,8 @@ D-Scans and more in [Alliance Auth].
     * [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
     * [Step 4: Finalizing the Installation](#step-4-finalizing-the-installation)
   * [Settings](#settings)
+  * [Changelog](#changelog)
+  * [Contributing](#contributing)
 <!-- TOC -->
 
 ---
@@ -75,7 +77,7 @@ This is fairly simple, configure your AA settings (`local.py`) as follows:
   >
   > If you don't have a list for `APPS_WITH_PUBLIC_VIEWS` yet, then add the whole
   > block from here. This feature has been added in Alliance Auth v3.6.0 so you
-  > might not yet have this list in your `local.py`
+  > might not yet have this list in your `local.py`.
 
 
 ### Step 4: Finalizing the Installation
@@ -98,6 +100,19 @@ your `local.py`.
 | Name                           | Description                                                                                                      | Default  |
 |:-------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------|
 | INTELTOOL_SCAN_RETENTION_TIME  | Sets the time in days for how long the scans will be kept in the database. Set to 0 to keep scans indefinitely.  | 30       |
+
+
+## Changelog
+
+See [CHANGELOG.md]
+
+
+## Contributing
+
+Do you want to contribute to this project? That's cool!
+
+Please make sure to read the [Contribution Guidelines]
+(I promise, it's not much, just some basics)
 
 
 <!-- Badges -->
