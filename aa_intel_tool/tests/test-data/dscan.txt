@@ -1,0 +1,44 @@
+1929	Perimeter II - Moon 1 - Ducia Foundry Mineral Reserve	Amarr Standard Station	14.0 AU
+35832	Perimeter - PushX Hauling Freeport	Astrahus	8,514 km
+35832	Perimeter - Hot Sauce Emporium	Astrahus	5.2 AU
+35832	Perimeter - Outpost	Astrahus	5.2 AU
+35832	Perimeter - Long Lost Incan City Of Gold	Astrahus	7,002 km
+1529	Perimeter IX - Caldari Constructions Production Plant	Caldari Administrative Station	7.0 AU
+1529	Perimeter II - Moon 1 - Caldari Navy Assembly Plant	Caldari Administrative Station	14.0 AU
+4023	Perimeter VII - Poksu Mineral Group Mineral Reserve	Caldari Mining Station	12.1 AU
+35833	Perimeter - Tranquility Trading Tower	Fortizar	3,808 km
+35833	Perimeter - TEST War Headquarters	Fortizar	5,209 km
+12236	Gallente Control Tower	Gallente Control Tower	-
+20064	P7 M2 Blocker	Gallente Control Tower Small	-
+20064	P7 M1 Blocker	Gallente Control Tower Small	-
+11129	Hither and Thither	Gallente Shuttle	1,618 km
+17715	Gila T3 Gamma	Gila	-
+601	SoniKaise's Ibis	Ibis	1,475 km
+657	 Iter	Iteron Mark V	-
+657	500	Iteron Mark V	-
+33474	Polska korporacja CBC Interstellar rekrutuje-Dołącz do kanału Akademia CBC aby uzyskać więcej info	Mobile Depot	7,010 km
+33474	Ніщо не зупинить ідею, час якої настав, приєднуйся до українського ком'юніті UA Space!	Mobile Depot	-
+33474	Polska korporacja CBC Interstellar rekrutuje-Dołącz do kanału Akademia CBC aby uzyskać więcej info	Mobile Depot	-
+33474	Українська академія UA Space запрошує! (інфо в біо)	Mobile Depot	1,691 km
+33474	Polska korporacja CBC Interstellar rekrutuje-Dołącz do kanału Akademia CBC aby uzyskać więcej info	Mobile Depot	1,391 km
+33474	Szukasz korporacji? Dołącz do kanału w grze: PDCU	Mobile Depot	1,467 km
+33474	Не понимаешь как в это играть? - НЕ БЕДА! Поможем не потеряться в новом Эдеме!(инфа в био) 	Mobile Depot	1,486 km
+33474	Polska korporacja CBC Interstellar rekrutuje-Dołącz do kanału Akademia CBC aby uzyskać więcej info	Mobile Depot	-
+33474	Українці запрошують до ком'юніті UA Space! У нас ви знайдете контент на будь який смак.	Mobile Depot	1,504 km
+650	Nereus TFo	Nereus	-
+20187	Goldmoone Thiesant's Obelisk	Obelisk	-
+11178	Rigs in Cargo	Raptor	2,934 km
+17478	Retriever de Tornado of Terror	Retriever	-
+17478	&lt;&lt;&lt;&lt;--&gt;&gt;&gt;&gt;	Retriever	-
+27606	Shadow Control Tower Small	Shadow Control Tower Small	-
+35827	Perimeter - Tranquility Trading Center	Sotiyo	96 km
+35827	Perimeter - Tranquility Research Labs	Sotiyo	1,619 km
+16	Maurasi	Stargate (Caldari System)	17,816 km
+16	Jita	Stargate (Caldari System)	1,476 km
+16	Niyabainen	Stargate (Caldari System)	44,850 km
+35836	Perimeter - Tranquility T2 Refinery	Tatara	2,902 km
+47270	 ☠	Vedmak	1,474 km
+32880	54645465	Venture	-
+32880	Bubosu's Venture	Venture	-
+32880	MAPDAVISs Venture	Venture	-
+32880	Jack Rosca's Venture	Venture	355 km
