@@ -3,7 +3,7 @@ Chat list parser
 """
 
 
-def parse(scan_data: list):
+def parse(scan_data: list):  # pylint: disable=unused-argument
     """
     Parse chat list
 
@@ -13,4 +13,4 @@ def parse(scan_data: list):
     :rtype:
     """
 
-    return scan_data
+    return "Chat List"

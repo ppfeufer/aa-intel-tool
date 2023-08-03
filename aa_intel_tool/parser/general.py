@@ -7,8 +7,8 @@ import re
 from typing import Optional
 
 # AA Intel Tool
-from aa_intel_tool import parser
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
+from aa_intel_tool.parser import chatlist, dscan, fleetcomp
 
 
 def check_intel_type(scan_data: list) -> Optional[str]:
@@ -20,18 +20,6 @@ def check_intel_type(scan_data: list) -> Optional[str]:
     :return:
     :rtype:
     """
-
-    # Supported Intel types
-    # Regex Pattern => Type Key
-    # supported_types = {
-    #     r"(?im)^([a-zA-Z0-9 -_]{3,37})[\t](.*)[\t](.* \/ .*) ?$": "fleetcomp",
-    #     r"(?im)^\d+[\t](.*)[\t](-|\d(.*)) ?$": "dscan",
-    #     r"(?im)^[a-zA-Z0-9 -_]{3,37}$": "chatlist",
-    # }
-    #
-    # for pattern, intel_type in supported_types.items():
-    #     if all(re.match(pattern=pattern, string=string) for string in scan_data):
-    #         return intel_type
 
     for intel_type in SUPPORTED_INTEL_TYPES:
         if all(
@@ -59,12 +47,12 @@ def parse_intel(form_data: str):
         intel_type = check_intel_type(scan_data=scan_data)
 
         switch = {
-            "dscan": parser.dscan.parse,
-            "chatlist": parser.chatlist.parse,
-            "fleetcomp": parser.fleetcomp.parse,
+            "dscan": dscan.parse,
+            "chatlist": chatlist.parse,
+            "fleetcomp": fleetcomp.parse,
         }
 
         if intel_type in switch:
-            return switch[intel_type]()
+            return switch[intel_type](scan_data=scan_data)
 
     return None
