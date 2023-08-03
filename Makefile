@@ -37,12 +37,11 @@ graph_models:
 
 coverage:
 	rm -rfv htmlcov && \
-	coverage run ../myauth/manage.py test $(package) --keepdb --failfast && coverage html && coverage report
+	coverage run ../myauth/manage.py test $(package) --keepdb --failfast && coverage html && coverage report -m
 
 build_test:
 	rm -rfv dist && \
 	python3 -m build
 
 tox_tests:
-	tox && \
-	rm -rf .tox/
+	tox

@@ -2,6 +2,7 @@
 # Add files or directories matching the regex patterns to the ignore-list.
 # The regex matches against paths.
 ignore-paths=
+    testauth/,
     (.*)/tests/,
     (.*)/migrations/
 
