@@ -4,6 +4,9 @@ App constants
 # Standard Library
 import re
 
+# All internal URLs need to start with this prefix
+INTERNAL_URL_PREFIX = "-"
+
 SUPPORTED_INTEL_TYPES = [
     {
         "name": "Fleet Composition",

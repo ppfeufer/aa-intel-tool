@@ -66,5 +66,8 @@ def register_urls():
         urls=urls,
         namespace="aa_intel_tool",
         base_url=r"^intel/",
-        excluded_views=["aa_intel_tool.views.index", "aa_intel_tool.views.scan"],
+        excluded_views=[
+            "aa_intel_tool.views.general.index",
+            "aa_intel_tool.views.general.scan",
+        ],
     )
