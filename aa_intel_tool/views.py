@@ -41,9 +41,7 @@ def scan(request: WSGIRequest, scan_hash: str):
     :rtype:
     """
 
-    context = {
-        "scan_hash": scan_hash,
-    }
+    context = {"scan_hash": scan_hash}
 
     return render(
         request=request, template_name="aa_intel_tool/views/scan.html", context=context

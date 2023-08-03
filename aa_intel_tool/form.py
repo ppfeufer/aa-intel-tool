@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 class IntelForm(forms.Form):
     """
-    SRP request reject form
+    Intel form
     """
 
     eve_intel = forms.CharField(
