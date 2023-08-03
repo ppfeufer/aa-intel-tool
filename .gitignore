@@ -4,6 +4,7 @@
 .idea/
 .tox/
 htmlcov/
+pastebin/
 
 *.log
 *.tmp
