@@ -4,6 +4,7 @@ our forms
 
 # Django
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 
 class IntelForm(forms.Form):
@@ -16,9 +17,9 @@ class IntelForm(forms.Form):
             attrs={
                 "rows": 15,
                 "input_type": "textarea",
-                "placeholder": "Paste here ...",
+                "placeholder": _("Paste here ..."),
             }
         ),
         required=True,
-        label="",
+        label="",  # Make sure there is no form label, we don't need it
     )
