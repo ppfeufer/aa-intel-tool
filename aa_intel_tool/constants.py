@@ -13,7 +13,7 @@ SUPPORTED_INTEL_TYPES = [
         "name": "Fleet Composition",
         "parser": "fleetcomp",
         "pattern": re.compile(
-            r"(?im)^([a-zA-Z0-9 -_]{3,37})[\t](.*)[\t](.*)[\t](.*)[\t](.*)[\t]([0-5] - [0-5] - [0-5])[\t](.*) ?$"  # pylint: disable=line-too-long
+            r"(?im)^([a-zA-Z0-9 -_]{3,37})[\t](.*)[\t](.*)[\t](.*)[\t](.*)[\t]([0-5] - [0-5] - [0-5])([\t](.*))?$"  # pylint: disable=line-too-long
         ),
     },
     {
