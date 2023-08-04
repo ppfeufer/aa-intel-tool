@@ -1,0 +1,5 @@
+{% load evelinks %}
+
+<span class="aa-intel-alliance-logo-wrapper">
+    <img class="eve-image" data-eveid="{{ alliance.id }}" src="{{ alliance.id|alliance_logo_url:32 }}" alt="{{ alliance.name }}" title="{{ alliance.name }}" width="32" height="32">
+</span>

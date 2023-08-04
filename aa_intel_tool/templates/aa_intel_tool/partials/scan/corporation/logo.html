@@ -1,0 +1,5 @@
+{% load evelinks %}
+
+<span class="aa-intel-corporation-logo-wrapper">
+    <img class="eve-image" data-eveid="{{ corporation.id }}" src="{{ corporation.id|corporation_logo_url:32 }}" alt="{{ corporation.name }}" title="{{ corporation.name }}" width="32" height="32">
+</span>

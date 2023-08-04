@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load evelinks %}
+
+<span class="aa-intel-corporation-links-wrapper">
+    <span class="aa-intel-corporation-name-wrapper">
+        {{ corporation.name }}
+    </span>
+
+    <span class="aa-intel-corporation-links-wrapper">
+        <small>
+            {% if 1000000 <= corporation.id and corporation.id <= 2000000 %}
+                {% translate "(NPC Corp)" %}
+            {% else %}
+                <a class="aa-intel-information-link" href="{{ corporation.name|dotlan_corporation_url }}" target="_blank" rel="noopener noreferer">dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i></a> |
+                <a class="aa-intel-information-link" href="{{ corporation.id|zkillboard_corporation_url }}" target="_blank" rel="noopener noreferer">zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+            {% endif %}
+        </small>
+    </span>
+</span>

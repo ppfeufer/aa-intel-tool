@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load evelinks %}
+
+<div class="col-md-6 col-lg-3 aa-intel-chatscan-corporations">
+    <header class="entry-header">
+        <h2 class="entry-title">
+            {% translate "Corporations Breakdown" %} ({{ processed_data.corporations|length }})
+        </h2>
+    </header>
+
+    <div class="table-responsive table-local-scan table-local-scan-corporation table-aa-intel">
+        <table class="table table-condensed table-sortable aa-intel-corporation-participation-list" data-haspaging="no" data-order='[[ 1, "desc" ]]'>
+            <thead>
+                <tr>
+                    <th>{% translate "Corporation Name" %}</th>
+                    <th>{% translate "Count" %}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for corporation_data, corporation in processed_data.corporations.items %}
+                    <tr class="aa-intel-corporation-participation-item aa-intel-alliance-id-{{ corporation.alliance.id }} aa-intel-corporation-id-{{ corporation.id }}" data-alliance-id="{{ corporation.alliance.id }}" data-corporation-id="{{ corporation.id }}">
+                        <td data-search="{{ corporation.alliance.name }}, {{ corporation.alliance.ticker }}, {{ corporation.name }}, {{ corporation.ticker }}">
+                            {% include "aa_intel_tool/partials/scan/corporation/logo.html" %}
+                            {% include "aa_intel_tool/partials/scan/corporation/information.html" %}
+                        </td>
+
+                        <td class="table-data-count">
+                            <?php echo $corporation['count']; ?>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

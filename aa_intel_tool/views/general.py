@@ -1,6 +1,8 @@
 """
 The views …
 """
+# Standard Library
+import json
 
 # Django
 from django.contrib import messages
@@ -12,6 +14,7 @@ from django.utils.translation import gettext_lazy as _
 # AA Intel Tool
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.form import IntelForm
+from aa_intel_tool.models import Scan
 from aa_intel_tool.parser.general import parse_intel
 
 
@@ -41,11 +44,9 @@ def index(request: WSGIRequest) -> HttpResponse:
 
                 return redirect(to="aa_intel_tool:intel_tool_index")
 
-        context = {
-            "form": form,
-            "app_settings": AppSettings,
-            "intel_type": parsed_intel,
-        }
+            return redirect(to="aa_intel_tool:intel_tool_scan", scan_hash=parsed_intel)
+
+        context = {"form": form, "app_settings": AppSettings}
 
     # If a GET (or any other method) we'll create a blank form
     else:
@@ -70,7 +71,21 @@ def scan(request: WSGIRequest, scan_hash: str):
     :rtype:
     """
 
-    context = {"scan_hash": scan_hash}
+    try:
+        # pylint: disable=no-member
+        intel_scan = Scan.objects.exclude(scan_type=Scan.Type.INVALID).get(pk=scan_hash)
+    except Scan.DoesNotExist:
+        intel_scan = None
+
+    context = {
+        "scan_hash": scan_hash,
+        "scan_type": intel_scan.scan_type if intel_scan is not None else None,
+        "raw_data": intel_scan.raw_data if intel_scan is not None else None,
+        "processed_data": json.loads(intel_scan.processed_data)
+        if intel_scan is not None
+        else None,
+        "app_settings": AppSettings,
+    }
 
     return render(
         request=request, template_name="aa_intel_tool/views/scan.html", context=context

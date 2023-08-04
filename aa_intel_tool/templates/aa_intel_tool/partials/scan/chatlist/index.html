@@ -1,0 +1,28 @@
+{% extends 'aa_intel_tool/base.html' %}
+
+{% load i18n %}
+{% load inteltool_versioned_static %}
+
+{% block page_title %}{% translate 'Intel Tool' %}{% endblock %}
+
+{% block aa_intel_tool_header %}
+    <header>
+        <h1>{% translate "Chat Scan" %}</h1>
+    </header>
+
+    {% include "aa_intel_tool/partials/scan/buttons.html" %}
+{% endblock %}
+
+{% block aa_intel_tool_body %}
+    <div class="local-scan-result row">
+
+        {% include 'aa_intel_tool/partials/scan/chatlist/alliances.html' %}
+        {% include 'aa_intel_tool/partials/scan/chatlist/corporations.html' %}
+        {% include 'aa_intel_tool/partials/scan/chatlist/pilots.html' %}
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% aa_intel_tool_static 'aa_intel_tool/css/aa-bootstrap-fix.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% aa_intel_tool_static 'aa_intel_tool/css/aa-intel-tool.min.css' %}" type="text/css">
+{% endblock %}

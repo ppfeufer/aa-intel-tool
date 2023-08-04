@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load evelinks %}
+
+<div class="col-md-6 col-lg-3 aa-intel-chatscan-alliances">
+    <header class="entry-header">
+        <h2 class="entry-title">
+            {% translate "Alliances Breakdown" %} ({{ processed_data.alliances|length }})
+        </h2>
+    </header>
+
+    <div class="table-responsive table-local-scan table-local-scan-alliances table-aa-intel">
+        <table class="table table-condensed table-sortable aa-intel-alliance-participation-list" data-haspaging="no" data-order='[[ 1, "desc" ]]'>
+            <thead>
+                <tr>
+                    <th>{% translate "Alliance Name" %}</th>
+                    <th>{% translate "Count" %}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for alliance_data, alliance in processed_data.alliances.items %}
+                    <tr class="aa-intel-alliance-participation-item aa-intel-alliance-id-{{ alliance.id }}" data-alliance-id="{{ alliance.id }}">
+                        <td data-search="{{ alliance.name }}, {{ alliance.ticker }}">
+                            {% include "aa_intel_tool/partials/scan/alliance/logo.html" %}
+                            {% include "aa_intel_tool/partials/scan/alliance/information.html" %}
+                        </td>
+
+                        <td class="table-data-count">
+                            {{ alliance.count }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

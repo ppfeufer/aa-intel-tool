@@ -13,6 +13,16 @@ class Scan(models.Model):
     The scans
     """
 
+    class Type(models.TextChoices):
+        """
+        The choices for Scan.type
+        """
+
+        INVALID = "invalid", _("Invalid scan data")
+        DSCAN = "dscan", _("D-Scan")
+        FLEETCOMP = "fleetcomp", _("Fleet Composition")
+        CHATLIST = "chatlist", _("Chat List")
+
     hash = models.CharField(
         primary_key=True,
         editable=False,
@@ -30,6 +40,13 @@ class Scan(models.Model):
     raw_data = models.TextField(verbose_name=_("The original scan data."))
     processed_data = models.JSONField(
         default=dict, verbose_name=_("The processed scan data.")
+    )
+
+    scan_type = models.CharField(
+        max_length=9,
+        choices=Type.choices,
+        default=Type.INVALID,
+        verbose_name=_("The scan type."),
     )
 
     class Meta:  # pylint: disable=too-few-public-methods

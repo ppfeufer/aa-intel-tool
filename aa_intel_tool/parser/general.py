@@ -3,12 +3,23 @@ General parser functions
 """
 
 # Standard Library
+import json
 import re
 from typing import Optional
 
+# Alliance Auth
+from allianceauth.services.hooks import get_extension_logger
+
+# Alliance Auth (External Libs)
+from app_utils.logging import LoggerAddTag
+
 # AA Intel Tool
+from aa_intel_tool import __title__
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
+from aa_intel_tool.models import Scan
 from aa_intel_tool.parser import chatlist, dscan, fleetcomp
+
+logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
 def check_intel_type(scan_data: list) -> Optional[str]:
@@ -41,6 +52,8 @@ def parse_intel(form_data: str):
     :rtype:
     """
 
+    logger.debug(msg=form_data)
+
     scan_data = form_data.splitlines()
 
     if len(scan_data) > 0:
@@ -53,6 +66,17 @@ def parse_intel(form_data: str):
         }
 
         if intel_type in switch:
-            return switch[intel_type](scan_data=scan_data)
+            scan_type, parsed_data = switch[intel_type](scan_data=scan_data)
+
+            if parsed_data is not None:
+                new_scan = Scan(
+                    scan_type=scan_type,
+                    processed_data=json.dumps(parsed_data),
+                    raw_data=form_data,
+                )
+
+                new_scan.save()
+
+                return new_scan.hash
 
     return None
