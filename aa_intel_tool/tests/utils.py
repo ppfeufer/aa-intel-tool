@@ -3,8 +3,8 @@ Helper for our tests
 """
 
 # Standard Library
-import datetime as dt
 import re
+from pathlib import Path
 from typing import List
 
 # Third Party
@@ -13,19 +13,14 @@ from faker import Faker
 # Django
 from django.contrib.auth.models import User
 from django.template import Context, Template
-from django.utils.timezone import now
 
 # Alliance Auth
 from allianceauth.tests.auth_utils import AuthUtils
 
-MESSAGE_DATETIME_HOURS_INTO_PAST = 240
-MESSAGE_DATETIME_MINUTES_OFFSET = 2
-NEW_MESSAGE_DATETIME = now() - dt.timedelta(hours=MESSAGE_DATETIME_HOURS_INTO_PAST)
-
 fake = Faker()
 
 
-def create_fake_user(
+def create_fake_user(  # pylint: disable=too-many-arguments
     character_id: int,
     character_name: str,
     corporation_id: int = None,
@@ -35,7 +30,7 @@ def create_fake_user(
     **kwargs,
 ) -> User:
     """
-    Create a fake user incl. main character and (optional) permissions.
+    Create a fake user including its main character and (optional) permissions.
     :param character_id:
     :param character_name:
     :param corporation_id:
@@ -46,8 +41,8 @@ def create_fake_user(
     :return:
     """
 
-    username = re.sub(r"[^\w\d@\.\+-]", "_", character_name)
-    user = AuthUtils.create_user(username)
+    username = re.sub(pattern=r"[^\w\d@.+-]", repl="_", string=character_name)
+    user = AuthUtils.create_user(username=username)
 
     if not corporation_id:
         corporation_id = 2001
@@ -73,7 +68,9 @@ def create_fake_user(
     )
 
     if permissions:
-        perm_objs = [AuthUtils.get_permission_by_name(perm) for perm in permissions]
+        perm_objs = [
+            AuthUtils.get_permission_by_name(perm=perm) for perm in permissions
+        ]
         user = AuthUtils.add_permissions_to_user(perms=perm_objs, user=user)
 
     return user
@@ -95,7 +92,7 @@ def get_or_create_fake_user(*args, **kwargs) -> User:
 
     try:
         return User.objects.get(username=username)
-    except User.DoesNotExist:
+    except User.DoesNotExist:  # pylint: disable=no-member
         return create_fake_user(*args, **kwargs)
 
 
@@ -108,6 +105,50 @@ def render_template(string, context=None):
     """
 
     context = context or {}
-    context = Context(context)
+    context = Context(dict_=context)
 
-    return Template(string).render(context)
+    return Template(template_string=string).render(context=context)
+
+
+def load_chatscan_txt() -> str:
+    """
+    Loading chatscan.txt
+
+    :return:
+    :rtype:
+    """
+
+    return (Path(__file__).parent / "test-data/chatscan.txt").read_text()
+
+
+def load_chatscan_faulty_txt() -> str:
+    """
+    Loading chatscan-faulty.txt
+
+    :return:
+    :rtype:
+    """
+
+    return (Path(__file__).parent / "test-data/chatscan-faulty.txt").read_text()
+
+
+def load_dscan_txt() -> str:
+    """
+    Loading dscan.txt
+
+    :return:
+    :rtype:
+    """
+
+    return (Path(__file__).parent / "test-data/dscan.txt").read_text()
+
+
+def load_fleetcomp_txt() -> str:
+    """
+    Loading fleetcomp.txt
+
+    :return:
+    :rtype:
+    """
+
+    return (Path(__file__).parent / "test-data/fleetcomp.txt").read_text()
