@@ -1,8 +1,6 @@
 """
 The views …
 """
-# Standard Library
-import json
 
 # Django
 from django.contrib import messages
@@ -89,7 +87,7 @@ def scan(request: WSGIRequest, scan_hash: str):
         "scan_type": intel_scan.scan_type,
         "created": intel_scan.created,
         "raw_data": intel_scan.raw_data,
-        "processed_data": json.loads(intel_scan.processed_data),
+        "processed_data": intel_scan.processed_data,
     }
 
     context = {
