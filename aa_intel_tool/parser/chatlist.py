@@ -2,9 +2,6 @@
 Chat list parser
 """
 
-# Django
-from django.utils.translation import gettext_lazy as _
-
 # Alliance Auth
 from allianceauth.services.hooks import get_extension_logger
 
@@ -63,7 +60,7 @@ def parse(scan_data: list) -> tuple:
             counter["unaffiliated"] += 1
             alliance_info[1] = {
                 "id": 1,
-                "name": str(_("Unaffiliated / No Alliance")),
+                "name": "",
                 "ticker": "",
                 "count": counter["unaffiliated"],
             }

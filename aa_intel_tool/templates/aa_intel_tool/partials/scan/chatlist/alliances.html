@@ -1,10 +1,12 @@
 {% load i18n %}
 {% load evelinks %}
 
+{% translate "Unaffiliated / No Alliance" as no_alliance %}
+
 <div class="col-md-6 col-lg-3 aa-intel-chatscan-alliances">
-    <header class="entry-header">
-        <h2 class="entry-title">
-            {% translate "Alliances Breakdown" %} ({{ processed_data.alliances|length }})
+    <header class="aa-intel-section-header">
+        <h2 class="aa-intel-section-title">
+            {% translate "Alliances Breakdown" %} ({{ scan.processed_data.alliances|length }})
         </h2>
     </header>
 
@@ -18,9 +20,9 @@
             </thead>
 
             <tbody>
-                {% for alliance_data, alliance in processed_data.alliances.items %}
+                {% for alliance_data, alliance in scan.processed_data.alliances.items %}
                     <tr class="aa-intel-alliance-participation-item aa-intel-alliance-id-{{ alliance.id }}" data-alliance-id="{{ alliance.id }}">
-                        <td data-search="{{ alliance.name }}, {{ alliance.ticker }}">
+                        <td data-search="{{ alliance.name|default:no_alliance }}, {{ alliance.ticker }}">
                             {% include "aa_intel_tool/partials/scan/alliance/logo.html" %}
                             {% include "aa_intel_tool/partials/scan/alliance/information.html" %}
                         </td>

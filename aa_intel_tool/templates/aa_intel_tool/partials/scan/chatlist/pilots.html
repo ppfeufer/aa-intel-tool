@@ -1,9 +1,11 @@
 {% load i18n %}
 
+{% translate "Unaffiliated / No Alliance" as no_alliance %}
+
 <div class="col-md-12 col-lg-6 aa-intel-chatscan-pilots">
-    <header class="entry-header">
-        <h2 class="entry-title">
-            {% translate "Pilots Breakdown" %} ({{ processed_data.pilots|length }})
+    <header class="aa-intel-section-header">
+        <h2 class="aa-intel-section-title">
+            {% translate "Pilots Breakdown" %} ({{ scan.processed_data.pilots|length }})
         </h2>
     </header>
 
@@ -18,14 +20,14 @@
             </thead>
 
             <tbody>
-                {% for pilot_data, pilot in processed_data.pilots.items %}
-                    <tr class="aa-intel-pilot-participation-item aa-intel-alliance-id-{{ pilot.alliance_id }} aa-intel-corporation-id-{{ pilot.corporation_id }} aa-intel-pilot-id-{{ pilot.id }}" data-alliance-id="{{ pilot.alliance_id }}" data-corporation-id="{{ pilot.corporation_id }}" data-character-id="{{ pilot.alliance_id }}">
+                {% for pilot_data, pilot in scan.processed_data.pilots.items %}
+                    <tr class="aa-intel-pilot-participation-item aa-intel-alliance-id-{{ pilot.alliance.id }} aa-intel-corporation-id-{{ pilot.corporation.id }} aa-intel-pilot-id-{{ pilot.id }}" data-alliance-id="{{ pilot.alliance.id }}" data-corporation-id="{{ pilot.corporation.id }}" data-character-id="{{ pilot.id }}">
                         <td>
                             {% include "aa_intel_tool/partials/scan/pilot/avatar.html" %}
                             {% include "aa_intel_tool/partials/scan/pilot/information.html" %}
                         </td>
 
-                        <td data-search="{{ pilot.alliace.name }}, {{ pilot.alliance.ticker }}">
+                        <td data-search="{{ pilot.alliance.name|default:no_alliance }}, {{ pilot.alliance.ticker }}">
                             {% if pilot.alliance.id > 1 %}
                                 {% include "aa_intel_tool/partials/scan/alliance/logo.html" with alliance=pilot.alliance %}
 
@@ -33,7 +35,7 @@
                             {% endif %}
                         </td>
 
-                        <td data-search="{{ pilot.corporatin.name }}, {{ pilot.corporatin.ticker }}">
+                        <td data-search="{{ pilot.corporation.name }}, {{ pilot.corporation.ticker }}">
                             {% include "aa_intel_tool/partials/scan/corporation/logo.html" with corporation=pilot.corporation %}
 
                             {{ pilot.corporation.ticker }}

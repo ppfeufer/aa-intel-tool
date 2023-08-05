@@ -30,7 +30,7 @@ SUPPORTED_INTEL_TYPES = [
     {
         "name": "Chat List",
         "parser": "chatlist",
-        "pattern": re.compile(r"(?im)^[a-zA-Z0-9 -_]{3,37}$"),
+        "pattern": re.compile(r"(?im)^[a-zA-Z0-9\u0080-\uFFFF -_]{3,37}$"),
     },
 ]
 
