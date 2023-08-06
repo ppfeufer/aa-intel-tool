@@ -27,6 +27,9 @@ D-Scans and more in [Alliance Auth].
     * [Step 1: Install the Package](#step-1-install-the-package)
     * [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
     * [Step 4: Finalizing the Installation](#step-4-finalizing-the-installation)
+    * [Step 5: Update Your Webserver Configuration](#step-5-update-your-webserver-configuration)
+      * [Apache 2](#apache-2)
+      * [Nginx](#nginx)
   * [Settings](#settings)
   * [Changelog](#changelog)
   * [Contributing](#contributing)
@@ -90,6 +93,39 @@ python manage.py migrate
 ```
 
 Restart your supervisor services for Auth.
+
+
+### Step 5: Update Your Webserver Configuration
+
+By default, webservers have a timout of about 30 seconds for requests. So we have to
+tweak that a little bit, since parsing intel data can take a while and we don't want
+the webserver to spoil our fun, right?
+
+#### Apache 2
+
+Open your vhost configuration and add the following 2 lines right after the
+`ProxyPreserveHost On` directive:
+
+```apache
+Timeout      600
+ProxyTimeout 600
+```
+
+Restart your Apache2 service.
+
+#### Nginx
+
+Open your vhost configuration and add the following lines inside the `location / {`
+directive:
+
+```nginx
+proxy_connect_timeout 600;
+proxy_send_timeout    600;
+proxy_read_timeout    600;
+send_timeout          600;
+```
+
+Restart your Nginx service.
 
 
 ## Settings
