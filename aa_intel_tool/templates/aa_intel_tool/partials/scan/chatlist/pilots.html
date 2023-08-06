@@ -5,12 +5,12 @@
 <div class="col-md-12 col-lg-6 aa-intel-chatscan-pilots">
     <header class="aa-intel-section-header">
         <h2 class="aa-intel-section-title">
-            {% translate "Pilots Breakdown" %} ({{ scan.processed_data.pilots|length }})
+            {% translate "Pilots Breakdown" %} (<span id="aa-intel-pilots-count">0</span>)
         </h2>
     </header>
 
-    <div class="table-responsive table-local-scan table-local-scan-pilots table-aa-intel">
-        <table class="table table-sortable table-condensed aa-intel-pilot-participation-list" data-haspaging="no">
+    <div class="table-local-scan table-local-scan-pilots table-aa-intel">
+        <table class="table table-sortable table-condensed aa-intel-pilot-participation-list">
             <thead>
                 <tr>
                     <th>{% translate "Name" %}</th>
@@ -18,31 +18,6 @@
                     <th>{% translate "Corporation" %}</th>
                 </tr>
             </thead>
-
-            <tbody>
-                {% for pilot_data, pilot in scan.processed_data.pilots.items %}
-                    <tr class="aa-intel-pilot-participation-item aa-intel-alliance-id-{{ pilot.alliance.id }} aa-intel-corporation-id-{{ pilot.corporation.id }} aa-intel-pilot-id-{{ pilot.id }}" data-alliance-id="{{ pilot.alliance.id }}" data-corporation-id="{{ pilot.corporation.id }}" data-character-id="{{ pilot.id }}">
-                        <td>
-                            {% include "aa_intel_tool/partials/scan/pilot/avatar.html" %}
-                            {% include "aa_intel_tool/partials/scan/pilot/information.html" %}
-                        </td>
-
-                        <td data-search="{{ pilot.alliance.name|default:no_alliance }}, {{ pilot.alliance.ticker }}">
-                            {% if pilot.alliance.id > 1 %}
-                                {% include "aa_intel_tool/partials/scan/alliance/logo.html" with alliance=pilot.alliance %}
-
-                                {{ pilot.alliance.ticker }}
-                            {% endif %}
-                        </td>
-
-                        <td data-search="{{ pilot.corporation.name }}, {{ pilot.corporation.ticker }}">
-                            {% include "aa_intel_tool/partials/scan/corporation/logo.html" with corporation=pilot.corporation %}
-
-                            {{ pilot.corporation.ticker }}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
         </table>
     </div>
 </div>
