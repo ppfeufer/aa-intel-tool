@@ -1,6 +1,6 @@
 /* global aaIntelToolJsOptions, aaIntelToolJsL10n */
 
-jQuery(document).ready(function ($) {
+jQuery(document).ready(($) => {
     'use strict';
 
     /* Elements
@@ -73,7 +73,7 @@ jQuery(document).ready(function ($) {
      * Corporation info element in datatable
      *
      * @param corporationData
-     * @param logoOnly {bool}
+     * @param logoOnly {boolean}
      * @returns {string}
      */
     const corporationInfoPanel = (corporationData, logoOnly) => {
@@ -136,14 +136,15 @@ jQuery(document).ready(function ($) {
         return html_logo + html_info;
     };
 
+
     /**
      * Alliance info element in datatable
      *
      * @param allianceData
-     * @param logoOnly {bool}
+     * @param logoOnly {boolean}
      * @returns {string}
      */
-    const allinceInfoPanel = (allianceData, logoOnly) => {
+    const allianceInfoPanel = (allianceData, logoOnly) => {
         logoOnly = typeof logoOnly !== 'undefined' ? logoOnly : false;
 
         if (allianceData.name === '') {
@@ -226,7 +227,7 @@ jQuery(document).ready(function ($) {
         columns: [
             {
                 data: (data) => {
-                    return allinceInfoPanel(data);
+                    return allianceInfoPanel(data, false);
                 }
             },
             {
@@ -294,6 +295,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
+
     /**
      * Datatable Corporations Breakdown
      */
@@ -313,7 +315,7 @@ jQuery(document).ready(function ($) {
         columns: [
             {
                 data: (data) => {
-                    return corporationInfoPanel(data);
+                    return corporationInfoPanel(data, false);
                 }
             },
             {
@@ -356,7 +358,7 @@ jQuery(document).ready(function ($) {
 
                 allianceTableAddHighlightByAllianceId($(row));
                 pilotTableAddHighlightByCorporationId($(row));
-            }).on('mouseleave', function () {
+            }).on('mouseleave', () => {
                 $(row).removeClass('dataHighlight');
 
                 allianceTableRemoveHighlightByAllianceId($(row));
@@ -385,6 +387,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
+
     /**
      * Datatable Pilots Breakdown
      */
@@ -409,7 +412,7 @@ jQuery(document).ready(function ($) {
             },
             {
                 data: (data) => {
-                    return allinceInfoPanel(data.corporation.alliance, true) + data.corporation.alliance.ticker;
+                    return allianceInfoPanel(data.corporation.alliance, true) + data.corporation.alliance.ticker;
                 }
             },
             {
@@ -494,11 +497,11 @@ jQuery(document).ready(function ($) {
      * @param {type} element
      * @returns {Boolean}
      */
-    const removeCorporationStickyComplete = (function (element) {
+    const removeCorporationStickyComplete = ((element) => {
         let removeCorporationSticky = true;
 
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            if ($(this).hasClass('dataHighlightSticky')) {
+        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            if ($(el).hasClass('dataHighlightSticky')) {
                 removeCorporationSticky = false;
             }
         });
@@ -506,17 +509,18 @@ jQuery(document).ready(function ($) {
         return removeCorporationSticky;
     });
 
+
     /**
      * Determine if we can remove all sticky states for this alliance
      *
      * @param {type} element
      * @returns {Boolean}
      */
-    const removeAllianceStickyComplete = (function (element) {
+    const removeAllianceStickyComplete = ((element) => {
         let removeAllianceSticky = true;
 
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            if ($(this).hasClass('dataHighlightSticky')) {
+        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            if ($(el).hasClass('dataHighlightSticky')) {
                 removeAllianceSticky = false;
             }
         });
@@ -524,123 +528,243 @@ jQuery(document).ready(function ($) {
         return removeAllianceSticky;
     });
 
-    const allianceTableAddStickyByAllianceId = (function (element) {
-        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).addClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {allianceTableAddStickyByAllianceId}
+     */
+    const allianceTableAddStickyByAllianceId = ((element) => {
+        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlightSticky');
         });
     });
 
-    const allianceTableAddHighlightByAllianceId = (function (element) {
-        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).addClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {allianceTableAddHighlightByAllianceId}
+     */
+    const allianceTableAddHighlightByAllianceId = ((element) => {
+        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlight');
         });
     });
 
-    const allianceTableRemoveStickyByAllianceId = (function (element) {
-        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).removeClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {allianceTableRemoveStickyByAllianceId}
+     */
+    const allianceTableRemoveStickyByAllianceId = ((element) => {
+        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlightSticky');
         });
     });
 
-    const allianceTableRemoveHighlightByAllianceId = (function (element) {
-        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).removeClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {allianceTableRemoveHighlightByAllianceId}
+     */
+    const allianceTableRemoveHighlightByAllianceId = ((element) => {
+        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlight');
         });
     });
 
-    const corporationTableAddStickyByCorporationId = (function (element) {
-        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            $(this).addClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {corporationTableAddStickyByCorporationId}
+     */
+    const corporationTableAddStickyByCorporationId = ((element) => {
+        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlightSticky');
         });
     });
 
-    const corporationTableAddHighlightByCorporationId = (function (element) {
-        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            $(this).addClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {corporationTableAddHighlightByCorporationId}
+     */
+    const corporationTableAddHighlightByCorporationId = ((element) => {
+        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlight');
         });
     });
 
-    const corporationTableAddStickyByAllianceId = (function (element) {
-        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).addClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {corporationTableAddStickyByAllianceId}
+     */
+    const corporationTableAddStickyByAllianceId = ((element) => {
+        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlightSticky');
         });
     });
 
-    const corporationTableAddHighlightByAllianceId = (function (element) {
-        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).addClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {corporationTableAddHighlightByAllianceId}
+     */
+    const corporationTableAddHighlightByAllianceId = ((element) => {
+        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlight');
         });
     });
 
-    const corporationTableRemoveStickyByCorporationId = (function (element) {
-        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            $(this).removeClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {corporationTableRemoveStickyByCorporationId}
+     */
+    const corporationTableRemoveStickyByCorporationId = ((element) => {
+        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlightSticky');
         });
     });
 
-    const corporationTableRemoveHighlightByCorporationId = (function (element) {
-        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            $(this).removeClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {corporationTableRemoveHighlightByCorporationId}
+     */
+    const corporationTableRemoveHighlightByCorporationId = ((element) => {
+        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlight');
         });
     });
 
-    const corporationTableRemoveStickyByAllianceId = (function (element) {
-        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).removeClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {corporationTableRemoveStickyByAllianceId}
+     */
+    const corporationTableRemoveStickyByAllianceId = ((element) => {
+        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlightSticky');
         });
     });
 
-    const corporationTableRemoveHighlightByAllianceId = (function (element) {
-        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).removeClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {corporationTableRemoveHighlightByAllianceId}
+     */
+    const corporationTableRemoveHighlightByAllianceId = ((element) => {
+        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlight');
         });
     });
 
-    const pilotTableAddStickyByCorporationId = (function (element) {
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            $(this).addClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {pilotTableAddStickyByCorporationId}
+     */
+    const pilotTableAddStickyByCorporationId = ((element) => {
+        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlightSticky');
         });
     });
 
-    const pilotTableAddHighlightByCorporationId = (function (element) {
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            $(this).addClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {pilotTableAddHighlightByCorporationId}
+     */
+    const pilotTableAddHighlightByCorporationId = ((element) => {
+        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlight');
         });
     });
 
-    const pilotTableAddStickyByAllianceId = (function (element) {
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).addClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {pilotTableAddStickyByAllianceId}
+     */
+    const pilotTableAddStickyByAllianceId = ((element) => {
+        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlightSticky');
         });
     });
 
-    const pilotTableAddHighlightByAllianceId = (function (element) {
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).addClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {pilotTableAddHighlightByAllianceId}
+     */
+    const pilotTableAddHighlightByAllianceId = ((element) => {
+        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).addClass('dataHighlight');
         });
     });
 
-    const pilotTableRemoveStickyByCorporationId = (function (element) {
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            $(this).removeClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {pilotTableRemoveStickyByCorporationId}
+     */
+    const pilotTableRemoveStickyByCorporationId = ((element) => {
+        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlightSticky');
         });
     });
 
-    const pilotTableRemoveHighlightByCorporationId = (function (element) {
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each(function () {
-            $(this).removeClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {pilotTableRemoveHighlightByCorporationId}
+     */
+    const pilotTableRemoveHighlightByCorporationId = ((element) => {
+        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlight');
         });
     });
 
-    const pilotTableRemoveStickyByAllianceId = (function (element) {
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).removeClass('dataHighlightSticky');
+
+    /**
+     * Helper function
+     *
+     * @type {pilotTableRemoveStickyByAllianceId}
+     */
+    const pilotTableRemoveStickyByAllianceId = ((element) => {
+        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlightSticky');
         });
     });
 
-    const pilotTableRemoveHighlightByAllianceId = (function (element) {
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each(function () {
-            $(this).removeClass('dataHighlight');
+
+    /**
+     * Helper function
+     *
+     * @type {pilotTableRemoveHighlightByAllianceId}
+     */
+    const pilotTableRemoveHighlightByAllianceId = ((element) => {
+        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
+            $(el).removeClass('dataHighlight');
         });
     });
 });
