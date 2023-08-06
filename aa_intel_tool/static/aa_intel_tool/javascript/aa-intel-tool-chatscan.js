@@ -31,8 +31,8 @@ jQuery(document).ready(($) => {
     /**
      * Determine if we can remove all sticky states for this corporation
      *
-     * @param {type} element
-     * @returns {Boolean}
+     * @param element
+     * @returns {boolean}
      */
     const removeCorporationStickyComplete = (element) => {
         let removeCorporationSticky = true;
@@ -50,8 +50,8 @@ jQuery(document).ready(($) => {
     /**
      * Determine if we can remove all sticky states for this alliance
      *
-     * @param {type} element
-     * @returns {Boolean}
+     * @param element
+     * @returns {boolean}
      */
     const removeAllianceStickyComplete = (element) => {
         let removeAllianceSticky = true;
