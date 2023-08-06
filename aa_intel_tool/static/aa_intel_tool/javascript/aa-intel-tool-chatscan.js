@@ -368,9 +368,7 @@ jQuery(document).ready(($) => {
      * @param logoOnly {boolean} Returns only the corporation logo
      * @returns {string}
      */
-    const corporationInfoPanel = (corporationData, logoOnly) => {
-        logoOnly = typeof logoOnly !== 'undefined' ? logoOnly : false;
-
+    const corporationInfoPanel = (corporationData, logoOnly = false) => {
         let html_logo = '' +
             '<span class="aa-intel-corporation-logo-wrapper">\n' +
             '    <img ' +
@@ -436,9 +434,7 @@ jQuery(document).ready(($) => {
      * @param logoOnly {boolean} Returns only the alliance logo
      * @returns {string}
      */
-    const allianceInfoPanel = (allianceData, logoOnly) => {
-        logoOnly = typeof logoOnly !== 'undefined' ? logoOnly : false;
-
+    const allianceInfoPanel = (allianceData, logoOnly = false) => {
         if (allianceData.name === '') {
             allianceData.name = aaIntelToolJsL10n.scanData.empty;
         }
@@ -618,7 +614,7 @@ jQuery(document).ready(($) => {
         columns: [
             {
                 data: (data) => {
-                    return allianceInfoPanel(data, false);
+                    return allianceInfoPanel(data);
                 }
             },
             {
@@ -706,7 +702,7 @@ jQuery(document).ready(($) => {
         columns: [
             {
                 data: (data) => {
-                    return corporationInfoPanel(data, false);
+                    return corporationInfoPanel(data);
                 }
             },
             {
