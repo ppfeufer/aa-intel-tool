@@ -24,8 +24,7 @@ jQuery(document).ready(($) => {
     }
 
 
-    /**
-     * Highlighting similar table rows on mouse over and click
+    /* Highlighting similar table rows on mouse over and click
     --------------------------------------------------------------------------------- */
 
     /**
