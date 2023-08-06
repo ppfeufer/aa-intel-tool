@@ -317,10 +317,10 @@ jQuery(document).ready(($) => {
             '<span class="aa-intel-pilot-avatar-wrapper">\n' +
             '    <img ' +
             '        class="eve-image" ' +
-            '        data-eveid="' + pilotData.id + '" ' +
-            '        src="' + pilotData.portrait + '" ' +
-            '        alt="' + pilotData.name + '" ' +
-            '        title="' + pilotData.name + '" ' +
+            '        data-eveid="' + pilotData['id'] + '" ' +
+            '        src="' + pilotData['portrait'] + '" ' +
+            '        alt="' + pilotData['name'] + '" ' +
+            '        title="' + pilotData['name'] + '" ' +
             '        width="32" ' +
             '        height="32">\n' +
             '</span>';
@@ -328,7 +328,7 @@ jQuery(document).ready(($) => {
         let html_info = '' +
             '<span class="aa-intel-pilot-information-wrapper">\n' +
             '    <span class="aa-intel-pilot-name-wrapper">\n' +
-            '        ' + pilotData.name + '\n' +
+            '        ' + pilotData['name'] + '\n' +
             '    </span>\n';
 
         html_info += '' +
@@ -340,7 +340,7 @@ jQuery(document).ready(($) => {
             '        <small>\n' +
             '            <a ' +
             '                class="aa-intel-information-link" ' +
-            '                href="' + pilotData.evewho + '" ' +
+            '                href="' + pilotData['evewho'] + '" ' +
             '                target="_blank" ' +
             '                rel="noopener noreferer"' +
             '            >' +
@@ -349,7 +349,7 @@ jQuery(document).ready(($) => {
 
             '            <a ' +
             '                class="aa-intel-information-link" ' +
-            '                href="' + pilotData.zkillboard + '" ' +
+            '                href="' + pilotData['zkillboard'] + '" ' +
             '                target="_blank" rel="noopener noreferer"' +
             '            >' +
             '                zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
@@ -373,10 +373,10 @@ jQuery(document).ready(($) => {
             '<span class="aa-intel-corporation-logo-wrapper">\n' +
             '    <img ' +
             '        class="eve-image" ' +
-            '        data-eveid="' + corporationData.id + '" ' +
-            '        src="' + corporationData.logo + '" ' +
-            '        alt="' + corporationData.name + '" ' +
-            '        title="' + corporationData.name + '" ' +
+            '        data-eveid="' + corporationData['id'] + '" ' +
+            '        src="' + corporationData['logo'] + '" ' +
+            '        alt="' + corporationData['name'] + '" ' +
+            '        title="' + corporationData['name'] + '" ' +
             '        width="32" ' +
             '        height="32">\n' +
             '</span>';
@@ -384,21 +384,21 @@ jQuery(document).ready(($) => {
         let html_info = '' +
             '<span class="aa-intel-corporation-information-wrapper">\n' +
             '    <span class="aa-intel-corporation-name-wrapper">\n' +
-            '        ' + corporationData.name + '\n' +
+            '        ' + corporationData['name'] + '\n' +
             '    </span>\n';
 
         html_info += '' +
             '    <span class="aa-intel-corporation-links-wrapper">\n' +
             '        <small>\n';
 
-        if((1000000 <= corporationData.id) && corporationData.id <= 2000000) {
+        if((1000000 <= corporationData['id']) && corporationData['id'] <= 2000000) {
             html_info += '' +
                 '            (' + aaIntelToolJsL10n.scanData.npcCorp + ')';
         } else {
             html_info += '' +
                 '            <a ' +
                 '                class="aa-intel-information-link" ' +
-                '                href="' + corporationData.dotlan + '" ' +
+                '                href="' + corporationData['dotlan'] + '" ' +
                 '                target="_blank" ' +
                 '                rel="noopener noreferer"' +
                 '            >' +
@@ -407,7 +407,7 @@ jQuery(document).ready(($) => {
 
                 '            <a ' +
                 '                class="aa-intel-information-link" ' +
-                '                href="' + corporationData.zkillboard + '" ' +
+                '                href="' + corporationData['zkillboard'] + '" ' +
                 '                target="_blank" rel="noopener noreferer"' +
                 '            >' +
                 '                zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
@@ -435,18 +435,18 @@ jQuery(document).ready(($) => {
      * @returns {string}
      */
     const allianceInfoPanel = (allianceData, logoOnly = false) => {
-        if (allianceData.name === '') {
-            allianceData.name = aaIntelToolJsL10n.scanData.empty;
+        if (allianceData['name'] === '') {
+            allianceData['name'] = aaIntelToolJsL10n.scanData.empty;
         }
 
         let html_logo = '' +
             '<span class="aa-intel-alliance-logo-wrapper">\n' +
             '    <img ' +
             '        class="eve-image" ' +
-            '        data-eveid="' + allianceData.id + '" ' +
-            '        src="' + allianceData.logo + '" ' +
-            '        alt="' + allianceData.name + '" ' +
-            '        title="' + allianceData.name + '" ' +
+            '        data-eveid="' + allianceData['id'] + '" ' +
+            '        src="' + allianceData['logo'] + '" ' +
+            '        alt="' + allianceData['name'] + '" ' +
+            '        title="' + allianceData['name'] + '" ' +
             '        width="32" ' +
             '        height="32">\n' +
             '</span>';
@@ -454,16 +454,16 @@ jQuery(document).ready(($) => {
         let html_info = '' +
             '<span class="aa-intel-alliance-information-wrapper">\n' +
             '    <span class="aa-intel-alliance-name-wrapper">\n' +
-            '        ' + allianceData.name + '\n' +
+            '        ' + allianceData['name'] + '\n' +
             '    </span>\n';
 
-        if (allianceData.id > 1) {
+        if (allianceData['id'] > 1) {
             html_info += '' +
                 '    <span class="aa-intel-alliance-links-wrapper">\n' +
                 '        <small>\n' +
                 '            <a ' +
                 '                class="aa-intel-information-link" ' +
-                '                href="' + allianceData.dotlan + '" ' +
+                '                href="' + allianceData['dotlan'] + '" ' +
                 '                target="_blank" ' +
                 '                rel="noopener noreferer"' +
                 '            >' +
@@ -472,7 +472,7 @@ jQuery(document).ready(($) => {
 
                 '            <a ' +
                 '                class="aa-intel-information-link" ' +
-                '                href="' + allianceData.zkillboard + '" ' +
+                '                href="' + allianceData['zkillboard'] + '" ' +
                 '                target="_blank" rel="noopener noreferer"' +
                 '            >' +
                 '                zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
@@ -647,8 +647,8 @@ jQuery(document).ready(($) => {
             elementAlliancesTotalCount.html(newTotal);
 
             $(row)
-                .addClass('aa-intel-alliance-participation-item aa-intel-alliance-id-' + data.id)
-                .attr('data-alliance-id', data.id);
+                .addClass('aa-intel-alliance-participation-item aa-intel-alliance-id-' + data['id'])
+                .attr('data-alliance-id', data['id']);
 
             // Highlight
             $(row).on('mouseenter', () => {
@@ -735,9 +735,9 @@ jQuery(document).ready(($) => {
             elementCorporationsTotalCount.html(newTotal);
 
             $(row)
-                .addClass('aa-intel-corporation-participation-item aa-intel-corporation-id-' + data.id)
-                .attr('data-corporation-id', data.id)
-                .attr('data-alliance-id', data.alliance.id);
+                .addClass('aa-intel-corporation-participation-item aa-intel-corporation-id-' + data['id'])
+                .attr('data-corporation-id', data['id'])
+                .attr('data-alliance-id', data['alliance']['id']);
 
             // Highlight
             $(row).on('mouseenter', () => {
@@ -799,12 +799,12 @@ jQuery(document).ready(($) => {
             },
             {
                 data: (data) => {
-                    return allianceInfoPanel(data.corporation.alliance, true) + data.corporation.alliance.ticker;
+                    return allianceInfoPanel(data['corporation']['alliance'], true) + data['corporation']['alliance']['ticker'];
                 }
             },
             {
                 data: (data) => {
-                    return corporationInfoPanel(data.corporation, true) + data.corporation.ticker;
+                    return corporationInfoPanel(data['corporation'], true) + data['corporation']['ticker'];
                 }
             },
             {
@@ -831,10 +831,10 @@ jQuery(document).ready(($) => {
             elementPilotsTotalCount.html(newTotal);
 
             $(row)
-                .addClass('aa-intel-corporation-participation-item aa-intel-corporation-id-' + data.id)
-                .attr('data-character-id', data.id)
-                .attr('data-corporation-id', data.corporation.id)
-                .attr('data-alliance-id', data.corporation.alliance.id);
+                .addClass('aa-intel-corporation-participation-item aa-intel-corporation-id-' + data['id'])
+                .attr('data-character-id', data['id'])
+                .attr('data-corporation-id', data['corporation']['id'])
+                .attr('data-alliance-id', data['corporation']['alliance']['id']);
 
             // Highlight
             $(row).on('mouseenter', () => {
