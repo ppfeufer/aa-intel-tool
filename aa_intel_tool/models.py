@@ -38,9 +38,6 @@ class Scan(models.Model):
     )
 
     raw_data = models.TextField(verbose_name=_("The original scan data."))
-    processed_data = models.JSONField(
-        default=dict, verbose_name=_("The processed scan data.")
-    )
 
     scan_type = models.CharField(
         max_length=9,
@@ -98,3 +95,49 @@ class Scan(models.Model):
         if self.hash == "":
             self.hash = Scan.generate_scan_hash()
             self.save()
+
+
+class ScanData(models.Model):
+    """
+    Scan section data
+    """
+
+    class Section(models.TextChoices):
+        """
+        The choices for ScanData.section
+        """
+
+        INVALID = "invalid", _("Invalid scan data")
+        PILOTLIST = "pilotlist", _("Pilot list")
+        CORPORATIONLIST = "corporationlist", _("Corporation list")
+        ALLIANCELIST = "alliancelist", _("Alliance list")
+
+    scan = models.ForeignKey(
+        Scan,
+        related_name="scan_data",
+        null=True,
+        blank=True,
+        default=None,
+        on_delete=models.CASCADE,
+        verbose_name=_("Scan"),
+    )
+
+    section = models.CharField(
+        max_length=15,
+        choices=Section.choices,
+        default=Section.INVALID,
+        verbose_name=_("The scan section"),
+    )
+
+    processed_data = models.JSONField(
+        default=dict, verbose_name=_("The processed scan section data")
+    )
+
+    class Meta:  # pylint: disable=too-few-public-methods
+        """
+        Meta definitions
+        """
+
+        default_permissions = ()
+        verbose_name = _("scan data")
+        verbose_name_plural = _("scan data")

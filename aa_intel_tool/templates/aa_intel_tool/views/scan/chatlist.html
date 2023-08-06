@@ -30,8 +30,18 @@
 {% endblock %}
 
 {% block extra_javascript %}
+    <script>
+    const aaIntelToolJsOptions = {
+        ajax: {
+            getPilotList: '{% url "aa_intel_tool:ajax_get_pilot_list" scan_hash %}',
+            getCorporationList: '{% url "aa_intel_tool:ajax_get_corporation_list" scan_hash %}',
+            getAllianceList: '{% url "aa_intel_tool:ajax_get_alliance_list" scan_hash %}'
+        }
+    }
+    </script>
+
     {% include "bundles/datatables-js.html" %}
     {% include "bundles/clipboard-js.html" %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-js-l10n.html" %}
-    {% include "aa_intel_tool/bundles/aa-intel-tool-js.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-chatscan-js.html" %}
 {% endblock extra_javascript %}

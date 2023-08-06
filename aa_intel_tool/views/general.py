@@ -87,7 +87,7 @@ def scan(request: WSGIRequest, scan_hash: str):
         "scan_type": intel_scan.scan_type,
         "created": intel_scan.created,
         "raw_data": intel_scan.raw_data,
-        "processed_data": intel_scan.processed_data,
+        # "processed_data": intel_scan.processed_data,
     }
 
     context = {
@@ -95,6 +95,16 @@ def scan(request: WSGIRequest, scan_hash: str):
         "scan": scan_data,
     }
 
-    return render(
-        request=request, template_name="aa_intel_tool/views/scan.html", context=context
+    if intel_scan.scan_type == "chatlist":
+        return render(
+            request=request,
+            template_name="aa_intel_tool/views/scan/chatlist.html",
+            context=context,
+        )
+
+    messages.error(
+        request=request,
+        message=_("The scan you were looking for could not be found."),
     )
+
+    return redirect(to="aa_intel_tool:intel_tool_index")
