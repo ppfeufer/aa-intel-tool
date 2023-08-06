@@ -13,7 +13,7 @@ jQuery(document).ready(($) => {
     const elementCorporationsTotalCount = $('span#aa-intel-corporations-count');
     const elementAlliancesTotalCount = $('span#aa-intel-alliances-count');
 
-    const elementCopyToClipboard = $('span.btn-copy-permalink-to-clipboard');
+    const elementCopyToClipboard = $('button#btn-copy-permalink-to-clipboard');
 
 
     /**
@@ -551,14 +551,16 @@ jQuery(document).ready(($) => {
 
     /**
      * Copy the scan link to clipboard
+     *
+     * @param elementId {string}
      */
-    const copyScanLink = () => {
+    const copyScanLink = (elementId) => {
         /**
          * Copy text to clipboard
          *
          * @type Clipboard
          */
-        const clipboardScanLink = new ClipboardJS('span.btn-copy-permalink-to-clipboard');
+        const clipboardScanLink = new ClipboardJS(elementId);
 
         /**
          * Copy success
@@ -593,7 +595,7 @@ jQuery(document).ready(($) => {
      * Copy ping text
      */
     elementCopyToClipboard.on('click', () => {
-        copyScanLink();
+        copyScanLink('#'+ elementCopyToClipboard.attr('id'));
     });
 
 

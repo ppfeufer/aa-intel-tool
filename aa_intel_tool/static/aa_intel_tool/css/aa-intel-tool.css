@@ -3,28 +3,24 @@
         margin: 1.5rem 0;
     }
 
-    .aa-intel-tool .aa-intel-copy-to-clipboard {
-        margin-top: 1rem;
-    }
-
-    .aa-intel-tool .aa-intel-copy-to-clipboard ul li {
+    .aa-intel-tool .aa-intel-scan-page-buttons ul li {
         display: block;
         float: left;
         width: 150px;
     }
 
-    .aa-intel-tool .aa-intel-copy-to-clipboard ul li > a {
+    .aa-intel-tool .aa-intel-scan-page-buttons ul li > a {
         padding: 0;
     }
 
-    .aa-intel-tool .copy-permalink-to-clipboard {
+    .aa-intel-tool .aa-intel-scan-page-buttons {
         margin-bottom: 1.5rem;
+        margin-top: 1rem;
     }
 
-    .aa-intel-tool .copy-permalink-to-clipboard .btn {
-        display: block;
-        padding: 10px 15px;
+    .aa-intel-tool .aa-intel-scan-page-buttons button {
         position: relative;
+        width: 100%;
     }
 
     .aa-intel-tool .aa-intel-copy-result {
