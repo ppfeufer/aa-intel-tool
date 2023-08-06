@@ -73,7 +73,7 @@ jQuery(document).ready(($) => {
      * Corporation info element in datatable
      *
      * @param corporationData
-     * @param logoOnly {boolean}
+     * @param logoOnly {boolean} Returns only the corporation logo
      * @returns {string}
      */
     const corporationInfoPanel = (corporationData, logoOnly) => {
@@ -141,7 +141,7 @@ jQuery(document).ready(($) => {
      * Alliance info element in datatable
      *
      * @param allianceData
-     * @param logoOnly {boolean}
+     * @param logoOnly {boolean} Returns only the alliance logo
      * @returns {string}
      */
     const allianceInfoPanel = (allianceData, logoOnly) => {
