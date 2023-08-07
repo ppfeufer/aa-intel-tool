@@ -24,7 +24,6 @@ class TestScan(TestCase):
 
         scan = Scan(
             raw_data="Foobar",
-            processed_data='{"EveCharacter": [{"character_id": 1001}]}',
         )
         scan.save()
         expected_hash = scan.hash
