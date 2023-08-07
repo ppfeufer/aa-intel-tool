@@ -86,10 +86,6 @@
 /* Highlighting
 ------------------------------------------------------------------------------------- */
 @media all {
-    .aa-intel-tool .form-submit-area div:first-child {
-        margin-bottom: 15px;
-    }
-
     .aa-intel-tool .dataHighlight,
     .aa-intel-tool .dataHighlightSticky {
         background-color: rgba(255 255 255 / 50%);
@@ -100,6 +96,22 @@
         border-left: 1px solid rgb(255 0 0);
         margin-left: -11px;
         padding-left: 4px;
+    }
+}
+
+/* Form
+------------------------------------------------------------------------------------- */
+@media all {
+    .aa-intel-tool .form-submit-area div:first-child {
+        margin-bottom: 15px;
+    }
+
+    .aa-intel-tool .aa-intel-form-submitted-info {
+        display: none;
+    }
+
+    .aa-intel-tool form.is-submitting .aa-intel-form-submitted-info {
+        display: block;
     }
 }
 
