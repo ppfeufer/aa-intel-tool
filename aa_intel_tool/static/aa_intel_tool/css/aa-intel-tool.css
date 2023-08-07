@@ -209,13 +209,6 @@
     }
 }
 
-@media screen and (min-width: 1200px) {
-    .aa-intel-tool .paste-explanation .entry-title,
-    .aa-intel-tool .intel-parse-error {
-        margin-top: 0;
-    }
-}
-
 /* Footer
 ------------------------------------------------------------------------------------- */
 @media all {
