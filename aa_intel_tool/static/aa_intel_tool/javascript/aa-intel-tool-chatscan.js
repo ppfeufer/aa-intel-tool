@@ -331,10 +331,6 @@ jQuery(document).ready(($) => {
             '    </span>\n';
 
         html_info += '' +
-            '    <span class="aa-intel-corporation-links-wrapper">\n' +
-            '        <small>\n';
-
-        html_info += '' +
             '    <span class="aa-intel-pilot-links-wrapper">\n' +
             '        <small>\n' +
             '            <a ' +
