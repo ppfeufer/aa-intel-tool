@@ -53,7 +53,7 @@ if os.environ.get("USE_MYSQL", True) is True:
 
 # Add any additional apps to this list.
 INSTALLED_APPS += [
-    "aa_intel_tool",
+    PACKAGE,
 ]
 
 # By default, apps are prevented from having public views for security reasons.
@@ -64,7 +64,7 @@ INSTALLED_APPS += [
 #   » The format is the same as in INSTALLED_APPS
 #   » The app developer must explicitly allow public views for his app
 APPS_WITH_PUBLIC_VIEWS = [
-    "aa_intel_tool",  # https://github.com/ppfeufer/aa-intel-tool
+    PACKAGE,
 ]
 
 # ------------------------------------------------------------------------------------ #
