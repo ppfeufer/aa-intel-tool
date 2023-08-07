@@ -52,13 +52,13 @@ def get_or_create_character(
         character_id = result["characters"][0]["id"]
         try:
             eve_character = EveCharacter.objects.get(character_id=character_id)
-        except EveCharacter.DoesNotExist:
+        except EveCharacter.DoesNotExist:  # pylint: disable=no-member
             eve_character = None
     elif character_id:
         # If an ID is passed to this function, we can just check the db for it.
         try:
             eve_character = EveCharacter.objects.get(character_id=character_id)
-        except EveCharacter.DoesNotExist:
+        except EveCharacter.DoesNotExist:  # pylint: disable=no-member
             eve_character = None
     elif not name and not character_id:
         raise NoDataError("No character name or character id provided.")
@@ -67,7 +67,7 @@ def get_or_create_character(
         # Create character
         character = EveCharacter.objects.create_character(character_id=character_id)
 
-        logger.info(f"EveCharacter Object created: {character.character_name}")
+        logger.debug(f"EveCharacter Object created: {character.character_name}")
 
         # Create alliance and corporation info objects if not already exists for
         # future sanity
