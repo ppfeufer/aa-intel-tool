@@ -15,7 +15,6 @@ from app_utils.logging import LoggerAddTag
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
-from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser import chatlist, dscan, fleetcomp
 
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
@@ -65,32 +64,11 @@ def parse_intel(form_data: str):
         }
 
         if intel_type in switch:
-            scan_type, parsed_data = switch[intel_type](scan_data=scan_data)
+            new_scan = switch[intel_type](scan_data=scan_data)
 
-            if parsed_data is not None:
-                new_scan = Scan(
-                    scan_type=scan_type,
-                    raw_data=form_data,
-                )
+            if new_scan is not None:
+                new_scan.raw_data = form_data
                 new_scan.save()
-
-                ScanData(
-                    scan=new_scan,
-                    section=ScanData.Section.PILOTLIST,
-                    processed_data=parsed_data["pilots"],
-                ).save()
-
-                ScanData(
-                    scan=new_scan,
-                    section=ScanData.Section.CORPORATIONLIST,
-                    processed_data=parsed_data["corporations"],
-                ).save()
-
-                ScanData(
-                    scan=new_scan,
-                    section=ScanData.Section.ALLIANCELIST,
-                    processed_data=parsed_data["alliances"],
-                ).save()
 
                 return new_scan.hash
 
