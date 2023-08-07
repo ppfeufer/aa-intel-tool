@@ -147,9 +147,9 @@
         background-color: rgba(236 240 241 / 10%);
     }
 
-    .table-aa-intel tbody > tr > td {
-        vertical-align: middle;
-    }
+    /*.aa-intel-tool .table-aa-intel tbody > tr > td {*/
+    /*    vertical-align: middle;*/
+    /*}*/
 
     .aa-intel-tool .table-no-images > tbody > tr > td {
         padding-bottom: 12px;
@@ -159,6 +159,24 @@
     .aa-intel-tool .table-sortable > tbody > tr > .table-data-count {
         padding-right: 1rem;
         text-align: right;
+    }
+
+    .aa-intel-tool td.text-ellipsis {
+        max-width: 50px;
+        white-space: nowrap;
+    }
+
+    .aa-intel-alliance-information-wrapper,
+    .aa-intel-corporation-information-wrapper,
+    .aa-intel-pilot-information-wrapper {
+        max-width: calc(100% - 35px);
+    }
+
+    .aa-intel-alliance-name-wrapper,
+    .aa-intel-corporation-name-wrapper,
+    .aa-intel-pilot-name-wrapper {
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 

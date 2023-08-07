@@ -628,7 +628,14 @@ jQuery(document).ready(($) => {
         ],
         columnDefs: [
             {
+                targets: 0,
+                createdCell: (td) => {
+                    $(td).addClass('text-ellipsis');
+                }
+            },
+            {
                 targets: 1,
+                width: 45,
                 createdCell: (td) => {
                     $(td).addClass('text-right');
                 }
@@ -716,7 +723,14 @@ jQuery(document).ready(($) => {
         ],
         columnDefs: [
             {
+                targets: 0,
+                createdCell: (td) => {
+                    $(td).addClass('text-ellipsis');
+                }
+            },
+            {
                 targets: 1,
+                width: 45,
                 createdCell: (td) => {
                     $(td).addClass('text-right');
                 }
@@ -817,6 +831,20 @@ jQuery(document).ready(($) => {
             [0, 'asc']
         ],
         columnDefs: [
+            {
+                targets: 0,
+                createdCell: (td) => {
+                    $(td).addClass('text-ellipsis');
+                }
+            },
+            {
+                targets: 1,
+                width: 125,
+            },
+            {
+                targets: 2,
+                width: 125,
+            },
             {
                 targets: [3, 4],
                 visible: false
