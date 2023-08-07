@@ -105,10 +105,14 @@ def scan(request: WSGIRequest, scan_hash: str):
 
     context = {"scan_hash": scan_hash, "scan": scan_data}
 
-    if intel_scan.scan_type == "chatlist":
+    scan_type_templates = {
+        "chatlist": "aa_intel_tool/views/scan/chatlist.html",
+    }
+
+    if intel_scan.scan_type in scan_type_templates:
         return render(
             request=request,
-            template_name="aa_intel_tool/views/scan/chatlist.html",
+            template_name=scan_type_templates[intel_scan.scan_type],
             context=context,
         )
 
