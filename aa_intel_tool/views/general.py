@@ -101,13 +101,9 @@ def scan(request: WSGIRequest, scan_hash: str):
         "scan_type": intel_scan.scan_type,
         "created": intel_scan.created,
         "raw_data": intel_scan.raw_data,
-        # "processed_data": intel_scan.processed_data,
     }
 
-    context = {
-        "scan_hash": scan_hash,
-        "scan": scan_data,
-    }
+    context = {"scan_hash": scan_hash, "scan": scan_data}
 
     if intel_scan.scan_type == "chatlist":
         return render(

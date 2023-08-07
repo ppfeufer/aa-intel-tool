@@ -70,7 +70,6 @@ def parse_intel(form_data: str):
             if parsed_data is not None:
                 new_scan = Scan(
                     scan_type=scan_type,
-                    # processed_data=parsed_data,
                     raw_data=form_data,
                 )
                 new_scan.save()
