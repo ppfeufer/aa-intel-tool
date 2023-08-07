@@ -10,8 +10,16 @@
                 </header>
 
                 <ul>
-                    <li>» {% translate "D-Scan" %}</li>
-                    <li>» {% translate "Chat Member List" %}</li>
+                    <li>» {% translate "D-Scan" %} </li>
+                    <li>
+                        » {% translate "Chat Member List" %}
+
+                        {% if app_settings.INTELTOOL_CHATSCAN_MAX_PILOTS > 0 %}
+                            <small>
+                                ({% blocktranslate count max_pilots=app_settings.INTELTOOL_CHATSCAN_MAX_PILOTS %}Limited to a maximum of {{ max_pilots }} pilot per scan.{% plural %}Limited to a maximum of {{ max_pilots }} pilots per scan.{% endblocktranslate %})
+                            </small>
+                        {% endif %}
+                    </li>
                     <li>» {% translate "Fleet Composition" %}</li>
                 </ul>
             </div>

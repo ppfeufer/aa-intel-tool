@@ -8,6 +8,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext
 
 # AA Intel Tool
 from aa_intel_tool.app_settings import AppSettings
@@ -31,6 +32,19 @@ def index(request: WSGIRequest) -> HttpResponse:
         # Check whether it's valid:
         if form.is_valid():
             scan_data = form.cleaned_data["eve_intel"]
+
+            max_allowed_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
+            if 0 < max_allowed_pilots < len(scan_data.split()):
+                messages.error(
+                    request=request,
+                    message=ngettext(
+                        singular=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
+                        plural=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
+                        number=max_allowed_pilots,
+                    ),
+                )
+
+                return redirect(to="aa_intel_tool:intel_tool_index")
 
             parsed_intel = parse_intel(form_data=scan_data)
 
