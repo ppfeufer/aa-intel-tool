@@ -1,4 +1,4 @@
-/* global aaIntelToolJsOptions, aaIntelToolJsL10n, ClipboardJS */
+/* global aaIntelToolJsOptions, aaIntelToolJsL10n, addHightlight, removeHightlight, changeStickyHighlight */
 
 jQuery(document).ready(($) => {
     'use strict';
@@ -12,297 +12,6 @@ jQuery(document).ready(($) => {
     const elementPilotsTotalCount = $('span#aa-intel-pilots-count');
     const elementCorporationsTotalCount = $('span#aa-intel-corporations-count');
     const elementAlliancesTotalCount = $('span#aa-intel-alliances-count');
-
-    const elementCopyToClipboard = $('button#btn-copy-permalink-to-clipboard');
-
-
-    /**
-     * Remove copy buttons if the browser doesn't support it
-     */
-    if(!ClipboardJS.isSupported()) {
-        elementCopyToClipboard.remove();
-    }
-
-
-    /* Highlighting similar table rows on mouse over and click
-    --------------------------------------------------------------------------------- */
-
-    /**
-     * Determine if we can remove all sticky states for this corporation
-     *
-     * @param element
-     * @returns {boolean}
-     */
-    const removeCorporationStickyComplete = (element) => {
-        let removeCorporationSticky = true;
-
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            if ($(el).hasClass('dataHighlightSticky')) {
-                removeCorporationSticky = false;
-            }
-        });
-
-        return removeCorporationSticky;
-    };
-
-
-    /**
-     * Determine if we can remove all sticky states for this alliance
-     *
-     * @param element
-     * @returns {boolean}
-     */
-    const removeAllianceStickyComplete = (element) => {
-        let removeAllianceSticky = true;
-
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            if ($(el).hasClass('dataHighlightSticky')) {
-                removeAllianceSticky = false;
-            }
-        });
-
-        return removeAllianceSticky;
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const allianceTableAddStickyByAllianceId = (element) => {
-        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const allianceTableAddHighlightByAllianceId = (element) => {
-        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const allianceTableRemoveStickyByAllianceId = (element) => {
-        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const allianceTableRemoveHighlightByAllianceId = (element) => {
-        $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const corporationTableAddStickyByCorporationId = (element) => {
-        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const corporationTableAddHighlightByCorporationId = (element) => {
-        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const corporationTableAddStickyByAllianceId = (element) => {
-        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const corporationTableAddHighlightByAllianceId = (element) => {
-        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const corporationTableRemoveStickyByCorporationId = (element) => {
-        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const corporationTableRemoveHighlightByCorporationId = (element) => {
-        $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const corporationTableRemoveStickyByAllianceId = (element) => {
-        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const corporationTableRemoveHighlightByAllianceId = (element) => {
-        $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const pilotTableAddStickyByCorporationId = (element) => {
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const pilotTableAddHighlightByCorporationId = (element) => {
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const pilotTableAddStickyByAllianceId = (element) => {
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const pilotTableAddHighlightByAllianceId = (element) => {
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).addClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const pilotTableRemoveStickyByCorporationId = (element) => {
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const pilotTableRemoveHighlightByCorporationId = (element) => {
-        $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlight');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const pilotTableRemoveStickyByAllianceId = (element) => {
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlightSticky');
-        });
-    };
-
-
-    /**
-     * Helper function
-     *
-     * @param element
-     */
-    const pilotTableRemoveHighlightByAllianceId = (element) => {
-        $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-            $(el).removeClass('dataHighlight');
-        });
-    };
 
 
     /**
@@ -492,105 +201,6 @@ jQuery(document).ready(($) => {
 
 
     /**
-     * Closing the message
-     *
-     * @param {string} element
-     * @param {int} closeAfter Close Message after given time in seconds (Default: 10)
-     */
-    const closeMessageElement = (element, closeAfter = 10) => {
-        $(element).fadeTo(closeAfter * 1000, 500).slideUp(500, () => {
-            $(this).slideUp(500, () => {
-                $(this).remove();
-            });
-        });
-    };
-
-
-    /**
-     * Show a message when copy action was successful
-     *
-     * @param {string} message
-     * @param {string} element
-     */
-    const showSuccess = (message, element) => {
-        $(element).html(
-            '<div class="alert alert-success alert-dismissable alert-message-success">' +
-            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + message +
-            '</div>'
-        );
-
-        closeMessageElement('.alert-message-success');
-    };
-
-
-    /**
-     * Show a message when copy action was not successful
-     *
-     * @param {string} message
-     * @param {string} element
-     */
-    const showError = (message, element) => {
-        $(element).html(
-            '<div class="alert alert-danger alert-dismissable alert-message-error">' +
-            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + message +
-            '</div>'
-        );
-
-        closeMessageElement('.alert-message-error', 9999);
-    };
-
-
-    /**
-     * Copy the scan link to clipboard
-     *
-     * @param elementId {string}
-     */
-    const copyScanLink = (elementId) => {
-        /**
-         * Copy text to clipboard
-         *
-         * @type Clipboard
-         */
-        const clipboardScanLink = new ClipboardJS(elementId);
-
-        /**
-         * Copy success
-         *
-         * @param {type} e
-         */
-        clipboardScanLink.on('success', (e) => {
-            showSuccess(
-                aaIntelToolJsL10n.copyToClipboard.permalink.text.success,
-                '.aa-intel-copy-result'
-            );
-
-            e.clearSelection();
-            clipboardScanLink.destroy();
-        });
-
-        /**
-         * Copy error
-         */
-        clipboardScanLink.on('error', () => {
-            showError(
-                aaIntelToolJsL10n.copyToClipboard.permalink.text.error,
-                '.aa-intel-copy-result'
-            );
-
-            clipboardScanLink.destroy();
-        });
-    };
-
-
-    /**
-     * Copy ping text
-     */
-    elementCopyToClipboard.on('click', () => {
-        copyScanLink('#'+ elementCopyToClipboard.attr('id'));
-    });
-
-
-    /**
      * Datatable Alliances Breakdown
      */
     elementAlliancesTable.DataTable({
@@ -654,30 +264,14 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(row).addClass('dataHighlight');
-
-                corporationTableAddHighlightByAllianceId($(row));
-                pilotTableAddHighlightByAllianceId($(row));
+                addHightlight('alliance', $(row))
             }).on('mouseleave', () => {
-                $(row).removeClass('dataHighlight');
-
-                corporationTableRemoveHighlightByAllianceId($(row));
-                pilotTableRemoveHighlightByAllianceId($(row));
+                removeHightlight('alliance', $(row));
             });
 
             // Sticky
             $(row).on('click', () => {
-                if ($(row).hasClass('dataHighlightSticky')) {
-                    $(row).removeClass('dataHighlightSticky');
-
-                    corporationTableRemoveStickyByAllianceId($(row));
-                    pilotTableRemoveStickyByAllianceId($(row));
-                } else {
-                    $(row).addClass('dataHighlightSticky');
-
-                    corporationTableAddStickyByAllianceId($(row));
-                    pilotTableAddStickyByAllianceId($(row));
-                }
+                changeStickyHighlight('alliance', $(row));
             }).on('click', '.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
@@ -750,33 +344,14 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(row).addClass('dataHighlight');
-
-                allianceTableAddHighlightByAllianceId($(row));
-                pilotTableAddHighlightByCorporationId($(row));
+                addHightlight('corporation', $(row))
             }).on('mouseleave', () => {
-                $(row).removeClass('dataHighlight');
-
-                allianceTableRemoveHighlightByAllianceId($(row));
-                pilotTableRemoveHighlightByCorporationId($(row));
+                removeHightlight('corporation', $(row));
             });
 
             // Sticky
             $(row).on('click', () => {
-                if ($(row).hasClass('dataHighlightSticky')) {
-                    $(row).removeClass('dataHighlightSticky');
-
-                    pilotTableRemoveStickyByCorporationId($(row));
-
-                    if (removeAllianceStickyComplete($(row)) === true) {
-                        allianceTableRemoveStickyByAllianceId($(row));
-                    }
-                } else {
-                    $(row).addClass('dataHighlightSticky');
-
-                    allianceTableAddStickyByAllianceId($(row));
-                    pilotTableAddStickyByCorporationId($(row));
-                }
+                changeStickyHighlight('corporation', $(row));
             }).on('click', '.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
@@ -861,35 +436,14 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(row).addClass('dataHighlight');
-
-                allianceTableAddHighlightByAllianceId($(row))
-                corporationTableAddHighlightByCorporationId($(row));
+                addHightlight('pilot', $(row))
             }).on('mouseleave', () => {
-                $(row).removeClass('dataHighlight');
-
-                allianceTableRemoveHighlightByAllianceId($(row));
-                corporationTableRemoveHighlightByCorporationId($(row));
+                removeHightlight('pilot', $(row));
             });
 
             // Sticky
             $(row).on('click', () => {
-                if ($(row).hasClass('dataHighlightSticky')) {
-                    $(row).removeClass('dataHighlightSticky');
-
-                    if (removeCorporationStickyComplete($(row)) === true) {
-                        corporationTableRemoveStickyByCorporationId($(row));
-                    }
-
-                    if (removeAllianceStickyComplete($(row)) === true) {
-                        allianceTableRemoveStickyByAllianceId($(row));
-                    }
-                } else {
-                    $(row).addClass('dataHighlightSticky');
-
-                    allianceTableAddStickyByAllianceId($(row));
-                    corporationTableAddStickyByCorporationId($(row));
-                }
+                changeStickyHighlight('pilot', $(row));
             }).on('click', '.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
