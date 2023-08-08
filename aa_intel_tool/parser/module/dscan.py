@@ -2,11 +2,14 @@
 D-Scan parser
 """
 
+# Django
+from django.utils.translation import gettext_lazy as _
+
 # AA Intel Tool
 from aa_intel_tool.app_settings import AppSettings
 
 
-def parse(scan_data: list):  # pylint: disable=unused-argument
+def parse(scan_data: list) -> tuple:  # pylint: disable=unused-argument
     """
     Parse D-Scan
 
@@ -16,7 +19,9 @@ def parse(scan_data: list):  # pylint: disable=unused-argument
     :rtype:
     """
 
-    if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is False:
-        return None
+    message = _("The D-Scan module is currently disabled.")
 
-    return "D-Scan"
+    if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
+        return None, _("The D-Scan module is not yet finished, be patient …")
+
+    return None, message
