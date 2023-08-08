@@ -104,7 +104,7 @@ Restart your supervisor services for Auth.
 ### Step 5: Update Your Webserver Configuration
 
 By default, webservers have a timout of about 30 seconds for requests. So we have to
-tweak that a little bit, since parsing intel data can take a while and we don't want
+tweak that a little bit, since parsing intel data can take a while, and we don't want
 the webserver to spoil our fun, right?
 
 #### Apache 2
