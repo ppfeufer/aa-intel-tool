@@ -306,6 +306,12 @@ jQuery(document).ready(($) => {
             },
             {
                 data: 'ticker'
+            },
+            {
+                data: 'alliance.name'
+            },
+            {
+                data: 'alliance.ticker'
             }
         ],
         order: [
@@ -326,7 +332,7 @@ jQuery(document).ready(($) => {
                 }
             },
             {
-                targets: 2,
+                targets: [2, 3, 4],
                 visible: false
             }
         ],
