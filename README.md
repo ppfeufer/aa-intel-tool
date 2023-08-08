@@ -202,3 +202,4 @@ Please make sure to read the [Contribution Guidelines]
 [Automated Tests on GitHub]: https://github.com/ppfeufer/aa-intel-tool/actions/workflows/automated-checks.yml
 [Code of Conduct]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CODE_OF_CONDUCT.md
 [ppfeufer on ko-fi]: https://ko-fi.com/ppfeufer
+[Weblate Engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/
