@@ -11,6 +11,24 @@ class AppSettings:  # pylint: disable=too-few-public-methods
     App settings from local.py
     """
 
+    # Enable or disable the chat scan module
+    # Disabled by default
+    INTELTOOL_ENABLE_MODULE_CHATSCAN = clean_setting(
+        name="INTELTOOL_ENABLE_MODULE_CHATSCAN", default_value=False, required_type=bool
+    )
+
+    # Enable or disable the d-scan module
+    # Enabled by default
+    INTELTOOL_ENABLE_MODULE_DSCAN = clean_setting(
+        name="INTELTOOL_ENABLE_MODULE_DSCAN", default_value=True, required_type=bool
+    )
+
+    # Enable or disable the fleet composition module
+    # Enabled by default
+    INTELTOOL_ENABLE_MODULE_FLEETCOMP = clean_setting(
+        name="INTELTOOL_ENABLE_MODULE_FLEETCOMP", default_value=True, required_type=bool
+    )
+
     # Scan retention time
     # Sets the time in days for how long the scans will be kept in the database.
     # Set to 0 to keep scans indefinitely.

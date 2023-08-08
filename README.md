@@ -139,10 +139,13 @@ Restart your Nginx service.
 To customize the module, the following settings are available and can be made in
 your `local.py`.
 
-| Name                          | Description                                                                                                      | Default |
-|:------------------------------|:-----------------------------------------------------------------------------------------------------------------|:--------|
-| INTELTOOL_SCAN_RETENTION_TIME | Sets the time in days for how long the scans will be kept in the database. Set to 0 to keep scans indefinitely.  | 30      |
-| INTELTOOL_CHATSCAN_MAX_PILOTS | Sets the limit of pilots for chat scans, since these can take quite a long time to process. Set to 0 to disable. | 500     |
+| Name                              | Description                                                                                                      | Default |
+|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|:--------|
+| INTELTOOL_ENABLE_MODULE_CHATSCAN  | Enable or disable the chat scan module.                                                                          | False   |
+| INTELTOOL_ENABLE_MODULE_DSCAN     | Enable or disable the d-scan module.                                                                             | True    |
+| INTELTOOL_ENABLE_MODULE_FLEETCOMP | Enable or disable the fleet composition module.                                                                  | True    |
+| INTELTOOL_SCAN_RETENTION_TIME     | Sets the time in days for how long the scans will be kept in the database. Set to 0 to keep scans indefinitely.  | 30      |
+| INTELTOOL_CHATSCAN_MAX_PILOTS     | Sets the limit of pilots for chat scans, since these can take quite a long time to process. Set to 0 to disable. | 500     |
 
 
 ## Changelog

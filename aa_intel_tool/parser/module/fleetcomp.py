@@ -13,6 +13,7 @@ from app_utils.logging import LoggerAddTag
 
 # AA Intel Tool
 from aa_intel_tool import __title__
+from aa_intel_tool.app_settings import AppSettings
 
 # from aa_intel_tool.models import Scan
 # from aa_intel_tool.parser.helper.db import safe_scan_to_db
@@ -30,6 +31,9 @@ def parse(scan_data: list):
     :return:
     :rtype:
     """
+
+    if AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP is False:
+        return None
 
     logger.debug(msg=scan_data)
 
@@ -60,8 +64,6 @@ def parse(scan_data: list):
     logger.debug(msg=pilots)
 
     pilotlist = parse_pilots(scan_data=pilots["list"], safe_to_db=False)
-    if pilotlist is None:
-        return None
 
     logger.debug(msg=pilotlist)
 
@@ -70,7 +72,7 @@ def parse(scan_data: list):
     #     "ship_classes": None,
     #     "ship_types": None,
     #     "composition": None,
-    #     "pilots": pilotlist["pilots"],
+    #     "pilots": pilotlist["pilots"] if pilotlist is not None else None,
     #     "corporations": pilotlist["corporations"],
     #     "alliances": pilotlist["alliances"],
     # }

@@ -13,6 +13,7 @@ from eveuniverse.models import EveEntity
 
 # AA Intel Tool
 from aa_intel_tool import __title__
+from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.helper.eve_character import get_or_create_character
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
@@ -106,6 +107,9 @@ def parse(scan_data: list, safe_to_db: bool = True):
     :return:
     :rtype:
     """
+
+    if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is False:
+        return None
 
     logger.debug(msg=scan_data)
 
