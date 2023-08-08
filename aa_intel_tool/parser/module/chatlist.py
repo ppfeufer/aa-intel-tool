@@ -2,6 +2,11 @@
 Chat list parser
 """
 
+# Django
+from django.db.models import QuerySet
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext
+
 # Alliance Auth
 from allianceauth.eveonline.evelinks import dotlan, eveimageserver, evewho, zkillboard
 from allianceauth.eveonline.models import EveCharacter
@@ -96,7 +101,75 @@ def _parse_character_info(eve_character: EveCharacter) -> dict:
     }
 
 
-def parse(scan_data: list, safe_to_db: bool = True):
+def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> tuple:
+    """
+    Parse the chat scan data and return character information,
+    corporation information and alliance information for each character
+
+    :param eve_characters:
+    :type eve_characters:
+    :return:
+    :rtype:
+    """
+
+    counter = {}
+    alliance_info = {}
+    corporation_info = {}
+    character_info = {}
+
+    for eve_character in eve_characters:
+        eve_character__alliance_name = "Unaffiliated"
+
+        if eve_character.alliance_name is not None:
+            eve_character__alliance_name = eve_character.alliance_name
+
+        if eve_character__alliance_name not in counter:
+            counter[eve_character__alliance_name] = 0
+
+        if eve_character.corporation_name not in counter:
+            counter[eve_character.corporation_name] = 0
+
+        # Alliance Info
+        if eve_character__alliance_name not in alliance_info:
+            alliance_info[eve_character__alliance_name] = _parse_alliance_info(
+                eve_character=eve_character
+            )
+
+        # Corporation Info
+        if eve_character.corporation_name not in corporation_info:
+            corporation_info[eve_character.corporation_name] = _parse_corporation_info(
+                eve_character=eve_character
+            )
+            corporation_info[eve_character.corporation_name][
+                "alliance"
+            ] = alliance_info[eve_character__alliance_name]
+
+        # Character Info
+        character_info[eve_character.character_name] = _parse_character_info(
+            eve_character=eve_character
+        )
+        character_info[eve_character.character_name]["corporation"] = corporation_info[
+            eve_character.corporation_name
+        ]
+        character_info[eve_character.character_name]["alliance"] = alliance_info[
+            eve_character__alliance_name
+        ]
+
+        # Update the counter
+        counter[eve_character__alliance_name] += 1
+        alliance_info[eve_character__alliance_name]["count"] = counter[
+            eve_character__alliance_name
+        ]
+
+        counter[eve_character.corporation_name] += 1
+        corporation_info[eve_character.corporation_name]["count"] = counter[
+            eve_character.corporation_name
+        ]
+
+    return character_info, corporation_info, alliance_info
+
+
+def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
     """
     Parse chat list
 
@@ -108,8 +181,27 @@ def parse(scan_data: list, safe_to_db: bool = True):
     :rtype:
     """
 
+    message = _("The chat list module is currently disabled.")
+
     if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
         logger.debug(msg=f"{len(scan_data)} name(s) to work through …")
+
+        pilots_in_scan = len(scan_data)
+        max_allowed_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
+
+        if 0 < max_allowed_pilots < pilots_in_scan:
+            logger.debug(
+                msg=(
+                    f"Number of pilots in scan ({pilots_in_scan}) exceeds the maximum "
+                    f"allowed number ({max_allowed_pilots}). Throwing a tantrum …"
+                )
+            )
+
+            return None, ngettext(
+                singular=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
+                plural=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
+                number=max_allowed_pilots,
+            )
 
         try:
             eve_character_ids = (
@@ -118,75 +210,31 @@ def parse(scan_data: list, safe_to_db: bool = True):
                 .values_list("id", flat=True)
             )
         except EveEntity.DoesNotExist:  # pylint: disable=no-member
-            return None
+            message = _(
+                "Something went wrong while fetching the character information from ESI."
+            )
+
+            return None, message
 
         logger.debug(msg=f"Got {len(eve_character_ids)} ID(s) back from Eve Universe …")
 
         # In case the name does not belong to an Eve character,
         # # EveEntity returns an empty object
-        if eve_character_ids.count() == 0:
-            return None
+        if len(eve_character_ids) == 0:
+            message = _("Character unknown to ESI.")
 
-        counter = {}
-        alliance_info = {}
-        corporation_info = {}
-        character_info = {}
+            return None, message
 
-        # Loop through the list of characters
         eve_characters = get_or_create_character(character_ids=eve_character_ids)
 
         logger.debug(
             msg=f"Got {len(eve_characters)} EveCharacter object(s) back from AA …"
         )
 
-        for eve_character in eve_characters:
-            eve_character__alliance_name = "Unaffiliated"
-
-            if eve_character.alliance_name is not None:
-                eve_character__alliance_name = eve_character.alliance_name
-
-            if eve_character__alliance_name not in counter:
-                counter[eve_character__alliance_name] = 0
-
-            if eve_character.corporation_name not in counter:
-                counter[eve_character.corporation_name] = 0
-
-            # Alliance Info
-            if eve_character__alliance_name not in alliance_info:
-                alliance_info[eve_character__alliance_name] = _parse_alliance_info(
-                    eve_character=eve_character
-                )
-
-            # Corporation Info
-            if eve_character.corporation_name not in corporation_info:
-                corporation_info[
-                    eve_character.corporation_name
-                ] = _parse_corporation_info(eve_character=eve_character)
-                corporation_info[eve_character.corporation_name][
-                    "alliance"
-                ] = alliance_info[eve_character__alliance_name]
-
-            # Character Info
-            character_info[eve_character.character_name] = _parse_character_info(
-                eve_character=eve_character
-            )
-            character_info[eve_character.character_name][
-                "corporation"
-            ] = corporation_info[eve_character.corporation_name]
-            character_info[eve_character.character_name]["alliance"] = alliance_info[
-                eve_character__alliance_name
-            ]
-
-            # Update the counter
-            counter[eve_character__alliance_name] += 1
-            alliance_info[eve_character__alliance_name]["count"] = counter[
-                eve_character__alliance_name
-            ]
-
-            counter[eve_character.corporation_name] += 1
-            corporation_info[eve_character.corporation_name]["count"] = counter[
-                eve_character.corporation_name
-            ]
+        # Parse the data
+        character_info, corporation_info, alliance_info = _parse_chatscan_data(
+            eve_characters=eve_characters
+        )
 
         # Sort and clean up the dicts
         cleaned_pilot_data = [
@@ -227,8 +275,11 @@ def parse(scan_data: list, safe_to_db: bool = True):
         }
 
         if safe_to_db is False:
-            return parsed_data
+            return parsed_data, ""
 
-        return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
+        return (
+            safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data),
+            "",
+        )
 
-    return None
+    return None, message
