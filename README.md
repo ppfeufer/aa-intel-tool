@@ -9,12 +9,13 @@
 [![Badge: Support Discord]][Support Discord]
 [![Badge: Automated Tests]][Automated Tests on GitHub]
 [![Badge: Code Coverage]][AA Intel Tool on Codecov]
+[![Badge: Translation Status]][Weblate Engage]
 [![Badge: Contributor Covenant]][Code of Conduct]
 
 [![Badge: Buy me a coffee]][ppfeufer on ko-fi]
 
-
 D-Scans and more in [Alliance Auth].
+
 
 ---
 
@@ -38,11 +39,21 @@ D-Scans and more in [Alliance Auth].
 
 ---
 
+
 ## Overview
 
 ### Features
 
+The following modules can be enabled or disabled.
+See [Settings](#settings) section for details.
+
+- Chat scan module (Disabled by default due to its possible high number of ESI calls)
+
 ### Screenshots
+
+#### Chat Scan
+
+![Image: Chat Scan Module]
 
 ## Installation
 
@@ -136,7 +147,7 @@ Restart your Nginx service.
 
 ## Settings
 
-To customize the module, the following settings are available and can be made in
+To customize the app, the following settings are available and can be made in
 your `local.py`.
 
 | Name                              | Description                                                                                                      | Default |
@@ -173,6 +184,10 @@ Please make sure to read the [Contribution Guidelines]
 [Badge: Code Coverage]: https://codecov.io/gh/ppfeufer/aa-intel-tool/branch/master/graph/badge.svg "Code Coverage"
 [Badge: Contributor Covenant]: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg "Contributor Covenant"
 [Badge: Buy me a coffee]: https://ko-fi.com/img/githubbutton_sm.svg "Buy me a coffee"
+[Badge: Translation Status]: https://weblate.ppfeufer.de/widgets/alliance-auth-apps/-/aa-intel-tool/svg-badge.svg "Translation Status"
+
+<!-- Images -->
+[Image: Chat Scan Module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/chat-scan.jpg "Chat Scan Module"
 
 <!-- Hyperlinks -->
 [Alliance Auth]: https://gitlab.com/allianceauth/allianceauth
