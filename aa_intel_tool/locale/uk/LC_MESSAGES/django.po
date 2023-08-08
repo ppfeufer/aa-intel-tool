@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-08 16:58+0200\n"
+"POT-Creation-Date: 2023-08-08 17:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgid "Intel Tool v{__version__}"
 msgstr ""
 
 #: form.py:20
-msgid "Paste here ..."
+msgid "Paste here …"
 msgstr ""
 
 #: models.py:21 models.py:110

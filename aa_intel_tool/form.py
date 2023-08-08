@@ -17,7 +17,7 @@ class IntelForm(forms.Form):
             attrs={
                 "rows": 15,
                 "input_type": "textarea",
-                "placeholder": _("Paste here ..."),
+                "placeholder": _("Paste here …"),
             }
         ),
         required=True,
