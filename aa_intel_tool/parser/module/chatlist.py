@@ -108,121 +108,127 @@ def parse(scan_data: list, safe_to_db: bool = True):
     :rtype:
     """
 
-    if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is False:
-        return None
+    if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
+        logger.debug(msg=f"{len(scan_data)} name(s) to work through …")
 
-    logger.debug(msg=scan_data)
+        try:
+            eve_character_ids = (
+                EveEntity.objects.fetch_by_names_esi(names=scan_data)
+                .filter(category=EveEntity.CATEGORY_CHARACTER)
+                .values_list("id", flat=True)
+            )
+        except EveEntity.DoesNotExist:  # pylint: disable=no-member
+            return None
 
-    try:
-        eve_character_ids = (
-            EveEntity.objects.fetch_by_names_esi(names=scan_data)
-            .filter(category=EveEntity.CATEGORY_CHARACTER)
-            .values_list("id", flat=True)
+        logger.debug(msg=f"Got {len(eve_character_ids)} ID(s) back from Eve Universe …")
+
+        # In case the name does not belong to an Eve character,
+        # # EveEntity returns an empty object
+        if eve_character_ids.count() == 0:
+            return None
+
+        counter = {}
+        alliance_info = {}
+        corporation_info = {}
+        character_info = {}
+
+        # Loop through the list of characters
+        eve_characters = get_or_create_character(character_ids=eve_character_ids)
+
+        logger.debug(
+            msg=f"Got {len(eve_characters)} EveCharacter object(s) back from AA …"
         )
-    except EveEntity.DoesNotExist:  # pylint: disable=no-member
-        return None
 
-    logger.debug(msg=eve_character_ids)
+        for eve_character in eve_characters:
+            eve_character__alliance_name = "Unaffiliated"
 
-    # In case the name does not belong to an Eve character,
-    # # EveEntity returns an empty object
-    if eve_character_ids.count() == 0:
-        return None
+            if eve_character.alliance_name is not None:
+                eve_character__alliance_name = eve_character.alliance_name
 
-    counter = {}
-    alliance_info = {}
-    corporation_info = {}
-    character_info = {}
+            if eve_character__alliance_name not in counter:
+                counter[eve_character__alliance_name] = 0
 
-    # Loop through the list of characters
-    eve_characters = get_or_create_character(character_ids=eve_character_ids)
-    for eve_character in eve_characters:
-        eve_character__alliance_name = "Unaffiliated"
-        if eve_character.alliance_name is not None:
-            eve_character__alliance_name = eve_character.alliance_name
+            if eve_character.corporation_name not in counter:
+                counter[eve_character.corporation_name] = 0
 
-        if eve_character__alliance_name not in counter:
-            counter[eve_character__alliance_name] = 0
+            # Alliance Info
+            if eve_character__alliance_name not in alliance_info:
+                alliance_info[eve_character__alliance_name] = _parse_alliance_info(
+                    eve_character=eve_character
+                )
 
-        if eve_character.corporation_name not in counter:
-            counter[eve_character.corporation_name] = 0
+            # Corporation Info
+            if eve_character.corporation_name not in corporation_info:
+                corporation_info[
+                    eve_character.corporation_name
+                ] = _parse_corporation_info(eve_character=eve_character)
+                corporation_info[eve_character.corporation_name][
+                    "alliance"
+                ] = alliance_info[eve_character__alliance_name]
 
-        # Alliance Info
-        if eve_character__alliance_name not in alliance_info:
-            alliance_info[eve_character__alliance_name] = _parse_alliance_info(
+            # Character Info
+            character_info[eve_character.character_name] = _parse_character_info(
                 eve_character=eve_character
             )
+            character_info[eve_character.character_name][
+                "corporation"
+            ] = corporation_info[eve_character.corporation_name]
+            character_info[eve_character.character_name]["alliance"] = alliance_info[
+                eve_character__alliance_name
+            ]
 
-        # Corporation Info
-        if eve_character.corporation_name not in corporation_info:
-            corporation_info[eve_character.corporation_name] = _parse_corporation_info(
-                eve_character=eve_character
-            )
-            corporation_info[eve_character.corporation_name][
-                "alliance"
-            ] = alliance_info[eve_character__alliance_name]
+            # Update the counter
+            counter[eve_character__alliance_name] += 1
+            alliance_info[eve_character__alliance_name]["count"] = counter[
+                eve_character__alliance_name
+            ]
 
-        # Character Info
-        character_info[eve_character.character_name] = _parse_character_info(
-            eve_character=eve_character
-        )
-        character_info[eve_character.character_name]["corporation"] = corporation_info[
-            eve_character.corporation_name
+            counter[eve_character.corporation_name] += 1
+            corporation_info[eve_character.corporation_name]["count"] = counter[
+                eve_character.corporation_name
+            ]
+
+        # Sort and clean up the dicts
+        cleaned_pilot_data = [
+            character
+            for (
+                character_name,  # pylint: disable=unused-variable
+                character,
+            ) in sorted(character_info.items())
         ]
-        character_info[eve_character.character_name]["alliance"] = alliance_info[
-            eve_character__alliance_name
+        cleaned_corporation_data = [
+            corporation
+            for (
+                corporation_name,  # pylint: disable=unused-variable
+                corporation,
+            ) in sorted(corporation_info.items())
+        ]
+        cleaned_alliance_data = [
+            alliance
+            for (
+                alliance_name,  # pylint: disable=unused-variable
+                alliance,
+            ) in sorted(alliance_info.items())
         ]
 
-        # Update the counter
-        counter[eve_character__alliance_name] += 1
-        alliance_info[eve_character__alliance_name]["count"] = counter[
-            eve_character__alliance_name
-        ]
+        parsed_data = {
+            "pilots": {
+                "section": ScanData.Section.PILOTLIST,
+                "data": cleaned_pilot_data,
+            },
+            "corporations": {
+                "section": ScanData.Section.CORPORATIONLIST,
+                "data": cleaned_corporation_data,
+            },
+            "alliances": {
+                "section": ScanData.Section.ALLIANCELIST,
+                "data": cleaned_alliance_data,
+            },
+        }
 
-        counter[eve_character.corporation_name] += 1
-        corporation_info[eve_character.corporation_name]["count"] = counter[
-            eve_character.corporation_name
-        ]
+        if safe_to_db is False:
+            return parsed_data
 
-    # Sort and clean up the dicts
-    cleaned_pilot_data = [
-        character
-        for (
-            character_name,  # pylint: disable=unused-variable
-            character,
-        ) in sorted(character_info.items())
-    ]
-    cleaned_corporation_data = [
-        corporation
-        for (
-            corporation_name,  # pylint: disable=unused-variable
-            corporation,
-        ) in sorted(corporation_info.items())
-    ]
-    cleaned_alliance_data = [
-        alliance
-        for (
-            alliance_name,  # pylint: disable=unused-variable
-            alliance,
-        ) in sorted(alliance_info.items())
-    ]
+        return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
 
-    parsed_data = {
-        "pilots": {
-            "section": ScanData.Section.PILOTLIST,
-            "data": cleaned_pilot_data,
-        },
-        "corporations": {
-            "section": ScanData.Section.CORPORATIONLIST,
-            "data": cleaned_corporation_data,
-        },
-        "alliances": {
-            "section": ScanData.Section.ALLIANCELIST,
-            "data": cleaned_alliance_data,
-        },
-    }
-
-    if safe_to_db is False:
-        return parsed_data
-
-    return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
+    return None

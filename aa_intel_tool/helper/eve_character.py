@@ -41,7 +41,7 @@ def get_or_create_character(
 
     character_ids = set(character_ids)
 
-    logger.debug(msg=f"Getting information for {len(character_ids)} characters.")
+    logger.debug(msg=f"Getting information for {len(character_ids)} character(s) …")
 
     existing_character_ids = set(
         EveCharacter.objects.filter(character_id__in=character_ids).values_list(
@@ -54,7 +54,7 @@ def get_or_create_character(
         count_characters_to_fetch = len(character_ids_to_fetch)
 
         logger.debug(
-            f"{count_characters_to_fetch} EveCharacter Objects need to be created."
+            f"{count_characters_to_fetch} EveCharacter object(s) need to be created …"
         )
 
         for loop_count, character_id in enumerate(character_ids_to_fetch):
@@ -63,7 +63,7 @@ def get_or_create_character(
 
             logger.debug(
                 f"({loop_count + 1}/{count_characters_to_fetch}) "
-                f"EveCharacter Object created for: {character.character_name}"
+                f"EveCharacter object created for: {character.character_name}"
             )
 
             if character.alliance_id is not None:

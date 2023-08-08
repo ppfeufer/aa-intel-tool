@@ -50,8 +50,6 @@ def parse_intel(form_data: str):
     :rtype:
     """
 
-    logger.debug(msg=form_data)
-
     scan_data = form_data.splitlines()
 
     if len(scan_data) > 0:
