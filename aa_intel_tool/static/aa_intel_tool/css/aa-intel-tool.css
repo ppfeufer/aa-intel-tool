@@ -138,7 +138,7 @@
     .aa-intel-tool .dataTable tbody tr:hover,
     .aa-intel-tool .dataTable tbody tr.dataHighlight,
     .aa-intel-tool .dataTable tbody tr.dataHighlightSticky {
-        background-color: rgba(198, 200, 200, 50%);
+        background-color: rgba(198 200 200 / 50%);
     }
 
     .template-dark-mode .aa-intel-tool .dataTable tbody tr:hover,
