@@ -26,6 +26,7 @@ D-Scans and more in [Alliance Auth].
   * [Installation](#installation)
     * [Step 1: Install the Package](#step-1-install-the-package)
     * [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
+    * [Step 3: (Optional) Public Views](#step-3-optional-public-views)
     * [Step 4: Finalizing the Installation](#step-4-finalizing-the-installation)
     * [Step 5: Update Your Webserver Configuration](#step-5-update-your-webserver-configuration)
       * [Apache 2](#apache-2)
@@ -62,22 +63,30 @@ This is fairly simple, configure your AA settings (`local.py`) as follows:
       "aa_intel_tool",  # https://github.com/ppfeufer/aa-intel-tool
   ]
   ```
-- Add `aa_intel_tool` to the list of `APPS_WITH_PUBLIC_VIEWS` (Right below
-  `INSTALLED_APPS`)
-  ```python
-  # By default, apps are prevented from having public views for security reasons.
-  # To allow specific apps to have public views, add them to APPS_WITH_PUBLIC_VIEWS
-  #   » The format is the same as in INSTALLED_APPS
-  #   » The app developer must also explicitly allow public views for their app
-  APPS_WITH_PUBLIC_VIEWS = [
-      "aa_intel_tool",  # https://github.com/ppfeufer/aa-intel-tool
-  ]
-  ```
-  > **Note**
-  >
-  > If you don't have a list for `APPS_WITH_PUBLIC_VIEWS` yet, then add the whole
-  > block from here. This feature has been added in Alliance Auth v3.6.0 so you
-  > might not yet have this list in your `local.py`.
+
+
+### Step 3: (Optional) Public Views
+
+This app supports AA's feature of public views, since time zones conversion is not
+any mission-critical information. To allow users to view the time zone conversion page
+without the need to log in, please add `"aa_intel_tool",` to the list of
+`APPS_WITH_PUBLIC_VIEWS` in your `local.py`:
+
+```python
+# By default, apps are prevented from having public views for security reasons.
+# To allow specific apps to have public views, add them to APPS_WITH_PUBLIC_VIEWS
+#   » The format is the same as in INSTALLED_APPS
+#   » The app developer must also explicitly allow public views for their app
+APPS_WITH_PUBLIC_VIEWS = [
+    "aa_intel_tool",  # https://github.com/ppfeufer/aa-intel-tool
+]
+```
+
+> **Note**
+>
+> If you don't have a list for `APPS_WITH_PUBLIC_VIEWS` yet, then add the whole
+> block from here. This feature has been added in Alliance Auth v3.6.0 so you
+> might not yet have this list in your `local.py`.
 
 
 ### Step 4: Finalizing the Installation
