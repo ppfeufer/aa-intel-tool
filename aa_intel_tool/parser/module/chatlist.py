@@ -15,49 +15,9 @@ from eveuniverse.models import EveEntity
 from aa_intel_tool import __title__
 from aa_intel_tool.helper.eve_character import get_or_create_character
 from aa_intel_tool.models import Scan, ScanData
+from aa_intel_tool.parser.helper.db import safe_scan_to_db
 
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
-
-
-def _safe(parsed_data: dict) -> Scan:
-    """
-    Saving the chat list scan data
-
-    :param parsed_data:
-    :type parsed_data:
-    :return:
-    :rtype:
-    """
-
-    # Creating a new Scan object
-    new_scan = Scan(
-        scan_type=Scan.Type.CHATLIST,
-    )
-    new_scan.save()
-
-    # Saving the pilot list
-    ScanData(
-        scan=new_scan,
-        section=ScanData.Section.PILOTLIST,
-        processed_data=parsed_data["pilots"],
-    ).save()
-
-    # Saving the corporation list
-    ScanData(
-        scan=new_scan,
-        section=ScanData.Section.CORPORATIONLIST,
-        processed_data=parsed_data["corporations"],
-    ).save()
-
-    # Saving the alliance list
-    ScanData(
-        scan=new_scan,
-        section=ScanData.Section.ALLIANCELIST,
-        processed_data=parsed_data["alliances"],
-    ).save()
-
-    # Return the Scan object
-    return new_scan
 
 
 def _parse_alliance_info(eve_character: EveCharacter) -> dict:
@@ -245,12 +205,21 @@ def parse(scan_data: list, safe_to_db: bool = True):
     ]
 
     parsed_data = {
-        "pilots": cleaned_pilot_data,
-        "corporations": cleaned_corporation_data,
-        "alliances": cleaned_alliance_data,
+        "pilots": {
+            "section": ScanData.Section.PILOTLIST,
+            "data": cleaned_pilot_data,
+        },
+        "corporations": {
+            "section": ScanData.Section.CORPORATIONLIST,
+            "data": cleaned_corporation_data,
+        },
+        "alliances": {
+            "section": ScanData.Section.ALLIANCELIST,
+            "data": cleaned_alliance_data,
+        },
     }
 
     if safe_to_db is False:
         return parsed_data
 
-    return _safe(parsed_data=parsed_data)
+    return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)

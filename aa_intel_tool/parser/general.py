@@ -15,7 +15,7 @@ from app_utils.logging import LoggerAddTag
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
-from aa_intel_tool.parser import chatlist, dscan, fleetcomp
+from aa_intel_tool.parser.module import chatlist, dscan, fleetcomp
 
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
