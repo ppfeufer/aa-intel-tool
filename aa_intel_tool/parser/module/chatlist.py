@@ -134,10 +134,9 @@ def parse(scan_data: list, safe_to_db: bool = True):
     corporation_info = {}
     character_info = {}
 
-    # Loop through the list of character IDs
-    for character_id in eve_character_ids:
-        eve_character = get_or_create_character(character_id=character_id)
-
+    # Loop through the list of characters
+    eve_characters = get_or_create_character(character_ids=eve_character_ids)
+    for eve_character in eve_characters:
         eve_character__alliance_name = "Unaffiliated"
         if eve_character.alliance_name is not None:
             eve_character__alliance_name = eve_character.alliance_name
