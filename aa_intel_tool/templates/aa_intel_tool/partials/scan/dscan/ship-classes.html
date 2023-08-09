@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<div class="col-md-4 col-sm-6 col-lg-3">
+    <header class="aa-intel-section-header">
+        <h2 class="aa-intel-section-title">
+            {{ title }} (<span id="aa-intel-dscan-{{ dscan_section }}-count">0</span>)
+        </h2>
+    </header>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="table-local-scan table-local-scan-corporation table-aa-intel">
+                <table class="table table-condensed table-sortable table aa-intel-dscan-ship-classes aa-intel-dscan-ship-classes-{{ dscan_section }}-list" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>{% translate "Ship Class" %}</th>
+                        <th>{% translate "Count" %}</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

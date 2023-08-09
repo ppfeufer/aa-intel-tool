@@ -94,6 +94,7 @@ def scan(request: WSGIRequest, scan_hash: str):
 
     scan_type_templates = {
         "chatlist": "aa_intel_tool/views/scan/chatlist.html",
+        "dscan": "aa_intel_tool/views/scan/dscan.html",
     }
 
     if intel_scan.scan_type in scan_type_templates:
