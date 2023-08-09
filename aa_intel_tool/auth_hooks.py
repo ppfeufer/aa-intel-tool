@@ -67,9 +67,7 @@ def register_urls():
         namespace="aa_intel_tool",
         base_url=r"^intel/",
         excluded_views=[
-            "aa_intel_tool.views.ajax.get_pilot_list",
-            "aa_intel_tool.views.ajax.get_corporation_list",
-            "aa_intel_tool.views.ajax.get_alliance_list",
+            "aa_intel_tool.views.ajax.get_scan_data",
             "aa_intel_tool.views.general.index",
             "aa_intel_tool.views.general.scan",
         ],

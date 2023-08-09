@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 # AA Intel Tool
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.form import IntelForm
-from aa_intel_tool.models import Scan
+from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.general import parse_intel
 
 
@@ -90,7 +90,11 @@ def scan(request: WSGIRequest, scan_hash: str):
         "raw_data": intel_scan.raw_data,
     }
 
-    context = {"scan_hash": scan_hash, "scan": scan_data}
+    context = {
+        "scan_hash": scan_hash,
+        "scan": scan_data,
+        "scan_data_section": ScanData.Section,
+    }
 
     scan_type_templates = {
         "chatlist": "aa_intel_tool/views/scan/chatlist.html",

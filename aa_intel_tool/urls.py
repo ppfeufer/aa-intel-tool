@@ -3,7 +3,7 @@ Our URL config
 """
 
 # Django
-from django.urls import include, path, re_path
+from django.urls import include, path
 
 # AA Intel Tool
 from aa_intel_tool.constants import INTERNAL_URL_PREFIX
@@ -14,28 +14,14 @@ app_name: str = "aa_intel_tool"
 
 app_urls = [
     path(route="", view=general.index, name="intel_tool_index"),
-    re_path(
-        route=r"^scan/(?P<scan_hash>[a-zA-Z0-9]+)/$",
-        view=general.scan,
-        name="intel_tool_scan",
-    ),
+    path(route="scan/<str:scan_hash>/", view=general.scan, name="intel_tool_scan"),
 ]
 
 ajax_urls = [
-    re_path(
-        route=r"^get-pilot-list/(?P<scan_hash>[a-zA-Z0-9]+)/$",
-        view=ajax.get_pilot_list,
-        name="ajax_get_pilot_list",
-    ),
-    re_path(
-        route=r"^get-corporation-list/(?P<scan_hash>[a-zA-Z0-9]+)/$",
-        view=ajax.get_corporation_list,
-        name="ajax_get_corporation_list",
-    ),
-    re_path(
-        route=r"^get-alliance-list/(?P<scan_hash>[a-zA-Z0-9]+)/$",
-        view=ajax.get_alliance_list,
-        name="ajax_get_alliance_list",
+    path(
+        route="get-scan-data/<str:scan_hash>/<str:scan_section>/",
+        view=ajax.get_scan_data,
+        name="ajax_get_scan_data",
     ),
 ]
 
