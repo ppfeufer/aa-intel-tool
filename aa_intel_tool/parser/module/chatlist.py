@@ -166,7 +166,30 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> tuple:
             eve_character.corporation_name
         ]
 
-    return character_info, corporation_info, alliance_info
+    # Sort and clean up the dicts
+    cleaned_pilot_data = [
+        character
+        for (
+            character_name,  # pylint: disable=unused-variable
+            character,
+        ) in sorted(character_info.items())
+    ]
+    cleaned_corporation_data = [
+        corporation
+        for (
+            corporation_name,  # pylint: disable=unused-variable
+            corporation,
+        ) in sorted(corporation_info.items())
+    ]
+    cleaned_alliance_data = [
+        alliance
+        for (
+            alliance_name,  # pylint: disable=unused-variable
+            alliance,
+        ) in sorted(alliance_info.items())
+    ]
+
+    return cleaned_pilot_data, cleaned_corporation_data, cleaned_alliance_data
 
 
 def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
@@ -236,41 +259,18 @@ def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
             eve_characters=eve_characters
         )
 
-        # Sort and clean up the dicts
-        cleaned_pilot_data = [
-            character
-            for (
-                character_name,  # pylint: disable=unused-variable
-                character,
-            ) in sorted(character_info.items())
-        ]
-        cleaned_corporation_data = [
-            corporation
-            for (
-                corporation_name,  # pylint: disable=unused-variable
-                corporation,
-            ) in sorted(corporation_info.items())
-        ]
-        cleaned_alliance_data = [
-            alliance
-            for (
-                alliance_name,  # pylint: disable=unused-variable
-                alliance,
-            ) in sorted(alliance_info.items())
-        ]
-
         parsed_data = {
             "pilots": {
                 "section": ScanData.Section.PILOTLIST,
-                "data": cleaned_pilot_data,
+                "data": character_info,
             },
             "corporations": {
                 "section": ScanData.Section.CORPORATIONLIST,
-                "data": cleaned_corporation_data,
+                "data": corporation_info,
             },
             "alliances": {
                 "section": ScanData.Section.ALLIANCELIST,
-                "data": cleaned_alliance_data,
+                "data": alliance_info,
             },
         }
 
