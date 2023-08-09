@@ -147,9 +147,9 @@
         background-color: rgba(236 240 241 / 10%);
     }
 
-    /*.aa-intel-tool .table-aa-intel tbody > tr > td {*/
-    /*    vertical-align: middle;*/
-    /*}*/
+    .aa-intel-tool .table-aa-intel tbody > tr > td {
+        vertical-align: middle;
+    }
 
     .aa-intel-tool .table-no-images > tbody > tr > td {
         padding-bottom: 12px;

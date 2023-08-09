@@ -7,6 +7,7 @@ import re
 
 # Django
 from django.db.models import QuerySet
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 # Alliance Auth
@@ -41,6 +42,7 @@ def _parse_ship_information(eve_types: QuerySet, counter: dict) -> dict:
                 "name": ship_name,
                 "type_id": ship_type_id,
                 "type_name": ship_type_name,
+                "type_name_sanitised": slugify(ship_type_name),
                 "count": counter["all"][ship_id],
                 "image": eveimageserver.type_icon_url(type_id=ship_id, size=32),
             }
@@ -51,6 +53,7 @@ def _parse_ship_information(eve_types: QuerySet, counter: dict) -> dict:
                     "name": ship_name,
                     "type_id": ship_type_id,
                     "type_name": ship_type_name,
+                    "type_name_sanitised": slugify(ship_type_name),
                     "count": counter["ongrid"][ship_id],
                     "image": eveimageserver.type_icon_url(type_id=ship_id, size=32),
                 }
@@ -61,6 +64,7 @@ def _parse_ship_information(eve_types: QuerySet, counter: dict) -> dict:
                     "name": ship_name,
                     "type_id": ship_type_id,
                     "type_name": ship_type_name,
+                    "type_name_sanitised": slugify(ship_type_name),
                     "count": counter["offgrid"][ship_id],
                     "image": eveimageserver.type_icon_url(type_id=ship_id, size=32),
                 }
@@ -72,7 +76,10 @@ def _parse_ship_information(eve_types: QuerySet, counter: dict) -> dict:
         counter["type"][ship_info["type_name"]] += ship_info["count"]
 
         if ship_info["type_name"] not in ships["types"]:
-            ships["types"][ship_info["type_name"]] = {"name": ship_info["type_name"]}
+            ships["types"][ship_info["type_name"]] = {
+                "name": ship_info["type_name"],
+                "name_sanitised": slugify(ship_info["type_name"]),
+            }
 
         ships["types"][ship_info["type_name"]]["count"] = counter["type"][
             ship_info["type_name"]
@@ -194,10 +201,5 @@ def parse(scan_data: list) -> tuple:  # pylint: disable=unused-argument
             safe_scan_to_db(scan_type=Scan.Type.DSCAN, parsed_data=parsed_data),
             "",
         )
-
-        # logger.debug(msg=ships["all"])
-        # logger.debug(msg=ships["ongrid"])
-        # logger.debug(msg=ships["offgrid"])
-        # logger.debug(msg=ships["types"])
 
     return None, message

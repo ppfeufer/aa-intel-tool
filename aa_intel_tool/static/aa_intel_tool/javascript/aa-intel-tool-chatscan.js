@@ -15,7 +15,7 @@ jQuery(document).ready(($) => {
 
 
     /**
-     * Corporation info element in datatable
+     * Pilot info element in datatable
      *
      * @param pilotData
      * @returns {string}
