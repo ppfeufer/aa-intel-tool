@@ -25,7 +25,7 @@ SUPPORTED_INTEL_TYPES = [
     {
         "name": "D-Scan",
         "parser": "dscan",
-        "pattern": re.compile(r"(?im)^(\d+)[\t](.*)[\t](.*)[\t](-|(.*) (km|AU)) ?$"),
+        "pattern": re.compile(r"(?im)^(\d+)[\t](.*)[\t](.*)[\t](-|(.*) (km|m|AU)) ?$"),
     },
     {
         "name": "Chat List",
