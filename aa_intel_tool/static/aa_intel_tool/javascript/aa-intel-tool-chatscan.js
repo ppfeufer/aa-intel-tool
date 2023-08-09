@@ -144,7 +144,7 @@ jQuery(document).ready(($) => {
         }
 
         let html_logo = '' +
-            '<span class="aa-intel-alliance-logo-wrapper">\n' +
+            '<span class="aa-intel-alliance-logo-wrapper alliance-id-' + allianceData['id'] + '">\n' +
             '    <img ' +
             '        class="eve-image" ' +
             '        data-eveid="' + allianceData['id'] + '" ' +

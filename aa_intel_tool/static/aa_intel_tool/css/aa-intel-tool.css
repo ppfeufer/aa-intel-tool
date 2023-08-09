@@ -183,6 +183,10 @@
         position: relative;
         transform: translateY(16%);
     }
+
+    .aa-intel-tool td.fix-eve-image-position > span.alliance-id-1 {
+        transform: none;
+    }
 }
 
 /* Callouts
