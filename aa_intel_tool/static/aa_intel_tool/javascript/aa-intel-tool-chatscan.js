@@ -254,7 +254,15 @@ jQuery(document).ready(($) => {
         createdRow: (row, data) => {
             // Alliance total count
             const currentTotal = elementAlliancesTotalCount.html();
-            const newTotal = parseInt(currentTotal) + 1;
+
+            let newTotal;
+            if (data['id'] === 1) {
+                if (parseInt(currentTotal) > 1) {
+                    newTotal = parseInt(currentTotal) - 1;
+                }
+            } else {
+                newTotal = parseInt(currentTotal) + 1;
+            }
 
             elementAlliancesTotalCount.html(newTotal);
 
