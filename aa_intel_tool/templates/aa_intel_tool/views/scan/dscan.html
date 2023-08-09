@@ -19,12 +19,12 @@
 {% block aa_intel_tool_body %}
     <div class="dscan-result row">
         {% translate "All Ships" as dscan_section_header_all %}
-        {% translate "Off Grid" as dscan_section_header_all %}
-        {% translate "On Grid" as dscan_section_header_all %}
+        {% translate "On Grid" as dscan_section_header_ongrid %}
+        {% translate "Off Grid" as dscan_section_header_offgrid %}
 
         {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with title=dscan_section_header_all dscan_section='all' %}
-        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with title=dscan_section_header_all dscan_section='ongrid' %}
-        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with title=dscan_section_header_all dscan_section='offgrid' %}
+        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with title=dscan_section_header_ongrid dscan_section='ongrid' %}
+        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with title=dscan_section_header_offgrid dscan_section='offgrid' %}
         {% include 'aa_intel_tool/partials/scan/dscan/ship-types.html' %}
     </div>
 {% endblock %}
