@@ -101,7 +101,7 @@ def _parse_character_info(eve_character: EveCharacter) -> dict:
     }
 
 
-def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> tuple:
+def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
     """
     Parse the chat scan data and return character information,
     corporation information and alliance information for each character
@@ -189,7 +189,11 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> tuple:
         ) in sorted(alliance_info.items())
     ]
 
-    return cleaned_pilot_data, cleaned_corporation_data, cleaned_alliance_data
+    return {
+        "pilots": cleaned_pilot_data,
+        "corporations": cleaned_corporation_data,
+        "alliances": cleaned_alliance_data,
+    }
 
 
 def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
@@ -255,22 +259,20 @@ def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
         )
 
         # Parse the data
-        character_info, corporation_info, alliance_info = _parse_chatscan_data(
-            eve_characters=eve_characters
-        )
+        parsed_chatscan = _parse_chatscan_data(eve_characters=eve_characters)
 
         parsed_data = {
             "pilots": {
                 "section": ScanData.Section.PILOTLIST,
-                "data": character_info,
+                "data": parsed_chatscan["pilots"],
             },
             "corporations": {
                 "section": ScanData.Section.CORPORATIONLIST,
-                "data": corporation_info,
+                "data": parsed_chatscan["corporations"],
             },
             "alliances": {
                 "section": ScanData.Section.ALLIANCELIST,
-                "data": alliance_info,
+                "data": parsed_chatscan["alliances"],
             },
         }
 
