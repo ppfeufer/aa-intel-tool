@@ -236,7 +236,7 @@ jQuery(document).ready(($) => {
             {
                 targets: 0,
                 createdCell: (td) => {
-                    $(td).addClass('text-ellipsis');
+                    $(td).addClass('text-ellipsis fix-eve-image-position');
                 }
             },
             {
@@ -321,7 +321,7 @@ jQuery(document).ready(($) => {
             {
                 targets: 0,
                 createdCell: (td) => {
-                    $(td).addClass('text-ellipsis');
+                    $(td).addClass('text-ellipsis fix-eve-image-position');
                 }
             },
             {
@@ -411,7 +411,7 @@ jQuery(document).ready(($) => {
             {
                 targets: 0,
                 createdCell: (td) => {
-                    $(td).addClass('text-ellipsis');
+                    $(td).addClass('text-ellipsis fix-eve-image-position');
                 }
             },
             {
