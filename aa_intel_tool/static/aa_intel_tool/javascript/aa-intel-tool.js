@@ -5,8 +5,6 @@ jQuery(document).ready(($) => { // eslint-disable-line no-unused-vars
      * Prevent double form submits
      */
     document.querySelectorAll('form').forEach((form) => {
-        'use strict';
-
         form.addEventListener('submit', (e) => {
             // Prevent if already submitting
             if (form.classList.contains('is-submitting')) {
