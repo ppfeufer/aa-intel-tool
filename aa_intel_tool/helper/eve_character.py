@@ -168,6 +168,7 @@ def get_or_create_character(
             "character_id", flat=True
         )
     )
+
     character_ids_to_fetch = character_ids - existing_character_ids
 
     if character_ids_to_fetch:
