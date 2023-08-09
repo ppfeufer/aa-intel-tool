@@ -136,17 +136,15 @@ def parse(scan_data: list) -> tuple:  # pylint: disable=unused-argument
     message = _("The D-Scan module is currently disabled.")
 
     if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
+        counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
+        eve_ids = {"all": [], "ongrid": [], "offgrid": []}
+
         # Let's split this list up
         #
         # [0] => Item ID
         # [1] => Name
         # [2] => Ship Class
         # [3] => Distance
-
-        counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
-        eve_ids = {"all": [], "ongrid": [], "offgrid": []}
-
-        # Split the basic info
         for entry in scan_data:
             line = re.split(pattern=r"\t+", string=entry.rstrip("\t"))
             entry_id = int(line[0])
