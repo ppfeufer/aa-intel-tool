@@ -1,0 +1,30 @@
+{% extends 'aa_intel_tool/base.html' %}
+
+{% load evelinks %}
+{% load inteltool_versioned_static %}
+{% load i18n %}
+
+{% block page_title %}{% translate 'Intel Tool' %}{% endblock %}
+
+{% block aa_intel_tool_header %}
+    <header>
+        <h1>{% translate "Intel Parser" %}</h1>
+    </header>
+
+    <p>
+        {% translate "Please keep in mind, parsing large amounts of data can take some time. Be patient, CCP's API is not the fastest to answer …" %}
+    </p>
+{% endblock %}
+
+{% block aa_intel_tool_body %}
+    {% include "aa_intel_tool/partials/index/form.html" %}
+    {% include "aa_intel_tool/partials/body/scan-retention-note.html" %}
+{% endblock %}
+
+{% block extra_css %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-css.html" %}
+{% endblock %}
+
+{% block extra_javascript %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-js.html" %}
+{% endblock extra_javascript %}

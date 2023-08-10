@@ -1,0 +1,53 @@
+{% extends 'aa_intel_tool/base.html' %}
+
+{% load i18n %}
+{% load inteltool_versioned_static %}
+
+{% translate "Unaffiliated / No Alliance" as no_alliance %}
+
+{% block page_title %}{% translate 'D-Scan » Intel Tool' %}{% endblock %}
+
+{% block aa_intel_tool_header %}
+    <header>
+        <h1>{% translate "D-Scan" %}</h1>
+    </header>
+
+    {% include "aa_intel_tool/partials/scan/evetime.html" %}
+    {% include "aa_intel_tool/partials/scan/buttons.html" %}
+{% endblock %}
+
+{% block aa_intel_tool_body %}
+    <div class="dscan-result row">
+        {% translate "All Ships" as dscan_section_header_all %}
+        {% translate "On Grid" as dscan_section_header_ongrid %}
+        {% translate "Off Grid" as dscan_section_header_offgrid %}
+
+        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with title=dscan_section_header_all dscan_section='all' %}
+        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with title=dscan_section_header_ongrid dscan_section='ongrid' %}
+        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with title=dscan_section_header_offgrid dscan_section='offgrid' %}
+        {% include 'aa_intel_tool/partials/scan/dscan/ship-types.html' %}
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    {% include "bundles/datatables-css.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-css.html" %}
+{% endblock %}
+
+{% block extra_javascript %}
+    <script>
+        const aaIntelToolJsOptions = {
+            ajax: {
+                getShipClassesAll: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST.value %}',
+                getShipClassesOngrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST_ON_GRID.value %}',
+                getShipClassesOffgrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST_OFF_GRID.value %}',
+                getShipTypes: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPTYPES.value %}'
+            }
+        }
+    </script>
+
+    {% include "bundles/datatables-js.html" %}
+    {% include "bundles/clipboard-js.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-js-l10n.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-dscan-js.html" %}
+{% endblock extra_javascript %}

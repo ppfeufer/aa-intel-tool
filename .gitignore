@@ -1,0 +1,15 @@
+/build/
+/dist/
+/*.egg-info/
+.idea/
+.tox/
+htmlcov/
+pastebin/
+
+*.log
+*.tmp
+*.bak
+*.old
+__pycache__
+.coverage
+/coverage.xml

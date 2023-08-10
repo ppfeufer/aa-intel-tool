@@ -1,0 +1,47 @@
+{% extends 'aa_intel_tool/base.html' %}
+
+{% load i18n %}
+{% load inteltool_versioned_static %}
+
+{% translate "Unaffiliated / No Alliance" as no_alliance %}
+
+{% block page_title %}{% translate 'Chat List Scan » Intel Tool' %}{% endblock %}
+
+{% block aa_intel_tool_header %}
+    <header>
+        <h1>{% translate "Chat Scan" %}</h1>
+    </header>
+
+    {% include "aa_intel_tool/partials/scan/evetime.html" %}
+    {% include "aa_intel_tool/partials/scan/buttons.html" %}
+{% endblock %}
+
+{% block aa_intel_tool_body %}
+    <div class="local-scan-result row">
+        {% include 'aa_intel_tool/partials/scan/chatlist/alliances.html' %}
+        {% include 'aa_intel_tool/partials/scan/chatlist/corporations.html' %}
+        {% include 'aa_intel_tool/partials/scan/chatlist/pilots.html' %}
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    {% include "bundles/datatables-css.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-css.html" %}
+{% endblock %}
+
+{% block extra_javascript %}
+    <script>
+        const aaIntelToolJsOptions = {
+            ajax: {
+                getPilotList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.PILOTLIST.value %}',
+                getCorporationList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.CORPORATIONLIST.value %}',
+                getAllianceList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.ALLIANCELIST.value %}'
+            }
+        }
+    </script>
+
+    {% include "bundles/datatables-js.html" %}
+    {% include "bundles/clipboard-js.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-js-l10n.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-chatscan-js.html" %}
+{% endblock extra_javascript %}
