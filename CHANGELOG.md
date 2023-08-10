@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [In Development] - Unreleased
 
 
+## [0.0.1-alpha.2] - 2023-08-10
+
+### Added
+
+- Command to pre-load Eve data
+
+
 ## [0.0.1-alpha.1] - 2023-08-10
 
 ### Added
