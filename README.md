@@ -44,6 +44,22 @@ D-Scans and more in [Alliance Auth].
 ---
 
 
+> **Warning**
+>
+> This app is still in active development and only available as an early alpha
+> version. Do not install this app in your live environment. If you want to test
+> this app, do so in a dedicated test environment. Don't come crying if you wreck
+> your live environment.
+>
+> During the alpha phase, it is highly likely that the DB migrations will be reset a
+> couple of times.
+>
+> Bugs and errors are expected during this time as well, so feel free to report them
+> as early as possible, if you dare to test this app.
+>
+> Thank you!
+
+
 ## Overview
 
 ### Features
