@@ -58,22 +58,6 @@ class Scan(models.Model):
     def __str__(self) -> str:
         return str(self.pk)
 
-    @staticmethod
-    def generate_scan_hash():
-        """
-        Get a random string we can use as hash
-
-        :return:
-        :rtype:
-        """
-
-        scan_hash = get_random_string(length=30)
-
-        while Scan.objects.filter(hash=scan_hash).exists():  # pylint: disable=no-member
-            scan_hash = get_random_string(length=30)
-
-        return scan_hash
-
     @transaction.atomic()
     def save(self, *args, **kwargs):
         """
@@ -95,6 +79,22 @@ class Scan(models.Model):
         if self.hash == "":
             self.hash = Scan.generate_scan_hash()
             self.save()
+
+    @staticmethod
+    def generate_scan_hash():
+        """
+        Get a random string we can use as hash
+
+        :return:
+        :rtype:
+        """
+
+        scan_hash = get_random_string(length=30)
+
+        while Scan.objects.filter(hash=scan_hash).exists():  # pylint: disable=no-member
+            scan_hash = get_random_string(length=30)
+
+        return scan_hash
 
 
 class ScanData(models.Model):
