@@ -230,29 +230,42 @@ def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
                 number=max_allowed_pilots,
             )
 
+        # Check if we have to bother Eve Universe or if we have all characters already
+        fetch_from_eveuniverse = False
         try:
-            eve_character_ids = (
-                EveEntity.objects.fetch_by_names_esi(names=scan_data)
-                .filter(category=EveEntity.CATEGORY_CHARACTER)
-                .values_list("id", flat=True)
+            eve_characters = EveCharacter.objects.filter(character_name__in=scan_data)
+        except EveCharacter.DoesNotExist:  # pylint: disable=no-member
+            fetch_from_eveuniverse = True
+        else:
+            if len(scan_data) != eve_characters.count():
+                fetch_from_eveuniverse = True
+
+        if fetch_from_eveuniverse:
+            try:
+                eve_character_ids = (
+                    EveEntity.objects.fetch_by_names_esi(names=scan_data)
+                    .filter(category=EveEntity.CATEGORY_CHARACTER)
+                    .values_list("id", flat=True)
+                )
+            except EveEntity.DoesNotExist:  # pylint: disable=no-member
+                message = _(
+                    "Something went wrong while fetching the character information from ESI."
+                )
+
+                return None, message
+
+            logger.debug(
+                msg=f"Got {len(eve_character_ids)} ID(s) back from Eve Universe …"
             )
-        except EveEntity.DoesNotExist:  # pylint: disable=no-member
-            message = _(
-                "Something went wrong while fetching the character information from ESI."
-            )
 
-            return None, message
+            # In case the name does not belong to an Eve character,
+            # EveEntity returns an empty object
+            if len(eve_character_ids) == 0:
+                message = _("Character unknown to ESI.")
 
-        logger.debug(msg=f"Got {len(eve_character_ids)} ID(s) back from Eve Universe …")
+                return None, message
 
-        # In case the name does not belong to an Eve character,
-        # # EveEntity returns an empty object
-        if len(eve_character_ids) == 0:
-            message = _("Character unknown to ESI.")
-
-            return None, message
-
-        eve_characters = get_or_create_character(character_ids=eve_character_ids)
+            eve_characters = get_or_create_character(character_ids=eve_character_ids)
 
         logger.debug(
             msg=f"Got {len(eve_characters)} EveCharacter object(s) back from AA …"
