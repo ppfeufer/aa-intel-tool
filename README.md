@@ -24,10 +24,13 @@ D-Scans and more in [Alliance Auth].
   * [Overview](#overview)
     * [Features](#features)
     * [Screenshots](#screenshots)
+      * [Chat Scan](#chat-scan)
   * [Installation](#installation)
     * [Step 1: Install the Package](#step-1-install-the-package)
     * [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
-    * [Step 3: (Optional) Public Views](#step-3-optional-public-views)
+      * [Add the App to Alliance Auth](#add-the-app-to-alliance-auth)
+      * [Add the Scheduled Task](#add-the-scheduled-task)
+      * [(Optional) Allow Public Views](#optional-allow-public-views)
     * [Step 4: Finalizing the Installation](#step-4-finalizing-the-installation)
     * [Step 5: Update Your Webserver Configuration](#step-5-update-your-webserver-configuration)
       * [Apache 2](#apache-2)
@@ -65,6 +68,8 @@ installation Then install the latest release directly from PyPi.
 
 ### Step 2: Configure Alliance Auth
 
+#### Add the App to Alliance Auth
+
 This is fairly simple, configure your AA settings (`local.py`) as follows:
 
 - Add `aa_intel_tool` to the list of `INSTALLED_APPS`
@@ -75,8 +80,21 @@ This is fairly simple, configure your AA settings (`local.py`) as follows:
   ]
   ```
 
+#### Add the Scheduled Task
 
-### Step 3: (Optional) Public Views
+To remove old scans from your DB, add the following task.
+The retention time can be adjusted through the `INTELTOOL_SCAN_RETENTION_TIME` setting.
+
+```python
+if "aa_intel_tool" in INSTALLED_APPS:
+    # Run at 01:00 each day
+    CELERYBEAT_SCHEDULE["AA Intel Tool :: Housekeeping"] = {
+        "task": "aa_intel_tool.tasks.housekeeping",
+        "schedule": crontab(minute="0", hour="1"),
+    }
+```
+
+#### (Optional) Allow Public Views
 
 This app supports AA's feature of public views, since time zones conversion is not
 any mission-critical information. To allow users to view the time zone conversion page
