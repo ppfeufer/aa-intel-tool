@@ -78,7 +78,7 @@ See [Settings](#settings) section for details.
 
 #### D-Scan
 
-![Image: Chat Scan Module]
+![Image: D-Scan Module]
 
 ## Installation
 
@@ -232,7 +232,7 @@ Please make sure to read the [Contribution Guidelines]
 
 <!-- Images -->
 [Image: Chat Scan Module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/chat-scan.jpg "Chat Scan Module"
-[Image: Chat Scan Module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
+[Image: D-Scan Module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
 
 <!-- Hyperlinks -->
 [Alliance Auth]: https://gitlab.com/allianceauth/allianceauth
