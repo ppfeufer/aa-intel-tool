@@ -95,10 +95,12 @@ class TestParserGeneral(TestCase):
 
         form_data = load_chatscan_faulty_txt()
 
-        parsed_intel = parse_intel(form_data=form_data)
+        parsed_intel, message = parse_intel(form_data=form_data)
         expected_intel_data = None
+        expected_message = "No data to parse …"
 
         self.assertEqual(first=parsed_intel, second=expected_intel_data)
+        self.assertEqual(first=message, second=expected_message)
 
     def test_parse_intel_empty_form_data(self):
         """
@@ -110,7 +112,9 @@ class TestParserGeneral(TestCase):
 
         form_data = ""
 
-        parsed_intel = parse_intel(form_data=form_data)
+        parsed_intel, message = parse_intel(form_data=form_data)
         expected_intel_data = None
+        expected_message = "No data to parse …"
 
         self.assertEqual(first=parsed_intel, second=expected_intel_data)
+        self.assertEqual(first=message, second=expected_message)
