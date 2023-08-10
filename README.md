@@ -25,6 +25,7 @@ D-Scans and more in [Alliance Auth].
     * [Features](#features)
     * [Screenshots](#screenshots)
       * [Chat Scan](#chat-scan)
+      * [D-Scan](#d-scan)
   * [Installation](#installation)
     * [Step 1: Install the Package](#step-1-install-the-package)
     * [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
@@ -51,10 +52,15 @@ The following modules can be enabled or disabled.
 See [Settings](#settings) section for details.
 
 - Chat scan module (Disabled by default due to its possible high number of ESI calls)
+- D-Scan module
 
 ### Screenshots
 
 #### Chat Scan
+
+![Image: Chat Scan Module]
+
+#### D-Scan
 
 ![Image: Chat Scan Module]
 
@@ -64,6 +70,10 @@ See [Settings](#settings) section for details.
 
 Make sure you're in the virtual environment (venv) of your Alliance Auth
 installation Then install the latest release directly from PyPi.
+
+```shell
+pip install aa-intel-tool
+```
 
 
 ### Step 2: Configure Alliance Auth
@@ -206,6 +216,7 @@ Please make sure to read the [Contribution Guidelines]
 
 <!-- Images -->
 [Image: Chat Scan Module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/chat-scan.jpg "Chat Scan Module"
+[Image: Chat Scan Module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
 
 <!-- Hyperlinks -->
 [Alliance Auth]: https://gitlab.com/allianceauth/allianceauth
