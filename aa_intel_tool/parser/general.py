@@ -58,14 +58,14 @@ def parse_intel(form_data: str) -> tuple:
     if len(scan_data) > 0:
         intel_type = check_intel_type(scan_data=scan_data)
 
-        switch = {
+        available_parser = {
             "dscan": dscan.parse,
             "chatlist": chatlist.parse,
             "fleetcomp": fleetcomp.parse,
         }
 
-        if intel_type in switch:
-            new_scan, message = switch[intel_type](scan_data=scan_data)
+        if intel_type in available_parser:
+            new_scan, message = available_parser[intel_type](scan_data=scan_data)
 
             if new_scan is not None:
                 new_scan.raw_data = form_data
