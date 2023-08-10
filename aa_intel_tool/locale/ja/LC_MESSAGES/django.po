@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-08 17:07+0200\n"
+"POT-Creation-Date: 2023-08-10 20:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,11 +32,12 @@ msgstr ""
 msgid "Invalid scan data"
 msgstr ""
 
-#: models.py:22 templates/aa_intel_tool/partials/index/form.html:14
+#: models.py:22 templates/aa_intel_tool/partials/index/form.html:15
+#: templates/aa_intel_tool/views/scan/dscan.html:12
 msgid "D-Scan"
 msgstr ""
 
-#: models.py:23 templates/aa_intel_tool/partials/index/form.html:30
+#: models.py:23 templates/aa_intel_tool/partials/index/form.html:31
 msgid "Fleet Composition"
 msgstr ""
 
@@ -80,25 +81,91 @@ msgstr ""
 msgid "Alliance list"
 msgstr ""
 
-#: models.py:122
+#: models.py:114
+msgid "Ship types"
+msgstr ""
+
+#: models.py:115
+msgid "Ship list"
+msgstr ""
+
+#: models.py:116
+msgid "Ship list (on grid)"
+msgstr ""
+
+#: models.py:117
+msgid "Ship list (off grid)"
+msgstr ""
+
+#: models.py:118
+msgid "Structures (on grid)"
+msgstr ""
+
+#: models.py:119
+msgid "Deployables (on grid)"
+msgstr ""
+
+#: models.py:128
 msgid "Scan"
 msgstr ""
 
-#: models.py:129
+#: models.py:135
 msgid "The scan section"
 msgstr ""
 
-#: models.py:133
+#: models.py:139
 msgid "The processed scan section data"
 msgstr ""
 
-#: models.py:142 models.py:143
+#: models.py:148 models.py:149
 msgid "scan data"
+msgstr ""
+
+#: parser/general.py:78
+msgid "No suitable parser found …"
+msgstr ""
+
+#: parser/general.py:80
+msgid "No data to parse …"
+msgstr ""
+
+#: parser/module/chatlist.py:211
+msgid "The chat list module is currently disabled."
+msgstr ""
+
+#: parser/module/chatlist.py:228
+#, python-brace-format
+msgid ""
+"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
+"per scan. Your list of pilots exceeds this limit."
+msgid_plural ""
+"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots "
+"per scan. Your list of pilots exceeds this limit."
+msgstr[0] ""
+msgstr[1] ""
+
+#: parser/module/chatlist.py:252
+msgid "Something went wrong while fetching the character information from ESI."
+msgstr ""
+
+#: parser/module/chatlist.py:264
+msgid "Character unknown to ESI."
+msgstr ""
+
+#: parser/module/dscan.py:136
+msgid "The D-Scan module is currently disabled."
+msgstr ""
+
+#: parser/module/fleetcomp.py:40
+msgid "The fleet composition module is currently disabled."
+msgstr ""
+
+#: parser/module/fleetcomp.py:43
+msgid "The fleet composition module is not yet finished, be patient …"
 msgstr ""
 
 #: templates/aa_intel_tool/base.html:6
 #: templates/aa_intel_tool/views/index.html:7
-#: templates/aa_intel_tool/views/scan/chatlist.html:8
 msgid "Intel Tool"
 msgstr ""
 
@@ -117,6 +184,7 @@ msgstr ""
 #: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 #: templates/aa_intel_tool/views/scan/chatlist.html:6
+#: templates/aa_intel_tool/views/scan/dscan.html:6
 msgid "Unaffiliated / No Alliance"
 msgstr ""
 
@@ -214,39 +282,39 @@ msgstr ""
 msgid "Join our team of translators!"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:9
+#: templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:19
+#: templates/aa_intel_tool/partials/index/form.html:20
 msgid "Chat Member List"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:23
+#: templates/aa_intel_tool/partials/index/form.html:24
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/aa_intel_tool/partials/index/form.html:45
+#: templates/aa_intel_tool/partials/index/form.html:46
 msgid "Submit"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:51
+#: templates/aa_intel_tool/partials/index/form.html:52
 msgid "Working on it, please be patient …"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:53
+#: templates/aa_intel_tool/partials/index/form.html:54
 msgid "Detecting the intel type"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:54
+#: templates/aa_intel_tool/partials/index/form.html:55
 msgid ""
 "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:55
+#: templates/aa_intel_tool/partials/index/form.html:56
 msgid "Parsing data"
 msgstr ""
 
@@ -268,6 +336,8 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
 #: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
+#: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:17
+#: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:17
 msgid "Count"
 msgstr ""
 
@@ -295,6 +365,18 @@ msgstr ""
 msgid "Corporation"
 msgstr ""
 
+#: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:16
+msgid "Ship Class"
+msgstr ""
+
+#: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:6
+msgid "Ship Types"
+msgstr ""
+
+#: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:16
+msgid "Ship Type"
+msgstr ""
+
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve Time)"
 msgstr ""
@@ -309,25 +391,34 @@ msgid ""
 "patient, CCP's API is not the fastest to answer …"
 msgstr ""
 
+#: templates/aa_intel_tool/views/scan/chatlist.html:8
+msgid "Chat List Scan » Intel Tool"
+msgstr ""
+
 #: templates/aa_intel_tool/views/scan/chatlist.html:12
 msgid "Chat Scan"
 msgstr ""
 
-#: views/general.py:41
-#, python-brace-format
-msgid ""
-"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
-"per scan. Your list of pilots exceeds this limit."
-msgid_plural ""
-"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots "
-"per scan. Your list of pilots exceeds this limit."
-msgstr[0] ""
-msgstr[1] ""
-
-#: views/general.py:55
-msgid "The provided data could not be parsed. Please check and try again."
+#: templates/aa_intel_tool/views/scan/dscan.html:8
+msgid "D-Scan » Intel Tool"
 msgstr ""
 
-#: views/general.py:95 views/general.py:121
+#: templates/aa_intel_tool/views/scan/dscan.html:21
+msgid "All Ships"
+msgstr ""
+
+#: templates/aa_intel_tool/views/scan/dscan.html:22
+msgid "On Grid"
+msgstr ""
+
+#: templates/aa_intel_tool/views/scan/dscan.html:23
+msgid "Off Grid"
+msgstr ""
+
+#: views/general.py:39
+msgid "The provided data could not be parsed."
+msgstr ""
+
+#: views/general.py:82 views/general.py:113
 msgid "The scan you were looking for could not be found."
 msgstr ""
