@@ -75,4 +75,6 @@ def parse_intel(form_data: str) -> tuple:
 
             return None, message
 
+        return None, _("No suitable parser found …")
+
     return None, _("No data to parse …")
