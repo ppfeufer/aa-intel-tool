@@ -32,8 +32,9 @@ D-Scans and more in [Alliance Auth].
       * [Add the App to Alliance Auth](#add-the-app-to-alliance-auth)
       * [Add the Scheduled Task](#add-the-scheduled-task)
       * [(Optional) Allow Public Views](#optional-allow-public-views)
-    * [Step 4: Finalizing the Installation](#step-4-finalizing-the-installation)
-    * [Step 5: Update Your Webserver Configuration](#step-5-update-your-webserver-configuration)
+    * [Step 4: Preload Eve Universe Data](#step-4-preload-eve-universe-data)
+    * [Step 5: Finalizing the Installation](#step-5-finalizing-the-installation)
+    * [Step 6: Update Your Webserver Configuration](#step-6-update-your-webserver-configuration)
       * [Apache 2](#apache-2)
       * [Nginx](#nginx)
   * [Settings](#settings)
@@ -82,6 +83,18 @@ See [Settings](#settings) section for details.
 
 ## Installation
 
+**Important**: Please make sure you meet all preconditions before you proceed:
+
+- AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
+  already, please install it first before proceeding. (see the official
+  [Alliance Auth installation guide] for details)
+- AA Intel Tool needs at least **Alliance Auth v3.6.1**. Please make sure to meet this
+  condition _before_ installing this app, otherwise an update to Alliance Auth will
+  be pulled in unsupervised.
+- AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
+  before continuing.
+
+
 ### Step 1: Install the Package
 
 Make sure you're in the virtual environment (venv) of your Alliance Auth
@@ -98,10 +111,13 @@ pip install aa-intel-tool
 
 This is fairly simple, configure your AA settings (`local.py`) as follows:
 
-- Add `aa_intel_tool` to the list of `INSTALLED_APPS`
+- Add `eveuniverse` (if not already done so for a different app) and `aa_intel_tool` to
+  the list of `INSTALLED_APPS`
+-
   ```python
   # Add any additional apps to this list.
   INSTALLED_APPS += [
+      "eveuniverse",
       "aa_intel_tool",  # https://github.com/ppfeufer/aa-intel-tool
   ]
   ```
@@ -144,7 +160,17 @@ APPS_WITH_PUBLIC_VIEWS = [
 > might not yet have this list in your `local.py`.
 
 
-### Step 4: Finalizing the Installation
+### Step 4: Preload Eve Universe Data
+
+AA Intel Tool utilizes the EveUniverse module, so it doesn't need to ask ESI for ship
+information. To set this up, you now need to run the following command.
+
+```shell
+python manage.py aa_intel_tool_load_ship_types
+```
+
+
+### Step 5: Finalizing the Installation
 
 Run static files collection and migrations.
 
@@ -156,7 +182,7 @@ python manage.py migrate
 Restart your supervisor services for Auth.
 
 
-### Step 5: Update Your Webserver Configuration
+### Step 6: Update Your Webserver Configuration
 
 By default, webservers have a timout of about 30 seconds for requests. So we have to
 tweak that a little bit, since parsing intel data can take a while, and we don't want
@@ -236,7 +262,8 @@ Please make sure to read the [Contribution Guidelines]
 
 <!-- Hyperlinks -->
 [Alliance Auth]: https://gitlab.com/allianceauth/allianceauth
-[AA installation guide]: https://allianceauth.readthedocs.io/en/latest/installation/allianceauth.html
+[Alliance Auth installation guide]: https://allianceauth.readthedocs.io/en/latest/installation/allianceauth.html
+[Eve Universe]: https://gitlab.com/ErikKalkoken/django-eveuniverse "Eve Universe"
 [CHANGELOG.md]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CHANGELOG.md
 [Contribution Guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md
 [AA Intel Tool on Pypi]: https://pypi.org/project/aa-intel-tool/
