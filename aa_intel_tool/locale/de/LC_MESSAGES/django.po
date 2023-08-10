@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-10 20:47+0200\n"
-"PO-Revision-Date: 2023-08-09 15:40+0000\n"
+"PO-Revision-Date: 2023-08-10 19:17+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/de/>\n"
+"Language-Team: German <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,29 +83,27 @@ msgstr "Allianzliste"
 
 #: models.py:114
 msgid "Ship types"
-msgstr ""
+msgstr "Schiffstypen"
 
 #: models.py:115
-#, fuzzy
-#| msgid "Pilot list"
 msgid "Ship list"
-msgstr "Pilotenliste"
+msgstr "Schiffsliste"
 
 #: models.py:116
 msgid "Ship list (on grid)"
-msgstr ""
+msgstr "Schiffsliste (On Grid)"
 
 #: models.py:117
 msgid "Ship list (off grid)"
-msgstr ""
+msgstr "Schiffsliste (Off Grid)"
 
 #: models.py:118
 msgid "Structures (on grid)"
-msgstr ""
+msgstr "Strukturen (On Grid)"
 
 #: models.py:119
 msgid "Deployables (on grid)"
-msgstr ""
+msgstr "Stationierbare Strukturen (On Grid)"
 
 #: models.py:128
 msgid "Scan"
@@ -125,15 +123,15 @@ msgstr "Scandaten"
 
 #: parser/general.py:78
 msgid "No suitable parser found …"
-msgstr ""
+msgstr "Kein passender Parser gefunden …"
 
 #: parser/general.py:80
 msgid "No data to parse …"
-msgstr ""
+msgstr "Keine Daten zum Parsen …"
 
 #: parser/module/chatlist.py:211
 msgid "The chat list module is currently disabled."
-msgstr ""
+msgstr "Das Chatlistenmodul ist derzeit deaktiviert."
 
 #: parser/module/chatlist.py:228
 #, python-brace-format
@@ -153,22 +151,24 @@ msgstr[1] ""
 #: parser/module/chatlist.py:252
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr ""
+"Beim Abrufen der Charakterinformationen von ESI ist ein Fehler aufgetreten."
 
 #: parser/module/chatlist.py:264
 msgid "Character unknown to ESI."
-msgstr ""
+msgstr "Charakter ist nicht in ESI."
 
 #: parser/module/dscan.py:136
 msgid "The D-Scan module is currently disabled."
-msgstr ""
+msgstr "Das D-Scan-Modul ist derzeit deaktiviert."
 
 #: parser/module/fleetcomp.py:40
 msgid "The fleet composition module is currently disabled."
-msgstr ""
+msgstr "Das Flottenzusammensetzungsmodul ist derzeit deaktiviert."
 
 #: parser/module/fleetcomp.py:43
 msgid "The fleet composition module is not yet finished, be patient …"
 msgstr ""
+"Das Flottenzusammensetzungsmodul ist noch nicht fertig, hab etwas Geduld …"
 
 #: templates/aa_intel_tool/base.html:6
 #: templates/aa_intel_tool/views/index.html:7
@@ -379,15 +379,15 @@ msgstr "Corporation"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:16
 msgid "Ship Class"
-msgstr ""
+msgstr "Schiffsklasse"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:6
 msgid "Ship Types"
-msgstr ""
+msgstr "Schiffstypen"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:16
 msgid "Ship Type"
-msgstr ""
+msgstr "Schiffstyp"
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve Time)"
@@ -408,37 +408,31 @@ msgstr ""
 
 #: templates/aa_intel_tool/views/scan/chatlist.html:8
 msgid "Chat List Scan » Intel Tool"
-msgstr ""
+msgstr "Chat List Scan » Intel Tool"
 
 #: templates/aa_intel_tool/views/scan/chatlist.html:12
 msgid "Chat Scan"
 msgstr "Chat-Scan"
 
 #: templates/aa_intel_tool/views/scan/dscan.html:8
-#, fuzzy
-#| msgid "Intel Tool"
 msgid "D-Scan » Intel Tool"
-msgstr "Intel Tool"
+msgstr "D-Scan » Intel Tool"
 
 #: templates/aa_intel_tool/views/scan/dscan.html:21
 msgid "All Ships"
-msgstr ""
+msgstr "Alle Schiffe"
 
 #: templates/aa_intel_tool/views/scan/dscan.html:22
 msgid "On Grid"
-msgstr ""
+msgstr "On Grid"
 
 #: templates/aa_intel_tool/views/scan/dscan.html:23
 msgid "Off Grid"
-msgstr ""
+msgstr "Off Grid"
 
 #: views/general.py:39
-#, fuzzy
-#| msgid "The provided data could not be parsed. Please check and try again."
 msgid "The provided data could not be parsed."
-msgstr ""
-"Die bereitgestellten Daten konnten nicht analysiert werden. Bitte überprüfe "
-"diese und versuche es erneut."
+msgstr "Die bereitgestellten Daten konnten nicht analysiert werden."
 
 #: views/general.py:82 views/general.py:113
 msgid "The scan you were looking for could not be found."
