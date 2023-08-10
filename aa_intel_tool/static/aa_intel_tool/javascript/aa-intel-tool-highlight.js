@@ -13,7 +13,7 @@ const removeCorporationStickyComplete = (element) => {
     let removeCorporationSticky = true;
 
     $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        if ($(el).hasClass('dataHighlightSticky')) {
+        if ($(el).hasClass('aa-intel-highlight-sticky')) {
             removeCorporationSticky = false;
         }
     });
@@ -32,7 +32,7 @@ const removeAllianceStickyComplete = (element) => {
     let removeAllianceSticky = true;
 
     $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        if ($(el).hasClass('dataHighlightSticky')) {
+        if ($(el).hasClass('aa-intel-highlight-sticky')) {
             removeAllianceSticky = false;
         }
     });
@@ -47,9 +47,8 @@ const removeAllianceStickyComplete = (element) => {
  * @param element
  */
 const allianceTableAddStickyByAllianceId = (element) => {
-    $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .addClass('aa-intel-highlight-sticky');
 };
 
 
@@ -59,9 +58,8 @@ const allianceTableAddStickyByAllianceId = (element) => {
  * @param element
  */
 const allianceTableAddHighlightByAllianceId = (element) => {
-    $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlight');
-    });
+    $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .addClass('aa-intel-highlight');
 };
 
 
@@ -71,9 +69,8 @@ const allianceTableAddHighlightByAllianceId = (element) => {
  * @param element
  */
 const allianceTableRemoveStickyByAllianceId = (element) => {
-    $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .removeClass('aa-intel-highlight-sticky');
 };
 
 
@@ -83,9 +80,8 @@ const allianceTableRemoveStickyByAllianceId = (element) => {
  * @param element
  */
 const allianceTableRemoveHighlightByAllianceId = (element) => {
-    $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlight');
-    });
+    $('table.aa-intel-alliance-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .removeClass('aa-intel-highlight');
 };
 
 
@@ -95,9 +91,8 @@ const allianceTableRemoveHighlightByAllianceId = (element) => {
  * @param element
  */
 const corporationTableAddStickyByCorporationId = (element) => {
-    $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]')
+        .addClass('aa-intel-highlight-sticky');
 };
 
 
@@ -107,9 +102,8 @@ const corporationTableAddStickyByCorporationId = (element) => {
  * @param element
  */
 const corporationTableAddHighlightByCorporationId = (element) => {
-    $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlight');
-    });
+    $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]')
+        .addClass('aa-intel-highlight');
 };
 
 
@@ -119,9 +113,8 @@ const corporationTableAddHighlightByCorporationId = (element) => {
  * @param element
  */
 const corporationTableAddStickyByAllianceId = (element) => {
-    $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .addClass('aa-intel-highlight-sticky');
 };
 
 
@@ -131,9 +124,8 @@ const corporationTableAddStickyByAllianceId = (element) => {
  * @param element
  */
 const corporationTableAddHighlightByAllianceId = (element) => {
-    $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlight');
-    });
+    $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .addClass('aa-intel-highlight');
 };
 
 
@@ -143,9 +135,8 @@ const corporationTableAddHighlightByAllianceId = (element) => {
  * @param element
  */
 const corporationTableRemoveStickyByCorporationId = (element) => {
-    $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]')
+        .removeClass('aa-intel-highlight-sticky');
 };
 
 
@@ -155,9 +146,8 @@ const corporationTableRemoveStickyByCorporationId = (element) => {
  * @param element
  */
 const corporationTableRemoveHighlightByCorporationId = (element) => {
-    $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlight');
-    });
+    $('table.aa-intel-corporation-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]')
+        .removeClass('aa-intel-highlight');
 };
 
 
@@ -167,9 +157,8 @@ const corporationTableRemoveHighlightByCorporationId = (element) => {
  * @param element
  */
 const corporationTableRemoveStickyByAllianceId = (element) => {
-    $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .removeClass('aa-intel-highlight-sticky');
 };
 
 
@@ -179,9 +168,8 @@ const corporationTableRemoveStickyByAllianceId = (element) => {
  * @param element
  */
 const corporationTableRemoveHighlightByAllianceId = (element) => {
-    $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlight');
-    });
+    $('table.aa-intel-corporation-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .removeClass('aa-intel-highlight');
 };
 
 
@@ -191,9 +179,8 @@ const corporationTableRemoveHighlightByAllianceId = (element) => {
  * @param element
  */
 const pilotTableAddStickyByCorporationId = (element) => {
-    $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]')
+        .addClass('aa-intel-highlight-sticky');
 };
 
 
@@ -203,9 +190,8 @@ const pilotTableAddStickyByCorporationId = (element) => {
  * @param element
  */
 const pilotTableAddHighlightByCorporationId = (element) => {
-    $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlight');
-    });
+    $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]')
+        .addClass('aa-intel-highlight');
 };
 
 
@@ -215,9 +201,8 @@ const pilotTableAddHighlightByCorporationId = (element) => {
  * @param element
  */
 const pilotTableAddStickyByAllianceId = (element) => {
-    $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .addClass('aa-intel-highlight-sticky');
 };
 
 
@@ -227,9 +212,8 @@ const pilotTableAddStickyByAllianceId = (element) => {
  * @param element
  */
 const pilotTableAddHighlightByAllianceId = (element) => {
-    $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).addClass('dataHighlight');
-    });
+    $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .addClass('aa-intel-highlight');
 };
 
 
@@ -239,9 +223,8 @@ const pilotTableAddHighlightByAllianceId = (element) => {
  * @param element
  */
 const pilotTableRemoveStickyByCorporationId = (element) => {
-    $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]')
+        .removeClass('aa-intel-highlight-sticky');
 };
 
 
@@ -251,9 +234,8 @@ const pilotTableRemoveStickyByCorporationId = (element) => {
  * @param element
  */
 const pilotTableRemoveHighlightByCorporationId = (element) => {
-    $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlight');
-    });
+    $('table.aa-intel-pilot-participation-list tr[data-corporation-id="' + element.data('corporationId') + '"]')
+        .removeClass('aa-intel-highlight');
 };
 
 
@@ -263,9 +245,8 @@ const pilotTableRemoveHighlightByCorporationId = (element) => {
  * @param element
  */
 const pilotTableRemoveStickyByAllianceId = (element) => {
-    $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlightSticky');
-    });
+    $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .removeClass('aa-intel-highlight-sticky');
 };
 
 
@@ -275,9 +256,8 @@ const pilotTableRemoveStickyByAllianceId = (element) => {
  * @param element
  */
 const pilotTableRemoveHighlightByAllianceId = (element) => {
-    $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]').each((i, el) => {
-        $(el).removeClass('dataHighlight');
-    });
+    $('table.aa-intel-pilot-participation-list tr[data-alliance-id="' + element.data('allianceId') + '"]')
+        .removeClass('aa-intel-highlight');
 };
 
 
@@ -288,7 +268,7 @@ const pilotTableRemoveHighlightByAllianceId = (element) => {
  * @param table_row {element} The table row that is to be changed
  */
 const addHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
-    table_row.addClass('dataHighlight');
+    table_row.addClass('aa-intel-highlight');
 
     if (by_table === 'alliance') {
         corporationTableAddHighlightByAllianceId(table_row);
@@ -314,7 +294,7 @@ const addHightlight = (by_table, table_row) => { // eslint-disable-line no-unuse
  * @param table_row {element} The table row that is to be changed
  */
 const addSticky = (by_table, table_row) => {
-    table_row.addClass('dataHighlightSticky');
+    table_row.addClass('aa-intel-highlight-sticky');
 
     if (by_table === 'alliance') {
         corporationTableAddStickyByAllianceId(table_row);
@@ -340,7 +320,7 @@ const addSticky = (by_table, table_row) => {
  * @param table_row {element} The table row that is to be changed
  */
 const removeHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
-    table_row.removeClass('dataHighlight');
+    table_row.removeClass('aa-intel-highlight');
 
     if (by_table === 'alliance') {
         corporationTableRemoveHighlightByAllianceId(table_row);
@@ -366,7 +346,7 @@ const removeHightlight = (by_table, table_row) => { // eslint-disable-line no-un
  * @param table_row {element} The table row that is to be changed
  */
 const removeSticky = (by_table, table_row) => {
-    table_row.removeClass('dataHighlightSticky');
+    table_row.removeClass('aa-intel-highlight-sticky');
 
     if (by_table === 'alliance') {
         corporationTableRemoveStickyByAllianceId(table_row);
@@ -400,7 +380,7 @@ const removeSticky = (by_table, table_row) => {
  * @param table_row {element} The table row that is to be changed
  */
 const changeStickyHighlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
-    if (table_row.hasClass('dataHighlightSticky')) {
+    if (table_row.hasClass('aa-intel-highlight-sticky')) {
         removeSticky(by_table, table_row);
     } else {
         addSticky(by_table, table_row);

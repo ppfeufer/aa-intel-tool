@@ -86,13 +86,13 @@
 /* Highlighting
 ------------------------------------------------------------------------------------- */
 @media all {
-    .aa-intel-tool .dataHighlight,
-    .aa-intel-tool .dataHighlightSticky {
+    .aa-intel-tool .aa-intel-highlight,
+    .aa-intel-tool .aa-intel-highlight-sticky {
         background-color: rgba(255 255 255 / 50%);
     }
 
-    .aa-intel-tool .dataHighlight td:first-child,
-    .aa-intel-tool .dataHighlightSticky td:first-child {
+    .aa-intel-tool .aa-intel-highlight td:first-child,
+    .aa-intel-tool .aa-intel-highlight-sticky td:first-child {
         border-left: 1px solid rgb(255 0 0);
         margin-left: -11px;
         padding-left: 4px;
@@ -136,14 +136,14 @@
     }
 
     .aa-intel-tool .dataTable tbody tr:hover,
-    .aa-intel-tool .dataTable tbody tr.dataHighlight,
-    .aa-intel-tool .dataTable tbody tr.dataHighlightSticky {
+    .aa-intel-tool .dataTable tbody tr.aa-intel-highlight,
+    .aa-intel-tool .dataTable tbody tr.aa-intel-highlight-sticky {
         background-color: rgba(198 200 200 / 50%);
     }
 
     .template-dark-mode .aa-intel-tool .dataTable tbody tr:hover,
-    .template-dark-mode .aa-intel-tool .dataTable tbody tr.dataHighlight,
-    .template-dark-mode .aa-intel-tool .dataTable tbody tr.dataHighlightSticky {
+    .template-dark-mode .aa-intel-tool .dataTable tbody tr.aa-intel-highlight,
+    .template-dark-mode .aa-intel-tool .dataTable tbody tr.aa-intel-highlight-sticky {
         background-color: rgba(236 240 241 / 10%);
     }
 

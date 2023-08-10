@@ -102,20 +102,17 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).addClass('dataHighlight');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .addClass('aa-intel-highlight');
             }).on('mouseleave', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).removeClass('dataHighlight');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .removeClass('aa-intel-highlight');
             });
 
             // Sticky
             $(row).on('click', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).toggleClass('dataHighlightSticky');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .toggleClass('aa-intel-highlight-sticky');
             }).on('click', '.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
@@ -185,20 +182,17 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).addClass('dataHighlight');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .addClass('aa-intel-highlight');
             }).on('mouseleave', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).removeClass('dataHighlight');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .removeClass('aa-intel-highlight');
             });
 
             // Sticky
             $(row).on('click', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).toggleClass('dataHighlightSticky');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .toggleClass('aa-intel-highlight-sticky');
             }).on('click', '.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
@@ -268,20 +262,17 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).addClass('dataHighlight');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .addClass('aa-intel-highlight');
             }).on('mouseleave', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).removeClass('dataHighlight');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .removeClass('aa-intel-highlight');
             });
 
             // Sticky
             $(row).on('click', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`).each((i, el) => {
-                    $(el).toggleClass('dataHighlightSticky');
-                });
+                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+                    .toggleClass('aa-intel-highlight-sticky');
             }).on('click', '.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
@@ -330,20 +321,17 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`).each((i, el) => {
-                    $(el).addClass('dataHighlight');
-                });
+                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
+                    .addClass('aa-intel-highlight');
             }).on('mouseleave', () => {
-                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`).each((i, el) => {
-                    $(el).removeClass('dataHighlight');
-                });
+                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
+                    .removeClass('aa-intel-highlight');
             });
 
             // Sticky
             $(row).on('click', () => {
-                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`).each((i, el) => {
-                    $(el).toggleClass('dataHighlightSticky');
-                });
+                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
+                    .toggleClass('aa-intel-highlight-sticky');
             }).on('click', '.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
