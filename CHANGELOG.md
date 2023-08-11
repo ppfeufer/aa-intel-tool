@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Clearer error messages
 - Constant `SUPPORTED_INTEL_TYPES` extended
 - pre-commit config cleaned up
+- Pre-load command renamed
 
 
 ## [0.0.1-alpha.3] - 2023-08-11

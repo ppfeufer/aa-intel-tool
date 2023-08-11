@@ -167,7 +167,7 @@ AA Intel Tool utilizes the EveUniverse module, so it doesn't need to ask ESI for
 information. To set this up, you now need to run the following command.
 
 ```shell
-python manage.py aa_intel_tool_load_ship_types
+python manage.py aa_intel_tool_load_eve_types
 ```
 
 
