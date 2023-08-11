@@ -18,6 +18,7 @@ from app_utils.logging import LoggerAddTag
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
+from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.parser.module import chatlist, dscan, fleetcomp
 
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
@@ -43,7 +44,7 @@ def check_intel_type(scan_data: list) -> Optional[str]:
     return None
 
 
-def parse_intel(form_data: str) -> tuple:
+def parse_intel(form_data: str) -> str:
     """
     Parse intel
 
@@ -65,16 +66,18 @@ def parse_intel(form_data: str) -> tuple:
         }
 
         if intel_type in available_parser:
-            new_scan, message = available_parser[intel_type](scan_data=scan_data)
+            try:
+                new_scan = available_parser[intel_type](scan_data=scan_data)
+            except ParserError as exc:
+                # Re-raise the Exception
+                raise ParserError(message=exc.message) from exc
 
-            if new_scan is not None:
-                new_scan.raw_data = form_data
-                new_scan.save()
+            # if new_scan is not None:
+            new_scan.raw_data = form_data
+            new_scan.save()
 
-                return new_scan.hash, message
+            return new_scan.hash
 
-            return None, message
+        raise ParserError(message=_("No suitable parser found …"))
 
-        return None, _("No suitable parser found …")
-
-    return None, _("No data to parse …")
+    raise ParserError(message=_("No data to parse …"))

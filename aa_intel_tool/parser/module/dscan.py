@@ -22,6 +22,7 @@ from eveuniverse.models import EveType
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
+from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
 
@@ -123,7 +124,7 @@ def _parse_ship_information(eve_types: QuerySet, counter: dict) -> dict:
     }
 
 
-def parse(scan_data: list) -> tuple:  # pylint: disable=unused-argument
+def parse(scan_data: list) -> Scan:
     """
     Parse D-Scan
 
@@ -195,9 +196,6 @@ def parse(scan_data: list) -> tuple:  # pylint: disable=unused-argument
             },
         }
 
-        return (
-            safe_scan_to_db(scan_type=Scan.Type.DSCAN, parsed_data=parsed_data),
-            "",
-        )
+        return safe_scan_to_db(scan_type=Scan.Type.DSCAN, parsed_data=parsed_data)
 
-    return None, message
+    raise ParserError(message=message)
