@@ -4,7 +4,6 @@ General parser functions
 
 # Standard Library
 import re
-from typing import Optional
 
 # Django
 from django.utils.translation import gettext_lazy as _
@@ -24,7 +23,7 @@ from aa_intel_tool.parser.module import chatlist, dscan, fleetcomp
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
-def check_intel_type(scan_data: list) -> Optional[str]:
+def check_intel_type(scan_data: list) -> str:
     """
     Check which intel type we have
 
@@ -41,7 +40,7 @@ def check_intel_type(scan_data: list) -> Optional[str]:
         ):
             return intel_type["parser"]
 
-    return None
+    raise ParserError(message=_("No suitable parser found …"))
 
 
 def parse_intel(form_data: str) -> str:
@@ -57,7 +56,10 @@ def parse_intel(form_data: str) -> str:
     scan_data = form_data.splitlines()
 
     if len(scan_data) > 0:
-        intel_type = check_intel_type(scan_data=scan_data)
+        try:
+            intel_type = check_intel_type(scan_data=scan_data)
+        except ParserError as exc:
+            raise ParserError(message=exc.message) from exc
 
         available_parser = {
             "dscan": dscan.parse,

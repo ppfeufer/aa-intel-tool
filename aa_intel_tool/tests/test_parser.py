@@ -71,8 +71,8 @@ class TestParserGeneral(TestCase):
 
     def test_check_intel_type_none(self):
         """
-        Test should return 'None' as the expected intel type
-        This happens when ninvalid data has been posted
+        Test should throw a ParserError as the expected intel type
+        This happens when invalid data has been posted
 
         :return:
         :rtype:
@@ -81,10 +81,16 @@ class TestParserGeneral(TestCase):
         form_data = load_chatscan_faulty_txt()
         scan_data = str(form_data).splitlines()
 
-        intel_type = check_intel_type(scan_data=scan_data)
-        expected_intel_type = None
+        expected_exception = ParserError
+        expected_message = "A parser error occurred » No suitable parser found …"
 
-        self.assertEqual(first=intel_type, second=expected_intel_type)
+        with self.assertRaises(ParserError):
+            check_intel_type(scan_data=scan_data)
+
+        with self.assertRaisesMessage(
+            expected_exception=expected_exception, expected_message=expected_message
+        ):
+            check_intel_type(scan_data=scan_data)
 
     def test_parse_intel_with_invalid_form_data(self):
         """
