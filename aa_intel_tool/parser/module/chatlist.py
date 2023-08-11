@@ -2,6 +2,9 @@
 Chat list parser
 """
 
+# Standard Library
+from typing import Union
+
 # Django
 from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy as _
@@ -19,6 +22,7 @@ from eveuniverse.models import EveEntity
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
+from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.helper.eve_character import get_or_create_character
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
@@ -196,7 +200,7 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
     }
 
 
-def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
+def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
     """
     Parse chat list
 
@@ -224,10 +228,12 @@ def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
                 )
             )
 
-            return None, ngettext(
-                singular=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
-                plural=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
-                number=max_allowed_pilots,
+            raise ParserError(
+                message=ngettext(
+                    singular=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
+                    plural=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
+                    number=max_allowed_pilots,
+                )
             )
 
         # Check if we have to bother Eve Universe or if we have all characters already
@@ -247,12 +253,12 @@ def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
                     .filter(category=EveEntity.CATEGORY_CHARACTER)
                     .values_list("id", flat=True)
                 )
-            except EveEntity.DoesNotExist:  # pylint: disable=no-member
+            except EveEntity.DoesNotExist as exc:  # pylint: disable=no-member
                 message = _(
                     "Something went wrong while fetching the character information from ESI."
                 )
 
-                return None, message
+                raise ParserError(message=message) from exc
 
             logger.debug(
                 msg=f"Got {len(eve_character_ids)} ID(s) back from Eve Universe …"
@@ -263,7 +269,7 @@ def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
             if len(eve_character_ids) == 0:
                 message = _("Character unknown to ESI.")
 
-                return None, message
+                raise ParserError(message=message)
 
             eve_characters = get_or_create_character(character_ids=eve_character_ids)
 
@@ -290,11 +296,8 @@ def parse(scan_data: list, safe_to_db: bool = True) -> tuple:
         }
 
         if safe_to_db is False:
-            return parsed_data, ""
+            return parsed_data
 
-        return (
-            safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data),
-            "",
-        )
+        return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
 
-    return None, message
+    raise ParserError(message=message)

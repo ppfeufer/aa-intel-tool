@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [In Development] - Unreleased
 
 
+## [0.0.1-alpha.3] - 2023-08-11
+
+### Changed
+
+- Raise exceptions instead of returning `None` for our parser
+- Deactivate no yet implemented module (fleet composition) by default
+
+
 ## [0.0.1-alpha.2] - 2023-08-10
 
 ### Added

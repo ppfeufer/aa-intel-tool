@@ -11,6 +11,7 @@ from django.utils.translation import gettext_lazy as _
 
 # AA Intel Tool
 from aa_intel_tool.app_settings import AppSettings
+from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.form import IntelForm
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.general import parse_intel
@@ -30,20 +31,25 @@ def index(request: WSGIRequest) -> HttpResponse:
 
         # Check whether it's valid:
         if form.is_valid():
+            exception_caught = False
             scan_data = form.cleaned_data["eve_intel"]
 
-            parsed_intel, message = parse_intel(form_data=scan_data)
+            try:
+                parsed_intel = parse_intel(form_data=scan_data)
 
-            if parsed_intel is None:
-                errormessage = (
-                    _("The provided data could not be parsed.") + f" ({message})"
-                )
+            # Catching our own parser exceptions
+            except ParserError as exc:
+                exception_caught = True
+                errormessage = _("The provided data could not be parsed.") + f" ({exc})"
+                messages.error(request=request, message=errormessage)
 
-                messages.error(
-                    request=request,
-                    message=errormessage,
-                )
+            # Catching every other exception, we can't think of (hopefully)
+            except Exception as exc:  # pylint: disable=broad-exception-caught
+                exception_caught = True
+                errormessage = _("Something unexpected happened.") + f" ({exc})"
+                messages.error(request=request, message=errormessage)
 
+            if exception_caught:
                 return redirect(to="aa_intel_tool:intel_tool_index")
 
             return redirect(to="aa_intel_tool:intel_tool_scan", scan_hash=parsed_intel)
@@ -53,7 +59,6 @@ def index(request: WSGIRequest) -> HttpResponse:
     # If a GET (or any other method) we'll create a blank form
     else:
         form = IntelForm()
-
         context = {"form": form, "app_settings": AppSettings}
 
     return render(
