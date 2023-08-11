@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [In Development] - Unreleased
 
 
+## [0.0.1-alpha.4] - 2023-08-11
+
+### Changed
+
+- Moved regex patterns to their own dedicated constant `REGEX_PATTERN`
+- Clearer error messages
+- Constant `SUPPORTED_INTEL_TYPES` extended
+- pre-commit config cleaned up
+
+
 ## [0.0.1-alpha.3] - 2023-08-11
 
 ### Changed
