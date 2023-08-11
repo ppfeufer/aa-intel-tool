@@ -86,6 +86,6 @@ def parse(scan_data: list) -> Scan:
             "alliances": pilotlist["alliances"],
         }
 
-        return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
+        return safe_scan_to_db(scan_type=Scan.Type.FLEETCOMP, parsed_data=parsed_data)
 
     raise ParserError(message=message)
