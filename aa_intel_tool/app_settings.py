@@ -26,7 +26,9 @@ class AppSettings:  # pylint: disable=too-few-public-methods
     # Enable or disable the fleet composition module
     # Enabled by default
     INTELTOOL_ENABLE_MODULE_FLEETCOMP = clean_setting(
-        name="INTELTOOL_ENABLE_MODULE_FLEETCOMP", default_value=True, required_type=bool
+        name="INTELTOOL_ENABLE_MODULE_FLEETCOMP",
+        default_value=False,
+        required_type=bool,
     )
 
     # Scan retention time
