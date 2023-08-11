@@ -6,6 +6,7 @@ Testing the parsers
 from django.test import TestCase
 
 # AA Intel Tool
+from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.parser.general import check_intel_type, parse_intel
 from aa_intel_tool.tests.utils import (
     load_chatscan_faulty_txt,
@@ -87,7 +88,7 @@ class TestParserGeneral(TestCase):
 
     def test_parse_intel_with_invalid_form_data(self):
         """
-        Test should return 'None' as parsed intel data for invalid form data
+        Test should return a ParserError as parsed intel data for invalid form data
 
         :return:
         :rtype:
@@ -95,16 +96,20 @@ class TestParserGeneral(TestCase):
 
         form_data = load_chatscan_faulty_txt()
 
-        parsed_intel, message = parse_intel(form_data=form_data)
-        expected_intel_data = None
-        expected_message = "No suitable parser found …"
+        expected_exception = ParserError
+        expected_message = "A parser error occurred » No suitable parser found …"
 
-        self.assertEqual(first=parsed_intel, second=expected_intel_data)
-        self.assertEqual(first=message, second=expected_message)
+        with self.assertRaises(ParserError):
+            parse_intel(form_data=form_data)
+
+        with self.assertRaisesMessage(
+            expected_exception=expected_exception, expected_message=expected_message
+        ):
+            parse_intel(form_data=form_data)
 
     def test_parse_intel_empty_form_data(self):
         """
-        Test should return 'None' as parsed intel data for empty form data
+        Test should throw a ParserError as parsed intel data for empty form data
 
         :return:
         :rtype:
@@ -112,9 +117,13 @@ class TestParserGeneral(TestCase):
 
         form_data = ""
 
-        parsed_intel, message = parse_intel(form_data=form_data)
-        expected_intel_data = None
-        expected_message = "No data to parse …"
+        expected_exception = ParserError
+        expected_message = "A parser error occurred » No data to parse …"
 
-        self.assertEqual(first=parsed_intel, second=expected_intel_data)
-        self.assertEqual(first=message, second=expected_message)
+        with self.assertRaises(expected_exception=expected_exception):
+            parse_intel(form_data=form_data)
+
+        with self.assertRaisesMessage(
+            expected_exception=expected_exception, expected_message=expected_message
+        ):
+            parse_intel(form_data=form_data)
