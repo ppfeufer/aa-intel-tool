@@ -19,15 +19,15 @@ from app_utils.logging import LoggerAddTag
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
-
-# from aa_intel_tool.models import Scan
-# from aa_intel_tool.parser.helper.db import safe_scan_to_db
+from aa_intel_tool.exceptions import ParserError
+from aa_intel_tool.models import Scan
+from aa_intel_tool.parser.helper.db import safe_scan_to_db
 from aa_intel_tool.parser.module.chatlist import parse as parse_pilots
 
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
-def parse(scan_data: list) -> tuple:
+def parse(scan_data: list) -> Scan:
     """
     Parse chat list
 
@@ -39,8 +39,10 @@ def parse(scan_data: list) -> tuple:
 
     message = _("The fleet composition module is currently disabled.")
 
-    if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
-        return None, _("The fleet composition module is not yet finished, be patient …")
+    if AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP is True:
+        raise ParserError(
+            message=_("The fleet composition module is not yet finished, be patient …")
+        )
 
         logger.debug(msg=scan_data)
 
@@ -74,18 +76,16 @@ def parse(scan_data: list) -> tuple:
 
         logger.debug(msg=pilotlist)
 
-        # parsed_data = {
-        #     "general_information": None,
-        #     "ship_classes": None,
-        #     "ship_types": None,
-        #     "composition": None,
-        #     "pilots": pilotlist["pilots"] if pilotlist is not None else None,
-        #     "corporations": pilotlist["corporations"],
-        #     "alliances": pilotlist["alliances"],
-        # }
+        parsed_data = {
+            "general_information": None,
+            "ship_classes": None,
+            "ship_types": None,
+            "composition": None,
+            "pilots": pilotlist["pilots"] if pilotlist is not None else None,
+            "corporations": pilotlist["corporations"],
+            "alliances": pilotlist["alliances"],
+        }
 
-        return None
+        return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
 
-        # return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
-
-    return None, message
+    raise ParserError(message=message)
