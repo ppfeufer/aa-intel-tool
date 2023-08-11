@@ -18,7 +18,6 @@ from app_utils.logging import LoggerAddTag
 from aa_intel_tool import __title__
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
 from aa_intel_tool.exceptions import ParserError
-from aa_intel_tool.parser.module import chatlist, dscan, fleetcomp
 
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
@@ -33,14 +32,20 @@ def check_intel_type(scan_data: list) -> str:
     :rtype:
     """
 
-    for intel_type in SUPPORTED_INTEL_TYPES:
+    for intel_type, intel_type_attributes in SUPPORTED_INTEL_TYPES.items():
         if all(
-            re.match(pattern=intel_type["pattern"], string=string)
+            re.match(pattern=intel_type_attributes["pattern"], string=string)
             for string in scan_data
         ):
-            return intel_type["parser"]
+            logger.debug(msg=f"Detected intel type: {intel_type_attributes['name']}")
 
-    raise ParserError(message=_("No suitable parser found …"))
+            return intel_type
+
+    raise ParserError(
+        message=_(
+            "No suitable parser found. Input is no supported intel type or malformed …"
+        )
+    )
 
 
 def parse_intel(form_data: str) -> str:
@@ -61,25 +66,15 @@ def parse_intel(form_data: str) -> str:
         except ParserError as exc:
             raise ParserError(message=exc.message) from exc
 
-        available_parser = {
-            "dscan": dscan.parse,
-            "chatlist": chatlist.parse,
-            "fleetcomp": fleetcomp.parse,
-        }
+        try:
+            new_scan = SUPPORTED_INTEL_TYPES[intel_type]["parser"](scan_data=scan_data)
+        except ParserError as exc:
+            # Re-raise the Exception
+            raise ParserError(message=exc.message) from exc
 
-        if intel_type in available_parser:
-            try:
-                new_scan = available_parser[intel_type](scan_data=scan_data)
-            except ParserError as exc:
-                # Re-raise the Exception
-                raise ParserError(message=exc.message) from exc
+        new_scan.raw_data = form_data
+        new_scan.save()
 
-            # if new_scan is not None:
-            new_scan.raw_data = form_data
-            new_scan.save()
-
-            return new_scan.hash
-
-        raise ParserError(message=_("No suitable parser found …"))
+        return new_scan.hash
 
     raise ParserError(message=_("No data to parse …"))

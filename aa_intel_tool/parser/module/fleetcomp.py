@@ -29,7 +29,7 @@ logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__ti
 
 def parse(scan_data: list) -> Scan:
     """
-    Parse chat list
+    Parse fleet composition
 
     :param scan_data:
     :type scan_data:

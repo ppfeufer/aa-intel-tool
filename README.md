@@ -14,6 +14,7 @@
 
 [![Badge: Buy me a coffee]][ppfeufer on ko-fi]
 
+
 D-Scans and more in [Alliance Auth].
 
 
@@ -113,7 +114,7 @@ This is fairly simple, configure your AA settings (`local.py`) as follows:
 
 - Add `eveuniverse` (if not already done so for a different app) and `aa_intel_tool` to
   the list of `INSTALLED_APPS`
--
+
   ```python
   # Add any additional apps to this list.
   INSTALLED_APPS += [
@@ -166,7 +167,7 @@ AA Intel Tool utilizes the EveUniverse module, so it doesn't need to ask ESI for
 information. To set this up, you now need to run the following command.
 
 ```shell
-python manage.py aa_intel_tool_load_ship_types
+python manage.py aa_intel_tool_load_eve_types
 ```
 
 

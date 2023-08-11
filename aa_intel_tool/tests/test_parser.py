@@ -69,7 +69,7 @@ class TestParserGeneral(TestCase):
 
         self.assertEqual(first=intel_type, second=expected_intel_type)
 
-    def test_check_intel_type_none(self):
+    def test_check_intel_type_malformed_data(self):
         """
         Test should throw a ParserError as the expected intel type
         This happens when invalid data has been posted
@@ -82,7 +82,7 @@ class TestParserGeneral(TestCase):
         scan_data = str(form_data).splitlines()
 
         expected_exception = ParserError
-        expected_message = "A parser error occurred » No suitable parser found …"
+        expected_message = "A parser error occurred » No suitable parser found. Input is no supported intel type or malformed …"  # pylint: disable=line-too-long
 
         with self.assertRaises(ParserError):
             check_intel_type(scan_data=scan_data)
@@ -103,7 +103,7 @@ class TestParserGeneral(TestCase):
         form_data = load_chatscan_faulty_txt()
 
         expected_exception = ParserError
-        expected_message = "A parser error occurred » No suitable parser found …"
+        expected_message = "A parser error occurred » No suitable parser found. Input is no supported intel type or malformed …"  # pylint: disable=line-too-long
 
         with self.assertRaises(ParserError):
             parse_intel(form_data=form_data)
