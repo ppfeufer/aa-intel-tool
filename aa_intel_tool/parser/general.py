@@ -38,9 +38,11 @@ def check_intel_type(scan_data: list) -> str:
             re.match(pattern=intel_type["pattern"], string=string)
             for string in scan_data
         ):
+            logger.debug(msg=f"Detected intel type: {intel_type['name']}")
+
             return intel_type["parser"]
 
-    raise ParserError(message=_("No suitable parser found …"))
+    raise ParserError(message=_("No supported intel type or malformed input …"))
 
 
 def parse_intel(form_data: str) -> str:
