@@ -43,10 +43,12 @@ def index(request: WSGIRequest) -> HttpResponse:
                 errormessage = _("The provided data could not be parsed.") + f" ({exc})"
                 messages.error(request=request, message=errormessage)
 
-            # Catching every other exception, we can't think of (hopefully)
+            # Catching every other exception we can't think of (hopefully)
             except Exception as exc:  # pylint: disable=broad-exception-caught
                 exception_caught = True
-                errormessage = _("Something unexpected happened.") + f" ({exc})"
+                errormessage = (
+                    _("(System Error) Something unexpected happened.") + f" ({exc})"
+                )
                 messages.error(request=request, message=errormessage)
 
             if exception_caught:
