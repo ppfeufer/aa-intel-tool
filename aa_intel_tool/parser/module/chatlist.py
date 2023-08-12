@@ -237,9 +237,12 @@ def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
             )
 
         # Check if we have to bother Eve Universe or if we have all characters already
+        # Excluding corporation_id=1000001 (Doomheim) to force an update here …
         fetch_from_eveuniverse = False
         try:
-            eve_characters = EveCharacter.objects.filter(character_name__in=scan_data)
+            eve_characters = EveCharacter.objects.filter(
+                character_name__in=scan_data
+            ).exclude(corporation_id=1000001)
         except EveCharacter.DoesNotExist:  # pylint: disable=no-member
             fetch_from_eveuniverse = True
         else:
@@ -249,7 +252,7 @@ def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
         if fetch_from_eveuniverse:
             try:
                 eve_character_ids = (
-                    EveEntity.objects.fetch_by_names_esi(names=scan_data)
+                    EveEntity.objects.fetch_by_names_esi(names=scan_data, update=True)
                     .filter(category=EveEntity.CATEGORY_CHARACTER)
                     .values_list("id", flat=True)
                 )
