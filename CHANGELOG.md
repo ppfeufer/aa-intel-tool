@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [In Development] - Unreleased
 
 
+## [0.0.1-alpha.6] - 2023-08-12
+
+### Changed
+
+- Django admin page finished
+- Modal verbose names
+- Admin descriptions are now translatable
+
+
 ## [0.0.1-alpha.5] - 2023-08-12
 
 ### Fixed
