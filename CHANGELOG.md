@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [In Development] - Unreleased
 
 
+## [0.0.1-alpha.5] - 2023-08-12
+
+### Fixed
+
+- Dealing with re-used character names from biomassed characters years ago
+
+### Changed
+
+- Use the `EveCharacter` model functions to generate character portraits and alliance-
+  and corp logos
+
+
 ## [0.0.1-alpha.4] - 2023-08-11
 
 ### Changed
