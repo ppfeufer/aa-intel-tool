@@ -74,7 +74,7 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
     list_display = ("hash", "scan_type", "created")
     fields = ("_scan_type", "_raw_data")
 
-    @admin.display(description="Intel type")
+    @admin.display(description=_("Scan type"))
     def _scan_type(self, obj) -> str:
         """
         Add link to open the scan in a new browser tab
@@ -94,7 +94,7 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
             f'{intel_type} (<a href="{scan_link}" target="_blank" rel="noreferer noopener">{link_text}</a>)'
         )
 
-    @admin.display(description="RAW data")
+    @admin.display(description=_("RAW data"))
     def _raw_data(self, obj) -> str:
         """
         Format the output properly
