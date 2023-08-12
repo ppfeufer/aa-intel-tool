@@ -4,6 +4,11 @@ Django admin integration
 
 # Django
 from django.contrib import admin
+from django.utils import html, safestring
+from django.utils.translation import gettext_lazy as _
+
+# Alliance Auth (External Libs)
+from app_utils.urls import reverse_absolute
 
 # AA Intel Tool
 from aa_intel_tool.models import Scan
@@ -16,7 +21,8 @@ class BaseReadOnlyAdminMixin:
 
     actions = None  # Removes the default delete action.
 
-    def has_add_permission(self, request):  # pylint: disable=unused-argument
+    @staticmethod
+    def has_add_permission(request):  # pylint: disable=unused-argument
         """
         Has "add" permissions
 
@@ -28,9 +34,8 @@ class BaseReadOnlyAdminMixin:
 
         return False
 
-    def has_change_permission(
-        self, request, obj=None  # pylint: disable=unused-argument
-    ):
+    @staticmethod
+    def has_change_permission(request, obj=None):  # pylint: disable=unused-argument
         """
         Has "change" permissions
 
@@ -44,9 +49,8 @@ class BaseReadOnlyAdminMixin:
 
         return False
 
-    def has_delete_permission(
-        self, request, obj=None  # pylint: disable=unused-argument
-    ):
+    @staticmethod
+    def has_delete_permission(request, obj=None):  # pylint: disable=unused-argument
         """
         Has "delete" permissions
 
@@ -67,4 +71,38 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
     Scan Admin
     """
 
-    list_display = ("hash", "created")
+    list_display = ("hash", "scan_type", "created")
+    fields = ("_scan_type", "_raw_data")
+
+    @admin.display(description="Intel type")
+    def _scan_type(self, obj) -> str:
+        """
+        Add link to open the scan in a new browser tab
+
+        :param obj:
+        :type obj:
+        :return:
+        :rtype:
+        """
+        intel_type = obj.get_scan_type_display()
+        scan_link = reverse_absolute(
+            viewname="aa_intel_tool:intel_tool_scan", args=[obj.hash]
+        )
+        link_text = _("Open in a new browser tab")
+
+        return safestring.mark_safe(
+            f'{intel_type} (<a href="{scan_link}" target="_blank" rel="noreferer noopener">{link_text}</a>)'
+        )
+
+    @admin.display(description="RAW data")
+    def _raw_data(self, obj) -> str:
+        """
+        Format the output properly
+
+        :param obj:
+        :type obj:
+        :return:
+        :rtype:
+        """
+
+        return html.format_html("<pre>{}</pre>", obj.raw_data)
