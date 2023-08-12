@@ -52,9 +52,7 @@ def _parse_alliance_info(eve_character: EveCharacter) -> dict:
             "id": eve_character.alliance_id,
             "name": eve_character.alliance_name,
             "ticker": eve_character.alliance_ticker,
-            "logo": eveimageserver.alliance_logo_url(
-                alliance_id=eve_character.alliance_id, size=32
-            ),
+            "logo": eve_character.alliance_logo_url_32,
             "dotlan": dotlan.alliance_url(eve_character.alliance_name),
             "zkillboard": zkillboard.alliance_url(eve_character.alliance_id),
         }
@@ -76,9 +74,7 @@ def _parse_corporation_info(eve_character: EveCharacter) -> dict:
         "id": eve_character.corporation_id,
         "name": eve_character.corporation_name,
         "ticker": eve_character.corporation_ticker,
-        "logo": eveimageserver.corporation_logo_url(
-            corporation_id=eve_character.corporation_id, size=32
-        ),
+        "logo": eve_character.corporation_logo_url_32,
         "dotlan": dotlan.corporation_url(eve_character.corporation_name),
         "zkillboard": zkillboard.corporation_url(eve_character.corporation_id),
     }
@@ -97,9 +93,7 @@ def _parse_character_info(eve_character: EveCharacter) -> dict:
     return {
         "id": eve_character.character_id,
         "name": eve_character.character_name,
-        "portrait": eveimageserver.character_portrait_url(
-            character_id=eve_character.character_id, size=32
-        ),
+        "portrait": eve_character.portrait_url_32,
         "evewho": evewho.character_url(eve_character.character_id),
         "zkillboard": zkillboard.character_url(eve_character.character_id),
     }
@@ -237,9 +231,12 @@ def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
             )
 
         # Check if we have to bother Eve Universe or if we have all characters already
+        # Excluding corporation_id=1000001 (Doomheim) to force an update here …
         fetch_from_eveuniverse = False
         try:
-            eve_characters = EveCharacter.objects.filter(character_name__in=scan_data)
+            eve_characters = EveCharacter.objects.filter(
+                character_name__in=scan_data
+            ).exclude(corporation_id=1000001)
         except EveCharacter.DoesNotExist:  # pylint: disable=no-member
             fetch_from_eveuniverse = True
         else:
@@ -249,7 +246,7 @@ def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
         if fetch_from_eveuniverse:
             try:
                 eve_character_ids = (
-                    EveEntity.objects.fetch_by_names_esi(names=scan_data)
+                    EveEntity.objects.fetch_by_names_esi(names=scan_data, update=True)
                     .filter(category=EveEntity.CATEGORY_CHARACTER)
                     .values_list("id", flat=True)
                 )

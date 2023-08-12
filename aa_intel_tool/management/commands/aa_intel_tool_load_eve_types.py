@@ -60,6 +60,8 @@ class Command(BaseCommand):
             __title__,
             "--category_id",
             str(EveCategoryId.SHIP.value),
+            "--category_id",
+            str(EveCategoryId.STRUCTURE.value),
         ]
 
         if options["noinput"]:
