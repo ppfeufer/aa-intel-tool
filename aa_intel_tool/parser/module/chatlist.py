@@ -52,9 +52,7 @@ def _parse_alliance_info(eve_character: EveCharacter) -> dict:
             "id": eve_character.alliance_id,
             "name": eve_character.alliance_name,
             "ticker": eve_character.alliance_ticker,
-            "logo": eveimageserver.alliance_logo_url(
-                alliance_id=eve_character.alliance_id, size=32
-            ),
+            "logo": eve_character.alliance_logo_url_32,
             "dotlan": dotlan.alliance_url(eve_character.alliance_name),
             "zkillboard": zkillboard.alliance_url(eve_character.alliance_id),
         }
@@ -76,9 +74,7 @@ def _parse_corporation_info(eve_character: EveCharacter) -> dict:
         "id": eve_character.corporation_id,
         "name": eve_character.corporation_name,
         "ticker": eve_character.corporation_ticker,
-        "logo": eveimageserver.corporation_logo_url(
-            corporation_id=eve_character.corporation_id, size=32
-        ),
+        "logo": eve_character.corporation_logo_url_32,
         "dotlan": dotlan.corporation_url(eve_character.corporation_name),
         "zkillboard": zkillboard.corporation_url(eve_character.corporation_id),
     }
@@ -97,9 +93,7 @@ def _parse_character_info(eve_character: EveCharacter) -> dict:
     return {
         "id": eve_character.character_id,
         "name": eve_character.character_name,
-        "portrait": eveimageserver.character_portrait_url(
-            character_id=eve_character.character_id, size=32
-        ),
+        "portrait": eve_character.portrait_url_32,
         "evewho": evewho.character_url(eve_character.character_id),
         "zkillboard": zkillboard.character_url(eve_character.character_id),
     }
