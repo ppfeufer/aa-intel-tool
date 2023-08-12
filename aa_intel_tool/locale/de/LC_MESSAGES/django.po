@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-10 20:47+0200\n"
-"PO-Revision-Date: 2023-08-10 19:17+0000\n"
+"PO-Revision-Date: 2023-08-12 12:28+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: German <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/de/>\n"
@@ -39,7 +39,7 @@ msgstr "D-Scan"
 
 #: models.py:23 templates/aa_intel_tool/partials/index/form.html:31
 msgid "Fleet Composition"
-msgstr "Flottenzusammansetzung"
+msgstr "Flottenzusammensetzung"
 
 #: models.py:24
 msgid "Chat List"
@@ -155,7 +155,7 @@ msgstr ""
 
 #: parser/module/chatlist.py:264
 msgid "Character unknown to ESI."
-msgstr "Charakter ist nicht in ESI."
+msgstr "Charakter ist in ESI nicht bekannt."
 
 #: parser/module/dscan.py:136
 msgid "The D-Scan module is currently disabled."
@@ -313,11 +313,11 @@ msgstr "Absenden"
 
 #: templates/aa_intel_tool/partials/index/form.html:52
 msgid "Working on it, please be patient …"
-msgstr "Arbeite, bitte hab etwas Geduld …"
+msgstr "Bei der Arbeit, bitte hab etwas Geduld …"
 
 #: templates/aa_intel_tool/partials/index/form.html:54
 msgid "Detecting the intel type"
-msgstr "Erkennen des Intel-Typs"
+msgstr "Erkennung des Intel-Typs"
 
 #: templates/aa_intel_tool/partials/index/form.html:55
 msgid ""
