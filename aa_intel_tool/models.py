@@ -28,22 +28,22 @@ class Scan(models.Model):
         editable=False,
         unique=True,
         max_length=30,
-        verbose_name=_("The hash of the scan."),
+        verbose_name=_("Scan hash"),
     )
 
     created = models.DateTimeField(
         auto_now_add=True,
         db_index=True,
-        verbose_name=_("Date and time the scan was created."),
+        verbose_name=_("Creation date/time"),
     )
 
-    raw_data = models.TextField(verbose_name=_("The original scan data."))
+    raw_data = models.TextField(verbose_name=_("Scan RAW data"))
 
     scan_type = models.CharField(
         max_length=9,
         choices=Type.choices,
         default=Type.INVALID,
-        verbose_name=_("The scan type."),
+        verbose_name=_("Scan type"),
     )
 
     class Meta:  # pylint: disable=too-few-public-methods
@@ -52,8 +52,8 @@ class Scan(models.Model):
         """
 
         default_permissions = ()
-        verbose_name = _("scan")
-        verbose_name_plural = _("scans")
+        verbose_name = _("Scan")
+        verbose_name_plural = _("Scans")
 
     def __str__(self) -> str:
         return str(self.pk)
@@ -132,11 +132,11 @@ class ScanData(models.Model):
         max_length=19,
         choices=Section.choices,
         default=Section.INVALID,
-        verbose_name=_("The scan section"),
+        verbose_name=_("Scan section"),
     )
 
     processed_data = models.JSONField(
-        default=dict, verbose_name=_("The processed scan section data")
+        default=dict, verbose_name=_("Processed scan data")
     )
 
     class Meta:  # pylint: disable=too-few-public-methods
@@ -145,5 +145,5 @@ class ScanData(models.Model):
         """
 
         default_permissions = ()
-        verbose_name = _("scan data")
-        verbose_name_plural = _("scan data")
+        verbose_name = _("Scan data")
+        verbose_name_plural = _("Scan data")
