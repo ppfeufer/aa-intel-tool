@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Bootstrap CSS fix (Sounds weird, but it is what it is …)
+- Make D-Scan regex less greedy
 
 ### Changed
 

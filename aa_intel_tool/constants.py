@@ -19,7 +19,7 @@ INTERNAL_URL_PREFIX = "-"
 
 REGEX_PATTERN = {
     "chatlist": re.compile(r"(?im)^[a-zA-Z0-9\u0080-\uFFFF -_]{3,37}$"),
-    "dscan": re.compile(r"(?im)^(\d+)[\t](.*)[\t](.*)[\t](-|(.*) (km|m|AU)) ?$"),
+    "dscan": re.compile(r"(?im)^(\d+)[\t](.*)[\t](.*)[\t](-|(.*) (km|m|AU))$"),
     "fleetcomp": re.compile(
         r"(?im)^([a-zA-Z0-9 -_]{3,37})[\t](.*)[\t](.*)[\t](.*)[\t](.*)[\t]([0-5] - [0-5] - [0-5])([\t](.*))?$"  # pylint: disable=line-too-long
     ),
