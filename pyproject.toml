@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aa-intel-tool"
-version = "0.0.1-alpha.6"
+version = "0.0.1-alpha.7"
 description = "A simple parser for D-Scans and more for Alliance Auth"
 readme = "README.md"
 license = "GPL-3.0"
