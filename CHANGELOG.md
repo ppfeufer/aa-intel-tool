@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [In Development] - Unreleased
 
+### Fixed
+
+- Bootstrap CSS fix (Sounds weird, but it is what it is …)
+
+### Changed
+
+- Order admin list by creation date descending
+
 
 ## [0.0.1-alpha.6] - 2023-08-12
 
