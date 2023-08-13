@@ -397,7 +397,7 @@ jQuery(document).ready(($) => {
             },
             {
                 data: (data) => {
-                    return allianceInfoPanel(data['corporation']['alliance'], true) + data['corporation']['alliance']['ticker'];
+                    return allianceInfoPanel(data['alliance'], true) + data['alliance']['ticker'];
                 }
             },
             {
@@ -406,7 +406,7 @@ jQuery(document).ready(($) => {
                 }
             },
             {
-                data: 'corporation.alliance.name'
+                data: 'alliance.name'
             },
             {
                 data: 'corporation.name'
@@ -446,7 +446,7 @@ jQuery(document).ready(($) => {
                 .addClass('aa-intel-corporation-participation-item aa-intel-corporation-id-' + data['id'])
                 .attr('data-character-id', data['id'])
                 .attr('data-corporation-id', data['corporation']['id'])
-                .attr('data-alliance-id', data['corporation']['alliance']['id']);
+                .attr('data-alliance-id', data['alliance']['id']);
 
             // Highlight
             $(row).on('mouseenter', () => {

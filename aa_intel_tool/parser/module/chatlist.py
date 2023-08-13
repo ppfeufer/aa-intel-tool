@@ -30,7 +30,25 @@ from aa_intel_tool.parser.helper.db import safe_scan_to_db
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
-def _parse_alliance_info(eve_character: EveCharacter) -> dict:
+def _get_unaffiliated_alliance_info() -> dict:
+    """
+    Get the alliance_info dict for characters that are in no alliance
+
+    :return:
+    :rtype:
+    """
+
+    return {
+        "id": 1,
+        "name": "",
+        "ticker": "",
+        "logo": eveimageserver.alliance_logo_url(alliance_id=1, size=32),
+    }
+
+
+def _parse_alliance_info(
+    eve_character: EveCharacter, with_evelinks: bool = True
+) -> dict:
     """
     Parse the alliance information from an EveCharacter
 
@@ -41,26 +59,29 @@ def _parse_alliance_info(eve_character: EveCharacter) -> dict:
     """
 
     if eve_character.alliance_id is None:
-        alliance_info = {
-            "id": 1,
-            "name": "",
-            "ticker": "",
-            "logo": eveimageserver.alliance_logo_url(alliance_id=1, size=32),
-        }
+        alliance_info = _get_unaffiliated_alliance_info()
     else:
         alliance_info = {
             "id": eve_character.alliance_id,
             "name": eve_character.alliance_name,
             "ticker": eve_character.alliance_ticker,
             "logo": eve_character.alliance_logo_url_32,
-            "dotlan": dotlan.alliance_url(eve_character.alliance_name),
-            "zkillboard": zkillboard.alliance_url(eve_character.alliance_id),
         }
+
+        if with_evelinks:
+            alliance_info["dotlan"] = dotlan.alliance_url(eve_character.alliance_name)
+            alliance_info["zkillboard"] = zkillboard.alliance_url(
+                eve_character.alliance_id
+            )
 
     return alliance_info
 
 
-def _parse_corporation_info(eve_character: EveCharacter) -> dict:
+def _parse_corporation_info(
+    eve_character: EveCharacter,
+    with_alliance_info: bool = True,
+    with_evelinks: bool = True,
+) -> dict:
     """
     Parse the corporation information from an EveCharacter
 
@@ -70,14 +91,27 @@ def _parse_corporation_info(eve_character: EveCharacter) -> dict:
     :rtype:
     """
 
-    return {
+    corporation_info = {
         "id": eve_character.corporation_id,
         "name": eve_character.corporation_name,
         "ticker": eve_character.corporation_ticker,
         "logo": eve_character.corporation_logo_url_32,
-        "dotlan": dotlan.corporation_url(eve_character.corporation_name),
-        "zkillboard": zkillboard.corporation_url(eve_character.corporation_id),
     }
+
+    if with_evelinks:
+        corporation_info["dotlan"] = dotlan.corporation_url(
+            name=eve_character.corporation_name
+        )
+        corporation_info["zkillboard"] = zkillboard.alliance_url(
+            eve_id=eve_character.corporation_id
+        )
+
+    if with_alliance_info:
+        corporation_info["alliance"] = _parse_alliance_info(
+            eve_character=eve_character, with_evelinks=with_evelinks
+        )
+
+    return corporation_info
 
 
 def _parse_character_info(eve_character: EveCharacter) -> dict:
@@ -96,7 +130,32 @@ def _parse_character_info(eve_character: EveCharacter) -> dict:
         "portrait": eve_character.portrait_url_32,
         "evewho": evewho.character_url(eve_character.character_id),
         "zkillboard": zkillboard.character_url(eve_character.character_id),
+        "corporation": _parse_corporation_info(
+            eve_character=eve_character, with_alliance_info=False, with_evelinks=False
+        ),
+        "alliance": _parse_alliance_info(
+            eve_character=eve_character, with_evelinks=False
+        ),
     }
+
+
+def _cleanup_entity_data(entity_info: dict) -> list:
+    """
+    Cleaning up and sorting the parsed entity data
+
+    :param entity_info:
+    :type entity_info:
+    :return:
+    :rtype:
+    """
+
+    return [
+        data
+        for (
+            not_used,  # pylint: disable=unused-variable
+            data,
+        ) in sorted(entity_info.items())
+    ]
 
 
 def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
@@ -138,20 +197,11 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
             corporation_info[eve_character.corporation_name] = _parse_corporation_info(
                 eve_character=eve_character
             )
-            corporation_info[eve_character.corporation_name][
-                "alliance"
-            ] = alliance_info[eve_character__alliance_name]
 
         # Character Info
         character_info[eve_character.character_name] = _parse_character_info(
             eve_character=eve_character
         )
-        character_info[eve_character.character_name]["corporation"] = corporation_info[
-            eve_character.corporation_name
-        ]
-        character_info[eve_character.character_name]["alliance"] = alliance_info[
-            eve_character__alliance_name
-        ]
 
         # Update the counter
         counter[eve_character__alliance_name] += 1
@@ -164,33 +214,10 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
             eve_character.corporation_name
         ]
 
-    # Sort and clean up the dicts
-    cleaned_pilot_data = [
-        character
-        for (
-            character_name,  # pylint: disable=unused-variable
-            character,
-        ) in sorted(character_info.items())
-    ]
-    cleaned_corporation_data = [
-        corporation
-        for (
-            corporation_name,  # pylint: disable=unused-variable
-            corporation,
-        ) in sorted(corporation_info.items())
-    ]
-    cleaned_alliance_data = [
-        alliance
-        for (
-            alliance_name,  # pylint: disable=unused-variable
-            alliance,
-        ) in sorted(alliance_info.items())
-    ]
-
     return {
-        "pilots": cleaned_pilot_data,
-        "corporations": cleaned_corporation_data,
-        "alliances": cleaned_alliance_data,
+        "pilots": _cleanup_entity_data(entity_info=character_info),
+        "corporations": _cleanup_entity_data(entity_info=corporation_info),
+        "alliances": _cleanup_entity_data(entity_info=alliance_info),
     }
 
 

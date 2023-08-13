@@ -19,9 +19,7 @@ def safe_scan_to_db(scan_type: Scan.Type, parsed_data: dict) -> Scan:
     """
 
     # Creating a new Scan object
-    new_scan = Scan(
-        scan_type=scan_type,
-    )
+    new_scan = Scan(scan_type=scan_type)
     new_scan.save()
 
     # Creating the associated ScanData objects

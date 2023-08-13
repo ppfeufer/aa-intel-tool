@@ -74,6 +74,8 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
     list_display = ("hash", "scan_type", "created")
     fields = ("_scan_type", "_raw_data")
 
+    ordering = ("-created",)
+
     @admin.display(description=_("Scan type"))
     def _scan_type(self, obj) -> str:
         """

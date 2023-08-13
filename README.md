@@ -229,6 +229,14 @@ your `local.py`.
 | INTELTOOL_SCAN_RETENTION_TIME     | Sets the time in days for how long the scans will be kept in the database. Set to 0 to keep scans indefinitely.  | 30      |
 | INTELTOOL_CHATSCAN_MAX_PILOTS     | Sets the limit of pilots for chat scans, since these can take quite a long time to process. Set to 0 to disable. | 500     |
 
+> **Note**
+>
+> **A word about the chat scan limitations.**
+>
+> It is advised to keep the `INTELTOOL_CHATSCAN_MAX_PILOTS` to a sane number. Large
+> chat scans can take quite some time to parse and from a certain number of pilots, the
+> bottleneck might be your browser refusing to render the results page.
+> (Source: Trust me, bro …)
 
 ## Changelog
 

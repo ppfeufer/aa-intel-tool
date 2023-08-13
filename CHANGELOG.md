@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [In Development] - Unreleased
 
 
+## [0.0.1-alpha.7] - 2023-08-13
+
+### Fixed
+
+- Bootstrap CSS fix (Sounds weird, but it is what it is …)
+- Make D-Scan regex less greedy
+
+### Changed
+
+- Order admin list by creation date descending
+- Reduced the size of the saved jSon data
+
+
 ## [0.0.1-alpha.6] - 2023-08-12
 
 ### Changed
