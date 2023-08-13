@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - Order admin list by creation date descending
+- Reduced the size of the saved jSon data
 
 
 ## [0.0.1-alpha.6] - 2023-08-12
