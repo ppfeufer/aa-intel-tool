@@ -5,12 +5,18 @@ on:
     branches:
       - '**'
 
+    branches-ignore:
+      - 'weblate-translations'
+
     tags-ignore:
       - '**'
 
   pull_request:
     branches:
       - '**'
+
+    branches-ignore:
+      - 'weblate-translations'
 
     tags-ignore:
       - '**'
