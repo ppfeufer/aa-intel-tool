@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - '**'
-      - '!weblate-translations'
+      - '!weblate-translation'
 
     tags-ignore:
       - '**'
@@ -12,7 +12,7 @@ on:
   pull_request:
     branches:
       - '**'
-      - '!weblate-translations'
+      - '!weblate-translation'
 
     tags-ignore:
       - '**'
