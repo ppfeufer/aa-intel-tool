@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [In Development] - Unreleased
 
 
+## [0.0.1-alpha.8] - 2023-08-15
+
+### Changed
+
+- Hard disabling the chat list parser for now
+
+
 ## [0.0.1-alpha.7] - 2023-08-13
 
 ### Fixed
