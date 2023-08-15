@@ -225,6 +225,12 @@ def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
     """
     Parse chat list
 
+    This module is hard disabled for now, since CCP can't handle ESI requests and is
+    banning IPs that are doing "too many" ESI requests, what ever "too many" means.
+    But since we don't want our users getting banned just for using this app, this
+    module is currently deactivated and we discourage everyone from activating it in
+    the code. Sorry for this, blame CCP's incompetency …
+
     :param scan_data:
     :type scan_data:
     :param safe_to_db:

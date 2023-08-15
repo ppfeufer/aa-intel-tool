@@ -43,7 +43,7 @@ def check_intel_type(scan_data: list) -> str:
 
     raise ParserError(
         message=_(
-            "No suitable parser found. Input is no supported intel type or malformed …"
+            "No suitable parser found. Input is not a supported intel type or malformed …"
         )
     )
 
