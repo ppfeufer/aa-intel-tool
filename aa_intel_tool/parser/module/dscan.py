@@ -23,6 +23,7 @@ from eveuniverse.models import EveType
 from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.exceptions import ParserError
+from aa_intel_tool.helper.data_structure import dict_to_list
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
 
@@ -86,41 +87,11 @@ def _parse_ship_information(eve_types: QuerySet, counter: dict) -> dict:
             ship_info["type_name"]
         ]
 
-    # Sort and clean up the dicts
-    cleaned_ships_all = [
-        ship
-        for (
-            ship_name,  # pylint: disable=unused-variable
-            ship,
-        ) in sorted(ships["all"].items())
-    ]
-    cleaned_ships_ongrid = [
-        ship
-        for (
-            ship_name,  # pylint: disable=unused-variable
-            ship,
-        ) in sorted(ships["ongrid"].items())
-    ]
-    cleaned_ships_offgrid = [
-        ship
-        for (
-            ship_name,  # pylint: disable=unused-variable
-            ship,
-        ) in sorted(ships["offgrid"].items())
-    ]
-    cleaned_ships_types = [
-        ship
-        for (
-            ship_name,  # pylint: disable=unused-variable
-            ship,
-        ) in sorted(ships["types"].items())
-    ]
-
     return {
-        "all": cleaned_ships_all,
-        "ongrid": cleaned_ships_ongrid,
-        "offgrid": cleaned_ships_offgrid,
-        "types": cleaned_ships_types,
+        "all": dict_to_list(input_dict=ships["all"]),
+        "ongrid": dict_to_list(input_dict=ships["ongrid"]),
+        "offgrid": dict_to_list(input_dict=ships["offgrid"]),
+        "types": dict_to_list(input_dict=ships["types"]),
     }
 
 
