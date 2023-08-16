@@ -7,6 +7,7 @@ import re
 
 # Django
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 
 # AA Intel Tool
 # import aa_intel_tool.parser.module.chatlist
@@ -27,17 +28,17 @@ REGEX_PATTERN = {
 
 SUPPORTED_INTEL_TYPES = {
     # "chatlist": {
-    #     "name": "Chat List",
+    #     "name": _("Chat List"),
     #     "parser": aa_intel_tool.parser.module.chatlist.parse,
     #     "pattern": REGEX_PATTERN["chatlist"],
     # },
     "dscan": {
-        "name": "D-Scan",
+        "name": _("D-Scan"),
         "parser": aa_intel_tool.parser.module.dscan.parse,
         "pattern": REGEX_PATTERN["dscan"],
     },
     "fleetcomp": {
-        "name": "Fleet Composition",
+        "name": _("Fleet Composition"),
         "parser": aa_intel_tool.parser.module.fleetcomp.parse,
         "pattern": REGEX_PATTERN["fleetcomp"],
     },
