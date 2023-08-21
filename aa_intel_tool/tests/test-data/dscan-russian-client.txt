@@ -1,0 +1,20 @@
+35835	UC3H-Y - Harvester 1	Athanor*	444 141 км
+35835	UC3H-Y - Wasser	Athanor*	420 226 км
+35827	UC3H-Y - Factory 56	Sotiyo*	4 236 км
+670	ledu derhauer's Capsule	Capsule*	1 943 км
+11963	cyno up	Rapier*	1 903 км
+11129	ttjzj	Gallente Shuttle*	1 898 км
+16	RD-G2R*	Stargate (Caldari System)*	1 799 км
+35841	UC3H-Y » U-INPD - Way to the Light	Ansiblex Jump Gate*	1 042 км
+35833	UC3H-Y - Restart	Fortizar*	603 км
+35840	UC3H-Y - The Bacon is Lit	Pharolux Cyno Beacon*	594 км
+35836	UC3H-Y - Refinery	Tatara*	407 км
+28665	Vargur I	Vargur*	-
+35835	UC3H-Y - Harvester 1	Athanor*	2,4 а.е.
+35827	UC3H-Y - Factory 56	Sotiyo*	2,4 а.е.
+35841	UC3H-Y » U-INPD - Way to the Light	Ansiblex Jump Gate*	2,4 а.е.
+35833	UC3H-Y - Restart	Fortizar*	2,4 а.е.
+35840	UC3H-Y - The Bacon is Lit	Pharolux Cyno Beacon*	2,4 а.е.
+35836	UC3H-Y - Refinery	Tatara*	2,4 а.е.
+35835	UC3H-Y - Wasser	Athanor*	2,4 а.е.
+11963	cyno up	Rapier*	-

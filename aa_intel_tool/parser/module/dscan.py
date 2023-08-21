@@ -30,7 +30,7 @@ from aa_intel_tool.parser.helper.db import safe_scan_to_db
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
-def _parse_ship_information(eve_types: QuerySet, counter: dict) -> dict:
+def _parse_ships(eve_types: QuerySet, counter: dict) -> dict:
     ships = {"all": {}, "ongrid": {}, "offgrid": {}, "types": {}}
 
     eve_types_ships = eve_types.filter(
@@ -108,6 +108,11 @@ def parse(scan_data: list) -> Scan:
     message = _("The D-Scan module is currently disabled.")
 
     if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
+        # AA Intel Tool
+        from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
+            REGEX_PATTERN,
+        )
+
         counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
         eve_ids = {"all": [], "ongrid": [], "offgrid": []}
 
@@ -115,7 +120,7 @@ def parse(scan_data: list) -> Scan:
         #
         # [0] => Item ID
         # [1] => Name
-        # [2] => Ship Class
+        # [2] => Ship Class / Structure Type
         # [3] => Distance
         for entry in scan_data:
             line = re.split(pattern=r"\t+", string=entry.rstrip("\t"))
@@ -124,21 +129,20 @@ def parse(scan_data: list) -> Scan:
             if entry_id not in counter["all"]:
                 counter["all"][entry_id] = 0
 
-            if line[3] == "-":
-                if entry_id not in counter["offgrid"]:
-                    counter["offgrid"][entry_id] = 0
-
-                counter["offgrid"][entry_id] += 1
-                eve_ids["offgrid"].append(entry_id)
-            else:
+            if re.search(pattern=REGEX_PATTERN["localised_on_grid"], string=line[3]):
                 if entry_id not in counter["ongrid"]:
                     counter["ongrid"][entry_id] = 0
 
                 counter["ongrid"][entry_id] += 1
                 eve_ids["ongrid"].append(entry_id)
+            else:
+                if entry_id not in counter["offgrid"]:
+                    counter["offgrid"][entry_id] = 0
+
+                counter["offgrid"][entry_id] += 1
+                eve_ids["offgrid"].append(entry_id)
 
             counter["all"][entry_id] += 1
-
             eve_ids["all"].append(entry_id)
 
         eve_types = EveType.objects.bulk_get_or_create_esi(
@@ -146,7 +150,7 @@ def parse(scan_data: list) -> Scan:
         ).values_list("id", "name", "eve_group__id", "eve_group__name")
 
         # Parse the data
-        ships = _parse_ship_information(eve_types=eve_types, counter=counter)
+        ships = _parse_ships(eve_types=eve_types, counter=counter)
 
         parsed_data = {
             "shiptypes": {

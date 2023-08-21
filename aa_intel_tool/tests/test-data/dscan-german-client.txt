@@ -1,0 +1,176 @@
+2464	Hornet I*	Hornet I*	-
+2464	Hornet I*	Hornet I*	-
+2464	Hornet I*	Hornet I*	-
+2464	Hornet I*	Hornet I*	-
+2464	Hornet I*	Hornet I*	-
+16238	ɮ Legolas	Cormorant*	-
+32880	[Welcome] Mining	Venture*	52 km
+28606	ɮ Bender	Orca*	31 km
+14	Samanuni V - Moon 1*	Moon*	6,9 AE
+14	Samanuni V - Moon 2*	Moon*	6,9 AE
+14	Samanuni V - Moon 3*	Moon*	6,9 AE
+14	Samanuni V - Moon 4*	Moon*	6,9 AE
+14	Samanuni V - Moon 5*	Moon*	6,9 AE
+14	Samanuni V - Moon 6*	Moon*	6,9 AE
+14	Samanuni V - Moon 7*	Moon*	6,9 AE
+14	Samanuni V - Moon 8*	Moon*	6,9 AE
+14	Samanuni V - Moon 9*	Moon*	6,9 AE
+14	Samanuni VI - Moon 1*	Moon*	359.038 km
+14	Samanuni VI - Moon 2*	Moon*	942.330 km
+14	Samanuni VII - Moon 1*	Moon*	2,4 AE
+14	Samanuni VII - Moon 2*	Moon*	2,4 AE
+14	Samanuni VII - Moon 3*	Moon*	2,4 AE
+14	Samanuni VIII - Moon 1*	Moon*	12,0 AE
+14	Samanuni VIII - Moon 2*	Moon*	12,0 AE
+14	Samanuni IX - Moon 1*	Moon*	9,4 AE
+14	Samanuni IX - Moon 2*	Moon*	9,4 AE
+14	Samanuni IX - Moon 3*	Moon*	9,4 AE
+2233	Customs Office (Samanuni IV)	Customs Office*	5,8 AE
+2233	Customs Office (Samanuni I)	Customs Office*	4,7 AE
+2233	Customs Office (Samanuni II)	Customs Office*	4,9 AE
+2233	Customs Office (Samanuni IX)	Customs Office*	9,4 AE
+2233	Customs Office (Samanuni VIII)	Customs Office*	12,0 AE
+2233	Customs Office (Samanuni III)	Customs Office*	5,2 AE
+2233	Customs Office (Samanuni X)	Customs Office*	9,5 AE
+2233	Customs Office (Samanuni V)	Customs Office*	6,9 AE
+2233	Customs Office (Samanuni VI)	Customs Office*	8.747 km
+2233	Customs Office (Samanuni VII)	Customs Office*	2,4 AE
+2016	Samanuni I*	Planet (Barren)*	4,7 AE
+2016	Samanuni II*	Planet (Barren)*	4,9 AE
+2016	Samanuni III*	Planet (Barren)*	5,2 AE
+2015	Samanuni IV*	Planet (Lava)*	5,8 AE
+13	Samanuni V*	Planet (Gas)*	6,9 AE
+11	Samanuni VI*	Planet (Temperate)*	5.642 km
+13	Samanuni VII*	Planet (Gas)*	2,4 AE
+2014	Samanuni VIII*	Planet (Oceanic)*	12,0 AE
+11	Samanuni IX*	Planet (Temperate)*	9,4 AE
+2014	Samanuni X*	Planet (Oceanic)*	9,5 AE
+4024	Samanuni III - Wiyrkomi Corporation Fabrik*	Caldari Food Processing Plant Station*	5,2 AE
+1530	Samanuni VIII - Caldari Constructions Logistische Unterstützung*	Caldari Research Station*	12,0 AE
+1529	Samanuni VI - Caldari Navy Ankerpunkt*	Caldari Administrative Station*	0 m
+45039	Samanuni - Star*	Sun M0 (Orange radiant)*	4,7 AE
+26573	Pithior Guerilla*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Demolisher*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Anarchist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Destructor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Anarchist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Demolisher*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Anarchist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Wrecker*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Demolisher*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Plunderer*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Renegade*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Wrecker*-Wrack*	Guristas Small Wreck*	-
+26591	Hunter Alvi*-Wrack*	Rogue Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26935	Mercenary Wingman*-Wrack*	Mission Generic Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Despoiler*-Wrack*	Guristas Small Wreck*	-
+26935	Mercenary Wingman*-Wrack*	Mission Generic Small Wreck*	-
+26573	Pithi Despoiler*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Despoiler*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Guerilla*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Guerilla*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Plunderer*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Wrecker*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Anarchist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Nihilist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Demolisher*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Anarchist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Renegade*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Demolisher*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Plunderer*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Guerilla*-Wrack*	Guristas Small Wreck*	-
+26935	Mercenary Wingman*-Wrack*	Mission Generic Small Wreck*	-
+26591	Hunter Alvi*-Wrack*	Rogue Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Saboteur*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Saboteur*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Saboteur*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Saboteur*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Anarchist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Anarchist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Guerilla*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Renegade*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Despoiler*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Nihilist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Saboteur*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Nihilist*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Guerilla*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Renegade*-Wrack*	Guristas Small Wreck*	-
+26935	Mercenary Wingman*-Wrack*	Mission Generic Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26935	Mercenary Wingman*-Wrack*	Mission Generic Small Wreck*	-
+26935	Mercenary Wingman*-Wrack*	Mission Generic Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Renegade*-Wrack*	Guristas Small Wreck*	-
+26933	Mercenary Overlord*-Wrack*	Mission Generic Large Wreck*	-
+26933	Wrack von: Shadow *	Mission Generic Large Wreck*	-
+26935	Mercenary Wingman*-Wrack*	Mission Generic Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26591	Hunter Alvi*-Wrack*	Rogue Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Guristas Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Despoiler*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Demolisher*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Guristas Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Guristas Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Guristas Saboteur*-Wrack*	Guristas Small Wreck*	-
+26573	Pithior Renegade*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26591	Hunter Alvi*-Wrack*	Rogue Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Guristas Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Saboteur*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Despoiler*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Arrogator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Imputor*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Plunderer*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Invader*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Infiltrator*-Wrack*	Guristas Small Wreck*	-
+26573	Pithi Despoiler*-Wrack*	Guristas Small Wreck*	-
