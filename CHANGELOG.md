@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [In Development] - Unreleased
 
+### Changed
+
+- On grid detection for D-Scans improved
+- Ship parser refactored
+
 
 ## [0.0.1-alpha.8] - 2023-08-15
 

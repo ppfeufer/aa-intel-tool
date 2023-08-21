@@ -30,62 +30,99 @@ from aa_intel_tool.parser.helper.db import safe_scan_to_db
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
+def _get_type_info_dict(eve_type: tuple) -> dict:
+    """
+    Get the eve_type info dict
+
+    eve_type[0] = ID
+    eve_type[1] = Name
+    eve_type[2] = Group ID
+    eve_type[3] = Group Name
+
+    :param eve_type:
+    :type eve_type:
+    :return:
+    :rtype:
+    """
+
+    return {
+        "id": eve_type[0],
+        "name": eve_type[1],
+        "type_id": eve_type[2],
+        "type_name": eve_type[3],
+        "type_name_sanitised": slugify(eve_type[3]),
+        "image": eveimageserver.type_icon_url(type_id=eve_type[0], size=32),
+    }
+
+
 def _parse_ships(eve_types: QuerySet, counter: dict) -> dict:
+    """
+    Parse ships
+    This will be the content of the following tables in the D-Scan view:
+    » All Ships
+    » On Grid
+    » Off Grid
+    » Ship Types
+
+    :param eve_types:
+    :type eve_types:
+    :param counter:
+    :type counter:
+    :return:
+    :rtype:
+    """
+
     ships = {"all": {}, "ongrid": {}, "offgrid": {}, "types": {}}
 
     eve_types_ships = eve_types.filter(
         eve_group__eve_category_id__exact=EveCategoryId.SHIP
     )
 
-    for ship_id, ship_name, ship_type_id, ship_type_name in eve_types_ships:
-        if ship_id in counter["all"]:
-            ships["all"][ship_name] = {
-                "id": ship_id,
-                "name": ship_name,
-                "type_id": ship_type_id,
-                "type_name": ship_type_name,
-                "type_name_sanitised": slugify(ship_type_name),
-                "count": counter["all"][ship_id],
-                "image": eveimageserver.type_icon_url(type_id=ship_id, size=32),
+    for eve_type in eve_types_ships:
+        # Info for "All Ships" table
+        if eve_type[0] in counter["all"]:
+            if eve_type[1] not in ships["all"]:
+                ships["all"][eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
+                ships["all"][eve_type[1]]["count"] = counter["all"][eve_type[0]]
+
+        # Info for "On Grid" table
+        if eve_type[0] in counter["ongrid"]:
+            if eve_type[1] not in ships["ongrid"]:
+                ships["ongrid"][eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
+                ships["ongrid"][eve_type[1]]["count"] = counter["ongrid"][eve_type[0]]
+
+        # Info for "Off Grid" table
+        if eve_type[0] in counter["offgrid"]:
+            if eve_type[1] not in ships["offgrid"]:
+                ships["offgrid"][eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
+                ships["offgrid"][eve_type[1]]["count"] = counter["offgrid"][eve_type[0]]
+
+        # Info for "Ship Types" table
+        if eve_type[3] not in ships["types"]:
+            ships["types"][eve_type[3]] = {
+                "name": eve_type[3],
+                "name_sanitised": slugify(eve_type[3]),
+                "count": 0,
             }
 
-            if ship_id in counter["ongrid"]:
-                ships["ongrid"][ship_name] = {
-                    "id": ship_id,
-                    "name": ship_name,
-                    "type_id": ship_type_id,
-                    "type_name": ship_type_name,
-                    "type_name_sanitised": slugify(ship_type_name),
-                    "count": counter["ongrid"][ship_id],
-                    "image": eveimageserver.type_icon_url(type_id=ship_id, size=32),
-                }
+        ships["types"][eve_type[3]]["count"] += counter["all"][eve_type[0]]
 
-            if ship_id in counter["offgrid"]:
-                ships["offgrid"][ship_name] = {
-                    "id": ship_id,
-                    "name": ship_name,
-                    "type_id": ship_type_id,
-                    "type_name": ship_type_name,
-                    "type_name_sanitised": slugify(ship_type_name),
-                    "count": counter["offgrid"][ship_id],
-                    "image": eveimageserver.type_icon_url(type_id=ship_id, size=32),
-                }
-
-    for ship_name, ship_info in ships["all"].items():
-        if ship_info["type_name"] not in counter["type"]:
-            counter["type"][ship_info["type_name"]] = 0
-
-        counter["type"][ship_info["type_name"]] += ship_info["count"]
-
-        if ship_info["type_name"] not in ships["types"]:
-            ships["types"][ship_info["type_name"]] = {
-                "name": ship_info["type_name"],
-                "name_sanitised": slugify(ship_info["type_name"]),
-            }
-
-        ships["types"][ship_info["type_name"]]["count"] = counter["type"][
-            ship_info["type_name"]
-        ]
+    # Leaving this here just in case the method in the first loop turns out to be faulty
+    # for ship_name, ship_info in ships["all"].items():  # pylint: disable=unused-variable
+    #     if ship_info["type_name"] not in counter["type"]:
+    #         counter["type"][ship_info["type_name"]] = 0
+    #
+    #     counter["type"][ship_info["type_name"]] += ship_info["count"]
+    #
+    #     if ship_info["type_name"] not in ships["types"]:
+    #         ships["types"][ship_info["type_name"]] = {
+    #             "name": ship_info["type_name"],
+    #             "name_sanitised": slugify(ship_info["type_name"]),
+    #         }
+    #
+    #     ships["types"][ship_info["type_name"]]["count"] = counter["type"][
+    #         ship_info["type_name"]
+    #     ]
 
     return {
         "all": dict_to_list(input_dict=ships["all"]),
