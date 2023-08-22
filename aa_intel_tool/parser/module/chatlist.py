@@ -23,6 +23,7 @@ from eveuniverse.models import EveEntity
 from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.exceptions import ParserError
+from aa_intel_tool.helper.data_structure import dict_to_list
 from aa_intel_tool.helper.eve_character import get_or_create_character
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
@@ -139,25 +140,6 @@ def _parse_character_info(eve_character: EveCharacter) -> dict:
     }
 
 
-def _cleanup_entity_data(entity_info: dict) -> list:
-    """
-    Cleaning up and sorting the parsed entity data
-
-    :param entity_info:
-    :type entity_info:
-    :return:
-    :rtype:
-    """
-
-    return [
-        data
-        for (
-            not_used,  # pylint: disable=unused-variable
-            data,
-        ) in sorted(entity_info.items())
-    ]
-
-
 def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
     """
     Parse the chat scan data and return character information,
@@ -215,9 +197,9 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
         ]
 
     return {
-        "pilots": _cleanup_entity_data(entity_info=character_info),
-        "corporations": _cleanup_entity_data(entity_info=corporation_info),
-        "alliances": _cleanup_entity_data(entity_info=alliance_info),
+        "pilots": dict_to_list(input_dict=character_info),
+        "corporations": dict_to_list(input_dict=corporation_info),
+        "alliances": dict_to_list(input_dict=alliance_info),
     }
 
 
