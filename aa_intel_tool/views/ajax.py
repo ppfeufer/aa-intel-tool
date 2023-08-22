@@ -29,14 +29,9 @@ def get_scan_data(
     """
 
     try:
-        scan_data = (
-            ScanData.objects.filter(  # pylint: disable=no-member
-                scan_id__exact=scan_hash,
-                section__exact=scan_section,
-            )
-            .exclude(section=ScanData.Section.INVALID)
-            .get()
-        )
+        scan_data = ScanData.objects.filter(  # pylint: disable=no-member
+            scan_id__exact=scan_hash, section__exact=scan_section
+        ).get()
         processed_data = scan_data.processed_data
     except ScanData.DoesNotExist:  # pylint: disable=no-member
         processed_data = None
