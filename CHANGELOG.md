@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [In Development] - Unreleased
 
+
+## [0.0.1-alpha.9] - 2023-08-22
+
 ### Changed
 
 - On grid detection for D-Scans improved
