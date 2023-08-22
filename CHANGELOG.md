@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [In Development] - Unreleased
 
+### Fixed
+
+- Return empty jSon when no data for ajax call
+
+### Added
+
+- Unique relation between scan and scan section in the database table
+
+### Removed
+
+- Nonsensical exclude clause
+
 
 ## [0.0.1-alpha.9] - 2023-08-22
 
