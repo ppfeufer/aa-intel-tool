@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [In Development] - Unreleased
 
 
+## [0.0.1-alpha.10] - 2023-08-22
+
+### Fixed
+
+- Return empty jSon when no data for ajax call
+- Empty scan sections will no longer be stored in the database
+
+### Added
+
+- Unique relation between scan and scan section in the database table
+- Detection of Upwell structures that are on grid on D-Scans (No UI for it yet, though)
+
+### Removed
+
+- Nonsensical exclude clause
+
+
 ## [0.0.1-alpha.9] - 2023-08-22
 
 ### Changed

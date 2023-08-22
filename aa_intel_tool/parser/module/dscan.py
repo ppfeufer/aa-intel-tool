@@ -29,6 +29,33 @@ from aa_intel_tool.parser.helper.db import safe_scan_to_db
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
+def _is_on_grid(distance: str) -> bool:
+    """
+    Determine if something is "on grid" or not
+
+    :param distance:
+    :type distance:
+    :return:
+    :rtype:
+    """
+
+    # AA Intel Tool
+    from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
+        REGEX_PATTERN,
+    )
+
+    if re.search(pattern=REGEX_PATTERN["localised_on_grid"], string=distance):
+        # line = re.split(pattern=r" ", string=distance)
+        distance_sanitised = int(re.sub(r"[^0-9]", "", distance))
+
+        if distance_sanitised <= AppSettings.INTELTOOL_DSCAN_GRID_SIZE:
+            return True
+
+        return False
+
+    return False
+
+
 def _get_type_info_dict(eve_type: tuple) -> dict:
     """
     Get the eve_type info dict
@@ -53,9 +80,9 @@ def _get_type_info_dict(eve_type: tuple) -> dict:
     }
 
 
-def _parse_ships(eve_types: QuerySet, counter: dict) -> dict:
+def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
     """
-    Parse ships
+    Get the ships
     This will be the content of the following tables in the D-Scan view:
     » All Ships
     » On Grid
@@ -103,6 +130,7 @@ def _parse_ships(eve_types: QuerySet, counter: dict) -> dict:
                 "count": 0,
             }
 
+        # Add the count to the ship types
         ships["types"][eve_type[3]]["count"] += counter["all"][eve_type[0]]
 
     # Leaving this here just in case the method in the first loop turns out to be faulty
@@ -130,6 +158,38 @@ def _parse_ships(eve_types: QuerySet, counter: dict) -> dict:
     }
 
 
+def _get_upwell_structures_on_grid(eve_types: QuerySet, dscan_list: list) -> list:
+    """
+    Get all Upwell structures that are on grid
+
+    :param eve_types:
+    :type eve_types:
+    :param counter:
+    :type counter:
+    :return:
+    :rtype:
+    """
+
+    eve_types_structures = eve_types.filter(
+        eve_group__eve_category_id__exact=EveCategoryId.STRUCTURE
+    )
+
+    structures_on_grid = {}
+
+    for item in dscan_list:
+        if eve_types_structures.filter(id=item[0]).exists() and _is_on_grid(item[3]):
+            if item[0] not in structures_on_grid:
+                structures_on_grid[item[0]] = {
+                    "id": item[0],
+                    "type": item[2],
+                    "count": 0,
+                }
+
+            structures_on_grid[item[0]]["count"] += 1
+
+    return dict_to_list(structures_on_grid)
+
+
 def parse(scan_data: list) -> Scan:
     """
     Parse D-Scan
@@ -150,6 +210,8 @@ def parse(scan_data: list) -> Scan:
 
         counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
         eve_ids = {"all": [], "ongrid": [], "offgrid": []}
+        dscan_lines = []
+        parsed_data = {}
 
         # Let's split this list up
         #
@@ -179,32 +241,52 @@ def parse(scan_data: list) -> Scan:
 
             counter["all"][entry_id] += 1
             eve_ids["all"].append(entry_id)
+            dscan_lines.append([entry_id, line[1], line[2], line[3]])
 
         eve_types = EveType.objects.bulk_get_or_create_esi(
             ids=set(eve_ids["all"]), include_children=True
-        ).values_list("id", "name", "eve_group__id", "eve_group__name")
+        ).values_list("id", "name", "eve_group__id", "eve_group__name", named=True)
 
         # Parse the data
-        ships = _parse_ships(eve_types=eve_types, counter=counter)
+        ships = _get_ships(eve_types=eve_types, counter=counter)
+        upwell_structures = _get_upwell_structures_on_grid(
+            eve_types=eve_types, dscan_list=dscan_lines
+        )
 
-        parsed_data = {
-            "shiptypes": {
+        # Add "ship types" to parsed data when available
+        if len(ships["types"]):
+            parsed_data["shiptypes"] = {
                 "section": ScanData.Section.SHIPTYPES,
                 "data": ships["types"],
-            },
-            "all": {
+            }
+
+        # Add "ships all" to parsed data when available
+        if len(ships["all"]):
+            parsed_data["all"] = {
                 "section": ScanData.Section.SHIPLIST,
                 "data": ships["all"],
-            },
-            "ongrid": {
+            }
+
+        # Add "ships on grid" to parsed data when available
+        if len(ships["ongrid"]):
+            parsed_data["ongrid"] = {
                 "section": ScanData.Section.SHIPLIST_ON_GRID,
                 "data": ships["ongrid"],
-            },
-            "offgrid": {
+            }
+
+        # Add "ships off grid" to parsed data when available
+        if len(ships["offgrid"]):
+            parsed_data["offgrid"] = {
                 "section": ScanData.Section.SHIPLIST_OFF_GRID,
                 "data": ships["offgrid"],
-            },
-        }
+            }
+
+        # Add "Upwell structures on grid" to parsed data when available
+        if len(upwell_structures):
+            parsed_data["sructures_on_grid"] = {
+                "section": ScanData.Section.STRUCTURES_ON_GRID,
+                "data": upwell_structures,
+            }
 
         return safe_scan_to_db(scan_type=Scan.Type.DSCAN, parsed_data=parsed_data)
 
