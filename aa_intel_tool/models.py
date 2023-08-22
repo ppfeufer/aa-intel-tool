@@ -147,3 +147,5 @@ class ScanData(models.Model):
         default_permissions = ()
         verbose_name = _("Scan data")
         verbose_name_plural = _("Scan data")
+
+        unique_together = ("scan", "section")
