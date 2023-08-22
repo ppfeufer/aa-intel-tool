@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# Nikolay <nick.postnikov@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-10 20:47+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2023-08-13 20:40+0000\n"
+"Last-Translator: Nikolay <nick.postnikov@gmail.com>\n"
+"Language-Team: Russian <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/ru/>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || ("
+"n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Weblate 4.18.2\n"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
 #: apps.py:21
@@ -41,7 +41,7 @@ msgstr ""
 
 #: models.py:23 templates/aa_intel_tool/partials/index/form.html:31
 msgid "Fleet Composition"
-msgstr ""
+msgstr "Состав флота"
 
 #: models.py:24
 msgid "Chat List"
@@ -241,23 +241,23 @@ msgstr ""
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
 msgid "Search …"
-msgstr ""
+msgstr "Поиск…"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:33
 msgid "First"
-msgstr ""
+msgstr "Первый"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
 msgid "Last"
-msgstr ""
+msgstr "Последний"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
 msgid "Next"
-msgstr ""
+msgstr "Следующий"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
 msgid "Previous"
-msgstr ""
+msgstr "Предыдущий"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
 msgid ": activate to sort column ascending"
@@ -279,10 +279,12 @@ msgid ""
 "Do you want to help translate this app into your language or improve the "
 "existing translation?"
 msgstr ""
+"Вы хотите помочь перевести это приложение на ваш язык или улучшить текущий "
+"перевод?"
 
 #: templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
-msgstr ""
+msgstr "Присоединяйтесь к нашей команде переводчиков!"
 
 #: templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
@@ -301,7 +303,7 @@ msgstr[1] ""
 
 #: templates/aa_intel_tool/partials/index/form.html:46
 msgid "Submit"
-msgstr ""
+msgstr "Отправить"
 
 #: templates/aa_intel_tool/partials/index/form.html:52
 msgid "Working on it, please be patient …"
@@ -357,7 +359,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:18
 msgid "Name"
-msgstr ""
+msgstr "Название"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
 msgid "Alliance"
@@ -365,7 +367,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
 msgid "Corporation"
-msgstr ""
+msgstr "Корпорация"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:16
 msgid "Ship Class"
@@ -377,7 +379,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:16
 msgid "Ship Type"
-msgstr ""
+msgstr "Тип корабля"
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve Time)"
