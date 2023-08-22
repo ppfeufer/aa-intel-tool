@@ -34,6 +34,6 @@ def get_scan_data(
         ).get()
         processed_data = scan_data.processed_data
     except ScanData.DoesNotExist:  # pylint: disable=no-member
-        processed_data = None
+        processed_data = {}
 
     return JsonResponse(data=processed_data, safe=False)
