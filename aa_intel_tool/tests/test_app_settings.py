@@ -72,3 +72,30 @@ class TestAppSettings(TestCase):
         expected_max_pilots = 1000
 
         self.assertEqual(first=max_pilots, second=expected_max_pilots)
+
+    def test_dscan_grid_size(self):
+        """
+        Test for the default INTELTOOL_DSCAN_GRID_SIZE
+
+        :return:
+        :rtype:
+        """
+
+        grid_size = AppSettings.INTELTOOL_DSCAN_GRID_SIZE
+        expected_grid_size = 10000
+
+        self.assertEqual(first=grid_size, second=expected_grid_size)
+
+    @mock.patch(SETTINGS_PATH + ".AppSettings.INTELTOOL_DSCAN_GRID_SIZE", 1000)
+    def test_dscan_grid_size_custom(self):
+        """
+        Test for a custom INTELTOOL_DSCAN_GRID_SIZE
+
+        :return:
+        :rtype:
+        """
+
+        grid_size = AppSettings.INTELTOOL_DSCAN_GRID_SIZE
+        expected_grid_size = 1000
+
+        self.assertEqual(first=grid_size, second=expected_grid_size)

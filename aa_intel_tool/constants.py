@@ -18,6 +18,7 @@ from aa_intel_tool import __version__
 # All internal URLs need to start with this prefix
 INTERNAL_URL_PREFIX = "-"
 
+
 # Localised units
 distance_units_on_grid: str = """
     km|m    # Latin (English, German and so on)
@@ -30,6 +31,7 @@ distance_units_off_grid: str = """
 """
 
 distance_units = f"{distance_units_on_grid}|{distance_units_off_grid}"
+
 
 # Pre-compiled regex patterns used throughout the app
 REGEX_PATTERN = {
@@ -49,6 +51,8 @@ REGEX_PATTERN = {
     ),
 }
 
+
+# Supported intel types and their parameters
 SUPPORTED_INTEL_TYPES = {
     # "chatlist": {
     #     "name": _("Chat List"),
@@ -68,9 +72,8 @@ SUPPORTED_INTEL_TYPES = {
 }
 
 
+# Building our user agent for ESI calls
 VERBOSE_NAME = "AA Intel Tool"
-
 verbose_name_slugified: str = slugify(VERBOSE_NAME, allow_unicode=True)
 github_url: str = "https://github.com/ppfeufer/aa-intel-tool"
-
 USER_AGENT = f"{verbose_name_slugified} v{__version__} {github_url}"

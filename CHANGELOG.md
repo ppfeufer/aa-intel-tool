@@ -11,10 +11,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Return empty jSon when no data for ajax call
+- Empty scan sections will no longer be stored in the database
 
 ### Added
 
 - Unique relation between scan and scan section in the database table
+- Detection of Upwell structures that are on grid on D-Scans (No UI for it yet, though)
 
 ### Removed
 
