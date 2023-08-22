@@ -1,4 +1,4 @@
-/* global aaIntelToolJsL10n, aaIntelToolJsOptions */
+/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addHightlight, removeHightlight */
 
 jQuery(document).ready(($) => {
     'use strict';
@@ -98,24 +98,24 @@ jQuery(document).ready(($) => {
 
             elementDscanCountAll.html(newTotal);
 
-            $(row).attr('data-highlight', `shiptype-${data['type_name_sanitised']}`);
+            $(row)
+                .attr('data-shipclass-id', data['id'])
+                .attr('data-shiptype-id', data['type_id']);
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .addClass('aa-intel-highlight');
+                addHightlight('shipclass', $(row));
             }).on('mouseleave', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .removeClass('aa-intel-highlight');
+                removeHightlight('shipclass', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .toggleClass('aa-intel-highlight-sticky');
-            }).on('click', '.aa-intel-information-link', (e) => {
-                e.stopPropagation();
-            });
+            // $(row).on('click', () => {
+            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+            //         .toggleClass('aa-intel-highlight-sticky');
+            // }).on('click', '.aa-intel-information-link', (e) => {
+            //     e.stopPropagation();
+            // });
         }
     });
 
@@ -178,24 +178,24 @@ jQuery(document).ready(($) => {
 
             elementDscanCountOngrid.html(newTotal);
 
-            $(row).attr('data-highlight', `shiptype-${data['type_name_sanitised']}`);
+            $(row)
+                .attr('data-shipclass-id', data['id'])
+                .attr('data-shiptype-id', data['type_id']);
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .addClass('aa-intel-highlight');
+                addHightlight('shipclass', $(row));
             }).on('mouseleave', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .removeClass('aa-intel-highlight');
+                removeHightlight('shipclass', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .toggleClass('aa-intel-highlight-sticky');
-            }).on('click', '.aa-intel-information-link', (e) => {
-                e.stopPropagation();
-            });
+            // $(row).on('click', () => {
+            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+            //         .toggleClass('aa-intel-highlight-sticky');
+            // }).on('click', '.aa-intel-information-link', (e) => {
+            //     e.stopPropagation();
+            // });
         }
     });
 
@@ -258,24 +258,24 @@ jQuery(document).ready(($) => {
 
             elementDscanCountOffgrid.html(newTotal);
 
-            $(row).attr('data-highlight', `shiptype-${data['type_name_sanitised']}`);
+            $(row)
+                .attr('data-shipclass-id', data['id'])
+                .attr('data-shiptype-id', data['type_id']);
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .addClass('aa-intel-highlight');
+                addHightlight('shipclass', $(row));
             }).on('mouseleave', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .removeClass('aa-intel-highlight');
+                removeHightlight('shipclass', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
-                $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-                    .toggleClass('aa-intel-highlight-sticky');
-            }).on('click', '.aa-intel-information-link', (e) => {
-                e.stopPropagation();
-            });
+            // $(row).on('click', () => {
+            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
+            //         .toggleClass('aa-intel-highlight-sticky');
+            // }).on('click', '.aa-intel-information-link', (e) => {
+            //     e.stopPropagation();
+            // });
         }
     });
 
@@ -317,24 +317,22 @@ jQuery(document).ready(($) => {
             }
         ],
         createdRow: (row, data) => {
-            $(row).attr('data-highlight', `shiptype-${data['name_sanitised']}`);
+            $(row).attr('data-shiptype-id', data['id']);
 
             // Highlight
             $(row).on('mouseenter', () => {
-                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
-                    .addClass('aa-intel-highlight');
+                addHightlight('shiptype', $(row));
             }).on('mouseleave', () => {
-                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
-                    .removeClass('aa-intel-highlight');
+                removeHightlight('shiptype', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
-                $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
-                    .toggleClass('aa-intel-highlight-sticky');
-            }).on('click', '.aa-intel-information-link', (e) => {
-                e.stopPropagation();
-            });
+            // $(row).on('click', () => {
+            //     $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
+            //         .toggleClass('aa-intel-highlight-sticky');
+            // }).on('click', '.aa-intel-information-link', (e) => {
+            //     e.stopPropagation();
+            // });
         }
     });
 });

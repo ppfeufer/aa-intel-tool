@@ -7,7 +7,6 @@ import re
 
 # Django
 from django.db.models import QuerySet
-from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 # Alliance Auth
@@ -50,7 +49,6 @@ def _get_type_info_dict(eve_type: tuple) -> dict:
         "name": eve_type[1],
         "type_id": eve_type[2],
         "type_name": eve_type[3],
-        "type_name_sanitised": slugify(eve_type[3]),
         "image": eveimageserver.type_icon_url(type_id=eve_type[0], size=32),
     }
 
@@ -100,8 +98,8 @@ def _parse_ships(eve_types: QuerySet, counter: dict) -> dict:
         # Info for "Ship Types" table
         if eve_type[3] not in ships["types"]:
             ships["types"][eve_type[3]] = {
+                "id": eve_type[2],
                 "name": eve_type[3],
-                "name_sanitised": slugify(eve_type[3]),
                 "count": 0,
             }
 

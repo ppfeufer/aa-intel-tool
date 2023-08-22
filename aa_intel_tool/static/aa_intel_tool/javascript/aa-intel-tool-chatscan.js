@@ -267,7 +267,7 @@ jQuery(document).ready(($) => {
             elementAlliancesTotalCount.html(newTotal);
 
             $(row)
-                .addClass('aa-intel-alliance-participation-item aa-intel-alliance-id-' + data['id'])
+                .addClass(`aa-intel-alliance-participation-item aa-intel-alliance-id-${data['id']}`)
                 .attr('data-alliance-id', data['id']);
 
             // Highlight
@@ -352,7 +352,7 @@ jQuery(document).ready(($) => {
             elementCorporationsTotalCount.html(newTotal);
 
             $(row)
-                .addClass('aa-intel-corporation-participation-item aa-intel-corporation-id-' + data['id'])
+                .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data['id']}`)
                 .attr('data-corporation-id', data['id'])
                 .attr('data-alliance-id', data['alliance']['id']);
 
@@ -443,7 +443,7 @@ jQuery(document).ready(($) => {
             elementPilotsTotalCount.html(newTotal);
 
             $(row)
-                .addClass('aa-intel-corporation-participation-item aa-intel-corporation-id-' + data['id'])
+                .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data['id']}`)
                 .attr('data-character-id', data['id'])
                 .attr('data-corporation-id', data['corporation']['id'])
                 .attr('data-alliance-id', data['alliance']['id']);

@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - On grid detection for D-Scans improved
 - Ship parser refactored
+- JS for highlighting in D-Scan result tables improved
+- Sticky highlight in D-Scan tables removed for the time being for being faulty
 
 
 ## [0.0.1-alpha.8] - 2023-08-15
