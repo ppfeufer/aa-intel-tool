@@ -21,9 +21,9 @@ jQuery(document).ready(($) => {
      * @param {int} closeAfter Close Message after given time in seconds (Default: 10)
      */
     const closeMessageElement = (element, closeAfter = 10) => {
-        $(element).fadeTo(closeAfter * 1000, 500).slideUp(500, () => {
-            $(this).slideUp(500, () => {
-                $(this).remove();
+        $(element).fadeTo(closeAfter * 1000, 500).slideUp(500, (elm) => {
+            $(elm).slideUp(500, (el) => {
+                $(el).remove();
             });
         });
     };
@@ -111,5 +111,4 @@ jQuery(document).ready(($) => {
     elementCopyToClipboard.on('click', () => {
         copyScanLink('#'+ elementCopyToClipboard.attr('id'));
     });
-
 });
