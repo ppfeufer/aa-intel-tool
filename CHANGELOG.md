@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [In Development] - Unreleased
 
+### Changed
+
+- Sticky highlight in D-Scan tables re-introduced
+
 
 ## [0.0.1-alpha.10] - 2023-08-22
 

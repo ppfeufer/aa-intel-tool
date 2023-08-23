@@ -1,4 +1,4 @@
-/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addHightlight, removeHightlight */
+/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addHightlight, removeHightlight, changeStickyHighlight */
 
 jQuery(document).ready(($) => {
     'use strict';
@@ -103,19 +103,18 @@ jQuery(document).ready(($) => {
                 .attr('data-shiptype-id', data['type_id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
+            $(row).mouseenter(() => {
                 addHightlight('shipclass', $(row));
-            }).on('mouseleave', () => {
+            }).mouseleave(() => {
                 removeHightlight('shipclass', $(row));
             });
 
             // Sticky
-            // $(row).on('click', () => {
-            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-            //         .toggleClass('aa-intel-highlight-sticky');
-            // }).on('click', '.aa-intel-information-link', (e) => {
-            //     e.stopPropagation();
-            // });
+            $(row).click(() => {
+                changeStickyHighlight('shipclass', $(row));
+            }).click('.aa-intel-information-link', (e) => {
+                e.stopPropagation();
+            });
         }
     });
 
@@ -183,19 +182,18 @@ jQuery(document).ready(($) => {
                 .attr('data-shiptype-id', data['type_id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
+            $(row).mouseenter(() => {
                 addHightlight('shipclass', $(row));
-            }).on('mouseleave', () => {
+            }).mouseleave(() => {
                 removeHightlight('shipclass', $(row));
             });
 
             // Sticky
-            // $(row).on('click', () => {
-            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-            //         .toggleClass('aa-intel-highlight-sticky');
-            // }).on('click', '.aa-intel-information-link', (e) => {
-            //     e.stopPropagation();
-            // });
+            $(row).click(() => {
+                changeStickyHighlight('shipclass', $(row));
+            }).click('.aa-intel-information-link', (e) => {
+                e.stopPropagation();
+            });
         }
     });
 
@@ -263,19 +261,18 @@ jQuery(document).ready(($) => {
                 .attr('data-shiptype-id', data['type_id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
+            $(row).mouseenter(() => {
                 addHightlight('shipclass', $(row));
-            }).on('mouseleave', () => {
+            }).mouseleave(() => {
                 removeHightlight('shipclass', $(row));
             });
 
             // Sticky
-            // $(row).on('click', () => {
-            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-            //         .toggleClass('aa-intel-highlight-sticky');
-            // }).on('click', '.aa-intel-information-link', (e) => {
-            //     e.stopPropagation();
-            // });
+            $(row).click(() => {
+                changeStickyHighlight('shipclass', $(row));
+            }).click('.aa-intel-information-link', (e) => {
+                e.stopPropagation();
+            });
         }
     });
 
@@ -320,19 +317,18 @@ jQuery(document).ready(($) => {
             $(row).attr('data-shiptype-id', data['id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
+            $(row).mouseenter(() => {
                 addHightlight('shiptype', $(row));
-            }).on('mouseleave', () => {
+            }).mouseleave(() => {
                 removeHightlight('shiptype', $(row));
             });
 
             // Sticky
-            // $(row).on('click', () => {
-            //     $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
-            //         .toggleClass('aa-intel-highlight-sticky');
-            // }).on('click', '.aa-intel-information-link', (e) => {
-            //     e.stopPropagation();
-            // });
+            $(row).click(() => {
+                changeStickyHighlight('shiptype', $(row));
+            }).click('.aa-intel-information-link', (e) => {
+                e.stopPropagation();
+            });
         }
     });
 });
