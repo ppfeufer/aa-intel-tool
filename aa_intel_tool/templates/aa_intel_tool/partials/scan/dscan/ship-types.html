@@ -3,7 +3,8 @@
 <div class="col-md-4 col-sm-6 col-lg-3">
     <header class="aa-intel-section-header">
         <h2 class="aa-intel-section-title">
-            {% translate "Ship Types" %}
+            {% translate "Ship types" as table_title %}
+            {{ table_title|title }}
         </h2>
     </header>
 
@@ -13,7 +14,10 @@
                 <table class="table table-condensed table-sortable table-no-images aa-intel-dscan-ship-types aa-intel-dscan-ship-types-list" style="width: 100%;">
                     <thead>
                     <tr>
-                        <th>{% translate "Ship Type" %}</th>
+                        <th>
+                            {% translate "Ship type" as table_header %}
+                            {{ table_header|title }}
+                        </th>
                         <th>{% translate "Count" %}</th>
                     </tr>
                     </thead>
