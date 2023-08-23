@@ -187,6 +187,11 @@
     .aa-intel-tool td.fix-eve-image-position > span.alliance-id-1 {
         transform: none;
     }
+
+    .aa-intel-tool .table-dscan-ship-classes,
+    .aa-intel-tool .aa-intel-empty-table-info {
+        display: none;
+    }
 }
 
 /* Callouts
@@ -218,9 +223,9 @@
     }
 
     /* Tighten up space between multiple callouts */
-    .aa-intel-tool .bs-callout + .bs-callout {
-        margin-top: -5px;
-    }
+    /*.aa-intel-tool .bs-callout + .bs-callout {*/
+    /*    margin-top: -5px;*/
+    /*}*/
 
     /* Variations */
     .aa-intel-tool .bs-callout-danger {

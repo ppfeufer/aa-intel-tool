@@ -9,7 +9,7 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="table-local-dscan table-local-dscan-ship-classes-{{ dscan_section }} table-aa-intel">
+            <div class="table-dscan table-dscan-ship-classes table-dscan-ship-classes-{{ dscan_section }} table-aa-intel">
                 <table class="table table-condensed table-sortable aa-intel-dscan-ship-classes aa-intel-dscan-ship-classes-{{ dscan_section }}-list" style="width: 100%;">
                     <thead>
                     <tr>
@@ -21,6 +21,18 @@
                     </tr>
                     </thead>
                 </table>
+            </div>
+
+            <div class="aa-intel-loading-table-info aa-intel-loading-table-info-{{ dscan_section }} bs-callout bs-callout-info">
+                <p>
+                    {% translate "Loading data …" %}
+                </p>
+            </div>
+
+            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-{{ dscan_section }} bs-callout bs-callout-info">
+                <p>
+                    {% translate "No data." %}
+                </p>
             </div>
         </div>
     </div>

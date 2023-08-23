@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Sticky highlight in D-Scan tables re-introduced
 - "On grid" detection for Upwell structures improved
+- Only show a D-Scan table when there is actual data available
 
 
 ## [0.0.1-alpha.10] - 2023-08-22
