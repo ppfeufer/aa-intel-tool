@@ -241,35 +241,35 @@ def parse(scan_data: list) -> Scan:
         )
 
         # Add "ship types" to parsed data when available
-        if len(ships["types"]):
+        if ships["types"]:
             parsed_data["shiptypes"] = {
                 "section": ScanData.Section.SHIPTYPES,
                 "data": ships["types"],
             }
 
         # Add "ships all" to parsed data when available
-        if len(ships["all"]):
+        if ships["all"]:
             parsed_data["all"] = {
                 "section": ScanData.Section.SHIPLIST,
                 "data": ships["all"],
             }
 
         # Add "ships on grid" to parsed data when available
-        if len(ships["ongrid"]):
+        if ships["ongrid"]:
             parsed_data["ongrid"] = {
                 "section": ScanData.Section.SHIPLIST_ON_GRID,
                 "data": ships["ongrid"],
             }
 
         # Add "ships off grid" to parsed data when available
-        if len(ships["offgrid"]):
+        if ships["offgrid"]:
             parsed_data["offgrid"] = {
                 "section": ScanData.Section.SHIPLIST_OFF_GRID,
                 "data": ships["offgrid"],
             }
 
         # Add "Upwell structures on grid" to parsed data when available
-        if len(upwell_structures):
+        if upwell_structures:
             parsed_data["sructures_on_grid"] = {
                 "section": ScanData.Section.STRUCTURES_ON_GRID,
                 "data": upwell_structures,
