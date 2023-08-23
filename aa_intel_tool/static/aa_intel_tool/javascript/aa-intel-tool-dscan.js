@@ -1,4 +1,4 @@
-/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addHightlight, removeHightlight */
+/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addHightlight, removeHightlight, changeStickyHighlight */
 
 jQuery(document).ready(($) => {
     'use strict';
@@ -43,296 +43,368 @@ jQuery(document).ready(($) => {
     /**
      * Datatable D-Scan All
      */
-    elementShipClassesAllTable.DataTable({
-        paging: false,
-        language: aaIntelToolJsL10n.dataTables.translation,
-        lengthChange: false,
-        dom:
-            '<\'row\'<\'col-sm-12\'f>>' +
-            '<\'row\'<\'col-sm-12\'tr>>' +
-            '<\'row\'<\'col-sm-12\'i>>',
-        ajax: {
-            url: aaIntelToolJsOptions.ajax.getShipClassesAll,
-            dataSrc: '',
-            cache: true
-        },
-        columns: [
-            {
-                data: (data) => {
-                    return ShipInfoPanel(data);
-                }
-            },
-            {
-                data: 'count'
-            },
-            {
-                data: 'type_name'
+    fetch(aaIntelToolJsOptions.ajax.getShipClassesAll)
+        .then(response => {
+            if (response.ok) {
+                return Promise.resolve(response);
             }
-        ],
-        order: [
-            [1, 'desc']
-        ],
-        columnDefs: [
-            {
-                targets: 0,
-                createdCell: (td) => {
-                    $(td).addClass('text-ellipsis');
-                }
-            },
-            {
-                targets: 1,
-                width: 45,
-                createdCell: (td) => {
-                    $(td).addClass('text-right');
-                }
-            },
-            {
-                targets: 2,
-                visible: false
+            else {
+                return Promise.reject(new Error('Failed to load'));
             }
-        ],
-        createdRow: (row, data) => {
-            // D-Scan total count
-            const currentTotal = elementDscanCountAll.html();
-            const newTotal = parseInt(currentTotal) + data['count'];
+        })
+        .then(response => response.json())
+        .then(tableData => {
+            $('div.aa-intel-loading-table-info-all').hide();
 
-            elementDscanCountAll.html(newTotal);
+            if (Object.keys(tableData).length === 0) {
+                $('div.aa-intel-empty-table-info-all').show();
+            } else {
+                $('div.table-dscan-ship-classes-all').show();
 
-            $(row)
-                .attr('data-shipclass-id', data['id'])
-                .attr('data-shiptype-id', data['type_id']);
+                elementShipClassesAllTable.DataTable({
+                    data: tableData,
+                    paging: false,
+                    language: aaIntelToolJsL10n.dataTables.translation,
+                    lengthChange: false,
+                    dom:
+                        '<\'row\'<\'col-sm-12\'f>>' +
+                        '<\'row\'<\'col-sm-12\'tr>>' +
+                        '<\'row\'<\'col-sm-12\'i>>',
+                    columns: [
+                        {
+                            data: (data) => {
+                                return ShipInfoPanel(data);
+                            }
+                        },
+                        {
+                            data: 'count'
+                        },
+                        {
+                            data: 'type_name'
+                        }
+                    ],
+                    order: [
+                        [1, 'desc']
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 0,
+                            createdCell: (td) => {
+                                $(td).addClass('text-ellipsis');
+                            }
+                        },
+                        {
+                            targets: 1,
+                            width: 45,
+                            createdCell: (td) => {
+                                $(td).addClass('text-right');
+                            }
+                        },
+                        {
+                            targets: 2,
+                            visible: false
+                        }
+                    ],
+                    createdRow: (row, data) => {
+                        // D-Scan total count
+                        const currentTotal = elementDscanCountAll.html();
+                        const newTotal = parseInt(currentTotal) + data['count'];
 
-            // Highlight
-            $(row).on('mouseenter', () => {
-                addHightlight('shipclass', $(row));
-            }).on('mouseleave', () => {
-                removeHightlight('shipclass', $(row));
-            });
+                        elementDscanCountAll.html(newTotal);
 
-            // Sticky
-            // $(row).on('click', () => {
-            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-            //         .toggleClass('aa-intel-highlight-sticky');
-            // }).on('click', '.aa-intel-information-link', (e) => {
-            //     e.stopPropagation();
-            // });
-        }
-    });
+                        $(row)
+                            .attr('data-shipclass-id', data['id'])
+                            .attr('data-shiptype-id', data['type_id']);
+
+                        // Highlight
+                        $(row).mouseenter(() => {
+                            addHightlight('shipclass', $(row));
+                        }).mouseleave(() => {
+                            removeHightlight('shipclass', $(row));
+                        });
+
+                        // Sticky
+                        $(row).click(() => {
+                            changeStickyHighlight('shipclass', $(row));
+                        }).click('.aa-intel-information-link', (e) => {
+                            e.stopPropagation();
+                        });
+                    }
+                });
+            }
+        })
+        .catch(function(error) {
+            console.log(`Error: ${error.message}`);
+        });
 
 
     /**
      * Datatable D-Scan On Grid
      */
-    elementShipClassesOngridTable.DataTable({
-        paging: false,
-        language: aaIntelToolJsL10n.dataTables.translation,
-        lengthChange: false,
-        dom:
-            '<\'row\'<\'col-sm-12\'f>>' +
-            '<\'row\'<\'col-sm-12\'tr>>' +
-            '<\'row\'<\'col-sm-12\'i>>',
-        ajax: {
-            url: aaIntelToolJsOptions.ajax.getShipClassesOngrid,
-            dataSrc: '',
-            cache: true
-        },
-        columns: [
-            {
-                data: (data) => {
-                    return ShipInfoPanel(data);
-                }
-            },
-            {
-                data: 'count'
-            },
-            {
-                data: 'type_name'
+    fetch(aaIntelToolJsOptions.ajax.getShipClassesOngrid)
+        .then(response => {
+            if (response.ok) {
+                return Promise.resolve(response);
             }
-        ],
-        order: [
-            [1, 'desc']
-        ],
-        columnDefs: [
-            {
-                targets: 0,
-                createdCell: (td) => {
-                    $(td).addClass('text-ellipsis');
-                }
-            },
-            {
-                targets: 1,
-                width: 45,
-                createdCell: (td) => {
-                    $(td).addClass('text-right');
-                }
-            },
-            {
-                targets: 2,
-                visible: false
+            else {
+                return Promise.reject(new Error('Failed to load'));
             }
-        ],
-        createdRow: (row, data) => {
-            // D-Scan total count
-            const currentTotal = elementDscanCountOngrid.html();
-            const newTotal = parseInt(currentTotal) + data['count'];
+        })
+        .then(response => response.json())
+        .then(tableData => {
+            $('div.aa-intel-loading-table-info-ongrid').hide();
 
-            elementDscanCountOngrid.html(newTotal);
+            if (Object.keys(tableData).length === 0) {
+                $('div.aa-intel-empty-table-info-ongrid').show();
+            } else {
+                $('div.table-dscan-ship-classes-ongrid').show();
 
-            $(row)
-                .attr('data-shipclass-id', data['id'])
-                .attr('data-shiptype-id', data['type_id']);
+                elementShipClassesOngridTable.DataTable({
+                    data: tableData,
+                    paging: false,
+                    language: aaIntelToolJsL10n.dataTables.translation,
+                    lengthChange: false,
+                    dom:
+                        '<\'row\'<\'col-sm-12\'f>>' +
+                        '<\'row\'<\'col-sm-12\'tr>>' +
+                        '<\'row\'<\'col-sm-12\'i>>',
+                    columns: [
+                        {
+                            data: (data) => {
+                                return ShipInfoPanel(data);
+                            }
+                        },
+                        {
+                            data: 'count'
+                        },
+                        {
+                            data: 'type_name'
+                        }
+                    ],
+                    order: [
+                        [1, 'desc']
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 0,
+                            createdCell: (td) => {
+                                $(td).addClass('text-ellipsis');
+                            }
+                        },
+                        {
+                            targets: 1,
+                            width: 45,
+                            createdCell: (td) => {
+                                $(td).addClass('text-right');
+                            }
+                        },
+                        {
+                            targets: 2,
+                            visible: false
+                        }
+                    ],
+                    createdRow: (row, data) => {
+                        // D-Scan total count
+                        const currentTotal = elementDscanCountOngrid.html();
+                        const newTotal = parseInt(currentTotal) + data['count'];
 
-            // Highlight
-            $(row).on('mouseenter', () => {
-                addHightlight('shipclass', $(row));
-            }).on('mouseleave', () => {
-                removeHightlight('shipclass', $(row));
-            });
+                        elementDscanCountOngrid.html(newTotal);
 
-            // Sticky
-            // $(row).on('click', () => {
-            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-            //         .toggleClass('aa-intel-highlight-sticky');
-            // }).on('click', '.aa-intel-information-link', (e) => {
-            //     e.stopPropagation();
-            // });
-        }
-    });
+                        $(row)
+                            .attr('data-shipclass-id', data['id'])
+                            .attr('data-shiptype-id', data['type_id']);
+
+                        // Highlight
+                        $(row).mouseenter(() => {
+                            addHightlight('shipclass', $(row));
+                        }).mouseleave(() => {
+                            removeHightlight('shipclass', $(row));
+                        });
+
+                        // Sticky
+                        $(row).click(() => {
+                            changeStickyHighlight('shipclass', $(row));
+                        }).click('.aa-intel-information-link', (e) => {
+                            e.stopPropagation();
+                        });
+                    }
+                });
+            }
+        })
+        .catch(function(error) {
+            console.log(`Error: ${error.message}`);
+        });
 
 
     /**
      * Datatable D-Scan Off Grid
      */
-    elementShipClassesOffgridTable.DataTable({
-        paging: false,
-        language: aaIntelToolJsL10n.dataTables.translation,
-        lengthChange: false,
-        dom:
-            '<\'row\'<\'col-sm-12\'f>>' +
-            '<\'row\'<\'col-sm-12\'tr>>' +
-            '<\'row\'<\'col-sm-12\'i>>',
-        ajax: {
-            url: aaIntelToolJsOptions.ajax.getShipClassesOffgrid,
-            dataSrc: '',
-            cache: true
-        },
-        columns: [
-            {
-                data: (data) => {
-                    return ShipInfoPanel(data);
-                }
-            },
-            {
-                data: 'count'
-            },
-            {
-                data: 'type_name'
+    fetch(aaIntelToolJsOptions.ajax.getShipClassesOffgrid)
+        .then(response => {
+            if (response.ok) {
+                return Promise.resolve(response);
             }
-        ],
-        order: [
-            [1, 'desc']
-        ],
-        columnDefs: [
-            {
-                targets: 0,
-                createdCell: (td) => {
-                    $(td).addClass('text-ellipsis');
-                }
-            },
-            {
-                targets: 1,
-                width: 45,
-                createdCell: (td) => {
-                    $(td).addClass('text-right');
-                }
-            },
-            {
-                targets: 2,
-                visible: false
+            else {
+                return Promise.reject(new Error('Failed to load'));
             }
-        ],
-        createdRow: (row, data) => {
-            // D-Scan total count
-            const currentTotal = elementDscanCountOffgrid.html();
-            const newTotal = parseInt(currentTotal) + data['count'];
+        })
+        .then(response => response.json())
+        .then(tableData => {
+            $('div.aa-intel-loading-table-info-offgrid').hide();
 
-            elementDscanCountOffgrid.html(newTotal);
+            if (Object.keys(tableData).length === 0) {
+                $('div.aa-intel-empty-table-info-offgrid').show();
+            } else {
+                $('div.table-dscan-ship-classes-offgrid').show();
 
-            $(row)
-                .attr('data-shipclass-id', data['id'])
-                .attr('data-shiptype-id', data['type_id']);
+                elementShipClassesOffgridTable.DataTable({
+                    data: tableData,
+                    paging: false,
+                    language: aaIntelToolJsL10n.dataTables.translation,
+                    lengthChange: false,
+                    dom:
+                        '<\'row\'<\'col-sm-12\'f>>' +
+                        '<\'row\'<\'col-sm-12\'tr>>' +
+                        '<\'row\'<\'col-sm-12\'i>>',
+                    columns: [
+                        {
+                            data: (data) => {
+                                return ShipInfoPanel(data);
+                            }
+                        },
+                        {
+                            data: 'count'
+                        },
+                        {
+                            data: 'type_name'
+                        }
+                    ],
+                    order: [
+                        [1, 'desc']
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 0,
+                            createdCell: (td) => {
+                                $(td).addClass('text-ellipsis');
+                            }
+                        },
+                        {
+                            targets: 1,
+                            width: 45,
+                            createdCell: (td) => {
+                                $(td).addClass('text-right');
+                            }
+                        },
+                        {
+                            targets: 2,
+                            visible: false
+                        }
+                    ],
+                    createdRow: (row, data) => {
+                        // D-Scan total count
+                        const currentTotal = elementDscanCountOffgrid.html();
+                        const newTotal = parseInt(currentTotal) + data['count'];
 
-            // Highlight
-            $(row).on('mouseenter', () => {
-                addHightlight('shipclass', $(row));
-            }).on('mouseleave', () => {
-                removeHightlight('shipclass', $(row));
-            });
+                        elementDscanCountOffgrid.html(newTotal);
 
-            // Sticky
-            // $(row).on('click', () => {
-            //     $(`tr[data-highlight="shiptype-${data['type_name_sanitised']}"]`)
-            //         .toggleClass('aa-intel-highlight-sticky');
-            // }).on('click', '.aa-intel-information-link', (e) => {
-            //     e.stopPropagation();
-            // });
-        }
-    });
+                        $(row)
+                            .attr('data-shipclass-id', data['id'])
+                            .attr('data-shiptype-id', data['type_id']);
+
+                        // Highlight
+                        $(row).mouseenter(() => {
+                            addHightlight('shipclass', $(row));
+                        }).mouseleave(() => {
+                            removeHightlight('shipclass', $(row));
+                        });
+
+                        // Sticky
+                        $(row).click(() => {
+                            changeStickyHighlight('shipclass', $(row));
+                        }).click('.aa-intel-information-link', (e) => {
+                            e.stopPropagation();
+                        });
+                    }
+                });
+            }
+        })
+        .catch(function(error) {
+            console.log(`Error: ${error.message}`);
+        });
 
 
     /**
-     * Datatable D-Scan Off Grid
+     * Datatable D-Scan Ship Types
      */
-    elementShipTypesTable.DataTable({
-        paging: false,
-        language: aaIntelToolJsL10n.dataTables.translation,
-        lengthChange: false,
-        dom:
-            '<\'row\'<\'col-sm-12\'f>>' +
-            '<\'row\'<\'col-sm-12\'tr>>' +
-            '<\'row\'<\'col-sm-12\'i>>',
-        ajax: {
-            url: aaIntelToolJsOptions.ajax.getShipTypes,
-            dataSrc: '',
-            cache: true
-        },
-        columns: [
-            {
-                data: 'name'
-            },
-            {
-                data: 'count'
+    fetch(aaIntelToolJsOptions.ajax.getShipTypes)
+        .then(response => {
+            if (response.ok) {
+                return Promise.resolve(response);
             }
-        ],
-        order: [
-            [1, 'desc']
-        ],
-        columnDefs: [
-            {
-                targets: 1,
-                width: 45,
-                createdCell: (td) => {
-                    $(td).addClass('text-right');
-                }
+            else {
+                return Promise.reject(new Error('Failed to load'));
             }
-        ],
-        createdRow: (row, data) => {
-            $(row).attr('data-shiptype-id', data['id']);
+        })
+        .then(response => response.json())
+        .then(tableData => {
+            $('div.aa-intel-loading-table-info-ship-types').hide();
 
-            // Highlight
-            $(row).on('mouseenter', () => {
-                addHightlight('shiptype', $(row));
-            }).on('mouseleave', () => {
-                removeHightlight('shiptype', $(row));
-            });
+            if (Object.keys(tableData).length === 0) {
+                $('div.aa-intel-empty-table-info-ship-types').show();
+            } else {
+                $('div.table-dscan-ship-types').show();
 
-            // Sticky
-            // $(row).on('click', () => {
-            //     $(`tr[data-highlight="shiptype-${data['name_sanitised']}"]`)
-            //         .toggleClass('aa-intel-highlight-sticky');
-            // }).on('click', '.aa-intel-information-link', (e) => {
-            //     e.stopPropagation();
-            // });
-        }
-    });
+                elementShipTypesTable.DataTable({
+                    data: tableData,
+                    paging: false,
+                    language: aaIntelToolJsL10n.dataTables.translation,
+                    lengthChange: false,
+                    dom:
+                        '<\'row\'<\'col-sm-12\'f>>' +
+                        '<\'row\'<\'col-sm-12\'tr>>' +
+                        '<\'row\'<\'col-sm-12\'i>>',
+                    columns: [
+                        {
+                            data: 'name'
+                        },
+                        {
+                            data: 'count'
+                        }
+                    ],
+                    order: [
+                        [1, 'desc']
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 1,
+                            width: 45,
+                            createdCell: (td) => {
+                                $(td).addClass('text-right');
+                            }
+                        }
+                    ],
+                    createdRow: (row, data) => {
+                        $(row).attr('data-shiptype-id', data['id']);
+
+                        // Highlight
+                        $(row).mouseenter(() => {
+                            addHightlight('shiptype', $(row));
+                        }).mouseleave(() => {
+                            removeHightlight('shiptype', $(row));
+                        });
+
+                        // Sticky
+                        $(row).click(() => {
+                            changeStickyHighlight('shiptype', $(row));
+                        }).click('.aa-intel-information-link', (e) => {
+                            e.stopPropagation();
+                        });
+                    }
+                });
+            }
+        })
+        .catch(function(error) {
+            console.log(`Error: ${error.message}`);
+        });
 });

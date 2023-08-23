@@ -13,10 +13,4 @@ def dict_to_list(input_dict: dict) -> list:
     :rtype:
     """
 
-    return [
-        data
-        for (
-            not_used,  # pylint: disable=unused-variable
-            data,
-        ) in sorted(input_dict.items())
-    ]
+    return list(dict(sorted(input_dict.items())).values())

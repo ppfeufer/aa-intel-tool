@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 20:47+0200\n"
+"POT-Creation-Date: 2023-08-23 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: admin.py:79 models.py:46
+msgid "Scan type"
+msgstr ""
+
+#: admin.py:93
+msgid "Open in a new browser tab"
+msgstr ""
+
+#: admin.py:99
+msgid "RAW data"
+msgstr ""
+
 #. Translators: This is the app name and version, which will appear in the Django Backend
 #: apps.py:21
 #, python-brace-format
 msgid "Intel Tool v{__version__}"
+msgstr ""
+
+#: constants.py:63 models.py:22
+#: templates/aa_intel_tool/partials/index/form.html:15
+#: templates/aa_intel_tool/views/scan/dscan.html:12
+msgid "D-Scan"
+msgstr ""
+
+#: constants.py:68 models.py:23
+#: templates/aa_intel_tool/partials/index/form.html:31
+msgid "Fleet Composition"
+msgstr ""
+
+#: exceptions.py:34
+#, python-brace-format
+msgid "A parser error occurred » {message}"
 msgstr ""
 
 #: form.py:20
@@ -32,41 +60,28 @@ msgstr ""
 msgid "Invalid scan data"
 msgstr ""
 
-#: models.py:22 templates/aa_intel_tool/partials/index/form.html:15
-#: templates/aa_intel_tool/views/scan/dscan.html:12
-msgid "D-Scan"
-msgstr ""
-
-#: models.py:23 templates/aa_intel_tool/partials/index/form.html:31
-msgid "Fleet Composition"
-msgstr ""
-
 #: models.py:24
 msgid "Chat List"
 msgstr ""
 
 #: models.py:31
-msgid "The hash of the scan."
+msgid "Scan hash"
 msgstr ""
 
 #: models.py:37
-msgid "Date and time the scan was created."
+msgid "Creation date/time"
 msgstr ""
 
 #: models.py:40
-msgid "The original scan data."
+msgid "Scan RAW data"
 msgstr ""
 
-#: models.py:46
-msgid "The scan type."
-msgstr ""
-
-#: models.py:55
-msgid "scan"
+#: models.py:55 models.py:128
+msgid "Scan"
 msgstr ""
 
 #: models.py:56
-msgid "scans"
+msgid "Scans"
 msgstr ""
 
 #: models.py:111
@@ -81,7 +96,7 @@ msgstr ""
 msgid "Alliance list"
 msgstr ""
 
-#: models.py:114
+#: models.py:114 templates/aa_intel_tool/partials/scan/dscan/ship-types.html:6
 msgid "Ship types"
 msgstr ""
 
@@ -105,35 +120,32 @@ msgstr ""
 msgid "Deployables (on grid)"
 msgstr ""
 
-#: models.py:128
-msgid "Scan"
-msgstr ""
-
 #: models.py:135
-msgid "The scan section"
+msgid "Scan section"
 msgstr ""
 
 #: models.py:139
-msgid "The processed scan section data"
+msgid "Processed scan data"
 msgstr ""
 
 #: models.py:148 models.py:149
-msgid "scan data"
+msgid "Scan data"
 msgstr ""
 
-#: parser/general.py:78
-msgid "No suitable parser found …"
+#: parser/general.py:46
+msgid ""
+"No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
 #: parser/general.py:80
 msgid "No data to parse …"
 msgstr ""
 
-#: parser/module/chatlist.py:211
+#: parser/module/chatlist.py:224
 msgid "The chat list module is currently disabled."
 msgstr ""
 
-#: parser/module/chatlist.py:228
+#: parser/module/chatlist.py:242
 #, python-brace-format
 msgid ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
@@ -144,15 +156,15 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: parser/module/chatlist.py:252
+#: parser/module/chatlist.py:270
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr ""
 
-#: parser/module/chatlist.py:264
+#: parser/module/chatlist.py:282
 msgid "Character unknown to ESI."
 msgstr ""
 
-#: parser/module/dscan.py:136
+#: parser/module/dscan.py:203
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
@@ -160,7 +172,7 @@ msgstr ""
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
-#: parser/module/fleetcomp.py:43
+#: parser/module/fleetcomp.py:44
 msgid "The fleet composition module is not yet finished, be patient …"
 msgstr ""
 
@@ -327,54 +339,50 @@ msgid "Copy Permalink"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
-msgid "Alliances Breakdown"
+msgid "Alliances breakdown"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:19
+#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
 msgid "Alliance Name"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
-#: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:17
-#: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:17
+#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:24
+#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:24
+#: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:20
+#: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:21
 msgid "Count"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
-msgid "Corporations Breakdown"
+msgid "Corporations breakdown"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:19
+#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
 msgid "Corporation Name"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
-msgid "Pilots Breakdown"
-msgstr ""
-
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:18
-msgid "Name"
+msgid "Pilots breakdown"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
-msgid "Alliance"
+msgid "Name"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
+msgid "Alliance"
+msgstr ""
+
+#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
 msgid "Corporation"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:16
-msgid "Ship Class"
+#: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:17
+msgid "Ship class"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:6
-msgid "Ship Types"
-msgstr ""
-
-#: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:16
-msgid "Ship Type"
+#: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:18
+msgid "Ship type"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
@@ -404,21 +412,25 @@ msgid "D-Scan » Intel Tool"
 msgstr ""
 
 #: templates/aa_intel_tool/views/scan/dscan.html:21
-msgid "All Ships"
+msgid "All ships"
 msgstr ""
 
 #: templates/aa_intel_tool/views/scan/dscan.html:22
-msgid "On Grid"
+msgid "On grid"
 msgstr ""
 
 #: templates/aa_intel_tool/views/scan/dscan.html:23
-msgid "Off Grid"
+msgid "Off grid"
 msgstr ""
 
-#: views/general.py:39
+#: views/general.py:43
 msgid "The provided data could not be parsed."
 msgstr ""
 
-#: views/general.py:82 views/general.py:113
+#: views/general.py:50
+msgid "(System Error) Something unexpected happened."
+msgstr ""
+
+#: views/general.py:89 views/general.py:120
 msgid "The scan you were looking for could not be found."
 msgstr ""

@@ -116,7 +116,10 @@ class ScanData(models.Model):
         SHIPLIST_ON_GRID = "shiplist_on_grid", _("Ship list (on grid)")
         SHIPLIST_OFF_GRID = "shiplist_off_grid", _("Ship list (off grid)")
         STRUCTURES_ON_GRID = "structures_on_grid", _("Structures (on grid)")
+        STARBASES_ON_GRID = "starbases_on_grid", _("Starbases (on grid)")
         DEPLOYABLES_ON_GRID = "deployables_on_grid", _("Deployables (on grid)")
+        MISCELLANEOUS_ON_GRID = "miscellaneous_on_grid", _("Miscellaneous (on grid)")
+        SOLAR_SYSTEM_INFORMATION = "solar_system_information", _("System information")
 
     scan = models.ForeignKey(
         Scan,
@@ -129,7 +132,7 @@ class ScanData(models.Model):
     )
 
     section = models.CharField(
-        max_length=19,
+        max_length=24,
         choices=Section.choices,
         default=Section.INVALID,
         verbose_name=_("Scan section"),

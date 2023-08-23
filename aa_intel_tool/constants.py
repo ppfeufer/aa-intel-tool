@@ -4,6 +4,7 @@ App constants
 
 # Standard Library
 import re
+from enum import IntEnum
 
 # Django
 from django.utils.text import slugify
@@ -21,16 +22,28 @@ INTERNAL_URL_PREFIX = "-"
 
 # Localised units
 distance_units_on_grid: str = """
-    km|m    # Latin (English, German and so on)
+    km|m    # Client in: English, German, Chinese, French, Japanese, Korean, Spanish
     |км|м   # Russian
 """
 distance_units_off_grid: str = """
-    AU|     # English
+    AU|     # Client in: English, Chinese, Japanese, Korean, Spanish
+    UA|     # Client in: French
     AE|     # German
     а.е.    # Russian
 """
 
 distance_units = f"{distance_units_on_grid}|{distance_units_off_grid}"
+
+
+class AdditionalEveCategoryId(IntEnum):
+    """
+    Eve category IDs which are not covered by Eve Universe
+    Unfortunately Python doesn't allow to extend eveuniverse.constants.EveCategoryId
+    """
+
+    DEPLOYABLE = 22
+    STARBASE = 23
+    SCANNER_PROBE = 479
 
 
 # Pre-compiled regex patterns used throughout the app
