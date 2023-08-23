@@ -57,7 +57,6 @@ jQuery(document).ready(($) => {
             $('div.aa-intel-loading-table-info-all').hide();
 
             if (Object.keys(tableData).length === 0) {
-                elementShipClassesOffgridTable.hide();
                 $('div.aa-intel-empty-table-info-all').show();
             } else {
                 $('div.table-dscan-ship-classes-all').show();
@@ -156,7 +155,6 @@ jQuery(document).ready(($) => {
             $('div.aa-intel-loading-table-info-ongrid').hide();
 
             if (Object.keys(tableData).length === 0) {
-                elementShipClassesOffgridTable.hide();
                 $('div.aa-intel-empty-table-info-ongrid').show();
             } else {
                 $('div.table-dscan-ship-classes-ongrid').show();
@@ -255,7 +253,6 @@ jQuery(document).ready(($) => {
             $('div.aa-intel-loading-table-info-offgrid').hide();
 
             if (Object.keys(tableData).length === 0) {
-                elementShipClassesOffgridTable.hide();
                 $('div.aa-intel-empty-table-info-offgrid').show();
             } else {
                 $('div.table-dscan-ship-classes-offgrid').show();
@@ -338,7 +335,7 @@ jQuery(document).ready(($) => {
 
 
     /**
-     * Datatable D-Scan Off Grid
+     * Datatable D-Scan Ship Types
      */
     fetch(aaIntelToolJsOptions.ajax.getShipTypes)
         .then(response => {
@@ -354,10 +351,9 @@ jQuery(document).ready(($) => {
             $('div.aa-intel-loading-table-info-ship-types').hide();
 
             if (Object.keys(tableData).length === 0) {
-                elementShipClassesOffgridTable.hide();
                 $('div.aa-intel-empty-table-info-ship-types').show();
             } else {
-                $('table.aa-intel-empty-table-info-ship-types').show();
+                $('div.table-dscan-ship-types').show();
 
                 elementShipTypesTable.DataTable({
                     data: tableData,

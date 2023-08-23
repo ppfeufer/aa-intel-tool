@@ -189,6 +189,7 @@
     }
 
     .aa-intel-tool .table-dscan-ship-classes,
+    .aa-intel-tool .table-dscan-ship-types,
     .aa-intel-tool .aa-intel-empty-table-info {
         display: none;
     }
