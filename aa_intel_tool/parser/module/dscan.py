@@ -45,7 +45,6 @@ def _is_on_grid(distance: str) -> bool:
     )
 
     if re.search(pattern=REGEX_PATTERN["localised_on_grid"], string=distance):
-        # line = re.split(pattern=r" ", string=distance)
         distance_sanitised = int(re.sub(r"[^0-9]", "", distance))
 
         if distance_sanitised <= AppSettings.INTELTOOL_DSCAN_GRID_SIZE:
@@ -158,7 +157,7 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
     }
 
 
-def _get_upwell_structures_on_grid(eve_types: QuerySet, dscan_list: list) -> list:
+def _get_upwell_structures_on_grid(eve_types: QuerySet, counter: dict) -> list:
     """
     Get all Upwell structures that are on grid
 
@@ -176,16 +175,13 @@ def _get_upwell_structures_on_grid(eve_types: QuerySet, dscan_list: list) -> lis
 
     structures_on_grid = {}
 
-    for item in dscan_list:
-        if eve_types_structures.filter(id=item[0]).exists() and _is_on_grid(item[3]):
-            if item[0] not in structures_on_grid:
-                structures_on_grid[item[0]] = {
-                    "id": item[0],
-                    "type": item[2],
-                    "count": 0,
-                }
-
-            structures_on_grid[item[0]]["count"] += 1
+    for eve_type in eve_types_structures:
+        if eve_type[0] in counter["ongrid"]:
+            if eve_type[1] not in structures_on_grid:
+                structures_on_grid[eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
+                structures_on_grid[eve_type[1]]["count"] = counter["ongrid"][
+                    eve_type[0]
+                ]
 
     return dict_to_list(structures_on_grid)
 
@@ -203,11 +199,6 @@ def parse(scan_data: list) -> Scan:
     message = _("The D-Scan module is currently disabled.")
 
     if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
-        # AA Intel Tool
-        from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
-            REGEX_PATTERN,
-        )
-
         counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
         eve_ids = {"all": [], "ongrid": [], "offgrid": []}
         dscan_lines = []
@@ -226,7 +217,7 @@ def parse(scan_data: list) -> Scan:
             if entry_id not in counter["all"]:
                 counter["all"][entry_id] = 0
 
-            if re.search(pattern=REGEX_PATTERN["localised_on_grid"], string=line[3]):
+            if _is_on_grid(line[3]):
                 if entry_id not in counter["ongrid"]:
                     counter["ongrid"][entry_id] = 0
 
@@ -250,7 +241,7 @@ def parse(scan_data: list) -> Scan:
         # Parse the data
         ships = _get_ships(eve_types=eve_types, counter=counter)
         upwell_structures = _get_upwell_structures_on_grid(
-            eve_types=eve_types, dscan_list=dscan_lines
+            eve_types=eve_types, counter=counter
         )
 
         # Add "ship types" to parsed data when available
