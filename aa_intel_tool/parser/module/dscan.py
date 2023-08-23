@@ -132,23 +132,6 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
         # Add the count to the ship types
         ships["types"][eve_type[3]]["count"] += counter["all"][eve_type[0]]
 
-    # Leaving this here just in case the method in the first loop turns out to be faulty
-    # for ship_name, ship_info in ships["all"].items():  # pylint: disable=unused-variable
-    #     if ship_info["type_name"] not in counter["type"]:
-    #         counter["type"][ship_info["type_name"]] = 0
-    #
-    #     counter["type"][ship_info["type_name"]] += ship_info["count"]
-    #
-    #     if ship_info["type_name"] not in ships["types"]:
-    #         ships["types"][ship_info["type_name"]] = {
-    #             "name": ship_info["type_name"],
-    #             "name_sanitised": slugify(ship_info["type_name"]),
-    #         }
-    #
-    #     ships["types"][ship_info["type_name"]]["count"] = counter["type"][
-    #         ship_info["type_name"]
-    #     ]
-
     return {
         "all": dict_to_list(input_dict=ships["all"]),
         "ongrid": dict_to_list(input_dict=ships["ongrid"]),
@@ -173,17 +156,62 @@ def _get_upwell_structures_on_grid(eve_types: QuerySet, counter: dict) -> list:
         eve_group__eve_category_id__exact=EveCategoryId.STRUCTURE
     )
 
-    structures_on_grid = {}
+    upwell_structures = {}
 
     for eve_type in eve_types_structures:
         if eve_type[0] in counter["ongrid"]:
-            if eve_type[1] not in structures_on_grid:
-                structures_on_grid[eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
-                structures_on_grid[eve_type[1]]["count"] = counter["ongrid"][
-                    eve_type[0]
-                ]
+            if eve_type[1] not in upwell_structures:
+                upwell_structures[eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
+                upwell_structures[eve_type[1]]["count"] = counter["ongrid"][eve_type[0]]
 
-    return dict_to_list(structures_on_grid)
+    return dict_to_list(upwell_structures)
+
+
+def _get_scan_details(scan_data: list) -> tuple:
+    """
+    Split the D-Scan data into more convenient parts
+
+    :param scan_data:
+    :type scan_data:
+    :return:
+    :rtype:
+    """
+
+    counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
+    eve_ids = {"all": [], "ongrid": [], "offgrid": []}
+    # dscan_lines = []
+
+    # Let's split this list up
+    #
+    # line[0] => Item ID
+    # line[1] => Name
+    # line[2] => Ship Class / Structure Type
+    # line[3] => Distance
+    for entry in scan_data:
+        line = re.split(pattern=r"\t+", string=entry.rstrip("\t"))
+        entry_id = int(line[0])
+
+        if entry_id not in counter["all"]:
+            counter["all"][entry_id] = 0
+
+        if _is_on_grid(line[3]):
+            if entry_id not in counter["ongrid"]:
+                counter["ongrid"][entry_id] = 0
+
+            counter["ongrid"][entry_id] += 1
+            eve_ids["ongrid"].append(entry_id)
+        else:
+            if entry_id not in counter["offgrid"]:
+                counter["offgrid"][entry_id] = 0
+
+            counter["offgrid"][entry_id] += 1
+            eve_ids["offgrid"].append(entry_id)
+
+        counter["all"][entry_id] += 1
+        eve_ids["all"].append(entry_id)
+        # dscan_lines.append([entry_id, line[1], line[2], line[3]])
+
+    return counter, eve_ids
 
 
 def parse(scan_data: list) -> Scan:
@@ -199,46 +227,14 @@ def parse(scan_data: list) -> Scan:
     message = _("The D-Scan module is currently disabled.")
 
     if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
-        counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
-        eve_ids = {"all": [], "ongrid": [], "offgrid": []}
-        dscan_lines = []
         parsed_data = {}
-
-        # Let's split this list up
-        #
-        # [0] => Item ID
-        # [1] => Name
-        # [2] => Ship Class / Structure Type
-        # [3] => Distance
-        for entry in scan_data:
-            line = re.split(pattern=r"\t+", string=entry.rstrip("\t"))
-            entry_id = int(line[0])
-
-            if entry_id not in counter["all"]:
-                counter["all"][entry_id] = 0
-
-            if _is_on_grid(line[3]):
-                if entry_id not in counter["ongrid"]:
-                    counter["ongrid"][entry_id] = 0
-
-                counter["ongrid"][entry_id] += 1
-                eve_ids["ongrid"].append(entry_id)
-            else:
-                if entry_id not in counter["offgrid"]:
-                    counter["offgrid"][entry_id] = 0
-
-                counter["offgrid"][entry_id] += 1
-                eve_ids["offgrid"].append(entry_id)
-
-            counter["all"][entry_id] += 1
-            eve_ids["all"].append(entry_id)
-            dscan_lines.append([entry_id, line[1], line[2], line[3]])
+        counter, eve_ids = _get_scan_details(scan_data=scan_data)
 
         eve_types = EveType.objects.bulk_get_or_create_esi(
             ids=set(eve_ids["all"]), include_children=True
         ).values_list("id", "name", "eve_group__id", "eve_group__name", named=True)
 
-        # Parse the data
+        # Parse the data parts
         ships = _get_ships(eve_types=eve_types, counter=counter)
         upwell_structures = _get_upwell_structures_on_grid(
             eve_types=eve_types, counter=counter
