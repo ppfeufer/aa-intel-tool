@@ -21,11 +21,12 @@ INTERNAL_URL_PREFIX = "-"
 
 # Localised units
 distance_units_on_grid: str = """
-    km|m    # Latin (English, German and so on)
+    km|m    # Client in: English, German, Chinese, French, Japanese, Korean, Spanish
     |км|м   # Russian
 """
 distance_units_off_grid: str = """
-    AU|     # English
+    AU|     # Client in: English, Chinese, Japanese, Korean, Spanish
+    UA|     # Client in: French
     AE|     # German
     а.е.    # Russian
 """
