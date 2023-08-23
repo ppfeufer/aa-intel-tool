@@ -23,11 +23,11 @@ def safe_scan_to_db(scan_type: Scan.Type, parsed_data: dict) -> Scan:
     new_scan.save()
 
     # Creating the associated ScanData objects
-    for _, scan in parsed_data.items():
+    for scan_data in parsed_data.values():
         ScanData(
             scan=new_scan,
-            section=scan["section"],
-            processed_data=scan["data"],
+            section=scan_data["section"],
+            processed_data=scan_data["data"],
         ).save()
 
     # Return the Scan object

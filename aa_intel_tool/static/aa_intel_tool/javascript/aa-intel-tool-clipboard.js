@@ -9,7 +9,7 @@ jQuery(document).ready(($) => {
     /**
      * Remove copy buttons if the browser doesn't support it
      */
-    if(!ClipboardJS.isSupported()) {
+    if (!ClipboardJS.isSupported()) {
         elementCopyToClipboard.remove();
     }
 
@@ -109,6 +109,6 @@ jQuery(document).ready(($) => {
      * Copy ping text
      */
     elementCopyToClipboard.on('click', () => {
-        copyScanLink('#'+ elementCopyToClipboard.attr('id'));
+        copyScanLink('#' + elementCopyToClipboard.attr('id'));
     });
 });

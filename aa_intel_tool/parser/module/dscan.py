@@ -45,7 +45,7 @@ def _is_on_grid(distance: str) -> bool:
     )
 
     if re.search(pattern=REGEX_PATTERN["localised_on_grid"], string=distance):
-        distance_sanitised = int(re.sub(r"[^0-9]", "", distance))
+        distance_sanitised = int(re.sub(pattern=r"[^0-9]", repl="", string=distance))
 
         if distance_sanitised <= AppSettings.INTELTOOL_DSCAN_GRID_SIZE:
             return True
@@ -240,13 +240,6 @@ def parse(scan_data: list) -> Scan:
             eve_types=eve_types, counter=counter
         )
 
-        # Add "ship types" to parsed data when available
-        if ships["types"]:
-            parsed_data["shiptypes"] = {
-                "section": ScanData.Section.SHIPTYPES,
-                "data": ships["types"],
-            }
-
         # Add "ships all" to parsed data when available
         if ships["all"]:
             parsed_data["all"] = {
@@ -266,6 +259,13 @@ def parse(scan_data: list) -> Scan:
             parsed_data["offgrid"] = {
                 "section": ScanData.Section.SHIPLIST_OFF_GRID,
                 "data": ships["offgrid"],
+            }
+
+        # Add "ship types" to parsed data when available
+        if ships["types"]:
+            parsed_data["shiptypes"] = {
+                "section": ScanData.Section.SHIPTYPES,
+                "data": ships["types"],
             }
 
         # Add "Upwell structures on grid" to parsed data when available

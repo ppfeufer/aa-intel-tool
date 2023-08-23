@@ -267,7 +267,8 @@ def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
                 )
             except EveEntity.DoesNotExist as exc:  # pylint: disable=no-member
                 message = _(
-                    "Something went wrong while fetching the character information from ESI."
+                    "Something went wrong while fetching "
+                    "the character information from ESI."
                 )
 
                 raise ParserError(message=message) from exc

@@ -95,7 +95,7 @@ jQuery(document).ready(($) => {
             '    <span class="aa-intel-corporation-links-wrapper">\n' +
             '        <small>\n';
 
-        if((1000000 <= corporationData['id']) && corporationData['id'] <= 2000000) {
+        if ((1000000 <= corporationData['id']) && corporationData['id'] <= 2000000) {
             html_info += '' +
                 '            (' + aaIntelToolJsL10n.scanData.npcCorp + ')';
         } else {
@@ -272,7 +272,7 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                addHightlight('alliance', $(row))
+                addHightlight('alliance', $(row));
             }).on('mouseleave', () => {
                 removeHightlight('alliance', $(row));
             });
@@ -358,7 +358,7 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                addHightlight('corporation', $(row))
+                addHightlight('corporation', $(row));
             }).on('mouseleave', () => {
                 removeHightlight('corporation', $(row));
             });
@@ -424,11 +424,11 @@ jQuery(document).ready(($) => {
             },
             {
                 targets: 1,
-                width: 125,
+                width: 125
             },
             {
                 targets: 2,
-                width: 125,
+                width: 125
             },
             {
                 targets: [3, 4],
@@ -450,7 +450,7 @@ jQuery(document).ready(($) => {
 
             // Highlight
             $(row).on('mouseenter', () => {
-                addHightlight('pilot', $(row))
+                addHightlight('pilot', $(row));
             }).on('mouseleave', () => {
                 removeHightlight('pilot', $(row));
             });

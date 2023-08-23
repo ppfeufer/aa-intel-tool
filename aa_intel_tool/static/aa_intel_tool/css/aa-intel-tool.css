@@ -223,11 +223,6 @@
         border-radius: 3px;
     }
 
-    /* Tighten up space between multiple callouts */
-    /*.aa-intel-tool .bs-callout + .bs-callout {*/
-    /*    margin-top: -5px;*/
-    /*}*/
-
     /* Variations */
     .aa-intel-tool .bs-callout-danger {
         border-left-color: rgb(206 72 68);

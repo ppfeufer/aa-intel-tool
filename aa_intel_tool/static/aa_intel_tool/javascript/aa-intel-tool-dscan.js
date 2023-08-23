@@ -47,8 +47,7 @@ jQuery(document).ready(($) => {
         .then(response => {
             if (response.ok) {
                 return Promise.resolve(response);
-            }
-            else {
+            } else {
                 return Promise.reject(new Error('Failed to load'));
             }
         })
@@ -133,7 +132,7 @@ jQuery(document).ready(($) => {
                 });
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(`Error: ${error.message}`);
         });
 
@@ -145,8 +144,7 @@ jQuery(document).ready(($) => {
         .then(response => {
             if (response.ok) {
                 return Promise.resolve(response);
-            }
-            else {
+            } else {
                 return Promise.reject(new Error('Failed to load'));
             }
         })
@@ -231,7 +229,7 @@ jQuery(document).ready(($) => {
                 });
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(`Error: ${error.message}`);
         });
 
@@ -243,8 +241,7 @@ jQuery(document).ready(($) => {
         .then(response => {
             if (response.ok) {
                 return Promise.resolve(response);
-            }
-            else {
+            } else {
                 return Promise.reject(new Error('Failed to load'));
             }
         })
@@ -329,7 +326,7 @@ jQuery(document).ready(($) => {
                 });
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(`Error: ${error.message}`);
         });
 
@@ -341,8 +338,7 @@ jQuery(document).ready(($) => {
         .then(response => {
             if (response.ok) {
                 return Promise.resolve(response);
-            }
-            else {
+            } else {
                 return Promise.reject(new Error('Failed to load'));
             }
         })
@@ -404,7 +400,7 @@ jQuery(document).ready(($) => {
                 });
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(`Error: ${error.message}`);
         });
 });
