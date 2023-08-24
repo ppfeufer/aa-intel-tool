@@ -108,7 +108,7 @@ jQuery(document).ready(($) => {
     /**
      * Copy ping text
      */
-    elementCopyToClipboard.on('click', () => {
+    elementCopyToClipboard.click(() => {
         copyScanLink('#' + elementCopyToClipboard.attr('id'));
     });
 });

@@ -267,16 +267,16 @@ jQuery(document).ready(($) => {
                 .attr('data-alliance-id', data['id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
+            $(row).mouseenter(() => {
                 addHightlight('alliance', $(row));
-            }).on('mouseleave', () => {
+            }).mouseleave(() => {
                 removeHightlight('alliance', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
+            $(row).click(() => {
                 changeStickyHighlight('alliance', $(row));
-            }).on('click', '.aa-intel-information-link', (e) => {
+            }).click('.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
         }
@@ -353,16 +353,16 @@ jQuery(document).ready(($) => {
                 .attr('data-alliance-id', data['alliance']['id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
+            $(row).mouseenter(() => {
                 addHightlight('corporation', $(row));
-            }).on('mouseleave', () => {
+            }).mouseleave(() => {
                 removeHightlight('corporation', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
+            $(row).click(() => {
                 changeStickyHighlight('corporation', $(row));
-            }).on('click', '.aa-intel-information-link', (e) => {
+            }).click('.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
         }
@@ -445,16 +445,16 @@ jQuery(document).ready(($) => {
                 .attr('data-alliance-id', data['alliance']['id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
+            $(row).mouseenter(() => {
                 addHightlight('pilot', $(row));
-            }).on('mouseleave', () => {
+            }).mouseleave(() => {
                 removeHightlight('pilot', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
+            $(row).click(() => {
                 changeStickyHighlight('pilot', $(row));
-            }).on('click', '.aa-intel-information-link', (e) => {
+            }).click('.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
         }
