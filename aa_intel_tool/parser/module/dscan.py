@@ -140,7 +140,9 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
     }
 
 
-def _get_upwell_structures_on_grid(eve_types: QuerySet, counter: dict) -> list:
+def _get_upwell_structures_on_grid(
+    eve_types: QuerySet, counter: dict, ansiblex_destination: str = None
+) -> list:
     """
     Get all Upwell structures that are on grid
 
@@ -163,6 +165,12 @@ def _get_upwell_structures_on_grid(eve_types: QuerySet, counter: dict) -> list:
             if eve_type[1] not in upwell_structures:
                 upwell_structures[eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
                 upwell_structures[eve_type[1]]["count"] = counter["ongrid"][eve_type[0]]
+
+                # If it is an Ansiblex Jump Gate, add the destination system
+                if eve_type[0] == 35841 and ansiblex_destination:
+                    upwell_structures[eve_type[1]][
+                        "name"
+                    ] += f" » {ansiblex_destination}"
 
     return dict_to_list(upwell_structures)
 
@@ -231,6 +239,22 @@ def _get_starbases_on_grid(eve_types: QuerySet, counter: dict) -> list:
     return dict_to_list(starbases)
 
 
+def _get_ansiblex_jumpgate_destination(ansiblex_name: str) -> str:
+    """
+    Get the Ansiblex Jump Gate  destination system
+
+    :param ansiblex_name:
+    :type ansiblex_name:
+    :return:
+    :rtype:
+    """
+
+    name_parts = re.split(pattern=r" - ", string=ansiblex_name)
+    gate_systems = re.split(pattern=r" » ", string=name_parts[0])
+
+    return gate_systems[1]
+
+
 def _get_scan_details(scan_data: list) -> tuple:
     """
     Split the D-Scan data into more convenient parts
@@ -241,6 +265,7 @@ def _get_scan_details(scan_data: list) -> tuple:
     :rtype:
     """
 
+    ansiblex_destination = None
     counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
     eve_ids = {"all": [], "ongrid": [], "offgrid": []}
     # dscan_lines = []
@@ -262,6 +287,12 @@ def _get_scan_details(scan_data: list) -> tuple:
             if entry_id not in counter["ongrid"]:
                 counter["ongrid"][entry_id] = 0
 
+            # If there is an Ansiblex Jump Gate, get its destination system
+            if entry_id == 35841:
+                ansiblex_destination = _get_ansiblex_jumpgate_destination(
+                    ansiblex_name=line[1]
+                )
+
             counter["ongrid"][entry_id] += 1
             eve_ids["ongrid"].append(entry_id)
         else:
@@ -275,7 +306,7 @@ def _get_scan_details(scan_data: list) -> tuple:
         eve_ids["all"].append(entry_id)
         # dscan_lines.append([entry_id, line[1], line[2], line[3]])
 
-    return counter, eve_ids
+    return ansiblex_destination, counter, eve_ids
 
 
 def parse(scan_data: list) -> Scan:
@@ -292,7 +323,7 @@ def parse(scan_data: list) -> Scan:
 
     if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
         parsed_data = {}
-        counter, eve_ids = _get_scan_details(scan_data=scan_data)
+        ansiblex_destination, counter, eve_ids = _get_scan_details(scan_data=scan_data)
 
         eve_types = EveType.objects.bulk_get_or_create_esi(
             ids=set(eve_ids["all"]), include_children=True
@@ -301,7 +332,9 @@ def parse(scan_data: list) -> Scan:
         # Parse the data parts
         ships = _get_ships(eve_types=eve_types, counter=counter)
         upwell_structures = _get_upwell_structures_on_grid(
-            eve_types=eve_types, counter=counter
+            eve_types=eve_types,
+            counter=counter,
+            ansiblex_destination=ansiblex_destination,
         )
         deployables = _get_deployables_on_grid(eve_types=eve_types, counter=counter)
         starbases = _get_starbases_on_grid(eve_types=eve_types, counter=counter)
