@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - Upwell structures on grid to D-Scan result page
+- Deployables on grid to D-Scan result page
 
 ### Changed
 

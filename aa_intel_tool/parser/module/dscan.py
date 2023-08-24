@@ -167,6 +167,38 @@ def _get_upwell_structures_on_grid(eve_types: QuerySet, counter: dict) -> list:
     return dict_to_list(upwell_structures)
 
 
+def _get_deployables_on_grid(eve_types: QuerySet, counter: dict) -> list:
+    """
+    Get all deployables that are on grid
+
+    :param eve_types:
+    :type eve_types:
+    :param counter:
+    :type counter:
+    :return:
+    :rtype:
+    """
+
+    # AA Intel Tool
+    from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
+        AdditionalEveCategoryId,
+    )
+
+    eve_types_deployables = eve_types.filter(
+        eve_group__eve_category_id__exact=AdditionalEveCategoryId.DEPLOYABLE
+    )
+
+    deployables = {}
+
+    for eve_type in eve_types_deployables:
+        if eve_type[0] in counter["ongrid"]:
+            if eve_type[1] not in deployables:
+                deployables[eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
+                deployables[eve_type[1]]["count"] = counter["ongrid"][eve_type[0]]
+
+    return dict_to_list(deployables)
+
+
 def _get_scan_details(scan_data: list) -> tuple:
     """
     Split the D-Scan data into more convenient parts
@@ -239,6 +271,7 @@ def parse(scan_data: list) -> Scan:
         upwell_structures = _get_upwell_structures_on_grid(
             eve_types=eve_types, counter=counter
         )
+        deployables = _get_deployables_on_grid(eve_types=eve_types, counter=counter)
 
         # Add "ships all" to parsed data when available
         if ships["all"]:
@@ -273,6 +306,13 @@ def parse(scan_data: list) -> Scan:
             parsed_data["sructures_on_grid"] = {
                 "section": ScanData.Section.STRUCTURES_ON_GRID,
                 "data": upwell_structures,
+            }
+
+        # Add "deployables on grid" to parsed data when available
+        if deployables:
+            parsed_data["deployables"] = {
+                "section": ScanData.Section.DEPLOYABLES_ON_GRID,
+                "data": deployables,
             }
 
         return safe_scan_to_db(scan_type=Scan.Type.DSCAN, parsed_data=parsed_data)
