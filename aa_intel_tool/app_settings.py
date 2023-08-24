@@ -13,16 +13,9 @@ class AppSettings:  # pylint: disable=too-few-public-methods
 
     # Enable or disable the chat scan module
     # Disabled by default
-    # INTELTOOL_ENABLE_MODULE_CHATSCAN = clean_setting(
-    #     name="INTELTOOL_ENABLE_MODULE_CHATSCAN", default_value=False, required_type=bool
-    # )
-
-    # Hard disabling this module for now, since CCP can't handle ESI requests and is
-    # banning IPs that are doing "too many" ESI requests, what ever "too many" means.
-    # But since we don't want our users getting banned just for using this app, this
-    # module is currently deactivated and we discourage everyone from activating it in
-    # the code. Sorry for this, blame CCP's incompetency …
-    INTELTOOL_ENABLE_MODULE_CHATSCAN = False
+    INTELTOOL_ENABLE_MODULE_CHATSCAN = clean_setting(
+        name="INTELTOOL_ENABLE_MODULE_CHATSCAN", default_value=False, required_type=bool
+    )
 
     # Enable or disable the d-scan module
     # Enabled by default

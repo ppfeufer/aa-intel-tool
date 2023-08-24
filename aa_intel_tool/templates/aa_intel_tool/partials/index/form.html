@@ -11,10 +11,6 @@
                     </header>
 
                     <ul>
-                        {% if app_settings.INTELTOOL_ENABLE_MODULE_DSCAN %}
-                            <li>» {% translate "D-Scan" %} </li>
-                        {% endif %}
-
                         {% if app_settings.INTELTOOL_ENABLE_MODULE_CHATSCAN %}
                             <li>
                                 » {% translate "Chat Member List" %}
@@ -25,6 +21,10 @@
                                     </small>
                                 {% endif %}
                             </li>
+                        {% endif %}
+
+                        {% if app_settings.INTELTOOL_ENABLE_MODULE_DSCAN %}
+                            <li>» {% translate "D-Scan" %} </li>
                         {% endif %}
 
                         {% if app_settings.INTELTOOL_ENABLE_MODULE_FLEETCOMP %}

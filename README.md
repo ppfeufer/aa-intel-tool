@@ -231,9 +231,14 @@ your `local.py`.
 | INTELTOOL_DSCAN_GRID_SIZE         | Set the grid size for D-Scans. This defines <br/>the size of the grid in km in which ships and structures are considered to be "on grid" | 10000   |
 
 
+> **Warning**
+>
+> Enable the chat scan module at your own risk. This module has the potential to
+> generate a huge number of ESI calls, which CCP might not be too happy about.
+
 > **Note**
 >
-> **A word about the chat scan limitations.**
+> **A word about the chat scan limitations:**
 >
 > It is advised to keep the `INTELTOOL_CHATSCAN_MAX_PILOTS` to a sane number. Large
 > chat scans can take quite some time to parse and from a certain number of pilots, the
