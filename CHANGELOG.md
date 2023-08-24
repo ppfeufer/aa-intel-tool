@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [In Development] - Unreleased
 
+
+## [0.0.1-alpha.12] - 2023-08-24
+
 ### Added
 
 - Upwell structures on grid to D-Scan result page
