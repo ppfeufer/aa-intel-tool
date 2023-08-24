@@ -72,6 +72,20 @@ repos:
             static/(.*)/libs/
           )
 
+  - repo: https://github.com/awebdeveloper/pre-commit-stylelint
+    rev: 0.0.2
+    hooks:
+      - id: stylelint
+        exclude: |
+          (?x)(
+            .min.css|
+            static/(.*)/libs/
+          )
+        args:
+          - --formatter=compact
+        additional_dependencies:
+          - stylelint@15.10.3
+
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.10.0
     hooks:
@@ -148,13 +162,18 @@ repos:
       - id: tox-ini-fmt
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: 0.13.1
+    rev: 1.0.0
     hooks:
       - id: pyproject-fmt
         args:
           - --indent=4
         additional_dependencies:
           - tox>=4.8
+
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.14
+    hooks:
+      - id: validate-pyproject
 
   - repo: https://github.com/pylint-dev/pylint
     rev: v3.0.0a7
