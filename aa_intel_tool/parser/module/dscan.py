@@ -199,6 +199,38 @@ def _get_deployables_on_grid(eve_types: QuerySet, counter: dict) -> list:
     return dict_to_list(deployables)
 
 
+def _get_starbases_on_grid(eve_types: QuerySet, counter: dict) -> list:
+    """
+    Get all starbases and starbase modules that are on grid
+
+    :param eve_types:
+    :type eve_types:
+    :param counter:
+    :type counter:
+    :return:
+    :rtype:
+    """
+
+    # AA Intel Tool
+    from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
+        AdditionalEveCategoryId,
+    )
+
+    eve_types_starbase = eve_types.filter(
+        eve_group__eve_category_id__exact=AdditionalEveCategoryId.STARBASE
+    )
+
+    starbases = {}
+
+    for eve_type in eve_types_starbase:
+        if eve_type[0] in counter["ongrid"]:
+            if eve_type[1] not in starbases:
+                starbases[eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
+                starbases[eve_type[1]]["count"] = counter["ongrid"][eve_type[0]]
+
+    return dict_to_list(starbases)
+
+
 def _get_scan_details(scan_data: list) -> tuple:
     """
     Split the D-Scan data into more convenient parts
@@ -272,6 +304,7 @@ def parse(scan_data: list) -> Scan:
             eve_types=eve_types, counter=counter
         )
         deployables = _get_deployables_on_grid(eve_types=eve_types, counter=counter)
+        starbases = _get_starbases_on_grid(eve_types=eve_types, counter=counter)
 
         # Add "ships all" to parsed data when available
         if ships["all"]:
@@ -313,6 +346,13 @@ def parse(scan_data: list) -> Scan:
             parsed_data["deployables"] = {
                 "section": ScanData.Section.DEPLOYABLES_ON_GRID,
                 "data": deployables,
+            }
+
+        # Add "starbases on grid" to parsed data when available
+        if starbases:
+            parsed_data["starbases"] = {
+                "section": ScanData.Section.STARBASES_ON_GRID,
+                "data": starbases,
             }
 
         return safe_scan_to_db(scan_type=Scan.Type.DSCAN, parsed_data=parsed_data)

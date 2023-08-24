@@ -8,7 +8,7 @@
 4023	Perimeter VII - Poksu Mineral Group Mineral Reserve	Caldari Mining Station	12.1 AU
 35833	Perimeter - Tranquility Trading Tower	Fortizar	3,808 km
 35833	Perimeter - TEST War Headquarters	Fortizar	50,209 km
-12236	Gallente Control Tower	Gallente Control Tower	-
+12236	Gallente Control Tower	Gallente Control Tower	3,808 km
 20064	P7 M2 Blocker	Gallente Control Tower Small	-
 20064	P7 M1 Blocker	Gallente Control Tower Small	-
 11129	Hither and Thither	Gallente Shuttle	1,618 km

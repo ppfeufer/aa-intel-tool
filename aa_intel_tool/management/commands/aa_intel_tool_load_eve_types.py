@@ -15,6 +15,7 @@ from eveuniverse.constants import EveCategoryId
 
 # AA Intel Tool
 from aa_intel_tool import __title__
+from aa_intel_tool.constants import AdditionalEveCategoryId
 
 logger = LoggerAddTag(logging.getLogger(__name__), __title__)
 
@@ -62,6 +63,10 @@ class Command(BaseCommand):
             str(EveCategoryId.SHIP.value),
             "--category_id",
             str(EveCategoryId.STRUCTURE.value),
+            "--category_id",
+            str(AdditionalEveCategoryId.DEPLOYABLE.value),
+            "--category_id",
+            str(AdditionalEveCategoryId.STARBASE.value),
         ]
 
         if options["noinput"]:
