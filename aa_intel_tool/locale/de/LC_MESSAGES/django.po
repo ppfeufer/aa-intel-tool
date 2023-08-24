@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-23 12:09+0200\n"
-"PO-Revision-Date: 2023-08-12 12:28+0000\n"
+"PO-Revision-Date: 2023-08-24 10:40+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/de/>\n"
+"Language-Team: German <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,18 +19,16 @@ msgstr ""
 "X-Generator: Weblate 4.18.2\n"
 
 #: admin.py:79 models.py:46
-#, fuzzy
-#| msgid "The scan type."
 msgid "Scan type"
-msgstr "Der Scantyp."
+msgstr "Scantyp"
 
 #: admin.py:93
 msgid "Open in a new browser tab"
-msgstr ""
+msgstr "In einem neuen Browser-Tab öffnen"
 
 #: admin.py:99
 msgid "RAW data"
-msgstr ""
+msgstr "Rohdaten"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
 #: apps.py:21
@@ -52,7 +50,7 @@ msgstr "Flottenzusammensetzung"
 #: exceptions.py:34
 #, python-brace-format
 msgid "A parser error occurred » {message}"
-msgstr ""
+msgstr "Ein Parser-Fehler ist aufgetreten » {message}"
 
 #: form.py:20
 msgid "Paste here …"
@@ -67,32 +65,24 @@ msgid "Chat List"
 msgstr "Chatliste"
 
 #: models.py:31
-#, fuzzy
-#| msgid "Scan"
 msgid "Scan hash"
-msgstr "Scan"
+msgstr "Scan Hash"
 
 #: models.py:37
-#, fuzzy
-#| msgid "Corporation Name"
 msgid "Creation date/time"
-msgstr "Corporationsname"
+msgstr "Erstellungsdatum/-uhrzeit"
 
 #: models.py:40
-#, fuzzy
-#| msgid "scan data"
 msgid "Scan RAW data"
-msgstr "Scandaten"
+msgstr "Scan Rohdaten"
 
 #: models.py:55 models.py:128
 msgid "Scan"
 msgstr "Scan"
 
 #: models.py:56
-#, fuzzy
-#| msgid "Scan"
 msgid "Scans"
-msgstr "Scan"
+msgstr "Scans"
 
 #: models.py:111
 msgid "Pilot list"
@@ -131,20 +121,14 @@ msgid "Deployables (on grid)"
 msgstr "Stationierbare Strukturen (On Grid)"
 
 #: models.py:135
-#, fuzzy
-#| msgid "The scan section"
 msgid "Scan section"
-msgstr "Der Scanabschnitt"
+msgstr "Scanabschnitt"
 
 #: models.py:139
-#, fuzzy
-#| msgid "The processed scan section data"
 msgid "Processed scan data"
-msgstr "Die verarbeiteten Scanabschnittsdaten"
+msgstr "Verarbeitete Scandaten"
 
 #: models.py:148 models.py:149
-#, fuzzy
-#| msgid "scan data"
 msgid "Scan data"
 msgstr "Scandaten"
 
@@ -152,6 +136,8 @@ msgstr "Scandaten"
 msgid ""
 "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
+"Kein passender Parser gefunden. Die Eingabe ist kein unterstützter Inteltyp "
+"oder fehlerhaft …"
 
 #: parser/general.py:80
 msgid "No data to parse …"
@@ -367,8 +353,6 @@ msgid "Copy Permalink"
 msgstr "Permalink kopieren"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
-#, fuzzy
-#| msgid "Alliances Breakdown"
 msgid "Alliances breakdown"
 msgstr "Aufschlüsselung der Allianzen"
 
@@ -384,8 +368,6 @@ msgid "Count"
 msgstr "Anzahl"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
-#, fuzzy
-#| msgid "Corporations Breakdown"
 msgid "Corporations breakdown"
 msgstr "Aufschlüsselung der Corporationen"
 
@@ -394,8 +376,6 @@ msgid "Corporation Name"
 msgstr "Corporationsname"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
-#, fuzzy
-#| msgid "Pilots Breakdown"
 msgid "Pilots breakdown"
 msgstr "Aufschlüsselung der Piloten"
 
@@ -412,16 +392,12 @@ msgid "Corporation"
 msgstr "Corporation"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ship-classes.html:17
-#, fuzzy
-#| msgid "Ship Class"
 msgid "Ship class"
 msgstr "Schiffsklasse"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ship-types.html:18
-#, fuzzy
-#| msgid "Ship types"
 msgid "Ship type"
-msgstr "Schiffstypen"
+msgstr "Schiffstyp"
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve Time)"
@@ -453,18 +429,14 @@ msgid "D-Scan » Intel Tool"
 msgstr "D-Scan » Intel Tool"
 
 #: templates/aa_intel_tool/views/scan/dscan.html:21
-#, fuzzy
-#| msgid "All Ships"
 msgid "All ships"
 msgstr "Alle Schiffe"
 
 #: templates/aa_intel_tool/views/scan/dscan.html:22
 msgid "On grid"
-msgstr ""
+msgstr "On Grid"
 
 #: templates/aa_intel_tool/views/scan/dscan.html:23
-#, fuzzy
-#| msgid "Off Grid"
 msgid "Off grid"
 msgstr "Off Grid"
 
@@ -474,7 +446,7 @@ msgstr "Die bereitgestellten Daten konnten nicht analysiert werden."
 
 #: views/general.py:50
 msgid "(System Error) Something unexpected happened."
-msgstr ""
+msgstr "(Systemfehler) Es ist etwas Unerwartetes passiert."
 
 #: views/general.py:89 views/general.py:120
 msgid "The scan you were looking for could not be found."
