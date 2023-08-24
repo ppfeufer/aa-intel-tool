@@ -10,6 +10,12 @@ jQuery(document).ready(($) => {
     const elementShipClassesOffgridTable = $('table.aa-intel-dscan-ship-classes-offgrid-list');
     const elementDscanCountOffgrid = $('span#aa-intel-dscan-offgrid-count');
     const elementShipTypesTable = $('table.aa-intel-dscan-ship-types-list');
+    const elementUpwellStructuresTable = $('table.aa-intel-dscan-upwell-structures-list');
+    const elementDscanCountUpwellStructures = $('span#aa-intel-dscan-upwell-structures-count');
+    const elementDeployablesTable = $('table.aa-intel-dscan-deployables-list');
+    const elementDscanCountDeployables = $('span#aa-intel-dscan-deployables-count');
+    const elementStarbasesTable = $('table.aa-intel-dscan-starbases-list');
+    const elementDscanCountStarbases = $('span#aa-intel-dscan-starbases-count');
 
     /**
      * Corporation info element in datatable
@@ -47,8 +53,7 @@ jQuery(document).ready(($) => {
         .then(response => {
             if (response.ok) {
                 return Promise.resolve(response);
-            }
-            else {
+            } else {
                 return Promise.reject(new Error('Failed to load'));
             }
         })
@@ -133,7 +138,7 @@ jQuery(document).ready(($) => {
                 });
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(`Error: ${error.message}`);
         });
 
@@ -145,8 +150,7 @@ jQuery(document).ready(($) => {
         .then(response => {
             if (response.ok) {
                 return Promise.resolve(response);
-            }
-            else {
+            } else {
                 return Promise.reject(new Error('Failed to load'));
             }
         })
@@ -231,7 +235,7 @@ jQuery(document).ready(($) => {
                 });
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(`Error: ${error.message}`);
         });
 
@@ -243,8 +247,7 @@ jQuery(document).ready(($) => {
         .then(response => {
             if (response.ok) {
                 return Promise.resolve(response);
-            }
-            else {
+            } else {
                 return Promise.reject(new Error('Failed to load'));
             }
         })
@@ -329,7 +332,7 @@ jQuery(document).ready(($) => {
                 });
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(`Error: ${error.message}`);
         });
 
@@ -341,8 +344,7 @@ jQuery(document).ready(($) => {
         .then(response => {
             if (response.ok) {
                 return Promise.resolve(response);
-            }
-            else {
+            } else {
                 return Promise.reject(new Error('Failed to load'));
             }
         })
@@ -404,7 +406,234 @@ jQuery(document).ready(($) => {
                 });
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
+            console.log(`Error: ${error.message}`);
+        });
+
+
+    /**
+     * Datatable D-Scan Upwell Structures on Grid
+     */
+    fetch(aaIntelToolJsOptions.ajax.getStructuresOnGrid)
+        .then(response => {
+            if (response.ok) {
+                return Promise.resolve(response);
+            } else {
+                return Promise.reject(new Error('Failed to load'));
+            }
+        })
+        .then(response => response.json())
+        .then(tableData => {
+            $('div.aa-intel-loading-table-info-upwell-structures').hide();
+            $('div#aa-intel-dscan-row-interesting-on-grid').show();
+
+            if (Object.keys(tableData).length === 0) {
+                $('div.aa-intel-empty-table-info-upwell-structures').show();
+            } else {
+                $('div.col-aa-intel-upwell-structures').show();
+
+                elementUpwellStructuresTable.DataTable({
+                    data: tableData,
+                    paging: false,
+                    language: aaIntelToolJsL10n.dataTables.translation,
+                    lengthChange: false,
+                    dom:
+                        '<\'row\'<\'col-sm-12\'f>>' +
+                        '<\'row\'<\'col-sm-12\'tr>>' +
+                        '<\'row\'<\'col-sm-12\'i>>',
+                    columns: [
+                        {
+                            data: (data) => {
+                                return ShipInfoPanel(data);
+                            }
+                        },
+                        {
+                            data: 'count'
+                        }
+                    ],
+                    order: [
+                        [1, 'desc']
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 1,
+                            width: 45,
+                            createdCell: (td) => {
+                                $(td).addClass('text-right');
+                            }
+                        }
+                    ],
+                    createdRow: (row, data) => {
+                        // Upwell Structures total count
+                        const currentTotal = elementDscanCountUpwellStructures.html();
+                        const newTotal = parseInt(currentTotal) + data['count'];
+
+                        elementDscanCountUpwellStructures.html(newTotal);
+
+                        $(row).attr('data-shiptype-id', data['id']);
+
+                        // Highlight
+                        $(row).mouseenter(() => {
+                            $(row).addClass('aa-intel-highlight');
+                        }).mouseleave(() => {
+                            $(row).removeClass('aa-intel-highlight');
+                        });
+                    }
+                });
+            }
+        })
+        .catch(function (error) {
+            console.log(`Error: ${error.message}`);
+        });
+
+
+    /**
+     * Datatable D-Scan Deployables on Grid
+     */
+    fetch(aaIntelToolJsOptions.ajax.getDeployablesOnGrid)
+        .then(response => {
+            if (response.ok) {
+                return Promise.resolve(response);
+            } else {
+                return Promise.reject(new Error('Failed to load'));
+            }
+        })
+        .then(response => response.json())
+        .then(tableData => {
+            $('div.aa-intel-loading-table-info-deployables').hide();
+            $('div#aa-intel-dscan-row-interesting-on-grid').show();
+
+            if (Object.keys(tableData).length === 0) {
+                $('div.aa-intel-empty-table-info-deployables').show();
+            } else {
+                $('div.col-aa-intel-deployables').show();
+
+                elementDeployablesTable.DataTable({
+                    data: tableData,
+                    paging: false,
+                    language: aaIntelToolJsL10n.dataTables.translation,
+                    lengthChange: false,
+                    dom:
+                        '<\'row\'<\'col-sm-12\'f>>' +
+                        '<\'row\'<\'col-sm-12\'tr>>' +
+                        '<\'row\'<\'col-sm-12\'i>>',
+                    columns: [
+                        {
+                            data: (data) => {
+                                return ShipInfoPanel(data);
+                            }
+                        },
+                        {
+                            data: 'count'
+                        }
+                    ],
+                    order: [
+                        [1, 'desc']
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 1,
+                            width: 45,
+                            createdCell: (td) => {
+                                $(td).addClass('text-right');
+                            }
+                        }
+                    ],
+                    createdRow: (row, data) => {
+                        // Upwell Structures total count
+                        const currentTotal = elementDscanCountDeployables.html();
+                        const newTotal = parseInt(currentTotal) + data['count'];
+
+                        elementDscanCountDeployables.html(newTotal);
+
+                        $(row).attr('data-shiptype-id', data['id']);
+
+                        // Highlight
+                        $(row).mouseenter(() => {
+                            $(row).addClass('aa-intel-highlight');
+                        }).mouseleave(() => {
+                            $(row).removeClass('aa-intel-highlight');
+                        });
+                    }
+                });
+            }
+        })
+        .catch(function (error) {
+            console.log(`Error: ${error.message}`);
+        });
+
+    /**
+     * Datatable D-Scan Deployables on Grid
+     */
+    fetch(aaIntelToolJsOptions.ajax.getStarbasesOnGrid)
+        .then(response => {
+            if (response.ok) {
+                return Promise.resolve(response);
+            } else {
+                return Promise.reject(new Error('Failed to load'));
+            }
+        })
+        .then(response => response.json())
+        .then(tableData => {
+            $('div.aa-intel-loading-table-info-starbases').hide();
+            $('div#aa-intel-dscan-row-interesting-on-grid').show();
+
+            if (Object.keys(tableData).length === 0) {
+                $('div.aa-intel-empty-table-info-starbases').show();
+            } else {
+                $('div.col-aa-intel-starbases').show();
+
+                elementStarbasesTable.DataTable({
+                    data: tableData,
+                    paging: false,
+                    language: aaIntelToolJsL10n.dataTables.translation,
+                    lengthChange: false,
+                    dom:
+                        '<\'row\'<\'col-sm-12\'f>>' +
+                        '<\'row\'<\'col-sm-12\'tr>>' +
+                        '<\'row\'<\'col-sm-12\'i>>',
+                    columns: [
+                        {
+                            data: (data) => {
+                                return ShipInfoPanel(data);
+                            }
+                        },
+                        {
+                            data: 'count'
+                        }
+                    ],
+                    order: [
+                        [1, 'desc']
+                    ],
+                    columnDefs: [
+                        {
+                            targets: 1,
+                            width: 45,
+                            createdCell: (td) => {
+                                $(td).addClass('text-right');
+                            }
+                        }
+                    ],
+                    createdRow: (row, data) => {
+                        // Upwell Structures total count
+                        const currentTotal = elementDscanCountStarbases.html();
+                        const newTotal = parseInt(currentTotal) + data['count'];
+
+                        elementDscanCountStarbases.html(newTotal);
+
+                        $(row).attr('data-shiptype-id', data['id']);
+
+                        // Highlight
+                        $(row).mouseenter(() => {
+                            $(row).addClass('aa-intel-highlight');
+                        }).mouseleave(() => {
+                            $(row).removeClass('aa-intel-highlight');
+                        });
+                    }
+                });
+            }
+        })
+        .catch(function (error) {
             console.log(`Error: ${error.message}`);
         });
 });

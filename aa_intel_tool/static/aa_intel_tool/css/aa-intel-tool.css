@@ -223,11 +223,6 @@
         border-radius: 3px;
     }
 
-    /* Tighten up space between multiple callouts */
-    /*.aa-intel-tool .bs-callout + .bs-callout {*/
-    /*    margin-top: -5px;*/
-    /*}*/
-
     /* Variations */
     .aa-intel-tool .bs-callout-danger {
         border-left-color: rgb(206 72 68);
@@ -251,6 +246,16 @@
 
     .aa-intel-tool .bs-callout-info h4 {
         color: rgb(27 128 158);
+    }
+}
+
+/* Scan rows
+------------------------------------------------------------------------------------- */
+@media all {
+    #aa-intel-dscan-row-system-information,
+    #aa-intel-dscan-row-interesting-on-grid,
+    #aa-intel-dscan-row-interesting-on-grid > .col-aa-intel {
+        display: none;
     }
 }
 

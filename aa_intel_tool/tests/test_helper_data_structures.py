@@ -9,7 +9,7 @@ from django.test import TestCase
 from aa_intel_tool.helper.data_structure import dict_to_list
 
 
-class TestHelperDataStrutures(TestCase):
+class TestHelperDataStructures(TestCase):
     """
     Test the data_structures helper
     """

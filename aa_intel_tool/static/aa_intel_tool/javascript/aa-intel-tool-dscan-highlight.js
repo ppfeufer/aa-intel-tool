@@ -43,7 +43,7 @@ const addHightlight = (by_table, table_row) => { // eslint-disable-line no-unuse
     elementShipTypeTable
         .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
         .addClass('aa-intel-highlight');
-}
+};
 
 
 /**
@@ -60,7 +60,7 @@ const removeHightlight = (by_table, table_row) => { // eslint-disable-line no-un
     elementShipTypeTable
         .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
         .removeClass('aa-intel-highlight');
-}
+};
 
 
 /**
@@ -87,7 +87,7 @@ const addSticky = (by_table, table_row) => {
             .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
             .addClass('aa-intel-highlight-sticky');
     }
-}
+};
 
 
 /**
@@ -116,7 +116,7 @@ const removeSticky = (by_table, table_row) => {
                 .removeClass('aa-intel-highlight-sticky');
         }
     }
-}
+};
 
 
 /**
@@ -136,4 +136,4 @@ const changeStickyHighlight = (by_table, table_row) => { // eslint-disable-line 
     } else {
         addSticky(by_table, table_row);
     }
-}
+};

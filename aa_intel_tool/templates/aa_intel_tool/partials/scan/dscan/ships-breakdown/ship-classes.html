@@ -1,10 +1,10 @@
 {% load i18n %}
 
-<div class="col-md-4 col-sm-6 col-lg-3">
+<div class="col-md-4 col-sm-6 col-lg-3 col-aa-intel col-aa-intel-dscan-ship-classes-{{ dscan_section }}">
     <header class="aa-intel-section-header">
-        <h2 class="aa-intel-section-title">
+        <h3 class="aa-intel-section-title">
             {{ table_title|title }} (<span id="aa-intel-dscan-{{ dscan_section }}-count">0</span>)
-        </h2>
+        </h3>
     </header>
 
     <div class="panel panel-default">
@@ -12,13 +12,13 @@
             <div class="table-dscan table-dscan-ship-classes table-dscan-ship-classes-{{ dscan_section }} table-aa-intel">
                 <table class="table table-condensed table-sortable aa-intel-dscan-ship-classes aa-intel-dscan-ship-classes-{{ dscan_section }}-list" style="width: 100%;">
                     <thead>
-                    <tr>
-                        <th>
-                            {% translate "Ship class" as table_header %}
-                            {{ table_header|title }}
-                        </th>
-                        <th>{% translate "Count" %}</th>
-                    </tr>
+                        <tr>
+                            <th>
+                                {% translate "Ship class" as table_header %}
+                                {{ table_header|title }}
+                            </th>
+                            <th>{% translate "Count" %}</th>
+                        </tr>
                     </thead>
                 </table>
             </div>
@@ -31,7 +31,7 @@
 
             <div class="aa-intel-empty-table-info aa-intel-empty-table-info-{{ dscan_section }} bs-callout bs-callout-info">
                 <p>
-                    {% translate "No data." %}
+                    {% translate "No data …" %}
                 </p>
             </div>
         </div>

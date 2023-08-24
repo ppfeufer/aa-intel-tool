@@ -203,20 +203,18 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
     }
 
 
-def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
+def parse(
+    scan_data: list, safe_to_db: bool = True, ignore_limit: bool = False
+) -> Union[Scan, dict]:
     """
     Parse chat list
-
-    This module is hard disabled for now, since CCP can't handle ESI requests and is
-    banning IPs that are doing "too many" ESI requests, what ever "too many" means.
-    But since we don't want our users getting banned just for using this app, this
-    module is currently deactivated and we discourage everyone from activating it in
-    the code. Sorry for this, blame CCP's incompetency …
 
     :param scan_data:
     :type scan_data:
     :param safe_to_db:
     :type safe_to_db:
+    :param ignore_limit:
+    :type ignore_limit:
     :return:
     :rtype:
     """
@@ -229,7 +227,7 @@ def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
         pilots_in_scan = len(scan_data)
         max_allowed_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
 
-        if 0 < max_allowed_pilots < pilots_in_scan:
+        if 0 < max_allowed_pilots < pilots_in_scan and ignore_limit is False:
             logger.debug(
                 msg=(
                     f"Number of pilots in scan ({pilots_in_scan}) exceeds the maximum "
@@ -267,7 +265,8 @@ def parse(scan_data: list, safe_to_db: bool = True) -> Union[Scan, dict]:
                 )
             except EveEntity.DoesNotExist as exc:  # pylint: disable=no-member
                 message = _(
-                    "Something went wrong while fetching the character information from ESI."
+                    "Something went wrong while fetching "
+                    "the character information from ESI."
                 )
 
                 raise ParserError(message=message) from exc

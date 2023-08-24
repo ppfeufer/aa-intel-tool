@@ -95,7 +95,7 @@ jQuery(document).ready(($) => {
             '    <span class="aa-intel-corporation-links-wrapper">\n' +
             '        <small>\n';
 
-        if((1000000 <= corporationData['id']) && corporationData['id'] <= 2000000) {
+        if ((1000000 <= corporationData['id']) && corporationData['id'] <= 2000000) {
             html_info += '' +
                 '            (' + aaIntelToolJsL10n.scanData.npcCorp + ')';
         } else {
@@ -254,13 +254,9 @@ jQuery(document).ready(($) => {
         createdRow: (row, data) => {
             // Alliance total count
             const currentTotal = elementAlliancesTotalCount.html();
-
             let newTotal;
-            if (data['id'] === 1) {
-                if (parseInt(currentTotal) > 1) {
-                    newTotal = parseInt(currentTotal) - 1;
-                }
-            } else {
+
+            if (data['id'] !== 1) {
                 newTotal = parseInt(currentTotal) + 1;
             }
 
@@ -271,16 +267,16 @@ jQuery(document).ready(($) => {
                 .attr('data-alliance-id', data['id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
-                addHightlight('alliance', $(row))
-            }).on('mouseleave', () => {
+            $(row).mouseenter(() => {
+                addHightlight('alliance', $(row));
+            }).mouseleave(() => {
                 removeHightlight('alliance', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
+            $(row).click(() => {
                 changeStickyHighlight('alliance', $(row));
-            }).on('click', '.aa-intel-information-link', (e) => {
+            }).click('.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
         }
@@ -357,16 +353,16 @@ jQuery(document).ready(($) => {
                 .attr('data-alliance-id', data['alliance']['id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
-                addHightlight('corporation', $(row))
-            }).on('mouseleave', () => {
+            $(row).mouseenter(() => {
+                addHightlight('corporation', $(row));
+            }).mouseleave(() => {
                 removeHightlight('corporation', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
+            $(row).click(() => {
                 changeStickyHighlight('corporation', $(row));
-            }).on('click', '.aa-intel-information-link', (e) => {
+            }).click('.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
         }
@@ -424,11 +420,11 @@ jQuery(document).ready(($) => {
             },
             {
                 targets: 1,
-                width: 125,
+                width: 125
             },
             {
                 targets: 2,
-                width: 125,
+                width: 125
             },
             {
                 targets: [3, 4],
@@ -449,16 +445,16 @@ jQuery(document).ready(($) => {
                 .attr('data-alliance-id', data['alliance']['id']);
 
             // Highlight
-            $(row).on('mouseenter', () => {
-                addHightlight('pilot', $(row))
-            }).on('mouseleave', () => {
+            $(row).mouseenter(() => {
+                addHightlight('pilot', $(row));
+            }).mouseleave(() => {
                 removeHightlight('pilot', $(row));
             });
 
             // Sticky
-            $(row).on('click', () => {
+            $(row).click(() => {
                 changeStickyHighlight('pilot', $(row));
-            }).on('click', '.aa-intel-information-link', (e) => {
+            }).click('.aa-intel-information-link', (e) => {
                 e.stopPropagation();
             });
         }

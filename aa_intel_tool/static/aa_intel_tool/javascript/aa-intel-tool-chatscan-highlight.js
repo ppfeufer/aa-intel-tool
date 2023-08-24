@@ -281,10 +281,10 @@ const addHightlight = (by_table, table_row) => { // eslint-disable-line no-unuse
     }
 
     if (by_table === 'pilot') {
-        allianceTableAddHighlightByAllianceId(table_row)
+        allianceTableAddHighlightByAllianceId(table_row);
         corporationTableAddHighlightByCorporationId(table_row);
     }
-}
+};
 
 
 /**
@@ -310,7 +310,7 @@ const addSticky = (by_table, table_row) => {
         allianceTableAddStickyByAllianceId(table_row);
         corporationTableAddStickyByCorporationId(table_row);
     }
-}
+};
 
 
 /**
@@ -336,7 +336,7 @@ const removeHightlight = (by_table, table_row) => { // eslint-disable-line no-un
         allianceTableRemoveHighlightByAllianceId(table_row);
         corporationTableRemoveHighlightByCorporationId(table_row);
     }
-}
+};
 
 
 /**
@@ -370,7 +370,7 @@ const removeSticky = (by_table, table_row) => {
             allianceTableRemoveStickyByAllianceId(table_row);
         }
     }
-}
+};
 
 
 /**
@@ -385,4 +385,4 @@ const changeStickyHighlight = (by_table, table_row) => { // eslint-disable-line 
     } else {
         addSticky(by_table, table_row);
     }
-}
+};
