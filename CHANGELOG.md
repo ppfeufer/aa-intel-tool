@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [In Development] - Unreleased
 
+### Added
+
+- Upwell structures on grid to D-Scan result page
+
 ### Changed
 
 - Chat list parser re-enabled. See Warning in [README.md](README.md).

@@ -16,16 +16,9 @@
 {% endblock %}
 
 {% block aa_intel_tool_body %}
-    <div class="dscan-result row">
-        {% translate "All ships" as dscan_section_header_all %}
-        {% translate "On grid" as dscan_section_header_ongrid %}
-        {% translate "Off grid" as dscan_section_header_offgrid %}
-
-        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with table_title=dscan_section_header_all dscan_section='all' %}
-        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with table_title=dscan_section_header_ongrid dscan_section='ongrid' %}
-        {% include 'aa_intel_tool/partials/scan/dscan/ship-classes.html' with table_title=dscan_section_header_offgrid dscan_section='offgrid' %}
-        {% include 'aa_intel_tool/partials/scan/dscan/ship-types.html' %}
-    </div>
+    {% include "aa_intel_tool/partials/scan/dscan/system-information.html" %}
+    {% include "aa_intel_tool/partials/scan/dscan/ships-breakdown.html" %}
+    {% include "aa_intel_tool/partials/scan/dscan/interesting-on-grid.html" %}
 {% endblock %}
 
 {% block extra_css %}
@@ -40,7 +33,8 @@
                 getShipClassesAll: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST.value %}',
                 getShipClassesOngrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST_ON_GRID.value %}',
                 getShipClassesOffgrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST_OFF_GRID.value %}',
-                getShipTypes: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPTYPES.value %}'
+                getShipTypes: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPTYPES.value %}',
+                getStructuresOnGrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.STRUCTURES_ON_GRID.value %}'
             }
         }
     </script>

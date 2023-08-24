@@ -249,6 +249,16 @@
     }
 }
 
+/* Scan rows
+------------------------------------------------------------------------------------- */
+@media all {
+    #aa-intel-dscan-row-system-information,
+    #aa-intel-dscan-row-interesting-on-grid,
+    #aa-intel-dscan-row-interesting-on-grid > .col-aa-intel {
+        display: none;
+    }
+}
+
 /* Footer
 ------------------------------------------------------------------------------------- */
 @media all {
