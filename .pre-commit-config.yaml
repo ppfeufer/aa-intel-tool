@@ -85,6 +85,7 @@ repos:
           - --formatter=compact
         additional_dependencies:
           - stylelint@15.10.3
+          - stylelint-config-standard@34.0.0
 
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.10.0
