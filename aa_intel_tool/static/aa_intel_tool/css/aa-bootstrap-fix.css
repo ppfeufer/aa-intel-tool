@@ -6,7 +6,7 @@
     }
 }
 
-@media all and (min-width: 768px) {
+@media all and (width >= 768px) {
     #site-body-wrapper.row {
         margin-left: -15px;
     }
