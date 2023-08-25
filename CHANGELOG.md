@@ -5,11 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## \[In Development\] - Unreleased
 
-## [In Development] - Unreleased
-
-
-## [0.0.1-alpha.12] - 2023-08-24
+## \[0.0.1-alpha.12\] - 2023-08-24
 
 ### Added
 
@@ -22,8 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Chat list parser re-enabled. See Warning in [README.md](README.md).
 
-
-## [0.0.1-alpha.11] - 2023-08-23
+## \[0.0.1-alpha.11\] - 2023-08-23
 
 ### Changed
 
@@ -31,8 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - "On grid" detection for Upwell structures improved
 - Only show a D-Scan table when there is actual data available
 
-
-## [0.0.1-alpha.10] - 2023-08-22
+## \[0.0.1-alpha.10\] - 2023-08-22
 
 ### Fixed
 
@@ -48,8 +44,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Nonsensical exclude clause
 
-
-## [0.0.1-alpha.9] - 2023-08-22
+## \[0.0.1-alpha.9\] - 2023-08-22
 
 ### Changed
 
@@ -58,15 +53,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - JS for highlighting in D-Scan result tables improved
 - Sticky highlight in D-Scan tables removed for the time being for being faulty
 
-
-## [0.0.1-alpha.8] - 2023-08-15
+## \[0.0.1-alpha.8\] - 2023-08-15
 
 ### Changed
 
 - Hard disabling the chat list parser for now
 
-
-## [0.0.1-alpha.7] - 2023-08-13
+## \[0.0.1-alpha.7\] - 2023-08-13
 
 ### Fixed
 
@@ -78,8 +71,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Order admin list by creation date descending
 - Reduced the size of the saved jSon data
 
-
-## [0.0.1-alpha.6] - 2023-08-12
+## \[0.0.1-alpha.6\] - 2023-08-12
 
 ### Changed
 
@@ -87,8 +79,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Modal verbose names
 - Admin descriptions are now translatable
 
-
-## [0.0.1-alpha.5] - 2023-08-12
+## \[0.0.1-alpha.5\] - 2023-08-12
 
 ### Fixed
 
@@ -99,8 +90,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Use the `EveCharacter` model functions to generate character portraits and alliance-
   and corp logos
 
-
-## [0.0.1-alpha.4] - 2023-08-11
+## \[0.0.1-alpha.4\] - 2023-08-11
 
 ### Changed
 
@@ -110,23 +100,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - pre-commit config cleaned up
 - Pre-load command renamed
 
-
-## [0.0.1-alpha.3] - 2023-08-11
+## \[0.0.1-alpha.3\] - 2023-08-11
 
 ### Changed
 
 - Raise exceptions instead of returning `None` for our parser
 - Deactivate no yet implemented module (fleet composition) by default
 
-
-## [0.0.1-alpha.2] - 2023-08-10
+## \[0.0.1-alpha.2\] - 2023-08-10
 
 ### Added
 
 - Command to pre-load Eve data
 
-
-## [0.0.1-alpha.1] - 2023-08-10
+## \[0.0.1-alpha.1\] - 2023-08-10
 
 ### Added
 

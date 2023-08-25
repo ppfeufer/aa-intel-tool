@@ -1,50 +1,49 @@
-# AA Intel Tool
+# AA Intel Tool<a name="aa-intel-tool"></a>
 
-[![Badge: Version]][AA Intel Tool on Pypi]
-[![Badge: License]][AA Intel Tool License]
-[![Badge: Supported Python Versions]][AA Intel Tool on Pypi]
-[![Badge: Supported Django Versions]][AA Intel Tool on Pypi]
+[![Badge: Version]][aa intel tool on pypi]
+[![Badge: License]][aa intel tool license]
+[![Badge: Supported Python Versions]][aa intel tool on pypi]
+[![Badge: Supported Django Versions]][aa intel tool on pypi]
 ![Badge: pre-commit]
 [![Badge: Code Style: black]][black code formatter documentation]
-[![Badge: Support Discord]][Support Discord]
-[![Badge: Automated Tests]][Automated Tests on GitHub]
-[![Badge: Code Coverage]][AA Intel Tool on Codecov]
-[![Badge: Translation Status]][Weblate Engage]
-[![Badge: Contributor Covenant]][Code of Conduct]
+[![Badge: Support Discord]][support discord]
+[![Badge: Automated Tests]][automated tests on github]
+[![Badge: Code Coverage]][aa intel tool on codecov]
+[![Badge: Translation Status]][weblate engage]
+[![Badge: Contributor Covenant]][code of conduct]
 
 [![Badge: Buy me a coffee]][ppfeufer on ko-fi]
 
-
 D-Scans and more in [Alliance Auth].
 
+______________________________________________________________________
 
----
+<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
 
-<!-- TOC -->
-* [AA Intel Tool](#aa-intel-tool)
-  * [Overview](#overview)
-    * [Features](#features)
-    * [Screenshots](#screenshots)
-      * [Chat Scan](#chat-scan)
-      * [D-Scan](#d-scan)
-  * [Installation](#installation)
-    * [Step 1: Install the Package](#step-1-install-the-package)
-    * [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
-      * [Add the App to Alliance Auth](#add-the-app-to-alliance-auth)
-      * [Add the Scheduled Task](#add-the-scheduled-task)
-      * [(Optional) Allow Public Views](#optional-allow-public-views)
-    * [Step 4: Preload Eve Universe Data](#step-4-preload-eve-universe-data)
-    * [Step 5: Finalizing the Installation](#step-5-finalizing-the-installation)
-    * [Step 6: Update Your Webserver Configuration](#step-6-update-your-webserver-configuration)
-      * [Apache 2](#apache-2)
-      * [Nginx](#nginx)
-  * [Settings](#settings)
-  * [Changelog](#changelog)
-  * [Contributing](#contributing)
-<!-- TOC -->
+- [AA Intel Tool](#aa-intel-tool)
+  - [Overview](#overview)
+    - [Features](#features)
+    - [Screenshots](#screenshots)
+      - [Chat Scan](#chat-scan)
+      - [D-Scan](#d-scan)
+  - [Installation](#installation)
+    - [Step 1: Install the Package](#step-1-install-the-package)
+    - [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
+      - [Add the App to Alliance Auth](#add-the-app-to-alliance-auth)
+      - [Add the Scheduled Task](#add-the-scheduled-task)
+      - [(Optional) Allow Public Views](#optional-allow-public-views)
+    - [Step 4: Preload Eve Universe Data](#step-4-preload-eve-universe-data)
+    - [Step 5: Finalizing the Installation](#step-5-finalizing-the-installation)
+    - [Step 6: Update Your Webserver Configuration](#step-6-update-your-webserver-configuration)
+      - [Apache 2](#apache-2)
+      - [Nginx](#nginx)
+  - [Settings](#settings)
+  - [Changelog](#changelog)
+  - [Contributing](#contributing)
 
----
+<!-- mdformat-toc end -->
 
+______________________________________________________________________
 
 > **Warning**
 >
@@ -61,10 +60,9 @@ D-Scans and more in [Alliance Auth].
 >
 > Thank you!
 
+## Overview<a name="overview"></a>
 
-## Overview
-
-### Features
+### Features<a name="features"></a>
 
 The following modules can be enabled or disabled.
 See [Settings](#settings) section for details.
@@ -72,17 +70,17 @@ See [Settings](#settings) section for details.
 - Chat scan module (Disabled by default due to its possible high number of ESI calls)
 - D-Scan module
 
-### Screenshots
+### Screenshots<a name="screenshots"></a>
 
-#### Chat Scan
+#### Chat Scan<a name="chat-scan"></a>
 
 ![Image: Chat Scan Module]
 
-#### D-Scan
+#### D-Scan<a name="d-scan"></a>
 
 ![Image: D-Scan Module]
 
-## Installation
+## Installation<a name="installation"></a>
 
 **Important**: Please make sure you meet all preconditions before you proceed:
 
@@ -95,8 +93,7 @@ See [Settings](#settings) section for details.
 - AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
   before continuing.
 
-
-### Step 1: Install the Package
+### Step 1: Install the Package<a name="step-1-install-the-package"></a>
 
 Make sure you're in the virtual environment (venv) of your Alliance Auth
 installation Then install the latest release directly from PyPi.
@@ -105,10 +102,9 @@ installation Then install the latest release directly from PyPi.
 pip install aa-intel-tool
 ```
 
+### Step 2: Configure Alliance Auth<a name="step-2-configure-alliance-auth"></a>
 
-### Step 2: Configure Alliance Auth
-
-#### Add the App to Alliance Auth
+#### Add the App to Alliance Auth<a name="add-the-app-to-alliance-auth"></a>
 
 This is fairly simple, configure your AA settings (`local.py`) as follows:
 
@@ -123,7 +119,7 @@ This is fairly simple, configure your AA settings (`local.py`) as follows:
   ]
   ```
 
-#### Add the Scheduled Task
+#### Add the Scheduled Task<a name="add-the-scheduled-task"></a>
 
 To remove old scans from your DB, add the following task.
 The retention time can be adjusted through the `INTELTOOL_SCAN_RETENTION_TIME` setting.
@@ -137,7 +133,7 @@ if "aa_intel_tool" in INSTALLED_APPS:
     }
 ```
 
-#### (Optional) Allow Public Views
+#### (Optional) Allow Public Views<a name="optional-allow-public-views"></a>
 
 This app supports AA's feature of public views, since time zones conversion is not
 any mission-critical information. To allow users to view the time zone conversion page
@@ -160,8 +156,7 @@ APPS_WITH_PUBLIC_VIEWS = [
 > block from here. This feature has been added in Alliance Auth v3.6.0 so you
 > might not yet have this list in your `local.py`.
 
-
-### Step 4: Preload Eve Universe Data
+### Step 4: Preload Eve Universe Data<a name="step-4-preload-eve-universe-data"></a>
 
 AA Intel Tool utilizes the EveUniverse module, so it doesn't need to ask ESI for ship
 information. To set this up, you now need to run the following command.
@@ -170,8 +165,7 @@ information. To set this up, you now need to run the following command.
 python manage.py aa_intel_tool_load_eve_types
 ```
 
-
-### Step 5: Finalizing the Installation
+### Step 5: Finalizing the Installation<a name="step-5-finalizing-the-installation"></a>
 
 Run static files collection and migrations.
 
@@ -182,14 +176,13 @@ python manage.py migrate
 
 Restart your supervisor services for Auth.
 
-
-### Step 6: Update Your Webserver Configuration
+### Step 6: Update Your Webserver Configuration<a name="step-6-update-your-webserver-configuration"></a>
 
 By default, webservers have a timout of about 30 seconds for requests. So we have to
 tweak that a little bit, since parsing intel data can take a while, and we don't want
 the webserver to spoil our fun, right?
 
-#### Apache 2
+#### Apache 2<a name="apache-2"></a>
 
 Open your vhost configuration and add the following 2 lines right after the
 `ProxyPreserveHost On` directive:
@@ -201,7 +194,7 @@ ProxyTimeout 600
 
 Restart your Apache2 service.
 
-#### Nginx
+#### Nginx<a name="nginx"></a>
 
 Open your vhost configuration and add the following lines inside the `location / {`
 directive:
@@ -215,21 +208,19 @@ send_timeout          600;
 
 Restart your Nginx service.
 
-
-## Settings
+## Settings<a name="settings"></a>
 
 To customize the app, the following settings are available and can be made in
 your `local.py`.
 
 | Name                              | Description                                                                                                                              | Default |
-|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:--------|
+| :-------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :------ |
 | INTELTOOL_ENABLE_MODULE_CHATSCAN  | Enable or disable the chat scan module.                                                                                                  | False   |
 | INTELTOOL_ENABLE_MODULE_DSCAN     | Enable or disable the d-scan module.                                                                                                     | True    |
 | INTELTOOL_ENABLE_MODULE_FLEETCOMP | Enable or disable the fleet composition module.                                                                                          | True    |
 | INTELTOOL_SCAN_RETENTION_TIME     | Set the time in days for how long the scans will be kept in the database. Set to 0 to keep scans indefinitely.                           | 30      |
 | INTELTOOL_CHATSCAN_MAX_PILOTS     | Set the limit of pilots for chat scans, since these can take quite a long time to process. Set to 0 to disable.                          | 500     |
 | INTELTOOL_DSCAN_GRID_SIZE         | Set the grid size for D-Scans. This defines <br/>the size of the grid in km in which ships and structures are considered to be "on grid" | 10000   |
-
 
 > **Warning**
 >
@@ -245,49 +236,44 @@ your `local.py`.
 > bottleneck might be your browser refusing to render the results page.
 > (Source: Trust me, bro …)
 
-## Changelog
+## Changelog<a name="changelog"></a>
 
 See [CHANGELOG.md]
 
-
-## Contributing
+## Contributing<a name="contributing"></a>
 
 Do you want to contribute to this project? That's cool!
 
 Please make sure to read the [Contribution Guidelines]
 (I promise, it's not much, just some basics)
 
+<!-- Inline Links -->
 
-<!-- Badges -->
-[Badge: Version]: https://img.shields.io/pypi/v/aa-intel-tool?label=release "Version"
-[Badge: License]: https://img.shields.io/github/license/ppfeufer/aa-intel-tool "License"
-[Badge: Supported Python Versions]: https://img.shields.io/pypi/pyversions/aa-intel-tool "Supported Python Versions"
-[Badge: Supported Django Versions]: https://img.shields.io/pypi/djversions/aa-intel-tool?label=django "Supported Django Versions"
-[Badge: pre-commit]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white "pre-commit"
-[Badge: Code Style: black]: https://img.shields.io/badge/code%20style-black-000000.svg "Code Style: black"
-[Badge: Support Discord]: https://img.shields.io/discord/790364535294132234?label=discord "Support Discord"
-[Badge: Automated Tests]: https://github.com/ppfeufer/aa-intel-tool/actions/workflows/automated-checks.yml/badge.svg "Automated Tests"
-[Badge: Code Coverage]: https://codecov.io/gh/ppfeufer/aa-intel-tool/branch/master/graph/badge.svg "Code Coverage"
-[Badge: Contributor Covenant]: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg "Contributor Covenant"
-[Badge: Buy me a coffee]: https://ko-fi.com/img/githubbutton_sm.svg "Buy me a coffee"
-[Badge: Translation Status]: https://weblate.ppfeufer.de/widgets/alliance-auth-apps/-/aa-intel-tool/svg-badge.svg "Translation Status"
-
-<!-- Images -->
-[Image: Chat Scan Module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/chat-scan.jpg "Chat Scan Module"
-[Image: D-Scan Module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
-
-<!-- Hyperlinks -->
-[Alliance Auth]: https://gitlab.com/allianceauth/allianceauth
-[Alliance Auth installation guide]: https://allianceauth.readthedocs.io/en/latest/installation/allianceauth.html
-[Eve Universe]: https://gitlab.com/ErikKalkoken/django-eveuniverse "Eve Universe"
-[CHANGELOG.md]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CHANGELOG.md
-[Contribution Guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md
-[AA Intel Tool on Pypi]: https://pypi.org/project/aa-intel-tool/
-[AA Intel Tool on Codecov]: https://codecov.io/gh/ppfeufer/aa-intel-tool
-[AA Intel Tool License]: https://github.com/ppfeufer/aa-intel-tool/blob/master/LICENSE
+[aa intel tool license]: https://github.com/ppfeufer/aa-intel-tool/blob/master/LICENSE
+[aa intel tool on codecov]: https://codecov.io/gh/ppfeufer/aa-intel-tool
+[aa intel tool on pypi]: https://pypi.org/project/aa-intel-tool/
+[alliance auth]: https://gitlab.com/allianceauth/allianceauth
+[alliance auth installation guide]: https://allianceauth.readthedocs.io/en/latest/installation/allianceauth.html
+[automated tests on github]: https://github.com/ppfeufer/aa-intel-tool/actions/workflows/automated-checks.yml
+[badge: automated tests]: https://github.com/ppfeufer/aa-intel-tool/actions/workflows/automated-checks.yml/badge.svg "Automated Tests"
+[badge: buy me a coffee]: https://ko-fi.com/img/githubbutton_sm.svg "Buy Me a Coffee!"
+[badge: code coverage]: https://codecov.io/gh/ppfeufer/aa-intel-tool/branch/master/graph/badge.svg "Code Coverage"
+[badge: code style: black]: https://img.shields.io/badge/code%20style-black-000000.svg "Code Style: black"
+[badge: contributor covenant]: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg "Contributor Covenant"
+[badge: license]: https://img.shields.io/github/license/ppfeufer/aa-intel-tool "License"
+[badge: pre-commit]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white "pre-commit"
+[badge: support discord]: https://img.shields.io/discord/790364535294132234?label=discord "Support Discord"
+[badge: supported django versions]: https://img.shields.io/pypi/djversions/aa-intel-tool?label=django "Supported Django Versions"
+[badge: supported python versions]: https://img.shields.io/pypi/pyversions/aa-intel-tool "Supported Python Versions"
+[badge: translation status]: https://weblate.ppfeufer.de/widgets/alliance-auth-apps/-/aa-intel-tool/svg-badge.svg "Translation Status"
+[badge: version]: https://img.shields.io/pypi/v/aa-intel-tool?label=release "Version"
 [black code formatter documentation]: http://black.readthedocs.io/en/latest/
-[Support Discord]: https://discord.gg/zmh52wnfvM
-[Automated Tests on GitHub]: https://github.com/ppfeufer/aa-intel-tool/actions/workflows/automated-checks.yml
-[Code of Conduct]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CODE_OF_CONDUCT.md
-[ppfeufer on ko-fi]: https://ko-fi.com/ppfeufer
-[Weblate Engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/
+[changelog.md]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CHANGELOG.md
+[code of conduct]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CODE_OF_CONDUCT.md
+[contribution guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md
+[eve universe]: https://gitlab.com/ErikKalkoken/django-eveuniverse "Eve Universe"
+[image: chat scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/chat-scan.jpg "Chat Scan Module"
+[image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
+[ppfeufer on ko-fi]: https://ko-fi.com/ppfeufer "Buy Me a Coffee!"
+[support discord]: https://discord.gg/zmh52wnfvM
+[weblate engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/
