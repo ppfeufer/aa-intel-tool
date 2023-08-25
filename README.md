@@ -213,6 +213,11 @@ Restart your Nginx service.
 To customize the app, the following settings are available and can be made in
 your `local.py`.
 
+> **Warning**
+>
+> Enable the chat scan module at your own risk. This module has the potential to
+> generate a huge number of ESI calls, which CCP might not be too happy about.
+
 | Name                              | Description                                                                                                                              | Default |
 | :-------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :------ |
 | INTELTOOL_ENABLE_MODULE_CHATSCAN  | Enable or disable the chat scan module.                                                                                                  | False   |
@@ -221,11 +226,6 @@ your `local.py`.
 | INTELTOOL_SCAN_RETENTION_TIME     | Set the time in days for how long the scans will be kept in the database. Set to 0 to keep scans indefinitely.                           | 30      |
 | INTELTOOL_CHATSCAN_MAX_PILOTS     | Set the limit of pilots for chat scans, since these can take quite a long time to process. Set to 0 to disable.                          | 500     |
 | INTELTOOL_DSCAN_GRID_SIZE         | Set the grid size for D-Scans. This defines <br/>the size of the grid in km in which ships and structures are considered to be "on grid" | 10000   |
-
-> **Warning**
->
-> Enable the chat scan module at your own risk. This module has the potential to
-> generate a huge number of ESI calls, which CCP might not be too happy about.
 
 > **Note**
 >
