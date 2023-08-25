@@ -15,10 +15,9 @@ ______________________________________________________________________
 
 ## Code Formatting<a name="code-formatting"></a>
 
-This app is utilizing the [Black](https://black.readthedocs.io/en/stable/the_black_code_style.html)
-code style. Every commit has to adhere to it.
+This app is utilizing the [Black code style]. Every commit has to adhere to it.
 
-This repository uses [pre-commit](https://github.com/pre-commit/pre-commit) to
+This repository uses [pre-commit] to
 verify compliance with formatting rules. To use:
 
 1. Install `pre-commit`.
@@ -60,4 +59,6 @@ register on my [Weblate] instance and start translating.
 
 <!-- Links -->
 
+[black code style]: https://black.readthedocs.io/en/latest/l "Black Code Style"
+[pre-commit]: https://github.com/pre-commit/pre-commit "pre-commit"
 [weblate]: https://weblate.ppfeufer.de/ "Weblate"
