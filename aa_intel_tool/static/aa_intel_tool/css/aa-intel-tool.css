@@ -188,6 +188,9 @@
         transform: none;
     }
 
+    .aa-intel-tool .table-local-scan-alliances,
+    .aa-intel-tool .table-local-scan-corporations,
+    .aa-intel-tool .table-local-scan-pilots,
     .aa-intel-tool .table-dscan-ship-classes,
     .aa-intel-tool .table-dscan-ship-types,
     .aa-intel-tool .aa-intel-empty-table-info {

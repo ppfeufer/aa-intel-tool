@@ -1,35 +1,37 @@
-# Contributing
+# Contributing<a name="contributing"></a>
 
----
+______________________________________________________________________
 
-<!-- TOC -->
-* [Contributing](#contributing)
-  * [Code Formatting](#code-formatting)
-  * [Contributing via Pull Requests](#contributing-via-pull-requests)
-  * [Translation](#translation)
-<!-- TOC -->
+<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
 
----
+- [Contributing](#contributing)
+  - [Code Formatting](#code-formatting)
+  - [Contributing via Pull Requests](#contributing-via-pull-requests)
+  - [Translation](#translation)
 
+<!-- mdformat-toc end -->
 
-## Code Formatting
+______________________________________________________________________
 
-This app is utilizing the [Black](https://black.readthedocs.io/en/stable/the_black_code_style.html)
-code style. Every commit has to adhere to it.
+## Code Formatting<a name="code-formatting"></a>
 
-This repository uses [pre-commit](https://github.com/pre-commit/pre-commit) to
+This app is utilizing the [Black code style]. Every commit has to adhere to it.
+
+This repository uses [pre-commit] to
 verify compliance with formatting rules. To use:
 
 1. Install `pre-commit`.
-2. From inside the `aa-intel-tool` root directory, run `pre-commit install`.
-3. You're all done! Code will be checked automatically using git hooks.
+1. From inside the `aa-intel-tool` root directory, run `pre-commit install`.
+1. You're all done! Code will be checked automatically using git hooks.
 
 You can check if your code to commit adheres to the given style by simply running:
+
 ```shell script
 pre-commit
 ```
 
 Or to check all files:
+
 ```shell script
 pre-commit run --all-files
 ```
@@ -43,19 +45,20 @@ The following will be checked by `pre-commit`:
 - code formatted according to black code style
 - code conforms with flake8
 
-
-## Contributing via Pull Requests
+## Contributing via Pull Requests<a name="contributing-via-pull-requests"></a>
 
 To contribute code via pull request, make sure that you fork the repository and branch
 your changes from the `development` branch. Only pull requests towards the development
 branch will be considered.
 
-
-## Translation
+## Translation<a name="translation"></a>
 
 This app is fully translation-ready and translations are handled via [Weblate]. If
 you like to contribute to the app's translation or simply improve it, feel free to
-register on my [Weblate] site and message me, so I can add you to the right group.
+register on my [Weblate] instance and start translating.
 
 <!-- Links -->
-[Weblate]: https://weblate.ppfeufer.de/ "Weblate"
+
+[black code style]: https://black.readthedocs.io/en/latest/l "Black Code Style"
+[pre-commit]: https://github.com/pre-commit/pre-commit "pre-commit"
+[weblate]: https://weblate.ppfeufer.de/ "Weblate"

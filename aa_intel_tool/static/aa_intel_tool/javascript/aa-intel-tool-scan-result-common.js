@@ -1,8 +1,33 @@
 /* global aaIntelToolJsL10n, ClipboardJS */
 
-jQuery(document).ready(($) => {
-    'use strict';
+'use strict';
 
+/**
+ * Fetch data from an ajax URL
+ *
+ * @param url
+ * @returns {Promise<any>}
+ */
+const fetchAjaxData = async (url) => { // eslint-disable-line no-unused-vars
+    return await fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return Promise.resolve(response);
+            } else {
+                return Promise.reject(new Error('Failed to load'));
+            }
+        })
+        .then(response => response.json())
+        .then(tableData => {
+            return tableData;
+        })
+        .catch(function (error) {
+            console.log(`Error: ${error.message}`);
+        });
+};
+
+
+jQuery(document).ready(($) => {
     const elementCopyToClipboard = $('button#btn-copy-permalink-to-clipboard');
 
 
