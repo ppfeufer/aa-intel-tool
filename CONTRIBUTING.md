@@ -56,7 +56,7 @@ branch will be considered.
 
 This app is fully translation-ready and translations are handled via [Weblate]. If
 you like to contribute to the app's translation or simply improve it, feel free to
-register on my [Weblate] site and message me, so I can add you to the right group.
+register on my [Weblate] instance and start translating.
 
 <!-- Links -->
 
