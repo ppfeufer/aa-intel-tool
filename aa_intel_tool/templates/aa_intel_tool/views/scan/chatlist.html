@@ -1,14 +1,14 @@
-{% extends 'aa_intel_tool/base.html' %}
+{% extends "aa_intel_tool/base.html" %}
 
 {% load i18n %}
 
 {% translate "Unaffiliated / No Alliance" as no_alliance %}
 
-{% block page_title %}{% translate 'Chat List Scan » Intel Tool' %}{% endblock %}
+{% block page_title %}{% translate "Chat List Scan » Intel Tool" %}{% endblock %}
 
 {% block aa_intel_tool_header %}
     <header>
-        <h1>{% translate "Chat Scan" %}</h1>
+        <h1>{% translate "Chat List Scan" %}</h1>
     </header>
 
     {% include "aa_intel_tool/partials/scan/evetime.html" %}
@@ -16,10 +16,10 @@
 {% endblock %}
 
 {% block aa_intel_tool_body %}
-    <div class="local-scan-result row">
-        {% include 'aa_intel_tool/partials/scan/chatlist/alliances.html' %}
-        {% include 'aa_intel_tool/partials/scan/chatlist/corporations.html' %}
-        {% include 'aa_intel_tool/partials/scan/chatlist/pilots.html' %}
+    <div class="local-scan-result row" id="aa-intel-chatscan-row">
+        {% include "aa_intel_tool/partials/scan/chatlist/alliances.html" %}
+        {% include "aa_intel_tool/partials/scan/chatlist/corporations.html" %}
+        {% include "aa_intel_tool/partials/scan/chatlist/pilots.html" %}
     </div>
 {% endblock %}
 
