@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[0.0.1-alpha.13\] - 2023-08-25
+
 ### Added
 
 - `fetchAjaxData` function introduced to our JS framework
