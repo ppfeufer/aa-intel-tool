@@ -13,7 +13,7 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="table-local-scan table-local-scan-corporation table-aa-intel">
+            <div class="table-local-scan table-local-scan-corporations table-aa-intel">
                 <table class="table table-condensed table-sortable aa-intel-corporation-participation-list" style="width: 100%;">
                     <thead>
                         <tr>
@@ -25,6 +25,18 @@
                         </tr>
                     </thead>
                 </table>
+            </div>
+
+            <div class="aa-intel-loading-table-info aa-intel-loading-table-info-corporation-participation-list bs-callout bs-callout-info">
+                <p>
+                    {% translate "Loading data …" %}
+                </p>
+            </div>
+
+            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-corporation-participation-list bs-callout bs-callout-info">
+                <p>
+                    {% translate "No data …" %}
+                </p>
             </div>
         </div>
     </div>

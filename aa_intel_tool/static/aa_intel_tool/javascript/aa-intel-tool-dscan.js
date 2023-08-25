@@ -1,4 +1,4 @@
-/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addHightlight, removeHightlight, changeStickyHighlight */
+/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addHightlight, removeHightlight, changeStickyHighlight, fetchAjaxData */
 
 jQuery(document).ready(($) => {
     'use strict';
@@ -16,6 +16,7 @@ jQuery(document).ready(($) => {
     const elementDscanCountDeployables = $('span#aa-intel-dscan-deployables-count');
     const elementStarbasesTable = $('table.aa-intel-dscan-starbases-list');
     const elementDscanCountStarbases = $('span#aa-intel-dscan-starbases-count');
+
 
     /**
      * Corporation info element in datatable
@@ -46,19 +47,12 @@ jQuery(document).ready(($) => {
         return html_logo + html_info;
     };
 
+
     /**
      * Datatable D-Scan All
      */
-    fetch(aaIntelToolJsOptions.ajax.getShipClassesAll)
-        .then(response => {
-            if (response.ok) {
-                return Promise.resolve(response);
-            } else {
-                return Promise.reject(new Error('Failed to load'));
-            }
-        })
-        .then(response => response.json())
-        .then(tableData => {
+    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesAll).then(tableData => {
+        if (tableData) {
             $('div.aa-intel-loading-table-info-all').hide();
 
             if (Object.keys(tableData).length === 0) {
@@ -137,25 +131,15 @@ jQuery(document).ready(($) => {
                     }
                 });
             }
-        })
-        .catch(function (error) {
-            console.log(`Error: ${error.message}`);
-        });
+        }
+    });
 
 
     /**
      * Datatable D-Scan On Grid
      */
-    fetch(aaIntelToolJsOptions.ajax.getShipClassesOngrid)
-        .then(response => {
-            if (response.ok) {
-                return Promise.resolve(response);
-            } else {
-                return Promise.reject(new Error('Failed to load'));
-            }
-        })
-        .then(response => response.json())
-        .then(tableData => {
+    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesOngrid).then(tableData => {
+        if (tableData) {
             $('div.aa-intel-loading-table-info-ongrid').hide();
 
             if (Object.keys(tableData).length === 0) {
@@ -234,25 +218,15 @@ jQuery(document).ready(($) => {
                     }
                 });
             }
-        })
-        .catch(function (error) {
-            console.log(`Error: ${error.message}`);
-        });
+        }
+    });
 
 
     /**
      * Datatable D-Scan Off Grid
      */
-    fetch(aaIntelToolJsOptions.ajax.getShipClassesOffgrid)
-        .then(response => {
-            if (response.ok) {
-                return Promise.resolve(response);
-            } else {
-                return Promise.reject(new Error('Failed to load'));
-            }
-        })
-        .then(response => response.json())
-        .then(tableData => {
+    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesOffgrid).then(tableData => {
+        if (tableData) {
             $('div.aa-intel-loading-table-info-offgrid').hide();
 
             if (Object.keys(tableData).length === 0) {
@@ -331,25 +305,15 @@ jQuery(document).ready(($) => {
                     }
                 });
             }
-        })
-        .catch(function (error) {
-            console.log(`Error: ${error.message}`);
-        });
+        }
+    });
 
 
     /**
      * Datatable D-Scan Ship Types
      */
-    fetch(aaIntelToolJsOptions.ajax.getShipTypes)
-        .then(response => {
-            if (response.ok) {
-                return Promise.resolve(response);
-            } else {
-                return Promise.reject(new Error('Failed to load'));
-            }
-        })
-        .then(response => response.json())
-        .then(tableData => {
+    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipTypes).then(tableData => {
+        if (tableData) {
             $('div.aa-intel-loading-table-info-ship-types').hide();
 
             if (Object.keys(tableData).length === 0) {
@@ -405,25 +369,15 @@ jQuery(document).ready(($) => {
                     }
                 });
             }
-        })
-        .catch(function (error) {
-            console.log(`Error: ${error.message}`);
-        });
+        }
+    });
 
 
     /**
      * Datatable D-Scan Upwell Structures on Grid
      */
-    fetch(aaIntelToolJsOptions.ajax.getStructuresOnGrid)
-        .then(response => {
-            if (response.ok) {
-                return Promise.resolve(response);
-            } else {
-                return Promise.reject(new Error('Failed to load'));
-            }
-        })
-        .then(response => response.json())
-        .then(tableData => {
+    fetchAjaxData(aaIntelToolJsOptions.ajax.getStructuresOnGrid).then(tableData => {
+        if (tableData) {
             $('div.aa-intel-loading-table-info-upwell-structures').hide();
             $('div#aa-intel-dscan-row-interesting-on-grid').show();
 
@@ -481,25 +435,15 @@ jQuery(document).ready(($) => {
                     }
                 });
             }
-        })
-        .catch(function (error) {
-            console.log(`Error: ${error.message}`);
-        });
+        }
+    });
 
 
     /**
      * Datatable D-Scan Deployables on Grid
      */
-    fetch(aaIntelToolJsOptions.ajax.getDeployablesOnGrid)
-        .then(response => {
-            if (response.ok) {
-                return Promise.resolve(response);
-            } else {
-                return Promise.reject(new Error('Failed to load'));
-            }
-        })
-        .then(response => response.json())
-        .then(tableData => {
+    fetchAjaxData(aaIntelToolJsOptions.ajax.getDeployablesOnGrid).then(tableData => {
+        if (tableData) {
             $('div.aa-intel-loading-table-info-deployables').hide();
             $('div#aa-intel-dscan-row-interesting-on-grid').show();
 
@@ -557,24 +501,15 @@ jQuery(document).ready(($) => {
                     }
                 });
             }
-        })
-        .catch(function (error) {
-            console.log(`Error: ${error.message}`);
-        });
+        }
+    });
+
 
     /**
      * Datatable D-Scan Deployables on Grid
      */
-    fetch(aaIntelToolJsOptions.ajax.getStarbasesOnGrid)
-        .then(response => {
-            if (response.ok) {
-                return Promise.resolve(response);
-            } else {
-                return Promise.reject(new Error('Failed to load'));
-            }
-        })
-        .then(response => response.json())
-        .then(tableData => {
+    fetchAjaxData(aaIntelToolJsOptions.ajax.getStarbasesOnGrid).then(tableData => {
+        if (tableData) {
             $('div.aa-intel-loading-table-info-starbases').hide();
             $('div#aa-intel-dscan-row-interesting-on-grid').show();
 
@@ -632,8 +567,6 @@ jQuery(document).ready(($) => {
                     }
                 });
             }
-        })
-        .catch(function (error) {
-            console.log(`Error: ${error.message}`);
-        });
+        }
+    });
 });

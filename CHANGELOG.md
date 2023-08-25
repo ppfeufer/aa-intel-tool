@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+### Added
+
+- `fetchAjaxData` function introduced to our JS framework
+
 ## \[0.0.1-alpha.12\] - 2023-08-24
 
 ### Added
