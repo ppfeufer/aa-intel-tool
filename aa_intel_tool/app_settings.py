@@ -27,7 +27,7 @@ class AppSettings:  # pylint: disable=too-few-public-methods
     # Enabled by default
     INTELTOOL_ENABLE_MODULE_FLEETCOMP = clean_setting(
         name="INTELTOOL_ENABLE_MODULE_FLEETCOMP",
-        default_value=False,
+        default_value=True,
         required_type=bool,
     )
 
