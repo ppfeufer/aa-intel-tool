@@ -2,15 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Nikolay <nick.postnikov@gmail.com>, 2023.
+# Peter Pfeufer <info@ppfeufer.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-24 18:43+0200\n"
-"PO-Revision-Date: 2023-08-13 20:40+0000\n"
-"Last-Translator: Nikolay <nick.postnikov@gmail.com>\n"
-"Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/ru/>\n"
+"PO-Revision-Date: 2023-08-26 22:53+0000\n"
+"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"Language-Team: Russian <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,15 +22,15 @@ msgstr ""
 
 #: admin.py:79 models.py:46
 msgid "Scan type"
-msgstr ""
+msgstr "Тип скана"
 
 #: admin.py:94
 msgid "Open in a new browser tab"
-msgstr ""
+msgstr "Открыть в новой вкладке"
 
 #: admin.py:100
 msgid "RAW data"
-msgstr ""
+msgstr "Исходные данные"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
 #: apps.py:21
@@ -39,13 +40,13 @@ msgstr ""
 
 #: constants.py:71 models.py:24
 msgid "Chat List"
-msgstr ""
+msgstr "Список чата"
 
 #: constants.py:76 models.py:22
 #: templates/aa_intel_tool/partials/index/form.html:27
 #: templates/aa_intel_tool/views/scan/dscan.html:11
 msgid "D-Scan"
-msgstr ""
+msgstr "Подскан"
 
 #: constants.py:81 models.py:23
 #: templates/aa_intel_tool/partials/index/form.html:31
@@ -55,109 +56,111 @@ msgstr "Состав флота"
 #: exceptions.py:34
 #, python-brace-format
 msgid "A parser error occurred » {message}"
-msgstr ""
+msgstr "Произошла ошибка анализа » {message}"
 
 #: form.py:20
 msgid "Paste here …"
-msgstr ""
+msgstr "Вставить сюда …"
 
 #: models.py:21 models.py:110
 msgid "Invalid scan data"
-msgstr ""
+msgstr "Некорректные данные скана"
 
 #: models.py:31
 msgid "Scan hash"
-msgstr ""
+msgstr "Хэш скана"
 
 #: models.py:37
 msgid "Creation date/time"
-msgstr ""
+msgstr "Дата/время создания"
 
 #: models.py:40
 msgid "Scan RAW data"
-msgstr ""
+msgstr "Исходные данные скана"
 
 #: models.py:55 models.py:131
 msgid "Scan"
-msgstr ""
+msgstr "Скан"
 
 #: models.py:56
 msgid "Scans"
-msgstr ""
+msgstr "Сканы"
 
 #: models.py:111
 msgid "Pilot list"
-msgstr ""
+msgstr "Список пилотов"
 
 #: models.py:112
 msgid "Corporation list"
-msgstr ""
+msgstr "Список корпораций"
 
 #: models.py:113
 msgid "Alliance list"
-msgstr ""
+msgstr "Список альянсов"
 
 #: models.py:114
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
-msgstr ""
+msgstr "Типы кораблей"
 
 #: models.py:115
 msgid "Ship list"
-msgstr ""
+msgstr "Список кораблей"
 
 #: models.py:116
 msgid "Ship list (on grid)"
-msgstr ""
+msgstr "Корабли (в гриде)"
 
 #: models.py:117
 msgid "Ship list (off grid)"
-msgstr ""
+msgstr "Корабли (вне грида)"
 
 #: models.py:118
 msgid "Structures (on grid)"
-msgstr ""
+msgstr "Структуры (в гриде)"
 
 #: models.py:119
 msgid "Starbases (on grid)"
-msgstr ""
+msgstr "Звездные базы (в гриде)"
 
 #: models.py:120
 msgid "Deployables (on grid)"
-msgstr ""
+msgstr "Развертываемые объекты (в гриде)"
 
 #: models.py:121
 msgid "Miscellaneous (on grid)"
-msgstr ""
+msgstr "Разное (в гриде)"
 
 #: models.py:122
 msgid "System information"
-msgstr ""
+msgstr "Информация о системе"
 
 #: models.py:138
 msgid "Scan section"
-msgstr ""
+msgstr "Раздел скана"
 
 #: models.py:142
 msgid "Processed scan data"
-msgstr ""
+msgstr "Обработанные данные скана"
 
 #: models.py:151 models.py:152
 msgid "Scan data"
-msgstr ""
+msgstr "Данные скана"
 
 #: parser/general.py:46
 msgid ""
 "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
+"Не найден подходящий анализатор. Формат входных данных не поддерживается или "
+"данные неполны …"
 
 #: parser/general.py:80
 msgid "No data to parse …"
-msgstr ""
+msgstr "Нет данных для анализа …"
 
 #: parser/module/chatlist.py:222
 msgid "The chat list module is currently disabled."
-msgstr ""
+msgstr "Анализатор списка чата отключен."
 
 #: parser/module/chatlist.py:240
 #, python-brace-format
@@ -172,23 +175,23 @@ msgstr[1] ""
 
 #: parser/module/chatlist.py:268
 msgid "Something went wrong while fetching the character information from ESI."
-msgstr ""
+msgstr "Что-то пошло не так при загрузке информации о персонаже через ESI."
 
 #: parser/module/chatlist.py:281
 msgid "Character unknown to ESI."
-msgstr ""
+msgstr "Персонаж не известен для ESI."
 
 #: parser/module/dscan.py:322
 msgid "The D-Scan module is currently disabled."
-msgstr ""
+msgstr "Анализатор подскана отключен."
 
 #: parser/module/fleetcomp.py:40
 msgid "The fleet composition module is currently disabled."
-msgstr ""
+msgstr "Анализатор состава флота отключен."
 
 #: parser/module/fleetcomp.py:44
 msgid "The fleet composition module is not yet finished, be patient …"
-msgstr ""
+msgstr "Анализатор состава флота пока не закончен, наберитесь терпения …"
 
 #: templates/aa_intel_tool/base.html:6
 #: templates/aa_intel_tool/views/index.html:6
@@ -197,13 +200,15 @@ msgstr ""
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:8
 msgid "Permalink successfully copied"
-msgstr ""
+msgstr "Постоянная ссылка успешно скопирована"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
 msgid ""
 "Something went wrong. Nothing copied. Maybe your browser does not support "
 "this function."
 msgstr ""
+"Что-то пошло не так. Ничего не скопировано. Возможно, ваш браузер не "
+"поддерживает данную функцию."
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:14
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
@@ -212,11 +217,11 @@ msgstr ""
 #: templates/aa_intel_tool/views/scan/chatlist.html:5
 #: templates/aa_intel_tool/views/scan/dscan.html:5
 msgid "Unaffiliated / No Alliance"
-msgstr ""
+msgstr "Неаффилированный / Нет альянса"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
 msgid "NPC Corp"
-msgstr ""
+msgstr "NPC корпорация"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
 msgctxt "Decimal separator"
@@ -230,7 +235,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
 msgid "No data available in this table"
-msgstr ""
+msgstr "Данные в таблице отсутствуют"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
@@ -244,7 +249,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
 msgid "No records available"
-msgstr ""
+msgstr "Записи недоступны"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
 msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
@@ -253,15 +258,15 @@ msgstr ""
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
 msgid "Loading …"
-msgstr ""
+msgstr "Загрузка …"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
 msgid "Processing …"
-msgstr ""
+msgstr "Обработка …"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
 msgid "Nothing found, sorry …"
-msgstr ""
+msgstr "Ничего не найдено …"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
 msgid "Search …"
@@ -285,11 +290,11 @@ msgstr "Предыдущий"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
 msgid ": activate to sort column ascending"
-msgstr ""
+msgstr ": активируйте для сортировки по возрастанию"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
 msgid ": activate to sort column descending"
-msgstr ""
+msgstr ": активируйте для сортировки по убыванию"
 
 #: templates/aa_intel_tool/partials/body/scan-retention-note.html:5
 #, python-format
@@ -312,11 +317,11 @@ msgstr "Присоединяйтесь к нашей команде перево
 
 #: templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
-msgstr ""
+msgstr "Что я могу вставить?"
 
 #: templates/aa_intel_tool/partials/index/form.html:16
 msgid "Chat Member List"
-msgstr ""
+msgstr "Список членов чата"
 
 #: templates/aa_intel_tool/partials/index/form.html:20
 #, python-format
@@ -331,28 +336,28 @@ msgstr "Отправить"
 
 #: templates/aa_intel_tool/partials/index/form.html:52
 msgid "Working on it, please be patient …"
-msgstr ""
+msgstr "Работаем над этим, потерпите …"
 
 #: templates/aa_intel_tool/partials/index/form.html:54
 msgid "Detecting the intel type"
-msgstr ""
+msgstr "Определение типа информации"
 
 #: templates/aa_intel_tool/partials/index/form.html:55
 msgid ""
 "Fetching potentially missing information from ESI (this might take a moment)"
-msgstr ""
+msgstr "Загрузка отсутствующей информации из ESI (может занять время)"
 
 #: templates/aa_intel_tool/partials/index/form.html:56
 msgid "Parsing data"
-msgstr ""
+msgstr "Анализ данных"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:8
 msgid "New Scan"
-msgstr ""
+msgstr "Новый скан"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:15
 msgid "Copy Permalink"
-msgstr ""
+msgstr "Копировать постоянную ссылку"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
 msgid "Alliances breakdown"
@@ -368,29 +373,27 @@ msgstr ""
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:20
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
-msgstr ""
+msgstr "Количество"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
-#, fuzzy
-#| msgid "Corporation"
 msgid "Corporations breakdown"
-msgstr "Корпорация"
+msgstr "Разбивка по корпорациям"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
 msgid "Corporation Name"
-msgstr ""
+msgstr "Имя корпорации"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
 msgid "Pilots breakdown"
-msgstr ""
+msgstr "Разбивка по пилотам"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
 msgid "Name"
-msgstr "Название"
+msgstr "Имя"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
 msgid "Alliance"
-msgstr ""
+msgstr "Альянс"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
 msgid "Corporation"
@@ -398,38 +401,38 @@ msgstr "Корпорация"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:7
 msgid "Interesting on Grid"
-msgstr ""
+msgstr "Интересное в гриде"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:12
 msgid "Upwell structures"
-msgstr ""
+msgstr "Структуры Upwell"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:13
 msgid "Deployables"
-msgstr ""
+msgstr "Развертываемые объекты"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:14
 msgid "POS / POS Modules"
-msgstr ""
+msgstr "POS / Модули POS"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:15
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Разное"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:16
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:24
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:28
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
 msgid "Loading data …"
-msgstr ""
+msgstr "Загрузка данных …"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:30
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:34
 msgid "No data …"
-msgstr ""
+msgstr "Нет данных …"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:7
 msgid "Ships on Scan"
@@ -452,8 +455,6 @@ msgid "Ship class"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
-#, fuzzy
-#| msgid "Ship Type"
 msgid "Ship type"
 msgstr "Тип корабля"
 
