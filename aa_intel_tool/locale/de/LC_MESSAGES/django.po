@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-24 18:43+0200\n"
-"PO-Revision-Date: 2023-08-24 10:40+0000\n"
+"PO-Revision-Date: 2023-08-26 21:39+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/de/>\n"
+"Language-Team: German <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -118,24 +118,20 @@ msgid "Structures (on grid)"
 msgstr "Strukturen (On Grid)"
 
 #: models.py:119
-#, fuzzy
-#| msgid "Structures (on grid)"
 msgid "Starbases (on grid)"
-msgstr "Strukturen (On Grid)"
+msgstr "Starbases (On Grid)"
 
 #: models.py:120
 msgid "Deployables (on grid)"
 msgstr "Stationierbare Strukturen (On Grid)"
 
 #: models.py:121
-#, fuzzy
-#| msgid "Deployables (on grid)"
 msgid "Miscellaneous (on grid)"
-msgstr "Stationierbare Strukturen (On Grid)"
+msgstr "Verschiedenes (On Grid)"
 
 #: models.py:122
 msgid "System information"
-msgstr ""
+msgstr "Systeminformationen"
 
 #: models.py:138
 msgid "Scan section"
@@ -411,50 +407,42 @@ msgstr "Corporation"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:7
 msgid "Interesting on Grid"
-msgstr ""
+msgstr "Interessantes auf dem Grid"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:12
 msgid "Upwell structures"
-msgstr ""
+msgstr "Upwell Strukturen"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:13
-#, fuzzy
-#| msgid "Deployables (on grid)"
 msgid "Deployables"
-msgstr "Stationierbare Strukturen (On Grid)"
+msgstr "Stationierbare Strukturen"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:14
 msgid "POS / POS Modules"
-msgstr ""
+msgstr "POS / POS Module"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:15
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Verschiedenes"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:16
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:24
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:28
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
-#, fuzzy
-#| msgid "Loading …"
 msgid "Loading data …"
-msgstr "Lade …"
+msgstr "Lade Daten …"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:30
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:34
-#, fuzzy
-#| msgid "No data to parse …"
 msgid "No data …"
-msgstr "Keine Daten zum Parsen …"
+msgstr "Keine Daten …"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:7
-#, fuzzy
-#| msgid "Ship class"
 msgid "Ships on Scan"
-msgstr "Schiffsklasse"
+msgstr "Schiffe auf dem Scan"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:12
 msgid "All ships"
@@ -477,14 +465,12 @@ msgid "Ship type"
 msgstr "Schiffstyp"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
-#, fuzzy
-#| msgid "RAW data"
 msgid "No data."
-msgstr "Rohdaten"
+msgstr "Keine Daten."
 
 #: templates/aa_intel_tool/partials/scan/dscan/system-information.html:7
 msgid "System Information"
-msgstr ""
+msgstr "Systeminformationen"
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve Time)"
