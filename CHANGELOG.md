@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+### Changed
+
+- Moved template designation to `SUPPORTED_INTEL_TYPES` constant
+
 ## \[0.0.1-alpha.13\] - 2023-08-25
 
 ### Added

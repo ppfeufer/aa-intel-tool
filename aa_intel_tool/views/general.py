@@ -9,12 +9,22 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 
+# Alliance Auth
+from allianceauth.services.hooks import get_extension_logger
+
+# Alliance Auth (External Libs)
+from app_utils.logging import LoggerAddTag
+
 # AA Intel Tool
+from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
+from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.form import IntelForm
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.general import parse_intel
+
+logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
 def index(request: WSGIRequest) -> HttpResponse:
@@ -91,6 +101,8 @@ def scan(request: WSGIRequest, scan_hash: str):
 
         return redirect(to="aa_intel_tool:intel_tool_index")
 
+    logger.debug(msg=f"Intel Type: {intel_scan.scan_type}")
+
     scan_data = {
         "scan_type": intel_scan.scan_type,
         "created": intel_scan.created,
@@ -103,15 +115,10 @@ def scan(request: WSGIRequest, scan_hash: str):
         "scan_data_section": ScanData.Section,
     }
 
-    scan_type_templates = {
-        "chatlist": "aa_intel_tool/views/scan/chatlist.html",
-        "dscan": "aa_intel_tool/views/scan/dscan.html",
-    }
-
-    if intel_scan.scan_type in scan_type_templates:
+    if intel_scan.scan_type in SUPPORTED_INTEL_TYPES:
         return render(
             request=request,
-            template_name=scan_type_templates[intel_scan.scan_type],
+            template_name=SUPPORTED_INTEL_TYPES[intel_scan.scan_type]["template"],
             context=context,
         )
 

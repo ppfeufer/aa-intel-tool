@@ -71,16 +71,19 @@ SUPPORTED_INTEL_TYPES = {
         "name": _("Chat List"),
         "parser": aa_intel_tool.parser.module.chatlist.parse,
         "pattern": REGEX_PATTERN["chatlist"],
+        "template": "aa_intel_tool/views/scan/chatlist.html",
     },
     "dscan": {
         "name": _("D-Scan"),
         "parser": aa_intel_tool.parser.module.dscan.parse,
         "pattern": REGEX_PATTERN["dscan"],
+        "template": "aa_intel_tool/views/scan/dscan.html",
     },
     "fleetcomp": {
         "name": _("Fleet Composition"),
         "parser": aa_intel_tool.parser.module.fleetcomp.parse,
         "pattern": REGEX_PATTERN["fleetcomp"],
+        "template": "aa_intel_tool/views/scan/fleetcomp.html",
     },
 }
 
