@@ -120,6 +120,7 @@ class ScanData(models.Model):
         DEPLOYABLES_ON_GRID = "deployables_on_grid", _("Deployables (on grid)")
         MISCELLANEOUS_ON_GRID = "miscellaneous_on_grid", _("Miscellaneous (on grid)")
         SOLAR_SYSTEM_INFORMATION = "solar_system_information", _("System information")
+        FLEETCOMPOSITION = "fleetcomposition", _("Fleet composition")
 
     scan = models.ForeignKey(
         Scan,
