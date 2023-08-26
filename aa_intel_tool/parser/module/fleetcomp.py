@@ -40,23 +40,18 @@ def parse(scan_data: list) -> Scan:
     message = _("The fleet composition module is currently disabled.")
 
     if AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP is True:
-        raise ParserError(
-            message=_("The fleet composition module is not yet finished, be patient …")
-        )
-
-        logger.debug(msg=scan_data)
+        pilots = {"list": [], "flying": []}
+        lines = []
 
         # Let's split this list up
         #
-        # [0] => Pilot Name
-        # [1] => System
-        # [2] => Ship Class
-        # [3] => Ship Type
-        # [4] => Position in Fleet
-        # [5] => Skills (FC - WC - SC)
-        # [6] => Wing Name / Squad Name
-        pilots = {"list": [], "flying": []}
-        lines = []
+        # entry[0] => Pilot Name
+        # entry[1] => System
+        # entry[2] => Ship Class
+        # entry[3] => Ship Type
+        # entry[4] => Position in Fleet
+        # entry[5] => Skills (FC - WC - SC)
+        # entry[6] => Wing Name / Squad Name
         for entry in scan_data:
             line = re.split(pattern=r"\t+", string=entry.rstrip("\t"))
 
@@ -70,21 +65,12 @@ def parse(scan_data: list) -> Scan:
         for line in lines:
             logger.debug(line[0] + " » " + line[6])
 
-        logger.debug(msg=pilots)
+        participation = parse_pilots(
+            scan_data=pilots["list"], safe_to_db=False, ignore_limit=True
+        )
 
-        pilotlist = parse_pilots(scan_data=pilots["list"], safe_to_db=False)
-
-        logger.debug(msg=pilotlist)
-
-        parsed_data = {
-            "general_information": None,
-            "ship_classes": None,
-            "ship_types": None,
-            "composition": None,
-            "pilots": pilotlist["pilots"] if pilotlist is not None else None,
-            "corporations": pilotlist["corporations"],
-            "alliances": pilotlist["alliances"],
-        }
+        parsed_data = {}
+        parsed_data.update(participation)
 
         return safe_scan_to_db(scan_type=Scan.Type.FLEETCOMP, parsed_data=parsed_data)
 
