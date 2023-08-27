@@ -2,13 +2,11 @@
 
 {% load i18n %}
 
-{% translate "Unaffiliated / No Alliance" as no_alliance %}
-
-{% block page_title %}{% translate "Chat List Scan » Intel Tool" %}{% endblock %}
+{% block page_title %}{{ parser_title|title }} » {% translate "Intel Parser" %}{% endblock %}
 
 {% block aa_intel_tool_header %}
     <header>
-        <h1>{% translate "Chat List Scan" %}</h1>
+        <h1>{{ parser_title|title }}</h1>
     </header>
 
     {% include "aa_intel_tool/partials/scan/evetime.html" %}

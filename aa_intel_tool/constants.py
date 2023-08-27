@@ -68,7 +68,7 @@ REGEX_PATTERN = {
 # Supported intel types and their parameters
 SUPPORTED_INTEL_TYPES = {
     "chatlist": {
-        "name": _("Chat List"),
+        "name": _("Chat list"),
         "parser": aa_intel_tool.parser.module.chatlist.parse,
         "pattern": REGEX_PATTERN["chatlist"],
         "template": "aa_intel_tool/views/scan/chatlist.html",
@@ -80,7 +80,7 @@ SUPPORTED_INTEL_TYPES = {
         "template": "aa_intel_tool/views/scan/dscan.html",
     },
     "fleetcomp": {
-        "name": _("Fleet Composition"),
+        "name": _("Fleet composition"),
         "parser": aa_intel_tool.parser.module.fleetcomp.parse,
         "pattern": REGEX_PATTERN["fleetcomp"],
         "template": "aa_intel_tool/views/scan/fleetcomp.html",

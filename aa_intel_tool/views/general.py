@@ -113,6 +113,7 @@ def scan(request: WSGIRequest, scan_hash: str):
         "scan_hash": scan_hash,
         "scan": scan_data,
         "scan_data_section": ScanData.Section,
+        "parser_title": SUPPORTED_INTEL_TYPES[intel_scan.scan_type]["name"],
     }
 
     if intel_scan.scan_type in SUPPORTED_INTEL_TYPES:
