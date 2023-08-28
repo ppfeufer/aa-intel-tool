@@ -9,10 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- Pilots in fleet count on fleet compisition result page
+- Pilots in fleet count on fleet composition result page
 - Missing semicolons in JavaScripts
 - JS function attribute name
 - Translations cleaned up
+
+### Added
+
+- MySQL script to drop the DB tables
 
 ## \[0.0.1-alpha.14\] - 2023-08-28
 
