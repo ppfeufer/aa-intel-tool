@@ -5,7 +5,8 @@ jQuery(document).ready(($) => {
 
     const elementShipClassesTable = $('table.aa-intel-dscan-ship-classes-ship-classes-list');
     const elementShipTypesTable = $('table.aa-intel-dscan-ship-types-list');
-    const elementFleetcompositionTable = $('table.aa-intel-fleetcomp-pilot-ships-list')
+    const elementFleetcompositionTable = $('table.aa-intel-fleetcomp-pilot-ships-list');
+    const elementPilotsCount = $('span#aa-intel-fleet-participation-count');
 
 
     /**
@@ -199,6 +200,12 @@ jQuery(document).ready(($) => {
                         }
                     ],
                     createdRow: (row, data) => {
+                        // Pilots total count
+                        const currentTotal = elementPilotsCount.html();
+                        const newTotal = parseInt(currentTotal) + 1;
+
+                        elementPilotsCount.html(newTotal);
+
                         $(row)
                             .attr('data-shipclass-id', data['ship_id'])
                             .attr('data-shiptype-id', data['ship_type_id']);
