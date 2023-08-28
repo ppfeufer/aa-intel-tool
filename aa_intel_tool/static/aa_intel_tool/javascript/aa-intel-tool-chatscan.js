@@ -99,7 +99,7 @@ jQuery(document).ready(($) => {
                             e.stopPropagation();
                         });
                     }
-                })
+                });
             }
         }
     });
@@ -193,7 +193,7 @@ jQuery(document).ready(($) => {
                             e.stopPropagation();
                         });
                     }
-                })
+                });
             }
         }
     });
@@ -293,7 +293,7 @@ jQuery(document).ready(($) => {
                             e.stopPropagation();
                         });
                     }
-                })
+                });
             }
         }
     });
