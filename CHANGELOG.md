@@ -41,7 +41,7 @@ This will happen in 2 steps.
 Run the following command in your virtual environment:
 
 ```shell
-python manage.py migare aa_intel_tool zero --fake
+python manage.py migrate aa_intel_tool zero --fake
 ```
 
 This will remove the migration information from Django.
