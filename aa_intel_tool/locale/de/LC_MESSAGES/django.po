@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 15:28+0200\n"
+"POT-Creation-Date: 2023-08-28 15:44+0200\n"
 "PO-Revision-Date: 2023-08-26 21:39+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -45,7 +45,7 @@ msgstr "Rohdaten"
 msgid "Intel Parser v{__version__}"
 msgstr "Intel Parser v{__version__}"
 
-#: constants.py:71
+#: constants.py:71 models.py:24
 msgid "Chat list"
 msgstr "Chatliste"
 
@@ -516,7 +516,3 @@ msgstr "Die bereitgestellten Daten konnten nicht analysiert werden."
 #: views/general.py:99 views/general.py:128
 msgid "The scan you were looking for could not be found."
 msgstr "Der gesuchte Scan konnte nicht gefunden werden."
-
-#: models.py:24
-msgid "Chat List"
-msgstr "Chatliste"
