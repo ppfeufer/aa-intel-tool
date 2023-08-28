@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-24 18:43+0200\n"
-"PO-Revision-Date: 2023-08-26 22:53+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"PO-Revision-Date: 2023-08-28 09:03+0000\n"
+"Last-Translator: Nikolay <nick.postnikov@gmail.com>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/ru/>\n"
 "Language: ru\n"
@@ -171,7 +171,17 @@ msgid_plural ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots "
 "per scan. Your list of pilots exceeds this limit."
 msgstr[0] ""
+"Анализатор чата в настоящее время ограничен максимум {max_allowed_pilots} "
+"пилотом в скане. Размер вашего списка превышает это ограничение."
 msgstr[1] ""
+"Анализатор чата в настоящее время ограничен максимум {max_allowed_pilots} "
+"пилотами в скане. Размер вашего списка превышает это ограничение."
+msgstr[2] ""
+"Анализатор чата в настоящее время ограничен максимум {max_allowed_pilots} "
+"пилотами в скане. Размер вашего списка превышает это ограничение."
+msgstr[3] ""
+"Анализатор чата в настоящее время ограничен максимум одним пилотом в скане. "
+"Размер вашего списка превышает это ограничение."
 
 #: parser/module/chatlist.py:268
 msgid "Something went wrong while fetching the character information from ESI."
@@ -240,12 +250,12 @@ msgstr "Данные в таблице отсутствуют"
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
 msgid "Showing _END_ entries"
-msgstr ""
+msgstr "Отображаются _END_ записей"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
 msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
 msgid "(filtered from _MAX_ total entries)"
-msgstr ""
+msgstr "(отфильтрованы из _MAX_ записей)"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
 msgid "No records available"
@@ -254,7 +264,7 @@ msgstr "Записи недоступны"
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
 msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 msgid "Show _MENU_"
-msgstr ""
+msgstr "Показывать _MENU_"
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
 msgid "Loading …"
@@ -300,8 +310,10 @@ msgstr ": активируйте для сортировки по убывани
 #, python-format
 msgid "Scans will be deleted after %(scan_retention_time)s day."
 msgid_plural "Scans will be deleted after %(scan_retention_time)s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Сканы будут удалены после %(scan_retention_time)s дня."
+msgstr[1] "Сканы будут удалены после %(scan_retention_time)s дней."
+msgstr[2] "Сканы будут удалены после %(scan_retention_time)s дней."
+msgstr[3] "Сканы будут удалены через один день."
 
 #: templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
 msgid ""
@@ -327,8 +339,10 @@ msgstr "Список членов чата"
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ограничен максимум %(max_pilots)s пилотом в скане."
+msgstr[1] "Ограничен максимум %(max_pilots)s пилотами в скане."
+msgstr[2] "Ограничен максимум %(max_pilots)s пилотами в скане."
+msgstr[3] "Ограничен максимум одним пилотом в скане."
 
 #: templates/aa_intel_tool/partials/index/form.html:46
 msgid "Submit"
@@ -361,11 +375,11 @@ msgstr "Копировать постоянную ссылку"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
 msgid "Alliances breakdown"
-msgstr ""
+msgstr "Разбивка по альянсам"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
 msgid "Alliance Name"
-msgstr ""
+msgstr "Название альянса"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:24
 #: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:24
@@ -436,23 +450,23 @@ msgstr "Нет данных …"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:7
 msgid "Ships on Scan"
-msgstr ""
+msgstr "Корабли на скане"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:12
 msgid "All ships"
-msgstr ""
+msgstr "Все корабли"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:13
 msgid "On grid"
-msgstr ""
+msgstr "В гриде"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:14
 msgid "Off grid"
-msgstr ""
+msgstr "Вне грида"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:17
 msgid "Ship class"
-msgstr ""
+msgstr "Класс корабля"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
@@ -460,15 +474,15 @@ msgstr "Тип корабля"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
 msgid "No data."
-msgstr ""
+msgstr "Нет данных."
 
 #: templates/aa_intel_tool/partials/scan/dscan/system-information.html:7
 msgid "System Information"
-msgstr ""
+msgstr "Информация о системе"
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve Time)"
-msgstr ""
+msgstr "Скан выполнен (время EVE)"
 
 #: templates/aa_intel_tool/views/index.html:10
 msgid "Intel Parser"
@@ -479,6 +493,8 @@ msgid ""
 "Please keep in mind, parsing large amounts of data can take some time. Be "
 "patient, CCP's API is not the fastest to answer …"
 msgstr ""
+"Помните, что обработка большого объема данных может занять некоторое время. "
+"Будьте терпеливы, CCP API не самое быстрое …"
 
 #: templates/aa_intel_tool/views/scan/chatlist.html:7
 msgid "Chat List Scan » Intel Tool"
@@ -494,12 +510,12 @@ msgstr ""
 
 #: views/general.py:43
 msgid "The provided data could not be parsed."
-msgstr ""
+msgstr "Предоставленные данные не могут быть проанализированы."
 
 #: views/general.py:50
 msgid "(System Error) Something unexpected happened."
-msgstr ""
+msgstr "(Системная ошибка) Случилось что-то непредвиденное."
 
 #: views/general.py:89 views/general.py:120
 msgid "The scan you were looking for could not be found."
-msgstr ""
+msgstr "Скан, который вы ищите, не может быть найден."
