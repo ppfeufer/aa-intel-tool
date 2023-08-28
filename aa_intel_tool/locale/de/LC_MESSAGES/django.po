@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 15:15+0200\n"
+"POT-Creation-Date: 2023-08-28 15:28+0200\n"
 "PO-Revision-Date: 2023-08-26 21:39+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -46,7 +46,7 @@ msgstr "Rohdaten"
 msgid "Intel Parser v{__version__}"
 msgstr "Intel Tool v{__version__}"
 
-#: constants.py:71
+#: constants.py:71 models.py:24
 #, fuzzy
 #| msgid "Chat List"
 msgid "Chat list"
@@ -79,10 +79,6 @@ msgstr "Ungültige Scandaten"
 #: models.py:23 templates/aa_intel_tool/partials/index/form.html:31
 msgid "Fleet Composition"
 msgstr "Flottenzusammensetzung"
-
-#: models.py:24
-msgid "Chat List"
-msgstr "Chatliste"
 
 #: models.py:31
 msgid "Scan hash"
