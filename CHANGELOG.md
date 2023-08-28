@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+### Fixed
+
+- Pilots in fleet count on fleet compisition result page
+- Missing semicolons in JavaScripts
+- JS function attribute name
+- Translations cleaned up
+
 ## \[0.0.1-alpha.14\] - 2023-08-28
 
 Hopefully the last one before official release …
