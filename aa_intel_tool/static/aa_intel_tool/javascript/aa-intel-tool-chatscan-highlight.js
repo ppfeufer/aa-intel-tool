@@ -267,7 +267,7 @@ const pilotTableRemoveHighlightByAllianceId = (element) => {
  * @param by_table {string} The table from which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const addHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const addChatscanHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
     table_row.addClass('aa-intel-highlight');
 
     if (by_table === 'alliance') {
@@ -293,7 +293,7 @@ const addHightlight = (by_table, table_row) => { // eslint-disable-line no-unuse
  * @param by_table {string} The table from which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const addSticky = (by_table, table_row) => {
+const addChatscanSticky = (by_table, table_row) => {
     table_row.addClass('aa-intel-highlight-sticky');
 
     if (by_table === 'alliance') {
@@ -319,7 +319,7 @@ const addSticky = (by_table, table_row) => {
  * @param by_table {string} The table from which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const removeHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const removeChatscanHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
     table_row.removeClass('aa-intel-highlight');
 
     if (by_table === 'alliance') {
@@ -345,7 +345,7 @@ const removeHightlight = (by_table, table_row) => { // eslint-disable-line no-un
  * @param by_table {string} The table from which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const removeSticky = (by_table, table_row) => {
+const removeChatscanSticky = (by_table, table_row) => {
     table_row.removeClass('aa-intel-highlight-sticky');
 
     if (by_table === 'alliance') {
@@ -379,10 +379,10 @@ const removeSticky = (by_table, table_row) => {
  * @param by_table {string} The table from which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const changeStickyHighlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const changeChatscanStickyHighlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
     if (table_row.hasClass('aa-intel-highlight-sticky')) {
-        removeSticky(by_table, table_row);
+        removeChatscanSticky(by_table, table_row);
     } else {
-        addSticky(by_table, table_row);
+        addChatscanSticky(by_table, table_row);
     }
 };

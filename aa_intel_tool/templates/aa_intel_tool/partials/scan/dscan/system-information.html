@@ -4,7 +4,10 @@
     <div class="clearfix">
         <div class="col-sm-6 col-md-4 col-lg-4 clearfix">
             <header class="aa-intel-section-header">
-                <h2>{% translate "System Information" %}</h2>
+                <h2>
+                    {% translate "System information" as section_header %}
+                    {{ section_header|title }}
+                </h2>
             </header>
         </div>
     </div>

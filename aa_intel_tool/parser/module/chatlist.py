@@ -31,6 +31,58 @@ from aa_intel_tool.parser.helper.db import safe_scan_to_db
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
+def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
+    """
+    Get Eve character information and affiliation from a list of character names
+
+    :param scan_data:
+    :type scan_data:
+    :return:
+    :rtype:
+    """
+
+    # Check if we have to bother Eve Universe or if we have all characters already
+    # Excluding corporation_id=1000001 (Doomheim) to force an update here …
+    fetch_from_eveuniverse = False
+    try:
+        eve_characters = EveCharacter.objects.filter(
+            character_name__in=scan_data
+        ).exclude(corporation_id=1000001)
+    except EveCharacter.DoesNotExist:  # pylint: disable=no-member
+        fetch_from_eveuniverse = True
+    else:
+        if len(scan_data) != eve_characters.count():
+            fetch_from_eveuniverse = True
+
+    if fetch_from_eveuniverse:
+        try:
+            eve_character_ids = (
+                EveEntity.objects.fetch_by_names_esi(names=scan_data, update=True)
+                .filter(category=EveEntity.CATEGORY_CHARACTER)
+                .values_list("id", flat=True)
+            )
+        except EveEntity.DoesNotExist as exc:  # pylint: disable=no-member
+            message = _(
+                "Something went wrong while fetching "
+                "the character information from ESI."
+            )
+
+            raise ParserError(message=message) from exc
+
+        logger.debug(msg=f"Got {len(eve_character_ids)} ID(s) back from Eve Universe …")
+
+        # In case the name does not belong to an Eve character,
+        # EveEntity returns an empty object
+        if len(eve_character_ids) == 0:
+            message = _("Character unknown to ESI.")
+
+            raise ParserError(message=message)
+
+        eve_characters = get_or_create_character(character_ids=eve_character_ids)
+
+    return eve_characters
+
+
 def _get_unaffiliated_alliance_info() -> dict:
     """
     Get the alliance_info dict for characters that are in no alliance
@@ -243,46 +295,7 @@ def parse(
                 )
             )
 
-        # Check if we have to bother Eve Universe or if we have all characters already
-        # Excluding corporation_id=1000001 (Doomheim) to force an update here …
-        fetch_from_eveuniverse = False
-        try:
-            eve_characters = EveCharacter.objects.filter(
-                character_name__in=scan_data
-            ).exclude(corporation_id=1000001)
-        except EveCharacter.DoesNotExist:  # pylint: disable=no-member
-            fetch_from_eveuniverse = True
-        else:
-            if len(scan_data) != eve_characters.count():
-                fetch_from_eveuniverse = True
-
-        if fetch_from_eveuniverse:
-            try:
-                eve_character_ids = (
-                    EveEntity.objects.fetch_by_names_esi(names=scan_data, update=True)
-                    .filter(category=EveEntity.CATEGORY_CHARACTER)
-                    .values_list("id", flat=True)
-                )
-            except EveEntity.DoesNotExist as exc:  # pylint: disable=no-member
-                message = _(
-                    "Something went wrong while fetching "
-                    "the character information from ESI."
-                )
-
-                raise ParserError(message=message) from exc
-
-            logger.debug(
-                msg=f"Got {len(eve_character_ids)} ID(s) back from Eve Universe …"
-            )
-
-            # In case the name does not belong to an Eve character,
-            # EveEntity returns an empty object
-            if len(eve_character_ids) == 0:
-                message = _("Character unknown to ESI.")
-
-                raise ParserError(message=message)
-
-            eve_characters = get_or_create_character(character_ids=eve_character_ids)
+        eve_characters = _get_character_info(scan_data=scan_data)
 
         logger.debug(
             msg=f"Got {len(eve_characters)} EveCharacter object(s) back from AA …"

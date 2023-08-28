@@ -18,4 +18,4 @@ class AaIntelToolConfig(AppConfig):
     name = "aa_intel_tool"
     label = "aa_intel_tool"
     # Translators: This is the app name and version, which will appear in the Django Backend
-    verbose_name = _(f"Intel Tool v{__version__}")
+    verbose_name = _(f"Intel Parser v{__version__}")

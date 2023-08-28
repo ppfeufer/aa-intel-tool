@@ -35,7 +35,7 @@ class TestAccess(TestCase):
             <li>
                 <a class="active" href="{reverse('aa_intel_tool:intel_tool_index')}">
                     <i class="fas fa-clipboard-list fa-fw"></i>
-                    Intel Tool
+                    Intel Parser
                 </a>
             </li>
         """

@@ -14,11 +14,8 @@
 {% endblock %}
 
 {% block aa_intel_tool_body %}
-    <div class="local-scan-result row" id="aa-intel-chatscan-row">
-        {% include "aa_intel_tool/partials/scan/chatlist/alliances.html" %}
-        {% include "aa_intel_tool/partials/scan/chatlist/corporations.html" %}
-        {% include "aa_intel_tool/partials/scan/chatlist/pilots.html" %}
-    </div>
+    {% include "aa_intel_tool/partials/scan/fleetcomp/fleet-details.html" %}
+    {% include "aa_intel_tool/partials/scan/fleetcomp/participation.html" %}
 {% endblock %}
 
 {% block extra_css %}
@@ -30,6 +27,9 @@
     <script>
         const aaIntelToolJsOptions = {
             ajax: {
+                getShipClasses: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST.value %}',
+                getShipTypes: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPTYPES.value %}',
+                getFleetComposition: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.FLEETCOMPOSITION.value %}',
                 getPilotList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.PILOTLIST.value %}',
                 getCorporationList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.CORPORATIONLIST.value %}',
                 getAllianceList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.ALLIANCELIST.value %}'
@@ -40,5 +40,5 @@
     {% include "bundles/datatables-js.html" %}
     {% include "bundles/clipboard-js.html" %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-js-l10n.html" %}
-    {% include "aa_intel_tool/bundles/aa-intel-tool-chatscan-js.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-fleetcomp-js.html" %}
 {% endblock extra_javascript %}
