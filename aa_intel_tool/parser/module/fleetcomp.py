@@ -39,21 +39,6 @@ def _get_fleet_composition(pilots: dict, ships: dict) -> dict:
     :rtype:
     """
 
-    # Pilots
-    pilot_details = _get_character_info(scan_data=list(set(pilots)))
-
-    for pilot in pilot_details:
-        pilots[pilot.character_name]["id"] = pilot.character_id
-        pilots[pilot.character_name]["portrait"] = pilot.portrait_url_32
-        pilots[pilot.character_name]["evewho"] = evewho.character_url(
-            pilot.character_id
-        )
-        pilots[pilot.character_name]["zkillboard"] = zkillboard.character_url(
-            pilot.character_id
-        )
-
-    logger.debug(msg=pilot_details)
-
     # Ships
     ship_class_ids = (
         EveEntity.objects.fetch_by_names_esi(names=ships["class"], update=True)
@@ -78,6 +63,25 @@ def _get_fleet_composition(pilots: dict, ships: dict) -> dict:
         # Ship types
         ships["type"][ship_class.eve_group__name]["id"] = ship_class.eve_group__id
         ships["type"][ship_class.eve_group__name]["name"] = ship_class.eve_group__name
+
+    # Pilots
+    pilot_details = _get_character_info(scan_data=list(set(pilots)))
+
+    for pilot in pilot_details:
+        pilot__ship_class = ship_class_details.filter(
+            name=pilots[pilot.character_name]["ship"]
+        ).get()
+
+        pilots[pilot.character_name]["id"] = pilot.character_id
+        pilots[pilot.character_name]["portrait"] = pilot.portrait_url_32
+        pilots[pilot.character_name]["evewho"] = evewho.character_url(
+            pilot.character_id
+        )
+        pilots[pilot.character_name]["zkillboard"] = zkillboard.character_url(
+            pilot.character_id
+        )
+        pilots[pilot.character_name]["ship_id"] = pilot__ship_class.id
+        pilots[pilot.character_name]["ship_type_id"] = pilot__ship_class.eve_group__id
 
     return {
         "classes": dict_to_list(input_dict=ships["class"]),

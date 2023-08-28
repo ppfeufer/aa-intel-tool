@@ -54,12 +54,12 @@ def index(request: WSGIRequest) -> HttpResponse:
                 messages.error(request=request, message=errormessage)
 
             # Catching every other exception we can't think of (hopefully)
-            except Exception as exc:  # pylint: disable=broad-exception-caught
-                exception_caught = True
-                errormessage = (
-                    _("(System Error) Something unexpected happened.") + f" ({exc})"
-                )
-                messages.error(request=request, message=errormessage)
+            # except Exception as exc:  # pylint: disable=broad-exception-caught
+            #     exception_caught = True
+            #     errormessage = (
+            #         _("(System Error) Something unexpected happened.") + f" ({exc})"
+            #     )
+            #     messages.error(request=request, message=errormessage)
 
             if exception_caught:
                 return redirect(to="aa_intel_tool:intel_tool_index")

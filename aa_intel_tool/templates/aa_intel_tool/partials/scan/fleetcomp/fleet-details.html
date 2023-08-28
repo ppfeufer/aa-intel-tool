@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="local-scan-result row" id="aa-intel-fleetcomp-participation-row">
+<div class="local-scan-result row" id="aa-intel-fleetcomp-details-row">
     <div class="clearfix">
         <div class="col-sm-6 col-md-4 col-lg-4 clearfix">
             <header class="aa-intel-section-header">
@@ -15,4 +15,10 @@
             </header>
         </div>
     </div>
+
+    {% translate "Ship classes" as fleetscan_header_shipclasses %}
+
+    {% include "aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html" with section_header=fleetscan_header_shipclasses dscan_section="ship-classes" omit_counter=True %}
+    {% include "aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html" %}
+    {% include "aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html" %}
 </div>

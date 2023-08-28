@@ -1,4 +1,4 @@
-/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addHightlight, removeHightlight, changeStickyHighlight, fetchAjaxData */
+/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addDscanHightlight, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
 
 jQuery(document).ready(($) => {
     'use strict';
@@ -16,36 +16,6 @@ jQuery(document).ready(($) => {
     const elementDscanCountDeployables = $('span#aa-intel-dscan-deployables-count');
     const elementStarbasesTable = $('table.aa-intel-dscan-starbases-list');
     const elementDscanCountStarbases = $('span#aa-intel-dscan-starbases-count');
-
-
-    /**
-     * Corporation info element in datatable
-     *
-     * @param shipData
-     * @returns {string}
-     */
-    const ShipInfoPanel = (shipData) => {
-        let html_logo = '' +
-            '<span class="aa-intel-ship-image-wrapper">\n' +
-            '    <img ' +
-            '        class="eve-image" ' +
-            '        data-eveid="' + shipData['id'] + '" ' +
-            '        src="' + shipData['image'] + '" ' +
-            '        alt="' + shipData['name'] + '" ' +
-            '        title="' + shipData['name'] + '" ' +
-            '        width="32" ' +
-            '        height="32">\n' +
-            '</span>';
-
-        let html_info = '' +
-            '<span class="aa-intel-ship-information-wrapper">\n' +
-            '    <span class="aa-intel-ship-name-wrapper">\n' +
-            '        ' + shipData['name'] + '\n' +
-            '    </span>\n' +
-            '</span>\n';
-
-        return html_logo + html_info;
-    };
 
 
     /**
@@ -72,7 +42,7 @@ jQuery(document).ready(($) => {
                     columns: [
                         {
                             data: (data) => {
-                                return ShipInfoPanel(data);
+                                return shipInfoPanel(data);
                             }
                         },
                         {
@@ -117,14 +87,14 @@ jQuery(document).ready(($) => {
 
                         // Highlight
                         $(row).mouseenter(() => {
-                            addHightlight('shipclass', $(row));
+                            addDscanHightlight('shipclass', $(row));
                         }).mouseleave(() => {
-                            removeHightlight('shipclass', $(row));
+                            removeDscanHightlight('shipclass', $(row));
                         });
 
                         // Sticky
                         $(row).click(() => {
-                            changeStickyHighlight('shipclass', $(row));
+                            changeDscanStickyHighlight('shipclass', $(row));
                         }).click('.aa-intel-information-link', (e) => {
                             e.stopPropagation();
                         });
@@ -159,7 +129,7 @@ jQuery(document).ready(($) => {
                     columns: [
                         {
                             data: (data) => {
-                                return ShipInfoPanel(data);
+                                return shipInfoPanel(data);
                             }
                         },
                         {
@@ -204,14 +174,14 @@ jQuery(document).ready(($) => {
 
                         // Highlight
                         $(row).mouseenter(() => {
-                            addHightlight('shipclass', $(row));
+                            addDscanHightlight('shipclass', $(row));
                         }).mouseleave(() => {
-                            removeHightlight('shipclass', $(row));
+                            removeDscanHightlight('shipclass', $(row));
                         });
 
                         // Sticky
                         $(row).click(() => {
-                            changeStickyHighlight('shipclass', $(row));
+                            changeDscanStickyHighlight('shipclass', $(row));
                         }).click('.aa-intel-information-link', (e) => {
                             e.stopPropagation();
                         });
@@ -246,7 +216,7 @@ jQuery(document).ready(($) => {
                     columns: [
                         {
                             data: (data) => {
-                                return ShipInfoPanel(data);
+                                return shipInfoPanel(data);
                             }
                         },
                         {
@@ -291,14 +261,14 @@ jQuery(document).ready(($) => {
 
                         // Highlight
                         $(row).mouseenter(() => {
-                            addHightlight('shipclass', $(row));
+                            addDscanHightlight('shipclass', $(row));
                         }).mouseleave(() => {
-                            removeHightlight('shipclass', $(row));
+                            removeDscanHightlight('shipclass', $(row));
                         });
 
                         // Sticky
                         $(row).click(() => {
-                            changeStickyHighlight('shipclass', $(row));
+                            changeDscanStickyHighlight('shipclass', $(row));
                         }).click('.aa-intel-information-link', (e) => {
                             e.stopPropagation();
                         });
@@ -355,14 +325,14 @@ jQuery(document).ready(($) => {
 
                         // Highlight
                         $(row).mouseenter(() => {
-                            addHightlight('shiptype', $(row));
+                            addDscanHightlight('shiptype', $(row));
                         }).mouseleave(() => {
-                            removeHightlight('shiptype', $(row));
+                            removeDscanHightlight('shiptype', $(row));
                         });
 
                         // Sticky
                         $(row).click(() => {
-                            changeStickyHighlight('shiptype', $(row));
+                            changeDscanStickyHighlight('shiptype', $(row));
                         }).click('.aa-intel-information-link', (e) => {
                             e.stopPropagation();
                         });
@@ -398,7 +368,7 @@ jQuery(document).ready(($) => {
                     columns: [
                         {
                             data: (data) => {
-                                return ShipInfoPanel(data);
+                                return shipInfoPanel(data);
                             }
                         },
                         {
@@ -464,7 +434,7 @@ jQuery(document).ready(($) => {
                     columns: [
                         {
                             data: (data) => {
-                                return ShipInfoPanel(data);
+                                return shipInfoPanel(data);
                             }
                         },
                         {
@@ -530,7 +500,7 @@ jQuery(document).ready(($) => {
                     columns: [
                         {
                             data: (data) => {
-                                return ShipInfoPanel(data);
+                                return shipInfoPanel(data);
                             }
                         },
                         {

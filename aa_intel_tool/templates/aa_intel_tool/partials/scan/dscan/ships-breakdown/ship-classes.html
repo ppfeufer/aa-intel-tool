@@ -4,7 +4,10 @@
     <header class="aa-intel-section-header">
         <h3 class="aa-intel-section-title">
             {{ section_header|title }}
-            (<span id="aa-intel-dscan-{{ dscan_section }}-count">0</span>)
+
+            {% if not omit_counter %}
+                (<span id="aa-intel-dscan-{{ dscan_section }}-count">0</span>)
+            {% endif %}
         </h3>
     </header>
 
