@@ -7,9 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[0.0.1-alpha.14\] - 2023-08-28
+
+Hopefully the last one before official release …
+
+### Added
+
+- Fleet composition scan as intel type
+
 ### Changed
 
 - Moved template designation to `SUPPORTED_INTEL_TYPES` constant
+- Translation files updated
 
 ## \[0.0.1-alpha.13\] - 2023-08-25
 
