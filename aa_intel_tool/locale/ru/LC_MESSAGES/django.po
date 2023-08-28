@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 4.18.2\n"
 
 #: __init__.py:12 templates/aa_intel_tool/base.html:6
@@ -49,7 +49,6 @@ msgstr ""
 
 #: constants.py:71 models.py:24
 #, fuzzy
-#| msgid "Chat List"
 msgid "Chat list"
 msgstr "Список чата"
 
@@ -60,7 +59,6 @@ msgstr "Подскан"
 
 #: constants.py:83 models.py:123
 #, fuzzy
-#| msgid "Fleet Composition"
 msgid "Fleet composition"
 msgstr "Состав флота"
 
@@ -430,13 +428,11 @@ msgstr "Разбивка по пилотам"
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
 #, fuzzy
-#| msgid "Pilot list"
 msgid "Pilot"
 msgstr "Список пилотов"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
 #, fuzzy
-#| msgid "Interesting on Grid"
 msgid "Interesting on grid"
 msgstr "Интересное в гриде"
 
@@ -450,7 +446,6 @@ msgstr "Развертываемые объекты"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:17
 #, fuzzy
-#| msgid "POS / POS Modules"
 msgid "POS / POS modules"
 msgstr "POS / Модули POS"
 
@@ -464,7 +459,6 @@ msgstr "Тип"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
 #, fuzzy
-#| msgid "Ships on Scan"
 msgid "Ships on scan"
 msgstr "Корабли на скане"
 
@@ -503,13 +497,11 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
 #, fuzzy
-#| msgid "Pilot list"
 msgid "Pilots in fleet"
 msgstr "Список пилотов"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
 #, fuzzy
-#| msgid "Ship class"
 msgid "Ship classes"
 msgstr "Класс корабля"
 
@@ -519,7 +511,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
 msgid "System"
-msgstr ""
+msgstr "Система"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
 msgid "Participation details"
@@ -540,3 +532,7 @@ msgstr "Предоставленные данные не могут быть п�
 #: views/general.py:99 views/general.py:128
 msgid "The scan you were looking for could not be found."
 msgstr "Скан, который вы ищите, не может быть найден."
+
+#: models.py:24
+msgid "Chat List"
+msgstr "Список чата"

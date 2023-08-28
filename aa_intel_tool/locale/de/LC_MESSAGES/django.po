@@ -41,14 +41,11 @@ msgstr "Rohdaten"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
 #: apps.py:21
-#, fuzzy, python-brace-format
-#| msgid "Intel Tool v{__version__}"
+#, python-brace-format
 msgid "Intel Parser v{__version__}"
-msgstr "Intel Tool v{__version__}"
+msgstr "Intel Parser v{__version__}"
 
-#: constants.py:71 models.py:24
-#, fuzzy
-#| msgid "Chat List"
+#: constants.py:71
 msgid "Chat list"
 msgstr "Chatliste"
 
@@ -58,8 +55,6 @@ msgid "D-Scan"
 msgstr "D-Scan"
 
 #: constants.py:83 models.py:123
-#, fuzzy
-#| msgid "Fleet Composition"
 msgid "Fleet composition"
 msgstr "Flottenzusammensetzung"
 
@@ -421,14 +416,10 @@ msgstr "Aufschlüsselung der Piloten"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
-#, fuzzy
-#| msgid "Pilot list"
 msgid "Pilot"
-msgstr "Pilotenliste"
+msgstr "Pilot"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
-#, fuzzy
-#| msgid "Interesting on Grid"
 msgid "Interesting on grid"
 msgstr "Interessantes auf dem Grid"
 
@@ -441,8 +432,6 @@ msgid "Deployables"
 msgstr "Stationierbare Strukturen"
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:17
-#, fuzzy
-#| msgid "POS / POS Modules"
 msgid "POS / POS modules"
 msgstr "POS / POS Module"
 
@@ -455,8 +444,6 @@ msgid "Type"
 msgstr "Typ"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
-#, fuzzy
-#| msgid "Ships on Scan"
 msgid "Ships on scan"
 msgstr "Schiffe auf dem Scan"
 
@@ -491,31 +478,27 @@ msgstr "Scan aufgenommen um (Eve Zeit)"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
-msgstr ""
+msgstr "Flottendetails"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
-#, fuzzy
-#| msgid "Pilot list"
 msgid "Pilots in fleet"
-msgstr "Pilotenliste"
+msgstr "Piloten in der Flotte"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
-#, fuzzy
-#| msgid "Ship class"
 msgid "Ship classes"
-msgstr "Schiffsklasse"
+msgstr "Schiffsklassen"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
 msgid "Who is flying what"
-msgstr ""
+msgstr "Wer fliegt was"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
 msgid "Participation details"
-msgstr ""
+msgstr "Teilnahmedetails"
 
 #: templates/aa_intel_tool/views/index.html:14
 msgid ""
@@ -533,3 +516,7 @@ msgstr "Die bereitgestellten Daten konnten nicht analysiert werden."
 #: views/general.py:99 views/general.py:128
 msgid "The scan you were looking for could not be found."
 msgstr "Der gesuchte Scan konnte nicht gefunden werden."
+
+#: models.py:24
+msgid "Chat List"
+msgstr "Chatliste"
