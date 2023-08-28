@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 15:44+0200\n"
+"POT-Creation-Date: 2023-08-28 21:16+0200\n"
 "PO-Revision-Date: 2023-08-28 13:34+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Spanish <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -54,11 +54,12 @@ msgid "Chat list"
 msgstr "Lista de Chat"
 
 #: constants.py:77 models.py:22
-#: templates/aa_intel_tool/partials/index/form.html:27
+#: templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "D-Scan"
 
-#: constants.py:83 models.py:123
+#: constants.py:83 models.py:23 models.py:123
+#: templates/aa_intel_tool/partials/index/form.html:33
 #, fuzzy
 #| msgid "Fleet Composition"
 msgid "Fleet composition"
@@ -76,10 +77,6 @@ msgstr "Pegar aquí…"
 #: models.py:21 models.py:110
 msgid "Invalid scan data"
 msgstr "Datos de escaneo no válidos"
-
-#: models.py:23 templates/aa_intel_tool/partials/index/form.html:31
-msgid "Fleet Composition"
-msgstr "Composición de la Flota"
 
 #: models.py:31
 msgid "Scan hash"
@@ -327,34 +324,36 @@ msgid "What can I paste?"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/index/form.html:16
-msgid "Chat Member List"
-msgstr ""
+#, fuzzy
+#| msgid "Chat List"
+msgid "Chat member list"
+msgstr "Lista de Chat"
 
-#: templates/aa_intel_tool/partials/index/form.html:20
+#: templates/aa_intel_tool/partials/index/form.html:21
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/aa_intel_tool/partials/index/form.html:46
+#: templates/aa_intel_tool/partials/index/form.html:50
 msgid "Submit"
 msgstr "Enviar"
 
-#: templates/aa_intel_tool/partials/index/form.html:52
+#: templates/aa_intel_tool/partials/index/form.html:56
 msgid "Working on it, please be patient …"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:54
+#: templates/aa_intel_tool/partials/index/form.html:58
 msgid "Detecting the intel type"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:55
+#: templates/aa_intel_tool/partials/index/form.html:59
 msgid ""
 "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:56
+#: templates/aa_intel_tool/partials/index/form.html:60
 msgid "Parsing data"
 msgstr ""
 
