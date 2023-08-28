@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-28 15:44+0200\n"
-"PO-Revision-Date: 2023-08-28 12:56+0000\n"
+"PO-Revision-Date: 2023-08-28 19:14+0000\n"
 "Last-Translator: Author50CO <tkddlschry@gmail.com>\n"
-"Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/ko/>\n"
+"Language-Team: Korean <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/ko/>\n"
 "Language: ko_KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: models.py:23 templates/aa_intel_tool/partials/index/form.html:31
 msgid "Fleet Composition"
-msgstr ""
+msgstr "함대 구성"
 
 #: models.py:31
 msgid "Scan hash"
@@ -306,7 +306,7 @@ msgstr "이 앱을 번역하거나 기존 번역을 개선하고 싶으신가요
 
 #: templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
-msgstr "번역가 팀에 참여하세요!"
+msgstr "번역 팀에 참여하세요!"
 
 #: templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
@@ -325,7 +325,7 @@ msgstr[1] ""
 
 #: templates/aa_intel_tool/partials/index/form.html:46
 msgid "Submit"
-msgstr ""
+msgstr "전송"
 
 #: templates/aa_intel_tool/partials/index/form.html:52
 msgid "Working on it, please be patient …"
@@ -428,7 +428,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:17
 msgid "Type"
-msgstr ""
+msgstr "종류"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
 msgid "Ships on scan"
@@ -453,7 +453,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
-msgstr ""
+msgstr "함선 종류"
 
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
 msgid "No data."
@@ -481,7 +481,7 @@ msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
 msgid "System"
-msgstr ""
+msgstr "성계"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
 msgid "Participation details"
