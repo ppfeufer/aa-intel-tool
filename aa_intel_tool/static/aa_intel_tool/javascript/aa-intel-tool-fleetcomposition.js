@@ -212,9 +212,9 @@ jQuery(document).ready(($) => {
 
                         // Highlight
                         $(row).mouseenter(() => {
-                            addFleetcompositionHightlight('pilot-ships', $(row));
+                            addFleetcompositionHightlight('shiptype', $(row));
                         }).mouseleave(() => {
-                            removeFleetcompositionHightlight('pilot-ships', $(row));
+                            removeFleetcompositionHightlight('shiptype', $(row));
                         });
 
                         // Sticky
