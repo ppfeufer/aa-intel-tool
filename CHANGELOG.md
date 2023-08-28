@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - MySQL script to drop the DB tables
 
+### Change
+
+- Migrations from Alpha-versions reset
+
 ## \[0.0.1-alpha.14\] - 2023-08-28
 
 Hopefully the last one before official release …
