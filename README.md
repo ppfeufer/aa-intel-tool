@@ -40,6 +40,7 @@ ______________________________________________________________________
       - [Nginx](#nginx)
   - [Settings](#settings)
   - [Changelog](#changelog)
+  - [Translations](#translations)
   - [Contributing](#contributing)
 
 <!-- mdformat-toc end -->
@@ -238,6 +239,16 @@ your `local.py`.
 ## Changelog<a name="changelog"></a>
 
 See [CHANGELOG.md]
+
+## Translations<a name="translations"></a>
+
+This app is currently translated into:
+
+- German
+- Russian
+
+If you want to help to translate this app or improve existing translations, join
+our team of translators over on [Weblate][weblate engage]!
 
 ## Contributing<a name="contributing"></a>
 
