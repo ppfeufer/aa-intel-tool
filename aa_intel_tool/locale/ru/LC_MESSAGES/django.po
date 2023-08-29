@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 01:26+0200\n"
+"POT-Creation-Date: 2023-08-29 16:06+0200\n"
 "PO-Revision-Date: 2023-08-28 23:15+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -523,6 +523,10 @@ msgstr ""
 #: views/general.py:53
 msgid "The provided data could not be parsed."
 msgstr "Предоставленные данные не могут быть проанализированы."
+
+#: views/general.py:60
+msgid "(System Error) Something unexpected happened."
+msgstr ""
 
 #: views/general.py:99 views/general.py:128
 msgid "The scan you were looking for could not be found."
