@@ -9,8 +9,8 @@ from http import HTTPStatus
 from django.test import TestCase
 from django.urls import reverse
 
-# AA Intel Tool
-from aa_intel_tool.tests.utils import create_fake_user
+# Alliance Auth (External Libs)
+from app_utils.testing import create_fake_user
 
 
 class TestHooks(TestCase):
