@@ -8,8 +8,9 @@ from django.test import TestCase
 # AA Intel Tool
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.parser.general import check_intel_type, parse_intel
-from aa_intel_tool.tests.utils import (  # load_chatscan_txt,
+from aa_intel_tool.tests.utils import (
     load_chatscan_faulty_txt,
+    load_chatscan_txt,
     load_dscan_txt,
     load_fleetcomp_txt,
 )
@@ -36,21 +37,21 @@ class TestParserGeneral(TestCase):
 
         self.assertEqual(first=intel_type, second=expected_intel_type)
 
-    # def test_check_intel_type_chatlist(self):
-    #     """
-    #     Test should return 'chatlist' as the expected intel type
-    #
-    #     :return:
-    #     :rtype:
-    #     """
-    #
-    #     form_data = load_chatscan_txt()
-    #     scan_data = str(form_data).splitlines()
-    #
-    #     intel_type = check_intel_type(scan_data=scan_data)
-    #     expected_intel_type = "chatlist"
-    #
-    #     self.assertEqual(first=intel_type, second=expected_intel_type)
+    def test_check_intel_type_chatlist(self):
+        """
+        Test should return 'chatlist' as the expected intel type
+
+        :return:
+        :rtype:
+        """
+
+        form_data = load_chatscan_txt()
+        scan_data = str(form_data).splitlines()
+
+        intel_type = check_intel_type(scan_data=scan_data)
+        expected_intel_type = "chatlist"
+
+        self.assertEqual(first=intel_type, second=expected_intel_type)
 
     def test_check_intel_type_fleetcomp(self):
         """

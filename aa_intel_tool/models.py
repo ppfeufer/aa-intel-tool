@@ -20,7 +20,7 @@ class Scan(models.Model):
 
         INVALID = "invalid", _("Invalid scan data")
         DSCAN = "dscan", _("D-Scan")
-        FLEETCOMP = "fleetcomp", _("Fleet Composition")
+        FLEETCOMP = "fleetcomp", _("Fleet composition")
         CHATLIST = "chatlist", _("Chat list")
 
     hash = models.CharField(

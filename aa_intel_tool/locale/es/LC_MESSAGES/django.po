@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 15:44+0200\n"
-"PO-Revision-Date: 2023-08-28 13:34+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: Spanish <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/es/>\n"
+"POT-Creation-Date: 2023-08-29 16:06+0200\n"
+"PO-Revision-Date: 2023-08-31 06:18+0000\n"
+"Last-Translator: Zigor Fernandez Moreno <sietehierros@gmail.com>\n"
+"Language-Team: Spanish <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,20 +54,19 @@ msgid "Chat list"
 msgstr "Lista de Chat"
 
 #: constants.py:77 models.py:22
-#: templates/aa_intel_tool/partials/index/form.html:27
+#: templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "D-Scan"
 
-#: constants.py:83 models.py:123
-#, fuzzy
-#| msgid "Fleet Composition"
+#: constants.py:83 models.py:23 models.py:123
+#: templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
-msgstr "Composición de la Flota"
+msgstr "Composición de Flota"
 
 #: exceptions.py:34
 #, python-brace-format
 msgid "A parser error occurred » {message}"
-msgstr ""
+msgstr "Se produjo un error del analizador » {message}"
 
 #: form.py:20
 msgid "Paste here …"
@@ -76,10 +75,6 @@ msgstr "Pegar aquí…"
 #: models.py:21 models.py:110
 msgid "Invalid scan data"
 msgstr "Datos de escaneo no válidos"
-
-#: models.py:23 templates/aa_intel_tool/partials/index/form.html:31
-msgid "Fleet Composition"
-msgstr "Composición de la Flota"
 
 #: models.py:31
 msgid "Scan hash"
@@ -95,7 +90,7 @@ msgstr ""
 
 #: models.py:55 models.py:132
 msgid "Scan"
-msgstr ""
+msgstr "Escanear"
 
 #: models.py:56
 #, fuzzy
@@ -105,28 +100,28 @@ msgstr "D-Scan"
 
 #: models.py:111
 msgid "Pilot list"
-msgstr ""
+msgstr "Lista piloto"
 
 #: models.py:112
 msgid "Corporation list"
-msgstr ""
+msgstr "Lista de Corporaciones"
 
 #: models.py:113
 msgid "Alliance list"
-msgstr ""
+msgstr "Lista de Alianzas"
 
 #: models.py:114
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
-msgstr ""
+msgstr "Tipos de Naves"
 
 #: models.py:115
 msgid "Ship list"
-msgstr ""
+msgstr "Lista de Naves"
 
 #: models.py:116
 msgid "Ship list (on grid)"
-msgstr ""
+msgstr "Lista de naves (en cuadrícula)"
 
 #: models.py:117
 msgid "Ship list (off grid)"
@@ -232,12 +227,12 @@ msgstr ""
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
 msgctxt "Decimal separator"
-msgid ","
+msgid "."
 msgstr ""
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
 msgctxt "Thousands separator"
-msgid "."
+msgid ","
 msgstr ""
 
 #: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
@@ -327,34 +322,36 @@ msgid "What can I paste?"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/index/form.html:16
-msgid "Chat Member List"
-msgstr ""
+#, fuzzy
+#| msgid "Chat List"
+msgid "Chat member list"
+msgstr "Lista de Chat"
 
-#: templates/aa_intel_tool/partials/index/form.html:20
+#: templates/aa_intel_tool/partials/index/form.html:21
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/aa_intel_tool/partials/index/form.html:46
+#: templates/aa_intel_tool/partials/index/form.html:50
 msgid "Submit"
 msgstr "Enviar"
 
-#: templates/aa_intel_tool/partials/index/form.html:52
+#: templates/aa_intel_tool/partials/index/form.html:56
 msgid "Working on it, please be patient …"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:54
+#: templates/aa_intel_tool/partials/index/form.html:58
 msgid "Detecting the intel type"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:55
+#: templates/aa_intel_tool/partials/index/form.html:59
 msgid ""
 "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:56
+#: templates/aa_intel_tool/partials/index/form.html:60
 msgid "Parsing data"
 msgstr ""
 
@@ -509,6 +506,10 @@ msgstr ""
 
 #: views/general.py:53
 msgid "The provided data could not be parsed."
+msgstr ""
+
+#: views/general.py:60
+msgid "(System Error) Something unexpected happened."
 msgstr ""
 
 #: views/general.py:99 views/general.py:128

@@ -11,17 +11,17 @@ const elementFleetcompTable = $('table.aa-intel-fleetcomp-pilot-ships-list');
 /**
  * Determine if we can remove all sticky states for this corporation
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  * @returns {boolean}
  */
-const removeFleetcompositionShiptypeStickyComplete = (by_table, table_row) => {
+const removeFleetcompositionShiptypeStickyComplete = (by_data, table_row) => {
     let removeSticky = true;
 
     elementShipClassTable.find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`).each((i, el) => {
-        if (by_table === 'shiptype' && !$(el).hasClass('aa-intel-highlight-sticky')) {
+        if (by_data === 'shiptype' && !$(el).hasClass('aa-intel-highlight-sticky')) {
             removeSticky = false;
-        } else if (by_table === 'shipclass' && $(el).hasClass('aa-intel-highlight-sticky')) {
+        } else if (by_data === 'shipclass' && $(el).hasClass('aa-intel-highlight-sticky')) {
             removeSticky = false;
         }
     });
@@ -33,12 +33,12 @@ const removeFleetcompositionShiptypeStickyComplete = (by_table, table_row) => {
 /**
  * Add highlight to other tables
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const addFleetcompositionHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const addFleetcompositionHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
-        .find(`tr[data-${by_table}-id="${table_row.data(`${by_table}-id`)}"]`)
+        .find(`tr[data-${by_data}-id="${table_row.data(`${by_data}-id`)}"]`)
         .addClass('aa-intel-highlight');
 
     elementShipTypeTable
@@ -54,12 +54,12 @@ const addFleetcompositionHightlight = (by_table, table_row) => { // eslint-disab
 /**
  * Add highlight to other tables
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const removeFleetcompositionHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const removeFleetcompositionHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
-        .find(`tr[data-${by_table}-id="${table_row.data(`${by_table}-id`)}"]`)
+        .find(`tr[data-${by_data}-id="${table_row.data(`${by_data}-id`)}"]`)
         .removeClass('aa-intel-highlight');
 
     elementShipTypeTable
@@ -75,19 +75,19 @@ const removeFleetcompositionHightlight = (by_table, table_row) => { // eslint-di
 /**
  * Add sticky highlight to other tables
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const addFleetcompositionSticky = (by_table, table_row) => {
+const addFleetcompositionSticky = (by_data, table_row) => {
     table_row.addClass('aa-intel-highlight-sticky');
 
-    if (by_table === 'shiptype') {
+    if (by_data === 'shiptype') {
         elementShipClassTable
             .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
             .addClass('aa-intel-highlight-sticky');
     }
 
-    if (by_table === 'shipclass') {
+    if (by_data === 'shipclass') {
         elementShipClassTable
             .find(`tr[data-shipclass-id="${table_row.data('shipclass-id')}"]`)
             .addClass('aa-intel-highlight-sticky');
@@ -102,24 +102,24 @@ const addFleetcompositionSticky = (by_table, table_row) => {
 /**
  * Remove sticky highlight to other tables
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const removeFleetcompositionSticky = (by_table, table_row) => {
+const removeFleetcompositionSticky = (by_data, table_row) => {
     table_row.removeClass('aa-intel-highlight-sticky');
 
-    if (by_table === 'shiptype') {
+    if (by_data === 'shiptype') {
         elementShipClassTable
             .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
             .removeClass('aa-intel-highlight-sticky');
     }
 
-    if (by_table === 'shipclass') {
+    if (by_data === 'shipclass') {
         elementShipClassTable
             .find(`tr[data-shipclass-id="${table_row.data('shipclass-id')}"]`)
             .removeClass('aa-intel-highlight-sticky');
 
-        if (removeFleetcompositionShiptypeStickyComplete(by_table, table_row) === true) {
+        if (removeFleetcompositionShiptypeStickyComplete(by_data, table_row) === true) {
             elementShipTypeTable
                 .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
                 .removeClass('aa-intel-highlight-sticky');
@@ -131,18 +131,18 @@ const removeFleetcompositionSticky = (by_table, table_row) => {
 /**
  * Change the status of the sticky highlight
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const changeFleetcompositionStickyHighlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const changeFleetcompositionStickyHighlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     if (
         (
-            by_table === 'shiptype' && table_row.hasClass('aa-intel-highlight-sticky') === true
-            && removeFleetcompositionShiptypeStickyComplete(by_table, table_row) === true
-        ) || (by_table === 'shipclass' && table_row.hasClass('aa-intel-highlight-sticky') === true)
+            by_data === 'shiptype' && table_row.hasClass('aa-intel-highlight-sticky') === true
+            && removeFleetcompositionShiptypeStickyComplete(by_data, table_row) === true
+        ) || (by_data === 'shipclass' && table_row.hasClass('aa-intel-highlight-sticky') === true)
     ) {
-        removeFleetcompositionSticky(by_table, table_row);
+        removeFleetcompositionSticky(by_data, table_row);
     } else {
-        addFleetcompositionSticky(by_table, table_row);
+        addFleetcompositionSticky(by_data, table_row);
     }
 };

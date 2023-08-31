@@ -7,6 +7,81 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[1.0.0\] - 2023-08-31
+
+**First Public Release**
+
+### Added
+
+- MySQL script to drop the DB tables
+
+### Fixed
+
+- Pilots in fleet count on fleet composition result page
+- Missing semicolons in JavaScripts
+- JS function attribute name
+- Translations cleaned up
+
+### Changed
+
+- Migrations from Alpha-versions reset
+
+### Update Instructions for Updating From an Alpha-Version
+
+> **Note**
+>
+> If you have installed one of the Alpa-Versions before, make sure to follow these
+> instructions **before** you update to this version. If you install this app for the
+> very first time, feel free to happiely ignore this section.
+
+#### Remove the Migrations and DB Tables
+
+During the alpha phase a number of DB migrations accumulated, which is, for obvious
+reasons, not ideal for the first public versionto have. So, they need to be reset.
+This will happen in 2 steps.
+
+##### From Django
+
+Run the following command in your virtual environment:
+
+```shell
+python manage.py migrate aa_intel_tool zero --fake
+```
+
+This will remove the migration information from Django.
+
+##### From Your MySQL Database
+
+Now you need to remove the DB tables. This needs to be done to make sure the new
+migration runs without issues. Don't worry, this is not hard at all, I've prepared a
+little something for you.
+
+All you need to do is, log in to your MySQL server from your console. and select the
+Alliance Auth DB.
+
+Log in:
+
+```shell
+mysql -h localhost -u allianceserver -p
+```
+
+Switch to the `alliance_auth` DB:
+
+```mysql
+USE alliance_auth;
+```
+
+Now copy/paste the following:
+
+```mysql
+SET FOREIGN_KEY_CHECKS=0;
+DROP TABLE IF EXISTS aa_intel_tool_scandata;
+DROP TABLE IF EXISTS aa_intel_tool_scan;
+SET FOREIGN_KEY_CHECKS=1;
+```
+
+Once done, exit out of your MySQL server and run the update as usual.
+
 ## \[0.0.1-alpha.14\] - 2023-08-28
 
 Hopefully the last one before official release …
@@ -49,15 +124,15 @@ Hopefully the last one before official release …
 
 ## \[0.0.1-alpha.10\] - 2023-08-22
 
-### Fixed
-
-- Return empty jSon when no data for ajax call
-- Empty scan sections will no longer be stored in the database
-
 ### Added
 
 - Unique relation between scan and scan section in the database table
 - Detection of Upwell structures that are on grid on D-Scans (No UI for it yet, though)
+
+### Fixed
+
+- Return empty jSon when no data for ajax call
+- Empty scan sections will no longer be stored in the database
 
 ### Removed
 

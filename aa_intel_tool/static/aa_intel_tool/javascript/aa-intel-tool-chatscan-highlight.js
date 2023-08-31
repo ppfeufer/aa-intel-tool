@@ -264,23 +264,23 @@ const pilotTableRemoveHighlightByAllianceId = (element) => {
 /**
  * Add highlight to other tables from alliance table
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const addChatscanHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const addChatscanHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     table_row.addClass('aa-intel-highlight');
 
-    if (by_table === 'alliance') {
+    if (by_data === 'alliance') {
         corporationTableAddHighlightByAllianceId(table_row);
         pilotTableAddHighlightByAllianceId(table_row);
     }
 
-    if (by_table === 'corporation') {
+    if (by_data === 'corporation') {
         allianceTableAddHighlightByAllianceId(table_row);
         pilotTableAddHighlightByCorporationId(table_row);
     }
 
-    if (by_table === 'pilot') {
+    if (by_data === 'pilot') {
         allianceTableAddHighlightByAllianceId(table_row);
         corporationTableAddHighlightByCorporationId(table_row);
     }
@@ -290,23 +290,23 @@ const addChatscanHightlight = (by_table, table_row) => { // eslint-disable-line 
 /**
  * Add sticky highlight to other tables from alliance table
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const addChatscanSticky = (by_table, table_row) => {
+const addChatscanSticky = (by_data, table_row) => {
     table_row.addClass('aa-intel-highlight-sticky');
 
-    if (by_table === 'alliance') {
+    if (by_data === 'alliance') {
         corporationTableAddStickyByAllianceId(table_row);
         pilotTableAddStickyByAllianceId(table_row);
     }
 
-    if (by_table === 'corporation') {
+    if (by_data === 'corporation') {
         allianceTableAddStickyByAllianceId(table_row);
         pilotTableAddStickyByCorporationId(table_row);
     }
 
-    if (by_table === 'pilot') {
+    if (by_data === 'pilot') {
         allianceTableAddStickyByAllianceId(table_row);
         corporationTableAddStickyByCorporationId(table_row);
     }
@@ -316,23 +316,23 @@ const addChatscanSticky = (by_table, table_row) => {
 /**
  * Remove highlight to other tables from alliance table
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const removeChatscanHightlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const removeChatscanHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     table_row.removeClass('aa-intel-highlight');
 
-    if (by_table === 'alliance') {
+    if (by_data === 'alliance') {
         corporationTableRemoveHighlightByAllianceId(table_row);
         pilotTableRemoveHighlightByAllianceId(table_row);
     }
 
-    if (by_table === 'corporation') {
+    if (by_data === 'corporation') {
         allianceTableRemoveHighlightByAllianceId(table_row);
         pilotTableRemoveHighlightByCorporationId(table_row);
     }
 
-    if (by_table === 'pilot') {
+    if (by_data === 'pilot') {
         allianceTableRemoveHighlightByAllianceId(table_row);
         corporationTableRemoveHighlightByCorporationId(table_row);
     }
@@ -342,18 +342,18 @@ const removeChatscanHightlight = (by_table, table_row) => { // eslint-disable-li
 /**
  * Remove sticky highlight to other tables from alliance table
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const removeChatscanSticky = (by_table, table_row) => {
+const removeChatscanSticky = (by_data, table_row) => {
     table_row.removeClass('aa-intel-highlight-sticky');
 
-    if (by_table === 'alliance') {
+    if (by_data === 'alliance') {
         corporationTableRemoveStickyByAllianceId(table_row);
         pilotTableRemoveStickyByAllianceId(table_row);
     }
 
-    if (by_table === 'corporation') {
+    if (by_data === 'corporation') {
         pilotTableRemoveStickyByCorporationId(table_row);
 
         if (removeAllianceStickyComplete(table_row) === true) {
@@ -361,7 +361,7 @@ const removeChatscanSticky = (by_table, table_row) => {
         }
     }
 
-    if (by_table === 'pilot') {
+    if (by_data === 'pilot') {
         if (removeCorporationStickyComplete(table_row) === true) {
             corporationTableRemoveStickyByCorporationId(table_row);
         }
@@ -376,13 +376,13 @@ const removeChatscanSticky = (by_table, table_row) => {
 /**
  * Change the status of the sticky highlight
  *
- * @param by_table {string} The table from which this function is triggered
+ * @param by_data {string} The table data attribute for which this function is triggered
  * @param table_row {element} The table row that is to be changed
  */
-const changeChatscanStickyHighlight = (by_table, table_row) => { // eslint-disable-line no-unused-vars
+const changeChatscanStickyHighlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     if (table_row.hasClass('aa-intel-highlight-sticky')) {
-        removeChatscanSticky(by_table, table_row);
+        removeChatscanSticky(by_data, table_row);
     } else {
-        addChatscanSticky(by_table, table_row);
+        addChatscanSticky(by_data, table_row);
     }
 };

@@ -15,5 +15,5 @@ parsers:
       macro: no
 
 comment:
-  layout: reach, changes, diff, files, flags
+  layout: header, reach, changes, diff, files, footer
   require_changes: no

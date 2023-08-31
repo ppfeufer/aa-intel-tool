@@ -146,9 +146,15 @@ def parse(scan_data: list) -> Scan:
         logger.debug(msg=pilots)
 
         fleet_composition = _get_fleet_composition(pilots=pilots, ships=ships)
-        participation = parse_pilots(
-            scan_data=list(set(pilots)), safe_to_db=False, ignore_limit=True
-        )
+
+        participation = None
+        if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
+            participation = parse_pilots(
+                scan_data=list(set(pilots)),
+                safe_to_db=False,
+                ignore_limit=True,
+            )
+
         logger.debug(msg=fleet_composition)
 
         # Add "ship classes" to parsed data when available
@@ -173,7 +179,8 @@ def parse(scan_data: list) -> Scan:
             }
 
         # Add fleet participation data
-        parsed_data.update(participation)
+        if participation:
+            parsed_data.update(participation)
 
         return safe_scan_to_db(scan_type=Scan.Type.FLEETCOMP, parsed_data=parsed_data)
 

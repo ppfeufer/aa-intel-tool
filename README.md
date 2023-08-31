@@ -26,6 +26,7 @@ ______________________________________________________________________
     - [Screenshots](#screenshots)
       - [Chat Scan](#chat-scan)
       - [D-Scan](#d-scan)
+      - [Fleet Composition](#fleet-composition)
   - [Installation](#installation)
     - [Step 1: Install the Package](#step-1-install-the-package)
     - [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
@@ -39,26 +40,21 @@ ______________________________________________________________________
       - [Nginx](#nginx)
   - [Settings](#settings)
   - [Changelog](#changelog)
+  - [Translation Status](#translation-status)
   - [Contributing](#contributing)
 
 <!-- mdformat-toc end -->
 
 ______________________________________________________________________
 
-> **Warning**
+> **Note**
 >
-> This app is still in active development and only available as an early alpha
-> version. Do not install this app in your live environment. If you want to test
-> this app, do so in a dedicated test environment. Don't come crying if you wreck
-> your live environment.
+> This app makes use of a feature introduced with Alliance Auth v3.6.1, meaning,
+> installing this app will pull in Alliance Auth v3.6.1 unsupervised if you haven't
+> updated yet.
 >
-> During the alpha phase, it is highly likely that the DB migrations will be reset a
-> couple of times.
->
-> Bugs and errors are expected during this time as well, so feel free to report them
-> as early as possible, if you dare to test this app.
->
-> Thank you!
+> **Please make sure to update Allianceauth to version 3.6.1 or higher before you
+> install this app to avoid any complications.**
 
 ## Overview<a name="overview"></a>
 
@@ -79,6 +75,10 @@ See [Settings](#settings) section for details.
 #### D-Scan<a name="d-scan"></a>
 
 ![Image: D-Scan Module]
+
+#### Fleet Composition<a name="fleet-composition"></a>
+
+![Image: Fleet Composition Module]
 
 ## Installation<a name="installation"></a>
 
@@ -188,8 +188,8 @@ Open your vhost configuration and add the following 2 lines right after the
 `ProxyPreserveHost On` directive:
 
 ```apache
-Timeout      600
 ProxyTimeout 600
+Timeout      600
 ```
 
 Restart your Apache2 service.
@@ -201,8 +201,8 @@ directive:
 
 ```nginx
 proxy_connect_timeout 600;
-proxy_send_timeout    600;
 proxy_read_timeout    600;
+proxy_send_timeout    600;
 send_timeout          600;
 ```
 
@@ -240,6 +240,13 @@ your `local.py`.
 
 See [CHANGELOG.md]
 
+## Translation Status<a name="translation-status"></a>
+
+[![Translation status](https://weblate.ppfeufer.de/widgets/alliance-auth-apps/-/aa-intel-tool/multi-auto.svg)](https://weblate.ppfeufer.de/engage/alliance-auth-apps/)
+
+Do you want to help translate this app into your language or improve the existing
+translation? - [Join our team of translators][weblate engage]!
+
 ## Contributing<a name="contributing"></a>
 
 Do you want to contribute to this project? That's cool!
@@ -252,7 +259,7 @@ Please make sure to read the [Contribution Guidelines]
 [aa intel tool license]: https://github.com/ppfeufer/aa-intel-tool/blob/master/LICENSE
 [aa intel tool on codecov]: https://codecov.io/gh/ppfeufer/aa-intel-tool
 [aa intel tool on pypi]: https://pypi.org/project/aa-intel-tool/
-[alliance auth]: https://gitlab.com/allianceauth/allianceauth
+[alliance auth]: https://gitlab.com/allianceauth/allianceauth "Alliance Auth on GitLab"
 [alliance auth installation guide]: https://allianceauth.readthedocs.io/en/latest/installation/allianceauth.html
 [automated tests on github]: https://github.com/ppfeufer/aa-intel-tool/actions/workflows/automated-checks.yml
 [badge: automated tests]: https://github.com/ppfeufer/aa-intel-tool/actions/workflows/automated-checks.yml/badge.svg "Automated Tests"
@@ -270,10 +277,11 @@ Please make sure to read the [Contribution Guidelines]
 [black code formatter documentation]: http://black.readthedocs.io/en/latest/
 [changelog.md]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CHANGELOG.md
 [code of conduct]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CODE_OF_CONDUCT.md
-[contribution guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md
+[contribution guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md "Contribution Guidelines"
 [eve universe]: https://gitlab.com/ErikKalkoken/django-eveuniverse "Eve Universe"
 [image: chat scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/chat-scan.jpg "Chat Scan Module"
 [image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
+[image: fleet composition module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/fleet-composition.jpg "Fleet Composition Module"
 [ppfeufer on ko-fi]: https://ko-fi.com/ppfeufer "Buy Me a Coffee!"
-[support discord]: https://discord.gg/zmh52wnfvM
-[weblate engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/
+[support discord]: https://discord.gg/zmh52wnfvM "Alliance Auth Community Apps Support Discord"
+[weblate engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/ "Weblate Translations"
