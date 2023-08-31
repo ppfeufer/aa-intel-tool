@@ -15,7 +15,10 @@
 
 {% block aa_intel_tool_body %}
     {% include "aa_intel_tool/partials/scan/fleetcomp/fleet-details.html" %}
-    {% include "aa_intel_tool/partials/scan/fleetcomp/participation.html" %}
+
+    {% if app_settings.INTELTOOL_ENABLE_MODULE_CHATSCAN %}
+        {% include "aa_intel_tool/partials/scan/fleetcomp/participation.html" %}
+    {% endif %}
 {% endblock %}
 
 {% block extra_css %}
