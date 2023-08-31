@@ -45,7 +45,7 @@ repos:
           - --markdown-linebreak-ext=md
         exclude: |
           (?x)(
-            .min(.css|.css.map|.js)|
+            .min(.css|.css.map|.js|.js.map)|
             locale/|
             static/(.*)/libs/
           )
@@ -53,7 +53,7 @@ repos:
       - id: end-of-file-fixer
         exclude: |
           (?x)(
-            .min(.css|.css.map|.js)|
+            .min(.css|.css.map|.js|.js.map)|
             locale/|
             static/(.*)/libs/
           )
@@ -64,7 +64,7 @@ repos:
       - id: eslint
         exclude: |
           (?x)(
-            .min.js|
+            .min(.js|.js.map)|
             static/(.*)/libs/
           )
 
@@ -100,7 +100,7 @@ repos:
         exclude: |
           (?x)(
             LICENSE|
-            .min(.css|.css.map|.js)|
+            .min(.css|.css.map|.js|.js.map)|
             static/(.*)/libs/
           )
 
