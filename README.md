@@ -82,16 +82,18 @@ See [Settings](#settings) section for details.
 
 ## Installation<a name="installation"></a>
 
-**Important**: Please make sure you meet all preconditions before you proceed:
-
-- AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
-  already, please install it first before proceeding. (see the official
-  [Alliance Auth installation guide] for details)
-- AA Intel Tool needs at least **Alliance Auth v3.6.1**. Please make sure to meet this
-  condition _before_ installing this app, otherwise an update to Alliance Auth will
-  be pulled in unsupervised.
-- AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
-  before continuing.
+> **Note**
+>
+> Please make sure you meet all preconditions before you proceed:
+>
+> - AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
+>   already, please install it first before proceeding. (see the official
+>   [Alliance Auth installation guide] for details)
+> - AA Intel Tool needs at least **Alliance Auth v3.6.1**. Please make sure to meet this
+>   condition _before_ installing this app, otherwise an update to Alliance Auth will
+>   be pulled in unsupervised.
+> - AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
+>   before continuing.
 
 ### Step 1: Install the Package<a name="step-1-install-the-package"></a>
 
@@ -108,16 +110,16 @@ pip install aa-intel-tool
 
 This is fairly simple, configure your AA settings (`local.py`) as follows:
 
-- Add `eveuniverse` (if not already done so for a different app) and `aa_intel_tool` to
-  the list of `INSTALLED_APPS`
+Add `eveuniverse` (if not already done so for a different app) and `aa_intel_tool` to
+the list of `INSTALLED_APPS`.
 
-  ```python
-  # Add any additional apps to this list.
-  INSTALLED_APPS += [
-      "eveuniverse",
-      "aa_intel_tool",  # https://github.com/ppfeufer/aa-intel-tool
-  ]
-  ```
+```python
+# Add any additional apps to this list.
+INSTALLED_APPS += [
+    "eveuniverse",
+    "aa_intel_tool",  # https://github.com/ppfeufer/aa-intel-tool
+]
+```
 
 #### Add the Scheduled Task<a name="add-the-scheduled-task"></a>
 
@@ -135,10 +137,8 @@ if "aa_intel_tool" in INSTALLED_APPS:
 
 #### (Optional) Allow Public Views<a name="optional-allow-public-views"></a>
 
-This app supports AA's feature of public views, since time zones conversion is not
-any mission-critical information. To allow users to view the time zone conversion page
-without the need to log in, please add `"aa_intel_tool",` to the list of
-`APPS_WITH_PUBLIC_VIEWS` in your `local.py`:
+This app supports AA's feature of public views. To allow this feature, please add
+`"aa_intel_tool",` to the list of `APPS_WITH_PUBLIC_VIEWS` in your `local.py`:
 
 ```python
 # By default, apps are prevented from having public views for security reasons.

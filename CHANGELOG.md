@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[1.0.1\] - 2023-08-31
+
+This version is purely to push changed in the README to Pypi.
+
+### Fixed
+
+- Some little whoopsies in README
+
 ## \[1.0.0\] - 2023-08-31
 
 **First Public Release**
@@ -37,7 +45,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 #### Remove the Migrations and DB Tables
 
 During the alpha phase a number of DB migrations accumulated, which is, for obvious
-reasons, not ideal for the first public versionto have. So, they need to be reset.
+reasons, not ideal for the first public version to have. So, they need to be reset.
 This will happen in 2 steps.
 
 ##### From Django
