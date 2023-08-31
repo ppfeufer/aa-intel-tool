@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-29 16:06+0200\n"
-"PO-Revision-Date: 2023-08-28 13:34+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: Spanish <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/es/>\n"
+"PO-Revision-Date: 2023-08-31 06:18+0000\n"
+"Last-Translator: Zigor Fernandez Moreno <sietehierros@gmail.com>\n"
+"Language-Team: Spanish <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -60,15 +60,13 @@ msgstr "D-Scan"
 
 #: constants.py:83 models.py:23 models.py:123
 #: templates/aa_intel_tool/partials/index/form.html:33
-#, fuzzy
-#| msgid "Fleet Composition"
 msgid "Fleet composition"
-msgstr "Composición de la Flota"
+msgstr "Composición de Flota"
 
 #: exceptions.py:34
 #, python-brace-format
 msgid "A parser error occurred » {message}"
-msgstr ""
+msgstr "Se produjo un error del analizador » {message}"
 
 #: form.py:20
 msgid "Paste here …"
@@ -92,7 +90,7 @@ msgstr ""
 
 #: models.py:55 models.py:132
 msgid "Scan"
-msgstr ""
+msgstr "Escanear"
 
 #: models.py:56
 #, fuzzy
@@ -102,28 +100,28 @@ msgstr "D-Scan"
 
 #: models.py:111
 msgid "Pilot list"
-msgstr ""
+msgstr "Lista piloto"
 
 #: models.py:112
 msgid "Corporation list"
-msgstr ""
+msgstr "Lista de Corporaciones"
 
 #: models.py:113
 msgid "Alliance list"
-msgstr ""
+msgstr "Lista de Alianzas"
 
 #: models.py:114
 #: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
-msgstr ""
+msgstr "Tipos de Naves"
 
 #: models.py:115
 msgid "Ship list"
-msgstr ""
+msgstr "Lista de Naves"
 
 #: models.py:116
 msgid "Ship list (on grid)"
-msgstr ""
+msgstr "Lista de naves (en cuadrícula)"
 
 #: models.py:117
 msgid "Ship list (off grid)"
