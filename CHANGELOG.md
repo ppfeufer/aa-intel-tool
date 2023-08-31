@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[1.0.1\] - 2023-08-31
 
-This version is purely to push changed in the README to Pypi.
+This version is purely to push changes in the README to Pypi.
 
 ### Fixed
 
