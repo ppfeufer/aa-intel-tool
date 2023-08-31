@@ -82,16 +82,18 @@ See [Settings](#settings) section for details.
 
 ## Installation<a name="installation"></a>
 
-**Important**: Please make sure you meet all preconditions before you proceed:
-
-- AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
-  already, please install it first before proceeding. (see the official
-  [Alliance Auth installation guide] for details)
-- AA Intel Tool needs at least **Alliance Auth v3.6.1**. Please make sure to meet this
-  condition _before_ installing this app, otherwise an update to Alliance Auth will
-  be pulled in unsupervised.
-- AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
-  before continuing.
+> **Note**
+>
+> Please make sure you meet all preconditions before you proceed:
+>
+> - AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
+>   already, please install it first before proceeding. (see the official
+>   [Alliance Auth installation guide] for details)
+> - AA Intel Tool needs at least **Alliance Auth v3.6.1**. Please make sure to meet this
+>   condition _before_ installing this app, otherwise an update to Alliance Auth will
+>   be pulled in unsupervised.
+> - AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
+>   before continuing.
 
 ### Step 1: Install the Package<a name="step-1-install-the-package"></a>
 
