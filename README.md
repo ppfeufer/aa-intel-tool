@@ -40,7 +40,7 @@ ______________________________________________________________________
       - [Nginx](#nginx)
   - [Settings](#settings)
   - [Changelog](#changelog)
-  - [Translations](#translations)
+  - [Translation Status](#translation-status)
   - [Contributing](#contributing)
 
 <!-- mdformat-toc end -->
@@ -240,15 +240,12 @@ your `local.py`.
 
 See [CHANGELOG.md]
 
-## Translations<a name="translations"></a>
+## Translation Status<a name="translation-status"></a>
 
-This app is currently translated into:
+[![Translation status](https://weblate.ppfeufer.de/widgets/alliance-auth-apps/-/aa-intel-tool/multi-auto.svg)](https://weblate.ppfeufer.de/engage/alliance-auth-apps/)
 
-- German
-- Russian
-
-If you want to help to translate this app or improve existing translations, join
-our team of translators over on [Weblate][weblate engage]!
+Do you want to help translate this app into your language or improve the existing
+translation? - [Join our team of translators][weblate engage]!
 
 ## Contributing<a name="contributing"></a>
 
@@ -280,7 +277,7 @@ Please make sure to read the [Contribution Guidelines]
 [black code formatter documentation]: http://black.readthedocs.io/en/latest/
 [changelog.md]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CHANGELOG.md
 [code of conduct]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CODE_OF_CONDUCT.md
-[contribution guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md
+[contribution guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md "Contribution Guidelines"
 [eve universe]: https://gitlab.com/ErikKalkoken/django-eveuniverse "Eve Universe"
 [image: chat scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/chat-scan.jpg "Chat Scan Module"
 [image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
