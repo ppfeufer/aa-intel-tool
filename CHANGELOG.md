@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[1.0.0\] - 2023-08-31
+
+**First Public Release**
+
 ### Added
 
 - MySQL script to drop the DB tables
