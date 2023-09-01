@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[1.1.0\] - 2023-09-01
+
+### Added
+
+- Korean translation
+
 ## \[1.0.1\] - 2023-08-31
 
 This version is purely to push changes in the README to Pypi.
