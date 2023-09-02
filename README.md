@@ -242,7 +242,7 @@ See [CHANGELOG.md]
 
 ## Translation Status<a name="translation-status"></a>
 
-[![Translation status](https://weblate.ppfeufer.de/widgets/alliance-auth-apps/-/aa-intel-tool/multi-auto.svg)](https://weblate.ppfeufer.de/engage/alliance-auth-apps/)
+[![Translation status](https://weblate.ppfeufer.de/widget/alliance-auth-apps/aa-intel-tool/multi-auto.svg)](https://weblate.ppfeufer.de/engage/alliance-auth-apps/)
 
 Do you want to help translate this app into your language or improve the existing
 translation? - [Join our team of translators][weblate engage]!
@@ -272,7 +272,7 @@ Please make sure to read the [Contribution Guidelines]
 [badge: support discord]: https://img.shields.io/discord/790364535294132234?label=discord "Support Discord"
 [badge: supported django versions]: https://img.shields.io/pypi/djversions/aa-intel-tool?label=django "Supported Django Versions"
 [badge: supported python versions]: https://img.shields.io/pypi/pyversions/aa-intel-tool "Supported Python Versions"
-[badge: translation status]: https://weblate.ppfeufer.de/widgets/alliance-auth-apps/-/aa-intel-tool/svg-badge.svg "Translation Status"
+[badge: translation status]: https://weblate.ppfeufer.de/widget/alliance-auth-apps/aa-intel-tool/svg-badge.svg "Translation Status"
 [badge: version]: https://img.shields.io/pypi/v/aa-intel-tool?label=release "Version"
 [black code formatter documentation]: http://black.readthedocs.io/en/latest/
 [changelog.md]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CHANGELOG.md
