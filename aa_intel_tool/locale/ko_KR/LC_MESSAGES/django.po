@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Author50CO <tkddlschry@gmail.com>, 2023.
+# Peter Pfeufer <info@ppfeufer.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-29 16:06+0200\n"
-"PO-Revision-Date: 2023-09-01 13:54+0000\n"
-"Last-Translator: Author50CO <tkddlschry@gmail.com>\n"
+"PO-Revision-Date: 2023-09-02 16:40+0000\n"
+"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/ko/>\n"
 "Language: ko_KR\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18.2\n"
+"X-Generator: Weblate 5.0\n"
 
 #: __init__.py:12 templates/aa_intel_tool/base.html:6
 #: templates/aa_intel_tool/views/index.html:6
@@ -25,7 +26,7 @@ msgstr ""
 #: templates/aa_intel_tool/views/scan/dscan.html:5
 #: templates/aa_intel_tool/views/scan/fleetcomp.html:5
 msgid "Intel Parser"
-msgstr "인텔 가져오기"
+msgstr "인텔 파싱"
 
 #: admin.py:79 models.py:46
 msgid "Scan type"
@@ -43,7 +44,7 @@ msgstr "처리 이전 데이터"
 #: apps.py:21
 #, python-brace-format
 msgid "Intel Parser v{__version__}"
-msgstr "인텔 파서 버전{__version__}"
+msgstr "인텔 파싱 v{__version__}"
 
 #: constants.py:71 models.py:24
 msgid "Chat list"
@@ -304,7 +305,7 @@ msgstr "이 앱을 번역하거나 기존 번역을 개선하고 싶으신가요
 
 #: templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
-msgstr "번역 팀에 참여하세요!"
+msgstr "번역가 팀에 참여하세요!"
 
 #: templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
@@ -330,16 +331,16 @@ msgstr "작업 중입니다, 잠시만 기다려 주세요 …"
 
 #: templates/aa_intel_tool/partials/index/form.html:58
 msgid "Detecting the intel type"
-msgstr "인텔 종류 감지 중"
+msgstr "인텔 종류 감지"
 
 #: templates/aa_intel_tool/partials/index/form.html:59
 msgid ""
 "Fetching potentially missing information from ESI (this might take a moment)"
-msgstr "ESI에서 놓친 데이터 가져오는 중 (시간이 조금 걸릴 수도 있습니다)"
+msgstr "ESI에서 놓친 데이터 가져오기 (시간이 조금 걸릴 수도 있습니다)"
 
 #: templates/aa_intel_tool/partials/index/form.html:60
 msgid "Parsing data"
-msgstr "데이터 가져오는 중"
+msgstr "데이터 파싱"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:8
 msgid "New Scan"
@@ -458,7 +459,7 @@ msgstr "데이터 없음."
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve Time)"
-msgstr "(이브 시간) 에 스캔됨"
+msgstr "스캔 시각 (이브 시간)"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
