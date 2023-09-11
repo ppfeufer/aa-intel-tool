@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+### Change
+
+- Use `bulk_create` on save action to create the scan data sections instead of saving
+  each section individually
+
 ## \[1.1.1\] - 2023-09-02
 
 ### Changed
