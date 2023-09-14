@@ -251,7 +251,7 @@ translation? - [Join our team of translators][weblate engage]!
 
 Do you want to contribute to this project? That's cool!
 
-Please make sure to read the [Contribution Guidelines]
+Please make sure to read the [Contribution Guidelines].\
 (I promise, it's not much, just some basics)
 
 <!-- Inline Links -->
