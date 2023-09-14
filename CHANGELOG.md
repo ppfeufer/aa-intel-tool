@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+### Fixed
+
+- Wrongfully triggered sticky highlight when clicking on a link in a result table row
+
 ### Change
 
 - Use `bulk_create` on save action to create the scan data sections instead of saving

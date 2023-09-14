@@ -76,13 +76,6 @@ jQuery(document).ready(($) => {
                         }).mouseleave(() => {
                             removeFleetcompositionHightlight('shipclass', $(row));
                         });
-
-                        // Sticky
-                        // $(row).click(() => {
-                        //     changeStickyHighlight('shipclass', $(row));
-                        // }).click('.aa-intel-information-link', (e) => {
-                        //     e.stopPropagation();
-                        // });
                     }
                 });
             }
@@ -140,13 +133,6 @@ jQuery(document).ready(($) => {
                         }).mouseleave(() => {
                             removeFleetcompositionHightlight('shiptype', $(row));
                         });
-
-                        // Sticky
-                        // $(row).click(() => {
-                        //     changeStickyHighlight('shiptype', $(row));
-                        // }).click('.aa-intel-information-link', (e) => {
-                        //     e.stopPropagation();
-                        // });
                     }
                 });
             }
@@ -216,13 +202,6 @@ jQuery(document).ready(($) => {
                         }).mouseleave(() => {
                             removeFleetcompositionHightlight('shiptype', $(row));
                         });
-
-                        // Sticky
-                        // $(row).click(() => {
-                        //     changeStickyHighlight('shiptype', $(row));
-                        // }).click('.aa-intel-information-link', (e) => {
-                        //     e.stopPropagation();
-                        // });
                     }
                 });
             }
