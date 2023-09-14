@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[1.1.2\] - 2023-09-14
+
 ### Fixed
 
 - Wrongfully triggered sticky highlight when clicking on a link in a result table row
