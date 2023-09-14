@@ -93,10 +93,14 @@ jQuery(document).ready(($) => {
                         });
 
                         // Sticky
-                        $(row).click(() => {
-                            changeChatscanStickyHighlight('alliance', $(row));
-                        }).click('.aa-intel-information-link', (e) => {
-                            e.stopPropagation();
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeChatscanStickyHighlight('alliance', $(row));
+                            }
                         });
                     }
                 });
@@ -187,10 +191,14 @@ jQuery(document).ready(($) => {
                         });
 
                         // Sticky
-                        $(row).click(() => {
-                            changeChatscanStickyHighlight('corporation', $(row));
-                        }).click('.aa-intel-information-link', (e) => {
-                            e.stopPropagation();
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeChatscanStickyHighlight('corporation', $(row));
+                            }
                         });
                     }
                 });
@@ -287,10 +295,14 @@ jQuery(document).ready(($) => {
                         });
 
                         // Sticky
-                        $(row).click(() => {
-                            changeChatscanStickyHighlight('pilot', $(row));
-                        }).click('.aa-intel-information-link', (e) => {
-                            e.stopPropagation();
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeChatscanStickyHighlight('pilot', $(row));
+                            }
                         });
                     }
                 });

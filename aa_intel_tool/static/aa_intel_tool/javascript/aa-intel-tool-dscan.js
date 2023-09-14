@@ -93,10 +93,14 @@ jQuery(document).ready(($) => {
                         });
 
                         // Sticky
-                        $(row).click(() => {
-                            changeDscanStickyHighlight('shipclass', $(row));
-                        }).click('.aa-intel-information-link', (e) => {
-                            e.stopPropagation();
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeDscanStickyHighlight('shipclass', $(row));
+                            }
                         });
                     }
                 });
@@ -180,10 +184,14 @@ jQuery(document).ready(($) => {
                         });
 
                         // Sticky
-                        $(row).click(() => {
-                            changeDscanStickyHighlight('shipclass', $(row));
-                        }).click('.aa-intel-information-link', (e) => {
-                            e.stopPropagation();
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeDscanStickyHighlight('shipclass', $(row));
+                            }
                         });
                     }
                 });
@@ -267,10 +275,14 @@ jQuery(document).ready(($) => {
                         });
 
                         // Sticky
-                        $(row).click(() => {
-                            changeDscanStickyHighlight('shipclass', $(row));
-                        }).click('.aa-intel-information-link', (e) => {
-                            e.stopPropagation();
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeDscanStickyHighlight('shipclass', $(row));
+                            }
                         });
                     }
                 });
@@ -331,10 +343,14 @@ jQuery(document).ready(($) => {
                         });
 
                         // Sticky
-                        $(row).click(() => {
-                            changeDscanStickyHighlight('shiptype', $(row));
-                        }).click('.aa-intel-information-link', (e) => {
-                            e.stopPropagation();
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeDscanStickyHighlight('shiptype', $(row));
+                            }
                         });
                     }
                 });
