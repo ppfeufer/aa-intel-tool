@@ -5,6 +5,7 @@
 [![Badge: Supported Python Versions]][aa intel tool on pypi]
 [![Badge: Supported Django Versions]][aa intel tool on pypi]
 ![Badge: pre-commit]
+[![Badge: pre-commit.ci status]][pre-commit.ci status]
 [![Badge: Code Style: black]][black code formatter documentation]
 [![Badge: Support Discord]][support discord]
 [![Badge: Automated Tests]][automated tests on github]
@@ -269,6 +270,7 @@ Please make sure to read the [Contribution Guidelines].\
 [badge: contributor covenant]: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg "Contributor Covenant"
 [badge: license]: https://img.shields.io/github/license/ppfeufer/aa-intel-tool "License"
 [badge: pre-commit]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white "pre-commit"
+[badge: pre-commit.ci status]: https://results.pre-commit.ci/badge/github/ppfeufer/aa-intel-tool/master.svg "pre-commit.ci status"
 [badge: support discord]: https://img.shields.io/discord/790364535294132234?label=discord "Support Discord"
 [badge: supported django versions]: https://img.shields.io/pypi/djversions/aa-intel-tool?label=django "Supported Django Versions"
 [badge: supported python versions]: https://img.shields.io/pypi/pyversions/aa-intel-tool "Supported Python Versions"
@@ -283,5 +285,6 @@ Please make sure to read the [Contribution Guidelines].\
 [image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
 [image: fleet composition module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/fleet-composition.jpg "Fleet Composition Module"
 [ppfeufer on ko-fi]: https://ko-fi.com/ppfeufer "Buy Me a Coffee!"
+[pre-commit.ci status]: https://results.pre-commit.ci/latest/github/ppfeufer/aa-intel-tool/master "pre-commit.ci"
 [support discord]: https://discord.gg/zmh52wnfvM "Alliance Auth Community Apps Support Discord"
 [weblate engage]: https://weblate.ppfeufer.de/engage/alliance-auth-apps/ "Weblate Translations"
