@@ -97,7 +97,7 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
             f'{intel_type} (<a href="{scan_link}" target="_blank" rel="noreferer noopener">{link_text}</a>)'
         )
 
-    @admin.display(description=_("RAW data"))
+    @admin.display(description=_("Raw data"))
     def _raw_data(self, obj) -> str:
         """
         Format the output properly

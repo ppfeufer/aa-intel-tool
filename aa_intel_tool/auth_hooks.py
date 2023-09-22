@@ -2,9 +2,6 @@
 Hook into AA
 """
 
-# Django
-from django.utils.translation import gettext_lazy as _
-
 # Alliance Auth
 from allianceauth import hooks
 from allianceauth.services.hooks import MenuItemHook, UrlHook
@@ -22,7 +19,7 @@ class AaIntelToolMenuItem(MenuItemHook):  # pylint: disable=too-few-public-metho
         # setup menu entry for sidebar
         MenuItemHook.__init__(
             self,
-            text=_(__title__),
+            text=__title__,
             classes="fas fa-clipboard-list fa-fw",
             url_name="aa_intel_tool:intel_tool_index",
             navactive=["aa_intel_tool:"],
