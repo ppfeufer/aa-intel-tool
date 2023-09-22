@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-22 23:32+0200\n"
-"PO-Revision-Date: 2023-09-22 16:21+0000\n"
+"PO-Revision-Date: 2023-09-22 21:37+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/de/>\n"
+"Language-Team: German <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,8 +36,6 @@ msgid "Open in a new browser tab"
 msgstr "In einem neuen Browser-Tab öffnen"
 
 #: admin.py:100
-#, fuzzy
-#| msgid "RAW data"
 msgid "Raw data"
 msgstr "Rohdaten"
 
@@ -83,10 +81,8 @@ msgid "Creation date/time"
 msgstr "Erstellungsdatum/-uhrzeit"
 
 #: models.py:40
-#, fuzzy
-#| msgid "Scan data"
 msgid "Scan raw data"
-msgstr "Scandaten"
+msgstr "Scan Rohdaten"
 
 #: models.py:55 models.py:132
 msgid "Scan"
@@ -359,14 +355,10 @@ msgid "Parsing data"
 msgstr "Daten analysieren"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:8
-#, fuzzy
-#| msgid "New Scan"
 msgid "New scan"
 msgstr "Neuer Scan"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:15
-#, fuzzy
-#| msgid "Copy Permalink"
 msgid "Copy permalink"
 msgstr "Permalink kopieren"
 
@@ -478,8 +470,6 @@ msgid "No data."
 msgstr "Keine Daten."
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
-#, fuzzy
-#| msgid "Scan taken at (Eve Time)"
 msgid "Scan taken at (Eve time)"
 msgstr "Scan aufgenommen um (Eve Zeit)"
 
@@ -524,6 +514,26 @@ msgstr "Die bereitgestellten Daten konnten nicht analysiert werden."
 msgid "(System Error) Something unexpected happened."
 msgstr "(Systemfehler) Es ist etwas Unerwartetes passiert."
 
-#: views/general.py:99 views/general.py:129
+#: views/general.py:99 views/general.py:129 views/general.py:128
 msgid "The scan you were looking for could not be found."
 msgstr "Der gesuchte Scan konnte nicht gefunden werden."
+
+#: admin.py:100
+msgid "RAW data"
+msgstr "Rohdaten"
+
+#: models.py:40
+msgid "Scan RAW data"
+msgstr "Scan Rohdaten"
+
+#: templates/aa_intel_tool/partials/scan/buttons.html:8
+msgid "New Scan"
+msgstr "Neuer Scan"
+
+#: templates/aa_intel_tool/partials/scan/buttons.html:15
+msgid "Copy Permalink"
+msgstr "Permalink kopieren"
+
+#: templates/aa_intel_tool/partials/scan/evetime.html:5
+msgid "Scan taken at (Eve Time)"
+msgstr "Scan aufgenommen um (Eve Zeit)"
