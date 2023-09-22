@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-29 16:06+0200\n"
-"PO-Revision-Date: 2023-08-31 06:18+0000\n"
+"PO-Revision-Date: 2023-09-22 16:21+0000\n"
 "Last-Translator: Nikolay <nick.postnikov@gmail.com>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : "
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 4.18.2\n"
+"X-Generator: Weblate 5.0.2\n"
 
 #: __init__.py:12 templates/aa_intel_tool/base.html:6
 #: templates/aa_intel_tool/views/index.html:6
@@ -27,7 +27,7 @@ msgstr ""
 #: templates/aa_intel_tool/views/scan/dscan.html:5
 #: templates/aa_intel_tool/views/scan/fleetcomp.html:5
 msgid "Intel Parser"
-msgstr ""
+msgstr "Анализатор Скана"
 
 #: admin.py:79 models.py:46
 msgid "Scan type"
@@ -45,7 +45,7 @@ msgstr "Исходные данные"
 #: apps.py:21
 #, python-brace-format
 msgid "Intel Parser v{__version__}"
-msgstr ""
+msgstr "Анализатор Скана v{__version__}"
 
 #: constants.py:71 models.py:24
 msgid "Chat list"
