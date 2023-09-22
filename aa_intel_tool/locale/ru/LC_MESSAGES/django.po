@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 16:06+0200\n"
+"POT-Creation-Date: 2023-09-22 23:32+0200\n"
 "PO-Revision-Date: 2023-09-22 16:21+0000\n"
 "Last-Translator: Nikolay <nick.postnikov@gmail.com>\n"
-"Language-Team: Russian <https://weblate.ppfeufer.de/projects/"
-"alliance-auth-apps/aa-intel-tool/ru/>\n"
+"Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-"
+"apps/aa-intel-tool/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,7 +38,9 @@ msgid "Open in a new browser tab"
 msgstr "Открыть в новой вкладке"
 
 #: admin.py:100
-msgid "RAW data"
+#, fuzzy
+#| msgid "RAW data"
+msgid "Raw data"
 msgstr "Исходные данные"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
@@ -83,8 +85,10 @@ msgid "Creation date/time"
 msgstr "Дата/время создания"
 
 #: models.py:40
-msgid "Scan RAW data"
-msgstr "Исходные данные скана"
+#, fuzzy
+#| msgid "Scan data"
+msgid "Scan raw data"
+msgstr "Данные скана"
 
 #: models.py:55 models.py:132
 msgid "Scan"
@@ -364,11 +368,15 @@ msgid "Parsing data"
 msgstr "Анализ данных"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:8
-msgid "New Scan"
+#, fuzzy
+#| msgid "New Scan"
+msgid "New scan"
 msgstr "Новый скан"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:15
-msgid "Copy Permalink"
+#, fuzzy
+#| msgid "Copy Permalink"
+msgid "Copy permalink"
 msgstr "Копировать постоянную ссылку"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
@@ -479,7 +487,9 @@ msgid "No data."
 msgstr "Нет данных."
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
-msgid "Scan taken at (Eve Time)"
+#, fuzzy
+#| msgid "Scan taken at (Eve Time)"
+msgid "Scan taken at (Eve time)"
 msgstr "Скан выполнен (время EVE)"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
@@ -522,6 +532,6 @@ msgstr "Предоставленные данные не могут быть п�
 msgid "(System Error) Something unexpected happened."
 msgstr "(Системная ошибка) Случилось что-то непредвиденное."
 
-#: views/general.py:99 views/general.py:128
+#: views/general.py:99 views/general.py:129
 msgid "The scan you were looking for could not be found."
 msgstr "Скан, который вы ищите, не может быть найден."

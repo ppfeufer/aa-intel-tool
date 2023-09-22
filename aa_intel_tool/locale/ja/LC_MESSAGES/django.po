@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 16:06+0200\n"
+"POT-Creation-Date: 2023-09-22 23:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgid "Open in a new browser tab"
 msgstr ""
 
 #: admin.py:100
-msgid "RAW data"
+msgid "Raw data"
 msgstr ""
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
@@ -81,7 +81,7 @@ msgid "Creation date/time"
 msgstr ""
 
 #: models.py:40
-msgid "Scan RAW data"
+msgid "Scan raw data"
 msgstr ""
 
 #: models.py:55 models.py:132
@@ -342,11 +342,11 @@ msgid "Parsing data"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:8
-msgid "New Scan"
+msgid "New scan"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:15
-msgid "Copy Permalink"
+msgid "Copy permalink"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
@@ -457,7 +457,7 @@ msgid "No data."
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
-msgid "Scan taken at (Eve Time)"
+msgid "Scan taken at (Eve time)"
 msgstr ""
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
@@ -498,6 +498,6 @@ msgstr ""
 msgid "(System Error) Something unexpected happened."
 msgstr ""
 
-#: views/general.py:99 views/general.py:128
+#: views/general.py:99 views/general.py:129
 msgid "The scan you were looking for could not be found."
 msgstr ""
