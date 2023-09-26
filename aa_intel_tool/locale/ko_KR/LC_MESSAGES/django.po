@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-29 16:06+0200\n"
-"PO-Revision-Date: 2023-09-02 16:40+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"POT-Creation-Date: 2023-09-22 23:38+0200\n"
+"PO-Revision-Date: 2023-09-24 13:14+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/ko/>\n"
 "Language: ko_KR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0\n"
+"X-Generator: Weblate 5.0.2\n"
 
 #: __init__.py:12 templates/aa_intel_tool/base.html:6
 #: templates/aa_intel_tool/views/index.html:6
@@ -37,7 +37,9 @@ msgid "Open in a new browser tab"
 msgstr "새 탭에서 열기"
 
 #: admin.py:100
-msgid "RAW data"
+#, fuzzy
+#| msgid "RAW data"
+msgid "Raw data"
 msgstr "처리 이전 데이터"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
@@ -82,8 +84,10 @@ msgid "Creation date/time"
 msgstr "생성 날짜/시간"
 
 #: models.py:40
-msgid "Scan RAW data"
-msgstr "스캔 처리 이전 데이터"
+#, fuzzy
+#| msgid "Scan data"
+msgid "Scan raw data"
+msgstr "스캔 데이터"
 
 #: models.py:55 models.py:132
 msgid "Scan"
@@ -343,11 +347,15 @@ msgid "Parsing data"
 msgstr "데이터 파싱"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:8
-msgid "New Scan"
+#, fuzzy
+#| msgid "New Scan"
+msgid "New scan"
 msgstr "새 스캔"
 
 #: templates/aa_intel_tool/partials/scan/buttons.html:15
-msgid "Copy Permalink"
+#, fuzzy
+#| msgid "Copy Permalink"
+msgid "Copy permalink"
 msgstr "고유 링크 복사"
 
 #: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
@@ -458,7 +466,9 @@ msgid "No data."
 msgstr "데이터 없음."
 
 #: templates/aa_intel_tool/partials/scan/evetime.html:5
-msgid "Scan taken at (Eve Time)"
+#, fuzzy
+#| msgid "Scan taken at (Eve Time)"
+msgid "Scan taken at (Eve time)"
 msgstr "스캔 시각 (이브 시간)"
 
 #: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
@@ -500,6 +510,6 @@ msgstr "제공된 데이터를 가져올 수 없습니다."
 msgid "(System Error) Something unexpected happened."
 msgstr "(성계 오류) 예측하지 못한 오류 발생."
 
-#: views/general.py:99 views/general.py:128
+#: views/general.py:99 views/general.py:129
 msgid "The scan you were looking for could not be found."
 msgstr "요구하는 스캔을 찾을 수 없습니다."

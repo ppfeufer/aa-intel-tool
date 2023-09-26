@@ -37,7 +37,7 @@ class Scan(models.Model):
         verbose_name=_("Creation date/time"),
     )
 
-    raw_data = models.TextField(verbose_name=_("Scan RAW data"))
+    raw_data = models.TextField(verbose_name=_("Scan raw data"))
 
     scan_type = models.CharField(
         max_length=9,
