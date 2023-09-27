@@ -67,8 +67,8 @@ jQuery(document).ready(($) => {
                     ],
                     createdRow: (row, data) => {
                         $(row)
-                            .attr('data-shipclass-id', data['id'])
-                            .attr('data-shiptype-id', data['type_id']);
+                            .attr('data-shipclass-id', data.id)
+                            .attr('data-shiptype-id', data.type_id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -125,7 +125,7 @@ jQuery(document).ready(($) => {
                         }
                     ],
                     createdRow: (row, data) => {
-                        $(row).attr('data-shiptype-id', data['id']);
+                        $(row).attr('data-shiptype-id', data.id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -193,8 +193,8 @@ jQuery(document).ready(($) => {
                         elementPilotsCount.html(newTotal);
 
                         $(row)
-                            .attr('data-shipclass-id', data['ship_id'])
-                            .attr('data-shiptype-id', data['ship_type_id']);
+                            .attr('data-shipclass-id', data.ship_id)
+                            .attr('data-shiptype-id', data.ship_type_id);
 
                         // Highlight
                         $(row).mouseenter(() => {

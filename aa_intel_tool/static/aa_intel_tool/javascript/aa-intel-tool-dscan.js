@@ -77,13 +77,13 @@ jQuery(document).ready(($) => {
                     createdRow: (row, data) => {
                         // D-Scan total count
                         const currentTotal = elementDscanCountAll.html();
-                        const newTotal = parseInt(currentTotal) + data['count'];
+                        const newTotal = parseInt(currentTotal) + data.count;
 
                         elementDscanCountAll.html(newTotal);
 
                         $(row)
-                            .attr('data-shipclass-id', data['id'])
-                            .attr('data-shiptype-id', data['type_id']);
+                            .attr('data-shipclass-id', data.id)
+                            .attr('data-shiptype-id', data.type_id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -168,13 +168,13 @@ jQuery(document).ready(($) => {
                     createdRow: (row, data) => {
                         // D-Scan total count
                         const currentTotal = elementDscanCountOngrid.html();
-                        const newTotal = parseInt(currentTotal) + data['count'];
+                        const newTotal = parseInt(currentTotal) + data.count;
 
                         elementDscanCountOngrid.html(newTotal);
 
                         $(row)
-                            .attr('data-shipclass-id', data['id'])
-                            .attr('data-shiptype-id', data['type_id']);
+                            .attr('data-shipclass-id', data.id)
+                            .attr('data-shiptype-id', data.type_id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -259,13 +259,13 @@ jQuery(document).ready(($) => {
                     createdRow: (row, data) => {
                         // D-Scan total count
                         const currentTotal = elementDscanCountOffgrid.html();
-                        const newTotal = parseInt(currentTotal) + data['count'];
+                        const newTotal = parseInt(currentTotal) + data.count;
 
                         elementDscanCountOffgrid.html(newTotal);
 
                         $(row)
-                            .attr('data-shipclass-id', data['id'])
-                            .attr('data-shiptype-id', data['type_id']);
+                            .attr('data-shipclass-id', data.id)
+                            .attr('data-shiptype-id', data.type_id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -333,7 +333,7 @@ jQuery(document).ready(($) => {
                         }
                     ],
                     createdRow: (row, data) => {
-                        $(row).attr('data-shiptype-id', data['id']);
+                        $(row).attr('data-shiptype-id', data.id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -406,11 +406,11 @@ jQuery(document).ready(($) => {
                     createdRow: (row, data) => {
                         // Upwell Structures total count
                         const currentTotal = elementDscanCountUpwellStructures.html();
-                        const newTotal = parseInt(currentTotal) + data['count'];
+                        const newTotal = parseInt(currentTotal) + data.count;
 
                         elementDscanCountUpwellStructures.html(newTotal);
 
-                        $(row).attr('data-shiptype-id', data['id']);
+                        $(row).attr('data-shiptype-id', data.id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -472,11 +472,11 @@ jQuery(document).ready(($) => {
                     createdRow: (row, data) => {
                         // Upwell Structures total count
                         const currentTotal = elementDscanCountDeployables.html();
-                        const newTotal = parseInt(currentTotal) + data['count'];
+                        const newTotal = parseInt(currentTotal) + data.count;
 
                         elementDscanCountDeployables.html(newTotal);
 
-                        $(row).attr('data-shiptype-id', data['id']);
+                        $(row).attr('data-shiptype-id', data.id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -538,11 +538,11 @@ jQuery(document).ready(($) => {
                     createdRow: (row, data) => {
                         // Upwell Structures total count
                         const currentTotal = elementDscanCountStarbases.html();
-                        const newTotal = parseInt(currentTotal) + data['count'];
+                        const newTotal = parseInt(currentTotal) + data.count;
 
                         elementDscanCountStarbases.html(newTotal);
 
-                        $(row).attr('data-shiptype-id', data['id']);
+                        $(row).attr('data-shiptype-id', data.id);
 
                         // Highlight
                         $(row).mouseenter(() => {

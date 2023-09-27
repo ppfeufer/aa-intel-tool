@@ -10,8 +10,8 @@ const elementShipTypeTable = $('table.aa-intel-dscan-ship-types');
 /**
  * Determine if we can remove all sticky states for this corporation
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  * @returns {boolean}
  */
 const removeDscanShiptypeStickyComplete = (by_data, table_row) => {
@@ -32,8 +32,8 @@ const removeDscanShiptypeStickyComplete = (by_data, table_row) => {
 /**
  * Add highlight to other tables
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const addDscanHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
@@ -49,8 +49,8 @@ const addDscanHightlight = (by_data, table_row) => { // eslint-disable-line no-u
 /**
  * Add highlight to other tables
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const removeDscanHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
@@ -66,8 +66,8 @@ const removeDscanHightlight = (by_data, table_row) => { // eslint-disable-line n
 /**
  * Add sticky highlight to other tables
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const addDscanSticky = (by_data, table_row) => {
     table_row.addClass('aa-intel-highlight-sticky');
@@ -93,8 +93,8 @@ const addDscanSticky = (by_data, table_row) => {
 /**
  * Remove sticky highlight to other tables
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const removeDscanSticky = (by_data, table_row) => {
     table_row.removeClass('aa-intel-highlight-sticky');
@@ -122,8 +122,8 @@ const removeDscanSticky = (by_data, table_row) => {
 /**
  * Change the status of the sticky highlight
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const changeDscanStickyHighlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     if (

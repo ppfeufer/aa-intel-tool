@@ -11,8 +11,8 @@ const elementFleetcompTable = $('table.aa-intel-fleetcomp-pilot-ships-list');
 /**
  * Determine if we can remove all sticky states for this corporation
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  * @returns {boolean}
  */
 const removeFleetcompositionShiptypeStickyComplete = (by_data, table_row) => {
@@ -33,8 +33,8 @@ const removeFleetcompositionShiptypeStickyComplete = (by_data, table_row) => {
 /**
  * Add highlight to other tables
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const addFleetcompositionHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
@@ -54,8 +54,8 @@ const addFleetcompositionHightlight = (by_data, table_row) => { // eslint-disabl
 /**
  * Add highlight to other tables
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const removeFleetcompositionHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
@@ -75,8 +75,8 @@ const removeFleetcompositionHightlight = (by_data, table_row) => { // eslint-dis
 /**
  * Add sticky highlight to other tables
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const addFleetcompositionSticky = (by_data, table_row) => {
     table_row.addClass('aa-intel-highlight-sticky');
@@ -102,8 +102,8 @@ const addFleetcompositionSticky = (by_data, table_row) => {
 /**
  * Remove sticky highlight to other tables
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const removeFleetcompositionSticky = (by_data, table_row) => {
     table_row.removeClass('aa-intel-highlight-sticky');
@@ -131,8 +131,8 @@ const removeFleetcompositionSticky = (by_data, table_row) => {
 /**
  * Change the status of the sticky highlight
  *
- * @param by_data {string} The table data attribute for which this function is triggered
- * @param table_row {element} The table row that is to be changed
+ * @param {string} by_data The table data attribute for which this function is triggered
+ * @param {element} table_row The table row that is to be changed
  */
 const changeFleetcompositionStickyHighlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
     if (

@@ -75,15 +75,15 @@ jQuery(document).ready(($) => {
                         const currentTotal = elementAlliancesTotalCount.html();
                         let newTotal;
 
-                        if (data['id'] !== 1) {
+                        if (data.id !== 1) {
                             newTotal = parseInt(currentTotal) + 1;
                         }
 
                         elementAlliancesTotalCount.html(newTotal);
 
                         $(row)
-                            .addClass(`aa-intel-alliance-participation-item aa-intel-alliance-id-${data['id']}`)
-                            .attr('data-alliance-id', data['id']);
+                            .addClass(`aa-intel-alliance-participation-item aa-intel-alliance-id-${data.id}`)
+                            .attr('data-alliance-id', data.id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -179,9 +179,9 @@ jQuery(document).ready(($) => {
                         elementCorporationsTotalCount.html(newTotal);
 
                         $(row)
-                            .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data['id']}`)
-                            .attr('data-corporation-id', data['id'])
-                            .attr('data-alliance-id', data['alliance']['id']);
+                            .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data.id}`)
+                            .attr('data-corporation-id', data.id)
+                            .attr('data-alliance-id', data.alliance.id);
 
                         // Highlight
                         $(row).mouseenter(() => {
@@ -236,12 +236,12 @@ jQuery(document).ready(($) => {
                         },
                         {
                             data: (data) => {
-                                return allianceInfoPanel(data['alliance'], true) + data['alliance']['ticker'];
+                                return allianceInfoPanel(data.alliance, true) + data.alliance.ticker;
                             }
                         },
                         {
                             data: (data) => {
-                                return corporationInfoPanel(data['corporation'], true) + data['corporation']['ticker'];
+                                return corporationInfoPanel(data.corporation, true) + data.corporation.ticker;
                             }
                         },
                         {
@@ -282,10 +282,10 @@ jQuery(document).ready(($) => {
                         elementPilotsTotalCount.html(newTotal);
 
                         $(row)
-                            .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data['id']}`)
-                            .attr('data-character-id', data['id'])
-                            .attr('data-corporation-id', data['corporation']['id'])
-                            .attr('data-alliance-id', data['alliance']['id']);
+                            .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data.id}`)
+                            .attr('data-character-id', data.id)
+                            .attr('data-corporation-id', data.corporation.id)
+                            .attr('data-alliance-id', data.alliance.id);
 
                         // Highlight
                         $(row).mouseenter(() => {
