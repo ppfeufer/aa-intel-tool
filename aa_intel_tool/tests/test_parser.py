@@ -84,7 +84,7 @@ class TestParserGeneral(TestCase):
         expected_exception = ParserError
         expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed …"  # pylint: disable=line-too-long
 
-        with self.assertRaises(ParserError):
+        with self.assertRaises(expected_exception=expected_exception):
             check_intel_type(scan_data=scan_data)
 
         with self.assertRaisesMessage(
