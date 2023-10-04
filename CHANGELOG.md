@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - JS modernized
 - Translations improved
+  - Korean
   - Russian
   - Spanish
 
@@ -91,7 +92,7 @@ This version is purely to push changes in the README to Pypi.
 >
 > If you have installed one of the Alpa-Versions before, make sure to follow these
 > instructions **before** you update to this version. If you install this app for the
-> very first time, feel free to happiely ignore this section.
+> very first time, feel free to happily ignore this section.
 
 #### Remove the Migrations and DB Tables
 
@@ -171,7 +172,7 @@ Hopefully the last one before official release …
 
 ### Changed
 
-- Chat list parser re-enabled. See Warning in [README.md](README.md) (=> Settings).
+- Chat list parser re-enabled. See Warning in [README.md](https://github.com/ppfeufer/aa-intel-tool/blob/master/README.md#settings) (=> Settings).
 
 ## \[0.0.1-alpha.11\] - 2023-08-23
 
