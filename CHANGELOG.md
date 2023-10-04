@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+### Added
+
+- Support for lazy loading images, which should speed up the page load on larger scans
+
 ### Changed
 
 - JS modernized
