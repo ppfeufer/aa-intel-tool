@@ -34,46 +34,9 @@ const fetchAjaxData = async (url) => { // eslint-disable-line no-unused-vars
  * @returns {string}
  */
 const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
-    let html_logo = '' +
-        '<span class="aa-intel-pilot-avatar-wrapper">\n' +
-        '    <img ' +
-        '        class="eve-image" ' +
-        '        data-eveid="' + pilotData.id + '" ' +
-        '        src="' + pilotData.portrait + '" ' +
-        '        alt="' + pilotData.name + '" ' +
-        '        title="' + pilotData.name + '" ' +
-        '        loading="lazy" ' +
-        '        width="32" ' +
-        '        height="32">\n' +
-        '</span>';
-
-    let html_info = '' +
-        '<span class="aa-intel-pilot-information-wrapper">\n' +
-        '    <span class="aa-intel-pilot-name-wrapper">\n' +
-        '        ' + pilotData.name + '\n' +
-        '    </span>\n';
-
-    html_info += '' +
-        '    <span class="aa-intel-pilot-links-wrapper">\n' +
-        '        <small>\n' +
-        '            <a ' +
-        '                class="aa-intel-information-link" ' +
-        '                href="' + pilotData.evewho + '" ' +
-        '                target="_blank" ' +
-        '                rel="noopener noreferer"' +
-        '            >' +
-        '               evewho <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
-        '            </a> |\n' +
-
-        '            <a ' +
-        '                class="aa-intel-information-link" ' +
-        '                href="' + pilotData.zkillboard + '" ' +
-        '                target="_blank" rel="noopener noreferer"' +
-        '            >' +
-        '                zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
-        '            </a>\n' +
-        '        </small>\n' +
-        '    </span>\n';
+    let html_logo = `<span class="aa-intel-pilot-avatar-wrapper"><img class="eve-image" data-eveid="${pilotData.id}" src="${pilotData.portrait}" alt="${pilotData.name}" title="${pilotData.name}" loading="lazy" width="32" height="32"></span>`;
+    let html_info = `<span class="aa-intel-pilot-information-wrapper"><span class="aa-intel-pilot-name-wrapper">${pilotData.name}</span>`;
+    html_info += `<span class="aa-intel-pilot-links-wrapper"><small><a class="aa-intel-information-link" href="${pilotData.evewho}" target="_blank" rel="noopener noreferer">evewho <i class="fas fa-external-link-alt" aria-hidden="true"></i></a> | <a class="aa-intel-information-link" href="${pilotData.zkillboard}" target="_blank" rel="noopener noreferer">zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></small></span>`;
 
     return html_logo + html_info;
 };
@@ -87,56 +50,17 @@ const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
  * @returns {string}
  */
 const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-disable-line no-unused-vars
-    let html_logo = '' +
-        '<span class="aa-intel-corporation-logo-wrapper">\n' +
-        '    <img ' +
-        '        class="eve-image" ' +
-        '        data-eveid="' + corporationData.id + '" ' +
-        '        src="' + corporationData.logo + '" ' +
-        '        alt="' + corporationData.name + '" ' +
-        '        title="' + corporationData.name + '" ' +
-        '        loading="lazy" ' +
-        '        width="32" ' +
-        '        height="32">\n' +
-        '</span>';
-
-    let html_info = '' +
-        '<span class="aa-intel-corporation-information-wrapper">\n' +
-        '    <span class="aa-intel-corporation-name-wrapper">\n' +
-        '        ' + corporationData.name + '\n' +
-        '    </span>\n';
-
-    html_info += '' +
-        '    <span class="aa-intel-corporation-links-wrapper">\n' +
-        '        <small>\n';
+    let html_logo = `<span class="aa-intel-corporation-logo-wrapper"><img class="eve-image" data-eveid="${corporationData.id}" src="${corporationData.logo}" alt="${corporationData.name}" title="${corporationData.name}" loading="lazy" width="32" height="32"></span>`;
+    let html_info = `<span class="aa-intel-corporation-information-wrapper"><span class="aa-intel-corporation-name-wrapper">${corporationData.name}</span>`;
+    html_info += `<span class="aa-intel-corporation-links-wrapper"><small>`;
 
     if ((1000000 <= corporationData.id) && corporationData.id <= 2000000) {
-        html_info += '' +
-            '            (' + aaIntelToolJsL10n.scanData.npcCorp + ')';
+        html_info += `(${aaIntelToolJsL10n.scanData.npcCorp})`;
     } else {
-        html_info += '' +
-            '            <a ' +
-            '                class="aa-intel-information-link" ' +
-            '                href="' + corporationData.dotlan + '" ' +
-            '                target="_blank" ' +
-            '                rel="noopener noreferer"' +
-            '            >' +
-            '               dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
-            '            </a> |\n' +
-
-            '            <a ' +
-            '                class="aa-intel-information-link" ' +
-            '                href="' + corporationData.zkillboard + '" ' +
-            '                target="_blank" rel="noopener noreferer"' +
-            '            >' +
-            '                zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
-            '            </a>\n' +
-            '        </small>\n' +
-            '    </span>\n';
+        html_info += `<a class="aa-intel-information-link" href="${corporationData.dotlan}" target="_blank" rel="noopener noreferer">dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i></a> | <a class="aa-intel-information-link" href="${corporationData.zkillboard}" target="_blank" rel="noopener noreferer">zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></small></span>`;
     }
 
-    html_info += '' +
-        '</span>';
+    html_info += `</span>`;
 
     if (logoOnly) {
         return html_logo;
@@ -158,51 +82,14 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
         allianceData.name = aaIntelToolJsL10n.scanData.empty;
     }
 
-    let html_logo = '' +
-        '<span class="aa-intel-alliance-logo-wrapper alliance-id-' + allianceData.id + '">\n' +
-        '    <img ' +
-        '        class="eve-image" ' +
-        '        data-eveid="' + allianceData.id + '" ' +
-        '        src="' + allianceData.logo + '" ' +
-        '        alt="' + allianceData.name + '" ' +
-        '        title="' + allianceData.name + '" ' +
-        '        loading="lazy" ' +
-        '        width="32" ' +
-        '        height="32">\n' +
-        '</span>';
-
-    let html_info = '' +
-        '<span class="aa-intel-alliance-information-wrapper">\n' +
-        '    <span class="aa-intel-alliance-name-wrapper">\n' +
-        '        ' + allianceData.name + '\n' +
-        '    </span>\n';
+    let html_logo = `<span class="aa-intel-alliance-logo-wrapper alliance-id-${allianceData.id}"><img class="eve-image" data-eveid="${allianceData.id}" src="${allianceData.logo}" alt="${allianceData.name}" title="${allianceData.name}" loading="lazy" width="32" height="32"></span>`;
+    let html_info = `<span class="aa-intel-alliance-information-wrapper"><span class="aa-intel-alliance-name-wrapper">${allianceData.name}</span>`;
 
     if (allianceData.id > 1) {
-        html_info += '' +
-            '    <span class="aa-intel-alliance-links-wrapper">\n' +
-            '        <small>\n' +
-            '            <a ' +
-            '                class="aa-intel-information-link" ' +
-            '                href="' + allianceData.dotlan + '" ' +
-            '                target="_blank" ' +
-            '                rel="noopener noreferer"' +
-            '            >' +
-            '               dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
-            '            </a> |\n' +
-
-            '            <a ' +
-            '                class="aa-intel-information-link" ' +
-            '                href="' + allianceData.zkillboard + '" ' +
-            '                target="_blank" rel="noopener noreferer"' +
-            '            >' +
-            '                zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i>' +
-            '            </a>\n' +
-            '        </small>\n' +
-            '    </span>\n';
+        html_info += `    <span class="aa-intel-alliance-links-wrapper"><small><a class="aa-intel-information-link" href="${allianceData.dotlan}" target="_blank" rel="noopener noreferer">dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i></a> | <a class="aa-intel-information-link" href="${allianceData.zkillboard}" target="_blank" rel="noopener noreferer">zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i></a></small></span>`;
     }
 
-    html_info += '' +
-        '</span>';
+    html_info += `</span>`;
 
     if (logoOnly) {
         if (allianceData.id === 1) {
@@ -223,25 +110,8 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
  * @returns {string}
  */
 const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
-    let html_logo = '' +
-        '<span class="aa-intel-ship-image-wrapper">\n' +
-        '    <img ' +
-        '        class="eve-image" ' +
-        '        data-eveid="' + shipData.id + '" ' +
-        '        src="' + shipData.image + '" ' +
-        '        alt="' + shipData.name + '" ' +
-        '        title="' + shipData.name + '" ' +
-        '        loading="lazy" ' +
-        '        width="32" ' +
-        '        height="32">\n' +
-        '</span>';
-
-    let html_info = '' +
-        '<span class="aa-intel-ship-information-wrapper">\n' +
-        '    <span class="aa-intel-ship-name-wrapper">\n' +
-        '        ' + shipData.name + '\n' +
-        '    </span>\n' +
-        '</span>\n';
+    let html_logo = `<span class="aa-intel-ship-image-wrapper"><img class="eve-image" data-eveid="${shipData.id}" src="${shipData.image}" alt="${shipData.name}" title="${shipData.name}" loading="lazy" width="32" height="32"></span>`;
+    let html_info = `<span class="aa-intel-ship-information-wrapper"><span class="aa-intel-ship-name-wrapper">${shipData.name}</span></span>`;
 
     return html_logo + html_info;
 };
@@ -282,9 +152,7 @@ jQuery(document).ready(($) => {
      */
     const showSuccess = (message, element) => {
         $(element).html(
-            '<div class="alert alert-success alert-dismissable alert-message-success">' +
-            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + message +
-            '</div>'
+            `<div class="alert alert-success alert-dismissable alert-message-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>${message}</div>`
         );
 
         closeMessageElement('.alert-message-success');
@@ -299,9 +167,7 @@ jQuery(document).ready(($) => {
      */
     const showError = (message, element) => {
         $(element).html(
-            '<div class="alert alert-danger alert-dismissable alert-message-error">' +
-            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + message +
-            '</div>'
+            `<div class="alert alert-danger alert-dismissable alert-message-error"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>${message}</div>`
         );
 
         closeMessageElement('.alert-message-error', 9999);
