@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 12:19+0200\n"
+"POT-Creation-Date: 2023-10-04 17:44+0200\n"
 "PO-Revision-Date: 2023-09-24 13:14+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -19,170 +19,172 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.0.2\n"
 
-#: __init__.py:12 templates/aa_intel_tool/base.html:6
-#: templates/aa_intel_tool/views/index.html:6
-#: templates/aa_intel_tool/views/index.html:10
-#: templates/aa_intel_tool/views/scan/chatlist.html:5
-#: templates/aa_intel_tool/views/scan/dscan.html:5
-#: templates/aa_intel_tool/views/scan/fleetcomp.html:5
+#: aa_intel_tool/__init__.py:12
+#: aa_intel_tool/templates/aa_intel_tool/base.html:6
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:6
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:10
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/fleetcomp.html:5
 msgid "Intel Parser"
 msgstr "인텔 파싱"
 
-#: admin.py:79 models.py:46
+#: aa_intel_tool/admin.py:79 aa_intel_tool/models.py:46
 msgid "Scan type"
 msgstr "스캔 종류"
 
-#: admin.py:94
+#: aa_intel_tool/admin.py:94
 msgid "Open in a new browser tab"
 msgstr "새 탭에서 열기"
 
-#: admin.py:100
+#: aa_intel_tool/admin.py:100
 #, fuzzy
 #| msgid "RAW data"
 msgid "Raw data"
 msgstr "처리 이전 데이터"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
-#: apps.py:21
+#: aa_intel_tool/apps.py:21
 #, python-brace-format
 msgid "Intel Parser v{__version__}"
 msgstr "인텔 파싱 v{__version__}"
 
-#: constants.py:71 models.py:24
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "챗 리스트"
 
-#: constants.py:77 models.py:22
-#: templates/aa_intel_tool/partials/index/form.html:28
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:22
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "전방위 스캐너"
 
-#: constants.py:83 models.py:23 models.py:123
-#: templates/aa_intel_tool/partials/index/form.html:33
+#: aa_intel_tool/constants.py:83 aa_intel_tool/models.py:23
+#: aa_intel_tool/models.py:123
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
 msgstr "함대 구성"
 
-#: exceptions.py:34
+#: aa_intel_tool/exceptions.py:34
 #, python-brace-format
 msgid "A parser error occurred » {message}"
 msgstr "가져오기 오류 발생 » {message}"
 
-#: form.py:20
+#: aa_intel_tool/form.py:20
 msgid "Paste here …"
 msgstr "여기에 붙여 넣으세요 …"
 
-#: models.py:21 models.py:110
+#: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
 msgid "Invalid scan data"
 msgstr "유효하지 않은 데이터"
 
-#: models.py:31
+#: aa_intel_tool/models.py:31
 msgid "Scan hash"
 msgstr "스캔 해시"
 
-#: models.py:37
+#: aa_intel_tool/models.py:37
 msgid "Creation date/time"
 msgstr "생성 날짜/시간"
 
-#: models.py:40
+#: aa_intel_tool/models.py:40
 #, fuzzy
 #| msgid "Scan data"
 msgid "Scan raw data"
 msgstr "스캔 데이터"
 
-#: models.py:55 models.py:132
+#: aa_intel_tool/models.py:55 aa_intel_tool/models.py:132
 msgid "Scan"
 msgstr "스캔"
 
-#: models.py:56
+#: aa_intel_tool/models.py:56
 msgid "Scans"
 msgstr "스캔"
 
-#: models.py:111
+#: aa_intel_tool/models.py:111
 msgid "Pilot list"
 msgstr "파일럿 목록"
 
-#: models.py:112
+#: aa_intel_tool/models.py:112
 msgid "Corporation list"
 msgstr "코퍼레이션 목록"
 
-#: models.py:113
+#: aa_intel_tool/models.py:113
 msgid "Alliance list"
 msgstr "얼라이언스 목록"
 
-#: models.py:114
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
+#: aa_intel_tool/models.py:114
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
 msgstr "함선 종류"
 
-#: models.py:115
+#: aa_intel_tool/models.py:115
 msgid "Ship list"
 msgstr "함선 목록"
 
-#: models.py:116
+#: aa_intel_tool/models.py:116
 msgid "Ship list (on grid)"
 msgstr "함선 목록 (그리드 이내)"
 
-#: models.py:117
+#: aa_intel_tool/models.py:117
 msgid "Ship list (off grid)"
 msgstr "함선 목록 (그리드 밖)"
 
-#: models.py:118
+#: aa_intel_tool/models.py:118
 msgid "Structures (on grid)"
 msgstr "구조물 (그리드 이내)"
 
-#: models.py:119
+#: aa_intel_tool/models.py:119
 msgid "Starbases (on grid)"
 msgstr "포스 (그리드 이내)"
 
-#: models.py:120
+#: aa_intel_tool/models.py:120
 msgid "Deployables (on grid)"
 msgstr "전개형 구조물 (그리드 이내)"
 
-#: models.py:121
+#: aa_intel_tool/models.py:121
 msgid "Miscellaneous (on grid)"
 msgstr "기타 (그리드 이내)"
 
-#: models.py:122
-#: templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
+#: aa_intel_tool/models.py:122
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
 msgid "System information"
 msgstr "성계 정보"
 
-#: models.py:139
+#: aa_intel_tool/models.py:139
 msgid "Scan section"
 msgstr "스캔 범위"
 
-#: models.py:143
+#: aa_intel_tool/models.py:143
 msgid "Processed scan data"
 msgstr "처리된 스캔 데이터"
 
-#: models.py:152 models.py:153
+#: aa_intel_tool/models.py:152 aa_intel_tool/models.py:153
 msgid "Scan data"
 msgstr "스캔 데이터"
 
-#: parser/general.py:46
+#: aa_intel_tool/parser/general.py:46
 msgid ""
 "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 "지원하는 파서를 찾을 수 없습니다. 지원하지 않는 인텔 타입이거나, 잘못된 형식"
 "입니다…"
 
-#: parser/general.py:80
+#: aa_intel_tool/parser/general.py:80
 msgid "No data to parse …"
 msgstr "가져올 데이터가 없습니다…"
 
-#: parser/module/chatlist.py:66
+#: aa_intel_tool/parser/module/chatlist.py:66
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr "ESI에서 캐릭터 정보를 가져오는 중 오류가 발생했습니다."
 
-#: parser/module/chatlist.py:77
+#: aa_intel_tool/parser/module/chatlist.py:77
 msgid "Character unknown to ESI."
 msgstr "ESI에 등록되지 않은 캐릭터입니다."
 
-#: parser/module/chatlist.py:274
+#: aa_intel_tool/parser/module/chatlist.py:274
 msgid "The chat list module is currently disabled."
 msgstr "챗 리스트 모듈이 비활성화된 상태입니다."
 
-#: parser/module/chatlist.py:292
+#: aa_intel_tool/parser/module/chatlist.py:292
 #, python-brace-format
 msgid ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
@@ -194,19 +196,19 @@ msgstr[0] ""
 "챗 스캔 파일럿 수는 최대 {max_allowed_pilots}명으로 제한되어 있습니다. 입력"
 "한 파일럿 수가 제한을 초과합니다."
 
-#: parser/module/dscan.py:322
+#: aa_intel_tool/parser/module/dscan.py:322
 msgid "The D-Scan module is currently disabled."
 msgstr "전방위 스캐너 모듈이 비활성화된 상태입니다."
 
-#: parser/module/fleetcomp.py:103
+#: aa_intel_tool/parser/module/fleetcomp.py:103
 msgid "The fleet composition module is currently disabled."
 msgstr "함대 구성 모듈이 비활성화된 상태입니다."
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:8
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:8
 msgid "Permalink successfully copied"
 msgstr "고유링크가 성공적으로 복사되었습니다"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
 msgid ""
 "Something went wrong. Nothing copied. Maybe your browser does not support "
 "this function."
@@ -214,291 +216,291 @@ msgstr ""
 "뭔가 잘못됐습니다. 복사되지 않았습니다. 브라우저가 이 기능을 지원하지 않을 수"
 "도 있습니다."
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:14
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:14
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr "얼라이언스 없음"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
 msgid "NPC Corp"
 msgstr "NPC 코퍼레이션"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
 msgctxt "Decimal separator"
 msgid "."
 msgstr "."
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
 msgctxt "Thousands separator"
 msgid ","
 msgstr ","
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
 msgid "No data available in this table"
 msgstr "테이블에 유효한 데이터가 없습니다"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
 msgid "Showing _END_ entries"
 msgstr "_END_ 개의 결과 표시중"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
 msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
 msgid "(filtered from _MAX_ total entries)"
 msgstr "총 _MAX_ 개의 결과 에서 필터링됨"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
 msgid "No records available"
 msgstr "사용 가능한 레코드가 없습니다"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
 msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 msgid "Show _MENU_"
 msgstr "_MENU_ 보기"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
 msgid "Loading …"
 msgstr "로딩 …"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
 msgid "Processing …"
 msgstr "처리 중 …"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
 msgid "Nothing found, sorry …"
 msgstr "아무것도 찾지 못했습니다, 죄송합니다 …"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
 msgid "Search …"
 msgstr "검색 …"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:33
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:33
 msgid "First"
 msgstr "첫 번째"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
 msgid "Last"
 msgstr "마지막"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
 msgid "Next"
 msgstr "다음"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
 msgid "Previous"
 msgstr "이전"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
 msgid ": activate to sort column ascending"
 msgstr ": 열 오름차순으로 정렬 활성화"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
 msgid ": activate to sort column descending"
 msgstr ": 열 내림차순으로 정렬 활성화"
 
-#: templates/aa_intel_tool/partials/body/scan-retention-note.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
 #, python-format
 msgid "Scans will be deleted after %(scan_retention_time)s day."
 msgid_plural "Scans will be deleted after %(scan_retention_time)s days."
 msgstr[0] "스캔은 %(scan_retention_time)s일 이후 삭제됩니다."
 
-#: templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
 msgid ""
 "Do you want to help translate this app into your language or improve the "
 "existing translation?"
 msgstr "이 앱을 번역하거나 기존 번역을 개선하고 싶으신가요?"
 
-#: templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
 msgstr "번역가 팀에 참여하세요!"
 
-#: templates/aa_intel_tool/partials/index/form.html:10
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
 msgstr "무엇을 붙여넣을 수 있나요?"
 
-#: templates/aa_intel_tool/partials/index/form.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:16
 msgid "Chat member list"
 msgstr "챗 멤버 목록"
 
-#: templates/aa_intel_tool/partials/index/form.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:21
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
 msgstr[0] "스캔 당 최대 %(max_pilots)s명으로 제한되어 있습니다."
 
-#: templates/aa_intel_tool/partials/index/form.html:50
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:50
 msgid "Submit"
 msgstr "전송"
 
-#: templates/aa_intel_tool/partials/index/form.html:56
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:56
 msgid "Working on it, please be patient …"
 msgstr "작업 중입니다, 잠시만 기다려 주세요 …"
 
-#: templates/aa_intel_tool/partials/index/form.html:58
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:58
 msgid "Detecting the intel type"
 msgstr "인텔 종류 감지"
 
-#: templates/aa_intel_tool/partials/index/form.html:59
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:59
 msgid ""
 "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr "ESI에서 놓친 데이터 가져오기 (시간이 조금 걸릴 수도 있습니다)"
 
-#: templates/aa_intel_tool/partials/index/form.html:60
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
 msgid "Parsing data"
 msgstr "데이터 파싱"
 
-#: templates/aa_intel_tool/partials/scan/buttons.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:8
 #, fuzzy
 #| msgid "New Scan"
 msgid "New scan"
 msgstr "새 스캔"
 
-#: templates/aa_intel_tool/partials/scan/buttons.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:15
 #, fuzzy
 #| msgid "Copy Permalink"
 msgid "Copy permalink"
 msgstr "고유 링크 복사"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
 msgid "Alliances breakdown"
 msgstr "얼라이언스별 분리"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
 msgid "Alliance"
 msgstr "얼라이언스"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:18
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
 msgstr "갯수"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:32
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:32
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:29
 msgid "Loading data …"
 msgstr "데이터 로딩 중 …"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:38
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:38
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
 msgid "No data …"
 msgstr "데이터 없음 …"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
 msgid "Corporations breakdown"
 msgstr "코퍼레이션별 분류"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
 msgid "Corporation"
 msgstr "코퍼레이션"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
 msgid "Pilots breakdown"
 msgstr "파일럿별 분류"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
 msgid "Pilot"
 msgstr "파일럿"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
 msgid "Interesting on grid"
 msgstr "그리드 내 주요 요소"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:15
 msgid "Upwell structures"
 msgstr "업웰 구조물"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:16
 msgid "Deployables"
 msgstr "전개형 구조물"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:17
 msgid "POS / POS modules"
 msgstr "포스 / 포스 모듈"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:18
 msgid "Miscellaneous"
 msgstr "기타"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:17
 msgid "Type"
 msgstr "종류"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
 msgid "Ships on scan"
 msgstr "스캔된 함선"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:15
 msgid "All ships"
 msgstr "모든 함선"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:16
 msgid "On grid"
 msgstr "그리드 이내"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:17
 msgid "Off grid"
 msgstr "그리드 밖"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
 msgid "Ship class"
 msgstr "함급"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
 msgstr "함선 종류"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
 msgid "No data."
 msgstr "데이터 없음."
 
-#: templates/aa_intel_tool/partials/scan/evetime.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/evetime.html:5
 #, fuzzy
 #| msgid "Scan taken at (Eve Time)"
 msgid "Scan taken at (Eve time)"
 msgstr "스캔 시각 (이브 시간)"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
 msgstr "함대 세부 사항"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
 msgid "Pilots in fleet"
 msgstr "함대 내 파일럿"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
 msgid "Ship classes"
 msgstr "함급"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
 msgid "Who is flying what"
 msgstr "함선 및 파일럿"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
 msgid "System"
 msgstr "성계"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
 msgid "Participation details"
 msgstr "참가 세부 사항"
 
-#: templates/aa_intel_tool/views/index.html:14
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:14
 msgid ""
 "Please keep in mind, parsing large amounts of data can take some time. Be "
 "patient, CCP's API is not the fastest to answer …"
@@ -506,14 +508,14 @@ msgstr ""
 "기억해주세요, 큰 데이터를 가져오는 데에는 시간이 걸립니다. CCP의 API는 느린 "
 "것으로 유명합니다, 조금만 기다려 주세요 …"
 
-#: views/general.py:53
+#: aa_intel_tool/views/general.py:53
 msgid "The provided data could not be parsed."
 msgstr "제공된 데이터를 가져올 수 없습니다."
 
-#: views/general.py:60
+#: aa_intel_tool/views/general.py:60
 msgid "(System Error) Something unexpected happened."
 msgstr "(성계 오류) 예측하지 못한 오류 발생."
 
-#: views/general.py:99 views/general.py:129
+#: aa_intel_tool/views/general.py:99 aa_intel_tool/views/general.py:129
 msgid "The scan you were looking for could not be found."
 msgstr "요구하는 스캔을 찾을 수 없습니다."

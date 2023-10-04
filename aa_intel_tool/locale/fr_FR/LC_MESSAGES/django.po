@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 12:19+0200\n"
+"POT-Creation-Date: 2023-10-04 17:44+0200\n"
 "PO-Revision-Date: 2023-09-24 13:14+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -19,164 +19,166 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.0.2\n"
 
-#: __init__.py:12 templates/aa_intel_tool/base.html:6
-#: templates/aa_intel_tool/views/index.html:6
-#: templates/aa_intel_tool/views/index.html:10
-#: templates/aa_intel_tool/views/scan/chatlist.html:5
-#: templates/aa_intel_tool/views/scan/dscan.html:5
-#: templates/aa_intel_tool/views/scan/fleetcomp.html:5
+#: aa_intel_tool/__init__.py:12
+#: aa_intel_tool/templates/aa_intel_tool/base.html:6
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:6
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:10
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/fleetcomp.html:5
 msgid "Intel Parser"
 msgstr ""
 
-#: admin.py:79 models.py:46
+#: aa_intel_tool/admin.py:79 aa_intel_tool/models.py:46
 msgid "Scan type"
 msgstr ""
 
-#: admin.py:94
+#: aa_intel_tool/admin.py:94
 msgid "Open in a new browser tab"
 msgstr ""
 
-#: admin.py:100
+#: aa_intel_tool/admin.py:100
 msgid "Raw data"
 msgstr ""
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
-#: apps.py:21
+#: aa_intel_tool/apps.py:21
 #, python-brace-format
 msgid "Intel Parser v{__version__}"
 msgstr ""
 
-#: constants.py:71 models.py:24
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr ""
 
-#: constants.py:77 models.py:22
-#: templates/aa_intel_tool/partials/index/form.html:28
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:22
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr ""
 
-#: constants.py:83 models.py:23 models.py:123
-#: templates/aa_intel_tool/partials/index/form.html:33
+#: aa_intel_tool/constants.py:83 aa_intel_tool/models.py:23
+#: aa_intel_tool/models.py:123
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
 msgstr ""
 
-#: exceptions.py:34
+#: aa_intel_tool/exceptions.py:34
 #, python-brace-format
 msgid "A parser error occurred » {message}"
 msgstr ""
 
-#: form.py:20
+#: aa_intel_tool/form.py:20
 msgid "Paste here …"
 msgstr ""
 
-#: models.py:21 models.py:110
+#: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
 msgid "Invalid scan data"
 msgstr ""
 
-#: models.py:31
+#: aa_intel_tool/models.py:31
 msgid "Scan hash"
 msgstr ""
 
-#: models.py:37
+#: aa_intel_tool/models.py:37
 msgid "Creation date/time"
 msgstr ""
 
-#: models.py:40
+#: aa_intel_tool/models.py:40
 msgid "Scan raw data"
 msgstr ""
 
-#: models.py:55 models.py:132
+#: aa_intel_tool/models.py:55 aa_intel_tool/models.py:132
 msgid "Scan"
 msgstr ""
 
-#: models.py:56
+#: aa_intel_tool/models.py:56
 msgid "Scans"
 msgstr ""
 
-#: models.py:111
+#: aa_intel_tool/models.py:111
 msgid "Pilot list"
 msgstr ""
 
-#: models.py:112
+#: aa_intel_tool/models.py:112
 msgid "Corporation list"
 msgstr ""
 
-#: models.py:113
+#: aa_intel_tool/models.py:113
 msgid "Alliance list"
 msgstr ""
 
-#: models.py:114
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
+#: aa_intel_tool/models.py:114
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
 msgstr ""
 
-#: models.py:115
+#: aa_intel_tool/models.py:115
 msgid "Ship list"
 msgstr ""
 
-#: models.py:116
+#: aa_intel_tool/models.py:116
 msgid "Ship list (on grid)"
 msgstr ""
 
-#: models.py:117
+#: aa_intel_tool/models.py:117
 msgid "Ship list (off grid)"
 msgstr ""
 
-#: models.py:118
+#: aa_intel_tool/models.py:118
 msgid "Structures (on grid)"
 msgstr ""
 
-#: models.py:119
+#: aa_intel_tool/models.py:119
 msgid "Starbases (on grid)"
 msgstr ""
 
-#: models.py:120
+#: aa_intel_tool/models.py:120
 msgid "Deployables (on grid)"
 msgstr ""
 
-#: models.py:121
+#: aa_intel_tool/models.py:121
 msgid "Miscellaneous (on grid)"
 msgstr ""
 
-#: models.py:122
-#: templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
+#: aa_intel_tool/models.py:122
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
 msgid "System information"
 msgstr ""
 
-#: models.py:139
+#: aa_intel_tool/models.py:139
 msgid "Scan section"
 msgstr ""
 
-#: models.py:143
+#: aa_intel_tool/models.py:143
 msgid "Processed scan data"
 msgstr ""
 
-#: models.py:152 models.py:153
+#: aa_intel_tool/models.py:152 aa_intel_tool/models.py:153
 msgid "Scan data"
 msgstr ""
 
-#: parser/general.py:46
+#: aa_intel_tool/parser/general.py:46
 msgid ""
 "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
-#: parser/general.py:80
+#: aa_intel_tool/parser/general.py:80
 msgid "No data to parse …"
 msgstr ""
 
-#: parser/module/chatlist.py:66
+#: aa_intel_tool/parser/module/chatlist.py:66
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr ""
 
-#: parser/module/chatlist.py:77
+#: aa_intel_tool/parser/module/chatlist.py:77
 msgid "Character unknown to ESI."
 msgstr ""
 
-#: parser/module/chatlist.py:274
+#: aa_intel_tool/parser/module/chatlist.py:274
 msgid "The chat list module is currently disabled."
 msgstr ""
 
-#: parser/module/chatlist.py:292
+#: aa_intel_tool/parser/module/chatlist.py:292
 #, python-brace-format
 msgid ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
@@ -187,318 +189,318 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: parser/module/dscan.py:322
+#: aa_intel_tool/parser/module/dscan.py:322
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
-#: parser/module/fleetcomp.py:103
+#: aa_intel_tool/parser/module/fleetcomp.py:103
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:8
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:8
 msgid "Permalink successfully copied"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
 msgid ""
 "Something went wrong. Nothing copied. Maybe your browser does not support "
 "this function."
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:14
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:14
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
 msgid "NPC Corp"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
 msgctxt "Decimal separator"
 msgid "."
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
 msgctxt "Thousands separator"
 msgid ","
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
 msgid "No data available in this table"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
 msgid "Showing _END_ entries"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
 msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
 msgid "(filtered from _MAX_ total entries)"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
 msgid "No records available"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
 msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 msgid "Show _MENU_"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
 msgid "Loading …"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
 msgid "Processing …"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
 msgid "Nothing found, sorry …"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
 msgid "Search …"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:33
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:33
 msgid "First"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
 msgid "Last"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
 msgid "Next"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
 msgid "Previous"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
 msgid ": activate to sort column ascending"
 msgstr ""
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
 msgid ": activate to sort column descending"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/body/scan-retention-note.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
 #, python-format
 msgid "Scans will be deleted after %(scan_retention_time)s day."
 msgid_plural "Scans will be deleted after %(scan_retention_time)s days."
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
 msgid ""
 "Do you want to help translate this app into your language or improve the "
 "existing translation?"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:10
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:16
 msgid "Chat member list"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:21
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/aa_intel_tool/partials/index/form.html:50
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:50
 msgid "Submit"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:56
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:56
 msgid "Working on it, please be patient …"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:58
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:58
 msgid "Detecting the intel type"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:59
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:59
 msgid ""
 "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/index/form.html:60
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
 msgid "Parsing data"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/buttons.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:8
 msgid "New scan"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/buttons.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:15
 msgid "Copy permalink"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
 msgid "Alliances breakdown"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
 msgid "Alliance"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:18
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:32
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:32
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:29
 msgid "Loading data …"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:38
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:38
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
 msgid "No data …"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
 msgid "Corporations breakdown"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
 msgid "Corporation"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
 msgid "Pilots breakdown"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
 msgid "Pilot"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
 msgid "Interesting on grid"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:15
 msgid "Upwell structures"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:16
 msgid "Deployables"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:17
 msgid "POS / POS modules"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:18
 msgid "Miscellaneous"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:17
 msgid "Type"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
 msgid "Ships on scan"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:15
 msgid "All ships"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:16
 msgid "On grid"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:17
 msgid "Off grid"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
 msgid "Ship class"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
 msgid "No data."
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/evetime.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve time)"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
 msgid "Pilots in fleet"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
 msgid "Ship classes"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
 msgid "Who is flying what"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
 msgid "System"
 msgstr ""
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
 msgid "Participation details"
 msgstr ""
 
-#: templates/aa_intel_tool/views/index.html:14
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:14
 msgid ""
 "Please keep in mind, parsing large amounts of data can take some time. Be "
 "patient, CCP's API is not the fastest to answer …"
 msgstr ""
 
-#: views/general.py:53
+#: aa_intel_tool/views/general.py:53
 msgid "The provided data could not be parsed."
 msgstr ""
 
-#: views/general.py:60
+#: aa_intel_tool/views/general.py:60
 msgid "(System Error) Something unexpected happened."
 msgstr ""
 
-#: views/general.py:99 views/general.py:129
+#: aa_intel_tool/views/general.py:99 aa_intel_tool/views/general.py:129
 msgid "The scan you were looking for could not be found."
 msgstr ""

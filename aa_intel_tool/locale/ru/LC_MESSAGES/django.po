@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 12:19+0200\n"
+"POT-Creation-Date: 2023-10-04 17:44+0200\n"
 "PO-Revision-Date: 2023-10-03 17:43+0000\n"
 "Last-Translator: Max <mark25@inbox.ru>\n"
-"Language-Team: Russian <https://weblate.ppfeufer.de/projects/"
-"alliance-auth-apps/aa-intel-tool/ru/>\n"
+"Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-"
+"apps/aa-intel-tool/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,166 +21,168 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.0.2\n"
 
-#: __init__.py:12 templates/aa_intel_tool/base.html:6
-#: templates/aa_intel_tool/views/index.html:6
-#: templates/aa_intel_tool/views/index.html:10
-#: templates/aa_intel_tool/views/scan/chatlist.html:5
-#: templates/aa_intel_tool/views/scan/dscan.html:5
-#: templates/aa_intel_tool/views/scan/fleetcomp.html:5
+#: aa_intel_tool/__init__.py:12
+#: aa_intel_tool/templates/aa_intel_tool/base.html:6
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:6
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:10
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
+#: aa_intel_tool/templates/aa_intel_tool/views/scan/fleetcomp.html:5
 msgid "Intel Parser"
 msgstr "Анализатор Скана"
 
-#: admin.py:79 models.py:46
+#: aa_intel_tool/admin.py:79 aa_intel_tool/models.py:46
 msgid "Scan type"
 msgstr "Тип скана"
 
-#: admin.py:94
+#: aa_intel_tool/admin.py:94
 msgid "Open in a new browser tab"
 msgstr "Открыть в новой вкладке"
 
-#: admin.py:100
+#: aa_intel_tool/admin.py:100
 msgid "Raw data"
 msgstr "Исходные данные"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
-#: apps.py:21
+#: aa_intel_tool/apps.py:21
 #, python-brace-format
 msgid "Intel Parser v{__version__}"
 msgstr "Анализатор Скана v{__version__}"
 
-#: constants.py:71 models.py:24
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "Список чата"
 
-#: constants.py:77 models.py:22
-#: templates/aa_intel_tool/partials/index/form.html:28
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:22
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "Подскан"
 
-#: constants.py:83 models.py:23 models.py:123
-#: templates/aa_intel_tool/partials/index/form.html:33
+#: aa_intel_tool/constants.py:83 aa_intel_tool/models.py:23
+#: aa_intel_tool/models.py:123
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
 msgstr "Состав флота"
 
-#: exceptions.py:34
+#: aa_intel_tool/exceptions.py:34
 #, python-brace-format
 msgid "A parser error occurred » {message}"
 msgstr "Произошла ошибка анализа » {message}"
 
-#: form.py:20
+#: aa_intel_tool/form.py:20
 msgid "Paste here …"
 msgstr "Вставить сюда …"
 
-#: models.py:21 models.py:110
+#: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
 msgid "Invalid scan data"
 msgstr "Некорректные данные скана"
 
-#: models.py:31
+#: aa_intel_tool/models.py:31
 msgid "Scan hash"
 msgstr "Хэш скана"
 
-#: models.py:37
+#: aa_intel_tool/models.py:37
 msgid "Creation date/time"
 msgstr "Дата/время создания"
 
-#: models.py:40
+#: aa_intel_tool/models.py:40
 msgid "Scan raw data"
 msgstr "Исходные данные скана"
 
-#: models.py:55 models.py:132
+#: aa_intel_tool/models.py:55 aa_intel_tool/models.py:132
 msgid "Scan"
 msgstr "Скан"
 
-#: models.py:56
+#: aa_intel_tool/models.py:56
 msgid "Scans"
 msgstr "Сканы"
 
-#: models.py:111
+#: aa_intel_tool/models.py:111
 msgid "Pilot list"
 msgstr "Список пилотов"
 
-#: models.py:112
+#: aa_intel_tool/models.py:112
 msgid "Corporation list"
 msgstr "Список корпораций"
 
-#: models.py:113
+#: aa_intel_tool/models.py:113
 msgid "Alliance list"
 msgstr "Список альянсов"
 
-#: models.py:114
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
+#: aa_intel_tool/models.py:114
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
 msgstr "Типы кораблей"
 
-#: models.py:115
+#: aa_intel_tool/models.py:115
 msgid "Ship list"
 msgstr "Список кораблей"
 
-#: models.py:116
+#: aa_intel_tool/models.py:116
 msgid "Ship list (on grid)"
 msgstr "Корабли (в гриде)"
 
-#: models.py:117
+#: aa_intel_tool/models.py:117
 msgid "Ship list (off grid)"
 msgstr "Корабли (вне грида)"
 
-#: models.py:118
+#: aa_intel_tool/models.py:118
 msgid "Structures (on grid)"
 msgstr "Структуры (в гриде)"
 
-#: models.py:119
+#: aa_intel_tool/models.py:119
 msgid "Starbases (on grid)"
 msgstr "Звездные базы (в гриде)"
 
-#: models.py:120
+#: aa_intel_tool/models.py:120
 msgid "Deployables (on grid)"
 msgstr "Развертываемые объекты (в гриде)"
 
-#: models.py:121
+#: aa_intel_tool/models.py:121
 msgid "Miscellaneous (on grid)"
 msgstr "Разное (в гриде)"
 
-#: models.py:122
-#: templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
+#: aa_intel_tool/models.py:122
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
 msgid "System information"
 msgstr "Информация о системе"
 
-#: models.py:139
+#: aa_intel_tool/models.py:139
 msgid "Scan section"
 msgstr "Раздел скана"
 
-#: models.py:143
+#: aa_intel_tool/models.py:143
 msgid "Processed scan data"
 msgstr "Обработанные данные скана"
 
-#: models.py:152 models.py:153
+#: aa_intel_tool/models.py:152 aa_intel_tool/models.py:153
 msgid "Scan data"
 msgstr "Данные скана"
 
-#: parser/general.py:46
+#: aa_intel_tool/parser/general.py:46
 msgid ""
 "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 "Не найден подходящий анализатор. Формат входных данных не поддерживается или "
 "данные неполны …"
 
-#: parser/general.py:80
+#: aa_intel_tool/parser/general.py:80
 msgid "No data to parse …"
 msgstr "Нет данных для анализа …"
 
-#: parser/module/chatlist.py:66
+#: aa_intel_tool/parser/module/chatlist.py:66
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr "Что-то пошло не так при загрузке информации о персонаже через ESI."
 
-#: parser/module/chatlist.py:77
+#: aa_intel_tool/parser/module/chatlist.py:77
 msgid "Character unknown to ESI."
 msgstr "Персонаж не известен для ESI."
 
-#: parser/module/chatlist.py:274
+#: aa_intel_tool/parser/module/chatlist.py:274
 msgid "The chat list module is currently disabled."
 msgstr "Анализатор списка чата отключен."
 
-#: parser/module/chatlist.py:292
+#: aa_intel_tool/parser/module/chatlist.py:292
 #, python-brace-format
 msgid ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
@@ -201,19 +203,19 @@ msgstr[3] ""
 "Анализатор чата в настоящее время ограничен максимум одним пилотом в скане. "
 "Размер вашего списка превышает это ограничение."
 
-#: parser/module/dscan.py:322
+#: aa_intel_tool/parser/module/dscan.py:322
 msgid "The D-Scan module is currently disabled."
 msgstr "Анализатор подскана отключен."
 
-#: parser/module/fleetcomp.py:103
+#: aa_intel_tool/parser/module/fleetcomp.py:103
 msgid "The fleet composition module is currently disabled."
 msgstr "Анализатор состава флота отключен."
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:8
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:8
 msgid "Permalink successfully copied"
 msgstr "Постоянная ссылка успешно скопирована"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
 msgid ""
 "Something went wrong. Nothing copied. Maybe your browser does not support "
 "this function."
@@ -221,91 +223,91 @@ msgstr ""
 "Что-то пошло не так. Ничего не скопировано. Возможно, ваш браузер не "
 "поддерживает данную функцию."
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:14
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:14
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr "Неаффилированный / Нет альянса"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
 msgid "NPC Corp"
 msgstr "NPC корпорация"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
 msgctxt "Decimal separator"
 msgid "."
 msgstr ","
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
 msgctxt "Thousands separator"
 msgid ","
 msgstr " "
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
 msgid "No data available in this table"
 msgstr "Данные в таблице отсутствуют"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
 msgid "Showing _END_ entries"
 msgstr "Отображаются _END_ записей"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
 msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
 msgid "(filtered from _MAX_ total entries)"
 msgstr "(отфильтрованы из _MAX_ записей)"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
 msgid "No records available"
 msgstr "Записи недоступны"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
 msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 msgid "Show _MENU_"
 msgstr "Показывать _MENU_"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
 msgid "Loading …"
 msgstr "Загрузка …"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
 msgid "Processing …"
 msgstr "Обработка …"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
 msgid "Nothing found, sorry …"
 msgstr "Ничего не найдено …"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
 msgid "Search …"
 msgstr "Поиск…"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:33
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:33
 msgid "First"
 msgstr "Первый"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
 msgid "Last"
 msgstr "Последний"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
 msgid "Next"
 msgstr "Следующий"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
 msgid "Previous"
 msgstr "Предыдущий"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
 msgid ": activate to sort column ascending"
 msgstr ": активируйте для сортировки по возрастанию"
 
-#: templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
 msgid ": activate to sort column descending"
 msgstr ": активируйте для сортировки по убыванию"
 
-#: templates/aa_intel_tool/partials/body/scan-retention-note.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
 #, python-format
 msgid "Scans will be deleted after %(scan_retention_time)s day."
 msgid_plural "Scans will be deleted after %(scan_retention_time)s days."
@@ -314,7 +316,7 @@ msgstr[1] "Сканы будут удалены после %(scan_retention_time
 msgstr[2] "Сканы будут удалены после %(scan_retention_time)s дней."
 msgstr[3] "Сканы будут удалены через один день."
 
-#: templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
 msgid ""
 "Do you want to help translate this app into your language or improve the "
 "existing translation?"
@@ -322,19 +324,19 @@ msgstr ""
 "Вы хотите помочь перевести это приложение на ваш язык или улучшить текущий "
 "перевод?"
 
-#: templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
 msgstr "Присоединяйтесь к нашей команде переводчиков!"
 
-#: templates/aa_intel_tool/partials/index/form.html:10
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
 msgstr "Что я могу вставить?"
 
-#: templates/aa_intel_tool/partials/index/form.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:16
 msgid "Chat member list"
 msgstr "Список членов чата"
 
-#: templates/aa_intel_tool/partials/index/form.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:21
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
@@ -343,171 +345,171 @@ msgstr[1] "Ограничен максимум %(max_pilots)s пилотами �
 msgstr[2] "Ограничен максимум %(max_pilots)s пилотами в скане."
 msgstr[3] "Ограничен максимум одним пилотом в скане."
 
-#: templates/aa_intel_tool/partials/index/form.html:50
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:50
 msgid "Submit"
 msgstr "Отправить"
 
-#: templates/aa_intel_tool/partials/index/form.html:56
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:56
 msgid "Working on it, please be patient …"
 msgstr "Работаем над этим, потерпите …"
 
-#: templates/aa_intel_tool/partials/index/form.html:58
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:58
 msgid "Detecting the intel type"
 msgstr "Определение типа информации"
 
-#: templates/aa_intel_tool/partials/index/form.html:59
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:59
 msgid ""
 "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr "Загрузка отсутствующей информации из ESI (может занять время)"
 
-#: templates/aa_intel_tool/partials/index/form.html:60
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
 msgid "Parsing data"
 msgstr "Анализ данных"
 
-#: templates/aa_intel_tool/partials/scan/buttons.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:8
 msgid "New scan"
 msgstr "Новый скан"
 
-#: templates/aa_intel_tool/partials/scan/buttons.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:15
 msgid "Copy permalink"
 msgstr "Копировать постоянную ссылку"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
 msgid "Alliances breakdown"
 msgstr "Разбивка по альянсам"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
 msgid "Alliance"
 msgstr "Альянс"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:18
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
 msgstr "Количество"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:32
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:32
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:29
 msgid "Loading data …"
 msgstr "Загрузка данных …"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:38
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:38
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
 msgid "No data …"
 msgstr "Нет данных …"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
 msgid "Corporations breakdown"
 msgstr "Разбивка по корпорациям"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
 msgid "Corporation"
 msgstr "Корпорация"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
 msgid "Pilots breakdown"
 msgstr "Разбивка по пилотам"
 
-#: templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
 msgid "Pilot"
 msgstr "Пилот"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
 msgid "Interesting on grid"
 msgstr "Интересное в гриде"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:15
 msgid "Upwell structures"
 msgstr "Структуры Upwell"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:16
 msgid "Deployables"
 msgstr "Развертываемые объекты"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:17
 msgid "POS / POS modules"
 msgstr "POS / Модули POS"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:18
 msgid "Miscellaneous"
 msgstr "Разное"
 
-#: templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:17
 msgid "Type"
 msgstr "Тип"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
 msgid "Ships on scan"
 msgstr "Корабли на скане"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:15
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:15
 msgid "All ships"
 msgstr "Все корабли"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:16
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:16
 msgid "On grid"
 msgstr "В гриде"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:17
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:17
 msgid "Off grid"
 msgstr "Вне грида"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
 msgid "Ship class"
 msgstr "Класс корабля"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
 msgstr "Тип корабля"
 
-#: templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
 msgid "No data."
 msgstr "Нет данных."
 
-#: templates/aa_intel_tool/partials/scan/evetime.html:5
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/evetime.html:5
 msgid "Scan taken at (Eve time)"
 msgstr "Скан выполнен (время EVE)"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
 msgstr "Подробное описание флота"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
 msgid "Pilots in fleet"
 msgstr "Пилотов во флоте"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
 msgid "Ship classes"
 msgstr "Классы кораблей"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
 msgid "Who is flying what"
 msgstr "Кто на чем летит"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
 msgid "System"
 msgstr "Система"
 
-#: templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
 msgid "Participation details"
 msgstr "Подробности участия"
 
-#: templates/aa_intel_tool/views/index.html:14
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:14
 msgid ""
 "Please keep in mind, parsing large amounts of data can take some time. Be "
 "patient, CCP's API is not the fastest to answer …"
@@ -515,14 +517,14 @@ msgstr ""
 "Помните, что обработка большого объема данных может занять некоторое время. "
 "Будьте терпеливы, CCP API не самое быстрое …"
 
-#: views/general.py:53
+#: aa_intel_tool/views/general.py:53
 msgid "The provided data could not be parsed."
 msgstr "Предоставленные данные не могут быть проанализированы."
 
-#: views/general.py:60
+#: aa_intel_tool/views/general.py:60
 msgid "(System Error) Something unexpected happened."
 msgstr "(Системная ошибка) Случилось что-то непредвиденное."
 
-#: views/general.py:99 views/general.py:129
+#: aa_intel_tool/views/general.py:99 aa_intel_tool/views/general.py:129
 msgid "The scan you were looking for could not be found."
 msgstr "Скан, который вы ищите, не может быть найден."
