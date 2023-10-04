@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## \[In Development\] - Unreleased
 
+## \[1.2.0\] - 2023-10-04
+
 ### Added
 
 - Support for lazy loading images, which should speed up the page load on larger scans
@@ -14,6 +16,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - JS modernized
+- Translations improved
+  - Russian
+  - Spanish
 
 ## \[1.1.3\] - 2023-09-26
 
