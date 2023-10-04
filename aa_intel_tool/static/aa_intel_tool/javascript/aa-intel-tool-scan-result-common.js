@@ -81,7 +81,7 @@ const dotlanLinkHtml = (href) => {
  * @returns {string}
  */
 const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
-    let html_logo = `<span class="aa-intel-pilot-avatar-wrapper">${eveImageHtml(pilotData.id, pilotData.name, pilotData.portrait)}</span>`;
+    const html_logo = `<span class="aa-intel-pilot-avatar-wrapper">${eveImageHtml(pilotData.id, pilotData.name, pilotData.portrait)}</span>`;
     let html_info = `<span class="aa-intel-pilot-information-wrapper"><span class="aa-intel-pilot-name-wrapper">${pilotData.name}</span>`;
     html_info += `<span class="aa-intel-pilot-links-wrapper"><small>${eveWhoLinkHtml(pilotData.evewho)} | ${zkillboardLinkHtml(pilotData.zkillboard)}</small></span>`;
 
@@ -97,7 +97,7 @@ const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
  * @returns {string}
  */
 const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-disable-line no-unused-vars
-    let html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(corporationData.id, corporationData.name, corporationData.logo)}</span>`;
+    const html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(corporationData.id, corporationData.name, corporationData.logo)}</span>`;
     let html_info = `<span class="aa-intel-corporation-information-wrapper"><span class="aa-intel-corporation-name-wrapper">${corporationData.name}</span>`;
     html_info += `<span class="aa-intel-corporation-links-wrapper"><small>`;
 
@@ -129,7 +129,7 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
         allianceData.name = aaIntelToolJsL10n.scanData.empty;
     }
 
-    let html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(allianceData.id, allianceData.name, allianceData.logo)}</span>`;
+    const html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(allianceData.id, allianceData.name, allianceData.logo)}</span>`;
     let html_info = `<span class="aa-intel-alliance-information-wrapper"><span class="aa-intel-alliance-name-wrapper">${allianceData.name}</span>`;
 
     if (allianceData.id > 1) {
@@ -157,8 +157,8 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
  * @returns {string}
  */
 const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
-    let html_logo = `<span class="aa-intel-ship-image-wrapper">${eveImageHtml(shipData.id, shipData.name, shipData.image)}</span>`;
-    let html_info = `<span class="aa-intel-ship-information-wrapper"><span class="aa-intel-ship-name-wrapper">${shipData.name}</span></span>`;
+    const html_logo = `<span class="aa-intel-ship-image-wrapper">${eveImageHtml(shipData.id, shipData.name, shipData.image)}</span>`;
+    const html_info = `<span class="aa-intel-ship-information-wrapper"><span class="aa-intel-ship-name-wrapper">${shipData.name}</span></span>`;
 
     return html_logo + html_info;
 };
