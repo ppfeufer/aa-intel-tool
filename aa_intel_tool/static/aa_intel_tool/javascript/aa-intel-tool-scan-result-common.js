@@ -42,6 +42,7 @@ const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
         '        src="' + pilotData.portrait + '" ' +
         '        alt="' + pilotData.name + '" ' +
         '        title="' + pilotData.name + '" ' +
+        '        loading="lazy" ' +
         '        width="32" ' +
         '        height="32">\n' +
         '</span>';
@@ -94,6 +95,7 @@ const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-
         '        src="' + corporationData.logo + '" ' +
         '        alt="' + corporationData.name + '" ' +
         '        title="' + corporationData.name + '" ' +
+        '        loading="lazy" ' +
         '        width="32" ' +
         '        height="32">\n' +
         '</span>';
@@ -164,6 +166,7 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
         '        src="' + allianceData.logo + '" ' +
         '        alt="' + allianceData.name + '" ' +
         '        title="' + allianceData.name + '" ' +
+        '        loading="lazy" ' +
         '        width="32" ' +
         '        height="32">\n' +
         '</span>';
@@ -228,6 +231,7 @@ const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
         '        src="' + shipData.image + '" ' +
         '        alt="' + shipData.name + '" ' +
         '        title="' + shipData.name + '" ' +
+        '        loading="lazy" ' +
         '        width="32" ' +
         '        height="32">\n' +
         '</span>';
