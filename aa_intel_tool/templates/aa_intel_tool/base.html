@@ -3,11 +3,17 @@
 {% load i18n %}
 {% load static %}
 
-{% block page_title %}{% translate "Intel Parser" %}{% endblock %}
+{% block page_title %}
+    {% translate "Intel Parser" %}
+{% endblock %}
+
+{% block header_nav_brand %}
+    {% translate "Intel Parser" %}
+{% endblock header_nav_brand %}
 
 {% block content %}
-    <div class="aa-intel-tool">
-        <div class="aa-intel-tool-header mt-2">
+    <div class="aa-intel-tool mt-2">
+        <div class="aa-intel-tool-header">
             {% block aa_intel_tool_header %}{% endblock %}
         </div>
 
