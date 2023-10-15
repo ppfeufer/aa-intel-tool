@@ -93,7 +93,7 @@
 
     .aa-intel-tool .aa-intel-highlight td:first-child,
     .aa-intel-tool .aa-intel-highlight-sticky td:first-child {
-        border-left: 1px solid rgb(255 0 0);
+        border-left: 1px solid var(--bs-red);
         margin-left: -11px;
         padding-left: 4px;
     }
@@ -102,10 +102,6 @@
 /* Form
 ------------------------------------------------------------------------------------- */
 @media all {
-    .aa-intel-tool .form-submit-area div:first-child {
-        margin-bottom: 15px;
-    }
-
     .aa-intel-tool .aa-intel-form-submitted-info {
         display: none;
     }
@@ -206,16 +202,12 @@
 @media all {
     /* Common styles for all types */
     .aa-intel-tool .bs-callout {
-        border: 1px solid rgb(238 238 238);
-        border-left-width: 5px;
-        border-radius: 3px;
-        margin: 20px 0;
-        padding: 20px;
-    }
-
-    .aa-intel-tool .bs-callout h4 {
-        margin-bottom: 5px;
-        margin-top: 0;
+        padding: 1.25rem;
+        margin-top: 1.25rem;
+        margin-bottom: 1.25rem;
+        border: 1px solid var(--bs-secondary);
+        border-left-width: 0.25rem;
+        border-radius: 0.25rem;
     }
 
     .aa-intel-tool .bs-callout p:last-child {
@@ -228,27 +220,15 @@
 
     /* Variations */
     .aa-intel-tool .bs-callout-danger {
-        border-left-color: rgb(206 72 68);
-    }
-
-    .aa-intel-tool .bs-callout-danger h4 {
-        color: rgb(206 72 68);
+        border-left-color: var(--bs-danger);
     }
 
     .aa-intel-tool .bs-callout-warning {
-        border-left-color: rgb(170 103 8);
-    }
-
-    .aa-intel-tool .bs-callout-warning h4 {
-        color: rgb(170 103 8);
+        border-left-color: var(--bs-warning);
     }
 
     .aa-intel-tool .bs-callout-info {
-        border-left-color: rgb(27 128 158);
-    }
-
-    .aa-intel-tool .bs-callout-info h4 {
-        color: rgb(27 128 158);
+        border-left-color: var(--bs-info);
     }
 }
 
@@ -259,20 +239,5 @@
     #aa-intel-dscan-row-interesting-on-grid,
     #aa-intel-dscan-row-interesting-on-grid > .col-aa-intel {
         display: none;
-    }
-}
-
-/* Footer
-------------------------------------------------------------------------------------- */
-@media all {
-    .aa-intel-tool .aa-intel-tool-footer {
-        border-top: 1px solid rgb(236 240 241);
-        font-size: 85%;
-        margin-top: 1rem;
-        padding-top: 1rem;
-    }
-
-    .template-dark-mode .aa-intel-tool .aa-intel-tool-footer {
-        border-color: rgb(70 69 69);
     }
 }
