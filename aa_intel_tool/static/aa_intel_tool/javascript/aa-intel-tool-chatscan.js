@@ -19,12 +19,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getAllianceList).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-alliance-participation-list').hide();
+            $('div.aa-intel-loading-table-info-alliance-participation-list').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-alliance-participation-list').show();
+                $('div.aa-intel-empty-table-info-alliance-participation-list').removeClass('d-none');
             } else {
-                $('div.table-local-scan-alliances').show();
+                $('div.table-local-scan-alliances').removeClass('d-none');
 
                 elementAlliancesTable.DataTable({
                     data: tableData,
@@ -62,7 +62,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         },
                         {
@@ -114,12 +114,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getCorporationList).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-corporation-participation-list').hide();
+            $('div.aa-intel-loading-table-info-corporation-participation-list').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-corporation-participation-list').show();
+                $('div.aa-intel-empty-table-info-corporation-participation-list').removeClass('d-none');
             } else {
-                $('div.table-local-scan-corporations').show();
+                $('div.table-local-scan-corporations').removeClass('d-none');
 
                 elementCorporationsTable.DataTable({
                     data: tableData,
@@ -163,7 +163,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         },
                         {
@@ -212,12 +212,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getPilotList).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-pilot-participation-list').hide();
+            $('div.aa-intel-loading-table-info-pilot-participation-list').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-pilot-participation-list').show();
+                $('div.aa-intel-empty-table-info-pilot-participation-list').removeClass('d-none');
             } else {
-                $('div.table-local-scan-pilots').show();
+                $('div.table-local-scan-pilots').removeClass('d-none');
 
                 elementPilotsTable.DataTable({
                     data: tableData,

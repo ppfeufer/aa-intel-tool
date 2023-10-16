@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <div class="col-md-4 col-sm-6 col-lg-3 col-aa-intel col-aa-intel-dscan-ship-classes-{{ dscan_section }}">
-    <header class="aa-intel-section-header">
+    <header class="aa-intel-section-header my-4">
         <h3 class="aa-intel-section-title">
             {{ section_header|title }}
 
@@ -11,9 +11,9 @@
         </h3>
     </header>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="table-dscan table-dscan-ship-classes table-dscan-ship-classes-{{ dscan_section }} table-aa-intel">
+    <div class="card card-default">
+        <div class="card-body">
+            <div class="table-dscan table-dscan-ship-classes table-dscan-ship-classes-{{ dscan_section }} table-aa-intel d-none">
                 <table class="table table-condensed table-sortable aa-intel-dscan-ship-classes aa-intel-dscan-ship-classes-{{ dscan_section }}-list" style="width: 100%;">
                     <thead>
                         <tr>
@@ -33,7 +33,7 @@
                 </p>
             </div>
 
-            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-{{ dscan_section }} bs-callout bs-callout-info">
+            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-{{ dscan_section }} bs-callout bs-callout-info d-none">
                 <p>
                     {% translate "No data …" %}
                 </p>

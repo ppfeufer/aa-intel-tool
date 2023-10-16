@@ -1,15 +1,15 @@
 {% load i18n %}
 
 <div class="col-md-12 col-lg-6 col-aa-intel col-aa-intel-fleetcomp-pilot-ships">
-    <header class="aa-intel-section-header">
+    <header class="aa-intel-section-header my-4">
         <h3 class="aa-intel-section-title">
             {% translate "Who is flying what" as section_header %}
             {{ section_header|title }}
         </h3>
     </header>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
+    <div class="card card-default">
+        <div class="card-body">
             <div class="table-dscan table-fleetcomp-pilot-ships table-aa-intel">
                 <table class="table table-condensed table-sortable aa-intel-fleetcomp-pilot-ships-list" style="width: 100%;">
                     <thead>
@@ -30,7 +30,7 @@
                     </p>
                 </div>
 
-                <div class="aa-intel-empty-table-info aa-intel-empty-table-info-fleetcomp-pilot-ships bs-callout bs-callout-info">
+                <div class="aa-intel-empty-table-info aa-intel-empty-table-info-fleetcomp-pilot-ships bs-callout bs-callout-info d-none">
                     <p>
                         {% translate "No data …" %}
                     </p>
