@@ -1,7 +1,7 @@
 {% load i18n %}
 
 {% if app_settings.INTELTOOL_SCAN_RETENTION_TIME > 0 %}
-    <p class="text-muted text-right">
+    <p class="text-muted text-end small">
         {% blocktranslate count scan_retention_time=app_settings.INTELTOOL_SCAN_RETENTION_TIME %}Scans will be deleted after {{ scan_retention_time }} day.{% plural %}Scans will be deleted after {{ scan_retention_time }} days.{% endblocktranslate %}
     </p>
 {% endif %}

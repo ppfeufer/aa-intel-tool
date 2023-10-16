@@ -1,21 +1,8 @@
 @media all {
-    .aa-intel-tool .aa-intel-scan-evetime {
-        margin: 1.5rem 0;
-    }
-
     .aa-intel-tool .aa-intel-scan-page-buttons ul li {
         display: block;
         float: left;
         width: 150px;
-    }
-
-    .aa-intel-tool .aa-intel-scan-page-buttons ul li > a {
-        padding: 0;
-    }
-
-    .aa-intel-tool .aa-intel-scan-page-buttons {
-        margin-bottom: 1.5rem;
-        margin-top: 1rem;
     }
 
     .aa-intel-tool .aa-intel-scan-page-buttons button {
@@ -27,13 +14,8 @@
         width: 300px;
     }
 
-    .aa-intel-tool .paste-explanation {
-        margin-bottom: 2rem;
-    }
-
     .aa-intel-tool .paste-explanation ul {
         list-style-type: none;
-        padding: 0;
     }
 
     .aa-intel-tool .paste-explanation li > small {
@@ -46,8 +28,6 @@
 
     .aa-intel-tool .aa-intel-section-header {
         border-bottom: 1px solid var(--bs-gray-200);
-        margin-bottom: 2rem;
-        margin-top: 2rem;
     }
 
     .aa-intel-tool .aa-intel-section-header .aa-intel-section-title {
@@ -164,15 +144,6 @@
     .aa-intel-tool td.fix-eve-image-position > span.alliance-id-1 {
         transform: none;
     }
-
-    .aa-intel-tool .table-local-scan-alliances,
-    .aa-intel-tool .table-local-scan-corporations,
-    .aa-intel-tool .table-local-scan-pilots,
-    .aa-intel-tool .table-dscan-ship-classes,
-    .aa-intel-tool .table-dscan-ship-types,
-    .aa-intel-tool .aa-intel-empty-table-info {
-        display: none;
-    }
 }
 
 /* Callouts
@@ -195,10 +166,6 @@
         margin-bottom: 0;
     }
 
-    .aa-intel-tool .bs-callout code {
-        border-radius: 3px;
-    }
-
     /* Variations */
     .aa-intel-tool .bs-callout-danger {
         border-left-color: var(--bs-danger);
@@ -210,15 +177,5 @@
 
     .aa-intel-tool .bs-callout-info {
         border-left-color: var(--bs-info);
-    }
-}
-
-/* Scan rows
-------------------------------------------------------------------------------------- */
-@media all {
-    #aa-intel-dscan-row-system-information,
-    #aa-intel-dscan-row-interesting-on-grid,
-    #aa-intel-dscan-row-interesting-on-grid > .col-aa-intel {
-        display: none;
     }
 }
