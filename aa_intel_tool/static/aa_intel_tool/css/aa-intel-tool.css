@@ -37,7 +37,7 @@
     }
 
     .aa-intel-tool .paste-explanation li > small {
-        color: rgb(119 119 119);
+        color: var(--bs-gray);
     }
 
     .aa-intel-tool td.data-align-right {
@@ -45,7 +45,7 @@
     }
 
     .aa-intel-tool .aa-intel-section-header {
-        border-bottom: 1px solid rgb(237 237 237);
+        border-bottom: 1px solid var(--bs-gray-200);
         margin-bottom: 2rem;
         margin-top: 2rem;
     }
@@ -86,16 +86,10 @@
 /* Highlighting
 ------------------------------------------------------------------------------------- */
 @media all {
-    .aa-intel-tool .aa-intel-highlight,
-    .aa-intel-tool .aa-intel-highlight-sticky {
-        background-color: rgba(255 255 255 / 50%);
-    }
-
     .aa-intel-tool .aa-intel-highlight td:first-child,
     .aa-intel-tool .aa-intel-highlight-sticky td:first-child {
         border-left: 1px solid var(--bs-red);
-        margin-left: -11px;
-        padding-left: 4px;
+        padding-left: 7px;
     }
 }
 
@@ -123,24 +117,11 @@
         width: 100%;
     }
 
-    .aa-intel-tool .dataTable tr.even {
-        background-color: rgba(236 240 241 / 35%);
-    }
-
-    .template-dark-mode .aa-intel-tool .dataTable tr.even {
-        background-color: rgba(236 240 241 / 5%);
-    }
-
     .aa-intel-tool .dataTable tbody tr:hover,
     .aa-intel-tool .dataTable tbody tr.aa-intel-highlight,
     .aa-intel-tool .dataTable tbody tr.aa-intel-highlight-sticky {
-        background-color: rgba(198 200 200 / 50%);
-    }
-
-    .template-dark-mode .aa-intel-tool .dataTable tbody tr:hover,
-    .template-dark-mode .aa-intel-tool .dataTable tbody tr.aa-intel-highlight,
-    .template-dark-mode .aa-intel-tool .dataTable tbody tr.aa-intel-highlight-sticky {
-        background-color: rgba(236 240 241 / 10%);
+        --bs-table-color-type: var(--bs-table-striped-color);
+        --bs-table-bg-type: var(--bs-table-hover-bg);
     }
 
     .aa-intel-tool .table-aa-intel tbody > tr > td {
