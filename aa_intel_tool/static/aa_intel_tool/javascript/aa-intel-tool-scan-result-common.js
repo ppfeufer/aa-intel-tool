@@ -45,10 +45,10 @@ const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
  * Get the link HTML to EveWho for a pilot
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`
+ * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`
  */
 const eveWhoLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`;
+    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
 
 
@@ -56,10 +56,10 @@ const eveWhoLinkHtml = (href) => {
  * Get the link HTML to zKillboard
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`
+ * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`
  */
 const zkillboardLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`;
+    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
 
 
@@ -67,10 +67,10 @@ const zkillboardLinkHtml = (href) => {
  * Get the link HTML to dotlan
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`
+ * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`
  */
 const dotlanLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`;
+    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
 
 
