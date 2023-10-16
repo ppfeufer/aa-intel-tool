@@ -11,7 +11,7 @@
     }
 
     .aa-intel-tool .aa-intel-copy-result {
-        width: 300px;
+        max-width: 310px;
     }
 
     .aa-intel-tool .paste-explanation ul {
