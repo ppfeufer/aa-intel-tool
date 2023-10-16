@@ -175,7 +175,7 @@ jQuery(document).ready(($) => {
                         }
                     ],
                     order: [
-                        [1, 'desc']
+                        [0, 'asc']
                     ],
                     columnDefs: [
                         {
