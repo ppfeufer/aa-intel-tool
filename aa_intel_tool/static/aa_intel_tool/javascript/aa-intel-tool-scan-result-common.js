@@ -199,8 +199,6 @@ jQuery(document).ready(($) => {
         $(element).html(
             `<div class="alert alert-success alert-dismissible alert-message-success d-flex align-items-center fade show">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
         );
-
-        closeMessageElement('.alert-message-success');
     };
 
 
@@ -214,8 +212,6 @@ jQuery(document).ready(($) => {
         $(element).html(
             `<div class="alert alert-danger alert-dismissible alert-message-error d-flex align-items-center fade show">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
         );
-
-        closeMessageElement('.alert-message-error', 9999);
     };
 
 
