@@ -6,7 +6,6 @@ requires = [
 
 [project]
 name = "aa-intel-tool"
-version = "1.2.0"
 description = "A simple parser for D-Scans and more for Alliance Auth"
 readme = "README.md"
 keywords = [
@@ -34,6 +33,9 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
+dynamic = [
+    "version",
+]
 dependencies = [
     "allianceauth>=4.0.0a1",
     "allianceauth-app-utils>=1.19.1",
@@ -56,3 +58,6 @@ Tracker = "https://github.com/ppfeufer/aa-intel-tool/issues"
 include = [
     "/aa_intel_tool",
 ]
+
+[tool.hatch.version]
+path = "aa_intel_tool/__init__.py"
