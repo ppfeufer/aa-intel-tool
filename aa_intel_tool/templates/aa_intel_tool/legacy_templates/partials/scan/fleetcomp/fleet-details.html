@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<div class="local-scan-result row" id="aa-intel-fleetcomp-details-row">
+    <div class="clearfix">
+        <div class="col-sm-6 col-md-4 col-lg-4 clearfix">
+            <header class="aa-intel-section-header">
+                <h2>
+                    {% translate "Fleet details" as section_header %}
+                    {{ section_header|title }}
+
+                    <small>
+                        ({% translate "Pilots in fleet" %}: <span id="aa-intel-fleet-participation-count">0</span>)
+                    </small>
+                </h2>
+            </header>
+        </div>
+    </div>
+
+    {% translate "Ship classes" as fleetscan_header_shipclasses %}
+
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/ships-breakdown/ship-classes.html" with section_header=fleetscan_header_shipclasses dscan_section="ship-classes" omit_counter=True %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/ships-breakdown/ship-types.html" %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/fleetcomp/fleet-details/pilots.html" %}
+</div>

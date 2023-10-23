@@ -1,0 +1,22 @@
+{% extends "allianceauth/base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block page_title %}{% translate "Intel Parser" %}{% endblock %}
+
+{% block content %}
+    <div class="aa-intel-tool">
+        <div class="aa-intel-tool-header">
+            {% block aa_intel_tool_header %}{% endblock %}
+        </div>
+
+        <div class="aa-intel-tool-body">
+            {% block aa_intel_tool_body %}{% endblock %}
+        </div>
+
+        <div class="aa-intel-tool-footer">
+            {% include "aa_intel_tool/legacy_templates/partials/footer/app-translation-footer.html" %}
+        </div>
+    </div>
+{% endblock %}

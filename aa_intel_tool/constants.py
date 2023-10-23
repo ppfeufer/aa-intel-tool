@@ -15,6 +15,7 @@ import aa_intel_tool.parser.module.chatlist
 import aa_intel_tool.parser.module.dscan
 import aa_intel_tool.parser.module.fleetcomp
 from aa_intel_tool import __version__
+from aa_intel_tool.app_settings import AppSettings
 
 # All internal URLs need to start with this prefix
 INTERNAL_URL_PREFIX = "-"
@@ -64,6 +65,7 @@ REGEX_PATTERN = {
     ),
 }
 
+TEMPLATE_PATH = AppSettings.get_template_path()
 
 # Supported intel types and their parameters
 SUPPORTED_INTEL_TYPES = {
@@ -71,19 +73,19 @@ SUPPORTED_INTEL_TYPES = {
         "name": _("Chat list"),
         "parser": aa_intel_tool.parser.module.chatlist.parse,
         "pattern": REGEX_PATTERN["chatlist"],
-        "template": "aa_intel_tool/views/scan/chatlist.html",
+        "template": f"{TEMPLATE_PATH}/views/scan/chatlist.html",
     },
     "dscan": {
         "name": _("D-Scan"),
         "parser": aa_intel_tool.parser.module.dscan.parse,
         "pattern": REGEX_PATTERN["dscan"],
-        "template": "aa_intel_tool/views/scan/dscan.html",
+        "template": f"{TEMPLATE_PATH}/views/scan/dscan.html",
     },
     "fleetcomp": {
         "name": _("Fleet composition"),
         "parser": aa_intel_tool.parser.module.fleetcomp.parse,
         "pattern": REGEX_PATTERN["fleetcomp"],
-        "template": "aa_intel_tool/views/scan/fleetcomp.html",
+        "template": f"{TEMPLATE_PATH}/views/scan/fleetcomp.html",
     },
 }
 
