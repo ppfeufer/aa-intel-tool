@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<div class="col-md-12 col-lg-6 col-aa-intel col-aa-intel-fleetcomp-pilot-ships">
+    <header class="aa-intel-section-header">
+        <h3 class="aa-intel-section-title">
+            {% translate "Who is flying what" as section_header %}
+            {{ section_header|title }}
+        </h3>
+    </header>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="table-dscan table-fleetcomp-pilot-ships table-aa-intel">
+                <table class="table table-condensed table-sortable aa-intel-fleetcomp-pilot-ships-list" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>{% translate "Pilot" %}</th>
+                            <th>
+                                {% translate "Ship class" as table_header %}
+                                {{ table_header|title }}
+                            </th>
+                            <th>{% translate "System" %}</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div class="aa-intel-loading-table-info aa-intel-loading-table-info-fleetcomp-pilot-ships bs-callout bs-callout-info">
+                    <p>
+                        {% translate "Loading data …" %}
+                    </p>
+                </div>
+
+                <div class="aa-intel-empty-table-info aa-intel-empty-table-info-fleetcomp-pilot-ships bs-callout bs-callout-info">
+                    <p>
+                        {% translate "No data …" %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
