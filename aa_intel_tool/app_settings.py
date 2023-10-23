@@ -61,7 +61,7 @@ class AppSettings:
     )
 
     @staticmethod
-    def get_template_path() -> str:
+    def template_path() -> str:
         """
         Get template path
 
