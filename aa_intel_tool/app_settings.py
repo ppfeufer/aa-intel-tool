@@ -66,7 +66,7 @@ class AppSettings:  # pylint: disable=too-few-public-methods
     )
 
     @staticmethod
-    def get_template_path() -> str:
+    def template_path() -> str:
         """
         Get template path
 

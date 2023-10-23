@@ -65,7 +65,7 @@ REGEX_PATTERN = {
     ),
 }
 
-TEMPLATE_PATH = AppSettings.get_template_path()
+TEMPLATE_PATH = AppSettings.template_path()
 
 # Supported intel types and their parameters
 SUPPORTED_INTEL_TYPES = {

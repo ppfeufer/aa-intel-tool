@@ -39,7 +39,7 @@ class TestBulletinUI(WebTest):
         with patch(
             target="aa_intel_tool.app_settings.allianceauth__version", new="4.0.0"
         ):
-            template_path = AppSettings.get_template_path()
+            template_path = AppSettings.template_path()
             expected_template_path = "aa_intel_tool"
 
             self.assertEqual(first=template_path, second=expected_template_path)
@@ -55,7 +55,7 @@ class TestBulletinUI(WebTest):
         with patch(
             target="aa_intel_tool.app_settings.allianceauth__version", new="3.7.1"
         ):
-            template_path = AppSettings.get_template_path()
+            template_path = AppSettings.template_path()
             expected_template_path = "aa_intel_tool/legacy_templates"
 
             self.assertEqual(first=template_path, second=expected_template_path)
