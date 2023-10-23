@@ -1,0 +1,46 @@
+{% extends "aa_intel_tool/legacy_templates/base.html" %}
+
+{% load i18n %}
+
+{% block page_title %}{{ parser_title|title }} » {% translate "Intel Parser" %}{% endblock %}
+
+{% block aa_intel_tool_header %}
+    <header>
+        <h1>{{ parser_title|title }}</h1>
+    </header>
+
+    {% include "aa_intel_tool/legacy_templates/partials/scan/evetime.html" %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/buttons.html" %}
+{% endblock %}
+
+{% block aa_intel_tool_body %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/system-information.html" %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/ships-breakdown.html" %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/interesting-on-grid.html" %}
+{% endblock %}
+
+{% block extra_css %}
+    {% include "bundles/datatables-css.html" %}
+    {% include "aa_intel_tool/legacy_templates/bundles/aa-intel-tool-css.html" %}
+{% endblock %}
+
+{% block extra_javascript %}
+    <script>
+        const aaIntelToolJsOptions = {
+            ajax: {
+                getShipClassesAll: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST.value %}',
+                getShipClassesOngrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST_ON_GRID.value %}',
+                getShipClassesOffgrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST_OFF_GRID.value %}',
+                getShipTypes: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPTYPES.value %}',
+                getStructuresOnGrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.STRUCTURES_ON_GRID.value %}',
+                getDeployablesOnGrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.DEPLOYABLES_ON_GRID.value %}',
+                getStarbasesOnGrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.STARBASES_ON_GRID.value %}'
+            }
+        }
+    </script>
+
+    {% include "bundles/datatables-js.html" %}
+    {% include "bundles/clipboard-js.html" %}
+    {% include "aa_intel_tool/legacy_templates/bundles/aa-intel-tool-js-l10n.html" %}
+    {% include "aa_intel_tool/legacy_templates/bundles/aa-intel-tool-dscan-js.html" %}
+{% endblock extra_javascript %}

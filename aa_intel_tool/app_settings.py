@@ -59,3 +59,26 @@ class AppSettings:
     INTELTOOL_DSCAN_GRID_SIZE = clean_setting(
         name="INTELTOOL_DSCAN_GRID_SIZE", default_value=10000, required_type=int
     )
+
+    @staticmethod
+    def get_template_path() -> str:
+        """
+        Get template path
+
+        This is used to determine if we have Alliance Auth v4 or still v3, in which case we
+        have to fall back to the legacy templates to ensure backwards compatibility
+
+        :return:
+        :rtype:
+        """
+
+        app_name = AaIntelToolConfig.name
+
+        if version.parse(allianceauth__version).major < 4:
+            logger.debug(
+                msg="Alliance Auth v3 detected, falling back to legacy templates …"
+            )
+
+            return f"{app_name}/legacy_templates"
+
+        return app_name

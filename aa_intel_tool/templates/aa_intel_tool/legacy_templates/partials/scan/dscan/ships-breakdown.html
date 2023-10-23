@@ -1,0 +1,23 @@
+{% load i18n %}
+
+<div class="aa-intel-result-row aa-intel-dscan-result row" id="aa-intel-dscan-row-ships-breakdown">
+    <div class="clearfix">
+        <div class="col-sm-6 col-md-4 col-lg-4 clearfix">
+            <header class="aa-intel-section-header">
+                <h2>
+                    {% translate "Ships on scan" as section_header %}
+                    {{ section_header|title }}
+                </h2>
+            </header>
+        </div>
+    </div>
+
+    {% translate "All ships" as dscan_section_header_all %}
+    {% translate "On grid" as dscan_section_header_ongrid %}
+    {% translate "Off grid" as dscan_section_header_offgrid %}
+
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/ships-breakdown/ship-classes.html" with section_header=dscan_section_header_all dscan_section="all" %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/ships-breakdown/ship-classes.html" with section_header=dscan_section_header_ongrid dscan_section="ongrid" %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/ships-breakdown/ship-classes.html" with section_header=dscan_section_header_offgrid dscan_section="offgrid" %}
+    {% include "aa_intel_tool/legacy_templates/partials/scan/dscan/ships-breakdown/ship-types.html" %}
+</div>
