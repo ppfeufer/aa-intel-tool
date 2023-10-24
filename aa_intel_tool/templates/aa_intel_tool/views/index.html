@@ -3,7 +3,10 @@
 {% load evelinks %}
 {% load i18n %}
 
-{% block page_title %}{% translate "Intel Parser" %}{% endblock %}
+{% block aa_intel_tool_header %}
+    {% translate "Intel Parser" as translated_header %}
+    {% include "aa_intel_tool/partials/header/page-header.html" with header_text=translated_header %}
+{% endblock %}
 
 {% block aa_intel_tool_body %}
     {% include "aa_intel_tool/partials/index/form.html" %}

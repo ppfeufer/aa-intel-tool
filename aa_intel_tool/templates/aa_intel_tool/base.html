@@ -12,9 +12,11 @@
 
 {% block content %}
     <div class="aa-intel-tool">
-        <div class="aa-intel-tool-header">
-            {% block aa_intel_tool_header %}{% endblock %}
-        </div>
+        {% if not user.is_authenticated %}
+            <div class="aa-intel-tool-header">
+                {% block aa_intel_tool_header %}{% endblock %}
+            </div>
+        {% endif %}
 
         <div class="aa-intel-tool-body">
             {% block aa_intel_tool_body %}{% endblock %}
