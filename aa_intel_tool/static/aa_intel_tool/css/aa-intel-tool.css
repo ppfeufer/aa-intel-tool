@@ -154,7 +154,7 @@
 @media all {
     /* Common styles for all types */
     .aa-intel-tool .bs-callout {
-        border: 1px solid var(--bs-secondary);
+        border: 1px solid var(--bs-border-color);
         border-left-width: 0.25rem;
         border-radius: 0.25rem;
         margin-bottom: 1.25rem;
