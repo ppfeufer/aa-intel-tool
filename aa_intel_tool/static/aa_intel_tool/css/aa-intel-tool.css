@@ -100,8 +100,8 @@
     .aa-intel-tool .dataTable tbody tr:hover,
     .aa-intel-tool .dataTable tbody tr.aa-intel-highlight,
     .aa-intel-tool .dataTable tbody tr.aa-intel-highlight-sticky {
-        --bs-table-color-type: var(--bs-table-striped-color);
         --bs-table-bg-type: var(--bs-table-hover-bg);
+        --bs-table-color-type: var(--bs-table-striped-color);
     }
 
     .aa-intel-tool .table-aa-intel tbody > tr > td {
@@ -148,20 +148,21 @@
 
 /* Callouts
  *
- * Not quite alerts, but custom and helpful notes for folks reading the docs.
+ * Not quite alerts, but custom and helpful notes for folks.
  * Requires a base and modifier class.
 ------------------------------------------------------------------------------------- */
 @media all {
     /* Common styles for all types */
     .aa-intel-tool .bs-callout {
-        padding: 1.25rem;
-        margin-top: 1.25rem;
-        margin-bottom: 1.25rem;
         border: 1px solid var(--bs-secondary);
         border-left-width: 0.25rem;
         border-radius: 0.25rem;
+        margin-bottom: 1.25rem;
+        margin-top: 1.25rem;
+        padding: 1.25rem;
     }
 
+    /* Last item bottom margin should be 0 */
     .aa-intel-tool .bs-callout :last-child {
         margin-bottom: 0;
     }
@@ -171,11 +172,15 @@
         border-left-color: var(--bs-danger);
     }
 
-    .aa-intel-tool .bs-callout-warning {
-        border-left-color: var(--bs-warning);
-    }
-
     .aa-intel-tool .bs-callout-info {
         border-left-color: var(--bs-info);
+    }
+
+    .aa-intel-tool .bs-callout-success {
+        border-left-color: var(--bs-success);
+    }
+
+    .aa-intel-tool .bs-callout-warning {
+        border-left-color: var(--bs-warning);
     }
 }
