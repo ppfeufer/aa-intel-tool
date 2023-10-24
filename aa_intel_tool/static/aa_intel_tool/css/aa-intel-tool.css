@@ -162,7 +162,7 @@
         border-radius: 0.25rem;
     }
 
-    .aa-intel-tool .bs-callout p:last-child {
+    .aa-intel-tool .bs-callout :last-child {
         margin-bottom: 0;
     }
 
