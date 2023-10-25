@@ -60,8 +60,19 @@ class AppSettings:
         name="INTELTOOL_DSCAN_GRID_SIZE", default_value=10000, required_type=int
     )
 
-    @staticmethod
-    def template_path() -> str:
+    @classmethod
+    def allianceauth_major_version(cls):
+        """
+        Get the major version of the current installed Alliance Auth instance
+
+        :return:
+        :rtype:
+        """
+
+        return version.parse(allianceauth__version).major
+
+    @classmethod
+    def template_path(cls) -> str:
         """
         Get template path
 
@@ -72,9 +83,10 @@ class AppSettings:
         :rtype:
         """
 
+        current_aa_major = cls.allianceauth_major_version()
         app_name = AaIntelToolConfig.name
 
-        if version.parse(allianceauth__version).major < 4:
+        if current_aa_major < 4:
             logger.debug(
                 msg="Alliance Auth v3 detected, falling back to legacy templates …"
             )
