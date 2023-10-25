@@ -20,7 +20,7 @@ from aa_intel_tool.apps import AaIntelToolConfig
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
-class AppSettings:  # pylint: disable=too-few-public-methods
+class AppSettings:
     """
     App settings from local.py
     """
