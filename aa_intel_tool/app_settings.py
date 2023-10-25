@@ -74,7 +74,7 @@ class AppSettings:  # pylint: disable=too-few-public-methods
         :rtype:
         """
 
-        return version.parse(allianceauth__version).major
+        return version.parse(version=allianceauth__version).major
 
     @classmethod
     def template_path(cls) -> str:
