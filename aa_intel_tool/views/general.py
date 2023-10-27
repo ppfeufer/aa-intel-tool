@@ -18,7 +18,7 @@ from app_utils.logging import LoggerAddTag
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
-from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES, TEMPLATE_PATH
+from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.form import IntelForm
 from aa_intel_tool.models import Scan, ScanData
@@ -75,7 +75,7 @@ def index(request: WSGIRequest) -> HttpResponse:
 
     return render(
         request=request,
-        template_name=f"{TEMPLATE_PATH}/views/index.html",
+        template_name="aa_intel_tool/views/index.html",
         context=context,
     )
 
