@@ -177,6 +177,19 @@ jQuery(document).ready(($) => {
 
 
     /**
+     * Closing the message
+     *
+     * @param {string} element
+     * @param {int} closeAfter Close Message after given time in seconds (Default: 10)
+     */
+    const closeMessageElement = (element, closeAfter = 10) => {
+        $(element).fadeTo(closeAfter * 1000, 500).slideUp(500, () => {
+            $(element).remove();
+        });
+    };
+
+
+    /**
      * Show a message when copy action was successful
      *
      * @param {string} message
@@ -186,6 +199,8 @@ jQuery(document).ready(($) => {
         $(element).html(
             `<div class="alert alert-success alert-dismissible alert-message-success d-flex align-items-center fade show">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
         );
+
+        closeMessageElement('.alert-message-success');
     };
 
 
@@ -197,8 +212,10 @@ jQuery(document).ready(($) => {
      */
     const showError = (message, element) => {
         $(element).html(
-            `<div class="alert alert-danger alert-dismissible alert-message-error d-flex align-items-center fade show"">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+            `<div class="alert alert-danger alert-dismissible alert-message-error d-flex align-items-center fade show">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
         );
+
+        closeMessageElement('.alert-message-error', 9999);
     };
 
 
