@@ -6,6 +6,7 @@ Helper for our tests
 from pathlib import Path
 
 # Django
+from django.core.handlers.wsgi import WSGIRequest
 from django.template import Context, Template
 
 
@@ -65,3 +66,16 @@ def load_fleetcomp_txt() -> str:
     """
 
     return (Path(__file__).parent / "test-data/fleetcomp.txt").read_text()
+
+
+def response_content_to_str(response: WSGIRequest) -> str:
+    """
+    Return the content of a WSGIRequest response as string
+
+    :param response:
+    :type response:
+    :return:
+    :rtype:
+    """
+
+    return response.content.decode(response.charset)

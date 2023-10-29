@@ -12,6 +12,9 @@ from django.urls import reverse
 # Alliance Auth (External Libs)
 from app_utils.testing import create_fake_user
 
+# AA Intel Tool
+from aa_intel_tool.tests.utils import response_content_to_str
+
 
 class TestAccess(TestCase):
     """
@@ -32,22 +35,23 @@ class TestAccess(TestCase):
         )
 
         cls.html_menu = f"""
-            <li>
-                <a class="active" href="{reverse('aa_intel_tool:intel_tool_index')}">
-                    <i class="fas fa-clipboard-list fa-fw"></i>
+            <li class="d-flex flex-wrap m-2 mb-0 me-0 mt-0 p-2 pb-0 pe-0 pt-0">
+                <i class="nav-link fas fa-clipboard-list fa-fw align-self-center me-3 active"></i>
+                <a class="nav-link flex-fill align-self-center" href="{reverse('aa_intel_tool:intel_tool_index')}">
                     Intel Parser
                 </a>
             </li>
         """
 
-        cls.header = """
+        cls.header_top = '<div class="navbar-brand">Intel Parser</div>'
+
+        cls.header_public_page = """
             <div class="aa-intel-tool-header">
                 <header>
-                    <h1>Intel Parser</h1>
+                    <h1 class="text-center">
+                        Intel Parser
+                    </h1>
                 </header>
-                <p>
-                    Please keep in mind, parsing large amounts of data can take some time. Be patient, CCP's API is not the fastest to answer …
-                </p>
             </div>
         """
 
@@ -66,8 +70,14 @@ class TestAccess(TestCase):
         )
 
         self.assertEqual(first=response.status_code, second=HTTPStatus.OK)
-        self.assertContains(response=response, text=self.html_menu, html=True)
-        self.assertContains(response=response, text=self.header, html=True)
+        # self.assertContains(response=response, text=self.html_menu, html=True)
+        # self.assertContains(response=response, text=self.header_top, html=True)
+        self.assertInHTML(
+            needle=self.html_menu, haystack=response_content_to_str(response)
+        )
+        self.assertInHTML(
+            needle=self.header_top, haystack=response_content_to_str(response)
+        )
 
     def test_access_to_index_as_public_page(self):
         """
@@ -82,4 +92,7 @@ class TestAccess(TestCase):
         )
 
         self.assertEqual(first=response.status_code, second=HTTPStatus.OK)
-        self.assertContains(response=response, text=self.header, html=True)
+        # self.assertContains(response=response, text=self.header_public_page, html=True)
+        self.assertInHTML(
+            needle=self.header_public_page, haystack=response_content_to_str(response)
+        )
