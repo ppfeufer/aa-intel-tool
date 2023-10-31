@@ -48,13 +48,12 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-> **Note**
+> \[!NOTE\]
 >
-> This app makes use of a feature introduced with Alliance Auth v3.6.1, meaning,
-> installing this app will pull in Alliance Auth v3.6.1 unsupervised if you haven't
-> updated yet.
+> This app makes needs Alliance Auth v4.0.0 or higher, meaning, installing this app
+> will pull in Alliance Auth v4.0.0 or higher unsupervised if you haven't updated yet.
 >
-> **Please make sure to update Allianceauth to version 3.6.1 or higher before you
+> **Please make sure to update Allianceauth to version 4.0.0 or higher before you
 > install this app to avoid any complications.**
 
 ## Overview<a name="overview"></a>

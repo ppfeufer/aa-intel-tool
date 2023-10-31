@@ -37,9 +37,11 @@ Section Order:
 
 > \[!NOTE\]
 >
-> This will be the last version to be compatible with Alliance Auth older
-> than version 4.0.0. So make sure to update your Alliance Auth instance in a timely
-> manner to make sure future updates will work.
+> This update needs Alliance Auth v4.0.0 or higher, meaning, installing this update
+> will pull in Alliance Auth v4.0.0 or higher unsupervised if you haven't updated yet.
+>
+> **Please make sure to update Allianceauth to version 4.0.0 or higher before you
+> install this app to avoid any complications.**
 
 ### Added
 
