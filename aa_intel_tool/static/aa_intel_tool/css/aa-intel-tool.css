@@ -138,7 +138,7 @@
 
     .aa-intel-tool td.fix-eve-image-position > span:first-child {
         position: relative;
-        transform: translateY(16%);
+        transform: translateY(25%);
     }
 
     .aa-intel-tool td.fix-eve-image-position > span.alliance-id-1 {
