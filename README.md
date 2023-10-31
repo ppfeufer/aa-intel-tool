@@ -50,10 +50,10 @@ ______________________________________________________________________
 
 > \[!NOTE\]
 >
-> This app needs Alliance Auth v4.0.0 or higher, meaning, installing this app will
+> This app requires Alliance Auth v4.0.0 or higher, meaning, installing this app will
 > pull in Alliance Auth v4.0.0 or higher unsupervised if you haven't updated yet.
 >
-> **Please make sure to update Allianceauth to version 4.0.0 or higher before you
+> **Please make sure to update Alliance Auth to version 4.0.0 or higher before you
 > install this app to avoid any complications.**
 
 ## Overview<a name="overview"></a>
