@@ -41,9 +41,10 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
     :rtype:
     """
 
+    fetch_from_eveuniverse = False
+
     # Check if we have to bother Eve Universe or if we have all characters already
     # Excluding corporation_id=1000001 (Doomheim) to force an update here …
-    fetch_from_eveuniverse = False
     try:
         eve_characters = EveCharacter.objects.filter(
             character_name__in=scan_data
