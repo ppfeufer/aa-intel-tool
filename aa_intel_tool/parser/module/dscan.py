@@ -44,9 +44,11 @@ def _is_on_grid(distance: str) -> bool:
         REGEX_PATTERN,
     )
 
+    # Check if we have a distance
     if re.search(pattern=REGEX_PATTERN["localised_on_grid"], string=distance):
         distance_sanitised = int(re.sub(pattern=r"[^0-9]", repl="", string=distance))
 
+        # Check if the distance is within the grid size
         if distance_sanitised <= AppSettings.INTELTOOL_DSCAN_GRID_SIZE:
             return True
 
@@ -102,6 +104,7 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
         eve_group__eve_category_id__exact=EveCategoryId.SHIP
     )
 
+    # Loop through all ships types
     for eve_type in eve_types_ships:
         # Info for "All Ships" table
         if eve_type[0] in counter["all"]:
@@ -160,6 +163,7 @@ def _get_upwell_structures_on_grid(
 
     upwell_structures = {}
 
+    # Loop through all Upwell structures
     for eve_type in eve_types_structures:
         if eve_type[0] in counter["ongrid"]:
             if eve_type[1] not in upwell_structures:
@@ -198,6 +202,7 @@ def _get_deployables_on_grid(eve_types: QuerySet, counter: dict) -> list:
 
     deployables = {}
 
+    # Loop through all deployables
     for eve_type in eve_types_deployables:
         if eve_type[0] in counter["ongrid"]:
             if eve_type[1] not in deployables:
@@ -230,6 +235,7 @@ def _get_starbases_on_grid(eve_types: QuerySet, counter: dict) -> list:
 
     starbases = {}
 
+    # Loop through all starbases
     for eve_type in eve_types_starbase:
         if eve_type[0] in counter["ongrid"]:
             if eve_type[1] not in starbases:
@@ -241,7 +247,7 @@ def _get_starbases_on_grid(eve_types: QuerySet, counter: dict) -> list:
 
 def _get_ansiblex_jumpgate_destination(ansiblex_name: str) -> str:
     """
-    Get the Ansiblex Jump Gate  destination system
+    Get the Ansiblex Jump Gate destination system
 
     :param ansiblex_name:
     :type ansiblex_name:
@@ -268,7 +274,6 @@ def _get_scan_details(scan_data: list) -> tuple:
     ansiblex_destination = None
     counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
     eve_ids = {"all": [], "ongrid": [], "offgrid": []}
-    # dscan_lines = []
 
     # Let's split this list up
     #
@@ -276,35 +281,31 @@ def _get_scan_details(scan_data: list) -> tuple:
     # line[1] => Name
     # line[2] => Ship Class / Structure Type
     # line[3] => Distance
+    #
+    # Loop through all lines
     for entry in scan_data:
         line = re.split(pattern=r"\t+", string=entry.rstrip("\t"))
         entry_id = int(line[0])
 
-        if entry_id not in counter["all"]:
-            counter["all"][entry_id] = 0
+        counter["all"][entry_id] = counter["all"].get(entry_id, 0) + 1
 
+        # Check if the entry is "on grid" or not
         if _is_on_grid(line[3]):
-            if entry_id not in counter["ongrid"]:
-                counter["ongrid"][entry_id] = 0
+            counter["ongrid"][entry_id] = counter["ongrid"].get(entry_id, 0) + 1
 
-            # If there is an Ansiblex Jump Gate, get its destination system
+            # If it is an Ansiblex Jump Gate, get its destination system
             if entry_id == 35841:
                 ansiblex_destination = _get_ansiblex_jumpgate_destination(
                     ansiblex_name=line[1]
                 )
 
-            counter["ongrid"][entry_id] += 1
             eve_ids["ongrid"].append(entry_id)
         else:
-            if entry_id not in counter["offgrid"]:
-                counter["offgrid"][entry_id] = 0
+            counter["offgrid"][entry_id] = counter["offgrid"].get(entry_id, 0) + 1
 
-            counter["offgrid"][entry_id] += 1
             eve_ids["offgrid"].append(entry_id)
 
-        counter["all"][entry_id] += 1
         eve_ids["all"].append(entry_id)
-        # dscan_lines.append([entry_id, line[1], line[2], line[3]])
 
     return ansiblex_destination, counter, eve_ids
 
@@ -321,6 +322,7 @@ def parse(scan_data: list) -> Scan:
 
     message = _("The D-Scan module is currently disabled.")
 
+    # Only parse the D-Scan when the module is enabled
     if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
         parsed_data = {}
         ansiblex_destination, counter, eve_ids = _get_scan_details(scan_data=scan_data)

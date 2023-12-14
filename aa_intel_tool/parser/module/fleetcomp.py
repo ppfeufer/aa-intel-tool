@@ -39,19 +39,21 @@ def _get_fleet_composition(pilots: dict, ships: dict) -> dict:
     :rtype:
     """
 
-    # Ships
+    # Get ship class IDs
     ship_class_ids = (
         EveEntity.objects.fetch_by_names_esi(names=ships["class"], update=True)
         .filter(category=EveEntity.CATEGORY_INVENTORY_TYPE)
         .values_list("id", flat=True)
     )
 
+    # Get ship class details
     ship_class_details = EveType.objects.bulk_get_or_create_esi(
         ids=set(ship_class_ids), include_children=True
     ).values_list("id", "name", "eve_group__id", "eve_group__name", named=True)
 
+    # Loop through ship classes
     for ship_class in ship_class_details:
-        # Ship classes
+        # Build ship class dict
         ships["class"][ship_class.name]["id"] = ship_class.id
         ships["class"][ship_class.name]["name"] = ship_class.name
         ships["class"][ship_class.name]["type_id"] = ship_class.eve_group__id
@@ -60,18 +62,21 @@ def _get_fleet_composition(pilots: dict, ships: dict) -> dict:
             type_id=ship_class.id, size=32
         )
 
-        # Ship types
+        # Build ship type dict
         ships["type"][ship_class.eve_group__name]["id"] = ship_class.eve_group__id
         ships["type"][ship_class.eve_group__name]["name"] = ship_class.eve_group__name
 
     # Pilots
     pilot_details = _get_character_info(scan_data=list(set(pilots)))
 
+    # Loop through pilots
     for pilot in pilot_details:
+        # Get ship class details for a pilot
         pilot__ship_class = ship_class_details.filter(
             name=pilots[pilot.character_name]["ship"]
         ).get()
 
+        # Build pilots dict
         pilots[pilot.character_name]["id"] = pilot.character_id
         pilots[pilot.character_name]["portrait"] = pilot.portrait_url_32
         pilots[pilot.character_name]["evewho"] = evewho.character_url(
@@ -102,9 +107,9 @@ def parse(scan_data: list) -> Scan:
 
     message = _("The fleet composition module is currently disabled.")
 
+    # Only parse fleet composition when the module is enabled
     if AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP is True:
         parsed_data = {}
-        # pilots = {"list": [], "flying": {}}
         pilots = {}
         ships = {"type": {}, "class": {}}
         lines = []
@@ -124,7 +129,6 @@ def parse(scan_data: list) -> Scan:
             if len(line) == 6:
                 line.append("")
 
-            # pilots["list"].append(line[0])
             pilots[line[0]] = {
                 "name": line[0],
                 "solarsystem": line[1],
@@ -148,6 +152,8 @@ def parse(scan_data: list) -> Scan:
         fleet_composition = _get_fleet_composition(pilots=pilots, ships=ships)
 
         participation = None
+
+        # Check if chat scan module is enabled
         if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
             participation = parse_pilots(
                 scan_data=list(set(pilots)),

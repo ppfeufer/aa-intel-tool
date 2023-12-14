@@ -55,6 +55,7 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
         if len(scan_data) != eve_characters.count():
             fetch_from_eveuniverse = True
 
+    # Fetch the character information from Eve Universe if needed
     if fetch_from_eveuniverse:
         try:
             eve_character_ids = (
@@ -112,6 +113,7 @@ def _parse_alliance_info(
     :rtype:
     """
 
+    # Build alliance info dict
     if eve_character.alliance_id is None:
         alliance_info = _get_unaffiliated_alliance_info()
     else:
@@ -152,6 +154,7 @@ def _parse_corporation_info(
         "logo": eve_character.corporation_logo_url_32,
     }
 
+    # Add eve links if requested
     if with_evelinks:
         corporation_info["dotlan"] = dotlan.corporation_url(
             name=eve_character.corporation_name
@@ -160,6 +163,7 @@ def _parse_corporation_info(
             eve_id=eve_character.corporation_id
         )
 
+    # Add alliance info if requested
     if with_alliance_info:
         corporation_info["alliance"] = _parse_alliance_info(
             eve_character=eve_character, with_evelinks=with_evelinks
@@ -209,17 +213,21 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
     corporation_info = {}
     character_info = {}
 
+    # Loop through the characters
     for eve_character in eve_characters:
         eve_character__alliance_name = "Unaffiliated"
 
+        # If the character is in an alliance, use the alliance name
         if eve_character.alliance_name is not None:
             eve_character__alliance_name = eve_character.alliance_name
 
-        if eve_character__alliance_name not in counter:
-            counter[eve_character__alliance_name] = 0
+        counter[eve_character__alliance_name] = (
+            counter.get(eve_character__alliance_name, 0) + 1
+        )
 
-        if eve_character.corporation_name not in counter:
-            counter[eve_character.corporation_name] = 0
+        counter[eve_character.corporation_name] = (
+            counter.get(eve_character.corporation_name, 0) + 1
+        )
 
         # Alliance Info
         if eve_character__alliance_name not in alliance_info:
@@ -239,12 +247,10 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
         )
 
         # Update the counter
-        counter[eve_character__alliance_name] += 1
         alliance_info[eve_character__alliance_name]["count"] = counter[
             eve_character__alliance_name
         ]
 
-        counter[eve_character.corporation_name] += 1
         corporation_info[eve_character.corporation_name]["count"] = counter[
             eve_character.corporation_name
         ]
@@ -274,12 +280,14 @@ def parse(
 
     message = _("The chat list module is currently disabled.")
 
+    # Only parse the chat scan if the module is enabled
     if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
         logger.debug(msg=f"{len(scan_data)} name(s) to work through …")
 
         pilots_in_scan = len(scan_data)
         max_allowed_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
 
+        # Check if the number of pilots in the scan exceeds the maximum allowed number
         if 0 < max_allowed_pilots < pilots_in_scan and ignore_limit is False:
             logger.debug(
                 msg=(
@@ -288,6 +296,7 @@ def parse(
                 )
             )
 
+            # Throw a tantrum
             raise ParserError(
                 message=ngettext(
                     singular=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
