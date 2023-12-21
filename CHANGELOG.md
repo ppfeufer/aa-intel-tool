@@ -37,11 +37,11 @@ Section Order:
 
 > \[!NOTE\]
 >
-> This update requires Alliance Auth v4.0.0 or higher, meaning, installing this update
-> will pull in Alliance Auth v4.0.0 or higher unsupervised if you haven't updated yet.
+> **This version needs at least Alliance Auth v4.0.0!**
 >
-> **Please make sure to update Alliance Auth to version 4.0.0 or higher before you
-> install this app to avoid any complications.**
+> Please make sure to update your Alliance Auth instance before
+> you install this version, otherwise an update to Alliance Auth will
+> be pulled in unsupervised.
 
 ### Added
 

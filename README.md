@@ -48,14 +48,6 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-> \[!NOTE\]
->
-> This app requires Alliance Auth v4.0.0 or higher, meaning, installing this app will
-> pull in Alliance Auth v4.0.0 or higher unsupervised if you haven't updated yet.
->
-> **Please make sure to update Alliance Auth to version 4.0.0 or higher before you
-> install this app to avoid any complications.**
-
 ## Overview<a name="overview"></a>
 
 ### Features<a name="features"></a>
@@ -82,18 +74,21 @@ See [Settings](#settings) section for details.
 
 ## Installation<a name="installation"></a>
 
-> **Note**
+> \[!NOTE\]
 >
-> Please make sure you meet all preconditions before you proceed:
+> **AA Intel Tool needs at least Alliance Auth v4.0.0!**
 >
-> - AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
->   already, please install it first before proceeding. (see the official
->   [Alliance Auth installation guide] for details)
-> - AA Intel Tool needs at least **Alliance Auth v3.6.1**. Please make sure to meet this
->   condition _before_ installing this app, otherwise an update to Alliance Auth will
->   be pulled in unsupervised.
-> - AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
->   before continuing.
+> Please make sure to update your Alliance Auth instance _before_ you install this
+> module or update to the latest version, otherwise an update to Alliance Auth will
+> be pulled in unsupervised.
+
+**Important**: Please make sure you meet all preconditions before you proceed:
+
+- AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
+  already, please install it first before proceeding. (see the official
+  [Alliance Auth installation guide] for details)
+- AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
+  before continuing.
 
 ### Step 1: Install the Package<a name="step-1-install-the-package"></a>
 
