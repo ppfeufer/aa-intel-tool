@@ -6,7 +6,7 @@
 {% block aa_intel_tool_header %}
     {% if not user.is_authenticated %}
         {% translate "Intel Parser" as translated_header %}
-        {% include "aa_intel_tool/partials/header/page-header.html" with header_text=translated_header %}
+        {% include "framework/header/page-header.html" with title=translated_header %}
     {% endif %}
 {% endblock %}
 
