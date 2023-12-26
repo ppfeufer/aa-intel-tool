@@ -35,8 +35,8 @@ class TestAccess(TestCase):
         )
 
         cls.html_menu = f"""
-            <li class="d-flex flex-wrap m-2 mb-0 me-0 mt-0 p-2 pb-0 pe-0 pt-0">
-                <i class="nav-link fas fa-clipboard-list fa-fw align-self-center me-3 active"></i>
+            <li class="d-flex flex-wrap m-2 p-2 pt-0 pb-0 mt-0 mb-0 me-0 pe-0">
+                <i class="nav-link fa-solid fa-clipboard-list fa-fw align-self-center me-3 active"></i>
                 <a class="nav-link flex-fill align-self-center" href="{reverse('aa_intel_tool:intel_tool_index')}">
                     Intel Parser
                 </a>
@@ -47,11 +47,9 @@ class TestAccess(TestCase):
 
         cls.header_public_page = """
             <div class="aa-intel-tool-header">
-                <header>
-                    <h1 class="text-center">
-                        Intel Parser
-                    </h1>
-                </header>
+                <h1 class="page-header text-center mb-3">
+                    Intel Parser
+                </h1>
             </div>
         """
 
