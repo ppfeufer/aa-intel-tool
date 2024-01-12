@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # erka Ekanon <M6musicT@hotmail.fr>, 2024.
+# Peter Pfeufer <info@ppfeufer.de>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-04 17:44+0200\n"
-"PO-Revision-Date: 2024-01-10 09:04+0000\n"
-"Last-Translator: erka Ekanon <M6musicT@hotmail.fr>\n"
+"PO-Revision-Date: 2024-01-12 19:05+0000\n"
+"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/fr/>\n"
 "Language: fr_FR\n"
@@ -303,11 +304,11 @@ msgid ""
 "existing translation?"
 msgstr ""
 "Voulez-vous aider à traduire cette application dans votre langue ou "
-"améliorer la traduction existante ?"
+"améliorer la traduction existante ?"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
-msgstr "Rejoignez notre équipe de traducteurs !"
+msgstr "Rejoignez notre équipe de traducteurs !"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
