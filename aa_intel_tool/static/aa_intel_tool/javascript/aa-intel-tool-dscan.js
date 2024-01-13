@@ -1,6 +1,6 @@
 /* global aaIntelToolJsL10n, aaIntelToolJsOptions, addDscanHightlight, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
 
-jQuery(document).ready(($) => {
+$(() => {
     'use strict';
 
     const elementShipClassesAllTable = $('table.aa-intel-dscan-ship-classes-all-list');

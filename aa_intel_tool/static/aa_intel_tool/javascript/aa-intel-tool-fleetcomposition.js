@@ -1,6 +1,6 @@
 /* global fetchAjaxData, aaIntelToolJsOptions, aaIntelToolJsL10n, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight */
 
-jQuery(document).ready(($) => {
+$(() => {
     'use strict';
 
     const elementShipClassesTable = $('table.aa-intel-dscan-ship-classes-ship-classes-list');

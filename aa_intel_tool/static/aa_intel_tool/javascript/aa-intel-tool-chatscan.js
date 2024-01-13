@@ -1,6 +1,6 @@
 /* global aaIntelToolJsOptions, aaIntelToolJsL10n, addChatscanHightlight, removeChatscanHightlight, changeChatscanStickyHighlight, fetchAjaxData, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
 
-jQuery(document).ready(($) => {
+$(() => {
     'use strict';
 
     /* Elements

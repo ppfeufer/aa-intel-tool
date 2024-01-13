@@ -164,7 +164,7 @@ const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
 };
 
 
-jQuery(document).ready(($) => {
+$(() => {
     const elementCopyToClipboard = $('button#btn-copy-permalink-to-clipboard');
 
 
