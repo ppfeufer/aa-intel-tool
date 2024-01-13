@@ -325,7 +325,11 @@ def parse(scan_data: list) -> Scan:
     # Only parse the D-Scan when the module is enabled
     if AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN is True:
         parsed_data = {}
-        ansiblex_destination, counter, eve_ids = _get_scan_details(scan_data=scan_data)
+        (
+            ansiblex_destination,  # pylint: disable=unused-variable
+            counter,
+            eve_ids,
+        ) = _get_scan_details(scan_data=scan_data)
 
         eve_types = EveType.objects.bulk_get_or_create_esi(
             ids=set(eve_ids["all"]), include_children=True
@@ -336,19 +340,19 @@ def parse(scan_data: list) -> Scan:
         upwell_structures = _get_upwell_structures_on_grid(
             eve_types=eve_types,
             counter=counter,
-            ansiblex_destination=ansiblex_destination,
+            # ansiblex_destination=ansiblex_destination,
         )
         deployables = _get_deployables_on_grid(eve_types=eve_types, counter=counter)
         starbases = _get_starbases_on_grid(eve_types=eve_types, counter=counter)
 
-        # Add "ships all" to parsed data when available
+        # Add "ships all" to the parsed data when available
         if ships["all"]:
             parsed_data["all"] = {
                 "section": ScanData.Section.SHIPLIST,
                 "data": ships["all"],
             }
 
-        # Add "ships on grid" to parsed data when available
+        # Add "ships on grid" to the parsed data when available
         if ships["ongrid"]:
             parsed_data["ongrid"] = {
                 "section": ScanData.Section.SHIPLIST_ON_GRID,
@@ -362,21 +366,21 @@ def parse(scan_data: list) -> Scan:
                 "data": ships["offgrid"],
             }
 
-        # Add "ship types" to parsed data when available
+        # Add "ship types" to the parsed data when available
         if ships["types"]:
             parsed_data["shiptypes"] = {
                 "section": ScanData.Section.SHIPTYPES,
                 "data": ships["types"],
             }
 
-        # Add "Upwell structures on grid" to parsed data when available
+        # Add "Upwell structures on grid" to the parsed data when available
         if upwell_structures:
             parsed_data["sructures_on_grid"] = {
                 "section": ScanData.Section.STRUCTURES_ON_GRID,
                 "data": upwell_structures,
             }
 
-        # Add "deployables on grid" to parsed data when available
+        # Add "deployables on grid" to the parsed data when available
         if deployables:
             parsed_data["deployables"] = {
                 "section": ScanData.Section.DEPLOYABLES_ON_GRID,
