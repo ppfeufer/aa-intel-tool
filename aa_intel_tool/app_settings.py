@@ -1,6 +1,8 @@
 """
 App settings
 """
+# Standard Library
+from enum import IntEnum
 
 # Alliance Auth
 from allianceauth.services.hooks import get_extension_logger
@@ -59,3 +61,22 @@ class AppSettings:
     INTELTOOL_DSCAN_GRID_SIZE = clean_setting(
         name="INTELTOOL_DSCAN_GRID_SIZE", default_value=10000, required_type=int
     )
+
+
+class AdditionalEveCategoryId(IntEnum):
+    """
+    Eve category IDs which are not covered by Eve Universe
+    Unfortunately Python doesn't allow to extend eveuniverse.constants.EveCategoryId
+    """
+
+    DEPLOYABLE = 22
+    STARBASE = 23
+    SCANNER_PROBE = 479
+
+
+class UpwellStructureId(IntEnum):
+    """
+    Upwell Structure IDs
+    """
+
+    ANSIBLEX_JUMP_GATE = 35841

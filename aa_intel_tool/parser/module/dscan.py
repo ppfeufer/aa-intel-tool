@@ -20,7 +20,11 @@ from eveuniverse.models import EveType
 
 # AA Intel Tool
 from aa_intel_tool import __title__
-from aa_intel_tool.app_settings import AppSettings
+from aa_intel_tool.app_settings import (
+    AdditionalEveCategoryId,
+    AppSettings,
+    UpwellStructureId,
+)
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.helper.data_structure import dict_to_list
 from aa_intel_tool.models import Scan, ScanData
@@ -171,7 +175,10 @@ def _get_upwell_structures_on_grid(
                 upwell_structures[eve_type[1]]["count"] = counter["ongrid"][eve_type[0]]
 
                 # If it is an Ansiblex Jump Gate, add the destination system
-                if eve_type[0] == 35841 and ansiblex_destination:
+                if (
+                    eve_type[0] == UpwellStructureId.ANSIBLEX_JUMP_GATE
+                    and ansiblex_destination
+                ):
                     upwell_structures[eve_type[1]][
                         "name"
                     ] += f" » {ansiblex_destination}"
@@ -190,11 +197,6 @@ def _get_deployables_on_grid(eve_types: QuerySet, counter: dict) -> list:
     :return:
     :rtype:
     """
-
-    # AA Intel Tool
-    from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
-        AdditionalEveCategoryId,
-    )
 
     eve_types_deployables = eve_types.filter(
         eve_group__eve_category_id__exact=AdditionalEveCategoryId.DEPLOYABLE
@@ -223,11 +225,6 @@ def _get_starbases_on_grid(eve_types: QuerySet, counter: dict) -> list:
     :return:
     :rtype:
     """
-
-    # AA Intel Tool
-    from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
-        AdditionalEveCategoryId,
-    )
 
     eve_types_starbase = eve_types.filter(
         eve_group__eve_category_id__exact=AdditionalEveCategoryId.STARBASE
@@ -294,7 +291,7 @@ def _get_scan_details(scan_data: list) -> tuple:
             counter["ongrid"][entry_id] = counter["ongrid"].get(entry_id, 0) + 1
 
             # If it is an Ansiblex Jump Gate, get its destination system
-            if entry_id == 35841:
+            if entry_id == UpwellStructureId.ANSIBLEX_JUMP_GATE:
                 ansiblex_destination = _get_ansiblex_jumpgate_destination(
                     ansiblex_name=line[1]
                 )
