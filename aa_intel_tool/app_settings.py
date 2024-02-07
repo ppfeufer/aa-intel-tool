@@ -1,6 +1,7 @@
 """
 App settings
 """
+
 # Standard Library
 from enum import IntEnum
 
