@@ -2,7 +2,6 @@
 Tests for the template tags
 """
 
-
 # Django
 from django.test import TestCase
 
