@@ -46,10 +46,6 @@
     .aa-intel-tool .aa-intel-corporation-information-wrapper,
     .aa-intel-tool .aa-intel-pilot-information-wrapper {
         display: inline-block;
-        vertical-align: top;
-    }
-
-    .aa-intel-tool .aa-intel-alliance-id-1 .aa-intel-alliance-information-wrapper {
         vertical-align: inherit;
     }
 
@@ -134,11 +130,6 @@
     .aa-intel-pilot-name-wrapper {
         overflow: hidden;
         text-overflow: ellipsis;
-    }
-
-    .aa-intel-tool td.fix-eve-image-position > span:first-child {
-        position: relative;
-        transform: translateY(25%);
     }
 
     .aa-intel-tool td.fix-eve-image-position > span.alliance-id-1 {

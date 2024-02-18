@@ -34,10 +34,10 @@ const fetchAjaxData = async (url) => { // eslint-disable-line no-unused-vars
  * @param {string} eveName
  * @param {string} imageSource
  * @param {int} imageSize
- * @returns {string} `<img class="eve-image" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" loading="lazy" width="${imageSize}" height="${imageSize}">`
+ * @returns {`<img class="eve-image rounded" data-eveid="${int}" src="${string}" alt="${string}" title="${string}" loading="lazy" width="${int}" height="${int}">`}
  */
 const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
-    return `<img class="eve-image" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" loading="lazy" width="${imageSize}" height="${imageSize}">`;
+    return `<img class="eve-image rounded" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" loading="lazy" width="${imageSize}" height="${imageSize}">`;
 };
 
 
@@ -45,7 +45,7 @@ const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
  * Get the link HTML to EveWho for a pilot
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`
+ * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
  */
 const eveWhoLinkHtml = (href) => {
     return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
@@ -56,7 +56,7 @@ const eveWhoLinkHtml = (href) => {
  * Get the link HTML to zKillboard
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`
+ * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
  */
 const zkillboardLinkHtml = (href) => {
     return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
@@ -67,7 +67,7 @@ const zkillboardLinkHtml = (href) => {
  * Get the link HTML to dotlan
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`
+ * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
  */
 const dotlanLinkHtml = (href) => {
     return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fas fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
@@ -78,7 +78,7 @@ const dotlanLinkHtml = (href) => {
  * Pilot info element in datatable
  *
  * @param {Object} pilotData
- * @returns {string}
+ * @returns {string} HTML construct for the pilot info
  */
 const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
     const html_logo = `<span class="aa-intel-pilot-avatar-wrapper">${eveImageHtml(pilotData.id, pilotData.name, pilotData.portrait)}</span>`;
@@ -94,7 +94,7 @@ const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
  *
  * @param {Object} corporationData
  * @param {boolean} logoOnly Returns only the corporation logo
- * @returns {string}
+ * @returns {string} HTML construct for the corporation info
  */
 const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-disable-line no-unused-vars
     const html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(corporationData.id, corporationData.name, corporationData.logo)}</span>`;
@@ -122,7 +122,7 @@ const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-
  *
  * @param {Object} allianceData {object}
  * @param {boolean} logoOnly Returns only the alliance logo
- * @returns {string}
+ * @returns {string} HTML construct for the alliance info
  */
 const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disable-line no-unused-vars
     if (allianceData.name === '') {
@@ -154,7 +154,7 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
  * Ship/Item info element in datatable
  *
  * @param {Object} shipData
- * @returns {string}
+ * @returns {string} HTML construct for the ship info
  */
 const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
     const html_logo = `<span class="aa-intel-ship-image-wrapper">${eveImageHtml(shipData.id, shipData.name, shipData.image)}</span>`;
