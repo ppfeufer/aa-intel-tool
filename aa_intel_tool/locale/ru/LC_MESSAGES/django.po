@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-04 17:44+0200\n"
+"POT-Creation-Date: 2024-03-15 23:24+0100\n"
 "PO-Revision-Date: 2023-10-04 15:47+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: Russian <https://weblate.ppfeufer.de/projects/"
-"alliance-auth-apps/aa-intel-tool/ru/>\n"
+"Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-"
+"apps/aa-intel-tool/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,10 +21,10 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.0.2\n"
 
-#: aa_intel_tool/__init__.py:12
+#: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:6
-#: aa_intel_tool/templates/aa_intel_tool/views/index.html:6
-#: aa_intel_tool/templates/aa_intel_tool/views/index.html:10
+#: aa_intel_tool/templates/aa_intel_tool/base.html:10
+#: aa_intel_tool/templates/aa_intel_tool/views/index.html:8
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/fleetcomp.html:5
@@ -49,16 +49,16 @@ msgstr "Исходные данные"
 msgid "Intel Parser v{__version__}"
 msgstr "Анализатор Скана v{__version__}"
 
-#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:58 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "Список чата"
 
-#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:64 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "Подскан"
 
-#: aa_intel_tool/constants.py:83 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:70 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -170,19 +170,19 @@ msgstr ""
 msgid "No data to parse …"
 msgstr "Нет данных для анализа …"
 
-#: aa_intel_tool/parser/module/chatlist.py:66
+#: aa_intel_tool/parser/module/chatlist.py:68
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr "Что-то пошло не так при загрузке информации о персонаже через ESI."
 
-#: aa_intel_tool/parser/module/chatlist.py:77
+#: aa_intel_tool/parser/module/chatlist.py:79
 msgid "Character unknown to ESI."
 msgstr "Персонаж не известен для ESI."
 
-#: aa_intel_tool/parser/module/chatlist.py:274
+#: aa_intel_tool/parser/module/chatlist.py:281
 msgid "The chat list module is currently disabled."
 msgstr "Анализатор списка чата отключен."
 
-#: aa_intel_tool/parser/module/chatlist.py:292
+#: aa_intel_tool/parser/module/chatlist.py:302
 #, python-brace-format
 msgid ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
@@ -203,11 +203,11 @@ msgstr[3] ""
 "Анализатор чата в настоящее время ограничен максимум одним пилотом в скане. "
 "Размер вашего списка превышает это ограничение."
 
-#: aa_intel_tool/parser/module/dscan.py:322
+#: aa_intel_tool/parser/module/dscan.py:320
 msgid "The D-Scan module is currently disabled."
 msgstr "Анализатор подскана отключен."
 
-#: aa_intel_tool/parser/module/fleetcomp.py:103
+#: aa_intel_tool/parser/module/fleetcomp.py:108
 msgid "The fleet composition module is currently disabled."
 msgstr "Анализатор состава флота отключен."
 
@@ -345,7 +345,15 @@ msgstr[1] "Ограничен максимум %(max_pilots)s пилотами �
 msgstr[2] "Ограничен максимум %(max_pilots)s пилотами в скане."
 msgstr[3] "Ограничен максимум одним пилотом в скане."
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:50
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:40
+msgid ""
+"Please keep in mind, parsing large amounts of data can take some time. Be "
+"patient, CCP's API is not the fastest to answer …"
+msgstr ""
+"Помните, что обработка большого объема данных может занять некоторое время. "
+"Будьте терпеливы, CCP API не самое быстрое …"
+
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:51
 msgid "Submit"
 msgstr "Отправить"
 
@@ -509,14 +517,6 @@ msgstr "Система"
 msgid "Participation details"
 msgstr "Подробности участия"
 
-#: aa_intel_tool/templates/aa_intel_tool/views/index.html:14
-msgid ""
-"Please keep in mind, parsing large amounts of data can take some time. Be "
-"patient, CCP's API is not the fastest to answer …"
-msgstr ""
-"Помните, что обработка большого объема данных может занять некоторое время. "
-"Будьте терпеливы, CCP API не самое быстрое …"
-
 #: aa_intel_tool/views/general.py:53
 msgid "The provided data could not be parsed."
 msgstr "Предоставленные данные не могут быть проанализированы."
@@ -525,6 +525,6 @@ msgstr "Предоставленные данные не могут быть п�
 msgid "(System Error) Something unexpected happened."
 msgstr "(Системная ошибка) Случилось что-то непредвиденное."
 
-#: aa_intel_tool/views/general.py:99 aa_intel_tool/views/general.py:129
+#: aa_intel_tool/views/general.py:101 aa_intel_tool/views/general.py:131
 msgid "The scan you were looking for could not be found."
 msgstr "Скан, который вы ищите, не может быть найден."
