@@ -12,6 +12,9 @@ from django.urls import reverse
 # Alliance Auth (External Libs)
 from app_utils.testing import create_fake_user
 
+# AA Intel Tool
+from aa_intel_tool.tests.utils import response_content_to_str
+
 
 class TestHooks(TestCase):
     """
@@ -32,22 +35,19 @@ class TestHooks(TestCase):
         )
 
         cls.html_menu = f"""
-            <li>
-                <a class href="{reverse('aa_intel_tool:intel_tool_index')}">
-                    <i class="fas fa-clipboard-list fa-fw"></i>
+            <li class="d-flex flex-wrap m-2 p-2 pt-0 pb-0 mt-0 mb-0 me-0 pe-0">
+                <i class="nav-link fa-solid fa-clipboard-list fa-fw align-self-center me-3 "></i>
+                <a class="nav-link flex-fill align-self-center me-auto" href="{reverse('aa_intel_tool:intel_tool_index')}">
                     Intel Parser
                 </a>
             </li>
         """
 
-        cls.header = """
+        cls.header_public_page = """
             <div class="aa-intel-tool-header">
-                <header>
-                    <h1>Intel Parser</h1>
-                </header>
-                <p>
-                    Please keep in mind, parsing large amounts of data can take some time. Be patient, CCP's API is not the fastest to answer …
-                </p>
+                <h1 class="page-header text-center mb-3">
+                    Intel Parser
+                </h1>
             </div>
         """
 
@@ -64,7 +64,10 @@ class TestHooks(TestCase):
         response = self.client.get(path=reverse(viewname="authentication:dashboard"))
 
         self.assertEqual(first=response.status_code, second=HTTPStatus.OK)
-        self.assertContains(response=response, text=self.html_menu, html=True)
+        # self.assertContains(response=response, text=self.html_menu, html=True)
+        self.assertInHTML(
+            needle=self.html_menu, haystack=response_content_to_str(response)
+        )
 
     def test_render_hook_with_public_page(self):
         """
@@ -79,4 +82,7 @@ class TestHooks(TestCase):
         )
 
         self.assertEqual(first=response.status_code, second=HTTPStatus.OK)
-        self.assertContains(response=response, text=self.header, html=True)
+        # self.assertContains(response=response, text=self.header, html=True)
+        self.assertInHTML(
+            needle=self.header_public_page, haystack=response_content_to_str(response)
+        )

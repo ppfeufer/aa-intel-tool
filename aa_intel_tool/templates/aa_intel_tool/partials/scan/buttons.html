@@ -1,20 +1,21 @@
 {% load i18n %}
 
-<div class="aa-intel-scan-page-buttons">
+<div class="aa-intel-scan-page-buttons my-4">
     <ul class="nav nav-pills clearfix">
-        <li role="presentation">
+        <li class="me-2 mb-2">
             <a href="{% url "aa_intel_tool:intel_tool_index" %}">
-                <button class="btn btn-default btn-sm">
+                <button class="btn btn-primary btn-sm">
                     {% translate "New scan" %}
                 </button>
             </a>
         </li>
 
-        <li role="presentation">
-            <button id="btn-copy-permalink-to-clipboard" class="btn btn-default btn-sm" data-clipboard-action="copy" data-clipboard-text="{{ SITE_URL }}{% url 'aa_intel_tool:intel_tool_scan' scan_hash %}">
+        <li class="me-2 mb-2">
+            <button id="btn-copy-permalink-to-clipboard" class="btn btn-secondary btn-sm" data-clipboard-action="copy" data-clipboard-text="{{ SITE_URL }}{% url 'aa_intel_tool:intel_tool_scan' scan_hash %}">
                 {% translate "Copy permalink" %}
             </button>
         </li>
     </ul>
 </div>
+
 <div class="aa-intel-copy-result"></div>

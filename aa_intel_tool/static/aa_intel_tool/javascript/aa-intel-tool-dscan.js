@@ -1,6 +1,6 @@
 /* global aaIntelToolJsL10n, aaIntelToolJsOptions, addDscanHightlight, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
 
-jQuery(document).ready(($) => {
+$(() => {
     'use strict';
 
     const elementShipClassesAllTable = $('table.aa-intel-dscan-ship-classes-all-list');
@@ -23,12 +23,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesAll).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-all').hide();
+            $('div.aa-intel-loading-table-info-all').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-all').show();
+                $('div.aa-intel-empty-table-info-all').removeClass('d-none');
             } else {
-                $('div.table-dscan-ship-classes-all').show();
+                $('div.table-dscan-ship-classes-all').removeClass('d-none');
 
                 elementShipClassesAllTable.DataTable({
                     data: tableData,
@@ -66,7 +66,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         },
                         {
@@ -114,12 +114,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesOngrid).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-ongrid').hide();
+            $('div.aa-intel-loading-table-info-ongrid').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-ongrid').show();
+                $('div.aa-intel-empty-table-info-ongrid').removeClass('d-none');
             } else {
-                $('div.table-dscan-ship-classes-ongrid').show();
+                $('div.table-dscan-ship-classes-ongrid').removeClass('d-none');
 
                 elementShipClassesOngridTable.DataTable({
                     data: tableData,
@@ -157,7 +157,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         },
                         {
@@ -205,12 +205,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesOffgrid).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-offgrid').hide();
+            $('div.aa-intel-loading-table-info-offgrid').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-offgrid').show();
+                $('div.aa-intel-empty-table-info-offgrid').removeClass('d-none');
             } else {
-                $('div.table-dscan-ship-classes-offgrid').show();
+                $('div.table-dscan-ship-classes-offgrid').removeClass('d-none');
 
                 elementShipClassesOffgridTable.DataTable({
                     data: tableData,
@@ -248,7 +248,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         },
                         {
@@ -296,12 +296,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getShipTypes).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-ship-types').hide();
+            $('div.aa-intel-loading-table-info-ship-types').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-ship-types').show();
+                $('div.aa-intel-empty-table-info-ship-types').removeClass('d-none');
             } else {
-                $('div.table-dscan-ship-types').show();
+                $('div.table-dscan-ship-types').removeClass('d-none');
 
                 elementShipTypesTable.DataTable({
                     data: tableData,
@@ -328,7 +328,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         }
                     ],
@@ -364,13 +364,13 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getStructuresOnGrid).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-upwell-structures').hide();
-            $('div#aa-intel-dscan-row-interesting-on-grid').show();
+            $('div.aa-intel-loading-table-info-upwell-structures').addClass('d-none');
+            $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-upwell-structures').show();
+                $('div.aa-intel-empty-table-info-upwell-structures').removeClass('d-none');
             } else {
-                $('div.col-aa-intel-upwell-structures').show();
+                $('div.col-aa-intel-upwell-structures').removeClass('d-none');
 
                 elementUpwellStructuresTable.DataTable({
                     data: tableData,
@@ -399,7 +399,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         }
                     ],
@@ -430,13 +430,13 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getDeployablesOnGrid).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-deployables').hide();
-            $('div#aa-intel-dscan-row-interesting-on-grid').show();
+            $('div.aa-intel-loading-table-info-deployables').addClass('d-none');
+            $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-deployables').show();
+                $('div.aa-intel-empty-table-info-deployables').removeClass('d-none');
             } else {
-                $('div.col-aa-intel-deployables').show();
+                $('div.col-aa-intel-deployables').removeClass('d-none');
 
                 elementDeployablesTable.DataTable({
                     data: tableData,
@@ -465,7 +465,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         }
                     ],
@@ -492,17 +492,17 @@ jQuery(document).ready(($) => {
 
 
     /**
-     * Datatable D-Scan Deployables on Grid
+     * Datatable D-Scan POS/POS Modules on Grid
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getStarbasesOnGrid).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-starbases').hide();
-            $('div#aa-intel-dscan-row-interesting-on-grid').show();
+            $('div.aa-intel-loading-table-info-starbases').addClass('d-none');
+            $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-starbases').show();
+                $('div.aa-intel-empty-table-info-starbases').removeClass('d-none');
             } else {
-                $('div.col-aa-intel-starbases').show();
+                $('div.col-aa-intel-starbases').removeClass('d-none');
 
                 elementStarbasesTable.DataTable({
                     data: tableData,
@@ -531,7 +531,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         }
                     ],

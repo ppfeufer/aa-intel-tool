@@ -34,10 +34,10 @@ const fetchAjaxData = async (url) => { // eslint-disable-line no-unused-vars
  * @param {string} eveName
  * @param {string} imageSource
  * @param {int} imageSize
- * @returns {string} `<img class="eve-image" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" loading="lazy" width="${imageSize}" height="${imageSize}">`
+ * @returns {`<img class="eve-image rounded" data-eveid="${int}" src="${string}" alt="${string}" title="${string}" loading="lazy" width="${int}" height="${int}">`}
  */
 const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
-    return `<img class="eve-image" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" loading="lazy" width="${imageSize}" height="${imageSize}">`;
+    return `<img class="eve-image rounded" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" loading="lazy" width="${imageSize}" height="${imageSize}">`;
 };
 
 
@@ -45,10 +45,10 @@ const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
  * Get the link HTML to EveWho for a pilot
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`
+ * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
  */
 const eveWhoLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`;
+    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
 
 
@@ -56,10 +56,10 @@ const eveWhoLinkHtml = (href) => {
  * Get the link HTML to zKillboard
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`
+ * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
  */
 const zkillboardLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`;
+    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
 
 
@@ -67,10 +67,10 @@ const zkillboardLinkHtml = (href) => {
  * Get the link HTML to dotlan
  *
  * @param {string} href
- * @returns {string} `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`
+ * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
  */
 const dotlanLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>`;
+    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
 
 
@@ -78,7 +78,7 @@ const dotlanLinkHtml = (href) => {
  * Pilot info element in datatable
  *
  * @param {Object} pilotData
- * @returns {string}
+ * @returns {string} HTML construct for the pilot info
  */
 const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
     const html_logo = `<span class="aa-intel-pilot-avatar-wrapper">${eveImageHtml(pilotData.id, pilotData.name, pilotData.portrait)}</span>`;
@@ -94,7 +94,7 @@ const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
  *
  * @param {Object} corporationData
  * @param {boolean} logoOnly Returns only the corporation logo
- * @returns {string}
+ * @returns {string} HTML construct for the corporation info
  */
 const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-disable-line no-unused-vars
     const html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(corporationData.id, corporationData.name, corporationData.logo)}</span>`;
@@ -122,7 +122,7 @@ const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-
  *
  * @param {Object} allianceData {object}
  * @param {boolean} logoOnly Returns only the alliance logo
- * @returns {string}
+ * @returns {string} HTML construct for the alliance info
  */
 const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disable-line no-unused-vars
     if (allianceData.name === '') {
@@ -154,7 +154,7 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
  * Ship/Item info element in datatable
  *
  * @param {Object} shipData
- * @returns {string}
+ * @returns {string} HTML construct for the ship info
  */
 const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
     const html_logo = `<span class="aa-intel-ship-image-wrapper">${eveImageHtml(shipData.id, shipData.name, shipData.image)}</span>`;
@@ -164,7 +164,7 @@ const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
 };
 
 
-jQuery(document).ready(($) => {
+$(() => {
     const elementCopyToClipboard = $('button#btn-copy-permalink-to-clipboard');
 
 
@@ -183,10 +183,8 @@ jQuery(document).ready(($) => {
      * @param {int} closeAfter Close Message after given time in seconds (Default: 10)
      */
     const closeMessageElement = (element, closeAfter = 10) => {
-        $(element).fadeTo(closeAfter * 1000, 500).slideUp(500, (elm) => {
-            $(elm).slideUp(500, (el) => {
-                $(el).remove();
-            });
+        $(element).fadeTo(closeAfter * 1000, 500).slideUp(500, () => {
+            $(element).remove();
         });
     };
 
@@ -199,7 +197,7 @@ jQuery(document).ready(($) => {
      */
     const showSuccess = (message, element) => {
         $(element).html(
-            `<div class="alert alert-success alert-dismissable alert-message-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>${message}</div>`
+            `<div class="alert alert-success alert-dismissible alert-message-success d-flex align-items-center fade show">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
         );
 
         closeMessageElement('.alert-message-success');
@@ -214,7 +212,7 @@ jQuery(document).ready(($) => {
      */
     const showError = (message, element) => {
         $(element).html(
-            `<div class="alert alert-danger alert-dismissable alert-message-error"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>${message}</div>`
+            `<div class="alert alert-danger alert-dismissible alert-message-error d-flex align-items-center fade show">${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
         );
 
         closeMessageElement('.alert-message-error', 9999);

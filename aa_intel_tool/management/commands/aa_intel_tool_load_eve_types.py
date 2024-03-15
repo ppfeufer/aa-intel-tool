@@ -15,7 +15,7 @@ from eveuniverse.constants import EveCategoryId
 
 # AA Intel Tool
 from aa_intel_tool import __title__
-from aa_intel_tool.constants import AdditionalEveCategoryId
+from aa_intel_tool.app_settings import AdditionalEveCategoryId
 
 logger = LoggerAddTag(logging.getLogger(__name__), __title__)
 

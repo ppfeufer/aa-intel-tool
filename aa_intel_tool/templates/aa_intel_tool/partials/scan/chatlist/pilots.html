@@ -3,17 +3,17 @@
 {% translate "Unaffiliated / No Alliance" as no_alliance %}
 
 <div class="col-md-12 col-lg-6 aa-intel-chatscan-pilots">
-    <header class="aa-intel-section-header">
+    <header class="aa-intel-section-header my-4">
         <h2 class="aa-intel-section-title">
             {% translate "Pilots breakdown" as table_title %}
             {{ table_title|title }} (<span id="aa-intel-pilots-count">0</span>)
         </h2>
     </header>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="table-local-scan table-local-scan-pilots table-aa-intel">
-                <table class="table table-sortable table-condensed aa-intel-pilot-participation-list" style="width: 100%;">
+    <div class="card card-default border-0">
+        <div class="card-body">
+            <div class="table-local-scan table-local-scan-pilots table-aa-intel d-none">
+                <table class="table table-sortable table-sm aa-intel-pilot-participation-list" style="width: 100%;">
                     <thead>
                         <tr>
                             <th>{% translate "Pilot" %}</th>
@@ -24,13 +24,13 @@
                 </table>
             </div>
 
-            <div class="aa-intel-loading-table-info aa-intel-loading-table-info-pilot-participation-list bs-callout bs-callout-info">
+            <div class="aa-intel-loading-table-info aa-intel-loading-table-info-pilot-participation-list aa-callout aa-callout-info">
                 <p>
                     {% translate "Loading data …" %}
                 </p>
             </div>
 
-            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-pilot-participation-list bs-callout bs-callout-info">
+            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-pilot-participation-list aa-callout aa-callout-info d-none">
                 <p>
                     {% translate "No data …" %}
                 </p>

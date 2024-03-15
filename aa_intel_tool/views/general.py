@@ -74,7 +74,9 @@ def index(request: WSGIRequest) -> HttpResponse:
         context = {"form": form, "app_settings": AppSettings}
 
     return render(
-        request=request, template_name="aa_intel_tool/views/index.html", context=context
+        request=request,
+        template_name="aa_intel_tool/views/index.html",
+        context=context,
     )
 
 

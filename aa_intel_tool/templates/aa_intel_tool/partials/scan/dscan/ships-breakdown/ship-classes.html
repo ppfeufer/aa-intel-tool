@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <div class="col-md-4 col-sm-6 col-lg-3 col-aa-intel col-aa-intel-dscan-ship-classes-{{ dscan_section }}">
-    <header class="aa-intel-section-header">
+    <header class="aa-intel-section-header my-4">
         <h3 class="aa-intel-section-title">
             {{ section_header|title }}
 
@@ -11,10 +11,10 @@
         </h3>
     </header>
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="table-dscan table-dscan-ship-classes table-dscan-ship-classes-{{ dscan_section }} table-aa-intel">
-                <table class="table table-condensed table-sortable aa-intel-dscan-ship-classes aa-intel-dscan-ship-classes-{{ dscan_section }}-list" style="width: 100%;">
+    <div class="card card-default border-0">
+        <div class="card-body">
+            <div class="table-dscan table-dscan-ship-classes table-dscan-ship-classes-{{ dscan_section }} table-aa-intel d-none">
+                <table class="table table-sm table-sortable aa-intel-dscan-ship-classes aa-intel-dscan-ship-classes-{{ dscan_section }}-list" style="width: 100%;">
                     <thead>
                         <tr>
                             <th>
@@ -27,13 +27,13 @@
                 </table>
             </div>
 
-            <div class="aa-intel-loading-table-info aa-intel-loading-table-info-{{ dscan_section }} bs-callout bs-callout-info">
+            <div class="aa-intel-loading-table-info aa-intel-loading-table-info-{{ dscan_section }} aa-callout aa-callout-info">
                 <p>
                     {% translate "Loading data …" %}
                 </p>
             </div>
 
-            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-{{ dscan_section }} bs-callout bs-callout-info">
+            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-{{ dscan_section }} aa-callout aa-callout-info d-none">
                 <p>
                     {% translate "No data …" %}
                 </p>

@@ -4,7 +4,7 @@
 .idea/
 .tox/
 htmlcov/
-pastebin/
+node_modules/
 
 *.log
 *.tmp
@@ -13,3 +13,4 @@ pastebin/
 __pycache__
 .coverage
 /coverage.xml
+alliance_auth.sqlite3

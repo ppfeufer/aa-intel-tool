@@ -20,7 +20,7 @@ class AaIntelToolMenuItem(MenuItemHook):  # pylint: disable=too-few-public-metho
         MenuItemHook.__init__(
             self,
             text=__title__,
-            classes="fas fa-clipboard-list fa-fw",
+            classes="fa-solid fa-clipboard-list",
             url_name="aa_intel_tool:intel_tool_index",
             navactive=["aa_intel_tool:"],
         )

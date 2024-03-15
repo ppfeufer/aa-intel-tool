@@ -4,7 +4,6 @@ App constants
 
 # Standard Library
 import re
-from enum import IntEnum
 
 # Django
 from django.utils.text import slugify
@@ -35,17 +34,6 @@ distance_units_off_grid: str = """
 distance_units = f"{distance_units_on_grid}|{distance_units_off_grid}"
 
 
-class AdditionalEveCategoryId(IntEnum):
-    """
-    Eve category IDs which are not covered by Eve Universe
-    Unfortunately Python doesn't allow to extend eveuniverse.constants.EveCategoryId
-    """
-
-    DEPLOYABLE = 22
-    STARBASE = 23
-    SCANNER_PROBE = 479
-
-
 # Pre-compiled regex patterns used throughout the app
 REGEX_PATTERN = {
     "chatlist": re.compile(pattern=r"(?im)^[a-zA-Z0-9\u0080-\uFFFF -_]{3,37}$"),
@@ -63,7 +51,6 @@ REGEX_PATTERN = {
         pattern=rf"{distance_units_off_grid}", flags=re.VERBOSE
     ),
 }
-
 
 # Supported intel types and their parameters
 SUPPORTED_INTEL_TYPES = {

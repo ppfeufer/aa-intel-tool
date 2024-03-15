@@ -1,6 +1,6 @@
 /* global fetchAjaxData, aaIntelToolJsOptions, aaIntelToolJsL10n, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight */
 
-jQuery(document).ready(($) => {
+$(() => {
     'use strict';
 
     const elementShipClassesTable = $('table.aa-intel-dscan-ship-classes-ship-classes-list');
@@ -14,12 +14,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClasses).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-ship-classes').hide();
+            $('div.aa-intel-loading-table-info-ship-classes').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-ship-classes').show();
+                $('div.aa-intel-empty-table-info-ship-classes').removeClass('d-none');
             } else {
-                $('div.table-dscan-ship-classes-ship-classes').show();
+                $('div.table-dscan-ship-classes-ship-classes').removeClass('d-none');
 
                 elementShipClassesTable.DataTable({
                     data: tableData,
@@ -57,7 +57,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         },
                         {
@@ -88,12 +88,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getShipTypes).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-ship-types').hide();
+            $('div.aa-intel-loading-table-info-ship-types').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-ship-types').show();
+                $('div.aa-intel-empty-table-info-ship-types').removeClass('d-none');
             } else {
-                $('div.table-dscan-ship-types').show();
+                $('div.table-dscan-ship-types').removeClass('d-none');
 
                 elementShipTypesTable.DataTable({
                     data: tableData,
@@ -120,7 +120,7 @@ jQuery(document).ready(($) => {
                             targets: 1,
                             width: 45,
                             createdCell: (td) => {
-                                $(td).addClass('text-right');
+                                $(td).addClass('text-end');
                             }
                         }
                     ],
@@ -145,12 +145,12 @@ jQuery(document).ready(($) => {
      */
     fetchAjaxData(aaIntelToolJsOptions.ajax.getFleetComposition).then(tableData => {
         if (tableData) {
-            $('div.aa-intel-loading-table-info-fleetcomp-pilot-ships').hide();
+            $('div.aa-intel-loading-table-info-fleetcomp-pilot-ships').addClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
-                $('div.aa-intel-empty-table-info-fleetcomp-pilot-ships').show();
+                $('div.aa-intel-empty-table-info-fleetcomp-pilot-ships').removeClass('d-none');
             } else {
-                $('div.table-fleetcomp-pilot-ships').show();
+                $('div.table-fleetcomp-pilot-ships').removeClass('d-none');
 
                 elementFleetcompositionTable.DataTable({
                     data: tableData,
@@ -175,7 +175,7 @@ jQuery(document).ready(($) => {
                         }
                     ],
                     order: [
-                        [1, 'desc']
+                        [0, 'asc']
                     ],
                     columnDefs: [
                         {

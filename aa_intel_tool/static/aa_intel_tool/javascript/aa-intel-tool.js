@@ -1,4 +1,4 @@
-jQuery(document).ready(($) => { // eslint-disable-line no-unused-vars
+$(() => {
     'use strict';
 
     /**

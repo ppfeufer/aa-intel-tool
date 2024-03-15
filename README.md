@@ -48,15 +48,6 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-> **Note**
->
-> This app makes use of a feature introduced with Alliance Auth v3.6.1, meaning,
-> installing this app will pull in Alliance Auth v3.6.1 unsupervised if you haven't
-> updated yet.
->
-> **Please make sure to update Allianceauth to version 3.6.1 or higher before you
-> install this app to avoid any complications.**
-
 ## Overview<a name="overview"></a>
 
 ### Features<a name="features"></a>
@@ -83,18 +74,23 @@ See [Settings](#settings) section for details.
 
 ## Installation<a name="installation"></a>
 
-> **Note**
+> \[!NOTE\]
 >
-> Please make sure you meet all preconditions before you proceed:
+> **AA Intel Tool >= 2.0.0 needs at least Alliance Auth v4.0.0!**
 >
-> - AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
->   already, please install it first before proceeding. (see the official
->   [Alliance Auth installation guide] for details)
-> - AA Intel Tool needs at least **Alliance Auth v3.6.1**. Please make sure to meet this
->   condition _before_ installing this app, otherwise an update to Alliance Auth will
->   be pulled in unsupervised.
-> - AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
->   before continuing.
+> Please make sure to update your Alliance Auth instance _before_ you install this
+> module or update to the latest version, otherwise an update to Alliance Auth will
+> be pulled in unsupervised.
+>
+> The last version compatible with Alliance Auth v3 is `1.2.0`.
+
+**Important**: Please make sure you meet all preconditions before you proceed:
+
+- AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
+  already, please install it first before proceeding. (see the official
+  [Alliance Auth installation guide] for details)
+- AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
+  before continuing.
 
 ### Step 1: Install the Package<a name="step-1-install-the-package"></a>
 
@@ -219,14 +215,14 @@ your `local.py`.
 > Enable the chat scan module at your own risk. This module has the potential to
 > generate a huge number of ESI calls, which CCP might not be too happy about.
 
-| Name                              | Description                                                                                                                              | Default |
-| :-------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------- | :------ |
-| INTELTOOL_ENABLE_MODULE_CHATSCAN  | Enable or disable the chat scan module.                                                                                                  | False   |
-| INTELTOOL_ENABLE_MODULE_DSCAN     | Enable or disable the d-scan module.                                                                                                     | True    |
-| INTELTOOL_ENABLE_MODULE_FLEETCOMP | Enable or disable the fleet composition module.                                                                                          | True    |
-| INTELTOOL_SCAN_RETENTION_TIME     | Set the time in days for how long the scans will be kept in the database. Set to 0 to keep scans indefinitely.                           | 30      |
-| INTELTOOL_CHATSCAN_MAX_PILOTS     | Set the limit of pilots for chat scans, since these can take quite a long time to process. Set to 0 to disable.                          | 500     |
-| INTELTOOL_DSCAN_GRID_SIZE         | Set the grid size for D-Scans. This defines <br/>the size of the grid in km in which ships and structures are considered to be "on grid" | 10000   |
+| Name                              | Description                                                                                                                             | Default |
+| :-------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| INTELTOOL_ENABLE_MODULE_CHATSCAN  | Enable or disable the chat scan module.                                                                                                 | False   |
+| INTELTOOL_ENABLE_MODULE_DSCAN     | Enable or disable the d-scan module.                                                                                                    | True    |
+| INTELTOOL_ENABLE_MODULE_FLEETCOMP | Enable or disable the fleet composition module.                                                                                         | True    |
+| INTELTOOL_SCAN_RETENTION_TIME     | Set the time in days for how long the scans will be kept in the database. Set to 0 to keep scans indefinitely.                          | 30      |
+| INTELTOOL_CHATSCAN_MAX_PILOTS     | Set the limit of pilots for chat scans, since these can take quite a long time to process. Set to 0 to disable.                         | 500     |
+| INTELTOOL_DSCAN_GRID_SIZE         | Set the grid size for D-Scans.<br/>This defines the size of the grid in km in which ships and structures are considered to be "on grid" | 10000   |
 
 > **Note**
 >
@@ -281,9 +277,9 @@ Please make sure to read the [Contribution Guidelines].\
 [code of conduct]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CODE_OF_CONDUCT.md
 [contribution guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md "Contribution Guidelines"
 [eve universe]: https://gitlab.com/ErikKalkoken/django-eveuniverse "Eve Universe"
-[image: chat scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/chat-scan.jpg "Chat Scan Module"
-[image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/d-scan.jpg "D-Scan Module"
-[image: fleet composition module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/fleet-composition.jpg "Fleet Composition Module"
+[image: chat scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/representation/chat-scan.jpg "Chat Scan Module"
+[image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/representation/d-scan.jpg "D-Scan Module"
+[image: fleet composition module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/representation/fleet-composition.jpg "Fleet Composition Module"
 [ppfeufer on ko-fi]: https://ko-fi.com/ppfeufer "Buy Me a Coffee!"
 [pre-commit.ci status]: https://results.pre-commit.ci/latest/github/ppfeufer/aa-intel-tool/master "pre-commit.ci"
 [support discord]: https://discord.gg/zmh52wnfvM "Alliance Auth Community Apps Support Discord"

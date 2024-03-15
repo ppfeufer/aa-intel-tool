@@ -12,7 +12,7 @@ from aa_intel_tool.tests.utils import render_template
 
 class TestForumVersionedStatic(TestCase):
     """
-    Tests for inteltool_versioned_static template tag
+    Tests for aa_intel_tool template tag
     """
 
     def test_versioned_static(self):
@@ -25,7 +25,7 @@ class TestForumVersionedStatic(TestCase):
 
         rendered_template = render_template(
             string=(
-                "{% load inteltool_versioned_static %}"
+                "{% load aa_intel_tool %}"
                 "{% aa_intel_tool_static 'aa_intel_tool/css/aa-intel-tool.min.css' %}"
             ),
             context=context,
