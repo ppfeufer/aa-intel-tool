@@ -1,9 +1,10 @@
-/* global fetchAjaxData, aaIntelToolJsOptions, aaIntelToolJsL10n, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight */
+/* global fetchAjaxData, aaIntelToolJsOptions, aaIntelToolJsL10n, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight, Intl */
 
 $(() => {
     'use strict';
 
     const elementShipClassesTable = $('table.aa-intel-dscan-ship-classes-ship-classes-list');
+    const elementShipClassesMass = $('span#aa-intel-dscan-ship-classes-mass');
     const elementShipTypesTable = $('table.aa-intel-dscan-ship-types-list');
     const elementFleetcompositionTable = $('table.aa-intel-fleetcomp-pilot-ships-list');
     const elementPilotsCount = $('span#aa-intel-fleet-participation-count');
@@ -66,6 +67,16 @@ $(() => {
                         }
                     ],
                     createdRow: (row, data) => {
+                        const currentMass = elementShipClassesMass.data('mass') || 0;
+                        const newMass = parseInt(currentMass) + data.mass;
+
+                        elementShipClassesMass.data('mass', newMass);
+                        elementShipClassesMass.html(
+                            new Intl.NumberFormat(
+                                aaIntelToolJsL10n.language
+                            ).format(newMass)
+                        );
+
                         $(row)
                             .attr('data-shipclass-id', data.id)
                             .attr('data-shiptype-id', data.type_id);

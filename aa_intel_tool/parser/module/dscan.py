@@ -104,6 +104,15 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
 
     ships = {"all": {}, "ongrid": {}, "offgrid": {}, "types": {}}
 
+    # Ship types
+    # Get all ship types
+    #
+    # Ship type list:
+    #   - eve_type[0] = ID
+    #   - eve_type[1] = Name
+    #   - eve_type[2] = Group ID
+    #   - eve_type[3] = Group Name
+    #   - eve_type[4] = Mass
     eve_types_ships = eve_types.filter(
         eve_group__eve_category_id__exact=EveCategoryId.SHIP
     )
@@ -115,18 +124,27 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
             if eve_type[1] not in ships["all"]:
                 ships["all"][eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
                 ships["all"][eve_type[1]]["count"] = counter["all"][eve_type[0]]
+                ships["all"][eve_type[1]]["mass"] = (
+                    eve_type[4] * counter["all"][eve_type[0]]
+                )
 
         # Info for "On Grid" table
         if eve_type[0] in counter["ongrid"]:
             if eve_type[1] not in ships["ongrid"]:
                 ships["ongrid"][eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
                 ships["ongrid"][eve_type[1]]["count"] = counter["ongrid"][eve_type[0]]
+                ships["ongrid"][eve_type[1]]["mass"] = (
+                    eve_type[4] * counter["ongrid"][eve_type[0]]
+                )
 
         # Info for "Off Grid" table
         if eve_type[0] in counter["offgrid"]:
             if eve_type[1] not in ships["offgrid"]:
                 ships["offgrid"][eve_type[1]] = _get_type_info_dict(eve_type=eve_type)
                 ships["offgrid"][eve_type[1]]["count"] = counter["offgrid"][eve_type[0]]
+                ships["offgrid"][eve_type[1]]["mass"] = (
+                    eve_type[4] * counter["offgrid"][eve_type[0]]
+                )
 
         # Info for "Ship Types" table
         if eve_type[3] not in ships["types"]:
@@ -330,7 +348,9 @@ def parse(scan_data: list) -> Scan:
 
         eve_types = EveType.objects.bulk_get_or_create_esi(
             ids=set(eve_ids["all"]), include_children=True
-        ).values_list("id", "name", "eve_group__id", "eve_group__name", named=True)
+        ).values_list(
+            "id", "name", "eve_group__id", "eve_group__name", "mass", named=True
+        )
 
         # Parse the data parts
         ships = _get_ships(eve_types=eve_types, counter=counter)
