@@ -1,14 +1,17 @@
-/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addDscanHightlight, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
+/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addDscanHightlight, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel, Intl */
 
 $(() => {
     'use strict';
 
     const elementShipClassesAllTable = $('table.aa-intel-dscan-ship-classes-all-list');
     const elementDscanCountAll = $('span#aa-intel-dscan-all-count');
+    const elementDscanMassAll = $('span#aa-intel-dscan-all-mass');
     const elementShipClassesOngridTable = $('table.aa-intel-dscan-ship-classes-ongrid-list');
     const elementDscanCountOngrid = $('span#aa-intel-dscan-ongrid-count');
+    const elementDscanMassOnGrid = $('span#aa-intel-dscan-ongrid-mass');
     const elementShipClassesOffgridTable = $('table.aa-intel-dscan-ship-classes-offgrid-list');
     const elementDscanCountOffgrid = $('span#aa-intel-dscan-offgrid-count');
+    const elementDscanMassOffGrid = $('span#aa-intel-dscan-offgrid-mass');
     const elementShipTypesTable = $('table.aa-intel-dscan-ship-types-list');
     const elementUpwellStructuresTable = $('table.aa-intel-dscan-upwell-structures-list');
     const elementDscanCountUpwellStructures = $('span#aa-intel-dscan-upwell-structures-count');
@@ -80,6 +83,16 @@ $(() => {
                         const newTotal = parseInt(currentTotal) + data.count;
 
                         elementDscanCountAll.html(newTotal);
+
+                        const currentMass = elementDscanMassAll.data('mass') || 0;
+                        const newMass = parseInt(currentMass) + data.mass;
+
+                        elementDscanMassAll.data('mass', newMass);
+                        elementDscanMassAll.html(
+                            new Intl.NumberFormat(
+                                aaIntelToolJsL10n.language
+                            ).format(newMass)
+                        );
 
                         $(row)
                             .attr('data-shipclass-id', data.id)
@@ -172,6 +185,16 @@ $(() => {
 
                         elementDscanCountOngrid.html(newTotal);
 
+                        const currentMass = elementDscanMassOnGrid.data('mass') || 0;
+                        const newMass = parseInt(currentMass) + data.mass;
+
+                        elementDscanMassOnGrid.data('mass', newMass);
+                        elementDscanMassOnGrid.html(
+                            new Intl.NumberFormat(
+                                aaIntelToolJsL10n.language
+                            ).format(newMass)
+                        );
+
                         $(row)
                             .attr('data-shipclass-id', data.id)
                             .attr('data-shiptype-id', data.type_id);
@@ -262,6 +285,16 @@ $(() => {
                         const newTotal = parseInt(currentTotal) + data.count;
 
                         elementDscanCountOffgrid.html(newTotal);
+
+                        const currentMass = elementDscanMassOffGrid.data('mass') || 0;
+                        const newMass = parseInt(currentMass) + data.mass;
+
+                        elementDscanMassOffGrid.data('mass', newMass);
+                        elementDscanMassOffGrid.html(
+                            new Intl.NumberFormat(
+                                aaIntelToolJsL10n.language
+                            ).format(newMass)
+                        );
 
                         $(row)
                             .attr('data-shipclass-id', data.id)

@@ -49,7 +49,7 @@ def _get_fleet_composition(pilots: dict, ships: dict) -> dict:
     # Get ship class details
     ship_class_details = EveType.objects.bulk_get_or_create_esi(
         ids=set(ship_class_ids), include_children=True
-    ).values_list("id", "name", "eve_group__id", "eve_group__name", named=True)
+    ).values_list("id", "name", "eve_group__id", "eve_group__name", "mass", named=True)
 
     # Loop through ship classes
     for ship_class in ship_class_details:
@@ -60,6 +60,9 @@ def _get_fleet_composition(pilots: dict, ships: dict) -> dict:
         ships["class"][ship_class.name]["type_name"] = ship_class.eve_group__name
         ships["class"][ship_class.name]["image"] = eveimageserver.type_icon_url(
             type_id=ship_class.id, size=32
+        )
+        ships["class"][ship_class.name]["mass"] = (
+            ship_class.mass * ships["class"][ship_class.name]["count"]
         )
 
         # Build ship type dict
