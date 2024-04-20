@@ -25,10 +25,10 @@ distance_units_on_grid: str = """
     |км|м   # Russian
 """
 distance_units_off_grid: str = """
-    AU     # Client in: English, Chinese, Japanese, Korean, Spanish
+    AU      # Client in: English, Chinese, Japanese, Korean, Spanish
     |UA     # Client in: French
     |AE     # German
-    |а.е.    # Russian
+    |а.е.   # Russian
 """
 
 distance_units = f"{distance_units_on_grid}|{distance_units_off_grid}"
