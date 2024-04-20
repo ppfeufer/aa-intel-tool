@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-15 23:24+0100\n"
+"POT-Creation-Date: 2024-04-20 20:58+0200\n"
 "PO-Revision-Date: 2023-10-04 15:46+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -195,19 +195,19 @@ msgstr[1] ""
 "Chatscans sind derzeit auf maximal {max_allowed_pilots} Piloten pro Scan "
 "beschränkt. Deine Pilotenliste überschreitet diese Grenze."
 
-#: aa_intel_tool/parser/module/dscan.py:320
+#: aa_intel_tool/parser/module/dscan.py:338
 msgid "The D-Scan module is currently disabled."
 msgstr "Das D-Scan-Modul ist derzeit deaktiviert."
 
-#: aa_intel_tool/parser/module/fleetcomp.py:108
+#: aa_intel_tool/parser/module/fleetcomp.py:111
 msgid "The fleet composition module is currently disabled."
 msgstr "Das Flottenzusammensetzungsmodul ist derzeit deaktiviert."
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:8
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
 msgid "Permalink successfully copied"
 msgstr "Permalink erfolgreich kopiert"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:10
 msgid ""
 "Something went wrong. Nothing copied. Maybe your browser does not support "
 "this function."
@@ -215,87 +215,87 @@ msgstr ""
 "Etwas ist schief gelaufen. Nichts kopiert. Möglicherweise unterstützt Dein "
 "Browser diese Funktion nicht."
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:14
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr "Unabhängig / Keine Allianz"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:16
 msgid "NPC Corp"
 msgstr "NPC Corp"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:19
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
 msgctxt "Decimal separator"
 msgid "."
 msgstr ","
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
 msgctxt "Thousands separator"
 msgid ","
 msgstr "."
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
 msgid "No data available in this table"
 msgstr "In dieser Tabelle sind keine Daten verfügbar"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
 msgid "Showing _END_ entries"
 msgstr "Zeige _END_ Einträge"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
 msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
 msgid "(filtered from _MAX_ total entries)"
 msgstr "(gefiltert von _MAX_ Einträgen)"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:25
 msgid "No records available"
 msgstr "Keine Datensätze vorhanden"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:26
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
 msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 msgid "Show _MENU_"
 msgstr "Zeige _MENU_"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
 msgid "Loading …"
 msgstr "Lade …"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
 msgid "Processing …"
 msgstr "Verarbeite …"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:30
 msgid "Nothing found, sorry …"
 msgstr "Nichts gefunden, tut mir leid …"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:31
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:32
 msgid "Search …"
 msgstr "Suche …"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:33
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
 msgid "First"
 msgstr "Erster"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
 msgid "Last"
 msgstr "Letzter"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
 msgid "Next"
 msgstr "Nächster"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:37
 msgid "Previous"
 msgstr "Vorheriger"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:39
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
 msgid ": activate to sort column ascending"
 msgstr ": aktivieren, um die Spalte aufsteigend zu sortieren"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
+#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:41
 msgid ": activate to sort column descending"
 msgstr ": aktivieren, um die Spalte absteigend zu sortieren"
 
@@ -394,7 +394,7 @@ msgstr "Anzahl"
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:32
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:37
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:29
 msgid "Loading data …"
@@ -404,7 +404,7 @@ msgstr "Lade Daten …"
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:38
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:43
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
 msgid "No data …"
 msgstr "Keine Daten …"
@@ -471,6 +471,10 @@ msgstr "Off Grid"
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
 msgid "Ship class"
 msgstr "Schiffsklasse"
+
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:30
+msgid "Total mass (in kg):"
+msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
