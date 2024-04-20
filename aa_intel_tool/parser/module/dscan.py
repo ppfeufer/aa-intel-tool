@@ -286,32 +286,44 @@ def _get_scan_details(scan_data: list) -> tuple:
     :rtype:
     """
 
+    # AA Intel Tool
+    from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
+        REGEX_PATTERN,
+    )
+
     ansiblex_destination = None
     counter = {"all": {}, "ongrid": {}, "offgrid": {}, "type": {}}
     eve_ids = {"all": [], "ongrid": [], "offgrid": []}
 
     # Let's split this list up
     #
-    # line[0] => Item ID
-    # line[1] => Name
-    # line[2] => Ship Class / Structure Type
-    # line[3] => Distance
+    # line.group(1) => Item ID
+    # line.group(2) => Name
+    # line.group(3) => Ship Class / Structure Type
+    # line.group(4) => Distance
     #
     # Loop through all lines
     for entry in scan_data:
-        line = re.split(pattern=r"\t+", string=entry.rstrip("\t"))
-        entry_id = int(line[0])
+        # Apparently you can copy/paste a tab into the ship name, which will cause the split by tab to fail.
+        # The regex is detecting the D-Scan correctly though. But splitting by tab might put the ship class as distance.
+        # See https://github.com/ppfeufer/aa-intel-tool/issues/82
+        #
+        # This is why we use re.search() to get the parts of the D-Scan entry, instead of re-split()
+        #
+        # Thanks CCP for sanitizing your inputs! 😂
+        line = re.search(pattern=REGEX_PATTERN["dscan"], string=entry)
+        entry_id = int(line.group(1))
 
         counter["all"][entry_id] = counter["all"].get(entry_id, 0) + 1
 
         # Check if the entry is "on grid" or not
-        if _is_on_grid(line[3]):
+        if _is_on_grid(line.group(4)):
             counter["ongrid"][entry_id] = counter["ongrid"].get(entry_id, 0) + 1
 
             # If it is an Ansiblex Jump Gate, get its destination system
             if entry_id == UpwellStructureId.ANSIBLEX_JUMP_GATE:
                 ansiblex_destination = _get_ansiblex_jumpgate_destination(
-                    ansiblex_name=line[1]
+                    ansiblex_name=line.group(2)
                 )
 
             eve_ids["ongrid"].append(entry_id)

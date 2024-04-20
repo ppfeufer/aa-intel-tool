@@ -42,6 +42,7 @@ Section Order:
 ### Fixed
 
 - zKillboard Link for corporations in scan results (Fixing #81)
+- Ship with cosmic sig-like name makes parsing fail (Fixing #82)
 
 ## \[2.0.0\] - 2024-03-16
 
