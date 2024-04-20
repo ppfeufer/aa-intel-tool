@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-20 20:58+0200\n"
+"POT-Creation-Date: 2024-04-20 22:33+0200\n"
 "PO-Revision-Date: 2024-04-17 22:13+0000\n"
 "Last-Translator: Matthias P <randomusernetcom@gmail.com>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -200,7 +200,7 @@ msgstr[1] ""
 "Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} "
 "pilotes par scan. Votre liste de pilote dépasse cette limite."
 
-#: aa_intel_tool/parser/module/dscan.py:338
+#: aa_intel_tool/parser/module/dscan.py:350
 msgid "The D-Scan module is currently disabled."
 msgstr "Le module de scanner directionnel est désactivé pour le moment."
 

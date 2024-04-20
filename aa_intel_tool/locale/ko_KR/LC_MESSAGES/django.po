@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-20 20:58+0200\n"
+"POT-Creation-Date: 2024-04-20 22:33+0200\n"
 "PO-Revision-Date: 2024-03-22 00:11+0000\n"
 "Last-Translator: Mind of the Raven <okanieva@gmail.com>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-"
@@ -194,7 +194,7 @@ msgstr[0] ""
 "챗 스캔 파일럿 수는 최대 {max_allowed_pilots}명으로 제한되어 있습니다. 입력"
 "한 파일럿 수가 제한을 초과합니다."
 
-#: aa_intel_tool/parser/module/dscan.py:338
+#: aa_intel_tool/parser/module/dscan.py:350
 msgid "The D-Scan module is currently disabled."
 msgstr "전방위 스캐너 모듈이 비활성화된 상태입니다."
 
