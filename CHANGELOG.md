@@ -39,6 +39,10 @@ Section Order:
 
 - Total mass to ship class tables
 
+### Fixed
+
+- zKillboard Link for corporations in scan results (Fixing #81)
+
 ## \[2.0.0\] - 2024-03-16
 
 > \[!NOTE\]

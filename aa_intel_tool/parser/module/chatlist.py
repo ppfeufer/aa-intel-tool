@@ -159,7 +159,7 @@ def _parse_corporation_info(
         corporation_info["dotlan"] = dotlan.corporation_url(
             name=eve_character.corporation_name
         )
-        corporation_info["zkillboard"] = zkillboard.alliance_url(
+        corporation_info["zkillboard"] = zkillboard.corporation_url(
             eve_id=eve_character.corporation_id
         )
 
