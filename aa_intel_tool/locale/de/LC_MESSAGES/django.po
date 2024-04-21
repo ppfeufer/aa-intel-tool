@@ -196,6 +196,7 @@ msgstr[1] ""
 "beschränkt. Deine Pilotenliste überschreitet diese Grenze."
 
 #: aa_intel_tool/parser/module/dscan.py:350
+#: aa_intel_tool/parser/module/dscan.py:338
 msgid "The D-Scan module is currently disabled."
 msgstr "Das D-Scan-Modul ist derzeit deaktiviert."
 
@@ -474,7 +475,7 @@ msgstr "Schiffsklasse"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:30
 msgid "Total mass (in kg):"
-msgstr ""
+msgstr "Gesamtmasse (in kg):"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
