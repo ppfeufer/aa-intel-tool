@@ -35,6 +35,8 @@ Section Order:
 ### Security
 -->
 
+## \[2.1.0\] - 2024-04-21
+
 ### Added
 
 - Total mass to ship class tables
