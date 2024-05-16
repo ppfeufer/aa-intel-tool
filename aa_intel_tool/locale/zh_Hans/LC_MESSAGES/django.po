@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-20 22:33+0200\n"
-"PO-Revision-Date: 2024-05-15 09:21+0000\n"
+"PO-Revision-Date: 2024-05-16 13:20+0000\n"
 "Last-Translator: SAM_FPS <sam_fps@163.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5.3\n"
+"X-Generator: Weblate 5.5.5\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:6
@@ -61,7 +61,7 @@ msgstr ""
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
-msgstr ""
+msgstr "舰队组成"
 
 #: aa_intel_tool/exceptions.py:34
 #, python-brace-format
@@ -329,7 +329,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:51
 msgid "Submit"
-msgstr ""
+msgstr "提交"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:56
 msgid "Working on it, please be patient …"
@@ -371,7 +371,7 @@ msgstr ""
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
-msgstr ""
+msgstr "计数"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
@@ -453,7 +453,7 @@ msgstr ""
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
 msgid "Ship class"
-msgstr ""
+msgstr "舰船等级"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:30
 msgid "Total mass (in kg):"
@@ -473,7 +473,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
-msgstr ""
+msgstr "舰队细节"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
 msgid "Pilots in fleet"
