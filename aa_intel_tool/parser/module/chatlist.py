@@ -2,9 +2,6 @@
 Chat list parser
 """
 
-# Standard Library
-from typing import Union
-
 # Django
 from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy as _
@@ -264,7 +261,7 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
 
 def parse(
     scan_data: list, safe_to_db: bool = True, ignore_limit: bool = False
-) -> Union[Scan, dict]:
+) -> Scan | dict:
     """
     Parse chat list
 
