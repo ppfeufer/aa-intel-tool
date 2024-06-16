@@ -3,7 +3,7 @@ Little helper functions to deal with Eve characters
 """
 
 # Standard Library
-from typing import Iterable
+from collections.abc import Iterable
 
 # Django
 from django.db.models import QuerySet
