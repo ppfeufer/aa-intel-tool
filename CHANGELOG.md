@@ -39,6 +39,10 @@ Section Order:
 
 - `autofocus` attribute to textarea, so the form field is focused on page load.
 
+### Changed
+
+- Refactored `fleetcomp.parser` to reduce complexity and improve readability
+
 ### Removed
 
 - Support for Python 3.8 and Python 3.9
