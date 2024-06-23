@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Added
+
+- `autofocus` attribute to textarea, so the form field is focused on page load.
+
 ### Removed
 
 - Support for Python 3.8 and Python 3.9
