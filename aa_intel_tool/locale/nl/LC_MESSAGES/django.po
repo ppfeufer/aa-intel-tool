@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-20 22:33+0200\n"
+"POT-Creation-Date: 2024-06-23 11:20+0200\n"
 "PO-Revision-Date: 2024-05-10 14:07+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Dutch <https://weblate.ppfeufer.de/projects/"
-"alliance-auth-apps/aa-intel-tool/nl/>\n"
+"Language-Team: Dutch <https://weblate.ppfeufer.de/projects/alliance-auth-"
+"apps/aa-intel-tool/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -166,19 +166,19 @@ msgstr ""
 msgid "No data to parse …"
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:68
+#: aa_intel_tool/parser/module/chatlist.py:65
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:79
+#: aa_intel_tool/parser/module/chatlist.py:76
 msgid "Character unknown to ESI."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:281
+#: aa_intel_tool/parser/module/chatlist.py:278
 msgid "The chat list module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:302
+#: aa_intel_tool/parser/module/chatlist.py:299
 #, python-brace-format
 msgid ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
@@ -193,7 +193,7 @@ msgstr[1] ""
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/fleetcomp.py:111
+#: aa_intel_tool/parser/module/fleetcomp.py:187
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
