@@ -35,6 +35,8 @@ Section Order:
 ### Security
 -->
 
+## \[2.2.0\] - 2024-06-23
+
 ### Added
 
 - `autofocus` attribute to textarea, so the form field is focused on page load
