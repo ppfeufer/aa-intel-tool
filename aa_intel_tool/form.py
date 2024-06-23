@@ -18,6 +18,7 @@ class IntelForm(forms.Form):
                 "rows": 15,
                 "input_type": "textarea",
                 "placeholder": _("Paste here …"),
+                "autofocus": "autofocus",
             }
         ),
         required=True,
