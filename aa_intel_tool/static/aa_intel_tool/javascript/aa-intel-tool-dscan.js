@@ -398,11 +398,11 @@ $(() => {
     fetchAjaxData(aaIntelToolJsOptions.ajax.getStructuresOnGrid).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-upwell-structures').addClass('d-none');
-            $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
                 $('div.aa-intel-empty-table-info-upwell-structures').removeClass('d-none');
             } else {
+                $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
                 $('div.col-aa-intel-upwell-structures').removeClass('d-none');
 
                 elementUpwellStructuresTable.DataTable({
@@ -464,11 +464,11 @@ $(() => {
     fetchAjaxData(aaIntelToolJsOptions.ajax.getDeployablesOnGrid).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-deployables').addClass('d-none');
-            $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
                 $('div.aa-intel-empty-table-info-deployables').removeClass('d-none');
             } else {
+                $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
                 $('div.col-aa-intel-deployables').removeClass('d-none');
 
                 elementDeployablesTable.DataTable({
@@ -530,11 +530,11 @@ $(() => {
     fetchAjaxData(aaIntelToolJsOptions.ajax.getStarbasesOnGrid).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-starbases').addClass('d-none');
-            $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
 
             if (Object.keys(tableData).length === 0) {
                 $('div.aa-intel-empty-table-info-starbases').removeClass('d-none');
             } else {
+                $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
                 $('div.col-aa-intel-starbases').removeClass('d-none');
 
                 elementStarbasesTable.DataTable({
