@@ -29,7 +29,7 @@ from aa_intel_tool.parser.module.chatlist import parse as parse_pilots
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
-def _get_fleet_composition(pilots: dict, ships: dict) -> dict:
+def get_fleet_composition(pilots: dict, ships: dict) -> dict:
     """
     Getting the fleet composition
 
@@ -98,9 +98,85 @@ def _get_fleet_composition(pilots: dict, ships: dict) -> dict:
     }
 
 
+def parse_line(line) -> list:
+    """
+    Parse a line from the fleet composition scan
+
+    :param line:
+    :type line:
+    :return:
+    :rtype:
+    """
+
+    # Let's split this list up
+    #
+    # line[0] => Pilot Name
+    # line[1] => System
+    # line[2] => Ship Class
+    # line[3] => Ship Type
+    # line[4] => Position in Fleet
+    # line[5] => Skills (FC - WC - SC)
+    # line[6] => Wing Name / Squad Name
+    line = re.split(pattern=r"\t+", string=line.rstrip("\t"))
+
+    if len(line) == 6:
+        line.append("")
+
+    return line
+
+
+def update_ships(ships, line) -> dict:
+    """
+    Update the ships dict
+
+    :param ships:
+    :type ships:
+    :param line:
+    :type line:
+    :return:
+    :rtype:
+    """
+
+    if line[2] not in ships["class"]:
+        ships["class"][line[2]] = {"count": 0}
+
+    if line[3] not in ships["type"]:
+        ships["type"][line[3]] = {"count": 0}
+
+    ships["class"][line[2]]["count"] += 1
+    ships["type"][line[3]]["count"] += 1
+
+    return ships
+
+
+def handle_fleet_composition_and_participation(pilots, ships) -> tuple:
+    """
+    Handle the fleet composition and participation
+
+    :param pilots:
+    :type pilots:
+    :param ships:
+    :type ships:
+    :return:
+    :rtype:
+    """
+
+    fleet_composition = get_fleet_composition(pilots=pilots, ships=ships)
+    participation = None
+
+    if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
+        participation = parse_pilots(
+            scan_data=list(set(pilots)),
+            safe_to_db=False,
+            ignore_limit=True,
+        )
+
+    return fleet_composition, participation
+
+
 def parse(scan_data: list) -> Scan:
     """
-    Parse fleet composition
+    Parse the fleet composition scan
 
     :param scan_data:
     :type scan_data:
@@ -110,27 +186,15 @@ def parse(scan_data: list) -> Scan:
 
     message = _("The fleet composition module is currently disabled.")
 
-    # Only parse fleet composition when the module is enabled
     if AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP is True:
         parsed_data = {}
         pilots = {}
         ships = {"type": {}, "class": {}}
         lines = []
 
-        # Let's split this list up
-        #
-        # line[0] => Pilot Name
-        # line[1] => System
-        # line[2] => Ship Class
-        # line[3] => Ship Type
-        # line[4] => Position in Fleet
-        # line[5] => Skills (FC - WC - SC)
-        # line[6] => Wing Name / Squad Name
+        # Loop through the scan data
         for entry in scan_data:
-            line = re.split(pattern=r"\t+", string=entry.rstrip("\t"))
-
-            if len(line) == 6:
-                line.append("")
+            line = parse_line(entry)
 
             pilots[line[0]] = {
                 "name": line[0],
@@ -138,31 +202,13 @@ def parse(scan_data: list) -> Scan:
                 "ship": line[2],
                 "ship_type": line[3],
             }
-
-            if line[2] not in ships["class"]:
-                ships["class"][line[2]] = {"count": 0}
-
-            if line[3] not in ships["type"]:
-                ships["type"][line[3]] = {"count": 0}
-
-            ships["class"][line[2]]["count"] += 1
-            ships["type"][line[3]]["count"] += 1
+            ships = update_ships(ships=ships, line=line)
 
             lines.append(line)
 
-        logger.debug(msg=pilots)
-
-        fleet_composition = _get_fleet_composition(pilots=pilots, ships=ships)
-
-        participation = None
-
-        # Check if chat scan module is enabled
-        if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
-            participation = parse_pilots(
-                scan_data=list(set(pilots)),
-                safe_to_db=False,
-                ignore_limit=True,
-            )
+        fleet_composition, participation = handle_fleet_composition_and_participation(
+            pilots=pilots, ships=ships
+        )
 
         logger.debug(msg=fleet_composition)
 
@@ -187,7 +233,7 @@ def parse(scan_data: list) -> Scan:
                 "data": fleet_composition["pilots"],
             }
 
-        # Add fleet participation data
+        # Add fleet participation data to the parsed data
         if participation:
             parsed_data.update(participation)
 
