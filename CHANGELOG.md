@@ -37,7 +37,11 @@ Section Order:
 
 ### Added
 
-- `autofocus` attribute to textarea, so the form field is focused on page load.
+- `autofocus` attribute to textarea, so the form field is focused on page load
+
+### Fixed
+
+- "Intersting on grid" section is now properly hidden when no data is available
 
 ### Changed
 
