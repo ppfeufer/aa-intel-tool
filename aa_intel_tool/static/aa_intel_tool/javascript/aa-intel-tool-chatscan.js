@@ -1,4 +1,4 @@
-/* global aaIntelToolJsOptions, aaIntelToolJsL10n, addChatscanHightlight, removeChatscanHightlight, changeChatscanStickyHighlight, fetchAjaxData, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
+/* global aaIntelToolJsOptions, aaIntelToolJsL10n, addChatscanHightlight, bootstrapTooltip, removeChatscanHightlight, changeChatscanStickyHighlight, fetchAjaxData, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
 
 $(() => {
     'use strict';
@@ -106,6 +106,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-alliance-participation-list');
     });
 
 
@@ -204,6 +207,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-corporation-participation-list');
     });
 
 
@@ -308,5 +314,8 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-pilot-participation-list');
     });
 });

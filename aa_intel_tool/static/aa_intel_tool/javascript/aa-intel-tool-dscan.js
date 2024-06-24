@@ -1,4 +1,4 @@
-/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addDscanHightlight, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
+/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addDscanHightlight, bootstrapTooltip, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
 
 $(() => {
     'use strict';
@@ -119,6 +119,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-dscan-ship-classes-all-list');
     });
 
 
@@ -220,6 +223,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-dscan-ship-classes-ongrid-list');
     });
 
 
@@ -321,6 +327,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-dscan-ship-classes-offgrid-list');
     });
 
 
@@ -455,6 +464,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-dscan-upwell-structures-list');
     });
 
 
@@ -521,6 +533,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-dscan-deployables-list');
     });
 
 
@@ -587,5 +602,8 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-dscan-starbases-list');
     });
 });
