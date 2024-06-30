@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-23 11:20+0200\n"
-"PO-Revision-Date: 2024-05-28 16:27+0000\n"
+"PO-Revision-Date: 2024-06-25 19:27+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/fr/>\n"
+"Language-Team: French <https://weblate.ppfeufer.de/projects/"
+"alliance-auth-apps/aa-intel-tool/fr/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5.5\n"
+"X-Generator: Weblate 5.6\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:6
@@ -28,7 +28,7 @@ msgstr ""
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/fleetcomp.html:5
 msgid "Intel Parser"
-msgstr ""
+msgstr "Analyseur Intel"
 
 #: aa_intel_tool/admin.py:79 aa_intel_tool/models.py:46
 msgid "Scan type"
