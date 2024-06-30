@@ -19,30 +19,29 @@ D-Scans and more in [Alliance Auth].
 
 ______________________________________________________________________
 
-<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=1 -->
+<!-- mdformat-toc start --slug=github --maxlevel=6 --minlevel=2 -->
 
-- [AA Intel Tool](#aa-intel-tool)
-  - [Overview](#overview)
-    - [Features](#features)
-    - [Screenshots](#screenshots)
-      - [Chat Scan](#chat-scan)
-      - [D-Scan](#d-scan)
-      - [Fleet Composition](#fleet-composition)
-  - [Installation](#installation)
-    - [Step 1: Install the Package](#step-1-install-the-package)
-    - [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
-      - [Add the App to Alliance Auth](#add-the-app-to-alliance-auth)
-      - [Add the Scheduled Task](#add-the-scheduled-task)
-      - [(Optional) Allow Public Views](#optional-allow-public-views)
-    - [Step 4: Preload Eve Universe Data](#step-4-preload-eve-universe-data)
-    - [Step 5: Finalizing the Installation](#step-5-finalizing-the-installation)
-    - [Step 6: Update Your Webserver Configuration](#step-6-update-your-webserver-configuration)
-      - [Apache 2](#apache-2)
-      - [Nginx](#nginx)
-  - [Settings](#settings)
-  - [Changelog](#changelog)
-  - [Translation Status](#translation-status)
-  - [Contributing](#contributing)
+- [Overview](#overview)
+  - [Features](#features)
+  - [Screenshots](#screenshots)
+    - [Chat Scan](#chat-scan)
+    - [D-Scan](#d-scan)
+    - [Fleet Composition](#fleet-composition)
+- [Installation](#installation)
+  - [Step 1: Install the Package](#step-1-install-the-package)
+  - [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
+    - [Add the App to Alliance Auth](#add-the-app-to-alliance-auth)
+    - [Add the Scheduled Task](#add-the-scheduled-task)
+    - [(Optional) Allow Public Views](#optional-allow-public-views)
+  - [Step 4: Preload Eve Universe Data](#step-4-preload-eve-universe-data)
+  - [Step 5: Finalizing the Installation](#step-5-finalizing-the-installation)
+  - [Step 6: Update Your Webserver Configuration](#step-6-update-your-webserver-configuration)
+    - [Apache 2](#apache-2)
+    - [Nginx](#nginx)
+- [Settings](#settings)
+- [Changelog](#changelog)
+- [Translation Status](#translation-status)
+- [Contributing](#contributing)
 
 <!-- mdformat-toc end -->
 

@@ -35,6 +35,16 @@ Section Order:
 ### Security
 -->
 
+## \[2.3.0\] - 2024-06-23
+
+### Added
+
+- Bootstrap tooltips to the scan result tables
+
+### Changed
+
+- French translation updated
+
 ## \[2.2.0\] - 2024-06-23
 
 ### Added
