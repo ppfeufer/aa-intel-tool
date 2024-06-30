@@ -1,4 +1,4 @@
-/* global fetchAjaxData, aaIntelToolJsOptions, aaIntelToolJsL10n, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight */
+/* global fetchAjaxData, aaIntelToolJsOptions, aaIntelToolJsL10n, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight */
 
 $(() => {
     'use strict';
@@ -91,6 +91,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-dscan-ship-classes-ship-classes-list');
     });
 
 
@@ -148,6 +151,9 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-dscan-ship-types-list');
     });
 
 
@@ -217,5 +223,8 @@ $(() => {
                 });
             }
         }
+    }).then(() => {
+        // Initialize Bootstrap tooltips
+        bootstrapTooltip('.aa-intel-fleetcomp-pilot-ships-list');
     });
 });

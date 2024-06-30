@@ -1,5 +1,6 @@
-/* global aaIntelToolJsL10n, ClipboardJS */
+/* global aaIntelToolJsL10n, ClipboardJS, bootstrap */
 
+/* jshint -W097 */
 'use strict';
 
 /**
@@ -28,16 +29,30 @@ const fetchAjaxData = async (url) => { // eslint-disable-line no-unused-vars
 
 
 /**
+ * Bootstrap tooltip
+ *
+ * @param {string} selector The selector container for the tooltip
+ */
+const bootstrapTooltip = (selector = 'body') => { // eslint-disable-line no-unused-vars
+    // Initialize Bootstrap tooltips
+    [].slice.call(document.querySelectorAll(`${selector} [data-bs-tooltip="aa-intel-tool"]`))
+        .map((tooltipTriggerEl) => {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+};
+
+
+/**
  * Get the image HTML string for an Eve portrait or logo
  *
  * @param {int} eveId
  * @param {string} eveName
  * @param {string} imageSource
  * @param {int} imageSize
- * @returns {`<img class="eve-image rounded" data-eveid="${int}" src="${string}" alt="${string}" title="${string}" loading="lazy" width="${int}" height="${int}">`}
+ * @returns {`<img class="eve-image rounded" data-eveid="${int}" src="${string}" alt="${string}" title="${string}" data-bs-tooltip="aa-intel-tool" loading="lazy" width="${int}" height="${int}">`}
  */
 const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
-    return `<img class="eve-image rounded" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" loading="lazy" width="${imageSize}" height="${imageSize}">`;
+    return `<img class="eve-image rounded" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" data-bs-tooltip="aa-intel-tool" loading="lazy" width="${imageSize}" height="${imageSize}">`;
 };
 
 
