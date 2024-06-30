@@ -53,7 +53,7 @@ Section Order:
 
 ### Fixed
 
-- "Intersting on grid" section is now properly hidden when no data is available
+- "Interesting on grid" section is now properly hidden when no data is available
 
 ### Changed
 
