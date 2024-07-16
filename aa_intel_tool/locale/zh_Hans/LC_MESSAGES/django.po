@@ -5,13 +5,14 @@
 # Faer Yili <yilifaer@gmail.com>, 2024.
 # SAM_FPS <sam_fps@163.com>, 2024.
 # Peter Pfeufer <info@ppfeufer.de>, 2024.
+# 陈康立 <amadis0814@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-23 11:20+0200\n"
-"PO-Revision-Date: 2024-06-06 14:27+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"PO-Revision-Date: 2024-07-16 04:03+0000\n"
+"Last-Translator: 陈康立 <amadis0814@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5.5\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:6
@@ -56,7 +57,7 @@ msgstr ""
 #: aa_intel_tool/constants.py:64 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
-msgstr ""
+msgstr "定向扫描"
 
 #: aa_intel_tool/constants.py:70 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
@@ -67,15 +68,15 @@ msgstr "舰队组成"
 #: aa_intel_tool/exceptions.py:34
 #, python-brace-format
 msgid "A parser error occurred » {message}"
-msgstr ""
+msgstr "发生了一个解析器错误 » {message}"
 
 #: aa_intel_tool/form.py:20
 msgid "Paste here …"
-msgstr ""
+msgstr "粘贴到这里…"
 
 #: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
 msgid "Invalid scan data"
-msgstr ""
+msgstr "不可用的扫描数据"
 
 #: aa_intel_tool/models.py:31
 msgid "Scan hash"
@@ -83,52 +84,52 @@ msgstr ""
 
 #: aa_intel_tool/models.py:37
 msgid "Creation date/time"
-msgstr ""
+msgstr "创建日期/时间"
 
 #: aa_intel_tool/models.py:40
 msgid "Scan raw data"
-msgstr ""
+msgstr "原始扫描数据"
 
 #: aa_intel_tool/models.py:55 aa_intel_tool/models.py:132
 msgid "Scan"
-msgstr ""
+msgstr "扫描"
 
 #: aa_intel_tool/models.py:56
 msgid "Scans"
-msgstr ""
+msgstr "扫描"
 
 #: aa_intel_tool/models.py:111
 msgid "Pilot list"
-msgstr ""
+msgstr "飞行员列表"
 
 #: aa_intel_tool/models.py:112
 msgid "Corporation list"
-msgstr ""
+msgstr "军团列表"
 
 #: aa_intel_tool/models.py:113
 msgid "Alliance list"
-msgstr ""
+msgstr "联盟列表"
 
 #: aa_intel_tool/models.py:114
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
-msgstr ""
+msgstr "舰船种类"
 
 #: aa_intel_tool/models.py:115
 msgid "Ship list"
-msgstr ""
+msgstr "舰船列表"
 
 #: aa_intel_tool/models.py:116
 msgid "Ship list (on grid)"
-msgstr ""
+msgstr "舰船列表（在场的）"
 
 #: aa_intel_tool/models.py:117
 msgid "Ship list (off grid)"
-msgstr ""
+msgstr "舰船列表（不在场的）"
 
 #: aa_intel_tool/models.py:118
 msgid "Structures (on grid)"
-msgstr ""
+msgstr "建筑（在场的）"
 
 #: aa_intel_tool/models.py:119
 msgid "Starbases (on grid)"
@@ -136,7 +137,7 @@ msgstr ""
 
 #: aa_intel_tool/models.py:120
 msgid "Deployables (on grid)"
-msgstr ""
+msgstr "可锚定装备（在场的）"
 
 #: aa_intel_tool/models.py:121
 msgid "Miscellaneous (on grid)"
