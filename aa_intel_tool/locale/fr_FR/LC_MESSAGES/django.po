@@ -4,13 +4,14 @@
 # erka Ekanon <M6musicT@hotmail.fr>, 2024.
 # Peter Pfeufer <info@ppfeufer.de>, 2024.
 # Matthias P <randomusernetcom@gmail.com>, 2024.
+# Houbi_Houba <paul.lacape@live.fr>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-23 11:20+0200\n"
-"PO-Revision-Date: 2024-06-25 19:27+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"PO-Revision-Date: 2024-07-10 09:28+0000\n"
+"Last-Translator: Houbi_Houba <paul.lacape@live.fr>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/"
 "alliance-auth-apps/aa-intel-tool/fr/>\n"
 "Language: fr_FR\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.6\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:6
@@ -31,8 +32,9 @@ msgid "Intel Parser"
 msgstr "Analyseur Intel"
 
 #: aa_intel_tool/admin.py:79 aa_intel_tool/models.py:46
+#, fuzzy
 msgid "Scan type"
-msgstr ""
+msgstr "Type de scan"
 
 #: aa_intel_tool/admin.py:94
 msgid "Open in a new browser tab"
