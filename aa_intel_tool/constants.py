@@ -31,7 +31,7 @@ distance_units_off_grid: str = """
     |а.е.   # Russian
 """
 
-distance_units = f"{distance_units_on_grid}|{distance_units_off_grid}"
+distance_units: str = f"{distance_units_on_grid}|{distance_units_off_grid}"
 
 
 # Pre-compiled regex patterns used throughout the app
