@@ -35,6 +35,8 @@ Section Order:
 ### Security
 -->
 
+## \[2.5.1\] - 2024-11-01
+
 ### Changed
 
 - Ukrainian translation improved
