@@ -73,7 +73,7 @@ See [Settings](#settings) section for details.
 
 ## Installation<a name="installation"></a>
 
-> \[!NOTE\]
+> [!NOTE]
 >
 > **AA Intel Tool >= 2.0.0 needs at least Alliance Auth v4.0.0!**
 >
