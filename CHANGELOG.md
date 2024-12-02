@@ -22,7 +22,7 @@ https://docs.github.com/assets/cb-41128/mw-1440/images/help/writing/alerts-rende
 > Critical content demanding immediate user attention due to potential risks.
 -->
 
-## \[In Development\] - Unreleased
+## [In Development] - Unreleased
 
 <!--
 Section Order:
@@ -35,13 +35,13 @@ Section Order:
 ### Security
 -->
 
-## \[2.5.1\] - 2024-11-01
+## [2.5.1] - 2024-11-01
 
 ### Changed
 
 - Ukrainian translation improved
 
-## \[2.5.0\] - 2024-09-16
+## [2.5.0] - 2024-09-16
 
 ### Changed
 
@@ -52,7 +52,7 @@ Section Order:
 - Japanese translation improved
 - Lingua codes updated to match Alliance Auth v4.3.1
 
-## \[2.4.0\] - 2024-07-27
+## [2.4.0] - 2024-07-27
 
 ### Added
 
@@ -63,7 +63,7 @@ Section Order:
 - Chinese translation improved
 - French translation improved
 
-## \[2.3.0\] - 2024-06-30
+## [2.3.0] - 2024-06-30
 
 ### Added
 
@@ -73,7 +73,7 @@ Section Order:
 
 - French translation updated
 
-## \[2.2.0\] - 2024-06-23
+## [2.2.0] - 2024-06-23
 
 ### Added
 
@@ -91,13 +91,13 @@ Section Order:
 
 - Support for Python 3.8 and Python 3.9
 
-## \[2.1.1\] - 2024-05-16
+## [2.1.1] - 2024-05-16
 
 ### Changed
 
 - Translations updated
 
-## \[2.1.0\] - 2024-04-21
+## [2.1.0] - 2024-04-21
 
 ### Added
 
@@ -108,9 +108,9 @@ Section Order:
 - zKillboard Link for corporations in scan results (Fixing #81)
 - Ship with cosmic sig-like name makes parsing fail (Fixing #82)
 
-## \[2.0.0\] - 2024-03-16
+## [2.0.0] - 2024-03-16
 
-> \[!NOTE\]
+> [!NOTE]
 >
 > **This version needs at least Alliance Auth v4.0.0!**
 >
@@ -135,9 +135,9 @@ Section Order:
 
 - Compatibility to Alliance Auth v3
 
-## \[2.0.0-beta.1\] - 2024-02-18
+## [2.0.0-beta.1] - 2024-02-18
 
-> \[!NOTE\]
+> [!NOTE]
 >
 > **This version needs at least Alliance Auth v4.0.0b1!**
 >
@@ -162,9 +162,9 @@ Section Order:
 
 - Compatibility to Alliance Auth v3
 
-## \[1.2.0\] - 2023-10-04
+## [1.2.0] - 2023-10-04
 
-> \[!NOTE\]
+> [!NOTE]
 >
 > **This is the last version compatible with Alliance Auth v3.**
 
@@ -180,7 +180,7 @@ Section Order:
   - Russian
   - Spanish
 
-## \[1.1.3\] - 2023-09-26
+## [1.1.3] - 2023-09-26
 
 ### Fixed
 
@@ -194,7 +194,7 @@ Section Order:
 
 - Unused Python file
 
-## \[1.1.2\] - 2023-09-14
+## [1.1.2] - 2023-09-14
 
 ### Fixed
 
@@ -206,19 +206,19 @@ Section Order:
   each section individually
 - JS compressed
 
-## \[1.1.1\] - 2023-09-02
+## [1.1.1] - 2023-09-02
 
 ### Changed
 
 - Korean translation improved
 
-## \[1.1.0\] - 2023-09-01
+## [1.1.0] - 2023-09-01
 
 ### Added
 
 - Korean translation
 
-## \[1.0.1\] - 2023-08-31
+## [1.0.1] - 2023-08-31
 
 This version is purely to push changes in the README to Pypi.
 
@@ -226,7 +226,7 @@ This version is purely to push changes in the README to Pypi.
 
 - Some little whoopsies in README
 
-## \[1.0.0\] - 2023-08-31
+## [1.0.0] - 2023-08-31
 
 **First Public Release**
 
@@ -301,7 +301,7 @@ SET FOREIGN_KEY_CHECKS=1;
 
 Once done, exit out of your MySQL server and run the update as usual.
 
-## \[0.0.1-alpha.14\] - 2023-08-28
+## [0.0.1-alpha.14] - 2023-08-28
 
 Hopefully the last one before official release …
 
@@ -314,13 +314,13 @@ Hopefully the last one before official release …
 - Moved template designation to `SUPPORTED_INTEL_TYPES` constant
 - Translation files updated
 
-## \[0.0.1-alpha.13\] - 2023-08-25
+## [0.0.1-alpha.13] - 2023-08-25
 
 ### Added
 
 - `fetchAjaxData` function introduced to our JS framework
 
-## \[0.0.1-alpha.12\] - 2023-08-24
+## [0.0.1-alpha.12] - 2023-08-24
 
 ### Added
 
@@ -333,7 +333,7 @@ Hopefully the last one before official release …
 
 - Chat list parser re-enabled. See Warning in [README.md](https://github.com/ppfeufer/aa-intel-tool/blob/master/README.md#settings) (=> Settings).
 
-## \[0.0.1-alpha.11\] - 2023-08-23
+## [0.0.1-alpha.11] - 2023-08-23
 
 ### Changed
 
@@ -341,7 +341,7 @@ Hopefully the last one before official release …
 - "On grid" detection for Upwell structures improved
 - Only show a D-Scan table when there is actual data available
 
-## \[0.0.1-alpha.10\] - 2023-08-22
+## [0.0.1-alpha.10] - 2023-08-22
 
 ### Added
 
@@ -357,7 +357,7 @@ Hopefully the last one before official release …
 
 - Nonsensical exclude clause
 
-## \[0.0.1-alpha.9\] - 2023-08-22
+## [0.0.1-alpha.9] - 2023-08-22
 
 ### Changed
 
@@ -366,13 +366,13 @@ Hopefully the last one before official release …
 - JS for highlighting in D-Scan result tables improved
 - Sticky highlight in D-Scan tables removed for the time being for being faulty
 
-## \[0.0.1-alpha.8\] - 2023-08-15
+## [0.0.1-alpha.8] - 2023-08-15
 
 ### Changed
 
 - Hard disabling the chat list parser for now
 
-## \[0.0.1-alpha.7\] - 2023-08-13
+## [0.0.1-alpha.7] - 2023-08-13
 
 ### Fixed
 
@@ -384,7 +384,7 @@ Hopefully the last one before official release …
 - Order admin list by creation date descending
 - Reduced the size of the saved jSon data
 
-## \[0.0.1-alpha.6\] - 2023-08-12
+## [0.0.1-alpha.6] - 2023-08-12
 
 ### Changed
 
@@ -392,7 +392,7 @@ Hopefully the last one before official release …
 - Modal verbose names
 - Admin descriptions are now translatable
 
-## \[0.0.1-alpha.5\] - 2023-08-12
+## [0.0.1-alpha.5] - 2023-08-12
 
 ### Fixed
 
@@ -403,7 +403,7 @@ Hopefully the last one before official release …
 - Use the `EveCharacter` model functions to generate character portraits and alliance-
   and corp logos
 
-## \[0.0.1-alpha.4\] - 2023-08-11
+## [0.0.1-alpha.4] - 2023-08-11
 
 ### Changed
 
@@ -413,20 +413,20 @@ Hopefully the last one before official release …
 - pre-commit config cleaned up
 - Pre-load command renamed
 
-## \[0.0.1-alpha.3\] - 2023-08-11
+## [0.0.1-alpha.3] - 2023-08-11
 
 ### Changed
 
 - Raise exceptions instead of returning `None` for our parser
 - Deactivate no yet implemented module (fleet composition) by default
 
-## \[0.0.1-alpha.2\] - 2023-08-10
+## [0.0.1-alpha.2] - 2023-08-10
 
 ### Added
 
 - Command to pre-load Eve data
 
-## \[0.0.1-alpha.1\] - 2023-08-10
+## [0.0.1-alpha.1] - 2023-08-10
 
 ### Added
 
