@@ -6,8 +6,10 @@ App constants
 import re
 
 # Django
-from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+
+# Alliance Auth
+from esi import __version__ as esi_version
 
 # AA Intel Tool
 import aa_intel_tool.parser.module.chatlist
@@ -76,7 +78,6 @@ SUPPORTED_INTEL_TYPES = {
 
 
 # Building our user agent for ESI calls
-VERBOSE_NAME = "AA Intel Tool"
-verbose_name_slugified: str = slugify(VERBOSE_NAME, allow_unicode=True)
-github_url: str = "https://github.com/ppfeufer/aa-intel-tool"
-USER_AGENT = f"{verbose_name_slugified} v{__version__} {github_url}"
+APP_NAME = "aa-intel-tool"
+GITHUB_URL = f"https://github.com/ppfeufer/{APP_NAME}"
+USER_AGENT = f"{APP_NAME}/{__version__} ({GITHUB_URL}) via django-esi/{esi_version}"
