@@ -6,11 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2024-12-14 18:06+0100\n"
+"POT-Creation-Date: 2024-12-16 14:22+0100\n"
 "PO-Revision-Date: 2024-08-05 10:10+0000\n"
 "Last-Translator: Anata_no_Usiro <yt23542354m@gmail.com>\n"
-"Language-Team: Japanese <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/ja/>\n"
+"Language-Team: Japanese <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,16 +45,16 @@ msgstr "検証されていないデータ"
 msgid "Intel Parser v{__version__}"
 msgstr "インテル用の解析ツール v{__version__}"
 
-#: aa_intel_tool/constants.py:58 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:60 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "チャット一覧"
 
-#: aa_intel_tool/constants.py:64 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:66 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "指向性スキャン"
 
-#: aa_intel_tool/constants.py:70 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:72 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -157,8 +156,7 @@ msgid "Scan data"
 msgstr ""
 
 #: aa_intel_tool/parser/general.py:46
-msgid ""
-"No suitable parser found. Input is not a supported intel type or malformed …"
+msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
 #: aa_intel_tool/parser/general.py:80
@@ -179,12 +177,8 @@ msgstr ""
 
 #: aa_intel_tool/parser/module/chatlist.py:299
 #, python-brace-format
-msgid ""
-"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
-"per scan. Your list of pilots exceeds this limit."
-msgid_plural ""
-"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots "
-"per scan. Your list of pilots exceeds this limit."
+msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
+msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
 msgstr[0] ""
 
 #: aa_intel_tool/parser/module/dscan.py:350
@@ -195,97 +189,95 @@ msgstr ""
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
+#: aa_intel_tool/templates/aa_intel_tool/base.html:28
 msgid "Permalink successfully copied"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:10
-msgid ""
-"Something went wrong. Nothing copied. Maybe your browser does not support "
-"this function."
+#: aa_intel_tool/templates/aa_intel_tool/base.html:29
+msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
+#: aa_intel_tool/templates/aa_intel_tool/base.html:34
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:16
+#: aa_intel_tool/templates/aa_intel_tool/base.html:35
 msgid "NPC Corp"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
+#: aa_intel_tool/templates/aa_intel_tool/base.html:38
 msgctxt "Decimal separator"
 msgid "."
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
+#: aa_intel_tool/templates/aa_intel_tool/base.html:39
 msgctxt "Thousands separator"
 msgid ","
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
+#: aa_intel_tool/templates/aa_intel_tool/base.html:40
 msgid "No data available in this table"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
+#: aa_intel_tool/templates/aa_intel_tool/base.html:41
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
 msgid "Showing _END_ entries"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
+#: aa_intel_tool/templates/aa_intel_tool/base.html:42
 msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
 msgid "(filtered from _MAX_ total entries)"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:25
+#: aa_intel_tool/templates/aa_intel_tool/base.html:43
 msgid "No records available"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
+#: aa_intel_tool/templates/aa_intel_tool/base.html:45
 msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 msgid "Show _MENU_"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
+#: aa_intel_tool/templates/aa_intel_tool/base.html:46
 msgid "Loading …"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
+#: aa_intel_tool/templates/aa_intel_tool/base.html:47
 msgid "Processing …"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:30
+#: aa_intel_tool/templates/aa_intel_tool/base.html:48
 msgid "Nothing found, sorry …"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:32
+#: aa_intel_tool/templates/aa_intel_tool/base.html:50
 msgid "Search …"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
+#: aa_intel_tool/templates/aa_intel_tool/base.html:52
 msgid "First"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
+#: aa_intel_tool/templates/aa_intel_tool/base.html:53
 msgid "Last"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
+#: aa_intel_tool/templates/aa_intel_tool/base.html:54
 msgid "Next"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:37
+#: aa_intel_tool/templates/aa_intel_tool/base.html:55
 msgid "Previous"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
+#: aa_intel_tool/templates/aa_intel_tool/base.html:58
 msgid ": activate to sort column ascending"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:41
+#: aa_intel_tool/templates/aa_intel_tool/base.html:59
 msgid ": activate to sort column descending"
 msgstr ""
 
@@ -296,9 +288,7 @@ msgid_plural "Scans will be deleted after %(scan_retention_time)s days."
 msgstr[0] ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
-msgid ""
-"Do you want to help translate this app into your language or improve the "
-"existing translation?"
+msgid "Do you want to help translate this app into your language or improve the existing translation?"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
@@ -320,9 +310,7 @@ msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
 msgstr[0] ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:40
-msgid ""
-"Please keep in mind, parsing large amounts of data can take some time. Be "
-"patient, CCP's API is not the fastest to answer …"
+msgid "Please keep in mind, parsing large amounts of data can take some time. Be patient, CCP's API is not the fastest to answer …"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:51
@@ -338,8 +326,7 @@ msgid "Detecting the intel type"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:59
-msgid ""
-"Fetching potentially missing information from ESI (this might take a moment)"
+msgid "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
