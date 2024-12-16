@@ -1,5 +1,12 @@
 {% load aa_intel_tool %}
 
-<script src="{% aa_intel_tool_static 'aa_intel_tool/javascript/aa-intel-tool-scan-result-common.min.js' %}"></script>
-<script src="{% aa_intel_tool_static 'aa_intel_tool/javascript/aa-intel-tool-chatscan-highlight.min.js' %}"></script>
-<script src="{% aa_intel_tool_static 'aa_intel_tool/javascript/aa-intel-tool-chatscan.min.js' %}"></script>
+{% if not common_already_loaded %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-scan-result-common-js.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-chatscan-highlight-js.html" %}
+{% endif %}
+
+<script
+    src="{% aa_intel_tool_static 'aa_intel_tool/javascript/aa-intel-tool-chatscan.min.js' %}"
+    integrity="sha512-3w6cQGZMA6DTVxEpi7iiY6cuBw1/6A05UzW3WBO0SJfYEKxy5n758TUeQN7HcukBaHnqBBEMMT2No2+8VtnYCw=="
+    crossorigin="anonymous"
+></script>
