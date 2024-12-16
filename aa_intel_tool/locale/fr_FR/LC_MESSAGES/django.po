@@ -9,11 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2024-12-14 18:06+0100\n"
-"PO-Revision-Date: 2024-12-02 17:40+0000\n"
+"POT-Creation-Date: 2024-12-16 14:22+0100\n"
+"PO-Revision-Date: 2024-12-16 11:15+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
-"Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-"
-"apps/aa-intel-tool/fr/>\n"
+"Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/fr/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,16 +48,16 @@ msgstr "Données brute"
 msgid "Intel Parser v{__version__}"
 msgstr ""
 
-#: aa_intel_tool/constants.py:58 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:60 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "Liste de conversation"
 
-#: aa_intel_tool/constants.py:64 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:66 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "Scanner directionnel"
 
-#: aa_intel_tool/constants.py:70 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:72 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -164,8 +163,7 @@ msgid "Scan data"
 msgstr "Données du scanner"
 
 #: aa_intel_tool/parser/general.py:46
-msgid ""
-"No suitable parser found. Input is not a supported intel type or malformed …"
+msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
 #: aa_intel_tool/parser/general.py:80
@@ -174,9 +172,7 @@ msgstr ""
 
 #: aa_intel_tool/parser/module/chatlist.py:65
 msgid "Something went wrong while fetching the character information from ESI."
-msgstr ""
-"Quelque chose s'est mal passé lors de la recherche d'information sur le "
-"personnage depuis l'ESI."
+msgstr "Quelque chose s'est mal passé lors de la recherche d'information sur le personnage depuis l'ESI."
 
 #: aa_intel_tool/parser/module/chatlist.py:76
 msgid "Character unknown to ESI."
@@ -188,18 +184,10 @@ msgstr "Le module de liste de discussion est désactivé pour le moment."
 
 #: aa_intel_tool/parser/module/chatlist.py:299
 #, python-brace-format
-msgid ""
-"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
-"per scan. Your list of pilots exceeds this limit."
-msgid_plural ""
-"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots "
-"per scan. Your list of pilots exceeds this limit."
-msgstr[0] ""
-"Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} "
-"pilote par scan. Votre liste de pilote dépasse cette limite."
-msgstr[1] ""
-"Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} "
-"pilotes par scan. Votre liste de pilote dépasse cette limite."
+msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
+msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
+msgstr[0] "Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} pilote par scan. Votre liste de pilote dépasse cette limite."
+msgstr[1] "Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} pilotes par scan. Votre liste de pilote dépasse cette limite."
 
 #: aa_intel_tool/parser/module/dscan.py:350
 msgid "The D-Scan module is currently disabled."
@@ -209,100 +197,96 @@ msgstr "Le module de scanner directionnel est désactivé pour le moment."
 msgid "The fleet composition module is currently disabled."
 msgstr "Le module de composition de flotte est désactivé pour le moment."
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:9
+#: aa_intel_tool/templates/aa_intel_tool/base.html:28
 msgid "Permalink successfully copied"
 msgstr "Lien permanent copié avec succès"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:10
-msgid ""
-"Something went wrong. Nothing copied. Maybe your browser does not support "
-"this function."
-msgstr ""
-"Quelque chose s'est mal passé. Rien n'a été copié. Peut être que votre "
-"navigateur ne supporte pas cette fonction."
+#: aa_intel_tool/templates/aa_intel_tool/base.html:29
+msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
+msgstr "Quelque chose s'est mal passé. Rien n'a été copié. Peut être que votre navigateur ne supporte pas cette fonction."
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:15
+#: aa_intel_tool/templates/aa_intel_tool/base.html:34
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr "Non-Affilié / Sans alliance"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:16
+#: aa_intel_tool/templates/aa_intel_tool/base.html:35
 msgid "NPC Corp"
 msgstr "Corporation non joueur"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:20
+#: aa_intel_tool/templates/aa_intel_tool/base.html:38
 msgctxt "Decimal separator"
 msgid "."
 msgstr "."
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:21
+#: aa_intel_tool/templates/aa_intel_tool/base.html:39
 msgctxt "Thousands separator"
 msgid ","
 msgstr ","
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:22
+#: aa_intel_tool/templates/aa_intel_tool/base.html:40
 msgid "No data available in this table"
 msgstr "Aucune donnée disponible dans cette table"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:23
+#: aa_intel_tool/templates/aa_intel_tool/base.html:41
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
 msgid "Showing _END_ entries"
 msgstr "Montre les _END_ entrées"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:24
+#: aa_intel_tool/templates/aa_intel_tool/base.html:42
 #, fuzzy
 msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
 msgid "(filtered from _MAX_ total entries)"
 msgstr "(Filtré depuis _MAX_ entrées)"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:25
+#: aa_intel_tool/templates/aa_intel_tool/base.html:43
 msgid "No records available"
 msgstr "Aucun enregistrement disponible"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:27
+#: aa_intel_tool/templates/aa_intel_tool/base.html:45
 msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 msgid "Show _MENU_"
 msgstr "Montre _MENU_"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:28
+#: aa_intel_tool/templates/aa_intel_tool/base.html:46
 msgid "Loading …"
 msgstr "Chargement …"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:29
+#: aa_intel_tool/templates/aa_intel_tool/base.html:47
 msgid "Processing …"
 msgstr "Traitement …"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:30
+#: aa_intel_tool/templates/aa_intel_tool/base.html:48
 msgid "Nothing found, sorry …"
 msgstr "Rien n'a été trouvé, désolé …"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:32
+#: aa_intel_tool/templates/aa_intel_tool/base.html:50
 msgid "Search …"
 msgstr "Recherche …"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:34
+#: aa_intel_tool/templates/aa_intel_tool/base.html:52
 msgid "First"
 msgstr "Premier"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:35
+#: aa_intel_tool/templates/aa_intel_tool/base.html:53
 msgid "Last"
 msgstr "Dernier"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:36
+#: aa_intel_tool/templates/aa_intel_tool/base.html:54
 msgid "Next"
 msgstr "Suivant"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:37
+#: aa_intel_tool/templates/aa_intel_tool/base.html:55
 msgid "Previous"
 msgstr "Précèdent"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:40
+#: aa_intel_tool/templates/aa_intel_tool/base.html:58
 msgid ": activate to sort column ascending"
 msgstr ": activer pour trier les colonnes par ordre croissant"
 
-#: aa_intel_tool/templates/aa_intel_tool/bundles/aa-intel-tool-js-l10n.html:41
+#: aa_intel_tool/templates/aa_intel_tool/base.html:59
 msgid ": activate to sort column descending"
 msgstr ": activer pour trier les colonnes dans l'ordre décroissant"
 
@@ -314,12 +298,8 @@ msgstr[0] "Les scans seront supprimés après %(scan_retention_time)s jour."
 msgstr[1] "Les scans seront supprimés après %(scan_retention_time)s jours."
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
-msgid ""
-"Do you want to help translate this app into your language or improve the "
-"existing translation?"
-msgstr ""
-"Voulez-vous aider à traduire cette application dans votre langue ou "
-"améliorer la traduction existante ?"
+msgid "Do you want to help translate this app into your language or improve the existing translation?"
+msgstr "Voulez-vous aider à traduire cette application dans votre langue ou améliorer la traduction existante ?"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
@@ -341,12 +321,8 @@ msgstr[0] "Limité a un maximum de %(max_pilots)s pilote par scan."
 msgstr[1] "Limité a un maximum de %(max_pilots)s pilotes par scan."
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:40
-msgid ""
-"Please keep in mind, parsing large amounts of data can take some time. Be "
-"patient, CCP's API is not the fastest to answer …"
-msgstr ""
-"Gardez a l'esprit qu'analyser des grandes quantités de données peut prendre "
-"du temps. Soyez patient, l'api CCP n'est pas la plus rapide …"
+msgid "Please keep in mind, parsing large amounts of data can take some time. Be patient, CCP's API is not the fastest to answer …"
+msgstr "Gardez a l'esprit qu'analyser des grandes quantités de données peut prendre du temps. Soyez patient, l'api CCP n'est pas la plus rapide …"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:51
 msgid "Submit"
@@ -361,11 +337,8 @@ msgid "Detecting the intel type"
 msgstr "Détection du type de renseignement"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:59
-msgid ""
-"Fetching potentially missing information from ESI (this might take a moment)"
-msgstr ""
-"Recherche d'informations potentiellement manquantes depuis l'ESI (Cela peut "
-"prendre un moment)"
+msgid "Fetching potentially missing information from ESI (this might take a moment)"
+msgstr "Recherche d'informations potentiellement manquantes depuis l'ESI (Cela peut prendre un moment)"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
 msgid "Parsing data"
