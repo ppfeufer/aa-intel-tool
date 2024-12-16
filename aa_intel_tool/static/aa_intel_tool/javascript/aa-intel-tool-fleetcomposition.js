@@ -1,4 +1,4 @@
-/* global fetchAjaxData, aaIntelToolJsOptions, aaIntelToolJsL10n, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight */
+/* global fetchAjaxData, aaIntelToolJsSettings, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight */
 
 $(() => {
     'use strict';
@@ -13,7 +13,7 @@ $(() => {
     /**
      * Datatable Ship Classes
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClasses).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getShipClasses).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-ship-classes').addClass('d-none');
 
@@ -25,7 +25,7 @@ $(() => {
                 elementShipClassesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -73,7 +73,7 @@ $(() => {
                         elementShipClassesMass.data('mass', newMass);
                         elementShipClassesMass.html(
                             new Intl.NumberFormat(
-                                aaIntelToolJsL10n.language
+                                aaIntelToolJsSettings.language
                             ).format(newMass)
                         );
 
@@ -100,7 +100,7 @@ $(() => {
     /**
      * Datatable Ship Types
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipTypes).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getShipTypes).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-ship-types').addClass('d-none');
 
@@ -112,7 +112,7 @@ $(() => {
                 elementShipTypesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -160,7 +160,7 @@ $(() => {
     /**
      * Datatable Fleetcomp Details
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getFleetComposition).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getFleetComposition).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-fleetcomp-pilot-ships').addClass('d-none');
 
@@ -172,7 +172,7 @@ $(() => {
                 elementFleetcompositionTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +

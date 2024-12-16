@@ -1,4 +1,4 @@
-/* global aaIntelToolJsL10n, aaIntelToolJsOptions, addDscanHightlight, bootstrapTooltip, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
+/* global aaIntelToolJsSettings, addDscanHightlight, bootstrapTooltip, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
 
 $(() => {
     'use strict';
@@ -24,7 +24,7 @@ $(() => {
     /**
      * Datatable D-Scan All
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesAll).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getShipClassesAll).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-all').addClass('d-none');
 
@@ -36,7 +36,7 @@ $(() => {
                 elementShipClassesAllTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -90,7 +90,7 @@ $(() => {
                         elementDscanMassAll.data('mass', newMass);
                         elementDscanMassAll.html(
                             new Intl.NumberFormat(
-                                aaIntelToolJsL10n.language
+                                aaIntelToolJsSettings.language
                             ).format(newMass)
                         );
 
@@ -128,7 +128,7 @@ $(() => {
     /**
      * Datatable D-Scan On Grid
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesOngrid).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getShipClassesOngrid).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-ongrid').addClass('d-none');
 
@@ -140,7 +140,7 @@ $(() => {
                 elementShipClassesOngridTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -194,7 +194,7 @@ $(() => {
                         elementDscanMassOnGrid.data('mass', newMass);
                         elementDscanMassOnGrid.html(
                             new Intl.NumberFormat(
-                                aaIntelToolJsL10n.language
+                                aaIntelToolJsSettings.language
                             ).format(newMass)
                         );
 
@@ -232,7 +232,7 @@ $(() => {
     /**
      * Datatable D-Scan Off Grid
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipClassesOffgrid).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getShipClassesOffgrid).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-offgrid').addClass('d-none');
 
@@ -244,7 +244,7 @@ $(() => {
                 elementShipClassesOffgridTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -298,7 +298,7 @@ $(() => {
                         elementDscanMassOffGrid.data('mass', newMass);
                         elementDscanMassOffGrid.html(
                             new Intl.NumberFormat(
-                                aaIntelToolJsL10n.language
+                                aaIntelToolJsSettings.language
                             ).format(newMass)
                         );
 
@@ -336,7 +336,7 @@ $(() => {
     /**
      * Datatable D-Scan Ship Types
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getShipTypes).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getShipTypes).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-ship-types').addClass('d-none');
 
@@ -348,7 +348,7 @@ $(() => {
                 elementShipTypesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -404,7 +404,7 @@ $(() => {
     /**
      * Datatable D-Scan Upwell Structures on Grid
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getStructuresOnGrid).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getStructuresOnGrid).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-upwell-structures').addClass('d-none');
 
@@ -417,7 +417,7 @@ $(() => {
                 elementUpwellStructuresTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -473,7 +473,7 @@ $(() => {
     /**
      * Datatable D-Scan Deployables on Grid
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getDeployablesOnGrid).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getDeployablesOnGrid).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-deployables').addClass('d-none');
 
@@ -486,7 +486,7 @@ $(() => {
                 elementDeployablesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -542,7 +542,7 @@ $(() => {
     /**
      * Datatable D-Scan POS/POS Modules on Grid
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getStarbasesOnGrid).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getStarbasesOnGrid).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-starbases').addClass('d-none');
 
@@ -555,7 +555,7 @@ $(() => {
                 elementStarbasesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +

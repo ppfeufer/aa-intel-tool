@@ -38,6 +38,7 @@ Section Order:
 ### Changed
 
 - Set user agent according to MDN guidelines
+- Better JS options merge
 
 ## [2.5.2] - 2024-12-14
 

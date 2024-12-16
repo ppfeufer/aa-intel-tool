@@ -1,4 +1,4 @@
-/* global aaIntelToolJsL10n, ClipboardJS, bootstrap */
+/* global aaIntelToolJsSettings, ClipboardJS, bootstrap */
 
 /* jshint -W097 */
 'use strict';
@@ -117,7 +117,7 @@ const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-
     html_info += `<span class="aa-intel-corporation-links-wrapper"><small>`;
 
     if ((1000000 <= corporationData.id) && corporationData.id <= 2000000) {
-        html_info += `(${aaIntelToolJsL10n.scanData.npcCorp})`;
+        html_info += `(${aaIntelToolJsSettings.translation.scanData.npcCorp})`;
     } else {
         html_info += `${dotlanLinkHtml(corporationData.dotlan)} | ${zkillboardLinkHtml(corporationData.zkillboard)}</small></span>`;
     }
@@ -141,7 +141,7 @@ const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-
  */
 const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disable-line no-unused-vars
     if (allianceData.name === '') {
-        allianceData.name = aaIntelToolJsL10n.scanData.empty;
+        allianceData.name = aaIntelToolJsSettings.translation.scanData.empty;
     }
 
     const html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(allianceData.id, allianceData.name, allianceData.logo)}</span>`;
@@ -254,7 +254,7 @@ $(() => {
          */
         clipboardScanLink.on('success', (e) => {
             showSuccess(
-                aaIntelToolJsL10n.copyToClipboard.permalink.text.success,
+                aaIntelToolJsSettings.translation.copyToClipboard.permalink.text.success,
                 '.aa-intel-copy-result'
             );
 
@@ -267,7 +267,7 @@ $(() => {
          */
         clipboardScanLink.on('error', () => {
             showError(
-                aaIntelToolJsL10n.copyToClipboard.permalink.text.error,
+                aaIntelToolJsSettings.translation.copyToClipboard.permalink.text.error,
                 '.aa-intel-copy-result'
             );
 

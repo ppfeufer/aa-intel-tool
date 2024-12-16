@@ -1,4 +1,4 @@
-/* global aaIntelToolJsOptions, aaIntelToolJsL10n, addChatscanHightlight, bootstrapTooltip, removeChatscanHightlight, changeChatscanStickyHighlight, fetchAjaxData, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
+/* global aaIntelToolJsSettings, addChatscanHightlight, bootstrapTooltip, removeChatscanHightlight, changeChatscanStickyHighlight, fetchAjaxData, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
 
 $(() => {
     'use strict';
@@ -17,7 +17,7 @@ $(() => {
     /**
      * Datatable Alliances Breakdown
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getAllianceList).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getAllianceList).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-alliance-participation-list').addClass('d-none');
 
@@ -29,7 +29,7 @@ $(() => {
                 elementAlliancesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -115,7 +115,7 @@ $(() => {
     /**
      * Datatable Corporations Breakdown
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getCorporationList).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getCorporationList).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-corporation-participation-list').addClass('d-none');
 
@@ -127,7 +127,7 @@ $(() => {
                 elementCorporationsTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -216,7 +216,7 @@ $(() => {
     /**
      * Datatable Pilots Breakdown
      */
-    fetchAjaxData(aaIntelToolJsOptions.ajax.getPilotList).then(tableData => {
+    fetchAjaxData(aaIntelToolJsSettings.url.getPilotList).then(tableData => {
         if (tableData) {
             $('div.aa-intel-loading-table-info-pilot-participation-list').addClass('d-none');
 
@@ -228,7 +228,7 @@ $(() => {
                 elementPilotsTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsL10n.dataTables.translation,
+                    language: aaIntelToolJsSettings.translation.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +

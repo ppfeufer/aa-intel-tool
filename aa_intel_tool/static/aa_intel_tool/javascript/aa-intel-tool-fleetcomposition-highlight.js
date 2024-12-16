@@ -1,3 +1,4 @@
+/* jshint -W097 */
 'use strict';
 
 /* Highlighting similar table rows on mouse over and click for d-scans

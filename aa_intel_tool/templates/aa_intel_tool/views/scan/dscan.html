@@ -26,8 +26,8 @@
 
 {% block extra_javascript %}
     <script>
-        const aaIntelToolJsOptions = {
-            ajax: {
+        const aaIntelToolJsSettingsOverride = {
+            url: {
                 getShipClassesAll: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST.value %}',
                 getShipClassesOngrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST_ON_GRID.value %}',
                 getShipClassesOffgrid: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST_OFF_GRID.value %}',
@@ -41,6 +41,6 @@
 
     {% include "bundles/datatables-js-bs5.html" %}
     {% include "bundles/clipboard-js.html" %}
-    {% include "aa_intel_tool/bundles/aa-intel-tool-js-l10n.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-js.html" %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-dscan-js.html" %}
 {% endblock extra_javascript %}
