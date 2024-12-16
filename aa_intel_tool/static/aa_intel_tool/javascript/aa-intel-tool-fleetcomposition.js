@@ -1,4 +1,4 @@
-/* global fetchAjaxData, aaIntelToolJsSettings, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight */
+/* global fetchAjaxData, aaIntelToolJsSettings, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight, changeFleetcompositionStickyHighlight */
 
 $(() => {
     'use strict';
@@ -87,6 +87,17 @@ $(() => {
                         }).mouseleave(() => {
                             removeFleetcompositionHightlight('shipclass', $(row));
                         });
+
+                        // Sticky
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeFleetcompositionStickyHighlight('shipclass', $(row));
+                            }
+                        });
                     }
                 });
             }
@@ -146,6 +157,17 @@ $(() => {
                             addFleetcompositionHightlight('shiptype', $(row));
                         }).mouseleave(() => {
                             removeFleetcompositionHightlight('shiptype', $(row));
+                        });
+
+                        // Sticky
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeFleetcompositionStickyHighlight('shiptype', $(row));
+                            }
                         });
                     }
                 });
@@ -218,6 +240,17 @@ $(() => {
                             addFleetcompositionHightlight('shiptype', $(row));
                         }).mouseleave(() => {
                             removeFleetcompositionHightlight('shiptype', $(row));
+                        });
+
+                        // Sticky
+                        $(row).click((event) => {
+                            const target = $(event.target);
+
+                            if (target.hasClass('aa-intel-information-link')) {
+                                event.stopPropagation();
+                            } else {
+                                changeFleetcompositionStickyHighlight('shiptype', $(row));
+                            }
                         });
                     }
                 });
