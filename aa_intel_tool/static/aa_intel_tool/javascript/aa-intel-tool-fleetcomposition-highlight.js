@@ -86,6 +86,14 @@ const addFleetcompositionSticky = (by_data, table_row) => {
         elementShipClassTable
             .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
             .addClass('aa-intel-highlight-sticky');
+
+        elementShipTypeTable
+            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+            .addClass('aa-intel-highlight-sticky');
+
+        elementFleetcompTable
+            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+            .addClass('aa-intel-highlight-sticky');
     }
 
     if (by_data === 'shipclass') {
@@ -94,6 +102,10 @@ const addFleetcompositionSticky = (by_data, table_row) => {
             .addClass('aa-intel-highlight-sticky');
 
         elementShipTypeTable
+            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+            .addClass('aa-intel-highlight-sticky');
+
+        elementFleetcompTable
             .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
             .addClass('aa-intel-highlight-sticky');
     }
@@ -113,11 +125,23 @@ const removeFleetcompositionSticky = (by_data, table_row) => {
         elementShipClassTable
             .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
             .removeClass('aa-intel-highlight-sticky');
+
+        elementShipTypeTable
+            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+            .removeClass('aa-intel-highlight-sticky');
+
+        elementFleetcompTable
+            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+            .removeClass('aa-intel-highlight-sticky');
     }
 
     if (by_data === 'shipclass') {
         elementShipClassTable
             .find(`tr[data-shipclass-id="${table_row.data('shipclass-id')}"]`)
+            .removeClass('aa-intel-highlight-sticky');
+
+        elementFleetcompTable
+            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
             .removeClass('aa-intel-highlight-sticky');
 
         if (removeFleetcompositionShiptypeStickyComplete(by_data, table_row) === true) {
@@ -139,8 +163,9 @@ const changeFleetcompositionStickyHighlight = (by_data, table_row) => { // eslin
     if (
         (
             by_data === 'shiptype' && table_row.hasClass('aa-intel-highlight-sticky') === true
-            && removeFleetcompositionShiptypeStickyComplete(by_data, table_row) === true
-        ) || (by_data === 'shipclass' && table_row.hasClass('aa-intel-highlight-sticky') === true)
+            && removeFleetcompositionShiptypeStickyComplete(by_data, table_row) === true // jshint ignore:line
+        )
+        || (by_data === 'shipclass' && table_row.hasClass('aa-intel-highlight-sticky') === true) // jshint ignore:line
     ) {
         removeFleetcompositionSticky(by_data, table_row);
     } else {

@@ -42,6 +42,7 @@ Section Order:
 ### Fixed
 
 - Search field positioning in the DataTables
+- Sticky behaviour in fleet composition details tables
 
 ### Changed
 
