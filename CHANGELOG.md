@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Fixed
+
+- Search field positioning in the DataTables
+
 ### Changed
 
 - Set user agent according to MDN guidelines
