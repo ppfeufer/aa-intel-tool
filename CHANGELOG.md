@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Added
+
+- Integrity hashes for static CSS and JS files
+
 ### Fixed
 
 - Search field positioning in the DataTables
