@@ -28,8 +28,8 @@
 
 {% block extra_javascript %}
     <script>
-        const aaIntelToolJsOptions = {
-            ajax: {
+        const aaIntelToolJsSettingsOverride = {
+            url: {
                 getShipClasses: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPLIST.value %}',
                 getShipTypes: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.SHIPTYPES.value %}',
                 getFleetComposition: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.FLEETCOMPOSITION.value %}',
@@ -42,6 +42,6 @@
 
     {% include "bundles/datatables-js-bs5.html" %}
     {% include "bundles/clipboard-js.html" %}
-    {% include "aa_intel_tool/bundles/aa-intel-tool-js-l10n.html" %}
+    {% include "aa_intel_tool/bundles/aa-intel-tool-js.html" %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-fleetcomp-js.html" %}
 {% endblock extra_javascript %}
