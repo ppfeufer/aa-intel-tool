@@ -41,6 +41,7 @@ Section Order:
 
 ### Fixed
 
+- Escaping translation strings to fix potential issues with French and Italian translations
 - Search field positioning in the DataTables
 - Sticky behaviour in fleet composition details tables
 
