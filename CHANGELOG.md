@@ -35,6 +35,8 @@ Section Order:
 ### Security
 -->
 
+## [2.5.3] - 2025-01-13
+
 ### Added
 
 - Integrity hashes for static CSS and JS files
