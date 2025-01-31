@@ -57,7 +57,7 @@ class AppSettings:
     )
 
     # Set the grid size for D-Scans.
-    # This defines the size of teh grid in which ships and
+    # This defines the size of the grid in which ships and
     # structure are considered to be "on grid"
     INTELTOOL_DSCAN_GRID_SIZE = clean_setting(
         name="INTELTOOL_DSCAN_GRID_SIZE", default_value=10000, required_type=int

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.3\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-01-13 15:19+0100\n"
+"POT-Creation-Date: 2025-01-31 11:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,16 +46,16 @@ msgstr ""
 msgid "Intel Parser v{__version__}"
 msgstr ""
 
-#: aa_intel_tool/constants.py:60 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:61 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr ""
 
-#: aa_intel_tool/constants.py:66 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:67 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr ""
 
-#: aa_intel_tool/constants.py:72 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:73 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"

@@ -3,6 +3,7 @@ App constants
 """
 
 # Standard Library
+import os
 import re
 
 # Django
@@ -81,3 +82,8 @@ SUPPORTED_INTEL_TYPES = {
 APP_NAME = "aa-intel-tool"
 GITHUB_URL = f"https://github.com/ppfeufer/{APP_NAME}"
 USER_AGENT = f"{APP_NAME}/{__version__} ({GITHUB_URL}) via django-esi/{esi_version}"
+
+AA_INTEL_TOOL_BASE_DIR = os.path.join(os.path.dirname(__file__))
+AA_INTEL_TOOL_STATIC_DIR = os.path.join(
+    AA_INTEL_TOOL_BASE_DIR, "static", "aa_intel_tool"
+)
