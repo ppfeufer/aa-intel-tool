@@ -35,6 +35,8 @@ Section Order:
 ### Security
 -->
 
+## [2.6.0] - 2025-01-31
+
 ### Changed
 
 - Use `django-sri` for sri hashes
