@@ -3,11 +3,7 @@
 {% include "aa_intel_tool/bundles/aa-intel-tool-scan-result-common-js.html" %}
 {% include "aa_intel_tool/bundles/aa-intel-tool-fleetcomposition-highlight-js.html" %}
 
-<script
-    src="{% aa_intel_tool_static 'aa_intel_tool/javascript/aa-intel-tool-fleetcomposition.min.js' %}"
-    integrity="sha512-8d9YxNhilm+ZoAF05OcQc+IW4MqE/PZ9V3liLaXI92bXbEPUxuLrVmNos47u5uoqrcZ3+KAROGzicr1830G3Ig=="
-    crossorigin="anonymous"
-></script>
+{% aa_intel_tool_static "javascript/aa-intel-tool-fleetcomposition.min.js" %}
 
 {% if app_settings.INTELTOOL_ENABLE_MODULE_CHATSCAN %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-chatscan-highlight-js.html" with common_already_loaded=True %}

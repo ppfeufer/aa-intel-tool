@@ -6,7 +6,8 @@ Test the app settings in local.py
 from unittest import mock
 
 # Django
-from django.test import TestCase
+from django.conf import settings
+from django.test import TestCase, override_settings
 
 # AA Intel Tool
 from aa_intel_tool.app_settings import AppSettings
@@ -46,6 +47,7 @@ class TestAppSettings(TestCase):
 
         self.assertEqual(first=retention_time, second=expected_retention_time)
 
+    @override_settings()
     def test_chatscan_max_pilots_default(self):
         """
         Test for the default INTELTOOL_CHATSCAN_MAX_PILOTS
@@ -54,8 +56,12 @@ class TestAppSettings(TestCase):
         :rtype:
         """
 
+        del settings.INTELTOOL_CHATSCAN_MAX_PILOTS
+
         max_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
         expected_max_pilots = 500
+
+        print("max_pilots:", max_pilots)
 
         self.assertEqual(first=max_pilots, second=expected_max_pilots)
 
