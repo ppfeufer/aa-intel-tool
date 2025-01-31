@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2024-12-16 14:22+0100\n"
+"POT-Creation-Date: 2025-01-31 11:24+0100\n"
 "PO-Revision-Date: 2024-12-02 17:40+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ko/>\n"
@@ -48,16 +48,16 @@ msgstr "원본 데이터"
 msgid "Intel Parser v{__version__}"
 msgstr "인텔 파싱 v{__version__}"
 
-#: aa_intel_tool/constants.py:60 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:61 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "챗 리스트"
 
-#: aa_intel_tool/constants.py:66 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:67 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "전방위 스캐너"
 
-#: aa_intel_tool/constants.py:72 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:73 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -192,95 +192,90 @@ msgstr "전방위 스캐너 모듈이 비활성화된 상태입니다."
 msgid "The fleet composition module is currently disabled."
 msgstr "함대 구성 모듈이 비활성화된 상태입니다."
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:28
+#: aa_intel_tool/templates/aa_intel_tool/base.html:20
 msgid "Permalink successfully copied"
 msgstr "고유링크가 성공적으로 복사되었습니다"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:29
+#: aa_intel_tool/templates/aa_intel_tool/base.html:21
 msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
 msgstr "뭔가 잘못됐습니다. 복사되지 않았습니다. 브라우저가 이 기능을 지원하지 않을 수도 있습니다."
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:34
+#: aa_intel_tool/templates/aa_intel_tool/base.html:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr "얼라이언스 없음"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:35
+#: aa_intel_tool/templates/aa_intel_tool/base.html:23
 msgid "NPC Corp"
 msgstr "NPC 코퍼레이션"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:38
+#: aa_intel_tool/templates/aa_intel_tool/base.html:24
 msgctxt "Decimal separator"
 msgid "."
 msgstr "."
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:39
+#: aa_intel_tool/templates/aa_intel_tool/base.html:25
 msgctxt "Thousands separator"
 msgid ","
 msgstr ","
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:40
+#: aa_intel_tool/templates/aa_intel_tool/base.html:26
 msgid "No data available in this table"
 msgstr "테이블에 유효한 데이터가 없습니다"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:41
+#: aa_intel_tool/templates/aa_intel_tool/base.html:27
 msgctxt "Keep _END_ as it is. It will be replaced by a number."
 msgid "Showing _END_ entries"
 msgstr "_END_ 개의 결과 표시중"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:42
+#: aa_intel_tool/templates/aa_intel_tool/base.html:28
 msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
 msgid "(filtered from _MAX_ total entries)"
 msgstr "(총 _MAX_ 개의 결과 에서 필터링됨)"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:43
+#: aa_intel_tool/templates/aa_intel_tool/base.html:29
 msgid "No records available"
 msgstr "사용 가능한 레코드가 없습니다"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:45
-msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
-msgid "Show _MENU_"
-msgstr "_MENU_ 보기"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:46
+#: aa_intel_tool/templates/aa_intel_tool/base.html:30
 msgid "Loading …"
 msgstr "로딩 …"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:47
+#: aa_intel_tool/templates/aa_intel_tool/base.html:31
 msgid "Processing …"
 msgstr "처리 중 …"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:48
+#: aa_intel_tool/templates/aa_intel_tool/base.html:32
 msgid "Nothing found, sorry …"
 msgstr "아무것도 찾지 못했습니다, 죄송합니다 …"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:50
+#: aa_intel_tool/templates/aa_intel_tool/base.html:33
 msgid "Search …"
 msgstr "검색 …"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:52
+#: aa_intel_tool/templates/aa_intel_tool/base.html:34
 msgid "First"
 msgstr "첫 번째"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:53
+#: aa_intel_tool/templates/aa_intel_tool/base.html:35
 msgid "Last"
 msgstr "마지막"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:54
+#: aa_intel_tool/templates/aa_intel_tool/base.html:36
 msgid "Next"
 msgstr "다음"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:55
+#: aa_intel_tool/templates/aa_intel_tool/base.html:37
 msgid "Previous"
 msgstr "이전"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:58
+#: aa_intel_tool/templates/aa_intel_tool/base.html:38
 msgid ": activate to sort column ascending"
 msgstr ": 열 오름차순으로 정렬 활성화"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:59
+#: aa_intel_tool/templates/aa_intel_tool/base.html:39
 msgid ": activate to sort column descending"
 msgstr ": 열 내림차순으로 정렬 활성화"
 
@@ -500,3 +495,7 @@ msgstr "(성계 오류) 예측하지 못한 오류 발생."
 #: aa_intel_tool/views/general.py:101 aa_intel_tool/views/general.py:131
 msgid "The scan you were looking for could not be found."
 msgstr "요구하는 스캔을 찾을 수 없습니다."
+
+#~ msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
+#~ msgid "Show _MENU_"
+#~ msgstr "_MENU_ 보기"
