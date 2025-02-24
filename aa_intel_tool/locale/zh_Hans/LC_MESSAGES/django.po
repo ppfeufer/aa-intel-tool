@@ -4,16 +4,17 @@
 # Dehao Wu <wudehao2000@163.com>, 2024.
 # Faer Yili <yilifaer@gmail.com>, 2024.
 # SAM_FPS <sam_fps@163.com>, 2024.
-# Peter Pfeufer <info@ppfeufer.de>, 2024.
+# Peter Pfeufer <info@ppfeufer.de>, 2024, 2025.
 # 陈康立 <amadis0814@gmail.com>, 2024.
 # Chilmore <chenmo1203@gmail.com>, 2025.
+# Kelly Hsueh <kelly_hsueh@users.noreply.weblate.ppfeufer.de>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
 "POT-Creation-Date: 2025-01-31 11:24+0100\n"
-"PO-Revision-Date: 2025-01-20 06:17+0000\n"
-"Last-Translator: Chilmore <chenmo1203@gmail.com>\n"
+"PO-Revision-Date: 2025-02-18 09:17+0000\n"
+"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Chinese (Simplified Han script) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
@@ -366,7 +367,7 @@ msgstr "计数"
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:29
 msgid "Loading data …"
-msgstr ""
+msgstr "数据加载中…"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
