@@ -80,4 +80,4 @@ def aa_intel_tool_static(
             f'<script{js_type} src="{versioned_url}"{sri_string}></script>'
         )
 
-    return None
+    return None  # pragma: no cover
