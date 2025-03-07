@@ -37,6 +37,7 @@ Section Order:
 
 ### Changed
 
+- Improve templatetag code
 - Use DataTables native translations instead of our own
 
 ## [2.6.0] - 2025-01-31
