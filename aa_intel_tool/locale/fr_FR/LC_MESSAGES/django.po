@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-01-31 11:24+0100\n"
+"POT-Creation-Date: 2025-03-07 15:55+0100\n"
 "PO-Revision-Date: 2024-12-16 11:15+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/fr/>\n"
@@ -21,8 +21,8 @@ msgstr ""
 "X-Generator: Weblate 5.8.4\n"
 
 #: aa_intel_tool/__init__.py:9
-#: aa_intel_tool/templates/aa_intel_tool/base.html:6
-#: aa_intel_tool/templates/aa_intel_tool/base.html:10
+#: aa_intel_tool/templates/aa_intel_tool/base.html:7
+#: aa_intel_tool/templates/aa_intel_tool/base.html:11
 #: aa_intel_tool/templates/aa_intel_tool/views/index.html:8
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
@@ -197,93 +197,24 @@ msgstr "Le module de scanner directionnel est désactivé pour le moment."
 msgid "The fleet composition module is currently disabled."
 msgstr "Le module de composition de flotte est désactivé pour le moment."
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:20
+#: aa_intel_tool/templates/aa_intel_tool/base.html:23
 msgid "Permalink successfully copied"
 msgstr "Lien permanent copié avec succès"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:21
+#: aa_intel_tool/templates/aa_intel_tool/base.html:24
 msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
 msgstr "Quelque chose s'est mal passé. Rien n'a été copié. Peut être que votre navigateur ne supporte pas cette fonction."
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:22
+#: aa_intel_tool/templates/aa_intel_tool/base.html:25
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr "Non-Affilié / Sans alliance"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:23
+#: aa_intel_tool/templates/aa_intel_tool/base.html:26
 msgid "NPC Corp"
 msgstr "Corporation non joueur"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:24
-msgctxt "Decimal separator"
-msgid "."
-msgstr "."
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:25
-msgctxt "Thousands separator"
-msgid ","
-msgstr ","
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:26
-msgid "No data available in this table"
-msgstr "Aucune donnée disponible dans cette table"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:27
-msgctxt "Keep _END_ as it is. It will be replaced by a number."
-msgid "Showing _END_ entries"
-msgstr "Montre les _END_ entrées"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:28
-#, fuzzy
-msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
-msgid "(filtered from _MAX_ total entries)"
-msgstr "(Filtré depuis _MAX_ entrées)"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:29
-msgid "No records available"
-msgstr "Aucun enregistrement disponible"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:30
-msgid "Loading …"
-msgstr "Chargement …"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:31
-msgid "Processing …"
-msgstr "Traitement …"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:32
-msgid "Nothing found, sorry …"
-msgstr "Rien n'a été trouvé, désolé …"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:33
-msgid "Search …"
-msgstr "Recherche …"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:34
-msgid "First"
-msgstr "Premier"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:35
-msgid "Last"
-msgstr "Dernier"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:36
-msgid "Next"
-msgstr "Suivant"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:37
-msgid "Previous"
-msgstr "Précèdent"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:38
-msgid ": activate to sort column ascending"
-msgstr ": activer pour trier les colonnes par ordre croissant"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:39
-msgid ": activate to sort column descending"
-msgstr ": activer pour trier les colonnes dans l'ordre décroissant"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
 #, python-format
@@ -498,6 +429,59 @@ msgstr "(System Error) un imprévu est arrivé."
 #, fuzzy
 msgid "The scan you were looking for could not be found."
 msgstr "Les scans que vous cherchez n'ont pas été trouvés."
+
+#~ msgctxt "Decimal separator"
+#~ msgid "."
+#~ msgstr "."
+
+#~ msgctxt "Thousands separator"
+#~ msgid ","
+#~ msgstr ","
+
+#~ msgid "No data available in this table"
+#~ msgstr "Aucune donnée disponible dans cette table"
+
+#~ msgctxt "Keep _END_ as it is. It will be replaced by a number."
+#~ msgid "Showing _END_ entries"
+#~ msgstr "Montre les _END_ entrées"
+
+#, fuzzy
+#~ msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
+#~ msgid "(filtered from _MAX_ total entries)"
+#~ msgstr "(Filtré depuis _MAX_ entrées)"
+
+#~ msgid "No records available"
+#~ msgstr "Aucun enregistrement disponible"
+
+#~ msgid "Loading …"
+#~ msgstr "Chargement …"
+
+#~ msgid "Processing …"
+#~ msgstr "Traitement …"
+
+#~ msgid "Nothing found, sorry …"
+#~ msgstr "Rien n'a été trouvé, désolé …"
+
+#~ msgid "Search …"
+#~ msgstr "Recherche …"
+
+#~ msgid "First"
+#~ msgstr "Premier"
+
+#~ msgid "Last"
+#~ msgstr "Dernier"
+
+#~ msgid "Next"
+#~ msgstr "Suivant"
+
+#~ msgid "Previous"
+#~ msgstr "Précèdent"
+
+#~ msgid ": activate to sort column ascending"
+#~ msgstr ": activer pour trier les colonnes par ordre croissant"
+
+#~ msgid ": activate to sort column descending"
+#~ msgstr ": activer pour trier les colonnes dans l'ordre décroissant"
 
 #~ msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 #~ msgid "Show _MENU_"
