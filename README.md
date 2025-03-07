@@ -276,9 +276,9 @@ Please make sure to read the [Contribution Guidelines].\
 [code of conduct]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CODE_OF_CONDUCT.md
 [contribution guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md "Contribution Guidelines"
 [eve universe]: https://gitlab.com/ErikKalkoken/django-eveuniverse "Eve Universe"
-[image: chat scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/representation/chat-scan.jpg "Chat Scan Module"
-[image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/representation/d-scan.jpg "D-Scan Module"
-[image: fleet composition module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/representation/fleet-composition.jpg "Fleet Composition Module"
+[image: chat scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/presentation/chat-scan.jpg "Chat Scan Module"
+[image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/presentation/d-scan.jpg "D-Scan Module"
+[image: fleet composition module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/presentation/fleet-composition.jpg "Fleet Composition Module"
 [ppfeufer on ko-fi]: https://ko-fi.com/ppfeufer "Buy Me a Coffee!"
 [pre-commit.ci status]: https://results.pre-commit.ci/latest/github/ppfeufer/aa-intel-tool/master "pre-commit.ci"
 [support discord]: https://discord.gg/zmh52wnfvM "Alliance Auth Community Apps Support Discord"
