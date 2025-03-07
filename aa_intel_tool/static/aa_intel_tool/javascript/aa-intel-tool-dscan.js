@@ -36,7 +36,7 @@ $(() => {
                 elementShipClassesAllTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -90,7 +90,7 @@ $(() => {
                         elementDscanMassAll.data('mass', newMass);
                         elementDscanMassAll.html(
                             new Intl.NumberFormat(
-                                aaIntelToolJsSettings.language
+                                aaIntelToolJsSettings.language.django
                             ).format(newMass)
                         );
 
@@ -140,7 +140,7 @@ $(() => {
                 elementShipClassesOngridTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -194,7 +194,7 @@ $(() => {
                         elementDscanMassOnGrid.data('mass', newMass);
                         elementDscanMassOnGrid.html(
                             new Intl.NumberFormat(
-                                aaIntelToolJsSettings.language
+                                aaIntelToolJsSettings.language.django
                             ).format(newMass)
                         );
 
@@ -244,7 +244,7 @@ $(() => {
                 elementShipClassesOffgridTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -298,7 +298,7 @@ $(() => {
                         elementDscanMassOffGrid.data('mass', newMass);
                         elementDscanMassOffGrid.html(
                             new Intl.NumberFormat(
-                                aaIntelToolJsSettings.language
+                                aaIntelToolJsSettings.language.django
                             ).format(newMass)
                         );
 
@@ -348,7 +348,7 @@ $(() => {
                 elementShipTypesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -417,7 +417,7 @@ $(() => {
                 elementUpwellStructuresTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -486,7 +486,7 @@ $(() => {
                 elementDeployablesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -555,7 +555,7 @@ $(() => {
                 elementStarbasesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +

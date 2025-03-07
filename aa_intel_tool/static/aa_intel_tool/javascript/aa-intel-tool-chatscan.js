@@ -29,7 +29,7 @@ $(() => {
                 elementAlliancesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -127,7 +127,7 @@ $(() => {
                 elementCorporationsTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -228,7 +228,7 @@ $(() => {
                 elementPilotsTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +

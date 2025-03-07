@@ -25,7 +25,7 @@ $(() => {
                 elementShipClassesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -73,7 +73,7 @@ $(() => {
                         elementShipClassesMass.data('mass', newMass);
                         elementShipClassesMass.html(
                             new Intl.NumberFormat(
-                                aaIntelToolJsSettings.language
+                                aaIntelToolJsSettings.language.django
                             ).format(newMass)
                         );
 
@@ -123,7 +123,7 @@ $(() => {
                 elementShipTypesTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
@@ -194,7 +194,7 @@ $(() => {
                 elementFleetcompositionTable.DataTable({
                     data: tableData,
                     paging: false,
-                    language: aaIntelToolJsSettings.translation.dataTables,
+                    language: aaIntelToolJsSettings.language.dataTables,
                     lengthChange: false,
                     dom:
                         '<\'row\'<\'col-sm-12\'f>>' +
