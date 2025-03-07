@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-01-31 11:24+0100\n"
+"POT-Creation-Date: 2025-03-07 15:55+0100\n"
 "PO-Revision-Date: 2024-06-06 14:27+0000\n"
 "Last-Translator: Roycce_ <malyasov.roma@mail.ru>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ru/>\n"
@@ -21,8 +21,8 @@ msgstr ""
 "X-Generator: Weblate 5.5.5\n"
 
 #: aa_intel_tool/__init__.py:9
-#: aa_intel_tool/templates/aa_intel_tool/base.html:6
-#: aa_intel_tool/templates/aa_intel_tool/base.html:10
+#: aa_intel_tool/templates/aa_intel_tool/base.html:7
+#: aa_intel_tool/templates/aa_intel_tool/base.html:11
 #: aa_intel_tool/templates/aa_intel_tool/views/index.html:8
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
@@ -195,92 +195,24 @@ msgstr "Анализатор подскана отключен."
 msgid "The fleet composition module is currently disabled."
 msgstr "Анализатор состава флота отключен."
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:20
+#: aa_intel_tool/templates/aa_intel_tool/base.html:23
 msgid "Permalink successfully copied"
 msgstr "Постоянная ссылка успешно скопирована"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:21
+#: aa_intel_tool/templates/aa_intel_tool/base.html:24
 msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
 msgstr "Что-то пошло не так. Ничего не скопировано. Возможно, ваш браузер не поддерживает данную функцию."
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:22
+#: aa_intel_tool/templates/aa_intel_tool/base.html:25
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr "Неаффилированный / Нет альянса"
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:23
+#: aa_intel_tool/templates/aa_intel_tool/base.html:26
 msgid "NPC Corp"
 msgstr "NPC корпорация"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:24
-msgctxt "Decimal separator"
-msgid "."
-msgstr ","
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:25
-msgctxt "Thousands separator"
-msgid ","
-msgstr " "
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:26
-msgid "No data available in this table"
-msgstr "Данные в таблице отсутствуют"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:27
-msgctxt "Keep _END_ as it is. It will be replaced by a number."
-msgid "Showing _END_ entries"
-msgstr "Отображаются _END_ записей"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:28
-msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
-msgid "(filtered from _MAX_ total entries)"
-msgstr "(отфильтрованы из _MAX_ записей)"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:29
-msgid "No records available"
-msgstr "Записи недоступны"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:30
-msgid "Loading …"
-msgstr "Загрузка …"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:31
-msgid "Processing …"
-msgstr "Обработка …"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:32
-msgid "Nothing found, sorry …"
-msgstr "Ничего не найдено …"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:33
-msgid "Search …"
-msgstr "Поиск…"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:34
-msgid "First"
-msgstr "Первый"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:35
-msgid "Last"
-msgstr "Последний"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:36
-msgid "Next"
-msgstr "Следующий"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:37
-msgid "Previous"
-msgstr "Предыдущий"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:38
-msgid ": activate to sort column ascending"
-msgstr ": активируйте для сортировки по возрастанию"
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:39
-msgid ": activate to sort column descending"
-msgstr ": активируйте для сортировки по убыванию"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
 #, python-format
@@ -498,6 +430,58 @@ msgstr "(Системная ошибка) Случилось что-то неп�
 #: aa_intel_tool/views/general.py:101 aa_intel_tool/views/general.py:131
 msgid "The scan you were looking for could not be found."
 msgstr "Скан, который вы ищите, не может быть найден."
+
+#~ msgctxt "Decimal separator"
+#~ msgid "."
+#~ msgstr ","
+
+#~ msgctxt "Thousands separator"
+#~ msgid ","
+#~ msgstr " "
+
+#~ msgid "No data available in this table"
+#~ msgstr "Данные в таблице отсутствуют"
+
+#~ msgctxt "Keep _END_ as it is. It will be replaced by a number."
+#~ msgid "Showing _END_ entries"
+#~ msgstr "Отображаются _END_ записей"
+
+#~ msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
+#~ msgid "(filtered from _MAX_ total entries)"
+#~ msgstr "(отфильтрованы из _MAX_ записей)"
+
+#~ msgid "No records available"
+#~ msgstr "Записи недоступны"
+
+#~ msgid "Loading …"
+#~ msgstr "Загрузка …"
+
+#~ msgid "Processing …"
+#~ msgstr "Обработка …"
+
+#~ msgid "Nothing found, sorry …"
+#~ msgstr "Ничего не найдено …"
+
+#~ msgid "Search …"
+#~ msgstr "Поиск…"
+
+#~ msgid "First"
+#~ msgstr "Первый"
+
+#~ msgid "Last"
+#~ msgstr "Последний"
+
+#~ msgid "Next"
+#~ msgstr "Следующий"
+
+#~ msgid "Previous"
+#~ msgstr "Предыдущий"
+
+#~ msgid ": activate to sort column ascending"
+#~ msgstr ": активируйте для сортировки по возрастанию"
+
+#~ msgid ": activate to sort column descending"
+#~ msgstr ": активируйте для сортировки по убыванию"
 
 #~ msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
 #~ msgid "Show _MENU_"
