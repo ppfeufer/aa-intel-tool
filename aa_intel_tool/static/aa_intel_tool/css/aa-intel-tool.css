@@ -84,11 +84,6 @@
 /* Data Tables
 ------------------------------------------------------------------------------------- */
 @media all {
-    .aa-intel-tool div.dataTables_filter input[type="search"] {
-        margin-left: 0 !important;
-        width: 100% !important;
-    }
-
     .aa-intel-tool div.dataTables_wrapper div.dataTables_info {
         padding-top: 8px;
         white-space: initial;

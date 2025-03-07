@@ -1,6 +1,7 @@
 {% extends "allianceauth/base-bs5.html" %}
 
 {% load i18n %}
+{% load aa_i18n %}
 
 {% block page_title %}
     {% translate "Intel Parser" %}
@@ -17,30 +18,19 @@
         </div>
 
         <div class="aa-intel-tool-body">
+            {% get_datatables_language_static LANGUAGE_CODE as DT_LANG_PATH %}
+
             {% translate "Permalink successfully copied" as copyToClipboardSuccess %}
             {% translate "Something went wrong. Nothing copied. Maybe your browser does not support this function." as copyToClipboardError %}
             {% translate "Unaffiliated / No Alliance" as scanDataEmpty %}
             {% translate "NPC Corp" as scanDataNpcCorp %}
-            {% translate "." context "Decimal separator" as decimalSeparator %}
-            {% translate "," context "Thousands separator" as thousandsSeparator %}
-            {% translate "No data available in this table" as emptyTable %}
-            {% translate "Showing _END_ entries" as info context "Keep _END_ as it is. It will be replaced by a number." %}
-            {% translate "(filtered from _MAX_ total entries)" as infoFiltered context "Keep _MAX_ as it is. It will be replaced by a number." %}
-            {% translate "No records available" as infoEmpty %}
-            {% translate "Loading …" as loadingRecords %}
-            {% translate "Processing …" as processing %}
-            {% translate "Nothing found, sorry …" as zeroRecords%}
-            {% translate "Search …" as searchPlaceholder %}
-            {% translate "First" as paginateFirst %}
-            {% translate "Last" as paginateLast %}
-            {% translate "Next" as paginateNext %}
-            {% translate "Previous" as paginatePrevious %}
-            {% translate ": activate to sort column ascending" as ariaSortAscending %}
-            {% translate ": activate to sort column descending" as ariaSortDescending %}
 
             <script>
                 const aaIntelToolJsSettingsDefaults = {
-                    language: '{{ LANGUAGE_CODE }}',
+                    language: {
+                        django: '{{ LANGUAGE_CODE }}',
+                        dataTables: {url: '{{ DT_LANG_PATH }}'}
+                    },
                     url: {},
                     translation: {
                         copyToClipboard: {
@@ -54,31 +44,6 @@
                         scanData: {
                             empty: '{{ scanDataEmpty|escapejs }}',
                             npcCorp: '{{ scanDataNpcCorp|escapejs }}',
-                        },
-                        dataTables: {
-                            decimal: '{{ decimalSeparator|escapejs }}',
-                            thousands: '{{ thousandsSeparator|escapejs }}',
-                            emptyTable: '{{ emptyTable|escapejs }}',
-                            info: '{{ info|escapejs }}',
-                            infoFiltered: '{{ infoFiltered|escapejs }}',
-                            infoEmpty: '{{ infoEmpty|escapejs }}',
-                            infoPostFix: '',
-                            lengthMenu: '_MENU_',
-                            loadingRecords: '{{ loadingRecords|escapejs }}',
-                            processing: '{{ processing|escapejs }}',
-                            zeroRecords: '{{ zeroRecords|escapejs }}',
-                            search: '_INPUT_',
-                            searchPlaceholder: '{{ searchPlaceholder|escapejs }}',
-                            paginate: {
-                                first: '{{ paginateFirst|escapejs }}',
-                                last: '{{ paginateLast|escapejs }}',
-                                next: '{{ paginateNext|escapejs }}',
-                                previous: '{{ paginatePrevious|escapejs }}'
-                            },
-                            aria: {
-                                sortAscending: '{{ ariaSortAscending|escapejs }}',
-                                sortDescending: '{{ ariaSortDescending|escapejs }}'
-                            }
                         }
                     }
                 }
