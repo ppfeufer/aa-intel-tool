@@ -2,24 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Peter Pfeufer <info@ppfeufer.de>, 2023, 2024.
+# M <skrypets@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-01-31 11:24+0100\n"
-"PO-Revision-Date: 2024-10-04 18:10+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"POT-Creation-Date: 2025-03-07 15:55+0100\n"
+"PO-Revision-Date: 2025-02-24 15:17+0000\n"
+"Last-Translator: M <skrypets@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.10.1\n"
 
 #: aa_intel_tool/__init__.py:9
-#: aa_intel_tool/templates/aa_intel_tool/base.html:6
-#: aa_intel_tool/templates/aa_intel_tool/base.html:10
+#: aa_intel_tool/templates/aa_intel_tool/base.html:7
+#: aa_intel_tool/templates/aa_intel_tool/base.html:11
 #: aa_intel_tool/templates/aa_intel_tool/views/index.html:8
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
@@ -37,7 +38,7 @@ msgstr ""
 
 #: aa_intel_tool/admin.py:100
 msgid "Raw data"
-msgstr ""
+msgstr "Необроблені дані"
 
 #. Translators: This is the app name and version, which will appear in the Django Backend
 #: aa_intel_tool/apps.py:21
@@ -192,91 +193,23 @@ msgstr ""
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:20
+#: aa_intel_tool/templates/aa_intel_tool/base.html:23
 msgid "Permalink successfully copied"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:21
+#: aa_intel_tool/templates/aa_intel_tool/base.html:24
 msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:22
+#: aa_intel_tool/templates/aa_intel_tool/base.html:25
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:23
-msgid "NPC Corp"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:24
-msgctxt "Decimal separator"
-msgid "."
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:25
-msgctxt "Thousands separator"
-msgid ","
-msgstr ""
-
 #: aa_intel_tool/templates/aa_intel_tool/base.html:26
-msgid "No data available in this table"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:27
-msgctxt "Keep _END_ as it is. It will be replaced by a number."
-msgid "Showing _END_ entries"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:28
-msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
-msgid "(filtered from _MAX_ total entries)"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:29
-msgid "No records available"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:30
-msgid "Loading …"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:31
-msgid "Processing …"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:32
-msgid "Nothing found, sorry …"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:33
-msgid "Search …"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:34
-msgid "First"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:35
-msgid "Last"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:36
-msgid "Next"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:37
-msgid "Previous"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:38
-msgid ": activate to sort column ascending"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:39
-msgid ": activate to sort column descending"
+msgid "NPC Corp"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
@@ -360,7 +293,7 @@ msgstr ""
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
-msgstr ""
+msgstr "Кількість"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
@@ -388,7 +321,7 @@ msgstr ""
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
 msgid "Corporation"
-msgstr ""
+msgstr "Корпорація"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
 msgid "Pilots breakdown"
@@ -450,7 +383,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
-msgstr ""
+msgstr "Тип корабля"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
 msgid "No data."
@@ -495,3 +428,47 @@ msgstr ""
 #: aa_intel_tool/views/general.py:101 aa_intel_tool/views/general.py:131
 msgid "The scan you were looking for could not be found."
 msgstr ""
+
+#~ msgid "No data available in this table"
+#~ msgstr "Немає даних у цій таблиці"
+
+#~ msgctxt "Keep _END_ as it is. It will be replaced by a number."
+#~ msgid "Showing _END_ entries"
+#~ msgstr "Показано _END_ записів"
+
+#~ msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
+#~ msgid "(filtered from _MAX_ total entries)"
+#~ msgstr "(відфільтровано з _MAX_ загальних записів)"
+
+#~ msgid "No records available"
+#~ msgstr "Записів не знайдено"
+
+#~ msgid "Loading …"
+#~ msgstr "Завантаження …"
+
+#~ msgid "Processing …"
+#~ msgstr "Обробка …"
+
+#~ msgid "Nothing found, sorry …"
+#~ msgstr "Нічого не знайдено, вибачте …"
+
+#~ msgid "Search …"
+#~ msgstr "Пошук …"
+
+#~ msgid "First"
+#~ msgstr "Перший"
+
+#~ msgid "Last"
+#~ msgstr "Останній"
+
+#~ msgid "Next"
+#~ msgstr "Далі"
+
+#~ msgid "Previous"
+#~ msgstr "Назад"
+
+#~ msgid ": activate to sort column ascending"
+#~ msgstr ": активуйте щоб сортувати за зростанням"
+
+#~ msgid ": activate to sort column descending"
+#~ msgstr ": активуйте щоб сортувати за спаданням"
