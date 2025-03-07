@@ -6,7 +6,6 @@ Versioned static URLs to break browser caches when changing the app version
 import os
 
 # Django
-from django.conf import settings
 from django.template.defaulttags import register
 from django.templatetags.static import static
 from django.utils.safestring import mark_safe
@@ -19,6 +18,8 @@ from app_utils.logging import LoggerAddTag
 
 # AA Intel Tool
 from aa_intel_tool import __title__, __version__
+from aa_intel_tool.app_settings import debug_enabled
+from aa_intel_tool.constants import PACKAGE_NAME
 from aa_intel_tool.helper.static_files import calculate_integrity_hash
 
 logger = LoggerAddTag(my_logger=get_extension_logger(__name__), prefix=__title__)
@@ -31,7 +32,7 @@ def aa_intel_tool_static(
     """
     Versioned static URL
 
-    :param relative_file_path: The file path relative to the `aa-intel-tool/aa_intel_tool/static/aa_intel_tool folder
+    :param relative_file_path: The file path relative to the `{APP_NAME}/{PACKAGE_NAME}/static/{PACKAGE_NAME}` folder
     :type relative_file_path: str
     :param script_type: The script type
     :type script_type: str
@@ -49,13 +50,13 @@ def aa_intel_tool_static(
     if file_type not in ["css", "js"]:
         raise ValueError(f"Unsupported file type: {file_type}")
 
-    static_file_path = os.path.join("aa_intel_tool", relative_file_path)
+    static_file_path = os.path.join(PACKAGE_NAME, relative_file_path)
     static_url = static(static_file_path)
 
     # Integrity hash calculation only for non-debug mode
     sri_string = (
         f' integrity="{calculate_integrity_hash(relative_file_path)}" crossorigin="anonymous"'
-        if not settings.DEBUG
+        if not debug_enabled()
         else ""
     )
 
@@ -68,16 +69,20 @@ def aa_intel_tool_static(
         else static_url + "?v=" + __version__
     )
 
+    return_value = None
+
     # Return the versioned URL with integrity hash for CSS
     if file_type == "css":
-        return mark_safe(f'<link rel="stylesheet" href="{versioned_url}"{sri_string}>')
+        return_value = mark_safe(
+            f'<link rel="stylesheet" href="{versioned_url}"{sri_string}>'
+        )
 
     # Return the versioned URL with integrity hash for JS files
     if file_type == "js":
         js_type = f' type="{script_type}"' if script_type else ""
 
-        return mark_safe(
+        return_value = mark_safe(
             f'<script{js_type} src="{versioned_url}"{sri_string}></script>'
         )
 
-    return None  # pragma: no cover
+    return return_value

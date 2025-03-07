@@ -80,10 +80,11 @@ SUPPORTED_INTEL_TYPES = {
 
 # Building our user agent for ESI calls
 APP_NAME = "aa-intel-tool"
+PACKAGE_NAME = "aa_intel_tool"
+APP_VERBOSE_NAME = "AA Intel Tool"
+APP_VERBOSE_NAME_USERAGENT = "AA-Intel-Tool"
 GITHUB_URL = f"https://github.com/ppfeufer/{APP_NAME}"
-USER_AGENT = f"{APP_NAME}/{__version__} ({GITHUB_URL}) via django-esi/{esi_version}"
+USER_AGENT = f"{APP_VERBOSE_NAME_USERAGENT}/{__version__} (+{GITHUB_URL}) Django-ESI/{esi_version}"
 
-AA_INTEL_TOOL_BASE_DIR = os.path.join(os.path.dirname(__file__))
-AA_INTEL_TOOL_STATIC_DIR = os.path.join(
-    AA_INTEL_TOOL_BASE_DIR, "static", "aa_intel_tool"
-)
+APP_BASE_DIR = os.path.join(os.path.dirname(__file__))
+APP_STATIC_DIR = os.path.join(APP_BASE_DIR, "static", PACKAGE_NAME)

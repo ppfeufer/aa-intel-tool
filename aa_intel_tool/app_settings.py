@@ -4,6 +4,10 @@ App settings
 
 # Standard Library
 from enum import IntEnum
+from re import RegexFlag
+
+# Django
+from django.conf import settings
 
 # Alliance Auth
 from allianceauth.services.hooks import get_extension_logger
@@ -81,3 +85,14 @@ class UpwellStructureId(IntEnum):
     """
 
     ANSIBLEX_JUMP_GATE = 35841
+
+
+def debug_enabled() -> RegexFlag:
+    """
+    Check if DEBUG is enabled
+
+    :return:
+    :rtype:
+    """
+
+    return settings.DEBUG
