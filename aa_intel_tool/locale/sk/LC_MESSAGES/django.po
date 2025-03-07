@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-01-31 11:24+0100\n"
+"POT-Creation-Date: 2025-03-07 15:55+0100\n"
 "PO-Revision-Date: 2024-05-10 14:07+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovak <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/sk/>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "X-Generator: Weblate 5.5.3\n"
 
 #: aa_intel_tool/__init__.py:9
-#: aa_intel_tool/templates/aa_intel_tool/base.html:6
-#: aa_intel_tool/templates/aa_intel_tool/base.html:10
+#: aa_intel_tool/templates/aa_intel_tool/base.html:7
+#: aa_intel_tool/templates/aa_intel_tool/base.html:11
 #: aa_intel_tool/templates/aa_intel_tool/views/index.html:8
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/dscan.html:5
@@ -193,91 +193,23 @@ msgstr ""
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:20
+#: aa_intel_tool/templates/aa_intel_tool/base.html:23
 msgid "Permalink successfully copied"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:21
+#: aa_intel_tool/templates/aa_intel_tool/base.html:24
 msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:22
+#: aa_intel_tool/templates/aa_intel_tool/base.html:25
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
 msgid "Unaffiliated / No Alliance"
 msgstr ""
 
-#: aa_intel_tool/templates/aa_intel_tool/base.html:23
-msgid "NPC Corp"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:24
-msgctxt "Decimal separator"
-msgid "."
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:25
-msgctxt "Thousands separator"
-msgid ","
-msgstr ""
-
 #: aa_intel_tool/templates/aa_intel_tool/base.html:26
-msgid "No data available in this table"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:27
-msgctxt "Keep _END_ as it is. It will be replaced by a number."
-msgid "Showing _END_ entries"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:28
-msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
-msgid "(filtered from _MAX_ total entries)"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:29
-msgid "No records available"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:30
-msgid "Loading …"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:31
-msgid "Processing …"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:32
-msgid "Nothing found, sorry …"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:33
-msgid "Search …"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:34
-msgid "First"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:35
-msgid "Last"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:36
-msgid "Next"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:37
-msgid "Previous"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:38
-msgid ": activate to sort column ascending"
-msgstr ""
-
-#: aa_intel_tool/templates/aa_intel_tool/base.html:39
-msgid ": activate to sort column descending"
+msgid "NPC Corp"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
