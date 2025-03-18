@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.6.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-03-07 15:55+0100\n"
+"POT-Creation-Date: 2025-03-18 05:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,23 +161,23 @@ msgid ""
 "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:80
+#: aa_intel_tool/parser/general.py:63
 msgid "No data to parse …"
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:65
+#: aa_intel_tool/parser/module/chatlist.py:60
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:76
+#: aa_intel_tool/parser/module/chatlist.py:67
 msgid "Character unknown to ESI."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:278
+#: aa_intel_tool/parser/module/chatlist.py:256
 msgid "The chat list module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:299
+#: aa_intel_tool/parser/module/chatlist.py:275
 #, python-brace-format
 msgid ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
@@ -188,11 +188,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: aa_intel_tool/parser/module/dscan.py:350
+#: aa_intel_tool/parser/module/dscan.py:362
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/fleetcomp.py:187
+#: aa_intel_tool/parser/module/fleetcomp.py:181
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
