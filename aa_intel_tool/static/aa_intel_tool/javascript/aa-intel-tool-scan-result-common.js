@@ -49,7 +49,7 @@ const bootstrapTooltip = (selector = 'body') => { // eslint-disable-line no-unus
  * @param {string} eveName
  * @param {string} imageSource
  * @param {int} imageSize
- * @returns {`<img class="eve-image rounded" data-eveid="${int}" src="${string}" alt="${string}" title="${string}" data-bs-tooltip="aa-intel-tool" loading="lazy" width="${int}" height="${int}">`}
+ * @returns {`<img class='eve-image rounded' data-eveid='${int}' src='${string}' alt='${string}' title='${string}' data-bs-tooltip='aa-intel-tool' loading='lazy' width='${int}' height='${int}'>`}
  */
 const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
     return `<img class="eve-image rounded" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" data-bs-tooltip="aa-intel-tool" loading="lazy" width="${imageSize}" height="${imageSize}">`;
@@ -60,7 +60,7 @@ const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
  * Get the link HTML to EveWho for a pilot
  *
  * @param {string} href
- * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
+ * @returns {`<a class='aa-intel-information-link' href='${string}' target='_blank' rel='noopener noreferer'>evewho <sup><small><i class='fa-solid fa-external-link-alt' aria-hidden='true'></i></small></sup></a>`}
  */
 const eveWhoLinkHtml = (href) => {
     return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
@@ -71,7 +71,7 @@ const eveWhoLinkHtml = (href) => {
  * Get the link HTML to zKillboard
  *
  * @param {string} href
- * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
+ * @returns {`<a class='aa-intel-information-link' href='${string}' target='_blank' rel='noopener noreferer'>zkillboard <sup><small><i class='fa-solid fa-external-link-alt' aria-hidden='true'></i></small></sup></a>`}
  */
 const zkillboardLinkHtml = (href) => {
     return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
@@ -82,12 +82,43 @@ const zkillboardLinkHtml = (href) => {
  * Get the link HTML to dotlan
  *
  * @param {string} href
- * @returns {`<a class="aa-intel-information-link" href="${string}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`}
+ * @returns {`<a class='aa-intel-information-link' href='${string}' target='_blank' rel='noopener noreferer'>dotlan <sup><small><i class='fa-solid fa-external-link-alt' aria-hidden='true'></i></small></sup></a>`}
  */
 const dotlanLinkHtml = (href) => {
     return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
 
+/**
+ * Info panel for the datatable
+ *
+ * @param {string} imageData
+ * @param {string} eveData
+ * @param {string} additionalInfo
+ * @param {boolean} logoOnly Returns only the logo
+ * @returns {string} HTML construct for the info panel
+ */
+const infoPanel = (
+    imageData,
+    eveData,
+    additionalInfo = '',
+    logoOnly = false
+) => {
+    const imageDataHtml = `<span class="aa-intel-eve-image-wrapper">${imageData}</span>`;
+
+    if (logoOnly) {
+        return imageDataHtml;
+    }
+
+    let eveDataHtml = `<span class="aa-intel-eve-information-wrapper"><span class="aa-intel-eve-name-wrapper">${eveData}</span>`;
+
+    if (additionalInfo) {
+        eveDataHtml += `<span class="aa-intel-additional-information-wrapper"><small>${additionalInfo}</small></span>`;
+    } else {
+        eveDataHtml += `</span>`;
+    }
+
+    return imageDataHtml + eveDataHtml;
+};
 
 /**
  * Pilot info element in datatable
@@ -96,11 +127,11 @@ const dotlanLinkHtml = (href) => {
  * @returns {string} HTML construct for the pilot info
  */
 const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
-    const html_logo = `<span class="aa-intel-pilot-avatar-wrapper">${eveImageHtml(pilotData.id, pilotData.name, pilotData.portrait)}</span>`;
-    let html_info = `<span class="aa-intel-pilot-information-wrapper"><span class="aa-intel-pilot-name-wrapper">${pilotData.name}</span>`;
-    html_info += `<span class="aa-intel-pilot-links-wrapper"><small>${eveWhoLinkHtml(pilotData.evewho)} | ${zkillboardLinkHtml(pilotData.zkillboard)}</small></span>`;
+    const imageData = eveImageHtml(pilotData.id, pilotData.name, pilotData.portrait);
+    const eveData = pilotData.name;
+    const additionalInfo = `${eveWhoLinkHtml(pilotData.evewho)} | ${zkillboardLinkHtml(pilotData.zkillboard)}`;
 
-    return html_logo + html_info;
+    return infoPanel(imageData, eveData, additionalInfo);
 };
 
 
@@ -112,23 +143,17 @@ const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
  * @returns {string} HTML construct for the corporation info
  */
 const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-disable-line no-unused-vars
-    const html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(corporationData.id, corporationData.name, corporationData.logo)}</span>`;
-    let html_info = `<span class="aa-intel-corporation-information-wrapper"><span class="aa-intel-corporation-name-wrapper">${corporationData.name}</span>`;
-    html_info += `<span class="aa-intel-corporation-links-wrapper"><small>`;
+    const imageData = eveImageHtml(corporationData.id, corporationData.name, corporationData.logo);
+    const eveData = corporationData.name;
+    let additionalInfo = '';
 
     if ((1000000 <= corporationData.id) && corporationData.id <= 2000000) {
-        html_info += `(${aaIntelToolJsSettings.translation.scanData.npcCorp})`;
+        additionalInfo = `(${aaIntelToolJsSettings.translation.scanData.npcCorp})`;
     } else {
-        html_info += `${dotlanLinkHtml(corporationData.dotlan)} | ${zkillboardLinkHtml(corporationData.zkillboard)}</small></span>`;
+        additionalInfo = `${dotlanLinkHtml(corporationData.dotlan)} | ${zkillboardLinkHtml(corporationData.zkillboard)}`;
     }
 
-    html_info += `</span>`;
-
-    if (logoOnly) {
-        return html_logo;
-    }
-
-    return html_logo + html_info;
+    return infoPanel(imageData, eveData, additionalInfo, logoOnly);
 };
 
 
@@ -144,24 +169,21 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
         allianceData.name = aaIntelToolJsSettings.translation.scanData.empty;
     }
 
-    const html_logo = `<span class="aa-intel-corporation-logo-wrapper">${eveImageHtml(allianceData.id, allianceData.name, allianceData.logo)}</span>`;
-    let html_info = `<span class="aa-intel-alliance-information-wrapper"><span class="aa-intel-alliance-name-wrapper">${allianceData.name}</span>`;
+    const imageData = eveImageHtml(allianceData.id, allianceData.name, allianceData.logo);
+    const eveData = allianceData.name;
+    let additionalInfo = '';
 
     if (allianceData.id > 1) {
-        html_info += `<span class="aa-intel-alliance-links-wrapper"><small>${dotlanLinkHtml(allianceData.dotlan)} | ${zkillboardLinkHtml(allianceData.zkillboard)}</small></span>`;
+        additionalInfo = `${dotlanLinkHtml(allianceData.dotlan)} | ${zkillboardLinkHtml(allianceData.zkillboard)}`;
     }
-
-    html_info += `</span>`;
 
     if (logoOnly) {
         if (allianceData.id === 1) {
             return '';
         }
-
-        return html_logo;
     }
 
-    return html_logo + html_info;
+    return infoPanel(imageData, eveData, additionalInfo, logoOnly);
 };
 
 
@@ -172,10 +194,10 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
  * @returns {string} HTML construct for the ship info
  */
 const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
-    const html_logo = `<span class="aa-intel-ship-image-wrapper">${eveImageHtml(shipData.id, shipData.name, shipData.image)}</span>`;
-    const html_info = `<span class="aa-intel-ship-information-wrapper"><span class="aa-intel-ship-name-wrapper">${shipData.name}</span></span>`;
+    const imageData = eveImageHtml(shipData.id, shipData.name, shipData.image);
+    const eveData = shipData.name;
 
-    return html_logo + html_info;
+    return infoPanel(imageData, eveData);
 };
 
 

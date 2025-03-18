@@ -5,7 +5,7 @@
 --------------------------------------------------------------------------------- */
 
 /**
- * Determine if we can remove all sticky states for this corporation
+ * Determine if we can remove all sticky states for this corporation.
  *
  * @param element
  * @returns {boolean}
@@ -24,7 +24,7 @@ const removeCorporationStickyComplete = (element) => {
 
 
 /**
- * Determine if we can remove all sticky states for this alliance
+ * Determine if we can remove all sticky states for this alliance.
  *
  * @param element
  * @returns {boolean}
@@ -45,6 +45,8 @@ const removeAllianceStickyComplete = (element) => {
 /**
  * Helper function
  *
+ * Add a sticky highlight to the alliance table by alliance ID.
+ *
  * @param element
  */
 const allianceTableAddStickyByAllianceId = (element) => {
@@ -55,6 +57,8 @@ const allianceTableAddStickyByAllianceId = (element) => {
 
 /**
  * Helper function
+ *
+ * Add a highlight to the alliance table by alliance ID.
  *
  * @param element
  */
@@ -67,6 +71,8 @@ const allianceTableAddHighlightByAllianceId = (element) => {
 /**
  * Helper function
  *
+ * Remove a sticky highlight from the alliance table by alliance ID.
+ *
  * @param element
  */
 const allianceTableRemoveStickyByAllianceId = (element) => {
@@ -77,6 +83,8 @@ const allianceTableRemoveStickyByAllianceId = (element) => {
 
 /**
  * Helper function
+ *
+ * Remove a highlight from the alliance table by alliance ID.
  *
  * @param element
  */
@@ -89,6 +97,8 @@ const allianceTableRemoveHighlightByAllianceId = (element) => {
 /**
  * Helper function
  *
+ * Add a sticky highlight to the corporation table by corporation ID.
+ *
  * @param element
  */
 const corporationTableAddStickyByCorporationId = (element) => {
@@ -99,6 +109,8 @@ const corporationTableAddStickyByCorporationId = (element) => {
 
 /**
  * Helper function
+ *
+ * Add a highlight to the corporation table by corporation ID.
  *
  * @param element
  */
@@ -111,6 +123,8 @@ const corporationTableAddHighlightByCorporationId = (element) => {
 /**
  * Helper function
  *
+ * Add a sticky highlight to the corporation table by alliance ID.
+ *
  * @param element
  */
 const corporationTableAddStickyByAllianceId = (element) => {
@@ -121,6 +135,8 @@ const corporationTableAddStickyByAllianceId = (element) => {
 
 /**
  * Helper function
+ *
+ * Add a highlight to the corporation table by alliance ID.
  *
  * @param element
  */
@@ -133,6 +149,8 @@ const corporationTableAddHighlightByAllianceId = (element) => {
 /**
  * Helper function
  *
+ * Remove a sticky highlight from the corporation table by corporation ID.
+ *
  * @param element
  */
 const corporationTableRemoveStickyByCorporationId = (element) => {
@@ -143,6 +161,8 @@ const corporationTableRemoveStickyByCorporationId = (element) => {
 
 /**
  * Helper function
+ *
+ * Remove a highlight from the corporation table by corporation ID.
  *
  * @param element
  */
@@ -155,6 +175,8 @@ const corporationTableRemoveHighlightByCorporationId = (element) => {
 /**
  * Helper function
  *
+ * Remove a sticky highlight from the corporation table by alliance ID.
+ *
  * @param element
  */
 const corporationTableRemoveStickyByAllianceId = (element) => {
@@ -165,6 +187,8 @@ const corporationTableRemoveStickyByAllianceId = (element) => {
 
 /**
  * Helper function
+ *
+ * Remove a highlight from the corporation table by alliance ID.
  *
  * @param element
  */
@@ -177,6 +201,8 @@ const corporationTableRemoveHighlightByAllianceId = (element) => {
 /**
  * Helper function
  *
+ * Add a sticky highlight to the pilot table by corporation ID.
+ *
  * @param element
  */
 const pilotTableAddStickyByCorporationId = (element) => {
@@ -187,6 +213,8 @@ const pilotTableAddStickyByCorporationId = (element) => {
 
 /**
  * Helper function
+ *
+ * Add a highlight to the pilot table by corporation ID.
  *
  * @param element
  */
@@ -199,6 +227,8 @@ const pilotTableAddHighlightByCorporationId = (element) => {
 /**
  * Helper function
  *
+ * Add a sticky highlight to the pilot table by alliance ID.
+ *
  * @param element
  */
 const pilotTableAddStickyByAllianceId = (element) => {
@@ -209,6 +239,8 @@ const pilotTableAddStickyByAllianceId = (element) => {
 
 /**
  * Helper function
+ *
+ * Add a highlight to the pilot table by alliance ID.
  *
  * @param element
  */
@@ -221,6 +253,8 @@ const pilotTableAddHighlightByAllianceId = (element) => {
 /**
  * Helper function
  *
+ * Remove a sticky highlight from the pilot table by corporation ID.
+ *
  * @param element
  */
 const pilotTableRemoveStickyByCorporationId = (element) => {
@@ -231,6 +265,8 @@ const pilotTableRemoveStickyByCorporationId = (element) => {
 
 /**
  * Helper function
+ *
+ * Remove a highlight from the pilot table by corporation ID.
  *
  * @param element
  */
@@ -243,6 +279,8 @@ const pilotTableRemoveHighlightByCorporationId = (element) => {
 /**
  * Helper function
  *
+ * Add a sticky highlight to the pilot table by alliance ID.
+ *
  * @param element
  */
 const pilotTableRemoveStickyByAllianceId = (element) => {
@@ -254,6 +292,8 @@ const pilotTableRemoveStickyByAllianceId = (element) => {
 /**
  * Helper function
  *
+ * Add a highlight to the pilot table by alliance ID.
+ *
  * @param element
  */
 const pilotTableRemoveHighlightByAllianceId = (element) => {
@@ -263,27 +303,27 @@ const pilotTableRemoveHighlightByAllianceId = (element) => {
 
 
 /**
- * Add highlight to other tables from alliance table
+ * Add a highlight to other tables from alliance table
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const addChatscanHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
-    table_row.addClass('aa-intel-highlight');
+const addChatscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+    tableRow.addClass('aa-intel-highlight');
 
-    if (by_data === 'alliance') {
-        corporationTableAddHighlightByAllianceId(table_row);
-        pilotTableAddHighlightByAllianceId(table_row);
+    if (byData === 'alliance') {
+        corporationTableAddHighlightByAllianceId(tableRow);
+        pilotTableAddHighlightByAllianceId(tableRow);
     }
 
-    if (by_data === 'corporation') {
-        allianceTableAddHighlightByAllianceId(table_row);
-        pilotTableAddHighlightByCorporationId(table_row);
+    if (byData === 'corporation') {
+        allianceTableAddHighlightByAllianceId(tableRow);
+        pilotTableAddHighlightByCorporationId(tableRow);
     }
 
-    if (by_data === 'pilot') {
-        allianceTableAddHighlightByAllianceId(table_row);
-        corporationTableAddHighlightByCorporationId(table_row);
+    if (byData === 'pilot') {
+        allianceTableAddHighlightByAllianceId(tableRow);
+        corporationTableAddHighlightByCorporationId(tableRow);
     }
 };
 
@@ -291,25 +331,25 @@ const addChatscanHightlight = (by_data, table_row) => { // eslint-disable-line n
 /**
  * Add sticky highlight to other tables from alliance table
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const addChatscanSticky = (by_data, table_row) => {
-    table_row.addClass('aa-intel-highlight-sticky');
+const addChatscanSticky = (byData, tableRow) => {
+    tableRow.addClass('aa-intel-highlight-sticky');
 
-    if (by_data === 'alliance') {
-        corporationTableAddStickyByAllianceId(table_row);
-        pilotTableAddStickyByAllianceId(table_row);
+    if (byData === 'alliance') {
+        corporationTableAddStickyByAllianceId(tableRow);
+        pilotTableAddStickyByAllianceId(tableRow);
     }
 
-    if (by_data === 'corporation') {
-        allianceTableAddStickyByAllianceId(table_row);
-        pilotTableAddStickyByCorporationId(table_row);
+    if (byData === 'corporation') {
+        allianceTableAddStickyByAllianceId(tableRow);
+        pilotTableAddStickyByCorporationId(tableRow);
     }
 
-    if (by_data === 'pilot') {
-        allianceTableAddStickyByAllianceId(table_row);
-        corporationTableAddStickyByCorporationId(table_row);
+    if (byData === 'pilot') {
+        allianceTableAddStickyByAllianceId(tableRow);
+        corporationTableAddStickyByCorporationId(tableRow);
     }
 };
 
@@ -317,25 +357,25 @@ const addChatscanSticky = (by_data, table_row) => {
 /**
  * Remove highlight to other tables from alliance table
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const removeChatscanHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
-    table_row.removeClass('aa-intel-highlight');
+const removeChatscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+    tableRow.removeClass('aa-intel-highlight');
 
-    if (by_data === 'alliance') {
-        corporationTableRemoveHighlightByAllianceId(table_row);
-        pilotTableRemoveHighlightByAllianceId(table_row);
+    if (byData === 'alliance') {
+        corporationTableRemoveHighlightByAllianceId(tableRow);
+        pilotTableRemoveHighlightByAllianceId(tableRow);
     }
 
-    if (by_data === 'corporation') {
-        allianceTableRemoveHighlightByAllianceId(table_row);
-        pilotTableRemoveHighlightByCorporationId(table_row);
+    if (byData === 'corporation') {
+        allianceTableRemoveHighlightByAllianceId(tableRow);
+        pilotTableRemoveHighlightByCorporationId(tableRow);
     }
 
-    if (by_data === 'pilot') {
-        allianceTableRemoveHighlightByAllianceId(table_row);
-        corporationTableRemoveHighlightByCorporationId(table_row);
+    if (byData === 'pilot') {
+        allianceTableRemoveHighlightByAllianceId(tableRow);
+        corporationTableRemoveHighlightByCorporationId(tableRow);
     }
 };
 
@@ -343,32 +383,32 @@ const removeChatscanHightlight = (by_data, table_row) => { // eslint-disable-lin
 /**
  * Remove sticky highlight to other tables from alliance table
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const removeChatscanSticky = (by_data, table_row) => {
-    table_row.removeClass('aa-intel-highlight-sticky');
+const removeChatscanSticky = (byData, tableRow) => {
+    tableRow.removeClass('aa-intel-highlight-sticky');
 
-    if (by_data === 'alliance') {
-        corporationTableRemoveStickyByAllianceId(table_row);
-        pilotTableRemoveStickyByAllianceId(table_row);
+    if (byData === 'alliance') {
+        corporationTableRemoveStickyByAllianceId(tableRow);
+        pilotTableRemoveStickyByAllianceId(tableRow);
     }
 
-    if (by_data === 'corporation') {
-        pilotTableRemoveStickyByCorporationId(table_row);
+    if (byData === 'corporation') {
+        pilotTableRemoveStickyByCorporationId(tableRow);
 
-        if (removeAllianceStickyComplete(table_row) === true) {
-            allianceTableRemoveStickyByAllianceId(table_row);
+        if (removeAllianceStickyComplete(tableRow) === true) {
+            allianceTableRemoveStickyByAllianceId(tableRow);
         }
     }
 
-    if (by_data === 'pilot') {
-        if (removeCorporationStickyComplete(table_row) === true) {
-            corporationTableRemoveStickyByCorporationId(table_row);
+    if (byData === 'pilot') {
+        if (removeCorporationStickyComplete(tableRow) === true) {
+            corporationTableRemoveStickyByCorporationId(tableRow);
         }
 
-        if (removeAllianceStickyComplete(table_row) === true) {
-            allianceTableRemoveStickyByAllianceId(table_row);
+        if (removeAllianceStickyComplete(tableRow) === true) {
+            allianceTableRemoveStickyByAllianceId(tableRow);
         }
     }
 };
@@ -377,13 +417,13 @@ const removeChatscanSticky = (by_data, table_row) => {
 /**
  * Change the status of the sticky highlight
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const changeChatscanStickyHighlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
-    if (table_row.hasClass('aa-intel-highlight-sticky')) {
-        removeChatscanSticky(by_data, table_row);
+const changeChatscanStickyHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+    if (tableRow.hasClass('aa-intel-highlight-sticky')) {
+        removeChatscanSticky(byData, tableRow);
     } else {
-        addChatscanSticky(by_data, table_row);
+        addChatscanSticky(byData, tableRow);
     }
 };

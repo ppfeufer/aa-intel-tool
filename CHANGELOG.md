@@ -35,6 +35,11 @@ Section Order:
 ### Security
 -->
 
+### Changed
+
+- JavaScript refactored/optmized
+  - HTML markup for the result tables is now unified
+
 ## [2.6.1] - 2025-03-07
 
 ### Changed

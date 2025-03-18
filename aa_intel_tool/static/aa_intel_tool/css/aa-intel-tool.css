@@ -34,27 +34,18 @@
         font-size: 1.25em;
     }
 
-    .aa-intel-tool .aa-intel-alliance-logo-wrapper,
-    .aa-intel-tool .aa-intel-corporation-logo-wrapper,
-    .aa-intel-tool .aa-intel-pilot-avatar-wrapper,
-    .aa-intel-tool .aa-intel-ship-image-wrapper {
+    .aa-intel-tool .aa-intel-eve-image-wrapper {
         display: inline-block;
         margin-right: 0.5rem;
     }
 
-    .aa-intel-tool .aa-intel-alliance-information-wrapper,
-    .aa-intel-tool .aa-intel-corporation-information-wrapper,
-    .aa-intel-tool .aa-intel-pilot-information-wrapper {
+    .aa-intel-tool .aa-intel-eve-information-wrapper {
         display: inline-block;
         vertical-align: inherit;
     }
 
-    .aa-intel-tool .aa-intel-alliance-name-wrapper,
-    .aa-intel-tool .aa-intel-alliance-links-wrapper,
-    .aa-intel-tool .aa-intel-corporation-name-wrapper,
-    .aa-intel-tool .aa-intel-corporation-links-wrapper,
-    .aa-intel-tool .aa-intel-pilot-name-wrapper,
-    .aa-intel-tool .aa-intel-pilot-links-wrapper {
+    .aa-intel-tool .aa-intel-eve-name-wrapper,
+    .aa-intel-tool .aa-intel-additional-information-wrapper {
         display: block;
     }
 }
@@ -119,15 +110,11 @@
         white-space: nowrap;
     }
 
-    .aa-intel-alliance-information-wrapper,
-    .aa-intel-corporation-information-wrapper,
-    .aa-intel-pilot-information-wrapper {
+    .aa-intel-tool .aa-intel-eve-information-wrapper {
         max-width: calc(100% - 35px);
     }
 
-    .aa-intel-alliance-name-wrapper,
-    .aa-intel-corporation-name-wrapper,
-    .aa-intel-pilot-name-wrapper {
+    .aa-intel-tool .aa-intel-eve-name-wrapper {
         overflow: hidden;
         text-overflow: ellipsis;
     }
