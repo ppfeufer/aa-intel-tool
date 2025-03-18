@@ -25,7 +25,7 @@ from aa_intel_tool import __title__
 logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
-def _create_alliance(alliance_ids: Iterable[int] = None) -> None:
+def _create_alliance(alliance_ids: Iterable[int]) -> None:
     """
     Bulk creation of EveAllianceInfo objects
 
@@ -36,7 +36,6 @@ def _create_alliance(alliance_ids: Iterable[int] = None) -> None:
     """
 
     alliance_ids = set(alliance_ids)
-
     existing_alliance_ids = set(
         EveAllianceInfo.objects.filter(alliance_id__in=alliance_ids).values_list(
             "alliance_id", flat=True
@@ -44,23 +43,21 @@ def _create_alliance(alliance_ids: Iterable[int] = None) -> None:
     )
 
     alliances_to_fetch = alliance_ids - existing_alliance_ids
-    count_alliances_to_fetch = len(alliances_to_fetch)
 
     if alliances_to_fetch:
         logger.debug(
-            f"{count_alliances_to_fetch} EveAllianceInfo object(s) need to be created …"
+            f"{len(alliances_to_fetch)} EveAllianceInfo object(s) need to be created …"
         )
 
-        for loop_count, alliance_id in enumerate(alliances_to_fetch):
+        for loop_count, alliance_id in enumerate(alliances_to_fetch, start=1):
             alliance = EveAllianceInfo.objects.create_alliance(alliance_id=alliance_id)
-
             logger.debug(
-                f"({loop_count + 1}/{count_alliances_to_fetch}) "
+                f"({loop_count}/{len(alliances_to_fetch)}) "
                 f"EveAllianceInfo object created for: {alliance.alliance_name}"
             )
 
 
-def _create_corporation(corporation_ids: Iterable[int] = None) -> None:
+def _create_corporation(corporation_ids: Iterable[int]) -> None:
     """
     Bulk creation of EveCorporationInfo objects
 
@@ -71,7 +68,6 @@ def _create_corporation(corporation_ids: Iterable[int] = None) -> None:
     """
 
     corporation_ids = set(corporation_ids)
-
     existing_corporation_ids = set(
         EveCorporationInfo.objects.filter(
             corporation_id__in=corporation_ids
@@ -79,26 +75,25 @@ def _create_corporation(corporation_ids: Iterable[int] = None) -> None:
     )
 
     corporations_to_fetch = corporation_ids - existing_corporation_ids
-    count_corporations_to_fetch = len(corporations_to_fetch)
 
     if corporations_to_fetch:
         logger.debug(
-            f"{count_corporations_to_fetch} EveCorporationInfo object(s) need to be created …"  # pylint: disable=line-too-long
+            f"{len(corporations_to_fetch)} EveCorporationInfo object(s) need to be created …"
         )
 
-        for loop_count, corporation_id in enumerate(corporations_to_fetch):
+        for loop_count, corporation_id in enumerate(corporations_to_fetch, start=1):
             corporation = EveCorporationInfo.objects.create_corporation(
                 corp_id=corporation_id
             )
 
             logger.debug(
-                f"({loop_count + 1}/{count_corporations_to_fetch}) "
+                f"({loop_count}/{len(corporations_to_fetch)}) "
                 f"EveCorporationInfo object created for: {corporation.corporation_name}"
             )
 
 
 def _create_character(
-    character_ids: Iterable[int] = None, with_affiliation: bool = True
+    character_ids: Iterable[int], with_affiliation: bool = True
 ) -> None:
     """
     Bulk creation of EveCharacter objects
@@ -112,35 +107,30 @@ def _create_character(
     """
 
     character_ids = set(character_ids)
+    tmp_affiliation_ids = {"alliance": set(), "corporation": set()}
 
-    count_characters_to_fetch = len(character_ids)
+    logger.info(f"{len(character_ids)} EveCharacter object(s) need to be created …")
 
-    logger.debug(
-        f"{count_characters_to_fetch} EveCharacter object(s) need to be created …"
-    )
-
-    tmp_character_ids = {"corporation": [], "alliance": []}
-
-    for loop_count, character_id in enumerate(character_ids):
+    for loop_count, character_id in enumerate(character_ids, start=1):
         # Create character
         character = EveCharacter.objects.create_character(character_id=character_id)
 
         logger.debug(
-            f"({loop_count + 1}/{count_characters_to_fetch}) "
+            f"({loop_count}/{len(character_ids)}) "
             f"EveCharacter object created for: {character.character_name}"
         )
 
-        if character.alliance_id is not None:
-            tmp_character_ids["alliance"].append(character.alliance_id)
-        else:
-            tmp_character_ids["corporation"].append(character.corporation_id)
+        affiliation_key = "alliance" if character.alliance_id else "corporation"
+        tmp_affiliation_ids[affiliation_key].add(
+            character.alliance_id or character.corporation_id
+        )
 
-    if with_affiliation is True:
-        if len(tmp_character_ids["alliance"]) > 0:
-            _create_alliance(tmp_character_ids["alliance"])
+    if with_affiliation:
+        if tmp_affiliation_ids["alliance"]:
+            _create_alliance(tmp_affiliation_ids["alliance"])
 
-        if len(tmp_character_ids["corporation"]) > 0:
-            _create_corporation(tmp_character_ids["corporation"])
+        if tmp_affiliation_ids["corporation"]:
+            _create_corporation(tmp_affiliation_ids["corporation"])
 
 
 def get_or_create_character(
@@ -157,7 +147,7 @@ def get_or_create_character(
     :rtype:
     """
 
-    character_ids = set(character_ids)
+    character_ids = set(character_ids or [])
 
     logger.debug(
         msg=f"Getting information for {len(character_ids)} character(s) from AA …"
@@ -174,6 +164,4 @@ def get_or_create_character(
     if character_ids_to_fetch:
         _create_character(character_ids=character_ids_to_fetch, with_affiliation=True)
 
-    characters = EveCharacter.objects.filter(character_id__in=character_ids)
-
-    return characters
+    return EveCharacter.objects.filter(character_id__in=character_ids)

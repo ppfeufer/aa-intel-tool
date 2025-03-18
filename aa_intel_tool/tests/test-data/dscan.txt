@@ -43,3 +43,253 @@
 32880	MAPDAVISs Venture	Venture	-
 32880	Jack Rosca's Venture	Venture	355 km
 23913	Your Mother	Nyx	355 km
+11393	balls deep	Retribution	5,115 m
+11393	Power Prawn	Retribution	19 km
+47466	la judia verde	Praxis	187 km
+35834	C-N4OD - Fountain of Life	Keepstar	0 m
+12747	musty pit	Mastodon	13 km
+35826	C-N4OD - Daystrom Institute	Azbel	4,624 km
+35827	C-N4OD - Kuat Drive Yards	Sotiyo	3,320 km
+35825	C-N4OD - Asgard Invention	Raitaru	5,797 km
+11969	i.Dreamcatcher Point	Arazu	21 km
+11957	Falcon	Falcon	55 km
+11963	Mermaid Guide	Rapier	59 km
+81040	Avalanche - Pampel	Avalanche	3,404 km
+81040	Avalanche - Axn0r	Avalanche	3,404 km
+12005	Master Baiter	Ishtar	18 km
+22456	B2	Sabre	1,125 km
+33474	Test subject	Mobile Depot	2,032 km
+35836	C-N4OD - Khazad-dum Refinery	Tatara	2,134 km
+11129	Gallente Shuttle - Meyer Wolfsheim	Gallente Shuttle	-
+3874	KVN-36	Stargate (Gallente Constellation)	1,124 km
+11567	Aimbulance	Avatar	34 km
+35841	C-N4OD » J5A-IX - Der Geile Springen	Ansiblex Jump Bridge	2,748 km
+11400	I need!	Jaguar	-
+670	Nancy Keikira's Capsule	Capsule	-
+27540	Modro Titty bar II	Domination Control Tower	-
+27786	True Sansha Control Tower	True Sansha Control Tower	0 m
+20066	Minmatar Control Tower Small	Minmatar Control Tower Small	-
+20064	POS ça là	Gallente Control Tower Small	-
+20063	DBRN-Z  Star	Gallente Control Tower Medium	-
+12236	Советский Союз	Gallente Control Tower	-
+20063	Gallente Control Tower Medium	Gallente Control Tower Medium	-
+35826	DBRN-Z - Nebula Processing Copy+Research	Azbel	11.6 AU
+35826	DBRN-Z - Dear Mr. BuRNZ Large Ships	Azbel	11.6 AU
+35825	DBRN-Z - Wifi Inside - Invent & Equipment	Raitaru	11.6 AU
+85230	Mercenary Den	Mercenary Den	-
+33474	Mobile Depot	Mobile Depot	-
+33475	Mobile Tractor Unit	Mobile Tractor Unit	-
+35835	DBRN-Z - Private DBRN Fletch 2 ZS	Athanor	12.6 AU
+35835	DBRN-Z - PRIVATE - Tomtenisse2	Athanor	12.8 AU
+35836	DBRN-Z - Hard Rocks Cafe	Tatara	11.6 AU
+81080	Orbital Skyhook	Orbital Skyhook	11.6 AU
+81080	Orbital Skyhook	Orbital Skyhook	10.3 AU
+81080	Orbital Skyhook	Orbital Skyhook	6.2 AU
+81080	Orbital Skyhook	Orbital Skyhook	157,429 km
+81080	Orbital Skyhook	Orbital Skyhook	12.8 AU
+81080	Orbital Skyhook	Orbital Skyhook	11.8 AU
+81080	Orbital Skyhook	Orbital Skyhook	11.2 AU
+81080	Orbital Skyhook	Orbital Skyhook	11.2 AU
+81080	Orbital Skyhook	Orbital Skyhook	12.6 AU
+32458	Sovereignty Hub	Sovereignty Hub	11.1 AU
+45039	DBRN-Z - Star	Sun M0 (Orange radiant)	11.1 AU
+23913	'παναγια σουμελα'	Nyx	-
+81826	DBRN-Z - safari safari v2	Metenox Moon Drill	6.2 AU
+27540	Modro Titty bar II	Domination Control Tower	-
+27786	True Sansha Control Tower	True Sansha Control Tower	0 m
+20066	Minmatar Control Tower Small	Minmatar Control Tower Small	-
+20064	POS ça là	Gallente Control Tower Small	-
+20063	DBRN-Z  Star	Gallente Control Tower Medium	-
+12236	Советский Союз	Gallente Control Tower	-
+20063	Gallente Control Tower Medium	Gallente Control Tower Medium	-
+17621	Corporate Hangar Array	Corporate Hangar Array	-
+17621	Corporate Hangar Array	Corporate Hangar Array	-
+17176	Spatial Destabilization Battery	Spatial Destabilization Battery	-
+17177	White Noise Generation Battery	White Noise Generation Battery	-
+17175	Phase Inversion Battery	Phase Inversion Battery	-
+17174	Ion Field Projection Battery	Ion Field Projection Battery	-
+17174	Ion Field Projection Battery	Ion Field Projection Battery	-
+17175	Phase Inversion Battery	Phase Inversion Battery	-
+17174	Ion Field Projection Battery	Ion Field Projection Battery	-
+17174	Ion Field Projection Battery	Ion Field Projection Battery	-
+17175	Phase Inversion Battery	Phase Inversion Battery	-
+27672	Energy Neutralizing Battery	Energy Neutralizing Battery	-
+27672	Energy Neutralizing Battery	Energy Neutralizing Battery	-
+27855	Sansha Energy Neutralizing Battery	Sansha Energy Neutralizing Battery	-
+27672	Energy Neutralizing Battery	Energy Neutralizing Battery	-
+27855	Sansha Energy Neutralizing Battery	Sansha Energy Neutralizing Battery	-
+27672	Energy Neutralizing Battery	Energy Neutralizing Battery	-
+27672	Energy Neutralizing Battery	Energy Neutralizing Battery	-
+27672	Energy Neutralizing Battery	Energy Neutralizing Battery	-
+35826	DBRN-Z - Nebula Processing Copy+Research	Azbel	11.6 AU
+35826	DBRN-Z - Dear Mr. BuRNZ Large Ships	Azbel	11.6 AU
+35825	DBRN-Z - Wifi Inside - Invent & Equipment	Raitaru	11.6 AU
+85230	Mercenary Den	Mercenary Den	-
+33474	Mobile Depot	Mobile Depot	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16690	Small Railgun Battery	Small Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16690	Small Railgun Battery	Small Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16690	Small Railgun Battery	Small Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16690	Small Railgun Battery	Small Railgun Battery	-
+16690	Small Railgun Battery	Small Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16690	Small Railgun Battery	Small Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+16691	Medium Railgun Battery	Medium Railgun Battery	-
+27633	Dark Blood Small Beam Laser Battery	Dark Blood Small Beam Laser Battery	40 km
+27775	True Sansha Medium Pulse Laser Battery	True Sansha Medium Pulse Laser Battery	42 km
+27776	True Sansha Small Beam Laser Battery	True Sansha Small Beam Laser Battery	49 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	43 km
+27775	True Sansha Medium Pulse Laser Battery	True Sansha Medium Pulse Laser Battery	44 km
+27775	True Sansha Medium Pulse Laser Battery	True Sansha Medium Pulse Laser Battery	51 km
+27775	True Sansha Medium Pulse Laser Battery	True Sansha Medium Pulse Laser Battery	43 km
+27776	True Sansha Small Beam Laser Battery	True Sansha Small Beam Laser Battery	44 km
+27776	True Sansha Small Beam Laser Battery	True Sansha Small Beam Laser Battery	45 km
+27776	True Sansha Small Beam Laser Battery	True Sansha Small Beam Laser Battery	39 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	42 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	43 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	40 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	39 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	40 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	46 km
+27771	Sansha Small Pulse Laser Battery	Sansha Small Pulse Laser Battery	-
+27776	True Sansha Small Beam Laser Battery	True Sansha Small Beam Laser Battery	47 km
+27771	Sansha Small Pulse Laser Battery	Sansha Small Pulse Laser Battery	-
+27776	True Sansha Small Beam Laser Battery	True Sansha Small Beam Laser Battery	42 km
+27633	Dark Blood Small Beam Laser Battery	Dark Blood Small Beam Laser Battery	38 km
+27633	Dark Blood Small Beam Laser Battery	Dark Blood Small Beam Laser Battery	50 km
+27633	Dark Blood Small Beam Laser Battery	Dark Blood Small Beam Laser Battery	42 km
+27776	True Sansha Small Beam Laser Battery	True Sansha Small Beam Laser Battery	48 km
+27771	Sansha Small Pulse Laser Battery	Sansha Small Pulse Laser Battery	-
+27771	Sansha Small Pulse Laser Battery	Sansha Small Pulse Laser Battery	-
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	40 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	45 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	40 km
+27775	True Sansha Medium Pulse Laser Battery	True Sansha Medium Pulse Laser Battery	48 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	45 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	40 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	39 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	38 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	39 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	43 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	45 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	41 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	42 km
+27777	True Sansha Small Pulse Laser Battery	True Sansha Small Pulse Laser Battery	41 km
+27775	True Sansha Medium Pulse Laser Battery	True Sansha Medium Pulse Laser Battery	45 km
+27775	True Sansha Medium Pulse Laser Battery	True Sansha Medium Pulse Laser Battery	40 km
+27775	True Sansha Medium Pulse Laser Battery	True Sansha Medium Pulse Laser Battery	39 km
+27776	True Sansha Small Beam Laser Battery	True Sansha Small Beam Laser Battery	43 km
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+16696	Cruise Missile Battery	Cruise Missile Battery	-
+27646	Domination Medium Artillery Battery	Domination Medium Artillery Battery	-
+27646	Domination Medium Artillery Battery	Domination Medium Artillery Battery	-
+27646	Domination Medium Artillery Battery	Domination Medium Artillery Battery	-
+27652	Domination Small Artillery Battery	Domination Small Artillery Battery	-
+27649	Domination Medium AutoCannon Battery	Domination Medium AutoCannon Battery	-
+27652	Domination Small Artillery Battery	Domination Small Artillery Battery	-
+27559	Domination Large Artillery Battery	Domination Large Artillery Battery	-
+27559	Domination Large Artillery Battery	Domination Large Artillery Battery	-
+27652	Domination Small Artillery Battery	Domination Small Artillery Battery	-
+27649	Domination Medium AutoCannon Battery	Domination Medium AutoCannon Battery	-
+27649	Domination Medium AutoCannon Battery	Domination Medium AutoCannon Battery	-
+27649	Domination Medium AutoCannon Battery	Domination Medium AutoCannon Battery	-
+27652	Domination Small Artillery Battery	Domination Small Artillery Battery	-
+27652	Domination Small Artillery Battery	Domination Small Artillery Battery	-
+27559	Domination Large Artillery Battery	Domination Large Artillery Battery	-
+27646	Domination Medium Artillery Battery	Domination Medium Artillery Battery	-
+27652	Domination Small Artillery Battery	Domination Small Artillery Battery	-
+27559	Domination Large Artillery Battery	Domination Large Artillery Battery	-
+33475	Mobile Tractor Unit	Mobile Tractor Unit	-
+35835	DBRN-Z - Private DBRN Fletch 2 ZS	Athanor	12.6 AU
+35835	DBRN-Z - PRIVATE - Tomtenisse2	Athanor	12.8 AU
+35836	DBRN-Z - Hard Rocks Cafe	Tatara	11.6 AU
+27779	Shadow Sensor Dampening Battery	Shadow Sensor Dampening Battery	-
+27779	Shadow Sensor Dampening Battery	Shadow Sensor Dampening Battery	-
+27779	Shadow Sensor Dampening Battery	Shadow Sensor Dampening Battery	-
+27779	Shadow Sensor Dampening Battery	Shadow Sensor Dampening Battery	-
+17186	Heat Dissipation Array	Heat Dissipation Array	-
+17186	Heat Dissipation Array	Heat Dissipation Array	13 km
+17187	Photon Scattering Array	Photon Scattering Array	14 km
+17186	Heat Dissipation Array	Heat Dissipation Array	14 km
+17185	Explosion Dampening Array	Explosion Dampening Array	-
+17187	Photon Scattering Array	Photon Scattering Array	14 km
+17187	Photon Scattering Array	Photon Scattering Array	14 km
+17187	Photon Scattering Array	Photon Scattering Array	-
+17186	Heat Dissipation Array	Heat Dissipation Array	14 km
+17187	Photon Scattering Array	Photon Scattering Array	-
+12237	Ship Maintenance Array	Ship Maintenance Array	-
+12237	Ship Maintenance Array	Ship Maintenance Array	-
+81080	Orbital Skyhook	Orbital Skyhook	11.6 AU
+81080	Orbital Skyhook	Orbital Skyhook	10.3 AU
+81080	Orbital Skyhook	Orbital Skyhook	6.2 AU
+81080	Orbital Skyhook	Orbital Skyhook	157,428 km
+81080	Orbital Skyhook	Orbital Skyhook	12.8 AU
+81080	Orbital Skyhook	Orbital Skyhook	11.8 AU
+81080	Orbital Skyhook	Orbital Skyhook	11.2 AU
+81080	Orbital Skyhook	Orbital Skyhook	11.2 AU
+81080	Orbital Skyhook	Orbital Skyhook	12.6 AU
+32458	Sovereignty Hub	Sovereignty Hub	11.1 AU
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	41 km
+17178	Stasis Webification Battery	Stasis Webification Battery	-
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	44 km
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	45 km
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	51 km
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	46 km
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	43 km
+17178	Stasis Webification Battery	Stasis Webification Battery	-
+17178	Stasis Webification Battery	Stasis Webification Battery	-
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	45 km
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	39 km
+17178	Stasis Webification Battery	Stasis Webification Battery	-
+17178	Stasis Webification Battery	Stasis Webification Battery	-
+17178	Stasis Webification Battery	Stasis Webification Battery	-
+17178	Stasis Webification Battery	Stasis Webification Battery	-
+17178	Stasis Webification Battery	Stasis Webification Battery	-
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	-
+27573	Domination Stasis Webification Battery	Domination Stasis Webification Battery	-
+45039	DBRN-Z - Star	Sun M0 (Orange radiant)	11.1 AU
+81826	DBRN-Z - safari safari v2	Metenox Moon Drill	6.2 AU
+17181	Warp Disruption Battery	Warp Disruption Battery	-
+17182	Warp Scrambling Battery	Warp Scrambling Battery	-
+27569	Shadow Warp Scrambling Battery	Shadow Warp Scrambling Battery	-
+17182	Warp Scrambling Battery	Warp Scrambling Battery	40 km
+17182	Warp Scrambling Battery	Warp Scrambling Battery	-
+17181	Warp Disruption Battery	Warp Disruption Battery	46 km
+17182	Warp Scrambling Battery	Warp Scrambling Battery	41 km
+17182	Warp Scrambling Battery	Warp Scrambling Battery	-
+17182	Warp Scrambling Battery	Warp Scrambling Battery	-
+17182	Warp Scrambling Battery	Warp Scrambling Battery	-
+17182	Warp Scrambling Battery	Warp Scrambling Battery	-
+17181	Warp Disruption Battery	Warp Disruption Battery	-
+17182	Warp Scrambling Battery	Warp Scrambling Battery	45 km
+17181	Warp Disruption Battery	Warp Disruption Battery	50 km
+27569	Shadow Warp Scrambling Battery	Shadow Warp Scrambling Battery	-
+17181	Warp Disruption Battery	Warp Disruption Battery	-
+17181	Warp Disruption Battery	Warp Disruption Battery	42 km
+17181	Warp Disruption Battery	Warp Disruption Battery	44 km

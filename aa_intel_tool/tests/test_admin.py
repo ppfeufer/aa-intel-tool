@@ -3,35 +3,21 @@ Test for admin.py
 """
 
 # Django
-from django.test import TestCase
+from django.contrib import admin
+from django.test import RequestFactory, TestCase
 from django.urls import reverse
 
-# Alliance Auth (External Libs)
-from app_utils.testing import create_fake_user
-
 # AA Intel Tool
-from aa_intel_tool.admin import BaseReadOnlyAdminMixin
+from aa_intel_tool.admin import BaseReadOnlyAdminMixin, ScanAdmin
+from aa_intel_tool.models import Scan
 
 
-class TestAdmin(TestCase):
+class TestBaseReadOnlyAdminMixin(TestCase):
     """
-    The tests
+    Test the BaseReadOnlyAdminMixin class
     """
 
-    @classmethod
-    def setUpClass(cls) -> None:
-        """
-        Set up groups and users
-        """
-
-        super().setUpClass()
-
-        # User
-        cls.user_1001 = create_fake_user(
-            character_id=1001, character_name="Peter Parker"
-        )
-
-    def test_has_add_permission_returns_false(self):
+    def test_add_permission_is_denied(self):
         """
         Test if admin.BaseReadOnlyAdminMixin.has_add_permission returns False
 
@@ -39,17 +25,13 @@ class TestAdmin(TestCase):
         :rtype:
         """
 
-        self.client.force_login(user=self.user_1001)
-
-        response = self.client.get(
+        request = RequestFactory().get(
             path=reverse(viewname="aa_intel_tool:intel_tool_index")
         )
 
-        has_permission = BaseReadOnlyAdminMixin.has_add_permission(request=response)
+        self.assertFalse(BaseReadOnlyAdminMixin.has_add_permission(request))
 
-        self.assertFalse(expr=has_permission)
-
-    def test_has_change_permission_returns_false(self):
+    def test_change_permission_is_denied(self):
         """
         Test if admin.BaseReadOnlyAdminMixin.has_change_permission returns False
 
@@ -57,17 +39,13 @@ class TestAdmin(TestCase):
         :rtype:
         """
 
-        self.client.force_login(user=self.user_1001)
-
-        response = self.client.get(
+        request = RequestFactory().get(
             path=reverse(viewname="aa_intel_tool:intel_tool_index")
         )
 
-        has_permission = BaseReadOnlyAdminMixin.has_change_permission(request=response)
+        self.assertFalse(BaseReadOnlyAdminMixin.has_change_permission(request))
 
-        self.assertFalse(expr=has_permission)
-
-    def test_has_delete_permission_returns_false(self):
+    def test_delete_permission_is_denied(self):
         """
         Test if admin.BaseReadOnlyAdminMixin.has_delete_permission returns False
 
@@ -75,12 +53,46 @@ class TestAdmin(TestCase):
         :rtype:
         """
 
-        self.client.force_login(user=self.user_1001)
-
-        response = self.client.get(
+        request = RequestFactory().get(
             path=reverse(viewname="aa_intel_tool:intel_tool_index")
         )
 
-        has_permission = BaseReadOnlyAdminMixin.has_delete_permission(request=response)
+        self.assertFalse(BaseReadOnlyAdminMixin.has_delete_permission(request))
 
-        self.assertFalse(expr=has_permission)
+
+class TestScanAdmin(TestCase):
+    """
+    Test the ScanAdmin class
+    """
+
+    def test_displays_scan_type_with_link(self):
+        """
+        Test if ScanAdmin._scan_type displays the scan type with a link
+
+        :return:
+        :rtype:
+        """
+
+        scan = Scan(raw_data="test data")
+        scan.save()
+
+        admin_instance = ScanAdmin(model=Scan, admin_site=admin.site)
+        result = admin_instance._scan_type(scan)
+
+        self.assertIn("Open in a new browser tab", result)
+        self.assertIn(scan.hash, result)
+
+    def test_displays_raw_data_in_pre_tag(self):
+        """
+        Test if ScanAdmin._raw_data displays the raw data in a <pre> tag
+
+        :return:
+        :rtype:
+        """
+
+        scan = Scan.objects.create(raw_data="test data")
+
+        admin_instance = ScanAdmin(model=Scan, admin_site=admin.site)
+        result = admin_instance._raw_data(scan)
+
+        self.assertIn("<pre>test data</pre>", result)

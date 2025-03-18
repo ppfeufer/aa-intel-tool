@@ -35,9 +35,14 @@ Section Order:
 ### Security
 -->
 
+### Added
+
+- More tests
+
 ### Changed
 
-- JavaScript refactored/optmized
+- Python code refactored/optmized
+- JavaScript code refactored/optmized
   - HTML markup for the result tables is now unified
 
 ## [2.6.1] - 2025-03-07

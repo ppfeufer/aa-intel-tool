@@ -51,45 +51,49 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
         ids=set(ship_class_ids), include_children=True
     ).values_list("id", "name", "eve_group__id", "eve_group__name", "mass", named=True)
 
-    # Loop through ship classes
-    for ship_class in ship_class_details:
+    # Build ship class and type dictionaries
+    for ship_class in list(ship_class_details):
         # Build ship class dict
-        ships["class"][ship_class.name]["id"] = ship_class.id
-        ships["class"][ship_class.name]["name"] = ship_class.name
-        ships["class"][ship_class.name]["type_id"] = ship_class.eve_group__id
-        ships["class"][ship_class.name]["type_name"] = ship_class.eve_group__name
-        ships["class"][ship_class.name]["image"] = eveimageserver.type_icon_url(
-            type_id=ship_class.id, size=32
-        )
-        ships["class"][ship_class.name]["mass"] = (
-            ship_class.mass * ships["class"][ship_class.name]["count"]
+        ships["class"][ship_class.name].update(
+            {
+                "id": ship_class.id,
+                "name": ship_class.name,
+                "type_id": ship_class.eve_group__id,
+                "type_name": ship_class.eve_group__name,
+                "image": eveimageserver.type_icon_url(type_id=ship_class.id, size=32),
+                "mass": ship_class.mass * ships["class"][ship_class.name]["count"],
+            }
         )
 
         # Build ship type dict
-        ships["type"][ship_class.eve_group__name]["id"] = ship_class.eve_group__id
-        ships["type"][ship_class.eve_group__name]["name"] = ship_class.eve_group__name
+        ships["type"][ship_class.eve_group__name].update(
+            {
+                "id": ship_class.eve_group__id,
+                "name": ship_class.eve_group__name,
+            }
+        )
 
     # Pilots
-    pilot_details = _get_character_info(scan_data=list(set(pilots)))
+    pilot_details = _get_character_info(scan_data=list(pilots))
 
-    # Loop through pilots
-    for pilot in pilot_details:
-        # Get ship class details for a pilot
-        pilot__ship_class = ship_class_details.filter(
-            name=pilots[pilot.character_name]["ship"]
-        ).get()
+    # Build pilots dictionary
+    for pilot in list(pilot_details):
+        pilot_ship_class = next(
+            ship_class
+            for ship_class in ship_class_details
+            if ship_class.name == pilots[pilot.character_name]["ship"]
+        )
 
-        # Build pilots dict
-        pilots[pilot.character_name]["id"] = pilot.character_id
-        pilots[pilot.character_name]["portrait"] = pilot.portrait_url_32
-        pilots[pilot.character_name]["evewho"] = evewho.character_url(
-            pilot.character_id
+        pilots[pilot.character_name].update(
+            {
+                "id": pilot.character_id,
+                "portrait": pilot.portrait_url_32,
+                "evewho": evewho.character_url(pilot.character_id),
+                "zkillboard": zkillboard.character_url(pilot.character_id),
+                "ship_id": pilot_ship_class.id,
+                "ship_type_id": pilot_ship_class.eve_group__id,
+            }
         )
-        pilots[pilot.character_name]["zkillboard"] = zkillboard.character_url(
-            pilot.character_id
-        )
-        pilots[pilot.character_name]["ship_id"] = pilot__ship_class.id
-        pilots[pilot.character_name]["ship_type_id"] = pilot__ship_class.eve_group__id
 
     return {
         "classes": dict_to_list(input_dict=ships["class"]),
@@ -117,12 +121,9 @@ def parse_line(line) -> list:
     # line[4] => Position in Fleet
     # line[5] => Skills (FC - WC - SC)
     # line[6] => Wing Name / Squad Name
-    line = re.split(pattern=r"\t+", string=line.rstrip("\t"))
+    line = re.split(r"\t+", line.rstrip("\t"))
 
-    if len(line) == 6:
-        line.append("")
-
-    return line
+    return line if len(line) > 6 else line + [""]
 
 
 def update_ships(ships, line) -> dict:
@@ -137,14 +138,8 @@ def update_ships(ships, line) -> dict:
     :rtype:
     """
 
-    if line[2] not in ships["class"]:
-        ships["class"][line[2]] = {"count": 0}
-
-    if line[3] not in ships["type"]:
-        ships["type"][line[3]] = {"count": 0}
-
-    ships["class"][line[2]]["count"] += 1
-    ships["type"][line[3]]["count"] += 1
+    ships["class"].setdefault(line[2], {"count": 0})["count"] += 1
+    ships["type"].setdefault(line[3], {"count": 0})["count"] += 1
 
     return ships
 
@@ -162,14 +157,11 @@ def handle_fleet_composition_and_participation(pilots, ships) -> tuple:
     """
 
     fleet_composition = get_fleet_composition(pilots=pilots, ships=ships)
-    participation = None
-
-    if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
-        participation = parse_pilots(
-            scan_data=list(set(pilots)),
-            safe_to_db=False,
-            ignore_limit=True,
-        )
+    participation = (
+        parse_pilots(scan_data=list(set(pilots)), safe_to_db=False, ignore_limit=True)
+        if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN
+        else None
+    )
 
     return fleet_composition, participation
 
@@ -184,59 +176,50 @@ def parse(scan_data: list) -> Scan:
     :rtype:
     """
 
-    message = _("The fleet composition module is currently disabled.")
-
-    if AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP is True:
-        parsed_data = {}
-        pilots = {}
-        ships = {"type": {}, "class": {}}
-        lines = []
-
-        # Loop through the scan data
-        for entry in scan_data:
-            line = parse_line(entry)
-
-            pilots[line[0]] = {
-                "name": line[0],
-                "solarsystem": line[1],
-                "ship": line[2],
-                "ship_type": line[3],
-            }
-            ships = update_ships(ships=ships, line=line)
-
-            lines.append(line)
-
-        fleet_composition, participation = handle_fleet_composition_and_participation(
-            pilots=pilots, ships=ships
+    if not AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP:
+        raise ParserError(
+            message=_("The fleet composition module is currently disabled.")
         )
 
-        logger.debug(msg=fleet_composition)
+    parsed_data = {}
+    pilots = {}
+    ships = {"type": {}, "class": {}}
 
-        # Add "ship classes" to parsed data when available
-        if fleet_composition["classes"]:
-            parsed_data["classes"] = {
-                "section": ScanData.Section.SHIPLIST,
-                "data": fleet_composition["classes"],
-            }
+    # Loop through the scan data
+    for entry in scan_data:
+        line = parse_line(entry)
 
-        # Add "ship types" to parsed data when available
-        if fleet_composition["types"]:
-            parsed_data["shiptypes"] = {
-                "section": ScanData.Section.SHIPTYPES,
-                "data": fleet_composition["types"],
-            }
+        pilots[line[0]] = {
+            "name": line[0],
+            "solarsystem": line[1],
+            "ship": line[2],
+            "ship_type": line[3],
+        }
+        ships = update_ships(ships=ships, line=line)
 
-        # Add "who is flying what" (the actual fleet composition) to parsed data when available
-        if fleet_composition["pilots"]:
-            parsed_data["pilots_flying"] = {
-                "section": ScanData.Section.FLEETCOMPOSITION,
-                "data": fleet_composition["pilots"],
-            }
+    fleet_composition, participation = handle_fleet_composition_and_participation(
+        pilots=pilots, ships=ships
+    )
 
-        # Add fleet participation data to the parsed data
-        if participation:
-            parsed_data.update(participation)
+    logger.debug(msg=fleet_composition)
 
-        return safe_scan_to_db(scan_type=Scan.Type.FLEETCOMP, parsed_data=parsed_data)
+    # Add parsed data when available
+    if fleet_composition["classes"]:
+        parsed_data["classes"] = {
+            "section": ScanData.Section.SHIPLIST,
+            "data": fleet_composition["classes"],
+        }
+    if fleet_composition["types"]:
+        parsed_data["shiptypes"] = {
+            "section": ScanData.Section.SHIPTYPES,
+            "data": fleet_composition["types"],
+        }
+    if fleet_composition["pilots"]:
+        parsed_data["pilots_flying"] = {
+            "section": ScanData.Section.FLEETCOMPOSITION,
+            "data": fleet_composition["pilots"],
+        }
+    if participation:
+        parsed_data.update(participation)
 
-    raise ParserError(message=message)
+    return safe_scan_to_db(scan_type=Scan.Type.FLEETCOMP, parsed_data=parsed_data)
