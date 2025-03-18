@@ -18,23 +18,20 @@ def safe_scan_to_db(scan_type: Scan.Type, parsed_data: dict) -> Scan:
     :rtype:
     """
 
-    # Creating a new Scan object
-    new_scan = Scan(scan_type=scan_type)
-    new_scan.save()
+    # Creating a new Scan object and saving it
+    new_scan = Scan.objects.create(scan_type=scan_type)
 
-    # Creating the associated ScanData objects
-    scan_data_objects = []
-    for scan_data in parsed_data.values():
-        scan_data_objects.append(
+    # Creating and saving the associated ScanData objects
+    ScanData.objects.bulk_create(
+        [
             ScanData(
                 scan=new_scan,
                 section=scan_data["section"],
                 processed_data=scan_data["data"],
             )
-        )
-
-    # Saving ScanData objects
-    ScanData.objects.bulk_create(scan_data_objects)
+            for scan_data in parsed_data.values()
+        ]
+    )
 
     # Return the Scan object
     return new_scan

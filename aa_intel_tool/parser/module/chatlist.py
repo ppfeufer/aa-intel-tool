@@ -2,6 +2,9 @@
 Chat list parser
 """
 
+# Standard Library
+from collections import defaultdict
+
 # Django
 from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy as _
@@ -38,22 +41,13 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
     :rtype:
     """
 
-    fetch_from_eveuniverse = False
+    # Excluding corporation_id=1000001 (Doomheim) to potentially force an update here …
+    eve_characters = EveCharacter.objects.filter(character_name__in=scan_data).exclude(
+        corporation_id=1000001
+    )
 
     # Check if we have to bother Eve Universe or if we have all characters already
-    # Excluding corporation_id=1000001 (Doomheim) to force an update here …
-    try:
-        eve_characters = EveCharacter.objects.filter(
-            character_name__in=scan_data
-        ).exclude(corporation_id=1000001)
-    except EveCharacter.DoesNotExist:  # pylint: disable=no-member
-        fetch_from_eveuniverse = True
-    else:
-        if len(scan_data) != eve_characters.count():
-            fetch_from_eveuniverse = True
-
-    # Fetch the character information from Eve Universe if needed
-    if fetch_from_eveuniverse:
+    if len(scan_data) != eve_characters.count():
         try:
             eve_character_ids = (
                 EveEntity.objects.fetch_by_names_esi(names=scan_data, update=True)
@@ -61,21 +55,16 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
                 .values_list("id", flat=True)
             )
         except EveEntity.DoesNotExist as exc:  # pylint: disable=no-member
-            message = _(
-                "Something went wrong while fetching "
-                "the character information from ESI."
-            )
-
-            raise ParserError(message=message) from exc
-
-        logger.debug(msg=f"Got {len(eve_character_ids)} ID(s) back from Eve Universe …")
+            raise ParserError(
+                message=_(
+                    "Something went wrong while fetching the character information from ESI."
+                )
+            ) from exc
 
         # In case the name does not belong to an Eve character,
         # EveEntity returns an empty object
-        if len(eve_character_ids) == 0:
-            message = _("Character unknown to ESI.")
-
-            raise ParserError(message=message)
+        if not eve_character_ids:
+            raise ParserError(message=_("Character unknown to ESI."))
 
         eve_characters = get_or_create_character(character_ids=eve_character_ids)
 
@@ -110,22 +99,24 @@ def _parse_alliance_info(
     :rtype:
     """
 
-    # Build alliance info dict
     if eve_character.alliance_id is None:
-        alliance_info = _get_unaffiliated_alliance_info()
-    else:
-        alliance_info = {
-            "id": eve_character.alliance_id,
-            "name": eve_character.alliance_name,
-            "ticker": eve_character.alliance_ticker,
-            "logo": eve_character.alliance_logo_url_32,
-        }
+        return _get_unaffiliated_alliance_info()
 
-        if with_evelinks:
-            alliance_info["dotlan"] = dotlan.alliance_url(eve_character.alliance_name)
-            alliance_info["zkillboard"] = zkillboard.alliance_url(
-                eve_character.alliance_id
-            )
+    alliance_info = {
+        "id": eve_character.alliance_id,
+        "name": eve_character.alliance_name,
+        "ticker": eve_character.alliance_ticker,
+        "logo": eve_character.alliance_logo_url_32,
+    }
+
+    # Add eve links if requested
+    if with_evelinks:
+        alliance_info.update(
+            {
+                "dotlan": dotlan.alliance_url(eve_character.alliance_name),
+                "zkillboard": zkillboard.alliance_url(eve_character.alliance_id),
+            }
+        )
 
     return alliance_info
 
@@ -153,11 +144,13 @@ def _parse_corporation_info(
 
     # Add eve links if requested
     if with_evelinks:
-        corporation_info["dotlan"] = dotlan.corporation_url(
-            name=eve_character.corporation_name
-        )
-        corporation_info["zkillboard"] = zkillboard.corporation_url(
-            eve_id=eve_character.corporation_id
+        corporation_info.update(
+            {
+                "dotlan": dotlan.corporation_url(name=eve_character.corporation_name),
+                "zkillboard": zkillboard.corporation_url(
+                    eve_id=eve_character.corporation_id
+                ),
+            }
         )
 
     # Add alliance info if requested
@@ -205,52 +198,35 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
     :rtype:
     """
 
-    counter = {}
+    counter = defaultdict(int)
     alliance_info = {}
     corporation_info = {}
     character_info = {}
 
     # Loop through the characters
-    for eve_character in eve_characters:
-        eve_character__alliance_name = "Unaffiliated"
+    for eve_character in list(eve_characters):
+        alliance_name = eve_character.alliance_name or "Unaffiliated"
+        corporation_name = eve_character.corporation_name
 
-        # If the character is in an alliance, use the alliance name
-        if eve_character.alliance_name is not None:
-            eve_character__alliance_name = eve_character.alliance_name
-
-        counter[eve_character__alliance_name] = (
-            counter.get(eve_character__alliance_name, 0) + 1
-        )
-
-        counter[eve_character.corporation_name] = (
-            counter.get(eve_character.corporation_name, 0) + 1
-        )
+        counter[alliance_name] += 1
+        counter[corporation_name] += 1
 
         # Alliance Info
-        if eve_character__alliance_name not in alliance_info:
-            alliance_info[eve_character__alliance_name] = _parse_alliance_info(
-                eve_character=eve_character
-            )
+        if alliance_name not in alliance_info:
+            alliance_info[alliance_name] = _parse_alliance_info(eve_character)
 
         # Corporation Info
-        if eve_character.corporation_name not in corporation_info:
-            corporation_info[eve_character.corporation_name] = _parse_corporation_info(
-                eve_character=eve_character
-            )
+        if corporation_name not in corporation_info:
+            corporation_info[corporation_name] = _parse_corporation_info(eve_character)
 
         # Character Info
         character_info[eve_character.character_name] = _parse_character_info(
-            eve_character=eve_character
+            eve_character
         )
 
         # Update the counter
-        alliance_info[eve_character__alliance_name]["count"] = counter[
-            eve_character__alliance_name
-        ]
-
-        corporation_info[eve_character.corporation_name]["count"] = counter[
-            eve_character.corporation_name
-        ]
+        alliance_info[alliance_name]["count"] = counter[alliance_name]
+        corporation_info[corporation_name]["count"] = counter[corporation_name]
 
     return {
         "pilots": dict_to_list(input_dict=character_info),
@@ -275,60 +251,55 @@ def parse(
     :rtype:
     """
 
-    message = _("The chat list module is currently disabled.")
-
     # Only parse the chat scan if the module is enabled
-    if AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN is True:
-        logger.debug(msg=f"{len(scan_data)} name(s) to work through …")
+    if not AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN:
+        raise ParserError(message=_("The chat list module is currently disabled."))
 
-        pilots_in_scan = len(scan_data)
-        max_allowed_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
+    logger.debug(msg=f"{len(scan_data)} name(s) to work through …")
 
-        # Check if the number of pilots in the scan exceeds the maximum allowed number
-        if 0 < max_allowed_pilots < pilots_in_scan and ignore_limit is False:
-            logger.debug(
-                msg=(
-                    f"Number of pilots in scan ({pilots_in_scan}) exceeds the maximum "
-                    f"allowed number ({max_allowed_pilots}). Throwing a tantrum …"
-                )
-            )
+    pilots_in_scan = len(scan_data)
+    max_allowed_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
 
-            # Throw a tantrum
-            raise ParserError(
-                message=ngettext(
-                    singular=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
-                    plural=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit.",  # pylint: disable=line-too-long
-                    number=max_allowed_pilots,
-                )
-            )
-
-        eve_characters = _get_character_info(scan_data=scan_data)
-
+    # Check if the number of pilots in the scan exceeds the maximum allowed number
+    if 0 < max_allowed_pilots < pilots_in_scan and not ignore_limit:
         logger.debug(
-            msg=f"Got {len(eve_characters)} EveCharacter object(s) back from AA …"
+            msg=(
+                f"Number of pilots in scan ({pilots_in_scan}) exceeds the maximum "
+                f"allowed number ({max_allowed_pilots}). Throwing a tantrum …"
+            )
         )
 
-        # Parse the data
-        parsed_chatscan = _parse_chatscan_data(eve_characters=eve_characters)
+        # Throw a tantrum
+        raise ParserError(
+            message=ngettext(
+                singular=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",
+                plural=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit.",
+                number=max_allowed_pilots,
+            )
+        )
 
-        parsed_data = {
-            "pilots": {
-                "section": ScanData.Section.PILOTLIST,
-                "data": parsed_chatscan["pilots"],
-            },
-            "corporations": {
-                "section": ScanData.Section.CORPORATIONLIST,
-                "data": parsed_chatscan["corporations"],
-            },
-            "alliances": {
-                "section": ScanData.Section.ALLIANCELIST,
-                "data": parsed_chatscan["alliances"],
-            },
-        }
+    eve_characters = _get_character_info(scan_data=scan_data)
+    logger.debug(msg=f"Got {len(eve_characters)} EveCharacter object(s) back from AA …")
 
-        if safe_to_db is False:
-            return parsed_data
+    # Parse the data
+    parsed_chatscan = _parse_chatscan_data(eve_characters=eve_characters)
+    parsed_data = {
+        "pilots": {
+            "section": ScanData.Section.PILOTLIST,
+            "data": parsed_chatscan["pilots"],
+        },
+        "corporations": {
+            "section": ScanData.Section.CORPORATIONLIST,
+            "data": parsed_chatscan["corporations"],
+        },
+        "alliances": {
+            "section": ScanData.Section.ALLIANCELIST,
+            "data": parsed_chatscan["alliances"],
+        },
+    }
 
-        return safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
-
-    raise ParserError(message=message)
+    return (
+        parsed_data
+        if not safe_to_db
+        else safe_scan_to_db(scan_type=Scan.Type.CHATLIST, parsed_data=parsed_data)
+    )

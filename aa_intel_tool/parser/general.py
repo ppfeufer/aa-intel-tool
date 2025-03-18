@@ -57,24 +57,19 @@ def parse_intel(form_data: str) -> str:
     :return:
     :rtype:
     """
-
     scan_data = form_data.splitlines()
 
-    if len(scan_data) > 0:
-        try:
-            intel_type = check_intel_type(scan_data=scan_data)
-        except ParserError as exc:
-            raise ParserError(message=exc.message) from exc
+    if not scan_data:
+        raise ParserError(message=_("No data to parse …"))
 
-        try:
-            new_scan = SUPPORTED_INTEL_TYPES[intel_type]["parser"](scan_data=scan_data)
-        except ParserError as exc:
-            # Re-raise the Exception
-            raise ParserError(message=exc.message) from exc
+    try:
+        intel_type = check_intel_type(scan_data=scan_data)
+        new_scan = SUPPORTED_INTEL_TYPES[intel_type]["parser"](scan_data=scan_data)
+    except ParserError as exc:
+        # Re-raise the Exception
+        raise ParserError(message=exc.message) from exc
 
-        new_scan.raw_data = form_data
-        new_scan.save()
+    new_scan.raw_data = form_data
+    new_scan.save()
 
-        return new_scan.hash
-
-    raise ParserError(message=_("No data to parse …"))
+    return new_scan.hash
