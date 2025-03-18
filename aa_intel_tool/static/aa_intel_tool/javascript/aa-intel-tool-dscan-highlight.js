@@ -11,17 +11,17 @@ const elementShipTypeTable = $('table.aa-intel-dscan-ship-types');
 /**
  * Determine if we can remove all sticky states for this corporation
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  * @returns {boolean}
  */
-const removeDscanShiptypeStickyComplete = (by_data, table_row) => {
+const removeDscanShiptypeStickyComplete = (byData, tableRow) => {
     let removeSticky = true;
 
-    elementShipClassTable.find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`).each((i, el) => {
-        if (by_data === 'shiptype' && !$(el).hasClass('aa-intel-highlight-sticky')) {
+    elementShipClassTable.find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`).each((i, el) => {
+        if (byData === 'shiptype' && !$(el).hasClass('aa-intel-highlight-sticky')) {
             removeSticky = false;
-        } else if (by_data === 'shipclass' && $(el).hasClass('aa-intel-highlight-sticky')) {
+        } else if (byData === 'shipclass' && $(el).hasClass('aa-intel-highlight-sticky')) {
             removeSticky = false;
         }
     });
@@ -33,16 +33,16 @@ const removeDscanShiptypeStickyComplete = (by_data, table_row) => {
 /**
  * Add highlight to other tables
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const addDscanHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
+const addDscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
-        .find(`tr[data-${by_data}-id="${table_row.data(`${by_data}-id`)}"]`)
+        .find(`tr[data-${byData}-id="${tableRow.data(`${byData}-id`)}"]`)
         .addClass('aa-intel-highlight');
 
     elementShipTypeTable
-        .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+        .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
         .addClass('aa-intel-highlight');
 };
 
@@ -50,16 +50,16 @@ const addDscanHightlight = (by_data, table_row) => { // eslint-disable-line no-u
 /**
  * Add highlight to other tables
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const removeDscanHightlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
+const removeDscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
-        .find(`tr[data-${by_data}-id="${table_row.data(`${by_data}-id`)}"]`)
+        .find(`tr[data-${byData}-id="${tableRow.data(`${byData}-id`)}"]`)
         .removeClass('aa-intel-highlight');
 
     elementShipTypeTable
-        .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+        .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
         .removeClass('aa-intel-highlight');
 };
 
@@ -67,25 +67,25 @@ const removeDscanHightlight = (by_data, table_row) => { // eslint-disable-line n
 /**
  * Add sticky highlight to other tables
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const addDscanSticky = (by_data, table_row) => {
-    table_row.addClass('aa-intel-highlight-sticky');
+const addDscanSticky = (byData, tableRow) => {
+    tableRow.addClass('aa-intel-highlight-sticky');
 
-    if (by_data === 'shiptype') {
+    if (byData === 'shiptype') {
         elementShipClassTable
-            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+            .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
             .addClass('aa-intel-highlight-sticky');
     }
 
-    if (by_data === 'shipclass') {
+    if (byData === 'shipclass') {
         elementShipClassTable
-            .find(`tr[data-shipclass-id="${table_row.data('shipclass-id')}"]`)
+            .find(`tr[data-shipclass-id="${tableRow.data('shipclass-id')}"]`)
             .addClass('aa-intel-highlight-sticky');
 
         elementShipTypeTable
-            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+            .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
             .addClass('aa-intel-highlight-sticky');
     }
 };
@@ -94,26 +94,26 @@ const addDscanSticky = (by_data, table_row) => {
 /**
  * Remove sticky highlight to other tables
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const removeDscanSticky = (by_data, table_row) => {
-    table_row.removeClass('aa-intel-highlight-sticky');
+const removeDscanSticky = (byData, tableRow) => {
+    tableRow.removeClass('aa-intel-highlight-sticky');
 
-    if (by_data === 'shiptype') {
+    if (byData === 'shiptype') {
         elementShipClassTable
-            .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+            .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
             .removeClass('aa-intel-highlight-sticky');
     }
 
-    if (by_data === 'shipclass') {
+    if (byData === 'shipclass') {
         elementShipClassTable
-            .find(`tr[data-shipclass-id="${table_row.data('shipclass-id')}"]`)
+            .find(`tr[data-shipclass-id="${tableRow.data('shipclass-id')}"]`)
             .removeClass('aa-intel-highlight-sticky');
 
-        if (removeDscanShiptypeStickyComplete(by_data, table_row) === true) {
+        if (removeDscanShiptypeStickyComplete(byData, tableRow) === true) {
             elementShipTypeTable
-                .find(`tr[data-shiptype-id="${table_row.data('shiptype-id')}"]`)
+                .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
                 .removeClass('aa-intel-highlight-sticky');
         }
     }
@@ -123,18 +123,18 @@ const removeDscanSticky = (by_data, table_row) => {
 /**
  * Change the status of the sticky highlight
  *
- * @param {string} by_data The table data attribute for which this function is triggered
- * @param {element} table_row The table row that is to be changed
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {element} tableRow The table row that is to be changed
  */
-const changeDscanStickyHighlight = (by_data, table_row) => { // eslint-disable-line no-unused-vars
+const changeDscanStickyHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     if (
         (
-            by_data === 'shiptype' && table_row.hasClass('aa-intel-highlight-sticky') === true
-            && removeDscanShiptypeStickyComplete(by_data, table_row) === true
-        ) || (by_data === 'shipclass' && table_row.hasClass('aa-intel-highlight-sticky') === true)
+            byData === 'shiptype' && tableRow.hasClass('aa-intel-highlight-sticky') === true
+            && removeDscanShiptypeStickyComplete(byData, tableRow) === true
+        ) || (byData === 'shipclass' && tableRow.hasClass('aa-intel-highlight-sticky') === true)
     ) {
-        removeDscanSticky(by_data, table_row);
+        removeDscanSticky(byData, tableRow);
     } else {
-        addDscanSticky(by_data, table_row);
+        addDscanSticky(byData, tableRow);
     }
 };

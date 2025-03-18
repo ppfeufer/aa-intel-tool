@@ -60,7 +60,7 @@ $(() => {
                         },
                         {
                             targets: 1,
-                            width: 45,
+                            width: 35,
                             createdCell: (td) => {
                                 $(td).addClass('text-end');
                             }
@@ -164,7 +164,7 @@ $(() => {
                         },
                         {
                             targets: 1,
-                            width: 45,
+                            width: 35,
                             createdCell: (td) => {
                                 $(td).addClass('text-end');
                             }

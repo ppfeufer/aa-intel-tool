@@ -51,12 +51,12 @@ $(() => {
                         {
                             targets: 0,
                             createdCell: (td) => {
-                                $(td).addClass('text-ellipsis');
+                                $(td).addClass('text-ellipsis fix-eve-image-position');
                             }
                         },
                         {
                             targets: 1,
-                            width: 45,
+                            width: 35,
                             createdCell: (td) => {
                                 $(td).addClass('text-end');
                             }
@@ -142,8 +142,14 @@ $(() => {
                     ],
                     columnDefs: [
                         {
+                            targets: 0,
+                            createdCell: (td) => {
+                                $(td).addClass('text-ellipsis fix-eve-image-position');
+                            }
+                        },
+                        {
                             targets: 1,
-                            width: 45,
+                            width: 35,
                             createdCell: (td) => {
                                 $(td).addClass('text-end');
                             }
