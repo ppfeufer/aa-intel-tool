@@ -39,6 +39,10 @@ Section Order:
 
 - More tests
 
+### Fixed
+
+- Spelling (It's EVE time, not Eve time)
+
 ### Changed
 
 - Python code refactored/optmized
