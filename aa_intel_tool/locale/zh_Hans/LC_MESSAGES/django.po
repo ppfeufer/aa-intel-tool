@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-03-07 15:55+0100\n"
+"POT-Creation-Date: 2025-04-09 11:22+0200\n"
 "PO-Revision-Date: 2025-02-18 09:17+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Chinese (Simplified Han script) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
@@ -165,33 +165,33 @@ msgstr ""
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:80
+#: aa_intel_tool/parser/general.py:63
 msgid "No data to parse …"
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:65
+#: aa_intel_tool/parser/module/chatlist.py:60
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:76
+#: aa_intel_tool/parser/module/chatlist.py:67
 msgid "Character unknown to ESI."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:278
+#: aa_intel_tool/parser/module/chatlist.py:256
 msgid "The chat list module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:299
+#: aa_intel_tool/parser/module/chatlist.py:275
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
 msgstr[0] ""
 
-#: aa_intel_tool/parser/module/dscan.py:350
+#: aa_intel_tool/parser/module/dscan.py:362
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/fleetcomp.py:187
+#: aa_intel_tool/parser/module/fleetcomp.py:181
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
@@ -386,7 +386,7 @@ msgid "No data."
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/evetime.html:5
-msgid "Scan taken at (Eve time)"
+msgid "Scan taken at (EVE time)"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
