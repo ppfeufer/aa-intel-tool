@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-03-07 15:55+0100\n"
-"PO-Revision-Date: 2025-02-24 15:17+0000\n"
+"POT-Creation-Date: 2025-04-09 11:22+0200\n"
+"PO-Revision-Date: 2025-03-23 09:24+0000\n"
 "Last-Translator: M <skrypets@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/uk/>\n"
 "Language: uk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.10.1\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -59,7 +59,7 @@ msgstr ""
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
-msgstr ""
+msgstr "Композиція флоту"
 
 #: aa_intel_tool/exceptions.py:34
 #, python-brace-format
@@ -160,23 +160,23 @@ msgstr ""
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:80
+#: aa_intel_tool/parser/general.py:63
 msgid "No data to parse …"
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:65
+#: aa_intel_tool/parser/module/chatlist.py:60
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:76
+#: aa_intel_tool/parser/module/chatlist.py:67
 msgid "Character unknown to ESI."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:278
+#: aa_intel_tool/parser/module/chatlist.py:256
 msgid "The chat list module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:299
+#: aa_intel_tool/parser/module/chatlist.py:275
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
@@ -185,11 +185,11 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: aa_intel_tool/parser/module/dscan.py:350
+#: aa_intel_tool/parser/module/dscan.py:362
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/fleetcomp.py:187
+#: aa_intel_tool/parser/module/fleetcomp.py:181
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr "Відправити"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:56
 msgid "Working on it, please be patient …"
-msgstr ""
+msgstr "В процесі, будь ласка, зачекайте…"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:58
 msgid "Detecting the intel type"
@@ -375,7 +375,7 @@ msgstr ""
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
 msgid "Ship class"
-msgstr ""
+msgstr "Клас корабля"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:30
 msgid "Total mass (in kg):"
@@ -390,12 +390,12 @@ msgid "No data."
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/evetime.html:5
-msgid "Scan taken at (Eve time)"
+msgid "Scan taken at (EVE time)"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
-msgstr ""
+msgstr "Деталі флоту"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
 msgid "Pilots in fleet"
