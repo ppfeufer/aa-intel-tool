@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Peter Pfeufer <info@ppfeufer.de>, 2023, 2024.
+# Peter Pfeufer <info@ppfeufer.de>, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-03-07 15:55+0100\n"
-"PO-Revision-Date: 2024-08-12 02:38+0000\n"
+"POT-Creation-Date: 2025-04-09 11:22+0200\n"
+"PO-Revision-Date: 2025-03-25 13:24+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/de/>\n"
 "Language: de\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -159,34 +159,34 @@ msgstr "Scandaten"
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr "Kein passender Parser gefunden. Die Eingabe ist kein unterstützter Inteltyp oder fehlerhaft …"
 
-#: aa_intel_tool/parser/general.py:80
+#: aa_intel_tool/parser/general.py:63
 msgid "No data to parse …"
 msgstr "Keine Daten zum Parsen …"
 
-#: aa_intel_tool/parser/module/chatlist.py:65
+#: aa_intel_tool/parser/module/chatlist.py:60
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr "Beim Abrufen der Charakterinformationen von ESI ist ein Fehler aufgetreten."
 
-#: aa_intel_tool/parser/module/chatlist.py:76
+#: aa_intel_tool/parser/module/chatlist.py:67
 msgid "Character unknown to ESI."
 msgstr "Charakter ist in ESI nicht bekannt."
 
-#: aa_intel_tool/parser/module/chatlist.py:278
+#: aa_intel_tool/parser/module/chatlist.py:256
 msgid "The chat list module is currently disabled."
 msgstr "Das Chatlistenmodul ist derzeit deaktiviert."
 
-#: aa_intel_tool/parser/module/chatlist.py:299
+#: aa_intel_tool/parser/module/chatlist.py:275
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
 msgstr[0] "Chatscans sind derzeit auf maximal {max_allowed_pilots} Pilot pro Scan beschränkt. Deine Pilotenliste überschreitet diese Grenze."
 msgstr[1] "Chatscans sind derzeit auf maximal {max_allowed_pilots} Piloten pro Scan beschränkt. Deine Pilotenliste überschreitet diese Grenze."
 
-#: aa_intel_tool/parser/module/dscan.py:350
+#: aa_intel_tool/parser/module/dscan.py:362
 msgid "The D-Scan module is currently disabled."
 msgstr "Das D-Scan-Modul ist derzeit deaktiviert."
 
-#: aa_intel_tool/parser/module/fleetcomp.py:187
+#: aa_intel_tool/parser/module/fleetcomp.py:181
 msgid "The fleet composition module is currently disabled."
 msgstr "Das Flottenzusammensetzungsmodul ist derzeit deaktiviert."
 
@@ -383,8 +383,8 @@ msgid "No data."
 msgstr "Keine Daten."
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/evetime.html:5
-msgid "Scan taken at (Eve time)"
-msgstr "Scan aufgenommen um (Eve Zeit)"
+msgid "Scan taken at (EVE time)"
+msgstr "Scan aufgenommen um (EVE Zeit)"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
