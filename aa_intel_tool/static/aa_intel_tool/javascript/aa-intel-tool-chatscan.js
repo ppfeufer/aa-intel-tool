@@ -84,29 +84,29 @@ $(() => {
                         $(row)
                             .addClass(`aa-intel-alliance-participation-item aa-intel-alliance-id-${data.id}`)
                             .attr('data-alliance-id', data.id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addChatscanHightlight('alliance', $(row));
-                        }).mouseleave(() => {
-                            removeChatscanHightlight('alliance', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeChatscanStickyHighlight('alliance', $(row));
-                            }
-                        });
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-alliance-participation-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addChatscanHightlight('alliance', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeChatscanHightlight('alliance', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeChatscanStickyHighlight('alliance', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-alliance-participation-list');
     });
@@ -182,32 +182,32 @@ $(() => {
                         elementCorporationsTotalCount.html(newTotal);
 
                         $(row)
-                            .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data.id}`)
+                            .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data.id} aa-intel-alliance-id-${data.alliance.id}`)
                             .attr('data-corporation-id', data.id)
                             .attr('data-alliance-id', data.alliance.id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addChatscanHightlight('corporation', $(row));
-                        }).mouseleave(() => {
-                            removeChatscanHightlight('corporation', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeChatscanStickyHighlight('corporation', $(row));
-                            }
-                        });
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-corporation-participation-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addChatscanHightlight('corporation', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeChatscanHightlight('corporation', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeChatscanStickyHighlight('corporation', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-corporation-participation-list');
     });
@@ -288,33 +288,33 @@ $(() => {
                         elementPilotsTotalCount.html(newTotal);
 
                         $(row)
-                            .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data.id}`)
+                            .addClass(`aa-intel-pilot-participation-item aa-intel-character-id-${data.id} aa-intel-corporation-id-${data.corporation.id} aa-intel-alliance-id-${data.alliance.id}`)
                             .attr('data-character-id', data.id)
                             .attr('data-corporation-id', data.corporation.id)
                             .attr('data-alliance-id', data.alliance.id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addChatscanHightlight('pilot', $(row));
-                        }).mouseleave(() => {
-                            removeChatscanHightlight('pilot', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeChatscanStickyHighlight('pilot', $(row));
-                            }
-                        });
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-pilot-participation-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addChatscanHightlight('pilot', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeChatscanHightlight('pilot', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeChatscanStickyHighlight('pilot', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-pilot-participation-list');
     });

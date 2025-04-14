@@ -78,31 +78,32 @@ $(() => {
                         );
 
                         $(row)
+                            .addClass(`aa-intel-shipclass-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
                             .attr('data-shipclass-id', data.id)
                             .attr('data-shiptype-id', data.type_id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addFleetcompositionHightlight('shipclass', $(row));
-                        }).mouseleave(() => {
-                            removeFleetcompositionHightlight('shipclass', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeFleetcompositionStickyHighlight('shipclass', $(row));
-                            }
-                        });
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-shipclass-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addFleetcompositionHightlight('shipclass', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeFleetcompositionHightlight('shipclass', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeFleetcompositionStickyHighlight('shipclass', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-dscan-ship-classes-ship-classes-list');
     });
@@ -156,30 +157,32 @@ $(() => {
                         }
                     ],
                     createdRow: (row, data) => {
-                        $(row).attr('data-shiptype-id', data.id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addFleetcompositionHightlight('shiptype', $(row));
-                        }).mouseleave(() => {
-                            removeFleetcompositionHightlight('shiptype', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeFleetcompositionStickyHighlight('shiptype', $(row));
-                            }
-                        });
+                        $(row)
+                            .addClass(`aa-intel-shiptype-item aa-intel-shiptype-id-${data.id}`)
+                            .attr('data-shiptype-id', data.id);
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-shiptype-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addFleetcompositionHightlight('shiptype', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeFleetcompositionHightlight('shiptype', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeFleetcompositionStickyHighlight('shiptype', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-dscan-ship-types-list');
     });
@@ -238,31 +241,32 @@ $(() => {
                         elementPilotsCount.html(newTotal);
 
                         $(row)
+                            .addClass(`aa-intel-pilotship-item aa-intel-shipclass-id-${data.ship_id} aa-intel-shiptype-id-${data.ship_type_id}`)
                             .attr('data-shipclass-id', data.ship_id)
                             .attr('data-shiptype-id', data.ship_type_id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addFleetcompositionHightlight('shiptype', $(row));
-                        }).mouseleave(() => {
-                            removeFleetcompositionHightlight('shiptype', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeFleetcompositionStickyHighlight('shiptype', $(row));
-                            }
-                        });
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-pilotship-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addFleetcompositionHightlight('shiptype', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeFleetcompositionHightlight('shiptype', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeFleetcompositionStickyHighlight('shiptype', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-fleetcomp-pilot-ships-list');
     });

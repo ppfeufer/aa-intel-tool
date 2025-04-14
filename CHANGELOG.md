@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Change
+
+- Number of JS events reduced to improve JS performance
+
 ## [2.6.2] - 2025-04-09
 
 ### Added
