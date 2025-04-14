@@ -146,7 +146,7 @@ APPS_WITH_PUBLIC_VIEWS = [
 ]
 ```
 
-> **Note**
+> [!NOTE]
 >
 > If you don't have a list for `APPS_WITH_PUBLIC_VIEWS` yet, then add the whole
 > block from here. This feature has been added in Alliance Auth v3.6.0 so you
@@ -209,7 +209,7 @@ Restart your Nginx service.
 To customize the app, the following settings are available and can be made in
 your `local.py`.
 
-> **Warning**
+> [!WARNING]
 >
 > Enable the chat scan module at your own risk. This module has the potential to
 > generate a huge number of ESI calls, which CCP might not be too happy about.
@@ -223,7 +223,7 @@ your `local.py`.
 | INTELTOOL_CHATSCAN_MAX_PILOTS     | Set the limit of pilots for chat scans, since these can take quite a long time to process. Set to 0 to disable.                         | 500     |
 | INTELTOOL_DSCAN_GRID_SIZE         | Set the grid size for D-Scans.<br/>This defines the size of the grid in km in which ships and structures are considered to be "on grid" | 10000   |
 
-> **Note**
+> [!NOTE]
 >
 > **A word about the chat scan limitations:**
 >
