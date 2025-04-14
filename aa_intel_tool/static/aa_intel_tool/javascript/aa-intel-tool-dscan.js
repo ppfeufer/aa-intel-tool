@@ -1,4 +1,4 @@
-/* global aaIntelToolJsSettings, addDscanHightlight, bootstrapTooltip, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
+/* global aaIntelToolJsSettings, addDscanHighlight, bootstrapTooltip, removeDscanHighlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
 
 $(() => {
     'use strict';
@@ -95,31 +95,32 @@ $(() => {
                         );
 
                         $(row)
+                            .addClass(`aa-intel-shipclass-all-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
                             .attr('data-shipclass-id', data.id)
                             .attr('data-shiptype-id', data.type_id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addDscanHightlight('shipclass', $(row));
-                        }).mouseleave(() => {
-                            removeDscanHightlight('shipclass', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeDscanStickyHighlight('shipclass', $(row));
-                            }
-                        });
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-shipclass-all-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addDscanHighlight('shipclass', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeDscanHighlight('shipclass', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeDscanStickyHighlight('shipclass', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-dscan-ship-classes-all-list');
     });
@@ -199,31 +200,32 @@ $(() => {
                         );
 
                         $(row)
+                            .addClass(`aa-intel-shipclass-ongrid-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
                             .attr('data-shipclass-id', data.id)
                             .attr('data-shiptype-id', data.type_id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addDscanHightlight('shipclass', $(row));
-                        }).mouseleave(() => {
-                            removeDscanHightlight('shipclass', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeDscanStickyHighlight('shipclass', $(row));
-                            }
-                        });
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-shipclass-ongrid-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addDscanHighlight('shipclass', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeDscanHighlight('shipclass', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeDscanStickyHighlight('shipclass', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-dscan-ship-classes-ongrid-list');
     });
@@ -303,31 +305,32 @@ $(() => {
                         );
 
                         $(row)
+                            .addClass(`aa-intel-shipclass-offgrid-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
                             .attr('data-shipclass-id', data.id)
                             .attr('data-shiptype-id', data.type_id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addDscanHightlight('shipclass', $(row));
-                        }).mouseleave(() => {
-                            removeDscanHightlight('shipclass', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeDscanStickyHighlight('shipclass', $(row));
-                            }
-                        });
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-shipclass-offgrid-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addDscanHighlight('shipclass', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeDscanHighlight('shipclass', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeDscanStickyHighlight('shipclass', $(event.currentTarget));
+            }
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-dscan-ship-classes-offgrid-list');
     });
@@ -381,29 +384,31 @@ $(() => {
                         }
                     ],
                     createdRow: (row, data) => {
-                        $(row).attr('data-shiptype-id', data.id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            addDscanHightlight('shiptype', $(row));
-                        }).mouseleave(() => {
-                            removeDscanHightlight('shiptype', $(row));
-                        });
-
-                        // Sticky
-                        $(row).click((event) => {
-                            const target = $(event.target);
-
-                            if (target.hasClass('aa-intel-information-link')) {
-                                event.stopPropagation();
-                            } else {
-                                changeDscanStickyHighlight('shiptype', $(row));
-                            }
-                        });
+                        $(row)
+                            .addClass(`aa-intel-shiptype-item aa-intel-shiptype-id-${data.id}`)
+                            .attr('data-shiptype-id', data.id);
                     }
                 });
             }
         }
+    }).then(() => {
+        const classTableRow = $('.aa-intel-shiptype-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            addDscanHighlight('shiptype', $(event.currentTarget));
+        }).mouseleave((event) => {
+            removeDscanHighlight('shiptype', $(event.currentTarget));
+        });
+
+        // Sticky
+        classTableRow.click((event) => {
+            if ($(event.target).hasClass('aa-intel-information-link')) {
+                event.stopPropagation();
+            } else {
+                changeDscanStickyHighlight('shiptype', $(event.currentTarget));
+            }
+        });
     });
 
 
@@ -464,19 +469,23 @@ $(() => {
 
                         elementDscanCountUpwellStructures.html(newTotal);
 
-                        $(row).attr('data-shiptype-id', data.id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            $(row).addClass('aa-intel-highlight');
-                        }).mouseleave(() => {
-                            $(row).removeClass('aa-intel-highlight');
-                        });
+                        $(row)
+                            .addClass(`aa-intel-structuretype-item aa-intel-structuretype-id-${data.id}`)
+                            .attr('data-structuretype-id', data.id);
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-structuretype-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            $(event.currentTarget).addClass('aa-intel-highlight');
+        }).mouseleave((event) => {
+            $(event.currentTarget).removeClass('aa-intel-highlight');
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-dscan-upwell-structures-list');
     });
@@ -539,19 +548,23 @@ $(() => {
 
                         elementDscanCountDeployables.html(newTotal);
 
-                        $(row).attr('data-shiptype-id', data.id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            $(row).addClass('aa-intel-highlight');
-                        }).mouseleave(() => {
-                            $(row).removeClass('aa-intel-highlight');
-                        });
+                        $(row)
+                            .addClass(`aa-intel-deployabletype-item aa-intel-deployabletype-id-${data.id}`)
+                            .attr('data-deployabletype-id', data.id);
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-deployabletype-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            $(event.currentTarget).addClass('aa-intel-highlight');
+        }).mouseleave((event) => {
+            $(event.currentTarget).removeClass('aa-intel-highlight');
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-dscan-deployables-list');
     });
@@ -614,19 +627,23 @@ $(() => {
 
                         elementDscanCountStarbases.html(newTotal);
 
-                        $(row).attr('data-shiptype-id', data.id);
-
-                        // Highlight
-                        $(row).mouseenter(() => {
-                            $(row).addClass('aa-intel-highlight');
-                        }).mouseleave(() => {
-                            $(row).removeClass('aa-intel-highlight');
-                        });
+                        $(row)
+                            .addClass(`aa-intel-starbasetype-item aa-intel-starbasetype-id-${data.id}`)
+                            .attr('data-starbasetype-id', data.id);
                     }
                 });
             }
         }
     }).then(() => {
+        const classTableRow = $('.aa-intel-starbasetype-item');
+
+        // Highlight
+        classTableRow.mouseenter((event) => {
+            $(event.currentTarget).addClass('aa-intel-highlight');
+        }).mouseleave((event) => {
+            $(event.currentTarget).removeClass('aa-intel-highlight');
+        });
+
         // Initialize Bootstrap tooltips
         bootstrapTooltip('.aa-intel-dscan-starbases-list');
     });

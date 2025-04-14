@@ -36,7 +36,7 @@ const removeDscanShiptypeStickyComplete = (byData, tableRow) => {
  * @param {string} byData The table data attribute for which this function is triggered
  * @param {element} tableRow The table row that is to be changed
  */
-const addDscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+const addDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
         .find(`tr[data-${byData}-id="${tableRow.data(`${byData}-id`)}"]`)
         .addClass('aa-intel-highlight');
@@ -53,7 +53,7 @@ const addDscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unu
  * @param {string} byData The table data attribute for which this function is triggered
  * @param {element} tableRow The table row that is to be changed
  */
-const removeDscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+const removeDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
         .find(`tr[data-${byData}-id="${tableRow.data(`${byData}-id`)}"]`)
         .removeClass('aa-intel-highlight');
