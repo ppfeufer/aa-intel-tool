@@ -1,4 +1,4 @@
-/* global aaIntelToolJsSettings, addChatscanHightlight, bootstrapTooltip, removeChatscanHightlight, changeChatscanStickyHighlight, fetchAjaxData, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
+/* global aaIntelToolJsSettings, addChatscanHighlight, bootstrapTooltip, removeChatscanHighlight, changeChatscanStickyHighlight, fetchAjaxData, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
 
 $(() => {
     'use strict';
@@ -93,9 +93,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addChatscanHightlight('alliance', $(event.currentTarget));
+            addChatscanHighlight('alliance', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeChatscanHightlight('alliance', $(event.currentTarget));
+            removeChatscanHighlight('alliance', $(event.currentTarget));
         });
 
         // Sticky
@@ -194,9 +194,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addChatscanHightlight('corporation', $(event.currentTarget));
+            addChatscanHighlight('corporation', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeChatscanHightlight('corporation', $(event.currentTarget));
+            removeChatscanHighlight('corporation', $(event.currentTarget));
         });
 
         // Sticky
@@ -301,9 +301,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addChatscanHightlight('pilot', $(event.currentTarget));
+            addChatscanHighlight('pilot', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeChatscanHightlight('pilot', $(event.currentTarget));
+            removeChatscanHighlight('pilot', $(event.currentTarget));
         });
 
         // Sticky

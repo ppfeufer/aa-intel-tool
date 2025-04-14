@@ -1,4 +1,4 @@
-/* global fetchAjaxData, aaIntelToolJsSettings, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, addFleetcompositionHightlight, removeFleetcompositionHightlight, changeFleetcompositionStickyHighlight */
+/* global fetchAjaxData, aaIntelToolJsSettings, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, addFleetcompositionHighlight, removeFleetcompositionHighlight, changeFleetcompositionStickyHighlight */
 
 $(() => {
     'use strict';
@@ -90,9 +90,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addFleetcompositionHightlight('shipclass', $(event.currentTarget));
+            addFleetcompositionHighlight('shipclass', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeFleetcompositionHightlight('shipclass', $(event.currentTarget));
+            removeFleetcompositionHighlight('shipclass', $(event.currentTarget));
         });
 
         // Sticky
@@ -169,9 +169,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addFleetcompositionHightlight('shiptype', $(event.currentTarget));
+            addFleetcompositionHighlight('shiptype', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeFleetcompositionHightlight('shiptype', $(event.currentTarget));
+            removeFleetcompositionHighlight('shiptype', $(event.currentTarget));
         });
 
         // Sticky
@@ -253,9 +253,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addFleetcompositionHightlight('shiptype', $(event.currentTarget));
+            addFleetcompositionHighlight('shiptype', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeFleetcompositionHightlight('shiptype', $(event.currentTarget));
+            removeFleetcompositionHighlight('shiptype', $(event.currentTarget));
         });
 
         // Sticky

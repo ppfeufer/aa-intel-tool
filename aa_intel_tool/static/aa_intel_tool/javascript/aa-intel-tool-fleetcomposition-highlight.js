@@ -37,7 +37,7 @@ const removeFleetcompositionShiptypeStickyComplete = (byData, tableRow) => {
  * @param {string} byData The table data attribute for which this function is triggered
  * @param {element} tableRow The table row that is to be changed
  */
-const addFleetcompositionHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+const addFleetcompositionHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
         .find(`tr[data-${byData}-id="${tableRow.data(`${byData}-id`)}"]`)
         .addClass('aa-intel-highlight');
@@ -58,7 +58,7 @@ const addFleetcompositionHightlight = (byData, tableRow) => { // eslint-disable-
  * @param {string} byData The table data attribute for which this function is triggered
  * @param {element} tableRow The table row that is to be changed
  */
-const removeFleetcompositionHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+const removeFleetcompositionHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     elementShipClassTable
         .find(`tr[data-${byData}-id="${tableRow.data(`${byData}-id`)}"]`)
         .removeClass('aa-intel-highlight');

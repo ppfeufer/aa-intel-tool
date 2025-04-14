@@ -308,7 +308,7 @@ const pilotTableRemoveHighlightByAllianceId = (element) => {
  * @param {string} byData The table data attribute for which this function is triggered
  * @param {element} tableRow The table row that is to be changed
  */
-const addChatscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     tableRow.addClass('aa-intel-highlight');
 
     if (byData === 'alliance') {
@@ -360,7 +360,7 @@ const addChatscanSticky = (byData, tableRow) => {
  * @param {string} byData The table data attribute for which this function is triggered
  * @param {element} tableRow The table row that is to be changed
  */
-const removeChatscanHightlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
+const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     tableRow.removeClass('aa-intel-highlight');
 
     if (byData === 'alliance') {

@@ -1,4 +1,4 @@
-/* global aaIntelToolJsSettings, addDscanHightlight, bootstrapTooltip, removeDscanHightlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
+/* global aaIntelToolJsSettings, addDscanHighlight, bootstrapTooltip, removeDscanHighlight, changeDscanStickyHighlight, fetchAjaxData, shipInfoPanel */
 
 $(() => {
     'use strict';
@@ -107,9 +107,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addDscanHightlight('shipclass', $(event.currentTarget));
+            addDscanHighlight('shipclass', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeDscanHightlight('shipclass', $(event.currentTarget));
+            removeDscanHighlight('shipclass', $(event.currentTarget));
         });
 
         // Sticky
@@ -212,9 +212,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addDscanHightlight('shipclass', $(event.currentTarget));
+            addDscanHighlight('shipclass', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeDscanHightlight('shipclass', $(event.currentTarget));
+            removeDscanHighlight('shipclass', $(event.currentTarget));
         });
 
         // Sticky
@@ -317,9 +317,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addDscanHightlight('shipclass', $(event.currentTarget));
+            addDscanHighlight('shipclass', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeDscanHightlight('shipclass', $(event.currentTarget));
+            removeDscanHighlight('shipclass', $(event.currentTarget));
         });
 
         // Sticky
@@ -396,9 +396,9 @@ $(() => {
 
         // Highlight
         classTableRow.mouseenter((event) => {
-            addDscanHightlight('shiptype', $(event.currentTarget));
+            addDscanHighlight('shiptype', $(event.currentTarget));
         }).mouseleave((event) => {
-            removeDscanHightlight('shiptype', $(event.currentTarget));
+            removeDscanHighlight('shiptype', $(event.currentTarget));
         });
 
         // Sticky
@@ -549,14 +549,14 @@ $(() => {
                         elementDscanCountDeployables.html(newTotal);
 
                         $(row)
-                            .addClass(`aa-intel-deplyabletype-item aa-intel-deplyabletype-id-${data.id}`)
-                            .attr('data-deplyabletype-id', data.id);
+                            .addClass(`aa-intel-deployabletype-item aa-intel-deployabletype-id-${data.id}`)
+                            .attr('data-deployabletype-id', data.id);
                     }
                 });
             }
         }
     }).then(() => {
-        const classTableRow = $('.aa-intel-deplyabletype-item');
+        const classTableRow = $('.aa-intel-deployabletype-item');
 
         // Highlight
         classTableRow.mouseenter((event) => {
