@@ -22,7 +22,8 @@
 
             {% translate "Permalink successfully copied" as copyToClipboardSuccess %}
             {% translate "Something went wrong. Nothing copied. Maybe your browser does not support this function." as copyToClipboardError %}
-            {% translate "Unaffiliated / No Alliance" as scanDataEmpty %}
+            {% translate "Unaffiliated" as scanDataUnaffiliated %}
+            {% translate "No Alliance" as scanDataNoAlliance %}
             {% translate "NPC Corp" as scanDataNpcCorp %}
 
             <script>
@@ -42,7 +43,8 @@
                             }
                         },
                         scanData: {
-                            empty: '{{ scanDataEmpty|escapejs }}',
+                            unaffiliated: '{{ scanDataUnaffiliated|escapejs }}',
+                            noAlliance: '{{ scanDataNoAlliance|escapejs }}',
                             npcCorp: '{{ scanDataNpcCorp|escapejs }}',
                         }
                     }

@@ -166,12 +166,12 @@ const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-
  */
 const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disable-line no-unused-vars
     if (allianceData.name === '') {
-        allianceData.name = aaIntelToolJsSettings.translation.scanData.empty;
+        allianceData.name = aaIntelToolJsSettings.translation.scanData.unaffiliated;
     }
 
     const imageData = eveImageHtml(allianceData.id, allianceData.name, allianceData.logo);
     const eveData = allianceData.name;
-    let additionalInfo = '';
+    let additionalInfo = aaIntelToolJsSettings.translation.scanData.noAlliance;
 
     if (allianceData.id > 1) {
         additionalInfo = `${dotlanLinkHtml(allianceData.dotlan)} | ${zkillboardLinkHtml(allianceData.zkillboard)}`;
