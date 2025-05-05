@@ -35,10 +35,13 @@ Section Order:
 ### Security
 -->
 
+## [2.6.3] - 2025-05-05
+
 ### Change
 
 - Improve "Unaffiliated / No Alliance" panel in chat list scan, to bring the visual in line with the rest of the panels
 - Number of JS events reduced to improve JS performance
+- Translations updated
 
 ## [2.6.2] - 2025-04-09
 
