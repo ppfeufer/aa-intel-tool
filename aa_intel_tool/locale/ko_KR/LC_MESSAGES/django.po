@@ -5,20 +5,21 @@
 # Peter Pfeufer <info@ppfeufer.de>, 2023, 2024.
 # Mind of the Raven <okanieva@gmail.com>, 2024.
 # Rodpold Shard <rodpold@gmail.com>, 2024.
+# SiO4 <hohoit0078@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-04-09 11:22+0200\n"
-"PO-Revision-Date: 2024-12-02 17:40+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"POT-Creation-Date: 2025-05-05 22:48+0200\n"
+"PO-Revision-Date: 2025-04-28 07:24+0000\n"
+"Last-Translator: SiO4 <hohoit0078@gmail.com>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ko/>\n"
 "Language: ko_KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8.4\n"
+"X-Generator: Weblate 5.11.1\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -201,13 +202,18 @@ msgid "Something went wrong. Nothing copied. Maybe your browser does not support
 msgstr "뭔가 잘못됐습니다. 복사되지 않았습니다. 브라우저가 이 기능을 지원하지 않을 수도 있습니다."
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:25
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
-msgid "Unaffiliated / No Alliance"
+#, fuzzy
+#| msgid "Unaffiliated / No Alliance"
+msgid "Unaffiliated"
 msgstr "얼라이언스 없음"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:26
+#, fuzzy
+#| msgid "Alliance"
+msgid "No Alliance"
+msgstr "얼라이언스"
+
+#: aa_intel_tool/templates/aa_intel_tool/base.html:27
 msgid "NPC Corp"
 msgstr "NPC 코퍼레이션"
 
@@ -223,7 +229,7 @@ msgstr "이 앱을 번역하거나 기존 번역을 개선하고 싶으신가요
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
-msgstr "번역팀에 참여하세요!"
+msgstr "번역가 팀에 참여하세요!"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
@@ -275,26 +281,26 @@ msgstr "새 스캔"
 msgid "Copy permalink"
 msgstr "고유 링크 복사"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:7
 msgid "Alliances breakdown"
 msgstr "얼라이언스별 분리"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:18
 msgid "Alliance"
 msgstr "얼라이언스"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:19
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:18
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
 msgstr "갯수"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:27
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:27
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:27
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:37
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
@@ -302,29 +308,29 @@ msgstr "갯수"
 msgid "Loading data …"
 msgstr "데이터 로딩 중 …"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:33
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:33
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:33
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:43
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
 msgid "No data …"
 msgstr "데이터 없음 …"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:7
 msgid "Corporations breakdown"
 msgstr "코퍼레이션별 분류"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
 msgid "Corporation"
 msgstr "코퍼레이션"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:6
 msgid "Pilots breakdown"
 msgstr "파일럿별 분류"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:17
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
 msgid "Pilot"
 msgstr "파일럿"
