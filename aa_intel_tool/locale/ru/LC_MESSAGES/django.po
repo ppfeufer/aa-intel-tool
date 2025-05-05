@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-04-09 11:22+0200\n"
+"POT-Creation-Date: 2025-05-05 22:48+0200\n"
 "PO-Revision-Date: 2025-03-25 13:24+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ru/>\n"
@@ -204,13 +204,18 @@ msgid "Something went wrong. Nothing copied. Maybe your browser does not support
 msgstr "Что-то пошло не так. Ничего не скопировано. Возможно, ваш браузер не поддерживает данную функцию."
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:25
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:4
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:4
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:3
-msgid "Unaffiliated / No Alliance"
+#, fuzzy
+#| msgid "Unaffiliated / No Alliance"
+msgid "Unaffiliated"
 msgstr "Неаффилированный / Нет альянса"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:26
+#, fuzzy
+#| msgid "Alliance"
+msgid "No Alliance"
+msgstr "Альянс"
+
+#: aa_intel_tool/templates/aa_intel_tool/base.html:27
 msgid "NPC Corp"
 msgstr "NPC корпорация"
 
@@ -280,26 +285,26 @@ msgstr "Новый скан"
 msgid "Copy permalink"
 msgstr "Копировать постоянную ссылку"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:7
 msgid "Alliances breakdown"
 msgstr "Разбивка по альянсам"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:20
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:20
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:18
 msgid "Alliance"
 msgstr "Альянс"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:21
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:19
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:18
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
 msgstr "Количество"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:29
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:29
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:27
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:27
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:27
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:37
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
@@ -307,29 +312,29 @@ msgstr "Количество"
 msgid "Loading data …"
 msgstr "Загрузка данных …"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:35
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:35
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:35
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:33
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:33
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:33
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:43
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:35
 msgid "No data …"
 msgstr "Нет данных …"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:9
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:7
 msgid "Corporations breakdown"
 msgstr "Разбивка по корпорациям"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:20
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:21
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
 msgid "Corporation"
 msgstr "Корпорация"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:8
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:6
 msgid "Pilots breakdown"
 msgstr "Разбивка по пилотам"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:17
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
 msgid "Pilot"
 msgstr "Пилот"
