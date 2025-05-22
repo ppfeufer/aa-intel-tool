@@ -37,6 +37,7 @@ Section Order:
 
 ### Removed
 
+- Redundant header from public page
 - Cache breaker for static files. Doesn't work as expected with `django-sri`.
 
 ## [2.6.3] - 2025-05-05

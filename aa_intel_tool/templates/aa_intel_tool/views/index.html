@@ -3,13 +3,6 @@
 {% load evelinks %}
 {% load i18n %}
 
-{% block aa_intel_tool_header %}
-    {% if not user.is_authenticated %}
-        {% translate "Intel Parser" as translated_header %}
-        {% include "framework/header/page-header.html" with title=translated_header %}
-    {% endif %}
-{% endblock %}
-
 {% block aa_intel_tool_body %}
     {% include "aa_intel_tool/partials/index/form.html" %}
     {% include "aa_intel_tool/partials/body/scan-retention-note.html" %}

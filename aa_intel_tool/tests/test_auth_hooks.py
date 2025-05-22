@@ -43,13 +43,7 @@ class TestHooks(TestCase):
             </li>
         """
 
-        cls.header_public_page = """
-            <div class="aa-intel-tool-header">
-                <h1 class="page-header text-center mb-3">
-                    Intel Parser
-                </h1>
-            </div>
-        """
+        cls.header_public_page = '<div class="navbar-brand">Intel Parser</div>'
 
     def test_render_hook_with_user_logged_in(self):
         """
