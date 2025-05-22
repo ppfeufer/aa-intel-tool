@@ -45,13 +45,7 @@ class TestAccess(TestCase):
 
         cls.header_top = '<div class="navbar-brand">Intel Parser</div>'
 
-        cls.header_public_page = """
-            <div class="aa-intel-tool-header">
-                <h1 class="page-header text-center mb-3">
-                    Intel Parser
-                </h1>
-            </div>
-        """
+        cls.header_public_page = '<div class="navbar-brand">Intel Parser</div>'
 
     def test_access_to_index_for_logged_in_user(self):
         """
