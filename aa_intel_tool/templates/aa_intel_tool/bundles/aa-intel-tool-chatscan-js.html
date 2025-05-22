@@ -1,8 +1,8 @@
-{% load aa_intel_tool %}
+{% load sri %}
 
 {% if not common_already_loaded %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-scan-result-common-js.html" %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-chatscan-highlight-js.html" %}
 {% endif %}
 
-{% aa_intel_tool_static "javascript/aa-intel-tool-chatscan.min.js" %}
+{% sri_static "aa_intel_tool/javascript/aa-intel-tool-chatscan.min.js" %}
