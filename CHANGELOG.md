@@ -35,6 +35,12 @@ Section Order:
 ### Security
 -->
 
+## [2.7.0] - 2025-06-03
+
+### Changed
+
+- Translations updated
+
 ### Removed
 
 - Redundant header from public page
