@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Added
+
+- Default/Fallback exception message for `ParserError`
+
 ### Changed
 
 - Cast some translated strings to `str` to avoid potential issues
