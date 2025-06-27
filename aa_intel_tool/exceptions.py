@@ -25,12 +25,22 @@ class ParserError(AaIntelToolException):
     @property
     def message(self) -> str:
         """
-        Error message.
+        Message of the error.
+
+        :return:
+        :rtype:
         """
 
         return self._message
 
     def __str__(self) -> str:
-        return str(_("A parser error occurred » {message}")).format(
-            message=self.message
-        )
+        """
+        String representation of the error.
+
+        :return:
+        :rtype:
+        """
+
+        message = self.message if self.message else _("Unknown parser error")
+
+        return str(_(f"A parser error occurred » {message}"))
