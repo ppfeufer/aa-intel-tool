@@ -56,15 +56,17 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
             )
         except EveEntity.DoesNotExist as exc:  # pylint: disable=no-member
             raise ParserError(
-                message=_(
-                    "Something went wrong while fetching the character information from ESI."
+                message=str(
+                    _(
+                        "Something went wrong while fetching the character information from ESI."
+                    )
                 )
             ) from exc
 
         # In case the name does not belong to an Eve character,
         # EveEntity returns an empty object
         if not eve_character_ids:
-            raise ParserError(message=_("Character unknown to ESI."))
+            raise ParserError(message=str(_("Character unknown to ESI.")))
 
         eve_characters = get_or_create_character(character_ids=eve_character_ids)
 
@@ -253,7 +255,7 @@ def parse(
 
     # Only parse the chat scan if the module is enabled
     if not AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN:
-        raise ParserError(message=_("The chat list module is currently disabled."))
+        raise ParserError(message=str(_("The chat list module is currently disabled.")))
 
     logger.debug(msg=f"{len(scan_data)} name(s) to work through …")
 
