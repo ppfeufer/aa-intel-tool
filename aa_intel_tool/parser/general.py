@@ -42,8 +42,10 @@ def check_intel_type(scan_data: list) -> str:
             return intel_type
 
     raise ParserError(
-        message=_(
-            "No suitable parser found. Input is not a supported intel type or malformed …"
+        message=str(
+            _(
+                "No suitable parser found. Input is not a supported intel type or malformed …"
+            )
         )
     )
 
@@ -60,7 +62,7 @@ def parse_intel(form_data: str) -> str:
     scan_data = form_data.splitlines()
 
     if not scan_data:
-        raise ParserError(message=_("No data to parse …"))
+        raise ParserError(message=str(_("No data to parse …")))
 
     try:
         intel_type = check_intel_type(scan_data=scan_data)

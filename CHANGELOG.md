@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Changed
+
+- Cast some translated strings to `str` to avoid potential issues
+
 ## [2.7.0] - 2025-06-03
 
 ### Changed

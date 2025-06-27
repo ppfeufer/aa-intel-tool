@@ -178,7 +178,7 @@ def parse(scan_data: list) -> Scan:
 
     if not AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP:
         raise ParserError(
-            message=_("The fleet composition module is currently disabled.")
+            message=str(_("The fleet composition module is currently disabled."))
         )
 
     parsed_data = {}

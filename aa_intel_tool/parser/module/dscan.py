@@ -359,7 +359,7 @@ def parse(scan_data: list) -> Scan:
 
     # Only parse the d-scan if the module is enabled
     if not AppSettings.INTELTOOL_ENABLE_MODULE_DSCAN:
-        raise ParserError(message=_("The D-Scan module is currently disabled."))
+        raise ParserError(message=str(_("The D-Scan module is currently disabled.")))
 
     parsed_data = {}
     ansiblex_destination, counter, eve_ids = _get_scan_details(scan_data=scan_data)
