@@ -43,6 +43,10 @@ Section Order:
 
 - Cast some translated strings to `str` to avoid potential issues
 
+### Removed
+
+- Unused constants
+
 ## [2.7.0] - 2025-06-03
 
 ### Changed

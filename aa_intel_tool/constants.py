@@ -3,20 +3,15 @@ App constants
 """
 
 # Standard Library
-import os
 import re
 
 # Django
 from django.utils.translation import gettext_lazy as _
 
-# Alliance Auth
-from esi import __version__ as esi_version
-
 # AA Intel Tool
 import aa_intel_tool.parser.module.chatlist
 import aa_intel_tool.parser.module.dscan
 import aa_intel_tool.parser.module.fleetcomp
-from aa_intel_tool import __version__
 
 # All internal URLs need to start with this prefix
 INTERNAL_URL_PREFIX = "-"
@@ -76,15 +71,3 @@ SUPPORTED_INTEL_TYPES = {
         "template": "aa_intel_tool/views/scan/fleetcomp.html",
     },
 }
-
-
-# Building our user agent for ESI calls
-APP_NAME = "aa-intel-tool"
-PACKAGE_NAME = "aa_intel_tool"
-APP_VERBOSE_NAME = "AA Intel Tool"
-APP_VERBOSE_NAME_USERAGENT = "AA-Intel-Tool"
-GITHUB_URL = f"https://github.com/ppfeufer/{APP_NAME}"
-USER_AGENT = f"{APP_VERBOSE_NAME_USERAGENT}/{__version__} (+{GITHUB_URL}) Django-ESI/{esi_version}"
-
-APP_BASE_DIR = os.path.join(os.path.dirname(__file__))
-APP_STATIC_DIR = os.path.join(APP_BASE_DIR, "static", PACKAGE_NAME)
