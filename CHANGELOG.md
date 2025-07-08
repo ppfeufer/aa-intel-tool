@@ -35,6 +35,8 @@ Section Order:
 ### Security
 -->
 
+## [2.7.1] - 2025-07-08
+
 ### Added
 
 - Default/Fallback exception message for `ParserError`
@@ -42,6 +44,7 @@ Section Order:
 ### Changed
 
 - Cast some translated strings to `str` to avoid potential issues
+- Translations updated
 
 ### Removed
 
