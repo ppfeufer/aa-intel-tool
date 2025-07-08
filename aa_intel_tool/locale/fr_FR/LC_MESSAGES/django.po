@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-06-03 12:14+0200\n"
+"POT-Creation-Date: 2025-07-08 12:13+0200\n"
 "PO-Revision-Date: 2025-03-25 13:24+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/fr/>\n"
@@ -47,22 +47,26 @@ msgstr "Données brute"
 msgid "Intel Parser v{__version__}"
 msgstr ""
 
-#: aa_intel_tool/constants.py:61 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:56 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "Liste de conversation"
 
-#: aa_intel_tool/constants.py:67 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "Scanner directionnel"
 
-#: aa_intel_tool/constants.py:73 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
 msgstr "Composition de flotte"
 
-#: aa_intel_tool/exceptions.py:34
+#: aa_intel_tool/exceptions.py:44
+msgid "Unknown parser error"
+msgstr ""
+
+#: aa_intel_tool/exceptions.py:46
 #, python-brace-format
 msgid "A parser error occurred » {message}"
 msgstr ""
@@ -161,27 +165,27 @@ msgstr "Données du scanner transformées"
 msgid "Scan data"
 msgstr "Données du scanner"
 
-#: aa_intel_tool/parser/general.py:46
+#: aa_intel_tool/parser/general.py:47
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:63
+#: aa_intel_tool/parser/general.py:65
 msgid "No data to parse …"
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:60
+#: aa_intel_tool/parser/module/chatlist.py:61
 msgid "Something went wrong while fetching the character information from ESI."
 msgstr "Quelque chose s'est mal passé lors de la recherche d'information sur le personnage depuis l'ESI."
 
-#: aa_intel_tool/parser/module/chatlist.py:67
+#: aa_intel_tool/parser/module/chatlist.py:69
 msgid "Character unknown to ESI."
 msgstr "Personnage inconnu de l'ESI."
 
-#: aa_intel_tool/parser/module/chatlist.py:256
+#: aa_intel_tool/parser/module/chatlist.py:258
 msgid "The chat list module is currently disabled."
 msgstr "Le module de liste de discussion est désactivé pour le moment."
 
-#: aa_intel_tool/parser/module/chatlist.py:275
+#: aa_intel_tool/parser/module/chatlist.py:277
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
