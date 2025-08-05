@@ -5,20 +5,21 @@
 # Peter Pfeufer <info@ppfeufer.de>, 2024, 2025.
 # Matthias P <randomusernetcom@gmail.com>, 2024.
 # Houbi_Houba <paul.lacape@live.fr>, 2024.
+# The “Devcutter” Guy <mick162534@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-07-08 12:13+0200\n"
-"PO-Revision-Date: 2025-03-25 13:24+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"POT-Creation-Date: 2025-08-05 09:08+0200\n"
+"PO-Revision-Date: 2025-08-03 04:24+0000\n"
+"Last-Translator: The “Devcutter” Guy <mick162534@gmail.com>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/fr/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.12.2\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -45,7 +46,7 @@ msgstr "Données brute"
 #: aa_intel_tool/apps.py:21
 #, python-brace-format
 msgid "Intel Parser v{__version__}"
-msgstr ""
+msgstr "Analyseur de Renseignements v{__version__}"
 
 #: aa_intel_tool/constants.py:56 aa_intel_tool/models.py:24
 msgid "Chat list"
