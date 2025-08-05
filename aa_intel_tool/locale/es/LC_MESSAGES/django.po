@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Zigor Fernandez Moreno <sietehierros@gmail.com>, 2023, 2024.
-# Peter Pfeufer <info@ppfeufer.de>, 2023, 2024.
+# Peter Pfeufer <info@ppfeufer.de>, 2023, 2024, 2025.
 # Geovanny David Morales De la cruz <moralesgeovanny1996@gmail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-07-08 12:13+0200\n"
-"PO-Revision-Date: 2024-12-02 17:40+0000\n"
+"POT-Creation-Date: 2025-08-05 09:08+0200\n"
+"PO-Revision-Date: 2025-07-29 20:18+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Spanish <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.4\n"
+"X-Generator: Weblate 5.12.2\n"
 
 #: aa_intel_tool/__init__.py:9
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -47,8 +47,6 @@ msgid "Intel Parser v{__version__}"
 msgstr "Herramienta de Intel v{__version__}"
 
 #: aa_intel_tool/constants.py:56 aa_intel_tool/models.py:24
-#, fuzzy
-#| msgid "Chat List"
 msgid "Chat list"
 msgstr "Lista de Chat"
 
@@ -249,8 +247,6 @@ msgid "What can I paste?"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:16
-#, fuzzy
-#| msgid "Chat List"
 msgid "Chat member list"
 msgstr "Lista de Chat"
 
