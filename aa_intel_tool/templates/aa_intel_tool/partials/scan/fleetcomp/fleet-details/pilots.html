@@ -10,7 +10,7 @@
 
     <div class="card card-default border-0">
         <div class="card-body">
-            <div class="table-dscan table-fleetcomp-pilot-ships table-aa-intel">
+            <div class="table-dscan table-fleetcomp-pilot-ships table-aa-intel d-none">
                 <table class="table table-sm table-sortable aa-intel-fleetcomp-pilot-ships-list" style="width: 100%;">
                     <thead>
                         <tr>
@@ -23,18 +23,18 @@
                         </tr>
                     </thead>
                 </table>
+            </div>
 
-                <div class="aa-intel-loading-table-info aa-intel-loading-table-info-fleetcomp-pilot-ships aa-callout aa-callout-info">
-                    <p>
-                        {% translate "Loading data …" %}
-                    </p>
-                </div>
+            <div class="aa-intel-loading-table-info aa-intel-loading-table-info-fleetcomp-pilot-ships aa-callout aa-callout-info">
+                <p>
+                    {% translate "Loading data …" %}
+                </p>
+            </div>
 
-                <div class="aa-intel-empty-table-info aa-intel-empty-table-info-fleetcomp-pilot-ships aa-callout aa-callout-info d-none">
-                    <p>
-                        {% translate "No data …" %}
-                    </p>
-                </div>
+            <div class="aa-intel-empty-table-info aa-intel-empty-table-info-fleetcomp-pilot-ships aa-callout aa-callout-info d-none">
+                <p>
+                    {% translate "No data …" %}
+                </p>
             </div>
         </div>
     </div>

@@ -4,31 +4,6 @@
 'use strict';
 
 /**
- * Fetch data from an ajax URL
- *
- * @param {string} url
- * @returns {Promise<any>}
- */
-const fetchAjaxData = async (url) => { // eslint-disable-line no-unused-vars
-    return await fetch(url)
-        .then(response => {
-            if (response.ok) {
-                return Promise.resolve(response);
-            } else {
-                return Promise.reject(new Error('Failed to load'));
-            }
-        })
-        .then(response => response.json())
-        .then(tableData => {
-            return tableData;
-        })
-        .catch(function (error) {
-            console.log(`Error: ${error.message}`);
-        });
-};
-
-
-/**
  * Bootstrap tooltip
  *
  * @param {string} selector The selector container for the tooltip
@@ -40,7 +15,6 @@ const bootstrapTooltip = (selector = 'body') => { // eslint-disable-line no-unus
             return new bootstrap.Tooltip(tooltipTriggerEl);
         });
 };
-
 
 /**
  * Get the image HTML string for an Eve portrait or logo
@@ -55,7 +29,6 @@ const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
     return `<img class="eve-image rounded" data-eveid="${eveId}" src="${imageSource}" alt="${eveName}" title="${eveName}" data-bs-tooltip="aa-intel-tool" loading="lazy" width="${imageSize}" height="${imageSize}">`;
 };
 
-
 /**
  * Get the link HTML to EveWho for a pilot
  *
@@ -66,7 +39,6 @@ const eveWhoLinkHtml = (href) => {
     return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
 
-
 /**
  * Get the link HTML to zKillboard
  *
@@ -76,7 +48,6 @@ const eveWhoLinkHtml = (href) => {
 const zkillboardLinkHtml = (href) => {
     return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
 };
-
 
 /**
  * Get the link HTML to dotlan
@@ -134,7 +105,6 @@ const pilotInfoPanel = (pilotData) => { // eslint-disable-line no-unused-vars
     return infoPanel(imageData, eveData, additionalInfo);
 };
 
-
 /**
  * Corporation info element in datatable
  *
@@ -155,7 +125,6 @@ const corporationInfoPanel = (corporationData, logoOnly = false) => { // eslint-
 
     return infoPanel(imageData, eveData, additionalInfo, logoOnly);
 };
-
 
 /**
  * Alliance info element in datatable
@@ -186,7 +155,6 @@ const allianceInfoPanel = (allianceData, logoOnly = false) => { // eslint-disabl
     return infoPanel(imageData, eveData, additionalInfo, logoOnly);
 };
 
-
 /**
  * Ship/Item info element in datatable
  *
@@ -199,7 +167,6 @@ const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
 
     return infoPanel(imageData, eveData);
 };
-
 
 $(() => {
     const elementCopyToClipboard = $('button#btn-copy-permalink-to-clipboard');
@@ -225,7 +192,6 @@ $(() => {
         });
     };
 
-
     /**
      * Show a message when copy action was successful
      *
@@ -240,7 +206,6 @@ $(() => {
         closeMessageElement('.alert-message-success');
     };
 
-
     /**
      * Show a message when copy action was not successful
      *
@@ -254,7 +219,6 @@ $(() => {
 
         closeMessageElement('.alert-message-error', 9999);
     };
-
 
     /**
      * Copy the scan link to clipboard
@@ -296,7 +260,6 @@ $(() => {
             clipboardScanLink.destroy();
         });
     };
-
 
     /**
      * Copy ping text
