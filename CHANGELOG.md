@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Changed
+
+- Tooltip JS function simplified
+
 ## [2.8.0] - 2025-08-14
 
 ### Changed

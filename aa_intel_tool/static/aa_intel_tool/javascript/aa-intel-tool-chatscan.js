@@ -110,7 +110,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-alliance-participation-list');
+            bootstrapTooltip({selector: '.aa-intel-alliance-participation-list'});
         });
 
 
@@ -213,7 +213,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-corporation-participation-list');
+            bootstrapTooltip({selector: '.aa-intel-corporation-participation-list'});
         });
 
 
@@ -322,6 +322,6 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-pilot-participation-list');
+            bootstrapTooltip({selector: '.aa-intel-pilot-participation-list'});
         });
 });
