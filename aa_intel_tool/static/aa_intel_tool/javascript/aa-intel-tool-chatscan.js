@@ -85,32 +85,35 @@ $(() => {
                             $(row)
                                 .addClass(`aa-intel-alliance-participation-item aa-intel-alliance-id-${data.id}`)
                                 .attr('data-alliance-id', data.id);
+                        },
+                        initComplete: () => {
+                            const classTableRow = $('.aa-intel-alliance-participation-item');
+
+                            // Highlight
+                            classTableRow.mouseenter((event) => {
+                                addChatscanHighlight('alliance', $(event.currentTarget));
+                            }).mouseleave((event) => {
+                                removeChatscanHighlight('alliance', $(event.currentTarget));
+                            });
+
+                            // Sticky
+                            classTableRow.click((event) => {
+                                if ($(event.target).hasClass('aa-intel-information-link')) {
+                                    event.stopPropagation();
+                                } else {
+                                    changeChatscanStickyHighlight('alliance', $(event.currentTarget));
+                                }
+                            });
+
+                            // Initialize Bootstrap tooltips
+                            bootstrapTooltip({selector: '.aa-intel-alliance-participation-list'});
                         }
                     });
                 }
             }
         })
-        .then(() => {
-            const classTableRow = $('.aa-intel-alliance-participation-item');
-
-            // Highlight
-            classTableRow.mouseenter((event) => {
-                addChatscanHighlight('alliance', $(event.currentTarget));
-            }).mouseleave((event) => {
-                removeChatscanHighlight('alliance', $(event.currentTarget));
-            });
-
-            // Sticky
-            classTableRow.click((event) => {
-                if ($(event.target).hasClass('aa-intel-information-link')) {
-                    event.stopPropagation();
-                } else {
-                    changeChatscanStickyHighlight('alliance', $(event.currentTarget));
-                }
-            });
-
-            // Initialize Bootstrap tooltips
-            bootstrapTooltip({selector: '.aa-intel-alliance-participation-list'});
+        .catch((error) => {
+            console.error('Error fetching alliance list data:', error);
         });
 
 
@@ -188,34 +191,36 @@ $(() => {
                                 .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data.id} aa-intel-alliance-id-${data.alliance.id}`)
                                 .attr('data-corporation-id', data.id)
                                 .attr('data-alliance-id', data.alliance.id);
+                        },
+                        initComplete: () => {
+                            const classTableRow = $('.aa-intel-corporation-participation-item');
+
+                            // Highlight
+                            classTableRow.mouseenter((event) => {
+                                addChatscanHighlight('corporation', $(event.currentTarget));
+                            }).mouseleave((event) => {
+                                removeChatscanHighlight('corporation', $(event.currentTarget));
+                            });
+
+                            // Sticky
+                            classTableRow.click((event) => {
+                                if ($(event.target).hasClass('aa-intel-information-link')) {
+                                    event.stopPropagation();
+                                } else {
+                                    changeChatscanStickyHighlight('corporation', $(event.currentTarget));
+                                }
+                            });
+
+                            // Initialize Bootstrap tooltips
+                            bootstrapTooltip({selector: '.aa-intel-corporation-participation-list'});
                         }
                     });
                 }
             }
         })
-        .then(() => {
-            const classTableRow = $('.aa-intel-corporation-participation-item');
-
-            // Highlight
-            classTableRow.mouseenter((event) => {
-                addChatscanHighlight('corporation', $(event.currentTarget));
-            }).mouseleave((event) => {
-                removeChatscanHighlight('corporation', $(event.currentTarget));
-            });
-
-            // Sticky
-            classTableRow.click((event) => {
-                if ($(event.target).hasClass('aa-intel-information-link')) {
-                    event.stopPropagation();
-                } else {
-                    changeChatscanStickyHighlight('corporation', $(event.currentTarget));
-                }
-            });
-
-            // Initialize Bootstrap tooltips
-            bootstrapTooltip({selector: '.aa-intel-corporation-participation-list'});
+        .catch((error) => {
+            console.error('Error fetching corporation list data:', error);
         });
-
 
     /**
      * Datatable Pilots Breakdown
@@ -297,31 +302,34 @@ $(() => {
                                 .attr('data-character-id', data.id)
                                 .attr('data-corporation-id', data.corporation.id)
                                 .attr('data-alliance-id', data.alliance.id);
+                        },
+                        initComplete: () => {
+                            const classTableRow = $('.aa-intel-pilot-participation-item');
+
+                            // Highlight
+                            classTableRow.mouseenter((event) => {
+                                addChatscanHighlight('pilot', $(event.currentTarget));
+                            }).mouseleave((event) => {
+                                removeChatscanHighlight('pilot', $(event.currentTarget));
+                            });
+
+                            // Sticky
+                            classTableRow.click((event) => {
+                                if ($(event.target).hasClass('aa-intel-information-link')) {
+                                    event.stopPropagation();
+                                } else {
+                                    changeChatscanStickyHighlight('pilot', $(event.currentTarget));
+                                }
+                            });
+
+                            // Initialize Bootstrap tooltips
+                            bootstrapTooltip({selector: '.aa-intel-pilot-participation-list'});
                         }
                     });
                 }
             }
         })
-        .then(() => {
-            const classTableRow = $('.aa-intel-pilot-participation-item');
-
-            // Highlight
-            classTableRow.mouseenter((event) => {
-                addChatscanHighlight('pilot', $(event.currentTarget));
-            }).mouseleave((event) => {
-                removeChatscanHighlight('pilot', $(event.currentTarget));
-            });
-
-            // Sticky
-            classTableRow.click((event) => {
-                if ($(event.target).hasClass('aa-intel-information-link')) {
-                    event.stopPropagation();
-                } else {
-                    changeChatscanStickyHighlight('pilot', $(event.currentTarget));
-                }
-            });
-
-            // Initialize Bootstrap tooltips
-            bootstrapTooltip({selector: '.aa-intel-pilot-participation-list'});
+        .catch((error) => {
+            console.error('Error fetching pilot list data:', error);
         });
 });
