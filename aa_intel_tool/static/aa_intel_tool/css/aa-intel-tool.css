@@ -67,6 +67,11 @@
         display: none;
     }
 
+    .aa-intel-tool form.is-submitting button[type="submit"] {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
     .aa-intel-tool form.is-submitting .aa-intel-form-submitted-info {
         display: block;
     }

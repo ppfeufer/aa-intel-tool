@@ -107,7 +107,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-dscan-ship-classes-ship-classes-list');
+            bootstrapTooltip({selector: '.aa-intel-dscan-ship-classes-ship-classes-list'});
         });
 
 
@@ -188,7 +188,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-dscan-ship-types-list');
+            bootstrapTooltip({selector: '.aa-intel-dscan-ship-types-list'});
         });
 
 
@@ -274,6 +274,6 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-fleetcomp-pilot-ships-list');
+            bootstrapTooltip({selector: '.aa-intel-fleetcomp-pilot-ships-list'});
         });
 });

@@ -124,7 +124,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-dscan-ship-classes-all-list');
+            bootstrapTooltip({selector: '.aa-intel-dscan-ship-classes-all-list'});
         });
 
 
@@ -231,7 +231,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-dscan-ship-classes-ongrid-list');
+            bootstrapTooltip({selector: '.aa-intel-dscan-ship-classes-ongrid-list'});
         });
 
 
@@ -338,7 +338,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-dscan-ship-classes-offgrid-list');
+            bootstrapTooltip({selector: '.aa-intel-dscan-ship-classes-offgrid-list'});
         });
 
 
@@ -495,7 +495,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-dscan-upwell-structures-list');
+            bootstrapTooltip({selector: '.aa-intel-dscan-upwell-structures-list'});
         });
 
 
@@ -576,7 +576,7 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-dscan-deployables-list');
+            bootstrapTooltip({selector: '.aa-intel-dscan-deployables-list'});
         });
 
 
@@ -657,6 +657,6 @@ $(() => {
             });
 
             // Initialize Bootstrap tooltips
-            bootstrapTooltip('.aa-intel-dscan-starbases-list');
+            bootstrapTooltip({selector: '.aa-intel-dscan-starbases-list'});
         });
 });
