@@ -35,6 +35,10 @@ Section Order:
 ### Security
 -->
 
+### Fixed
+
+- Tooltips and other JS functions not working when using languages other than English
+
 ### Changed
 
 - Switch to Terser for JavaScript compression
