@@ -1,7 +1,124 @@
-/* global aaIntelToolJsSettings, ClipboardJS, bootstrap */
+/* global _getAaIntelToolJsSettings, ClipboardJS, bootstrap, addFleetcompositionHighlight, removeFleetcompositionHighlight, changeFleetcompositionStickyHighlight, addDscanHighlight, removeDscanHighlight, changeDscanStickyHighlight, addChatscanHighlight, removeChatscanHighlight, changeChatscanStickyHighlight */
 
 /* jshint -W097 */
 'use strict';
+
+const aaIntelToolJsSettings = _getAaIntelToolJsSettings();
+
+/**
+ * Toggle sticky highlight for scan results
+ *
+ * @param {jQuery|Element} element The element to attach the events to
+ * @param {string} type The type of the element (shipclass or shiptype)
+ * @param {string} scanType The scan type (fleetcomposition, dscan, or chatscan)
+ * @param {string} [excludeLinkElement=aa-intel-information-link] The class of the element to exclude from sticky toggle
+ * @param {boolean} [highlightOnly=false] Omit sticky toggle, only highlight on hover
+ * @private
+ */
+const _toggleScanStickyHighlight = ({element, type, scanType, excludeLinkElement = 'aa-intel-information-link', highlightOnly = false}) => {
+    // Function name mappings for different scan types
+    const functionMappings = {
+        fleetcomposition: {
+            add: typeof addFleetcompositionHighlight === 'function' ? addFleetcompositionHighlight : null,
+            remove: typeof removeFleetcompositionHighlight === 'function' ? removeFleetcompositionHighlight : null,
+            change: typeof changeFleetcompositionStickyHighlight === 'function' ? changeFleetcompositionStickyHighlight : null
+        },
+        dscan: {
+            add: typeof addDscanHighlight === 'function' ? addDscanHighlight : null,
+            remove: typeof removeDscanHighlight === 'function' ? removeDscanHighlight : null,
+            change: typeof changeDscanStickyHighlight === 'function' ? changeDscanStickyHighlight : null
+        },
+        chatscan: {
+            add: typeof addChatscanHighlight === 'function' ? addChatscanHighlight : null,
+            remove: typeof removeChatscanHighlight === 'function' ? removeChatscanHighlight : null,
+            change: typeof changeChatscanStickyHighlight === 'function' ? changeChatscanStickyHighlight : null
+        }
+    };
+
+    const functions = functionMappings[scanType];
+
+    // Highlight
+    const highlightHandler = highlightOnly
+        ? (element) => element.addClass('aa-intel-highlight') // jshint ignore:line
+        : (element) => functions.add(type, element);
+
+    const unhighlightHandler = highlightOnly
+        ? (element) => element.removeClass('aa-intel-highlight') // jshint ignore:line
+        : (element) => functions.remove(type, element);
+
+    element.mouseenter((event) => {
+        highlightHandler($(event.currentTarget));
+    }).mouseleave((event) => {
+        unhighlightHandler($(event.currentTarget));
+    });
+
+    // Sticky
+    if (!highlightOnly) {
+        element.click((event) => {
+            if (!$(event.target).hasClass(excludeLinkElement)) {
+                functions.change(type, $(event.currentTarget));
+            } else {
+                event.stopPropagation();
+            }
+        });
+    }
+};
+
+/**
+ * Toggle sticky highlight for Fleet Composition
+ *
+ * @param {Object} params Parameters
+ * @param {jQuery|Element} params.element The element to attach the events to
+ * @param {string} params.type The type of the element (shipclass or shiptype)
+ * @param {string} [params.excludeLinkElement=aa-intel-information-link] The class of the element to exclude from sticky toggle
+ * @param {boolean} [params.highlightOnly=false] Omit sticky toggle, only highlight on hover
+ * @returns {void}
+ * @private
+ */
+const _toggleFleetcompStickyHighlight = (params) => { // eslint-disable-line no-unused-vars
+    _toggleScanStickyHighlight({...params, scanType: 'fleetcomposition'});
+};
+
+/**
+ * Toggle sticky highlight for D-Scans
+ *
+ * @param {Object} params Parameters
+ * @param {jQuery|Element} params.element The element to attach the events to
+ * @param {string} params.type The type of the element (shipclass or shiptype)
+ * @param {string} [params.excludeLinkElement=aa-intel-information-link] The class of the element to exclude from sticky toggle
+ * @param {boolean} [params.highlightOnly=false] Omit sticky toggle, only highlight on hover
+ * @returns {void}
+ * @private
+ */
+const _toggleDscanStickyHighlight = (params) => { // eslint-disable-line no-unused-vars
+    _toggleScanStickyHighlight({...params, scanType: 'dscan'});
+};
+
+/**
+ * Toggle sticky highlight for Chat Scans
+ *
+ * @param {Object} params Parameters
+ * @param {jQuery|Element} params.element The element to attach the events to
+ * @param {string} params.type The type of the element (shipclass or shiptype)
+ * @param {string} [params.excludeLinkElement=aa-intel-information-link] The class of the element to exclude from sticky toggle
+ * @param {boolean} [params.highlightOnly=false] Omit sticky toggle, only highlight on hover
+ * @returns {void}
+ * @private
+ */
+const _toggleChatscanStickyHighlight = (params) => { // eslint-disable-line no-unused-vars
+    _toggleScanStickyHighlight({...params, scanType: 'chatscan'});
+};
+
+/**
+ * Number formatter
+ *
+ * @param {number} value The number to format
+ * @return {string} The formatted number
+ * @private
+ */
+const _numberFormatter = (value) => { // eslint-disable-line no-unused-vars
+    return new Intl.NumberFormat(aaIntelToolJsSettings.language.django).format(value);
+};
 
 /**
  * Bootstrap tooltip
@@ -36,34 +153,41 @@ const eveImageHtml = (eveId, eveName, imageSource, imageSize = 32) => {
 };
 
 /**
+ *
+ * Get the link HTML for external services
+ *
+ * @param {string} href
+ * @param {string} serviceName
+ * @returns {string} HTML string for external link
+ * @private
+ */
+const _externalLinkHtml = (href, serviceName) => {
+    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">${serviceName}</a>`;
+};
+
+/**
  * Get the link HTML to EveWho for a pilot
  *
  * @param {string} href
- * @returns {`<a class='aa-intel-information-link' href='${string}' target='_blank' rel='noopener noreferer'>evewho <sup><small><i class='fa-solid fa-external-link-alt' aria-hidden='true'></i></small></sup></a>`}
+ * @returns {string} HTML string for EveWho link
  */
-const eveWhoLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">evewho <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
-};
+const eveWhoLinkHtml = (href) => _externalLinkHtml(href, 'evewho');
 
 /**
  * Get the link HTML to zKillboard
  *
  * @param {string} href
- * @returns {`<a class='aa-intel-information-link' href='${string}' target='_blank' rel='noopener noreferer'>zkillboard <sup><small><i class='fa-solid fa-external-link-alt' aria-hidden='true'></i></small></sup></a>`}
+ * @returns {string} HTML string for zKillboard link
  */
-const zkillboardLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">zkillboard <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
-};
+const zkillboardLinkHtml = (href) => _externalLinkHtml(href, 'zkillboard');
 
 /**
  * Get the link HTML to dotlan
  *
  * @param {string} href
- * @returns {`<a class='aa-intel-information-link' href='${string}' target='_blank' rel='noopener noreferer'>dotlan <sup><small><i class='fa-solid fa-external-link-alt' aria-hidden='true'></i></small></sup></a>`}
+ * @returns {string} HTML string for dotlan link
  */
-const dotlanLinkHtml = (href) => {
-    return `<a class="aa-intel-information-link" href="${href}" target="_blank" rel="noopener noreferer">dotlan <sup><small><i class="fa-solid fa-external-link-alt" aria-hidden="true"></i></small></sup></a>`;
-};
+const dotlanLinkHtml = (href) => _externalLinkHtml(href, 'dotlan');
 
 /**
  * Info panel for the datatable
@@ -174,7 +298,7 @@ const shipInfoPanel = (shipData) => { // eslint-disable-line no-unused-vars
     return infoPanel(imageData, eveData);
 };
 
-$(() => {
+$(document).ready(() => {
     const elementCopyToClipboard = $('button#btn-copy-permalink-to-clipboard');
 
 

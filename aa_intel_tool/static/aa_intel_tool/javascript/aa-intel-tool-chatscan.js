@@ -1,23 +1,29 @@
-/* global aaIntelToolJsSettings, addChatscanHighlight, bootstrapTooltip, removeChatscanHighlight, changeChatscanStickyHighlight, fetchGet, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
+/* global _getAaIntelToolJsSettings, _toggleChatscanStickyHighlight, bootstrapTooltip, fetchGet, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
 
-$(() => {
+$(document).ready(() => {
     'use strict';
 
-    /* Elements
+    /* Variables and helpers
     --------------------------------------------------------------------------------- */
-    const elementPilotsTable = $('table.aa-intel-pilot-participation-list');
-    const elementCorporationsTable = $('table.aa-intel-corporation-participation-list');
-    const elementAlliancesTable = $('table.aa-intel-alliance-participation-list');
+    const settings = _getAaIntelToolJsSettings();
+    const elements = {
+        // Tables
+        pilotsTable: $('table.aa-intel-pilot-participation-list'),
+        corporationsTable: $('table.aa-intel-corporation-participation-list'),
+        alliancesTable: $('table.aa-intel-alliance-participation-list'),
 
-    const elementPilotsTotalCount = $('span#aa-intel-pilots-count');
-    const elementCorporationsTotalCount = $('span#aa-intel-corporations-count');
-    const elementAlliancesTotalCount = $('span#aa-intel-alliances-count');
+        // Totals counters
+        pilotsTotalCount: $('span#aa-intel-pilots-count'),
+        corporationsTotalCount: $('span#aa-intel-corporations-count'),
+        alliancesTotalCount: $('span#aa-intel-alliances-count')
+    };
 
-
+    /* DataTables
+    --------------------------------------------------------------------------------- */
     /**
      * Datatable Alliances Breakdown
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getAllianceList})
+    fetchGet({url: settings.url.getAllianceList})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-alliance-participation-list').addClass('d-none');
@@ -27,10 +33,10 @@ $(() => {
                 } else {
                     $('div.table-local-scan-alliances').removeClass('d-none');
 
-                    elementAlliancesTable.DataTable({
+                    elements.alliancesTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -73,14 +79,14 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // Alliance total count
-                            const currentTotal = elementAlliancesTotalCount.html();
+                            const currentTotal = elements.alliancesTotalCount.html();
                             let newTotal;
 
                             if (data.id !== 1) {
                                 newTotal = parseInt(currentTotal) + 1;
                             }
 
-                            elementAlliancesTotalCount.html(newTotal);
+                            elements.alliancesTotalCount.html(newTotal);
 
                             $(row)
                                 .addClass(`aa-intel-alliance-participation-item aa-intel-alliance-id-${data.id}`)
@@ -89,20 +95,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-alliance-participation-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addChatscanHighlight('alliance', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeChatscanHighlight('alliance', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeChatscanStickyHighlight('alliance', $(event.currentTarget));
-                                }
+                            _toggleChatscanStickyHighlight({
+                                element: classTableRow,
+                                type: 'alliance'
                             });
 
                             // Initialize Bootstrap tooltips
@@ -116,11 +111,10 @@ $(() => {
             console.error('Error fetching alliance list data:', error);
         });
 
-
     /**
      * Datatable Corporations Breakdown
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getCorporationList})
+    fetchGet({url: settings.url.getCorporationList})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-corporation-participation-list').addClass('d-none');
@@ -130,10 +124,10 @@ $(() => {
                 } else {
                     $('div.table-local-scan-corporations').removeClass('d-none');
 
-                    elementCorporationsTable.DataTable({
+                    elements.corporationsTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -182,10 +176,10 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // Corporation total count
-                            const currentTotal = elementCorporationsTotalCount.html();
+                            const currentTotal = elements.corporationsTotalCount.html();
                             const newTotal = parseInt(currentTotal) + 1;
 
-                            elementCorporationsTotalCount.html(newTotal);
+                            elements.corporationsTotalCount.html(newTotal);
 
                             $(row)
                                 .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data.id} aa-intel-alliance-id-${data.alliance.id}`)
@@ -195,20 +189,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-corporation-participation-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addChatscanHighlight('corporation', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeChatscanHighlight('corporation', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeChatscanStickyHighlight('corporation', $(event.currentTarget));
-                                }
+                            _toggleChatscanStickyHighlight({
+                                element: classTableRow,
+                                type: 'corporation'
                             });
 
                             // Initialize Bootstrap tooltips
@@ -225,7 +208,7 @@ $(() => {
     /**
      * Datatable Pilots Breakdown
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getPilotList})
+    fetchGet({url: settings.url.getPilotList})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-pilot-participation-list').addClass('d-none');
@@ -235,10 +218,10 @@ $(() => {
                 } else {
                     $('div.table-local-scan-pilots').removeClass('d-none');
 
-                    elementPilotsTable.DataTable({
+                    elements.pilotsTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -292,10 +275,10 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // Pilot total count
-                            const currentTotal = elementPilotsTotalCount.html();
+                            const currentTotal = elements.pilotsTotalCount.html();
                             const newTotal = parseInt(currentTotal) + 1;
 
-                            elementPilotsTotalCount.html(newTotal);
+                            elements.pilotsTotalCount.html(newTotal);
 
                             $(row)
                                 .addClass(`aa-intel-pilot-participation-item aa-intel-character-id-${data.id} aa-intel-corporation-id-${data.corporation.id} aa-intel-alliance-id-${data.alliance.id}`)
@@ -306,20 +289,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-pilot-participation-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addChatscanHighlight('pilot', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeChatscanHighlight('pilot', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeChatscanStickyHighlight('pilot', $(event.currentTarget));
-                                }
+                            _toggleChatscanStickyHighlight({
+                                element: classTableRow,
+                                type: 'pilot'
                             });
 
                             // Initialize Bootstrap tooltips

@@ -42,7 +42,7 @@ Section Order:
 ### Changed
 
 - Switch to Terser for JavaScript compression
-- Tooltip JS function simplified
+- JS overhaul (Part 2)
 
 ## [2.8.0] - 2025-08-14
 

@@ -3,11 +3,9 @@
 
 /* Highlighting similar table rows on mouse over and click for d-scans
 ------------------------------------------------------------------------------------- */
-
 const elementShipClassTable = $('table.aa-intel-dscan-ship-classes');
 const elementShipTypeTable = $('table.aa-intel-dscan-ship-types');
 const elementFleetcompTable = $('table.aa-intel-fleetcomp-pilot-ships-list');
-
 
 /**
  * Determine if we can remove all sticky states for this corporation
@@ -30,7 +28,6 @@ const removeFleetcompositionShiptypeStickyComplete = (byData, tableRow) => {
     return removeSticky;
 };
 
-
 /**
  * Add highlight to other tables
  *
@@ -51,7 +48,6 @@ const addFleetcompositionHighlight = (byData, tableRow) => { // eslint-disable-l
         .addClass('aa-intel-highlight');
 };
 
-
 /**
  * Add highlight to other tables
  *
@@ -71,7 +67,6 @@ const removeFleetcompositionHighlight = (byData, tableRow) => { // eslint-disabl
         .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
         .removeClass('aa-intel-highlight');
 };
-
 
 /**
  * Add sticky highlight to other tables
@@ -110,7 +105,6 @@ const addFleetcompositionSticky = (byData, tableRow) => {
             .addClass('aa-intel-highlight-sticky');
     }
 };
-
 
 /**
  * Remove sticky highlight to other tables
@@ -151,7 +145,6 @@ const removeFleetcompositionSticky = (byData, tableRow) => {
         }
     }
 };
-
 
 /**
  * Change the status of the sticky highlight

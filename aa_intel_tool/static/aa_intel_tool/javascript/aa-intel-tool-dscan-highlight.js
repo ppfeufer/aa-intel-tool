@@ -3,10 +3,8 @@
 
 /* Highlighting similar table rows on mouse over and click for d-scans
 ------------------------------------------------------------------------------------- */
-
 const elementShipClassTable = $('table.aa-intel-dscan-ship-classes');
 const elementShipTypeTable = $('table.aa-intel-dscan-ship-types');
-
 
 /**
  * Determine if we can remove all sticky states for this corporation
@@ -29,7 +27,6 @@ const removeDscanShiptypeStickyComplete = (byData, tableRow) => {
     return removeSticky;
 };
 
-
 /**
  * Add highlight to other tables
  *
@@ -46,7 +43,6 @@ const addDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unus
         .addClass('aa-intel-highlight');
 };
 
-
 /**
  * Add highlight to other tables
  *
@@ -62,7 +58,6 @@ const removeDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
         .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
         .removeClass('aa-intel-highlight');
 };
-
 
 /**
  * Add sticky highlight to other tables
@@ -89,7 +84,6 @@ const addDscanSticky = (byData, tableRow) => {
             .addClass('aa-intel-highlight-sticky');
     }
 };
-
 
 /**
  * Remove sticky highlight to other tables
@@ -119,7 +113,6 @@ const removeDscanSticky = (byData, tableRow) => {
     }
 };
 
-
 /**
  * Change the status of the sticky highlight
  *
@@ -130,7 +123,7 @@ const changeDscanStickyHighlight = (byData, tableRow) => { // eslint-disable-lin
     if (
         (
             byData === 'shiptype' && tableRow.hasClass('aa-intel-highlight-sticky') === true
-            && removeDscanShiptypeStickyComplete(byData, tableRow) === true
+            && removeDscanShiptypeStickyComplete(byData, tableRow) === true // jshint ignore:line
         ) || (byData === 'shipclass' && tableRow.hasClass('aa-intel-highlight-sticky') === true)
     ) {
         removeDscanSticky(byData, tableRow);

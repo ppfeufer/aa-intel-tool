@@ -1,19 +1,25 @@
-/* global fetchGet, aaIntelToolJsSettings, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, addFleetcompositionHighlight, removeFleetcompositionHighlight, changeFleetcompositionStickyHighlight */
+/* global fetchGet, _getAaIntelToolJsSettings, _numberFormatter, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, _toggleFleetcompStickyHighlight */
 
 $(() => {
     'use strict';
 
-    const elementShipClassesTable = $('table.aa-intel-dscan-ship-classes-ship-classes-list');
-    const elementShipClassesMass = $('span#aa-intel-dscan-ship-classes-mass');
-    const elementShipTypesTable = $('table.aa-intel-dscan-ship-types-list');
-    const elementFleetcompositionTable = $('table.aa-intel-fleetcomp-pilot-ships-list');
-    const elementPilotsCount = $('span#aa-intel-fleet-participation-count');
+    /* Variables and helpers
+    --------------------------------------------------------------------------------- */
+    const settings = _getAaIntelToolJsSettings();
+    const elements = {
+        shipClassesTable: $('table.aa-intel-dscan-ship-classes-ship-classes-list'),
+        shipClassesMass: $('span#aa-intel-dscan-ship-classes-mass'),
+        shipTypesTable: $('table.aa-intel-dscan-ship-types-list'),
+        fleetcompositionTable: $('table.aa-intel-fleetcomp-pilot-ships-list'),
+        pilotsCount: $('span#aa-intel-fleet-participation-count')
+    };
 
-
+    /* DataTables
+    --------------------------------------------------------------------------------- */
     /**
      * Datatable Ship Classes
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getShipClasses})
+    fetchGet({url: settings.url.getShipClasses})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-ship-classes').addClass('d-none');
@@ -23,10 +29,10 @@ $(() => {
                 } else {
                     $('div.table-dscan-ship-classes-ship-classes').removeClass('d-none');
 
-                    elementShipClassesTable.DataTable({
+                    elements.shipClassesTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -68,15 +74,11 @@ $(() => {
                             }
                         ],
                         createdRow: (row, data) => {
-                            const currentMass = elementShipClassesMass.data('mass') || 0;
+                            const currentMass = elements.shipClassesMass.data('mass') || 0;
                             const newMass = parseInt(currentMass) + data.mass;
 
-                            elementShipClassesMass.data('mass', newMass);
-                            elementShipClassesMass.html(
-                                new Intl.NumberFormat(
-                                    aaIntelToolJsSettings.language.django
-                                ).format(newMass)
-                            );
+                            elements.shipClassesMass.data('mass', newMass);
+                            elements.shipClassesMass.html(_numberFormatter(newMass));
 
                             $(row)
                                 .addClass(`aa-intel-shipclass-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
@@ -86,20 +88,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-shipclass-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addFleetcompositionHighlight('shipclass', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeFleetcompositionHighlight('shipclass', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeFleetcompositionStickyHighlight('shipclass', $(event.currentTarget));
-                                }
+                            _toggleFleetcompStickyHighlight({
+                                element: classTableRow,
+                                type: 'shipclass'
                             });
 
                             // Initialize Bootstrap tooltips
@@ -113,11 +104,10 @@ $(() => {
             console.error('Error fetching ship classes data:', error);
         });
 
-
     /**
      * Datatable Ship Types
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getShipTypes})
+    fetchGet({url: settings.url.getShipTypes})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-ship-types').addClass('d-none');
@@ -127,10 +117,10 @@ $(() => {
                 } else {
                     $('div.table-dscan-ship-types').removeClass('d-none');
 
-                    elementShipTypesTable.DataTable({
+                    elements.shipTypesTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -167,23 +157,12 @@ $(() => {
                                 .addClass(`aa-intel-shiptype-item aa-intel-shiptype-id-${data.id}`)
                                 .attr('data-shiptype-id', data.id);
                         },
-                        inittComplete: () => {
+                        initComplete: () => {
                             const classTableRow = $('.aa-intel-shiptype-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addFleetcompositionHighlight('shiptype', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeFleetcompositionHighlight('shiptype', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeFleetcompositionStickyHighlight('shiptype', $(event.currentTarget));
-                                }
+                            _toggleFleetcompStickyHighlight({
+                                element: classTableRow,
+                                type: 'shiptype'
                             });
 
                             // Initialize Bootstrap tooltips
@@ -197,11 +176,10 @@ $(() => {
             console.error('Error fetching ship types data:', error);
         });
 
-
     /**
      * Datatable Fleetcomp Details
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getFleetComposition})
+    fetchGet({url: settings.url.getFleetComposition})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-fleetcomp-pilot-ships').addClass('d-none');
@@ -211,10 +189,10 @@ $(() => {
                 } else {
                     $('div.table-fleetcomp-pilot-ships').removeClass('d-none');
 
-                    elementFleetcompositionTable.DataTable({
+                    elements.fleetcompositionTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -246,10 +224,10 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // Pilots total count
-                            const currentTotal = elementPilotsCount.html();
+                            const currentTotal = elements.pilotsCount.html();
                             const newTotal = parseInt(currentTotal) + 1;
 
-                            elementPilotsCount.html(newTotal);
+                            elements.pilotsCount.html(newTotal);
 
                             $(row)
                                 .addClass(`aa-intel-pilotship-item aa-intel-shipclass-id-${data.ship_id} aa-intel-shiptype-id-${data.ship_type_id}`)
@@ -259,20 +237,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-pilotship-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addFleetcompositionHighlight('shiptype', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeFleetcompositionHighlight('shiptype', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeFleetcompositionStickyHighlight('shiptype', $(event.currentTarget));
-                                }
+                            _toggleFleetcompStickyHighlight({
+                                element: classTableRow,
+                                type: 'shiptype'
                             });
 
                             // Initialize Bootstrap tooltips
