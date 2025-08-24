@@ -3,7 +3,6 @@
 
 /* Highlighting similar table rows on mouse over and click for chat scans
 --------------------------------------------------------------------------------- */
-
 /**
  * Determine if we can remove all sticky states for this corporation.
  *
@@ -21,7 +20,6 @@ const removeCorporationStickyComplete = (element) => {
 
     return removeCorporationSticky;
 };
-
 
 /**
  * Determine if we can remove all sticky states for this alliance.
@@ -41,7 +39,6 @@ const removeAllianceStickyComplete = (element) => {
     return removeAllianceSticky;
 };
 
-
 /**
  * Helper function
  *
@@ -53,7 +50,6 @@ const allianceTableAddStickyByAllianceId = (element) => {
     $(`table.aa-intel-alliance-participation-list tr[data-alliance-id="${element.data('allianceId')}"]`)
         .addClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -67,7 +63,6 @@ const allianceTableAddHighlightByAllianceId = (element) => {
         .addClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -79,7 +74,6 @@ const allianceTableRemoveStickyByAllianceId = (element) => {
     $(`table.aa-intel-alliance-participation-list tr[data-alliance-id="${element.data('allianceId')}"]`)
         .removeClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -93,7 +87,6 @@ const allianceTableRemoveHighlightByAllianceId = (element) => {
         .removeClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -105,7 +98,6 @@ const corporationTableAddStickyByCorporationId = (element) => {
     $(`table.aa-intel-corporation-participation-list tr[data-corporation-id="${element.data('corporationId')}"]`)
         .addClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -119,7 +111,6 @@ const corporationTableAddHighlightByCorporationId = (element) => {
         .addClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -131,7 +122,6 @@ const corporationTableAddStickyByAllianceId = (element) => {
     $(`table.aa-intel-corporation-participation-list tr[data-alliance-id="${element.data('allianceId')}"]`)
         .addClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -145,7 +135,6 @@ const corporationTableAddHighlightByAllianceId = (element) => {
         .addClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -157,7 +146,6 @@ const corporationTableRemoveStickyByCorporationId = (element) => {
     $(`table.aa-intel-corporation-participation-list tr[data-corporation-id="${element.data('corporationId')}"]`)
         .removeClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -171,7 +159,6 @@ const corporationTableRemoveHighlightByCorporationId = (element) => {
         .removeClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -183,7 +170,6 @@ const corporationTableRemoveStickyByAllianceId = (element) => {
     $(`table.aa-intel-corporation-participation-list tr[data-alliance-id="${element.data('allianceId')}"]`)
         .removeClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -197,7 +183,6 @@ const corporationTableRemoveHighlightByAllianceId = (element) => {
         .removeClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -209,7 +194,6 @@ const pilotTableAddStickyByCorporationId = (element) => {
     $(`table.aa-intel-pilot-participation-list tr[data-corporation-id="${element.data('corporationId')}"]`)
         .addClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -223,7 +207,6 @@ const pilotTableAddHighlightByCorporationId = (element) => {
         .addClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -235,7 +218,6 @@ const pilotTableAddStickyByAllianceId = (element) => {
     $(`table.aa-intel-pilot-participation-list tr[data-alliance-id="${element.data('allianceId')}"]`)
         .addClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -249,7 +231,6 @@ const pilotTableAddHighlightByAllianceId = (element) => {
         .addClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -261,7 +242,6 @@ const pilotTableRemoveStickyByCorporationId = (element) => {
     $(`table.aa-intel-pilot-participation-list tr[data-corporation-id="${element.data('corporationId')}"]`)
         .removeClass('aa-intel-highlight-sticky');
 };
-
 
 /**
  * Helper function
@@ -275,7 +255,6 @@ const pilotTableRemoveHighlightByCorporationId = (element) => {
         .removeClass('aa-intel-highlight');
 };
 
-
 /**
  * Helper function
  *
@@ -288,7 +267,6 @@ const pilotTableRemoveStickyByAllianceId = (element) => {
         .removeClass('aa-intel-highlight-sticky');
 };
 
-
 /**
  * Helper function
  *
@@ -300,7 +278,6 @@ const pilotTableRemoveHighlightByAllianceId = (element) => {
     $(`table.aa-intel-pilot-participation-list tr[data-alliance-id="${element.data('allianceId')}"]`)
         .removeClass('aa-intel-highlight');
 };
-
 
 /**
  * Add a highlight to other tables from alliance table
@@ -327,7 +304,6 @@ const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
     }
 };
 
-
 /**
  * Add sticky highlight to other tables from alliance table
  *
@@ -353,7 +329,6 @@ const addChatscanSticky = (byData, tableRow) => {
     }
 };
 
-
 /**
  * Remove highlight to other tables from alliance table
  *
@@ -378,7 +353,6 @@ const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line n
         corporationTableRemoveHighlightByCorporationId(tableRow);
     }
 };
-
 
 /**
  * Remove sticky highlight to other tables from alliance table
@@ -412,7 +386,6 @@ const removeChatscanSticky = (byData, tableRow) => {
         }
     }
 };
-
 
 /**
  * Change the status of the sticky highlight

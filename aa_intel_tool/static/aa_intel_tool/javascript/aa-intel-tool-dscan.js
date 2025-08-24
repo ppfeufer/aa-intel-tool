@@ -1,30 +1,36 @@
-/* global aaIntelToolJsSettings, addDscanHighlight, bootstrapTooltip, removeDscanHighlight, changeDscanStickyHighlight, fetchGet, shipInfoPanel */
+/* global _getAaIntelToolJsSettings, _numberFormatter, bootstrapTooltip, fetchGet, shipInfoPanel, _toggleDscanStickyHighlight */
 
-$(() => {
+$(document).ready(() => {
     'use strict';
 
-    const elementShipClassesAllTable = $('table.aa-intel-dscan-ship-classes-all-list');
-    const elementDscanCountAll = $('span#aa-intel-dscan-all-count');
-    const elementDscanMassAll = $('span#aa-intel-dscan-all-mass');
-    const elementShipClassesOngridTable = $('table.aa-intel-dscan-ship-classes-ongrid-list');
-    const elementDscanCountOngrid = $('span#aa-intel-dscan-ongrid-count');
-    const elementDscanMassOnGrid = $('span#aa-intel-dscan-ongrid-mass');
-    const elementShipClassesOffgridTable = $('table.aa-intel-dscan-ship-classes-offgrid-list');
-    const elementDscanCountOffgrid = $('span#aa-intel-dscan-offgrid-count');
-    const elementDscanMassOffGrid = $('span#aa-intel-dscan-offgrid-mass');
-    const elementShipTypesTable = $('table.aa-intel-dscan-ship-types-list');
-    const elementUpwellStructuresTable = $('table.aa-intel-dscan-upwell-structures-list');
-    const elementDscanCountUpwellStructures = $('span#aa-intel-dscan-upwell-structures-count');
-    const elementDeployablesTable = $('table.aa-intel-dscan-deployables-list');
-    const elementDscanCountDeployables = $('span#aa-intel-dscan-deployables-count');
-    const elementStarbasesTable = $('table.aa-intel-dscan-starbases-list');
-    const elementDscanCountStarbases = $('span#aa-intel-dscan-starbases-count');
+    /* Variables and helpers
+    --------------------------------------------------------------------------------- */
+    const settings = _getAaIntelToolJsSettings();
+    const elements = {
+        shipClassesAllTable: $('table.aa-intel-dscan-ship-classes-all-list'),
+        dscanCountAll: $('span#aa-intel-dscan-all-count'),
+        dscanMassAll: $('span#aa-intel-dscan-all-mass'),
+        shipClassesOngridTable: $('table.aa-intel-dscan-ship-classes-ongrid-list'),
+        dscanCountOngrid: $('span#aa-intel-dscan-ongrid-count'),
+        dscanMassOnGrid: $('span#aa-intel-dscan-ongrid-mass'),
+        shipClassesOffgridTable: $('table.aa-intel-dscan-ship-classes-offgrid-list'),
+        dscanCountOffgrid: $('span#aa-intel-dscan-offgrid-count'),
+        dscanMassOffGrid: $('span#aa-intel-dscan-offgrid-mass'),
+        shipTypesTable: $('table.aa-intel-dscan-ship-types-list'),
+        upwellStructuresTable: $('table.aa-intel-dscan-upwell-structures-list'),
+        dscanCountUpwellStructures: $('span#aa-intel-dscan-upwell-structures-count'),
+        deployablesTable: $('table.aa-intel-dscan-deployables-list'),
+        dscanCountDeployables: $('span#aa-intel-dscan-deployables-count'),
+        starbasesTable: $('table.aa-intel-dscan-starbases-list'),
+        dscanCountStarbases: $('span#aa-intel-dscan-starbases-count')
+    };
 
-
+    /* DataTables
+    --------------------------------------------------------------------------------- */
     /**
      * Datatable D-Scan All
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getShipClassesAll})
+    fetchGet({url: settings.url.getShipClassesAll})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-all').addClass('d-none');
@@ -34,10 +40,10 @@ $(() => {
                 } else {
                     $('div.table-dscan-ship-classes-all').removeClass('d-none');
 
-                    elementShipClassesAllTable.DataTable({
+                    elements.shipClassesAllTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -80,20 +86,16 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // D-Scan total count
-                            const currentTotal = elementDscanCountAll.html();
+                            const currentTotal = elements.dscanCountAll.html();
                             const newTotal = parseInt(currentTotal) + data.count;
 
-                            elementDscanCountAll.html(newTotal);
+                            elements.dscanCountAll.html(newTotal);
 
-                            const currentMass = elementDscanMassAll.data('mass') || 0;
+                            const currentMass = elements.dscanMassAll.data('mass') || 0;
                             const newMass = parseInt(currentMass) + data.mass;
 
-                            elementDscanMassAll.data('mass', newMass);
-                            elementDscanMassAll.html(
-                                new Intl.NumberFormat(
-                                    aaIntelToolJsSettings.language.django
-                                ).format(newMass)
-                            );
+                            elements.dscanMassAll.data('mass', newMass);
+                            elements.dscanMassAll.html(_numberFormatter(newMass));
 
                             $(row)
                                 .addClass(`aa-intel-shipclass-all-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
@@ -103,20 +105,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-shipclass-all-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addDscanHighlight('shipclass', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeDscanHighlight('shipclass', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeDscanStickyHighlight('shipclass', $(event.currentTarget));
-                                }
+                            _toggleDscanStickyHighlight({
+                                element: classTableRow,
+                                type: 'shipclass'
                             });
 
                             // Initialize Bootstrap tooltips
@@ -130,11 +121,10 @@ $(() => {
             console.error('Error fetching all ship classes data:', error);
         });
 
-
     /**
      * Datatable D-Scan On Grid
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getShipClassesOngrid})
+    fetchGet({url: settings.url.getShipClassesOngrid})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-ongrid').addClass('d-none');
@@ -144,10 +134,10 @@ $(() => {
                 } else {
                     $('div.table-dscan-ship-classes-ongrid').removeClass('d-none');
 
-                    elementShipClassesOngridTable.DataTable({
+                    elements.shipClassesOngridTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -190,20 +180,16 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // D-Scan total count
-                            const currentTotal = elementDscanCountOngrid.html();
+                            const currentTotal = elements.dscanCountOngrid.html();
                             const newTotal = parseInt(currentTotal) + data.count;
 
-                            elementDscanCountOngrid.html(newTotal);
+                            elements.dscanCountOngrid.html(newTotal);
 
-                            const currentMass = elementDscanMassOnGrid.data('mass') || 0;
+                            const currentMass = elements.dscanMassOnGrid.data('mass') || 0;
                             const newMass = parseInt(currentMass) + data.mass;
 
-                            elementDscanMassOnGrid.data('mass', newMass);
-                            elementDscanMassOnGrid.html(
-                                new Intl.NumberFormat(
-                                    aaIntelToolJsSettings.language.django
-                                ).format(newMass)
-                            );
+                            elements.dscanMassOnGrid.data('mass', newMass);
+                            elements.dscanMassOnGrid.html(_numberFormatter(newMass));
 
                             $(row)
                                 .addClass(`aa-intel-shipclass-ongrid-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
@@ -213,20 +199,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-shipclass-ongrid-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addDscanHighlight('shipclass', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeDscanHighlight('shipclass', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeDscanStickyHighlight('shipclass', $(event.currentTarget));
-                                }
+                            _toggleDscanStickyHighlight({
+                                element: classTableRow,
+                                type: 'shipclass'
                             });
 
                             // Initialize Bootstrap tooltips
@@ -240,11 +215,10 @@ $(() => {
             console.error('Error fetching ongrid ship classes data:', error);
         });
 
-
     /**
      * Datatable D-Scan Off Grid
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getShipClassesOffgrid})
+    fetchGet({url: settings.url.getShipClassesOffgrid})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-offgrid').addClass('d-none');
@@ -254,10 +228,10 @@ $(() => {
                 } else {
                     $('div.table-dscan-ship-classes-offgrid').removeClass('d-none');
 
-                    elementShipClassesOffgridTable.DataTable({
+                    elements.shipClassesOffgridTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -300,20 +274,16 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // D-Scan total count
-                            const currentTotal = elementDscanCountOffgrid.html();
+                            const currentTotal = elements.dscanCountOffgrid.html();
                             const newTotal = parseInt(currentTotal) + data.count;
 
-                            elementDscanCountOffgrid.html(newTotal);
+                            elements.dscanCountOffgrid.html(newTotal);
 
-                            const currentMass = elementDscanMassOffGrid.data('mass') || 0;
+                            const currentMass = elements.dscanMassOffGrid.data('mass') || 0;
                             const newMass = parseInt(currentMass) + data.mass;
 
-                            elementDscanMassOffGrid.data('mass', newMass);
-                            elementDscanMassOffGrid.html(
-                                new Intl.NumberFormat(
-                                    aaIntelToolJsSettings.language.django
-                                ).format(newMass)
-                            );
+                            elements.dscanMassOffGrid.data('mass', newMass);
+                            elements.dscanMassOffGrid.html(_numberFormatter(newMass));
 
                             $(row)
                                 .addClass(`aa-intel-shipclass-offgrid-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
@@ -323,20 +293,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-shipclass-offgrid-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addDscanHighlight('shipclass', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeDscanHighlight('shipclass', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeDscanStickyHighlight('shipclass', $(event.currentTarget));
-                                }
+                            _toggleDscanStickyHighlight({
+                                element: classTableRow,
+                                type: 'shipclass'
                             });
 
                             // Initialize Bootstrap tooltips
@@ -350,11 +309,10 @@ $(() => {
             console.error('Error fetching offgrid ship classes data:', error);
         });
 
-
     /**
      * Datatable D-Scan Ship Types
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getShipTypes})
+    fetchGet({url: settings.url.getShipTypes})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-ship-types').addClass('d-none');
@@ -364,10 +322,10 @@ $(() => {
                 } else {
                     $('div.table-dscan-ship-types').removeClass('d-none');
 
-                    elementShipTypesTable.DataTable({
+                    elements.shipTypesTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -407,20 +365,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-shiptype-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                addDscanHighlight('shiptype', $(event.currentTarget));
-                            }).mouseleave((event) => {
-                                removeDscanHighlight('shiptype', $(event.currentTarget));
-                            });
-
-                            // Sticky
-                            classTableRow.click((event) => {
-                                if ($(event.target).hasClass('aa-intel-information-link')) {
-                                    event.stopPropagation();
-                                } else {
-                                    changeDscanStickyHighlight('shiptype', $(event.currentTarget));
-                                }
+                            _toggleDscanStickyHighlight({
+                                element: classTableRow,
+                                type: 'shiptype'
                             });
                         }
                     });
@@ -431,11 +378,10 @@ $(() => {
             console.error('Error fetching ship types data:', error);
         });
 
-
     /**
      * Datatable D-Scan Upwell Structures on Grid
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getStructuresOnGrid})
+    fetchGet({url: settings.url.getStructuresOnGrid})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-upwell-structures').addClass('d-none');
@@ -446,10 +392,10 @@ $(() => {
                     $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
                     $('div.col-aa-intel-upwell-structures').removeClass('d-none');
 
-                    elementUpwellStructuresTable.DataTable({
+                    elements.upwellStructuresTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -485,10 +431,10 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // Upwell Structures total count
-                            const currentTotal = elementDscanCountUpwellStructures.html();
+                            const currentTotal = elements.dscanCountUpwellStructures.html();
                             const newTotal = parseInt(currentTotal) + data.count;
 
-                            elementDscanCountUpwellStructures.html(newTotal);
+                            elements.dscanCountUpwellStructures.html(newTotal);
 
                             $(row)
                                 .addClass(`aa-intel-structuretype-item aa-intel-structuretype-id-${data.id}`)
@@ -497,11 +443,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-structuretype-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                $(event.currentTarget).addClass('aa-intel-highlight');
-                            }).mouseleave((event) => {
-                                $(event.currentTarget).removeClass('aa-intel-highlight');
+                            _toggleDscanStickyHighlight({
+                                element: classTableRow,
+                                highlightOnly: true
                             });
 
                             // Initialize Bootstrap tooltips
@@ -515,11 +459,10 @@ $(() => {
             console.error('Error fetching upwell structures data:', error);
         });
 
-
     /**
      * Datatable D-Scan Deployables on Grid
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getDeployablesOnGrid})
+    fetchGet({url: settings.url.getDeployablesOnGrid})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-deployables').addClass('d-none');
@@ -530,10 +473,10 @@ $(() => {
                     $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
                     $('div.col-aa-intel-deployables').removeClass('d-none');
 
-                    elementDeployablesTable.DataTable({
+                    elements.deployablesTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -569,10 +512,10 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // Upwell Structures total count
-                            const currentTotal = elementDscanCountDeployables.html();
+                            const currentTotal = elements.dscanCountDeployables.html();
                             const newTotal = parseInt(currentTotal) + data.count;
 
-                            elementDscanCountDeployables.html(newTotal);
+                            elements.dscanCountDeployables.html(newTotal);
 
                             $(row)
                                 .addClass(`aa-intel-deployabletype-item aa-intel-deployabletype-id-${data.id}`)
@@ -581,11 +524,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-deployabletype-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                $(event.currentTarget).addClass('aa-intel-highlight');
-                            }).mouseleave((event) => {
-                                $(event.currentTarget).removeClass('aa-intel-highlight');
+                            _toggleDscanStickyHighlight({
+                                element: classTableRow,
+                                highlightOnly: true
                             });
 
                             // Initialize Bootstrap tooltips
@@ -599,11 +540,10 @@ $(() => {
             console.error('Error fetching deployables data:', error);
         });
 
-
     /**
      * Datatable D-Scan POS/POS Modules on Grid
      */
-    fetchGet({url: aaIntelToolJsSettings.url.getStarbasesOnGrid})
+    fetchGet({url: settings.url.getStarbasesOnGrid})
         .then((tableData) => {
             if (tableData) {
                 $('div.aa-intel-loading-table-info-starbases').addClass('d-none');
@@ -614,10 +554,10 @@ $(() => {
                     $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
                     $('div.col-aa-intel-starbases').removeClass('d-none');
 
-                    elementStarbasesTable.DataTable({
+                    elements.starbasesTable.DataTable({
                         data: tableData,
                         paging: false,
-                        language: aaIntelToolJsSettings.language.dataTables,
+                        language: settings.language.dataTables,
                         lengthChange: false,
                         dom:
                             '<\'row\'<\'col-sm-12\'f>>' +
@@ -653,10 +593,10 @@ $(() => {
                         ],
                         createdRow: (row, data) => {
                             // Upwell Structures total count
-                            const currentTotal = elementDscanCountStarbases.html();
+                            const currentTotal = elements.dscanCountStarbases.html();
                             const newTotal = parseInt(currentTotal) + data.count;
 
-                            elementDscanCountStarbases.html(newTotal);
+                            elements.dscanCountStarbases.html(newTotal);
 
                             $(row)
                                 .addClass(`aa-intel-starbasetype-item aa-intel-starbasetype-id-${data.id}`)
@@ -665,11 +605,9 @@ $(() => {
                         initComplete: () => {
                             const classTableRow = $('.aa-intel-starbasetype-item');
 
-                            // Highlight
-                            classTableRow.mouseenter((event) => {
-                                $(event.currentTarget).addClass('aa-intel-highlight');
-                            }).mouseleave((event) => {
-                                $(event.currentTarget).removeClass('aa-intel-highlight');
+                            _toggleDscanStickyHighlight({
+                                element: classTableRow,
+                                highlightOnly: true
                             });
 
                             // Initialize Bootstrap tooltips

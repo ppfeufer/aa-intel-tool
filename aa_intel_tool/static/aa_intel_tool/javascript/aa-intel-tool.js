@@ -3,12 +3,19 @@
 /* jshint -W097 */
 'use strict';
 
-// Build the settings object
-let aaIntelToolJsSettings = typeof aaIntelToolJsSettingsDefaults !== 'undefined' ? aaIntelToolJsSettingsDefaults : null;
+/**
+ * Get the settings for aa-intel-tool JavaScript.
+ *
+ * @private
+ */
+const _getAaIntelToolJsSettings = () => { // eslint-disable-line no-unused-vars
+    if (typeof aaIntelToolJsSettingsDefaults === 'undefined') {
+        return null;
+    }
 
-if (aaIntelToolJsSettings && typeof aaIntelToolJsSettingsOverride !== 'undefined') {
-    aaIntelToolJsSettings = objectDeepMerge(
-        aaIntelToolJsSettings,
-        aaIntelToolJsSettingsOverride
-    );
-}
+    if (typeof aaIntelToolJsSettingsOverride !== 'undefined') {
+        return objectDeepMerge(aaIntelToolJsSettingsDefaults, aaIntelToolJsSettingsOverride);
+    }
+
+    return aaIntelToolJsSettingsDefaults;
+};
