@@ -43,12 +43,12 @@ const removeAllianceStickyComplete = (element) => {
  */
 const manipulateTableHighlight = ({tableClass, dataAttribute, dataValue, cssClass, action}) => {
     const selector = `table.${tableClass} tr[data-${dataAttribute}="${dataValue}"]`;
-    const $elements = $(selector);
+    const elements = $(selector);
 
     if (action === 'add') {
-        $elements.addClass(cssClass);
+        elements.addClass(cssClass);
     } else if (action === 'remove') {
-        $elements.removeClass(cssClass);
+        elements.removeClass(cssClass);
     }
 };
 
@@ -124,7 +124,7 @@ const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
  * Add sticky highlight to other tables from alliance table
  *
  * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  * @return {void}
  */
 const addChatscanSticky = (byData, tableRow) => {
@@ -192,7 +192,7 @@ const addChatscanSticky = (byData, tableRow) => {
  * Remove highlight to other tables from alliance table
  *
  * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  * @return {void}
  */
 const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
@@ -260,7 +260,7 @@ const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line n
  * Remove sticky highlight to other tables from alliance table
  *
  * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  * @return {void}
  */
 const removeChatscanSticky = (byData, tableRow) => {
@@ -336,7 +336,7 @@ const removeChatscanSticky = (byData, tableRow) => {
  * Change the status of the sticky highlight
  *
  * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  * @return {void}
  */
 const changeChatscanStickyHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
