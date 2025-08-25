@@ -41,7 +41,13 @@ const removeAllianceStickyComplete = (element) => {
  * @param {string} action The action to perform ('add' or 'remove')
  * @return {void}
  */
-const manipulateTableHighlight = ({tableClass, dataAttribute, dataValue, cssClass, action}) => {
+const manipulateTableHighlight = ({
+    tableClass,
+    dataAttribute,
+    dataValue,
+    cssClass,
+    action
+}) => {
     const selector = `table.${tableClass} tr[data-${dataAttribute}="${dataValue}"]`;
     const elements = $(selector);
 

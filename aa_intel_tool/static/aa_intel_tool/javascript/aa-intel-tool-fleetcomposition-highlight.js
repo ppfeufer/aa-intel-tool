@@ -16,7 +16,7 @@ const tables = {
  * @param {boolean} add Whether to add (true) or remove (false) the class
  * @returns {void}
  */
-const manipulateTableHighlight = (byData, tableRow, className, add) => {
+const manipulateTableHighlight = ({byData, tableRow, className, add}) => {
     const action = add ? 'addClass' : 'removeClass';
     const shiptypeId = tableRow.data('shiptype-id');
     const dataId = tableRow.data(`${byData}-id`);
@@ -62,7 +62,12 @@ const removeFleetcompositionShiptypeStickyComplete = (byData, tableRow) => {
  * @returns {void}
  */
 const addFleetcompositionHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
-    manipulateTableHighlight(byData, tableRow, 'aa-intel-highlight', true);
+    manipulateTableHighlight({
+        byData: byData,
+        tableRow: tableRow,
+        className: 'aa-intel-highlight',
+        add: true
+    });
 };
 
 /**
@@ -86,7 +91,12 @@ const removeFleetcompositionHighlight = (byData, tableRow) => { // eslint-disabl
 const addFleetcompositionSticky = (byData, tableRow) => {
     tableRow.addClass('aa-intel-highlight-sticky');
 
-    manipulateTableHighlight(byData, tableRow, 'aa-intel-highlight-sticky', true);
+    manipulateTableHighlight({
+        byData: byData,
+        tableRow: tableRow,
+        className: 'aa-intel-highlight',
+        add: false
+    });
 };
 
 /**
@@ -100,7 +110,12 @@ const removeFleetcompositionSticky = (byData, tableRow) => {
     tableRow.removeClass('aa-intel-highlight-sticky');
 
     if (byData === 'shiptype') {
-        manipulateTableHighlight(byData, tableRow, 'aa-intel-highlight-sticky', false);
+        manipulateTableHighlight({
+            byData: byData,
+            tableRow: tableRow,
+            className: 'aa-intel-highlight-sticky',
+            add: false
+        });
     } else if (byData === 'shipclass') {
         // Remove from ship class and fleet comp tables
         const shipclassId = tableRow.data('shipclass-id');

@@ -42,7 +42,7 @@ Section Order:
 ### Changed
 
 - Switch to Terser for JavaScript compression
-- JS overhaul (Part 2)
+- JS overhaul/refactor/modernization
 
 ## [2.8.0] - 2025-08-14
 
