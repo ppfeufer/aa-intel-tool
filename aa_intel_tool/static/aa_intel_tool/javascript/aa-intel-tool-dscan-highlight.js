@@ -1,123 +1,78 @@
 /* jshint -W097 */
 'use strict';
 
-/* Highlighting similar table rows on mouse over and click for d-scans
-------------------------------------------------------------------------------------- */
 const elementShipClassTable = $('table.aa-intel-dscan-ship-classes');
 const elementShipTypeTable = $('table.aa-intel-dscan-ship-types');
 
 /**
- * Determine if we can remove all sticky states for this corporation
+ * Determine if we can remove all sticky states for this shiptype
  *
  * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  * @returns {boolean}
  */
 const removeDscanShiptypeStickyComplete = (byData, tableRow) => {
-    let removeSticky = true;
+    const shiptypeId = tableRow.data('shiptype-id');
+    const relatedElements = elementShipClassTable.find(`tr[data-shiptype-id="${shiptypeId}"]`);
 
-    elementShipClassTable.find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`).each((i, el) => {
-        if (byData === 'shiptype' && !$(el).hasClass('aa-intel-highlight-sticky')) {
-            removeSticky = false;
-        } else if (byData === 'shipclass' && $(el).hasClass('aa-intel-highlight-sticky')) {
-            removeSticky = false;
-        }
+    return relatedElements.toArray().every((el) => {
+        const $el = $(el);
+
+        return byData === 'shiptype'
+            ? $el.hasClass('aa-intel-highlight-sticky') // jshint ignore:line
+            : !$el.hasClass('aa-intel-highlight-sticky');
     });
+};
 
-    return removeSticky;
+/**
+ * Apply or remove CSS class to target elements
+ *
+ * @param {string} byData The table data attribute for which this function is triggered
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
+ * @param {string} className The CSS class to add or remove
+ * @param {boolean} add Whether to add (true) or remove (false) the class
+ */
+const manipulateTableHighlight = (byData, tableRow, className, add) => {
+    const action = add ? 'addClass' : 'removeClass';
+    const shiptypeId = tableRow.data('shiptype-id');
+    const dataId = tableRow.data(`${byData}-id`);
+
+    if (byData === 'shiptype') {
+        elementShipClassTable.find(`tr[data-shiptype-id="${shiptypeId}"]`)[action](className);
+    } else if (byData === 'shipclass') {
+        elementShipClassTable.find(`tr[data-shipclass-id="${dataId}"]`)[action](className);
+
+        if (add || removeDscanShiptypeStickyComplete(byData, tableRow)) {
+            elementShipTypeTable.find(`tr[data-shiptype-id="${shiptypeId}"]`)[action](className);
+        }
+    }
 };
 
 /**
  * Add highlight to other tables
  *
  * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  */
 const addDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
-    elementShipClassTable
-        .find(`tr[data-${byData}-id="${tableRow.data(`${byData}-id`)}"]`)
-        .addClass('aa-intel-highlight');
-
-    elementShipTypeTable
-        .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
-        .addClass('aa-intel-highlight');
+    manipulateTableHighlight(byData, tableRow, 'aa-intel-highlight', true);
 };
 
 /**
- * Add highlight to other tables
+ * Remove highlight from other tables
  *
  * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  */
 const removeDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
-    elementShipClassTable
-        .find(`tr[data-${byData}-id="${tableRow.data(`${byData}-id`)}"]`)
-        .removeClass('aa-intel-highlight');
-
-    elementShipTypeTable
-        .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
-        .removeClass('aa-intel-highlight');
-};
-
-/**
- * Add sticky highlight to other tables
- *
- * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
- */
-const addDscanSticky = (byData, tableRow) => {
-    tableRow.addClass('aa-intel-highlight-sticky');
-
-    if (byData === 'shiptype') {
-        elementShipClassTable
-            .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
-            .addClass('aa-intel-highlight-sticky');
-    }
-
-    if (byData === 'shipclass') {
-        elementShipClassTable
-            .find(`tr[data-shipclass-id="${tableRow.data('shipclass-id')}"]`)
-            .addClass('aa-intel-highlight-sticky');
-
-        elementShipTypeTable
-            .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
-            .addClass('aa-intel-highlight-sticky');
-    }
-};
-
-/**
- * Remove sticky highlight to other tables
- *
- * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
- */
-const removeDscanSticky = (byData, tableRow) => {
-    tableRow.removeClass('aa-intel-highlight-sticky');
-
-    if (byData === 'shiptype') {
-        elementShipClassTable
-            .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
-            .removeClass('aa-intel-highlight-sticky');
-    }
-
-    if (byData === 'shipclass') {
-        elementShipClassTable
-            .find(`tr[data-shipclass-id="${tableRow.data('shipclass-id')}"]`)
-            .removeClass('aa-intel-highlight-sticky');
-
-        if (removeDscanShiptypeStickyComplete(byData, tableRow) === true) {
-            elementShipTypeTable
-                .find(`tr[data-shiptype-id="${tableRow.data('shiptype-id')}"]`)
-                .removeClass('aa-intel-highlight-sticky');
-        }
-    }
+    manipulateTableHighlight(byData, tableRow, 'aa-intel-highlight', false);
 };
 
 /**
  * Change the status of the sticky highlight
  *
  * @param {string} byData The table data attribute for which this function is triggered
- * @param {element} tableRow The table row that is to be changed
+ * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  */
 const changeDscanStickyHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
     if (
@@ -126,8 +81,8 @@ const changeDscanStickyHighlight = (byData, tableRow) => { // eslint-disable-lin
             && removeDscanShiptypeStickyComplete(byData, tableRow) === true // jshint ignore:line
         ) || (byData === 'shipclass' && tableRow.hasClass('aa-intel-highlight-sticky') === true)
     ) {
-        removeDscanSticky(byData, tableRow);
+        manipulateTableHighlight(byData, tableRow, 'aa-intel-highlight-sticky', false);
     } else {
-        addDscanSticky(byData, tableRow);
+        manipulateTableHighlight(byData, tableRow, 'aa-intel-highlight-sticky', true);
     }
 };
