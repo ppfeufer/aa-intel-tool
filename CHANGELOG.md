@@ -35,6 +35,8 @@ Section Order:
 ### Security
 -->
 
+## [2.8.1] - 2025-09-02
+
 ### Fixed
 
 - Tooltips and other JS functions not working when using languages other than English
