@@ -37,9 +37,18 @@ Section Order:
 
 <!-- Your changes go here -->
 
+
+### Added
+
+- ESI OpenAPI Client provider
+
 ### Fixed
 
 - Django `makemessages` doesn't seem to recognize f-strings anymore
+
+### Changed
+
+- Use explicitly translated titles as menu item
 
 ## [2.10.0] - 2025-10-09
 
