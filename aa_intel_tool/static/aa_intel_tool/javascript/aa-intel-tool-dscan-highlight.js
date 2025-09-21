@@ -32,7 +32,7 @@ const removeDscanShiptypeStickyComplete = (byData, tableRow) => {
  * @param {string} className The CSS class to add or remove
  * @param {boolean} add Whether to add (true) or remove (false) the class
  */
-const manipulateTableHighlight = ({byData, tableRow, className, add}) => {
+const manipulateDscanTableHighlight = ({byData, tableRow, className, add}) => {
     const action = add ? 'addClass' : 'removeClass';
     const shiptypeId = tableRow.data('shiptype-id');
     const dataId = tableRow.data(`${byData}-id`);
@@ -55,7 +55,7 @@ const manipulateTableHighlight = ({byData, tableRow, className, add}) => {
  * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  */
 const addDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
-    manipulateTableHighlight({
+    manipulateDscanTableHighlight({
         byData: byData,
         tableRow: tableRow,
         className: 'aa-intel-highlight',
@@ -70,7 +70,7 @@ const addDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unus
  * @param {jQuery|HTMLElement} tableRow The table row that is to be changed
  */
 const removeDscanHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
-    manipulateTableHighlight({
+    manipulateDscanTableHighlight({
         byData: byData,
         tableRow: tableRow,
         className: 'aa-intel-highlight',
@@ -91,14 +91,14 @@ const changeDscanStickyHighlight = (byData, tableRow) => { // eslint-disable-lin
             && removeDscanShiptypeStickyComplete(byData, tableRow) === true // jshint ignore:line
         ) || (byData === 'shipclass' && tableRow.hasClass('aa-intel-highlight-sticky') === true)
     ) {
-        manipulateTableHighlight({
+        manipulateDscanTableHighlight({
             byData: byData,
             tableRow: tableRow,
             className: 'aa-intel-highlight-sticky',
             add: false
         });
     } else {
-        manipulateTableHighlight({
+        manipulateDscanTableHighlight({
             byData: byData,
             tableRow: tableRow,
             className: 'aa-intel-highlight-sticky',

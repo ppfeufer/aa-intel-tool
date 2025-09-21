@@ -37,6 +37,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- (JS Error) Uncaught TypeError: Cannot read properties of undefined (reading 'data')
+
 ### Changed
 
 - Switch to JS number formatter provided by the Alliance Auth framework

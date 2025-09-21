@@ -41,7 +41,7 @@ const removeAllianceStickyComplete = (element) => {
  * @param {string} action The action to perform ('add' or 'remove')
  * @return {void}
  */
-const manipulateTableHighlight = ({
+const manipulateChatscanTableHighlight = ({
     tableClass,
     dataAttribute,
     dataValue,
@@ -70,7 +70,7 @@ const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
 
     if (byData === 'alliance') {
         // corporationTableAddHighlightByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-corporation-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -78,7 +78,7 @@ const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
             action: 'add'
         });
         // pilotTableAddHighlightByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-pilot-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -89,7 +89,7 @@ const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
 
     if (byData === 'corporation') {
         // allianceTableAddHighlightByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-alliance-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -97,7 +97,7 @@ const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
             action: 'add'
         });
         // pilotTableAddHighlightByCorporationId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-pilot-participation-list',
             dataAttribute: 'corporation-id',
             dataValue: tableRow.data('corporationId'),
@@ -108,7 +108,7 @@ const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
 
     if (byData === 'pilot') {
         // allianceTableAddHighlightByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-alliance-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -116,7 +116,7 @@ const addChatscanHighlight = (byData, tableRow) => { // eslint-disable-line no-u
             action: 'add'
         });
         // corporationTableAddHighlightByCorporationId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-corporation-participation-list',
             dataAttribute: 'corporation-id',
             dataValue: tableRow.data('corporationId'),
@@ -138,7 +138,7 @@ const addChatscanSticky = (byData, tableRow) => {
 
     if (byData === 'alliance') {
         // corporationTableAddStickyByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-corporation-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -146,7 +146,7 @@ const addChatscanSticky = (byData, tableRow) => {
             action: 'add'
         });
         // pilotTableAddStickyByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-pilot-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -157,7 +157,7 @@ const addChatscanSticky = (byData, tableRow) => {
 
     if (byData === 'corporation') {
         // allianceTableAddStickyByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-alliance-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -165,7 +165,7 @@ const addChatscanSticky = (byData, tableRow) => {
             action: 'add'
         });
         // pilotTableAddStickyByCorporationId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-pilot-participation-list',
             dataAttribute: 'corporation-id',
             dataValue: tableRow.data('corporationId'),
@@ -176,7 +176,7 @@ const addChatscanSticky = (byData, tableRow) => {
 
     if (byData === 'pilot') {
         // allianceTableAddStickyByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-alliance-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -184,7 +184,7 @@ const addChatscanSticky = (byData, tableRow) => {
             action: 'add'
         });
         // corporationTableAddStickyByCorporationId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-corporation-participation-list',
             dataAttribute: 'corporation-id',
             dataValue: tableRow.data('corporationId'),
@@ -206,7 +206,7 @@ const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line n
 
     if (byData === 'alliance') {
         // corporationTableRemoveHighlightByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-corporation-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -214,7 +214,7 @@ const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line n
             action: 'remove'
         });
         // pilotTableRemoveHighlightByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-pilot-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -225,7 +225,7 @@ const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line n
 
     if (byData === 'corporation') {
         // allianceTableRemoveHighlightByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-alliance-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -233,7 +233,7 @@ const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line n
             action: 'remove'
         });
         // pilotTableRemoveHighlightByCorporationId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-pilot-participation-list',
             dataAttribute: 'corporation-id',
             dataValue: tableRow.data('corporationId'),
@@ -244,7 +244,7 @@ const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line n
 
     if (byData === 'pilot') {
         // allianceTableRemoveHighlightByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-alliance-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -252,7 +252,7 @@ const removeChatscanHighlight = (byData, tableRow) => { // eslint-disable-line n
             action: 'remove'
         });
         // corporationTableRemoveHighlightByCorporationId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-corporation-participation-list',
             dataAttribute: 'corporation-id',
             dataValue: tableRow.data('corporationId'),
@@ -274,7 +274,7 @@ const removeChatscanSticky = (byData, tableRow) => {
 
     if (byData === 'alliance') {
         // corporationTableRemoveStickyByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-corporation-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -282,7 +282,7 @@ const removeChatscanSticky = (byData, tableRow) => {
             action: 'remove'
         });
         // pilotTableRemoveStickyByAllianceId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-pilot-participation-list',
             dataAttribute: 'alliance-id',
             dataValue: tableRow.data('allianceId'),
@@ -293,7 +293,7 @@ const removeChatscanSticky = (byData, tableRow) => {
 
     if (byData === 'corporation') {
         // pilotTableRemoveStickyByCorporationId(tableRow);
-        manipulateTableHighlight({
+        manipulateChatscanTableHighlight({
             tableClass: 'aa-intel-pilot-participation-list',
             dataAttribute: 'corporation-id',
             dataValue: tableRow.data('corporationId'),
@@ -303,7 +303,7 @@ const removeChatscanSticky = (byData, tableRow) => {
 
         if (removeAllianceStickyComplete(tableRow) === true) {
             // allianceTableRemoveStickyByAllianceId(tableRow);
-            manipulateTableHighlight({
+            manipulateChatscanTableHighlight({
                 tableClass: 'aa-intel-alliance-participation-list',
                 dataAttribute: 'alliance-id',
                 dataValue: tableRow.data('allianceId'),
@@ -316,7 +316,7 @@ const removeChatscanSticky = (byData, tableRow) => {
     if (byData === 'pilot') {
         if (removeCorporationStickyComplete(tableRow) === true) {
             // corporationTableRemoveStickyByCorporationId(tableRow);
-            manipulateTableHighlight({
+            manipulateChatscanTableHighlight({
                 tableClass: 'aa-intel-corporation-participation-list',
                 dataAttribute: 'corporation-id',
                 dataValue: tableRow.data('corporationId'),
@@ -327,7 +327,7 @@ const removeChatscanSticky = (byData, tableRow) => {
 
         if (removeAllianceStickyComplete(tableRow) === true) {
             // allianceTableRemoveStickyByAllianceId(tableRow);
-            manipulateTableHighlight({
+            manipulateChatscanTableHighlight({
                 tableClass: 'aa-intel-alliance-participation-list',
                 dataAttribute: 'alliance-id',
                 dataValue: tableRow.data('allianceId'),
