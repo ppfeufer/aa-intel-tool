@@ -633,7 +633,6 @@ Hopefully the last one before official release …
 [2.7.2]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.7.1...v2.7.2 "v2.7.2"
 [2.8.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.7.2...v2.8.0 "v2.8.0"
 [2.8.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.0...v2.8.1 "v2.8.1"
-[2.9.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.1...v2.9.0 "v2.9.0"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.10.0...HEAD "In Development"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.1...HEAD
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
