@@ -1,4 +1,4 @@
-/* global fetchGet, _getAaIntelToolJsSettings, _numberFormatter, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, _toggleFleetcompStickyHighlight */
+/* global fetchGet, _getAaIntelToolJsSettings, numberFormatter, bootstrapTooltip, shipInfoPanel, pilotInfoPanel, _toggleFleetcompStickyHighlight */
 
 $(() => {
     'use strict';
@@ -78,7 +78,7 @@ $(() => {
                             const newMass = parseInt(currentMass) + data.mass;
 
                             elements.shipClassesMass.data('mass', newMass);
-                            elements.shipClassesMass.html(_numberFormatter(newMass));
+                            elements.shipClassesMass.html(numberFormatter({value: newMass, locales: settings.language.django}));
 
                             $(row)
                                 .addClass(`aa-intel-shipclass-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
