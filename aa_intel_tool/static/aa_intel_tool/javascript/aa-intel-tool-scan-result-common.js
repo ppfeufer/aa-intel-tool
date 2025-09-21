@@ -119,17 +119,6 @@ const _toggleChatscanStickyHighlight = (params) => { // eslint-disable-line no-u
 };
 
 /**
- * Number formatter
- *
- * @param {number} value The number to format
- * @return {string} The formatted number
- * @private
- */
-const _numberFormatter = (value) => { // eslint-disable-line no-unused-vars
-    return new Intl.NumberFormat(aaIntelToolJsSettings.language.django).format(value);
-};
-
-/**
  * Bootstrap tooltip
  *
  * @param {string} [selector=body] Selector for the tooltip elements, defaults to 'body'

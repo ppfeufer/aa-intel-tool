@@ -2,8 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog]
+and this project adheres to [Semantic Versioning].
 
 <!--
 GitHub MD Syntax:
@@ -34,6 +34,14 @@ Section Order:
 ### Removed
 ### Security
 -->
+
+<!-- Your changes go here -->
+
+### Changed
+
+- Switch to JS number formatter provided by the Alliance Auth framework
+- Minimum requirements
+  - Alliance Auth >= 4.10.0
 
 ## [2.8.1] - 2025-09-02
 
@@ -549,3 +557,49 @@ Hopefully the last one before official release …
 
 - Chat Scan Module
 - D-Scan Module
+
+<!-- Links -->
+
+[0.0.1-alpha.1]: https://github.com/ppfeufer/aa-intel-tool/commits/v0.0.1-alpha.1 "v0.0.1-alpha.1"
+[0.0.1-alpha.10]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.9...v0.0.1-alpha.10 "v0.0.1-alpha.10"
+[0.0.1-alpha.11]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.10...v0.0.1-alpha.11 "v0.0.1-alpha.11"
+[0.0.1-alpha.12]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.11...v0.0.1-alpha.12 "v0.0.1-alpha.12"
+[0.0.1-alpha.13]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.12...v0.0.1-alpha.13 "v0.0.1-alpha.13"
+[0.0.1-alpha.14]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.13...v0.0.1-alpha.14 "v0.0.1-alpha.14"
+[0.0.1-alpha.2]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.1...v0.0.1-alpha.2 "v0.0.1-alpha.2"
+[0.0.1-alpha.3]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.2...v0.0.1-alpha.3 "v0.0.1-alpha.3"
+[0.0.1-alpha.4]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.3...v0.0.1-alpha.4 "v0.0.1-alpha.4"
+[0.0.1-alpha.5]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.4...v0.0.1-alpha.5 "v0.0.1-alpha.5"
+[0.0.1-alpha.6]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.5...v0.0.1-alpha.6 "v0.0.1-alpha.6"
+[0.0.1-alpha.7]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.6...v0.0.1-alpha.7 "v0.0.1-alpha.7"
+[0.0.1-alpha.8]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.7...v0.0.1-alpha.8 "v0.0.1-alpha.8"
+[0.0.1-alpha.9]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.9...v0.0.1-alpha.9 "v0.0.1-alpha.9"
+[1.0.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v0.0.1-alpha.14...v1.0.0 "v1.0.0"
+[1.0.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v1.0.0...v1.0.1 "v1.0.1"
+[1.1.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v1.0.1...v1.1.0 "v1.1.0"
+[1.1.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v1.1.0...v1.1.1 "v1.1.1"
+[1.1.2]: https://github.com/ppfeufer/aa-intel-tool/compare/v1.1.1...v1.1.2 "v1.1.2"
+[1.1.3]: https://github.com/ppfeufer/aa-intel-tool/compare/v1.1.2...v1.1.3 "v1.1.3"
+[1.2.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v1.1.3...v1.2.0 "v1.2.0"
+[2.0.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v1.2.0...v2.0.0 "v2.0.0"
+[2.0.0-beta.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v1.2.0...v2.0.0-beta.1 "v2.0.0-beta.1"
+[2.1.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.0.0...v2.1.0 "v2.1.0"
+[2.1.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.1.0...v2.1.1 "v2.1.1"
+[2.2.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.1.1...v2.2.0 "v2.2.0"
+[2.3.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.2.0...v2.3.0 "v2.3.0"
+[2.4.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.3.0...v2.4.0 "v2.4.0"
+[2.5.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.4.0...v2.5.0 "v2.5.0"
+[2.5.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.5.0...v2.5.1 "v2.5.1"
+[2.5.2]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.5.1...v2.5.2 "v2.5.2"
+[2.5.3]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.5.2...v2.5.3 "v2.5.3"
+[2.6.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.5.3...v2.6.0 "v2.6.0"
+[2.6.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.6.0...v2.6.1 "v2.6.1"
+[2.6.2]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.6.1...v2.6.2 "v2.6.2"
+[2.6.3]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.6.2...v2.6.3 "v2.6.3"
+[2.7.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.6.3...v2.7.0 "v2.7.0"
+[2.7.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.7.0...v2.7.1 "v2.7.1"
+[2.7.2]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.7.1...v2.7.2 "v2.7.2"
+[2.8.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.7.2...v2.8.0 "v2.8.0"
+[2.8.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.0...v2.8.1 "v2.8.1"
+[keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
+[semantic versioning]: http://semver.org/ "Semantic Versioning"

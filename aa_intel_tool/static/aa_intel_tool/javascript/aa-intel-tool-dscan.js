@@ -1,4 +1,4 @@
-/* global _getAaIntelToolJsSettings, _numberFormatter, bootstrapTooltip, fetchGet, shipInfoPanel, _toggleDscanStickyHighlight */
+/* global _getAaIntelToolJsSettings, numberFormatter, bootstrapTooltip, fetchGet, shipInfoPanel, _toggleDscanStickyHighlight */
 
 $(document).ready(() => {
     'use strict';
@@ -95,7 +95,7 @@ $(document).ready(() => {
                             const newMass = parseInt(currentMass) + data.mass;
 
                             elements.dscanMassAll.data('mass', newMass);
-                            elements.dscanMassAll.html(_numberFormatter(newMass));
+                            elements.dscanMassAll.html(numberFormatter({value: newMass, locales: settings.language.django}));
 
                             $(row)
                                 .addClass(`aa-intel-shipclass-all-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
@@ -189,7 +189,7 @@ $(document).ready(() => {
                             const newMass = parseInt(currentMass) + data.mass;
 
                             elements.dscanMassOnGrid.data('mass', newMass);
-                            elements.dscanMassOnGrid.html(_numberFormatter(newMass));
+                            elements.dscanMassOnGrid.html(numberFormatter({value: newMass, locales: settings.language.django}));
 
                             $(row)
                                 .addClass(`aa-intel-shipclass-ongrid-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
@@ -283,7 +283,7 @@ $(document).ready(() => {
                             const newMass = parseInt(currentMass) + data.mass;
 
                             elements.dscanMassOffGrid.data('mass', newMass);
-                            elements.dscanMassOffGrid.html(_numberFormatter(newMass));
+                            elements.dscanMassOffGrid.html(numberFormatter({value: newMass, locales: settings.language.django}));
 
                             $(row)
                                 .addClass(`aa-intel-shipclass-offgrid-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)

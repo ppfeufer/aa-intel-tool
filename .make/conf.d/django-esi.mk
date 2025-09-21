@@ -50,11 +50,11 @@ generate-esi-stubs: check-python-venv get-compatibility-dates
 	@echo "Generating ESI stubs …"
 	@echo ""
 	@esi_date=$$(cat .esi-compatibility-date 2>/dev/null || exit 0); \
-	python ../myauth/manage.py generate_esi_stubs --compatibility_date="$$esi_date"
+	python $(myauth_path)/manage.py generate_esi_stubs --compatibility_date="$$esi_date"
 	@echo "ESI stubs generated."
 
 .PHONY: update-compatibility-date
-update-compatibility-date: check-python-venv get-compatibility-dates
+update-compatibility-date: check-python-venv generate-esi-stubs
 	@echo "Updating ESI compatibility date..."
 	@echo ""
 	@esi_date=$$(cat .esi-compatibility-date 2>/dev/null || exit 0); \
