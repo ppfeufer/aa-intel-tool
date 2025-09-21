@@ -40,6 +40,8 @@ Section Order:
 ### Changed
 
 - Switch to JS number formatter provided by the Alliance Auth framework
+- Minimum requirements
+  - Alliance Auth >= 4.10.0
 
 ## [2.8.1] - 2025-09-02
 
