@@ -52,8 +52,13 @@
                     {% bootstrap_button button_type="submit" content=button_text %}
 
                     <div class="col-sm-12 aa-intel-form-submitted-info mt-3">
-                        <div class="aa-callout aa-callout-info">
+                        <div class="aa-callout aa-callout-info clearfix">
+                            <div class="float-end ms-3">
+                                {% include "aa_intel_tool/partials/common/loading-spinner.html" %}
+                            </div>
+
                             <p>{% translate "Working on it, please be patient …" %}</p>
+
                             <ul>
                                 <li>{% translate "Detecting the intel type" %}</li>
                                 <li>{% translate "Fetching potentially missing information from ESI (this might take a moment)" %}</li>
