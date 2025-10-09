@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-08-14 09:32+0200\n"
+"POT-Creation-Date: 2025-10-09 16:02+0200\n"
 "PO-Revision-Date: 2025-08-03 04:24+0000\n"
 "Last-Translator: The “Devcutter” Guy <mick162534@gmail.com>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/fr/>\n"
@@ -232,6 +232,10 @@ msgid_plural "Scans will be deleted after %(scan_retention_time)s days."
 msgstr[0] "Les scans seront supprimés après %(scan_retention_time)s jour."
 msgstr[1] "Les scans seront supprimés après %(scan_retention_time)s jours."
 
+#: aa_intel_tool/templates/aa_intel_tool/partials/common/loading-data.html:8
+msgid "Loading data …"
+msgstr "Chargement des données …"
+
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
 msgid "Do you want to help translate this app into your language or improve the existing translation?"
 msgstr "Voulez-vous aider à traduire cette application dans votre langue ou améliorer la traduction existante ?"
@@ -263,19 +267,19 @@ msgstr "Gardez a l'esprit qu'analyser des grandes quantités de données peut pr
 msgid "Submit"
 msgstr "Soumettre"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:56
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
 msgid "Working on it, please be patient …"
 msgstr "En cours de travail, soyez patient …"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:58
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:63
 msgid "Detecting the intel type"
 msgstr "Détection du type de renseignement"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:59
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:64
 msgid "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr "Recherche d'informations potentiellement manquantes depuis l'ESI (Cela peut prendre un moment)"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:65
 msgid "Parsing data"
 msgstr "Analyse de données"
 
@@ -304,22 +308,12 @@ msgstr "Alliance"
 msgid "Count"
 msgstr "Compte"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:27
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:27
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:27
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:37
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:30
-msgid "Loading data …"
-msgstr "Chargement des données …"
-
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:33
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:33
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:33
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:43
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:36
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:41
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:34
 msgid "No data …"
 msgstr "Aucune donnée …"
 
@@ -394,7 +388,7 @@ msgstr ""
 msgid "Ship type"
 msgstr "Type de vaisseaux"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:34
 msgid "No data."
 msgstr "Aucune donnée."
 
