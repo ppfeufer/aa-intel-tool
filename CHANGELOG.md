@@ -37,6 +37,14 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Added
+
+- ESI OpenAPI Client provider
+
+### Changed
+
+- Use an explicitly translated title as the menu item
+
 ## [2.10.0] - 2025-10-09
 
 ### Added
