@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-08-14 09:32+0200\n"
+"POT-Creation-Date: 2025-10-09 16:02+0200\n"
 "PO-Revision-Date: 2025-07-06 20:30+0000\n"
 "Last-Translator: s0k0l -_- <salarysalo@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/uk/>\n"
@@ -226,6 +226,10 @@ msgstr[1] "Скани будуть видалені через %(scan_retention_
 msgstr[2] "Скани будуть видалені через %(scan_retention_time)s днів."
 msgstr[3] "Скани будуть видалені через один день."
 
+#: aa_intel_tool/templates/aa_intel_tool/partials/common/loading-data.html:8
+msgid "Loading data …"
+msgstr "Завантаження даних…"
+
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
 msgid "Do you want to help translate this app into your language or improve the existing translation?"
 msgstr "Хочете допомогти перекласти цю програму вашою мовою чи покращити наявний переклад?"
@@ -259,19 +263,19 @@ msgstr "Будь ласка пам'ятайте, що обробити вели�
 msgid "Submit"
 msgstr "Відправити"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:56
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
 msgid "Working on it, please be patient …"
 msgstr "В процесі, будь ласка, зачекайте…"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:58
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:63
 msgid "Detecting the intel type"
 msgstr "Визначення типу інтелу"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:59
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:64
 msgid "Fetching potentially missing information from ESI (this might take a moment)"
 msgstr "Вибірка інформації, якої потенційно не вистачає з ESI (може зайняти трохи часу)"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
+#: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:65
 msgid "Parsing data"
 msgstr "Розбір даних"
 
@@ -300,22 +304,12 @@ msgstr "Аліянс"
 msgid "Count"
 msgstr "Кількість"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:27
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:27
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:27
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:25
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:37
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:30
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:30
-msgid "Loading data …"
-msgstr "Завантаження даних…"
-
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:33
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:33
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:33
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:31
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:43
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:36
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:31
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:29
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:41
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:34
 msgid "No data …"
 msgstr "Нема даних…"
 
@@ -390,7 +384,7 @@ msgstr "Повна маса (в кг):"
 msgid "Ship type"
 msgstr "Тип корабля"
 
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:36
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:34
 msgid "No data."
 msgstr "Нема даних."
 
