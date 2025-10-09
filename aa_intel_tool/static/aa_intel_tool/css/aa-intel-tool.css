@@ -77,6 +77,20 @@
     }
 }
 
+/* Loading Spinner
+------------------------------------------------------------------------------------- */
+@media all {
+    svg.aa-intel-loading-spinner {
+        height: 1rem;
+        width: 1rem;
+    }
+
+    .aa-intel-tool .aa-intel-form-submitted-info svg.aa-intel-loading-spinner {
+        height: 2rem;
+        width: 2rem;
+    }
+}
+
 /* Data Tables
 ------------------------------------------------------------------------------------- */
 @media all {

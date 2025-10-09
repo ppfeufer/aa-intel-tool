@@ -37,6 +37,12 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Added
+
+- SVG loading spinner
+  - To the scan submission page while the form is being submitted
+  - To the scan result page while the DataTables are being initialised
+
 ## [2.9.0] - 2025-09-21
 
 ### Fixed
