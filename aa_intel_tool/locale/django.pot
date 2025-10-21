@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.10.0\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-10-09 16:02+0200\n"
+"POT-Creation-Date: 2025-10-21 10:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: aa_intel_tool/__init__.py:9
+#: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
 #: aa_intel_tool/templates/aa_intel_tool/base.html:11
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
@@ -37,12 +37,6 @@ msgstr ""
 
 #: aa_intel_tool/admin.py:100
 msgid "Raw data"
-msgstr ""
-
-#. Translators: This is the app name and version, which will appear in the Django Backend
-#: aa_intel_tool/apps.py:21
-#, python-brace-format
-msgid "Intel Parser v{__version__}"
 msgstr ""
 
 #: aa_intel_tool/constants.py:56 aa_intel_tool/models.py:24
@@ -421,14 +415,16 @@ msgstr ""
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:53
-msgid "The provided data could not be parsed."
+#: aa_intel_tool/views/general.py:56
+#, python-brace-format
+msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:60
-msgid "(System Error) Something unexpected happened."
+#: aa_intel_tool/views/general.py:68
+#, python-brace-format
+msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:101 aa_intel_tool/views/general.py:131
+#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr ""

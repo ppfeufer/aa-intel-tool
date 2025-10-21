@@ -50,16 +50,24 @@ def index(request: WSGIRequest) -> HttpResponse:
             # Catching our own parser exceptions
             except ParserError as exc:
                 exception_caught = True
-                errormessage = _("The provided data could not be parsed.") + f" ({exc})"
-                messages.error(request=request, message=errormessage)
+
+                messages.error(
+                    request=request,
+                    message=_("The provided data could not be parsed. ({exc})").format(
+                        exc=exc
+                    ),
+                )
 
             # Catching every other exception we can't think of (hopefully)
             except Exception as exc:  # pylint: disable=broad-exception-caught
                 exception_caught = True
-                errormessage = (
-                    _("(System Error) Something unexpected happened.") + f" ({exc})"
+
+                messages.error(
+                    request=request,
+                    message=_(
+                        "(System Error) Something unexpected happened. ({exc})"
+                    ).format(exc=exc),
                 )
-                messages.error(request=request, message=errormessage)
 
             if exception_caught:
                 return redirect(to="aa_intel_tool:intel_tool_index")

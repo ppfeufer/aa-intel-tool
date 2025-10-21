@@ -4,10 +4,10 @@ App config
 
 # Django
 from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
+from django.utils.text import format_lazy
 
 # AA Intel Tool
-from aa_intel_tool import __version__
+from aa_intel_tool import __title_translated__, __version__
 
 
 class AaIntelToolConfig(AppConfig):
@@ -17,5 +17,6 @@ class AaIntelToolConfig(AppConfig):
 
     name = "aa_intel_tool"
     label = "aa_intel_tool"
-    # Translators: This is the app name and version, which will appear in the Django Backend
-    verbose_name = _(f"Intel Parser v{__version__}")
+    verbose_name = format_lazy(
+        "{app_title} v{version}", app_title=__title_translated__, version=__version__
+    )
