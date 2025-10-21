@@ -37,7 +37,6 @@ Section Order:
 
 <!-- Your changes go here -->
 
-
 ### Added
 
 - ESI OpenAPI Client provider
