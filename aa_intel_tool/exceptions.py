@@ -43,4 +43,4 @@ class ParserError(AaIntelToolException):
 
         message = self.message if self.message else _("Unknown parser error")
 
-        return str(_(f"A parser error occurred » {message}"))
+        return str(_("A parser error occurred » {message}").format(message=message))

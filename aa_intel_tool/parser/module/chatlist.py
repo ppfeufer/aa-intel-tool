@@ -274,10 +274,10 @@ def parse(
         # Throw a tantrum
         raise ParserError(
             message=ngettext(
-                singular=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",
-                plural=f"Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit.",
+                singular="Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit.",
+                plural="Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit.",
                 number=max_allowed_pilots,
-            )
+            ).format(max_allowed_pilots=max_allowed_pilots)
         )
 
     eve_characters = _get_character_info(scan_data=scan_data)

@@ -37,6 +37,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- Django `makemessages` doesn't seem to recognize f-strings anymore
+
 ## [2.10.0] - 2025-10-09
 
 ### Added
