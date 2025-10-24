@@ -7,7 +7,7 @@ from allianceauth import hooks
 from allianceauth.services.hooks import MenuItemHook, UrlHook
 
 # AA Intel Tool
-from aa_intel_tool import __title__, urls
+from aa_intel_tool import __title_translated__, urls
 
 
 class AaIntelToolMenuItem(MenuItemHook):  # pylint: disable=too-few-public-methods
@@ -19,7 +19,7 @@ class AaIntelToolMenuItem(MenuItemHook):  # pylint: disable=too-few-public-metho
         # setup menu entry for sidebar
         MenuItemHook.__init__(
             self,
-            text=__title__,
+            text=__title_translated__,
             classes="fa-solid fa-clipboard-list",
             url_name="aa_intel_tool:intel_tool_index",
             navactive=["aa_intel_tool:"],
