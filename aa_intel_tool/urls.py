@@ -9,7 +9,7 @@ from django.urls import include, path
 from aa_intel_tool.constants import INTERNAL_URL_PREFIX
 from aa_intel_tool.views import ajax, general
 
-app_name: str = "aa_intel_tool"
+app_name: str = "aa_intel_tool"  # pylint: disable=invalid-name
 
 
 app_urls = [
