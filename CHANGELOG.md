@@ -37,6 +37,15 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Added
+
+- ESI OpenAPI Client provider
+
+### Changed
+
+- Use an explicitly translated title as the menu item
+- Use Bootstrap class instead of own styling for table width
+
 ## [2.10.1] - 2025-11-04
 
 ### Fixed
