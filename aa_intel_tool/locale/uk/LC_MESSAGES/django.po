@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-10-09 16:02+0200\n"
-"PO-Revision-Date: 2025-07-06 20:30+0000\n"
+"POT-Creation-Date: 2025-11-04 12:19+0100\n"
+"PO-Revision-Date: 2025-11-01 19:17+0000\n"
 "Last-Translator: s0k0l -_- <salarysalo@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/uk/>\n"
 "Language: uk\n"
@@ -17,9 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.14\n"
 
-#: aa_intel_tool/__init__.py:9
+#: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
 #: aa_intel_tool/templates/aa_intel_tool/base.html:11
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
@@ -30,7 +30,7 @@ msgstr "Парсер інтелу"
 
 #: aa_intel_tool/admin.py:79 aa_intel_tool/models.py:46
 msgid "Scan type"
-msgstr "Тип скану"
+msgstr "Тип підскану"
 
 #: aa_intel_tool/admin.py:94
 msgid "Open in a new browser tab"
@@ -40,22 +40,16 @@ msgstr "Нова вкладка браузера"
 msgid "Raw data"
 msgstr "Необроблені дані"
 
-#. Translators: This is the app name and version, which will appear in the Django Backend
-#: aa_intel_tool/apps.py:21
-#, python-brace-format
-msgid "Intel Parser v{__version__}"
-msgstr "Парсер інтелу v{__version__}"
-
-#: aa_intel_tool/constants.py:56 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:24
 msgid "Chat list"
-msgstr "Список в чаті"
+msgstr "Список чатів"
 
-#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "Д-скан"
 
-#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:74 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -416,17 +410,23 @@ msgstr "Система"
 msgid "Participation details"
 msgstr "Деталі про учасників"
 
-#: aa_intel_tool/views/general.py:53
-msgid "The provided data could not be parsed."
-msgstr "Надані дані не можна розібрати."
+#: aa_intel_tool/views/general.py:56
+#, python-brace-format
+msgid "The provided data could not be parsed. ({exc})"
+msgstr "Надані дані не можна розібрати. ({exc})"
 
-#: aa_intel_tool/views/general.py:60
-msgid "(System Error) Something unexpected happened."
-msgstr "(System Error) Трапилась якась системна помилка-халепа."
+#: aa_intel_tool/views/general.py:68
+#, python-brace-format
+msgid "(System Error) Something unexpected happened. ({exc})"
+msgstr "(System Error) Трапилась якась системна помилка-халепа. ({exc})"
 
-#: aa_intel_tool/views/general.py:101 aa_intel_tool/views/general.py:131
+#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr "Скан який Ви шукаєте, не можна знайти."
+
+#, python-brace-format
+#~ msgid "Intel Parser v{__version__}"
+#~ msgstr "Парсер інтелу v{__version__}"
 
 #~ msgid "No data available in this table"
 #~ msgstr "Немає даних у цій таблиці"

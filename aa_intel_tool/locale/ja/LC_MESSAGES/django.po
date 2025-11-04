@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-10-09 16:02+0200\n"
+"POT-Creation-Date: 2025-11-04 12:19+0100\n"
 "PO-Revision-Date: 2024-08-05 10:10+0000\n"
 "Last-Translator: Anata_no_Usiro <yt23542354m@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.6.2\n"
 
-#: aa_intel_tool/__init__.py:9
+#: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
 #: aa_intel_tool/templates/aa_intel_tool/base.html:11
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
@@ -38,22 +38,16 @@ msgstr "ブラウザの新しいタブで開く"
 msgid "Raw data"
 msgstr "検証されていないデータ"
 
-#. Translators: This is the app name and version, which will appear in the Django Backend
-#: aa_intel_tool/apps.py:21
-#, python-brace-format
-msgid "Intel Parser v{__version__}"
-msgstr "インテル用の解析ツール v{__version__}"
-
-#: aa_intel_tool/constants.py:56 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "チャット一覧"
 
-#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "指向性スキャン"
 
-#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:74 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -407,14 +401,20 @@ msgstr ""
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:53
-msgid "The provided data could not be parsed."
+#: aa_intel_tool/views/general.py:56
+#, python-brace-format
+msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:60
-msgid "(System Error) Something unexpected happened."
+#: aa_intel_tool/views/general.py:68
+#, python-brace-format
+msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:101 aa_intel_tool/views/general.py:131
+#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr ""
+
+#, python-brace-format
+#~ msgid "Intel Parser v{__version__}"
+#~ msgstr "インテル用の解析ツール v{__version__}"
