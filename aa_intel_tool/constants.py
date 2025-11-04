@@ -18,18 +18,24 @@ INTERNAL_URL_PREFIX = "-"
 
 
 # Localised units
-distance_units_on_grid: str = """
+distance_units_on_grid: str = (  # pylint: disable=invalid-name
+    """
     km|m    # Client in: English, German, Chinese, French, Japanese, Korean, Spanish
     |км|м   # Russian
 """
-distance_units_off_grid: str = """
+)
+distance_units_off_grid: str = (  # pylint: disable=invalid-name
+    """
     AU      # Client in: English, Chinese, Japanese, Korean, Spanish
     |UA     # Client in: French
     |AE     # German
     |а.е.   # Russian
 """
+)
 
-distance_units: str = f"{distance_units_on_grid}|{distance_units_off_grid}"
+distance_units: str = (  # pylint: disable=invalid-name
+    f"{distance_units_on_grid}|{distance_units_off_grid}"
+)
 
 
 # Pre-compiled regex patterns used throughout the app
