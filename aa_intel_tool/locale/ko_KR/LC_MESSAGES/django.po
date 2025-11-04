@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-10-09 16:02+0200\n"
+"POT-Creation-Date: 2025-11-04 12:19+0100\n"
 "PO-Revision-Date: 2025-04-28 07:24+0000\n"
 "Last-Translator: SiO4 <hohoit0078@gmail.com>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ko/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.11.1\n"
 
-#: aa_intel_tool/__init__.py:9
+#: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
 #: aa_intel_tool/templates/aa_intel_tool/base.html:11
 #: aa_intel_tool/templates/aa_intel_tool/views/scan/chatlist.html:5
@@ -42,22 +42,16 @@ msgstr "새 탭에서 열기"
 msgid "Raw data"
 msgstr "원본 데이터"
 
-#. Translators: This is the app name and version, which will appear in the Django Backend
-#: aa_intel_tool/apps.py:21
-#, python-brace-format
-msgid "Intel Parser v{__version__}"
-msgstr "인텔 파싱 v{__version__}"
-
-#: aa_intel_tool/constants.py:56 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "챗 리스트"
 
-#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "전방위 스캐너"
 
-#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:74 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -421,17 +415,25 @@ msgstr "시스템"
 msgid "Participation details"
 msgstr "참가 세부 사항"
 
-#: aa_intel_tool/views/general.py:53
-msgid "The provided data could not be parsed."
+#: aa_intel_tool/views/general.py:56
+#, fuzzy, python-brace-format
+#| msgid "The provided data could not be parsed."
+msgid "The provided data could not be parsed. ({exc})"
 msgstr "제공된 데이터를 가져올 수 없습니다."
 
-#: aa_intel_tool/views/general.py:60
-msgid "(System Error) Something unexpected happened."
+#: aa_intel_tool/views/general.py:68
+#, fuzzy, python-brace-format
+#| msgid "(System Error) Something unexpected happened."
+msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr "(성계 오류) 예측하지 못한 오류 발생."
 
-#: aa_intel_tool/views/general.py:101 aa_intel_tool/views/general.py:131
+#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr "요구하는 스캔을 찾을 수 없습니다."
+
+#, python-brace-format
+#~ msgid "Intel Parser v{__version__}"
+#~ msgstr "인텔 파싱 v{__version__}"
 
 #~ msgctxt "Decimal separator"
 #~ msgid "."
