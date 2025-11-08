@@ -39,6 +39,7 @@ Section Order:
 
 ### Changed
 
+- Use Bootstrap class instead of own styling for table width
 - Use explicitly translated title as menu item
 
 ## [2.10.1] - 2025-11-04

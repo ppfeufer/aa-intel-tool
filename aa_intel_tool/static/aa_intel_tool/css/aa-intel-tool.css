@@ -99,10 +99,6 @@
         white-space: initial;
     }
 
-    .aa-intel-tool .dataTables_wrapper table.dataTable {
-        width: 100%;
-    }
-
     .aa-intel-tool .dataTable tbody tr:hover,
     .aa-intel-tool .dataTable tbody tr.aa-intel-highlight,
     .aa-intel-tool .dataTable tbody tr.aa-intel-highlight-sticky {
