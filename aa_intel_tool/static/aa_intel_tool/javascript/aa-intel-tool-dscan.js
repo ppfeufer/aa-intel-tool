@@ -1,4 +1,4 @@
-/* global _getAaIntelToolJsSettings, numberFormatter, bootstrapTooltip, fetchGet, shipInfoPanel, _toggleDscanStickyHighlight */
+/* global _getAaIntelToolJsSettings, numberFormatter, bootstrapTooltip, fetchGet, shipInfoPanel, _toggleDscanStickyHighlight, DataTable */
 
 $(document).ready(() => {
     'use strict';
@@ -40,15 +40,11 @@ $(document).ready(() => {
                 } else {
                     $('div.table-dscan-ship-classes-all').removeClass('d-none');
 
-                    elements.shipClassesAllTable.DataTable({
+                    const dt = new DataTable(elements.shipClassesAllTable, { // eslint-disable-line no-unused-vars
                         data: tableData,
                         paging: false,
                         language: settings.language.dataTables,
                         lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
                         columns: [
                             {
                                 data: (data) => {
@@ -65,25 +61,47 @@ $(document).ready(() => {
                         order: [
                             [1, 'desc']
                         ],
+                        ordering: {
+                            indicators: false,
+                            handler: false
+                        },
                         columnDefs: [
                             {
-                                targets: 0,
+                                target: 0,
                                 createdCell: (td) => {
                                     $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
+                                },
                             },
                             {
-                                targets: 1,
+                                target: 1,
                                 width: 45,
                                 createdCell: (td) => {
                                     $(td).addClass('text-end');
                                 }
                             },
                             {
-                                targets: 2,
+                                target: 2,
                                 visible: false
                             }
                         ],
+                        columnControl: [
+                            {
+                                target: 0,
+                                content: [
+                                    'order',
+                                    [
+                                        'orderAsc',
+                                        'orderDesc',
+                                        'spacer',
+                                        'orderAddAsc',
+                                        'orderAddDesc',
+                                        'spacer',
+                                        'orderRemove'
+                                    ]
+                                ]
+                            }
+                        ],
+                        fixedHeader: true,
                         createdRow: (row, data) => {
                             // D-Scan total count
                             const currentTotal = elements.dscanCountAll.html();
@@ -139,10 +157,6 @@ $(document).ready(() => {
                         paging: false,
                         language: settings.language.dataTables,
                         lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
                         columns: [
                             {
                                 data: (data) => {
@@ -233,10 +247,6 @@ $(document).ready(() => {
                         paging: false,
                         language: settings.language.dataTables,
                         lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
                         columns: [
                             {
                                 data: (data) => {
@@ -327,10 +337,6 @@ $(document).ready(() => {
                         paging: false,
                         language: settings.language.dataTables,
                         lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
                         columns: [
                             {
                                 data: 'name'
@@ -397,10 +403,6 @@ $(document).ready(() => {
                         paging: false,
                         language: settings.language.dataTables,
                         lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
                         columns: [
                             {
                                 data: (data) => {
@@ -478,10 +480,6 @@ $(document).ready(() => {
                         paging: false,
                         language: settings.language.dataTables,
                         lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
                         columns: [
                             {
                                 data: (data) => {
@@ -559,10 +557,6 @@ $(document).ready(() => {
                         paging: false,
                         language: settings.language.dataTables,
                         lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
                         columns: [
                             {
                                 data: (data) => {

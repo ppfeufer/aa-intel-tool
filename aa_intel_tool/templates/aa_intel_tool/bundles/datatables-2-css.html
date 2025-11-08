@@ -1,0 +1,11 @@
+{% load sri %}
+
+{% sri_static "aa_intel_tool/libs/DataTables/2.3.4/dataTables.bootstrap5.min.css" %}
+
+{% if extColumnControl == True %}
+    {% sri_static "aa_intel_tool/libs/DataTables/Extensions/ColumnControl/1.1.1/css/columnControl.bootstrap5.min.css" %}
+{% endif %}
+
+{% if extFixedHeader == True %}
+    {% sri_static "aa_intel_tool/libs/DataTables/Extensions/FixedHeader/4.0.4/css/fixedHeader.bootstrap5.min.css" %}
+{% endif %}

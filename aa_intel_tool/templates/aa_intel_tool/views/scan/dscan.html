@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block extra_css %}
-    {% include "bundles/datatables-css-bs5.html" %}
+    {% include "aa_intel_tool/bundles/datatables-2-css.html" with extColumnControl=True %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-css.html" %}
 {% endblock %}
 
@@ -39,8 +39,8 @@
         }
     </script>
 
-    {% include "bundles/datatables-js-bs5.html" %}
     {% include "bundles/clipboard-js.html" %}
+    {% include "aa_intel_tool/bundles/datatables-2-js.html" with extColumnControl=True %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-js.html" %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-dscan-js.html" %}
 {% endblock extra_javascript %}
