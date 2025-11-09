@@ -1,307 +1,178 @@
-/* global _getAaIntelToolJsSettings, _toggleChatscanStickyHighlight, bootstrapTooltip, fetchGet, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel */
+/* global _getAaIntelToolJsSettings, _toggleChatscanStickyHighlight, bootstrapTooltip, fetchGet, pilotInfoPanel, corporationInfoPanel, allianceInfoPanel, _removeSearchFromColumnControl, DataTable */
 
 $(document).ready(() => {
     'use strict';
 
-    /* Variables and helpers
-    --------------------------------------------------------------------------------- */
     const settings = _getAaIntelToolJsSettings();
     const elements = {
-        // Tables
         pilotsTable: $('table.aa-intel-pilot-participation-list'),
         corporationsTable: $('table.aa-intel-corporation-participation-list'),
         alliancesTable: $('table.aa-intel-alliance-participation-list'),
-
-        // Totals counters
         pilotsTotalCount: $('span#aa-intel-pilots-count'),
         corporationsTotalCount: $('span#aa-intel-corporations-count'),
         alliancesTotalCount: $('span#aa-intel-alliances-count')
     };
 
-    /* DataTables
-    --------------------------------------------------------------------------------- */
-    /**
-     * Datatable Alliances Breakdown
-     */
-    fetchGet({url: settings.url.getAllianceList})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-alliance-participation-list').addClass('d-none');
+    const defaultOrder = [[1, 'desc']];
 
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-alliance-participation-list').removeClass('d-none');
-                } else {
-                    $('div.table-local-scan-alliances').removeClass('d-none');
+    const defaultColumnDefs = [
+        {
+            target: 0,
+            createdCell: (td) => $(td).addClass('text-ellipsis fix-eve-image-position')
+        },
+        {
+            target: 1,
+            width: 35,
+            createdCell: (td) => $(td).addClass('text-end'),
+            columnControl: _removeSearchFromColumnControl(settings.dataTables.columnControl, 1)
+        }
+    ];
 
-                    elements.alliancesTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return allianceInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: 'count'
-                            },
-                            {
-                                data: 'ticker'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 35,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            },
-                            {
-                                targets: 2,
-                                visible: false
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // Alliance total count
-                            const currentTotal = elements.alliancesTotalCount.html();
-                            let newTotal;
+    const createDataTable = ({
+        table,
+        url,
+        loadingClass,
+        emptyClass,
+        containerClass,
+        columns,
+        rowClass,
+        totalCountElement,
+        rowAttributes,
+        highlightType,
+        tooltipSelector,
+        columnDefs,
+        order
+    }) => {
+        fetchGet({url})
+            .then((tableData) => {
+                $(`div.${loadingClass}`).addClass('d-none');
 
-                            if (data.id !== 1) {
-                                newTotal = parseInt(currentTotal) + 1;
-                            }
+                if (!tableData || Object.keys(tableData).length === 0) {
+                    $(`div.${emptyClass}`).removeClass('d-none');
 
-                            elements.alliancesTotalCount.html(newTotal);
-
-                            $(row)
-                                .addClass(`aa-intel-alliance-participation-item aa-intel-alliance-id-${data.id}`)
-                                .attr('data-alliance-id', data.id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-alliance-participation-item');
-
-                            _toggleChatscanStickyHighlight({
-                                element: classTableRow,
-                                type: 'alliance'
-                            });
-
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-alliance-participation-list'});
-                        }
-                    });
+                    return;
                 }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching alliance list data:', error);
-        });
 
-    /**
-     * Datatable Corporations Breakdown
-     */
-    fetchGet({url: settings.url.getCorporationList})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-corporation-participation-list').addClass('d-none');
+                $(`div.${containerClass}`).removeClass('d-none');
 
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-corporation-participation-list').removeClass('d-none');
-                } else {
-                    $('div.table-local-scan-corporations').removeClass('d-none');
+                const dt = new DataTable(table, { // eslint-disable-line no-unused-vars
+                    data: tableData,
+                    paging: false,
+                    language: settings.language.dataTables,
+                    lengthChange: false,
+                    dom: settings.dataTables.dom,
+                    ordering: settings.dataTables.ordering,
+                    columnControl: settings.dataTables.columnControl,
+                    columns: columns,
+                    order: order || defaultOrder,
+                    columnDefs: columnDefs || defaultColumnDefs,
+                    createdRow: (row, data) => {
+                        if (totalCountElement) {
+                            const currentTotal = parseInt(totalCountElement.html()) || 0;
 
-                    elements.corporationsTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return corporationInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: 'count'
-                            },
-                            {
-                                data: 'ticker'
-                            },
-                            {
-                                data: 'alliance.name'
-                            },
-                            {
-                                data: 'alliance.ticker'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 35,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            },
-                            {
-                                targets: [2, 3, 4],
-                                visible: false
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // Corporation total count
-                            const currentTotal = elements.corporationsTotalCount.html();
-                            const newTotal = parseInt(currentTotal) + 1;
-
-                            elements.corporationsTotalCount.html(newTotal);
-
-                            $(row)
-                                .addClass(`aa-intel-corporation-participation-item aa-intel-corporation-id-${data.id} aa-intel-alliance-id-${data.alliance.id}`)
-                                .attr('data-corporation-id', data.id)
-                                .attr('data-alliance-id', data.alliance.id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-corporation-participation-item');
-
-                            _toggleChatscanStickyHighlight({
-                                element: classTableRow,
-                                type: 'corporation'
-                            });
-
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-corporation-participation-list'});
+                            totalCountElement.html(currentTotal + 1);
                         }
-                    });
-                }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching corporation list data:', error);
-        });
 
-    /**
-     * Datatable Pilots Breakdown
-     */
-    fetchGet({url: settings.url.getPilotList})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-pilot-participation-list').addClass('d-none');
+                        $(row).addClass(rowClass);
 
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-pilot-participation-list').removeClass('d-none');
-                } else {
-                    $('div.table-local-scan-pilots').removeClass('d-none');
-
-                    elements.pilotsTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return pilotInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: (data) => {
-                                    return allianceInfoPanel(data.alliance, true) + data.alliance.ticker;
-                                }
-                            },
-                            {
-                                data: (data) => {
-                                    return corporationInfoPanel(data.corporation, true) + data.corporation.ticker;
-                                }
-                            },
-                            {
-                                data: 'alliance.name'
-                            },
-                            {
-                                data: 'corporation.name'
-                            }
-                        ],
-                        order: [
-                            [0, 'asc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 125
-                            },
-                            {
-                                targets: 2,
-                                width: 125
-                            },
-                            {
-                                targets: [3, 4],
-                                visible: false
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // Pilot total count
-                            const currentTotal = elements.pilotsTotalCount.html();
-                            const newTotal = parseInt(currentTotal) + 1;
-
-                            elements.pilotsTotalCount.html(newTotal);
-
-                            $(row)
-                                .addClass(`aa-intel-pilot-participation-item aa-intel-character-id-${data.id} aa-intel-corporation-id-${data.corporation.id} aa-intel-alliance-id-${data.alliance.id}`)
-                                .attr('data-character-id', data.id)
-                                .attr('data-corporation-id', data.corporation.id)
-                                .attr('data-alliance-id', data.alliance.id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-pilot-participation-item');
-
-                            _toggleChatscanStickyHighlight({
-                                element: classTableRow,
-                                type: 'pilot'
+                        if (rowAttributes) {
+                            Object.entries(rowAttributes(data)).forEach(([key, value]) => {
+                                $(row).attr(key, value);
                             });
-
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-pilot-participation-list'});
                         }
-                    });
-                }
+                    },
+                    initComplete: () => {
+                        _toggleChatscanStickyHighlight({
+                            element: $(`.${rowClass}`),
+                            type: highlightType
+                        });
+
+                        if (tooltipSelector) {
+                            bootstrapTooltip({selector: tooltipSelector});
+                        }
+                    }
+                });
+            })
+            .catch((error) => console.error(`Error fetching data for ${rowClass}:`, error));
+    };
+
+    createDataTable({
+        table: elements.alliancesTable,
+        url: settings.url.getAllianceList,
+        loadingClass: 'aa-intel-loading-table-info-alliance-participation-list',
+        emptyClass: 'aa-intel-empty-table-info-alliance-participation-list',
+        containerClass: 'table-local-scan-alliances',
+        columns: [
+            {data: (data) => `${allianceInfoPanel(data)}<span class="d-none">${(data.ticker || '')}</span>`},
+            {data: 'count'}
+        ],
+        rowClass: 'aa-intel-alliance-participation-item',
+        totalCountElement: elements.alliancesTotalCount,
+        rowAttributes: (data) => ({'data-alliance-id': data.id}),
+        highlightType: 'alliance',
+        tooltipSelector: '.aa-intel-alliance-participation-list'
+    });
+
+    createDataTable({
+        table: elements.corporationsTable,
+        url: settings.url.getCorporationList,
+        loadingClass: 'aa-intel-loading-table-info-corporation-participation-list',
+        emptyClass: 'aa-intel-empty-table-info-corporation-participation-list',
+        containerClass: 'table-local-scan-corporations',
+        columns: [
+            {data: (data) => `${corporationInfoPanel(data)}<span class="d-none">${(data.ticker || '')}, ${(data.alliance && data.alliance.name) || ''}, ${(data.alliance && data.alliance.ticker) || ''}</span>`},
+            {data: 'count'}
+        ],
+        rowClass: 'aa-intel-corporation-participation-item',
+        totalCountElement: elements.corporationsTotalCount,
+        rowAttributes: (data) => ({
+            'data-corporation-id': data.id,
+            'data-alliance-id': (data.alliance && data.alliance.id) || ''
+        }),
+        highlightType: 'corporation',
+        tooltipSelector: '.aa-intel-corporation-participation-list'
+    });
+
+    createDataTable({
+        table: elements.pilotsTable,
+        url: settings.url.getPilotList,
+        loadingClass: 'aa-intel-loading-table-info-pilot-participation-list',
+        emptyClass: 'aa-intel-empty-table-info-pilot-participation-list',
+        containerClass: 'table-local-scan-pilots',
+        columns: [
+            {data: (data) => pilotInfoPanel(data)},
+            {data: (data) => `${allianceInfoPanel((data.alliance || {}), true)}${((data.alliance && data.alliance.ticker) || '')}<span class="d-none">${((data.alliance && data.alliance.name) || '')}</span>`},
+            {data: (data) => `${corporationInfoPanel((data.corporation || {}), true)}${((data.corporation && data.corporation.ticker) || '')}<span class="d-none">${((data.corporation && data.corporation.name) || '')}</span>`}
+        ],
+        // custom order
+        order: [
+            [0, 'asc']
+        ],
+        // custom columnDefs
+        columnDefs: [
+            {
+                target: 0,
+                createdCell: (td) => $(td).addClass('text-ellipsis fix-eve-image-position')
+            },
+            {
+                target: 1,
+                width: 35,
+                createdCell: (td) => $(td).addClass('text-end')
+            },
+            {
+                target: 2,
+                width: 35,
+                createdCell: (td) => $(td).addClass('text-end')
             }
-        })
-        .catch((error) => {
-            console.error('Error fetching pilot list data:', error);
-        });
+        ],
+        rowClass: 'aa-intel-pilot-participation-item',
+        totalCountElement: elements.pilotsTotalCount,
+        rowAttributes: (data) => ({
+            'data-character-id': data.id,
+            'data-corporation-id': (data.corporation && data.corporation.id) || '',
+            'data-alliance-id': (data.alliance && data.alliance.id) || ''
+        }),
+        highlightType: 'pilot',
+        tooltipSelector: '.aa-intel-pilot-participation-list'
+    });
 });
