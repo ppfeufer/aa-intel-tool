@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-11-04 12:19+0100\n"
+"POT-Creation-Date: 2025-11-09 22:43+0100\n"
 "PO-Revision-Date: 2025-11-01 19:17+0000\n"
 "Last-Translator: s0k0l -_- <salarysalo@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/uk/>\n"
@@ -183,7 +183,7 @@ msgstr[1] "АналІзатор чату зараз обмежений макс�
 msgstr[2] "АналІзатор чату зараз обмежений максимум {max_allowed_pilots} пілотами у скані. Розмір Вашего списку перевищує це обмеження."
 msgstr[3] "АналІзатор чату зараз обмежений максимум одним пілотом у скані. Розмір Вашего списку перевищує це обмеження."
 
-#: aa_intel_tool/parser/module/dscan.py:362
+#: aa_intel_tool/parser/module/dscan.py:361
 msgid "The D-Scan module is currently disabled."
 msgstr "Модуль D-Scan відключений."
 

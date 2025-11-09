@@ -2,20 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Anata_no_Usiro <yt23542354m@gmail.com>, 2024.
+# Dexsar <dexsar.paf@gmail.com>, 2025.
+# Peter Pfeufer <info@ppfeufer.de>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-11-04 12:19+0100\n"
-"PO-Revision-Date: 2024-08-05 10:10+0000\n"
-"Last-Translator: Anata_no_Usiro <yt23542354m@gmail.com>\n"
+"POT-Creation-Date: 2025-11-09 22:43+0100\n"
+"PO-Revision-Date: 2025-11-07 03:17+0000\n"
+"Last-Translator: Dexsar <dexsar.paf@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.14\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -54,10 +56,8 @@ msgid "Fleet composition"
 msgstr "フリートの構成"
 
 #: aa_intel_tool/exceptions.py:44
-#, fuzzy
-#| msgid "A parser error occurred » {message}"
 msgid "Unknown parser error"
-msgstr "解析エラーが発生しました » {message}"
+msgstr "不明なパーサーエラー"
 
 #: aa_intel_tool/exceptions.py:46
 #, python-brace-format
@@ -70,68 +70,68 @@ msgstr "ここに貼り付け"
 
 #: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
 msgid "Invalid scan data"
-msgstr ""
+msgstr "無効なスキャンデータ"
 
 #: aa_intel_tool/models.py:31
 msgid "Scan hash"
-msgstr ""
+msgstr "ハッシュをスキャンする"
 
 #: aa_intel_tool/models.py:37
 msgid "Creation date/time"
-msgstr ""
+msgstr "作成日時"
 
 #: aa_intel_tool/models.py:40
 msgid "Scan raw data"
-msgstr ""
+msgstr "生データをスキャンする"
 
 #: aa_intel_tool/models.py:55 aa_intel_tool/models.py:132
 msgid "Scan"
-msgstr ""
+msgstr "スキャン"
 
 #: aa_intel_tool/models.py:56
 msgid "Scans"
-msgstr ""
+msgstr "スキャン"
 
 #: aa_intel_tool/models.py:111
 msgid "Pilot list"
-msgstr ""
+msgstr "パイロットリスト"
 
 #: aa_intel_tool/models.py:112
 msgid "Corporation list"
-msgstr ""
+msgstr "会社リスト"
 
 #: aa_intel_tool/models.py:113
 msgid "Alliance list"
-msgstr ""
+msgstr "アライアンスリスト"
 
 #: aa_intel_tool/models.py:114
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
-msgstr ""
+msgstr "シップタイプ"
 
 #: aa_intel_tool/models.py:115
 msgid "Ship list"
-msgstr ""
+msgstr "船のリスト"
 
 #: aa_intel_tool/models.py:116
 msgid "Ship list (on grid)"
-msgstr ""
+msgstr "シップリスト(グリッド内)"
 
 #: aa_intel_tool/models.py:117
 msgid "Ship list (off grid)"
-msgstr ""
+msgstr "シップリスト（グリッド外）"
 
 #: aa_intel_tool/models.py:118
 msgid "Structures (on grid)"
-msgstr ""
+msgstr "建造物(グリッド内)"
 
 #: aa_intel_tool/models.py:119
 msgid "Starbases (on grid)"
-msgstr ""
+msgstr "スターベース (グリッド内)"
 
 #: aa_intel_tool/models.py:120
 msgid "Deployables (on grid)"
-msgstr ""
+msgstr "配置可能ユニット（グリッド内）"
 
 #: aa_intel_tool/models.py:121
 msgid "Miscellaneous (on grid)"
@@ -180,7 +180,7 @@ msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pil
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
 msgstr[0] ""
 
-#: aa_intel_tool/parser/module/dscan.py:362
+#: aa_intel_tool/parser/module/dscan.py:361
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
@@ -220,11 +220,11 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
 msgid "Do you want to help translate this app into your language or improve the existing translation?"
-msgstr ""
+msgstr "このアプリをあなたの言語に翻訳するお手伝いをしたり、既存の翻訳を改善したりしませんか？"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
-msgstr ""
+msgstr "翻訳者チームに参加しましょう！"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
@@ -287,7 +287,7 @@ msgstr ""
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:24
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:21
 msgid "Count"
-msgstr ""
+msgstr "数"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:31
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:31
@@ -338,7 +338,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid/items.html:17
 msgid "Type"
-msgstr ""
+msgstr "タイプ"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown.html:8
 msgid "Ships on scan"
@@ -359,7 +359,7 @@ msgstr ""
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:21
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:19
 msgid "Ship class"
-msgstr ""
+msgstr "船のクラス"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:30
 msgid "Total mass (in kg):"
@@ -367,7 +367,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:18
 msgid "Ship type"
-msgstr ""
+msgstr "シップタイプ"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:34
 msgid "No data."
@@ -379,7 +379,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:8
 msgid "Fleet details"
-msgstr ""
+msgstr "フリートの詳細"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:12
 msgid "Pilots in fleet"
@@ -387,7 +387,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
 msgid "Ship classes"
-msgstr ""
+msgstr "船のクラス"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
 msgid "Who is flying what"
@@ -395,7 +395,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:22
 msgid "System"
-msgstr ""
+msgstr "システム（星系）"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/participation.html:8
 msgid "Participation details"

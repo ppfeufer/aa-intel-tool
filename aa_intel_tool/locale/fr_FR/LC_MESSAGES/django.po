@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-11-04 12:19+0100\n"
+"POT-Creation-Date: 2025-11-09 22:43+0100\n"
 "PO-Revision-Date: 2025-08-03 04:24+0000\n"
 "Last-Translator: The “Devcutter” Guy <mick162534@gmail.com>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/fr/>\n"
@@ -187,7 +187,7 @@ msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilo
 msgstr[0] "Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} pilote par scan. Votre liste de pilote dépasse cette limite."
 msgstr[1] "Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} pilotes par scan. Votre liste de pilote dépasse cette limite."
 
-#: aa_intel_tool/parser/module/dscan.py:362
+#: aa_intel_tool/parser/module/dscan.py:361
 msgid "The D-Scan module is currently disabled."
 msgstr "Le module de scanner directionnel est désactivé pour le moment."
 
