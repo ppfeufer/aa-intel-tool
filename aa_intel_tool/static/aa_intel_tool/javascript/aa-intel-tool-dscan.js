@@ -8,27 +8,20 @@ $(document).ready(() => {
         shipClassesAllTable: $('table.aa-intel-dscan-ship-classes-all-list'),
         dscanCountAll: $('span#aa-intel-dscan-all-count'),
         dscanMassAll: $('span#aa-intel-dscan-all-mass'),
-
         shipClassesOngridTable: $('table.aa-intel-dscan-ship-classes-ongrid-list'),
         dscanCountOngrid: $('span#aa-intel-dscan-ongrid-count'),
         dscanMassOnGrid: $('span#aa-intel-dscan-ongrid-mass'),
-
         shipClassesOffgridTable: $('table.aa-intel-dscan-ship-classes-offgrid-list'),
         dscanCountOffgrid: $('span#aa-intel-dscan-offgrid-count'),
         dscanMassOffGrid: $('span#aa-intel-dscan-offgrid-mass'),
-
         shipTypesTable: $('table.aa-intel-dscan-ship-types-list'),
-
         upwellStructuresTable: $('table.aa-intel-dscan-upwell-structures-list'),
         dscanCountUpwellStructures: $('span#aa-intel-dscan-upwell-structures-count'),
-
         deployablesTable: $('table.aa-intel-dscan-deployables-list'),
         dscanCountDeployables: $('span#aa-intel-dscan-deployables-count'),
-
         starbasesTable: $('table.aa-intel-dscan-starbases-list'),
         dscanCountStarbases: $('span#aa-intel-dscan-starbases-count')
     };
-
     const columnsDefs = [
         {
             target: 0,
@@ -43,37 +36,69 @@ $(document).ready(() => {
     ];
 
     /**
-     * Create a DataTable for d-scan data.
+     * Create the DataTable.
      *
-     * @param {key, loadingKey, tableEl, url, containerSelector, rowItemClass, extraRowClass, idAttr, typeIdAttr, countEl, massEl, columns, tooltipSelector, highlightType, highlightOnly} opts Options for creating the DataTable.
+     * @param key
+     * @param loadingKey
+     * @param tableEl
+     * @param url
+     * @param containerSelector
+     * @param extraSelectors
+     * @param rowItemClass
+     * @param extraRowClass
+     * @param idAttr
+     * @param typeIdAttr
+     * @param countEl
+     * @param massEl
+     * @param columns
+     * @param tooltipSelector
+     * @param highlightType
+     * @param highlightOnly
      */
-    const createDataTable = (opts) => {
-        fetchGet({url: opts.url})
+    const createDataTable = ({
+        key,
+        loadingKey,
+        tableEl,
+        url,
+        containerSelector,
+        extraSelectors,
+        rowItemClass,
+        extraRowClass,
+        idAttr,
+        typeIdAttr,
+        countEl,
+        massEl,
+        columns,
+        tooltipSelector,
+        highlightType,
+        highlightOnly
+    }) => {
+        fetchGet({url: url})
             .then((tableData) => {
                 if (!tableData) {
                     return;
                 }
 
                 // hide loading, show empty or table container
-                $(`div.aa-intel-loading-table-info-${opts.loadingKey || opts.key}`).addClass('d-none');
+                $(`div.aa-intel-loading-table-info-${loadingKey || key}`).addClass('d-none');
 
                 if (Object.keys(tableData).length === 0) {
-                    $(`div.aa-intel-empty-table-info-${opts.loadingKey || opts.key}`).removeClass('d-none');
+                    $(`div.aa-intel-empty-table-info-${loadingKey || key}`).removeClass('d-none');
 
                     return;
                 }
 
                 // unhide main container(s)
-                if (opts.containerSelector) {
-                    $(opts.containerSelector).removeClass('d-none');
+                if (containerSelector) {
+                    $(containerSelector).removeClass('d-none');
                 }
 
-                if (opts.extraSelectors) {
-                    opts.extraSelectors.forEach(s => $(s).removeClass('d-none'));
+                if (extraSelectors) {
+                    extraSelectors.forEach(s => $(s).removeClass('d-none'));
                 }
 
                 // initialize DataTable
-                const dt = new DataTable(opts.tableEl, { // eslint-disable-line no-unused-vars
+                const dt = new DataTable(tableEl, { // eslint-disable-line no-unused-vars
                     data: tableData,
                     paging: false,
                     language: settings.language.dataTables,
@@ -81,66 +106,66 @@ $(document).ready(() => {
                     dom: settings.dataTables.dom,
                     ordering: settings.dataTables.ordering,
                     columnControl: settings.dataTables.columnControl,
-                    columns: opts.columns,
+                    columns: columns,
                     order: [[1, 'desc']],
                     columnDefs: columnsDefs,
                     createdRow: (row, data) => {
                         // update counts if provided
-                        if (opts.countEl) {
-                            const currentTotal = parseInt(opts.countEl.html()) || 0;
+                        if (countEl) {
+                            const currentTotal = parseInt(countEl.html()) || 0;
 
-                            opts.countEl.html(currentTotal + (data.count || 0));
+                            countEl.html(currentTotal + (data.count || 0));
                         }
 
                         // update mass if provided
-                        if (opts.massEl) {
-                            const currentMass = parseInt(opts.massEl.data('mass')) || 0;
+                        if (massEl) {
+                            const currentMass = parseInt(massEl.data('mass')) || 0;
                             const newMass = currentMass + (data.mass || 0);
 
-                            opts.massEl.data('mass', newMass);
-                            opts.massEl.html(numberFormatter({
+                            massEl.data('mass', newMass);
+                            massEl.html(numberFormatter({
                                 value: newMass,
                                 locales: settings.language.django
                             }));
                         }
 
                         // row classes and attributes
-                        if (opts.rowItemClass) {
-                            $(row).addClass(opts.rowItemClass);
+                        if (rowItemClass) {
+                            $(row).addClass(rowItemClass);
                         }
 
-                        if (opts.idAttr) {
-                            $(row).attr(opts.idAttr, data.id);
+                        if (idAttr) {
+                            $(row).attr(idAttr, data.id);
                         }
 
-                        if (opts.typeIdAttr && data.type_id !== undefined) {
-                            $(row).attr(opts.typeIdAttr, data.type_id);
+                        if (typeIdAttr && data.type_id !== undefined) {
+                            $(row).attr(typeIdAttr, data.type_id);
                         }
 
-                        if (opts.extraRowClass) {
-                            $(row).addClass(opts.extraRowClass);
+                        if (extraRowClass) {
+                            $(row).addClass(extraRowClass);
                         }
                     },
                     initComplete: () => {
-                        if (opts.rowItemClass) {
-                            const selector = `.${opts.rowItemClass.split(' ').join('.')}`;
+                        if (rowItemClass) {
+                            const selector = `.${rowItemClass.split(' ').join('.')}`;
                             const el = $(selector);
 
                             _toggleDscanStickyHighlight({
                                 element: el,
-                                type: opts.highlightType || 'shipclass',
-                                highlightOnly: !!opts.highlightOnly
+                                type: highlightType || 'shipclass',
+                                highlightOnly: !!highlightOnly
                             });
                         }
 
-                        if (opts.tooltipSelector) {
-                            bootstrapTooltip({selector: opts.tooltipSelector});
+                        if (tooltipSelector) {
+                            bootstrapTooltip({selector: tooltipSelector});
                         }
                     }
                 });
             })
             .catch((error) => {
-                console.error(`Error fetching ${opts.key} data:`, error);
+                console.error(`Error fetching ${key} data:`, error);
             });
     };
 

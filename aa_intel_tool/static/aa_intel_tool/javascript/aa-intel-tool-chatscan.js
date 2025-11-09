@@ -12,9 +12,7 @@ $(document).ready(() => {
         corporationsTotalCount: $('span#aa-intel-corporations-count'),
         alliancesTotalCount: $('span#aa-intel-alliances-count')
     };
-
     const defaultOrder = [[1, 'desc']];
-
     const defaultColumnDefs = [
         {
             target: 0,
@@ -28,6 +26,23 @@ $(document).ready(() => {
         }
     ];
 
+    /**
+     * Create the DataTable.
+     *
+     * @param table
+     * @param url
+     * @param loadingClass
+     * @param emptyClass
+     * @param containerClass
+     * @param columns
+     * @param rowClass
+     * @param totalCountElement
+     * @param rowAttributes
+     * @param highlightType
+     * @param tooltipSelector
+     * @param columnDefs
+     * @param order
+     */
     const createDataTable = ({
         table,
         url,
@@ -96,6 +111,7 @@ $(document).ready(() => {
             .catch((error) => console.error(`Error fetching data for ${rowClass}:`, error));
     };
 
+    // Create the alliances DataTable.
     createDataTable({
         table: elements.alliancesTable,
         url: settings.url.getAllianceList,
@@ -113,6 +129,7 @@ $(document).ready(() => {
         tooltipSelector: '.aa-intel-alliance-participation-list'
     });
 
+    // Create the corporations DataTable.
     createDataTable({
         table: elements.corporationsTable,
         url: settings.url.getCorporationList,
@@ -133,6 +150,7 @@ $(document).ready(() => {
         tooltipSelector: '.aa-intel-corporation-participation-list'
     });
 
+    // Create the pilots DataTable.
     createDataTable({
         table: elements.pilotsTable,
         url: settings.url.getPilotList,

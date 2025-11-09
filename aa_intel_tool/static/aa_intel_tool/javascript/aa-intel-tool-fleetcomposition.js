@@ -81,6 +81,7 @@ $(document).ready(() => {
             .catch((error) => console.error(`Error fetching data for ${containerClass}:`, error));
     };
 
+    // Create Ship Classes DataTable
     createDataTable({
         tableElement: elements.shipClassesTable,
         url: settings.url.getShipClasses,
@@ -115,6 +116,7 @@ $(document).ready(() => {
         }
     });
 
+    // Create Ship Types DataTable
     createDataTable({
         tableElement: elements.shipTypesTable,
         url: settings.url.getShipTypes,
@@ -139,6 +141,7 @@ $(document).ready(() => {
         }
     });
 
+    // Create Fleet Composition Pilot Ships DataTable
     createDataTable({
         tableElement: elements.fleetcompositionTable,
         url: settings.url.getFleetComposition,
