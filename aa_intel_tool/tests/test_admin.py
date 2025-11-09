@@ -4,15 +4,16 @@ Test for admin.py
 
 # Django
 from django.contrib import admin
-from django.test import RequestFactory, TestCase
+from django.test import RequestFactory
 from django.urls import reverse
 
 # AA Intel Tool
 from aa_intel_tool.admin import BaseReadOnlyAdminMixin, ScanAdmin
 from aa_intel_tool.models import Scan
+from aa_intel_tool.tests import BaseTestCase
 
 
-class TestBaseReadOnlyAdminMixin(TestCase):
+class TestBaseReadOnlyAdminMixin(BaseTestCase):
     """
     Test the BaseReadOnlyAdminMixin class
     """
@@ -60,7 +61,7 @@ class TestBaseReadOnlyAdminMixin(TestCase):
         self.assertFalse(BaseReadOnlyAdminMixin.has_delete_permission(request))
 
 
-class TestScanAdmin(TestCase):
+class TestScanAdmin(BaseTestCase):
     """
     Test the ScanAdmin class
     """

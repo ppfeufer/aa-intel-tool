@@ -3,16 +3,16 @@ Test cases for the chatlist parser module.
 """
 
 # Standard Library
-from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
 # AA Intel Tool
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.models import Scan
 from aa_intel_tool.parser.module.chatlist import parse
+from aa_intel_tool.tests import BaseTestCase
 
 
-class TestParse(TestCase):
+class TestParse(BaseTestCase):
     """
     Test cases for the parse function in the chatlist module.
     """

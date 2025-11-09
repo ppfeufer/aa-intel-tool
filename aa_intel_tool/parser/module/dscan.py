@@ -53,11 +53,10 @@ def _is_on_grid(distance: str) -> bool:
     match = re.search(pattern=REGEX_PATTERN["localised_on_grid"], string=distance)
 
     # Check if the distance is within the grid size
-    if match:
-        distance_sanitised = int(re.sub(pattern=r"[^0-9]", repl="", string=distance))
-        return distance_sanitised <= AppSettings.INTELTOOL_DSCAN_GRID_SIZE
-
-    return False
+    return (
+        bool(match)
+        and int(re.sub(r"\D", "", distance)) <= AppSettings.INTELTOOL_DSCAN_GRID_SIZE
+    )
 
 
 def _get_type_info_dict(eve_type: tuple) -> dict:

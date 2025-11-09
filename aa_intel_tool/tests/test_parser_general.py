@@ -5,9 +5,6 @@ Testing the parsers
 # Standard Library
 from unittest.mock import MagicMock, patch
 
-# Django
-from django.test import TestCase
-
 # Alliance Auth (External Libs)
 from eveuniverse.models import EveEntity
 
@@ -22,6 +19,7 @@ from aa_intel_tool.parser.module.chatlist import (
     _parse_chatscan_data,
     _parse_corporation_info,
 )
+from aa_intel_tool.tests import BaseTestCase
 from aa_intel_tool.tests.utils import (
     load_chatscan_faulty_txt,
     load_chatscan_txt,
@@ -30,7 +28,7 @@ from aa_intel_tool.tests.utils import (
 )
 
 
-class TestCheckIntelType(TestCase):
+class TestCheckIntelType(BaseTestCase):
     """
     Test the check_intel_type function
     """
@@ -96,7 +94,7 @@ class TestCheckIntelType(TestCase):
         scan_data = str(form_data).splitlines()
 
         expected_exception = ParserError
-        expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed …"  # pylint: disable=line-too-long
+        expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed …"
 
         with self.assertRaises(expected_exception=expected_exception):
             check_intel_type(scan_data=scan_data)
@@ -117,7 +115,7 @@ class TestCheckIntelType(TestCase):
         form_data = load_chatscan_faulty_txt()
 
         expected_exception = ParserError
-        expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed …"  # pylint: disable=line-too-long
+        expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed …"
 
         with self.assertRaises(ParserError):
             parse_intel(form_data=form_data)
@@ -149,7 +147,7 @@ class TestCheckIntelType(TestCase):
             parse_intel(form_data=form_data)
 
 
-class TestParseIntel(TestCase):
+class TestParseIntel(BaseTestCase):
     """
     Test the parse_intel function
     """
@@ -248,7 +246,7 @@ class TestParseIntel(TestCase):
             parse_intel(form_data)
 
 
-class TestParseChatScanData(TestCase):
+class TestParseChatScanData(BaseTestCase):
     """
     Test the _parse_chatscan_data function
     """
@@ -406,7 +404,7 @@ class TestParseChatScanData(TestCase):
         self.assertEqual(result["corporations"][1]["count"], 1)
 
 
-class TestParseCharacterInfo(TestCase):
+class TestParseCharacterInfo(BaseTestCase):
     """
     Test the _parse_character_info function
     """
@@ -472,7 +470,7 @@ class TestParseCharacterInfo(TestCase):
         self.assertEqual(result["alliance"]["name"], "Unaffiliated")
 
 
-class TestParseCorporationInfo(TestCase):
+class TestParseCorporationInfo(BaseTestCase):
     """
     Test the _parse_corporation_info function
     """
@@ -528,7 +526,7 @@ class TestParseCorporationInfo(TestCase):
         self.assertNotIn("alliance", result)
 
 
-class TestParseAllianceInfo(TestCase):
+class TestParseAllianceInfo(BaseTestCase):
     """
     Test the _parse_alliance_info function
     """
@@ -623,7 +621,7 @@ class TestParseAllianceInfo(TestCase):
         self.assertNotIn("zkillboard", result)
 
 
-class TestGetUnaffiliatedAllianceInfo(TestCase):
+class TestGetUnaffiliatedAllianceInfo(BaseTestCase):
     """
     Test the _get_unaffiliated_alliance_info function
     """
@@ -667,39 +665,55 @@ class TestGetUnaffiliatedAllianceInfo(TestCase):
         self.assertEqual(result["logo"], "mock_logo_url")
 
 
-class TestGetCharacterInfo(TestCase):
+class TestGetCharacterInfo(BaseTestCase):
     """
     Test the _get_character_info function
     """
 
-    @patch("aa_intel_tool.parser.module.chatlist.EveCharacter.objects.filter")
-    @patch("aa_intel_tool.parser.module.chatlist.get_or_create_character")
-    def test_returns_existing_characters(self, mock_get_or_create, mock_filter):
+    def test_returns_existing_characters(self):
         """
         Test should return existing characters from the database
 
-        :param mock_get_or_create:
-        :type mock_get_or_create:
-        :param mock_filter:
-        :type mock_filter:
         :return:
         :rtype:
         """
 
-        # Mock the QuerySet returned by filter
-        mock_queryset = MagicMock()
-        mock_queryset.exclude.return_value = mock_queryset
-        mock_queryset.count.return_value = 0
-        mock_queryset.__iter__.return_value = iter([])
-        mock_filter.return_value = mock_queryset
+        with (
+            patch(
+                "aa_intel_tool.parser.module.chatlist.EveEntity.objects.fetch_by_names_esi"
+            ) as mock_fetch,
+            patch(
+                "aa_intel_tool.parser.module.chatlist.EveCharacter.objects.filter"
+            ) as mock_filter,
+            patch(
+                "aa_intel_tool.parser.module.chatlist.get_or_create_character"
+            ) as mock_get_or_create,
+        ):
+            # Simulate ESI returning two IDs
+            mock_fetch.return_value.filter.return_value.values_list.return_value = [
+                1,
+                2,
+            ]
 
-        # Mock the creation of a new character
-        mock_get_or_create.return_value = [MagicMock(character_name="Character1")]
+            # Provide a QuerySet-like mock for EveCharacter.objects.filter(...)
+            qs = MagicMock()
+            char1 = MagicMock(character_name="Character1")
+            char2 = MagicMock(character_name="Character2")
+            qs.__iter__.return_value = [char1, char2]
+            qs.exclude.return_value = qs
+            mock_filter.return_value = qs
 
-        result = _get_character_info(["Character1", "Character2"])
+            # Ensure chatlist's get_or_create_character (patched) returns the mocked characters
+            mock_get_or_create.return_value = [char1, char2]
 
-        self.assertEqual(len(result), 1)
-        self.assertEqual(result[0].character_name, "Character1")
+            result = _get_character_info(["Character1", "Character2"])
+
+        self.assertEqual(len(result), 2)
+        names = [
+            getattr(c, "character_name", getattr(c, "name", str(c))) for c in result
+        ]
+        self.assertIn("Character1", names)
+        self.assertIn("Character2", names)
 
     @patch("aa_intel_tool.parser.module.chatlist.EveCharacter.objects.filter")
     def test_fetches_characters_from_eveuniverse(self, mock_filter):
