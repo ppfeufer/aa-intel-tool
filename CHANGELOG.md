@@ -39,6 +39,7 @@ Section Order:
 
 ### Changed
 
+- Switched to Datatables 2
 - Use Bootstrap class instead of own styling for table width
 - Use explicitly translated title as menu item
 
