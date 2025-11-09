@@ -2,15 +2,13 @@
 Tests for the parsers' DB helper => aa_intel_tool/parser/helper/db.py
 """
 
-# Django
-from django.test import TestCase
-
 # AA Intel Tool
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
+from aa_intel_tool.tests import BaseTestCase
 
 
-class TestParserHelperDb(TestCase):
+class TestParserHelperDb(BaseTestCase):
     """
     The tests
     """

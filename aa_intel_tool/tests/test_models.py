@@ -7,13 +7,13 @@ from unittest.mock import patch
 
 # Django
 from django.db import IntegrityError
-from django.test import TestCase
 
 # AA Intel Tool
 from aa_intel_tool.models import Scan, ScanData
+from aa_intel_tool.tests import BaseTestCase
 
 
-class TestScanModel(TestCase):
+class TestScanModel(BaseTestCase):
     """
     Test the Scan model
     """
@@ -130,7 +130,7 @@ class TestScanModel(TestCase):
         self.assertNotEqual(first=str(scan), second=expected_hash)
 
 
-class TestScanDataModel(TestCase):
+class TestScanDataModel(BaseTestCase):
     """
     Test the ScanData model
     """

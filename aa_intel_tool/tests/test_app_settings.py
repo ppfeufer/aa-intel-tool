@@ -7,15 +7,16 @@ from unittest import mock
 
 # Django
 from django.conf import settings
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
 # AA Intel Tool
 from aa_intel_tool.app_settings import AppSettings, debug_enabled
+from aa_intel_tool.tests import BaseTestCase
 
 SETTINGS_PATH = "aa_intel_tool.app_settings"
 
 
-class TestAppSettings(TestCase):
+class TestAppSettings(BaseTestCase):
     """
     Tests for App Settings
     """

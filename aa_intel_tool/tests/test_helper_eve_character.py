@@ -5,9 +5,6 @@ Tests for the helper functions in the eve_character module.
 # Standard Library
 from unittest.mock import Mock, patch
 
-# Django
-from django.test import TestCase
-
 # Alliance Auth
 from allianceauth.eveonline.models import (
     EveAllianceInfo,
@@ -22,9 +19,10 @@ from aa_intel_tool.helper.eve_character import (
     _create_corporation,
     get_or_create_character,
 )
+from aa_intel_tool.tests import BaseTestCase
 
 
-class TestCreateAlliance(TestCase):
+class TestCreateAlliance(BaseTestCase):
     """
     Test the _create_alliance function.
     """
@@ -106,7 +104,7 @@ class TestCreateAlliance(TestCase):
             mock_create_alliance.assert_not_called()
 
 
-class TestCreateCorporation(TestCase):
+class TestCreateCorporation(BaseTestCase):
     """
     Test the _create_corporation function.
     """
@@ -187,7 +185,7 @@ class TestCreateCorporation(TestCase):
             mock_create_corporation.assert_not_called()
 
 
-class TestCreateCharacter(TestCase):
+class TestCreateCharacter(BaseTestCase):
     """
     Test the _create_character function.
     """
@@ -325,7 +323,7 @@ class TestCreateCharacter(TestCase):
         mock_create_alliance.assert_called_once_with(alliance_id=3001)
 
 
-class TestGetOrCreateCharacter(TestCase):
+class TestGetOrCreateCharacter(BaseTestCase):
     """
     Test the get_or_create_character function.
     """

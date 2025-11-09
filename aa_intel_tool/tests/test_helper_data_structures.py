@@ -2,14 +2,12 @@
 Test for the data_structures helper => aa_intel_tool/helper/data_structure.py
 """
 
-# Django
-from django.test import TestCase
-
 # AA Intel Tool
 from aa_intel_tool.helper.data_structure import dict_to_list
+from aa_intel_tool.tests import BaseTestCase
 
 
-class TestHelperDataStructures(TestCase):
+class TestHelperDataStructures(BaseTestCase):
     """
     Test the data_structures helper
     """
