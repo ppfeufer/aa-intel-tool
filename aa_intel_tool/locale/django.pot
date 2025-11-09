@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: AA Intel Tool 2.10.1\n"
+"Project-Id-Version: AA Intel Tool 2.11.0\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-11-04 12:19+0100\n"
+"POT-Creation-Date: 2025-11-09 22:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,7 +185,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: aa_intel_tool/parser/module/dscan.py:362
+#: aa_intel_tool/parser/module/dscan.py:361
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
