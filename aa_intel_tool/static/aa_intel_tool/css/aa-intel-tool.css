@@ -22,10 +22,6 @@
         color: var(--bs-gray);
     }
 
-    .aa-intel-tool td.data-align-right {
-        text-align: right;
-    }
-
     .aa-intel-tool .aa-intel-section-header {
         border-bottom: 1px solid var(--bs-gray-200);
     }
@@ -47,16 +43,6 @@
     .aa-intel-tool .aa-intel-eve-name-wrapper,
     .aa-intel-tool .aa-intel-additional-information-wrapper {
         display: block;
-    }
-}
-
-/* Highlighting
-------------------------------------------------------------------------------------- */
-@media all {
-    .aa-intel-tool .aa-intel-highlight td:first-child,
-    .aa-intel-tool .aa-intel-highlight-sticky td:first-child {
-        border-left: 1px solid var(--bs-red);
-        padding-left: 3px;
     }
 }
 
@@ -99,6 +85,11 @@
         white-space: initial;
     }
 
+    .aa-intel-tool .dataTable tr {
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+    }
+
     .aa-intel-tool .dataTable tbody tr:hover,
     .aa-intel-tool .dataTable tbody tr.aa-intel-highlight,
     .aa-intel-tool .dataTable tbody tr.aa-intel-highlight-sticky {
@@ -136,5 +127,15 @@
 
     .aa-intel-tool td.fix-eve-image-position > span.alliance-id-1 {
         transform: none;
+    }
+}
+
+/* Highlighting
+------------------------------------------------------------------------------------- */
+@media all {
+    .aa-intel-tool tr.aa-intel-highlight,
+    .aa-intel-tool tr.aa-intel-highlight-sticky {
+        border-left: 1px solid var(--bs-red);
+        border-right: 1px solid var(--bs-red);
     }
 }

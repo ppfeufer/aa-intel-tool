@@ -47,6 +47,36 @@
                             noAlliance: '{{ scanDataNoAlliance|escapejs }}',
                             npcCorp: '{{ scanDataNpcCorp|escapejs }}',
                         }
+                    },
+                    dataTables: {
+                        dom: 'lrt',
+                        ordering: {
+                            indicators: false,
+                            handler: false
+                        },
+                        columnControl: [
+                            {
+                                target: 0,
+                                content: [
+                                    'order',
+                                    // [
+                                    //     'orderAsc',
+                                    //     'orderDesc',
+                                    //     'spacer',
+                                    //     'orderAddAsc',
+                                    //     'orderAddDesc',
+                                    //     'spacer',
+                                    //     'orderRemove'
+                                    // ]
+                                ]
+                            },
+                            {
+                                target: 1,
+                                content: [
+                                    'search'
+                                ]
+                            }
+                        ]
                     }
                 }
             </script>

@@ -1,10 +1,8 @@
-/* global _getAaIntelToolJsSettings, numberFormatter, bootstrapTooltip, fetchGet, shipInfoPanel, _toggleDscanStickyHighlight */
+/* global _getAaIntelToolJsSettings, numberFormatter, bootstrapTooltip, fetchGet, shipInfoPanel, _toggleDscanStickyHighlight, DataTable, _removeSearchFromColumnControl */
 
 $(document).ready(() => {
     'use strict';
 
-    /* Variables and helpers
-    --------------------------------------------------------------------------------- */
     const settings = _getAaIntelToolJsSettings();
     const elements = {
         shipClassesAllTable: $('table.aa-intel-dscan-ship-classes-all-list'),
@@ -24,600 +22,281 @@ $(document).ready(() => {
         starbasesTable: $('table.aa-intel-dscan-starbases-list'),
         dscanCountStarbases: $('span#aa-intel-dscan-starbases-count')
     };
-
-    /* DataTables
-    --------------------------------------------------------------------------------- */
-    /**
-     * Datatable D-Scan All
-     */
-    fetchGet({url: settings.url.getShipClassesAll})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-all').addClass('d-none');
-
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-all').removeClass('d-none');
-                } else {
-                    $('div.table-dscan-ship-classes-all').removeClass('d-none');
-
-                    elements.shipClassesAllTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return shipInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: 'count'
-                            },
-                            {
-                                data: 'type_name'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 45,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            },
-                            {
-                                targets: 2,
-                                visible: false
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // D-Scan total count
-                            const currentTotal = elements.dscanCountAll.html();
-                            const newTotal = parseInt(currentTotal) + data.count;
-
-                            elements.dscanCountAll.html(newTotal);
-
-                            const currentMass = elements.dscanMassAll.data('mass') || 0;
-                            const newMass = parseInt(currentMass) + data.mass;
-
-                            elements.dscanMassAll.data('mass', newMass);
-                            elements.dscanMassAll.html(numberFormatter({value: newMass, locales: settings.language.django}));
-
-                            $(row)
-                                .addClass(`aa-intel-shipclass-all-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
-                                .attr('data-shipclass-id', data.id)
-                                .attr('data-shiptype-id', data.type_id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-shipclass-all-item');
-
-                            _toggleDscanStickyHighlight({
-                                element: classTableRow,
-                                type: 'shipclass'
-                            });
-
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-dscan-ship-classes-all-list'});
-                        }
-                    });
-                }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching all ship classes data:', error);
-        });
+    const columnsDefs = [
+        {
+            target: 0,
+            createdCell: (td) => $(td).addClass('text-ellipsis fix-eve-image-position')
+        },
+        {
+            target: 1,
+            width: 35,
+            createdCell: (td) => $(td).addClass('text-end'),
+            columnControl: _removeSearchFromColumnControl(settings.dataTables.columnControl, 1)
+        }
+    ];
 
     /**
-     * Datatable D-Scan On Grid
+     * Create the DataTable.
+     *
+     * @param key
+     * @param loadingKey
+     * @param tableEl
+     * @param url
+     * @param containerSelector
+     * @param extraSelectors
+     * @param rowItemClass
+     * @param extraRowClass
+     * @param idAttr
+     * @param typeIdAttr
+     * @param countEl
+     * @param massEl
+     * @param columns
+     * @param tooltipSelector
+     * @param highlightType
+     * @param highlightOnly
      */
-    fetchGet({url: settings.url.getShipClassesOngrid})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-ongrid').addClass('d-none');
+    const createDataTable = ({
+        key,
+        loadingKey,
+        tableEl,
+        url,
+        containerSelector,
+        extraSelectors,
+        rowItemClass,
+        extraRowClass,
+        idAttr,
+        typeIdAttr,
+        countEl,
+        massEl,
+        columns,
+        tooltipSelector,
+        highlightType,
+        highlightOnly
+    }) => {
+        fetchGet({url: url})
+            .then((tableData) => {
+                if (!tableData) {
+                    return;
+                }
+
+                // hide loading, show empty or table container
+                $(`div.aa-intel-loading-table-info-${loadingKey || key}`).addClass('d-none');
 
                 if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-ongrid').removeClass('d-none');
-                } else {
-                    $('div.table-dscan-ship-classes-ongrid').removeClass('d-none');
+                    $(`div.aa-intel-empty-table-info-${loadingKey || key}`).removeClass('d-none');
 
-                    elements.shipClassesOngridTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return shipInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: 'count'
-                            },
-                            {
-                                data: 'type_name'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 45,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            },
-                            {
-                                targets: 2,
-                                visible: false
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // D-Scan total count
-                            const currentTotal = elements.dscanCountOngrid.html();
-                            const newTotal = parseInt(currentTotal) + data.count;
+                    return;
+                }
 
-                            elements.dscanCountOngrid.html(newTotal);
+                // unhide main container(s)
+                if (containerSelector) {
+                    $(containerSelector).removeClass('d-none');
+                }
 
-                            const currentMass = elements.dscanMassOnGrid.data('mass') || 0;
-                            const newMass = parseInt(currentMass) + data.mass;
+                if (extraSelectors) {
+                    extraSelectors.forEach(s => $(s).removeClass('d-none'));
+                }
 
-                            elements.dscanMassOnGrid.data('mass', newMass);
-                            elements.dscanMassOnGrid.html(numberFormatter({value: newMass, locales: settings.language.django}));
+                // initialize DataTable
+                const dt = new DataTable(tableEl, { // eslint-disable-line no-unused-vars
+                    data: tableData,
+                    paging: false,
+                    language: settings.language.dataTables,
+                    lengthChange: false,
+                    dom: settings.dataTables.dom,
+                    ordering: settings.dataTables.ordering,
+                    columnControl: settings.dataTables.columnControl,
+                    columns: columns,
+                    order: [[1, 'desc']],
+                    columnDefs: columnsDefs,
+                    createdRow: (row, data) => {
+                        // update counts if provided
+                        if (countEl) {
+                            const currentTotal = parseInt(countEl.html()) || 0;
 
-                            $(row)
-                                .addClass(`aa-intel-shipclass-ongrid-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
-                                .attr('data-shipclass-id', data.id)
-                                .attr('data-shiptype-id', data.type_id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-shipclass-ongrid-item');
+                            countEl.html(currentTotal + (data.count || 0));
+                        }
+
+                        // update mass if provided
+                        if (massEl) {
+                            const currentMass = parseInt(massEl.data('mass')) || 0;
+                            const newMass = currentMass + (data.mass || 0);
+
+                            massEl.data('mass', newMass);
+                            massEl.html(numberFormatter({
+                                value: newMass,
+                                locales: settings.language.django
+                            }));
+                        }
+
+                        // row classes and attributes
+                        if (rowItemClass) {
+                            $(row).addClass(rowItemClass);
+                        }
+
+                        if (idAttr) {
+                            $(row).attr(idAttr, data.id);
+                        }
+
+                        if (typeIdAttr && data.type_id !== undefined) {
+                            $(row).attr(typeIdAttr, data.type_id);
+                        }
+
+                        if (extraRowClass) {
+                            $(row).addClass(extraRowClass);
+                        }
+                    },
+                    initComplete: () => {
+                        if (rowItemClass) {
+                            const selector = `.${rowItemClass.split(' ').join('.')}`;
+                            const el = $(selector);
 
                             _toggleDscanStickyHighlight({
-                                element: classTableRow,
-                                type: 'shipclass'
-                            });
-
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-dscan-ship-classes-ongrid-list'});
-                        }
-                    });
-                }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching ongrid ship classes data:', error);
-        });
-
-    /**
-     * Datatable D-Scan Off Grid
-     */
-    fetchGet({url: settings.url.getShipClassesOffgrid})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-offgrid').addClass('d-none');
-
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-offgrid').removeClass('d-none');
-                } else {
-                    $('div.table-dscan-ship-classes-offgrid').removeClass('d-none');
-
-                    elements.shipClassesOffgridTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return shipInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: 'count'
-                            },
-                            {
-                                data: 'type_name'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 45,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            },
-                            {
-                                targets: 2,
-                                visible: false
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // D-Scan total count
-                            const currentTotal = elements.dscanCountOffgrid.html();
-                            const newTotal = parseInt(currentTotal) + data.count;
-
-                            elements.dscanCountOffgrid.html(newTotal);
-
-                            const currentMass = elements.dscanMassOffGrid.data('mass') || 0;
-                            const newMass = parseInt(currentMass) + data.mass;
-
-                            elements.dscanMassOffGrid.data('mass', newMass);
-                            elements.dscanMassOffGrid.html(numberFormatter({value: newMass, locales: settings.language.django}));
-
-                            $(row)
-                                .addClass(`aa-intel-shipclass-offgrid-item aa-intel-shipclass-id-${data.id} aa-intel-shiptype-id-${data.type_id}`)
-                                .attr('data-shipclass-id', data.id)
-                                .attr('data-shiptype-id', data.type_id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-shipclass-offgrid-item');
-
-                            _toggleDscanStickyHighlight({
-                                element: classTableRow,
-                                type: 'shipclass'
-                            });
-
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-dscan-ship-classes-offgrid-list'});
-                        }
-                    });
-                }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching offgrid ship classes data:', error);
-        });
-
-    /**
-     * Datatable D-Scan Ship Types
-     */
-    fetchGet({url: settings.url.getShipTypes})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-ship-types').addClass('d-none');
-
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-ship-types').removeClass('d-none');
-                } else {
-                    $('div.table-dscan-ship-types').removeClass('d-none');
-
-                    elements.shipTypesTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: 'name'
-                            },
-                            {
-                                data: 'count'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 35,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            $(row)
-                                .addClass(`aa-intel-shiptype-item aa-intel-shiptype-id-${data.id}`)
-                                .attr('data-shiptype-id', data.id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-shiptype-item');
-
-                            _toggleDscanStickyHighlight({
-                                element: classTableRow,
-                                type: 'shiptype'
+                                element: el,
+                                type: highlightType || 'shipclass',
+                                highlightOnly: !!highlightOnly
                             });
                         }
-                    });
-                }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching ship types data:', error);
-        });
 
-    /**
-     * Datatable D-Scan Upwell Structures on Grid
-     */
-    fetchGet({url: settings.url.getStructuresOnGrid})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-upwell-structures').addClass('d-none');
-
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-upwell-structures').removeClass('d-none');
-                } else {
-                    $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
-                    $('div.col-aa-intel-upwell-structures').removeClass('d-none');
-
-                    elements.upwellStructuresTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return shipInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: 'count'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 35,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // Upwell Structures total count
-                            const currentTotal = elements.dscanCountUpwellStructures.html();
-                            const newTotal = parseInt(currentTotal) + data.count;
-
-                            elements.dscanCountUpwellStructures.html(newTotal);
-
-                            $(row)
-                                .addClass(`aa-intel-structuretype-item aa-intel-structuretype-id-${data.id}`)
-                                .attr('data-structuretype-id', data.id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-structuretype-item');
-
-                            _toggleDscanStickyHighlight({
-                                element: classTableRow,
-                                highlightOnly: true
-                            });
-
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-dscan-upwell-structures-list'});
+                        if (tooltipSelector) {
+                            bootstrapTooltip({selector: tooltipSelector});
                         }
-                    });
-                }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching upwell structures data:', error);
-        });
+                    }
+                });
+            })
+            .catch((error) => {
+                console.error(`Error fetching ${key} data:`, error);
+            });
+    };
 
-    /**
-     * Datatable D-Scan Deployables on Grid
-     */
-    fetchGet({url: settings.url.getDeployablesOnGrid})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-deployables').addClass('d-none');
+    // Ship Classes - All
+    createDataTable({
+        key: 'all',
+        loadingKey: 'all',
+        tableEl: elements.shipClassesAllTable,
+        url: settings.url.getShipClassesAll,
+        containerSelector: 'div.table-dscan-ship-classes-all',
+        rowItemClass: 'aa-intel-shipclass-all-item',
+        extraRowClass: null,
+        idAttr: 'data-shipclass-id',
+        typeIdAttr: 'data-shiptype-id',
+        countEl: elements.dscanCountAll,
+        massEl: elements.dscanMassAll,
+        columns: [
+            {data: (d) => shipInfoPanel(d)},
+            {data: 'count'}
+        ],
+        tooltipSelector: '.aa-intel-dscan-ship-classes-all-list'
+    });
 
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-deployables').removeClass('d-none');
-                } else {
-                    $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
-                    $('div.col-aa-intel-deployables').removeClass('d-none');
+    // Ship Classes - On Grid
+    createDataTable({
+        key: 'ongrid',
+        loadingKey: 'ongrid',
+        tableEl: elements.shipClassesOngridTable,
+        url: settings.url.getShipClassesOngrid,
+        containerSelector: 'div.table-dscan-ship-classes-ongrid',
+        rowItemClass: 'aa-intel-shipclass-ongrid-item',
+        idAttr: 'data-shipclass-id',
+        typeIdAttr: 'data-shiptype-id',
+        countEl: elements.dscanCountOngrid,
+        massEl: elements.dscanMassOnGrid,
+        columns: [
+            {data: (d) => shipInfoPanel(d)},
+            {data: 'count'}
+        ],
+        tooltipSelector: '.aa-intel-dscan-ship-classes-ongrid-list'
+    });
 
-                    elements.deployablesTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return shipInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: 'count'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 35,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // Upwell Structures total count
-                            const currentTotal = elements.dscanCountDeployables.html();
-                            const newTotal = parseInt(currentTotal) + data.count;
+    // Ship Classes - Off Grid
+    createDataTable({
+        key: 'offgrid',
+        loadingKey: 'offgrid',
+        tableEl: elements.shipClassesOffgridTable,
+        url: settings.url.getShipClassesOffgrid,
+        containerSelector: 'div.table-dscan-ship-classes-offgrid',
+        rowItemClass: 'aa-intel-shipclass-offgrid-item',
+        idAttr: 'data-shipclass-id',
+        typeIdAttr: 'data-shiptype-id',
+        countEl: elements.dscanCountOffgrid,
+        massEl: elements.dscanMassOffGrid,
+        columns: [
+            {data: (d) => shipInfoPanel(d)},
+            {data: 'count'}
+        ],
+        tooltipSelector: '.aa-intel-dscan-ship-classes-offgrid-list'
+    });
 
-                            elements.dscanCountDeployables.html(newTotal);
+    // Ship Types
+    createDataTable({
+        key: 'ship-types',
+        loadingKey: 'ship-types',
+        tableEl: elements.shipTypesTable,
+        url: settings.url.getShipTypes,
+        containerSelector: 'div.table-dscan-ship-types',
+        rowItemClass: 'aa-intel-shiptype-item',
+        idAttr: 'data-shiptype-id',
+        columns: [
+            {data: 'name'},
+            {data: 'count'}
+        ],
+        highlightType: 'shiptype'
+    });
 
-                            $(row)
-                                .addClass(`aa-intel-deployabletype-item aa-intel-deployabletype-id-${data.id}`)
-                                .attr('data-deployabletype-id', data.id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-deployabletype-item');
+    // Upwell Structures (on grid)
+    createDataTable({
+        key: 'upwell-structures',
+        loadingKey: 'upwell-structures',
+        tableEl: elements.upwellStructuresTable,
+        url: settings.url.getStructuresOnGrid,
+        containerSelector: 'div#aa-intel-dscan-row-interesting-on-grid',
+        extraSelectors: ['div.col-aa-intel-upwell-structures'],
+        rowItemClass: 'aa-intel-structuretype-item',
+        idAttr: 'data-structuretype-id',
+        countEl: elements.dscanCountUpwellStructures,
+        columns: [
+            {data: (d) => shipInfoPanel(d)},
+            {data: 'count'}
+        ],
+        highlightOnly: true,
+        tooltipSelector: '.aa-intel-dscan-upwell-structures-list'
+    });
 
-                            _toggleDscanStickyHighlight({
-                                element: classTableRow,
-                                highlightOnly: true
-                            });
+    // Deployables (on grid)
+    createDataTable({
+        key: 'deployables',
+        loadingKey: 'deployables',
+        tableEl: elements.deployablesTable,
+        url: settings.url.getDeployablesOnGrid,
+        containerSelector: 'div#aa-intel-dscan-row-interesting-on-grid',
+        extraSelectors: ['div.col-aa-intel-deployables'],
+        rowItemClass: 'aa-intel-deployabletype-item',
+        idAttr: 'data-deployabletype-id',
+        countEl: elements.dscanCountDeployables,
+        columns: [
+            {data: (d) => shipInfoPanel(d)},
+            {data: 'count'}
+        ],
+        highlightOnly: true,
+        tooltipSelector: '.aa-intel-dscan-deployables-list'
+    });
 
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-dscan-deployables-list'});
-                        }
-                    });
-                }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching deployables data:', error);
-        });
-
-    /**
-     * Datatable D-Scan POS/POS Modules on Grid
-     */
-    fetchGet({url: settings.url.getStarbasesOnGrid})
-        .then((tableData) => {
-            if (tableData) {
-                $('div.aa-intel-loading-table-info-starbases').addClass('d-none');
-
-                if (Object.keys(tableData).length === 0) {
-                    $('div.aa-intel-empty-table-info-starbases').removeClass('d-none');
-                } else {
-                    $('div#aa-intel-dscan-row-interesting-on-grid').removeClass('d-none');
-                    $('div.col-aa-intel-starbases').removeClass('d-none');
-
-                    elements.starbasesTable.DataTable({
-                        data: tableData,
-                        paging: false,
-                        language: settings.language.dataTables,
-                        lengthChange: false,
-                        dom:
-                            '<\'row\'<\'col-sm-12\'f>>' +
-                            '<\'row\'<\'col-sm-12\'tr>>' +
-                            '<\'row\'<\'col-sm-12\'i>>',
-                        columns: [
-                            {
-                                data: (data) => {
-                                    return shipInfoPanel(data);
-                                }
-                            },
-                            {
-                                data: 'count'
-                            }
-                        ],
-                        order: [
-                            [1, 'desc']
-                        ],
-                        columnDefs: [
-                            {
-                                targets: 0,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-ellipsis fix-eve-image-position');
-                                }
-                            },
-                            {
-                                targets: 1,
-                                width: 35,
-                                createdCell: (td) => {
-                                    $(td).addClass('text-end');
-                                }
-                            }
-                        ],
-                        createdRow: (row, data) => {
-                            // Upwell Structures total count
-                            const currentTotal = elements.dscanCountStarbases.html();
-                            const newTotal = parseInt(currentTotal) + data.count;
-
-                            elements.dscanCountStarbases.html(newTotal);
-
-                            $(row)
-                                .addClass(`aa-intel-starbasetype-item aa-intel-starbasetype-id-${data.id}`)
-                                .attr('data-starbasetype-id', data.id);
-                        },
-                        initComplete: () => {
-                            const classTableRow = $('.aa-intel-starbasetype-item');
-
-                            _toggleDscanStickyHighlight({
-                                element: classTableRow,
-                                highlightOnly: true
-                            });
-
-                            // Initialize Bootstrap tooltips
-                            bootstrapTooltip({selector: '.aa-intel-dscan-starbases-list'});
-                        }
-                    });
-                }
-            }
-        })
-        .catch((error) => {
-            console.error('Error fetching starbases data:', error);
-        });
+    // Starbases (on grid)
+    createDataTable({
+        key: 'starbases',
+        loadingKey: 'starbases',
+        tableEl: elements.starbasesTable,
+        url: settings.url.getStarbasesOnGrid,
+        containerSelector: 'div#aa-intel-dscan-row-interesting-on-grid',
+        extraSelectors: ['div.col-aa-intel-starbases'],
+        rowItemClass: 'aa-intel-starbasetype-item',
+        idAttr: 'data-starbasetype-id',
+        countEl: elements.dscanCountStarbases,
+        columns: [
+            {data: (d) => shipInfoPanel(d)},
+            {data: 'count'}
+        ],
+        highlightOnly: true,
+        tooltipSelector: '.aa-intel-dscan-starbases-list'
+    });
 });
