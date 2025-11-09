@@ -19,3 +19,13 @@ const _getAaIntelToolJsSettings = () => { // eslint-disable-line no-unused-vars
 
     return aaIntelToolJsSettingsDefaults;
 };
+
+const _removeSearchFromColumnControl = (columnControl, index = 1) => { // eslint-disable-line no-unused-vars
+    const cc = JSON.parse(JSON.stringify(columnControl));
+
+    if (cc[index]) {
+        cc[index].content = [];
+    }
+
+    return cc;
+};
