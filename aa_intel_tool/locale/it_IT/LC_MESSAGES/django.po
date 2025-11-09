@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-11-04 12:19+0100\n"
+"POT-Creation-Date: 2025-11-09 22:43+0100\n"
 "PO-Revision-Date: 2024-05-10 14:07+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/it/>\n"
@@ -180,7 +180,7 @@ msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilo
 msgstr[0] ""
 msgstr[1] ""
 
-#: aa_intel_tool/parser/module/dscan.py:362
+#: aa_intel_tool/parser/module/dscan.py:361
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
