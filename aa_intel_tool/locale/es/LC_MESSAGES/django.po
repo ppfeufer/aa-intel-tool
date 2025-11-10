@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-11-09 22:43+0100\n"
+"POT-Creation-Date: 2025-11-10 01:52+0100\n"
 "PO-Revision-Date: 2025-07-29 20:18+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Spanish <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/es/>\n"
@@ -292,7 +292,7 @@ msgid "Alliances breakdown"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:18
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:18
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
 msgid "Alliance"
 msgstr ""
 
@@ -318,7 +318,7 @@ msgid "Corporations breakdown"
 msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:18
-#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
+#: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:18
 msgid "Corporation"
 msgstr ""
 
