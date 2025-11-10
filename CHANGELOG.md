@@ -37,6 +37,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- Pilot breakdown columns
+
 ## [2.11.0] - 2025-11-09
 
 ### Changed

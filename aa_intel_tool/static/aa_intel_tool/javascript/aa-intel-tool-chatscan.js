@@ -159,8 +159,8 @@ $(document).ready(() => {
         containerClass: 'table-local-scan-pilots',
         columns: [
             {data: (data) => pilotInfoPanel(data)},
-            {data: (data) => `${allianceInfoPanel((data.alliance || {}), true)}${((data.alliance && data.alliance.ticker) || '')}<span class="d-none">${((data.alliance && data.alliance.name) || '')}</span>`},
-            {data: (data) => `${corporationInfoPanel((data.corporation || {}), true)}${((data.corporation && data.corporation.ticker) || '')}<span class="d-none">${((data.corporation && data.corporation.name) || '')}</span>`}
+            {data: (data) => `${corporationInfoPanel((data.corporation || {}), true)}${((data.corporation && data.corporation.ticker) || '')}<span class="d-none">${((data.corporation && data.corporation.name) || '')}</span>`},
+            {data: (data) => `${allianceInfoPanel((data.alliance || {}), true)}${((data.alliance && data.alliance.ticker) || '')}<span class="d-none">${((data.alliance && data.alliance.name) || '')}</span>`}
         ],
         // custom order
         order: [
@@ -174,13 +174,11 @@ $(document).ready(() => {
             },
             {
                 target: 1,
-                width: 35,
-                createdCell: (td) => $(td).addClass('text-end')
+                width: 125
             },
             {
                 target: 2,
-                width: 35,
-                createdCell: (td) => $(td).addClass('text-end')
+                width: 125
             }
         ],
         rowClass: 'aa-intel-pilot-participation-item',
