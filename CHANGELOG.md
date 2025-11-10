@@ -37,6 +37,8 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [2.11.1] - 2025-11-10
+
 ### Fixed
 
 - DataTables 2 Bootstrap styling issues in the new search filters
@@ -629,6 +631,7 @@ Hopefully the last one before official release …
 [2.10.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.9.0...v2.10.0 "v2.10.0"
 [2.10.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.10.0...v2.10.1 "v2.10.1"
 [2.11.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.10.1...v2.11.0 "v2.11.0"
+[2.11.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.11.0...v2.11.1 "v2.11.1"
 [2.2.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.1.1...v2.2.0 "v2.2.0"
 [2.3.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.2.0...v2.3.0 "v2.3.0"
 [2.4.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.3.0...v2.4.0 "v2.4.0"
@@ -646,6 +649,6 @@ Hopefully the last one before official release …
 [2.8.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.7.2...v2.8.0 "v2.8.0"
 [2.8.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.0...v2.8.1 "v2.8.1"
 [2.9.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.1...v2.9.0 "v2.9.0"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.11.0...HEAD "In Development"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.11.1...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
