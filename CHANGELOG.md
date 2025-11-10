@@ -39,6 +39,7 @@ Section Order:
 
 ### Fixed
 
+- DataTables 2 Bootstrap styling issues in the new search filters
 - Pilot breakdown columns
 
 ## [2.11.0] - 2025-11-09
