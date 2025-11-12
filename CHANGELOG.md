@@ -37,6 +37,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- Default sorting of DataTables not working as expected
+
 ## [2.11.1] - 2025-11-10
 
 ### Fixed

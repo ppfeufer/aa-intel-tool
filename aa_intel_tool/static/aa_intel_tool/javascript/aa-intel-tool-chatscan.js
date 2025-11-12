@@ -12,7 +12,7 @@ $(document).ready(() => {
         corporationsTotalCount: $('span#aa-intel-corporations-count'),
         alliancesTotalCount: $('span#aa-intel-alliances-count')
     };
-    const defaultOrder = [[1, 'desc']];
+    const defaultOrder = [[1, 'desc'], [0, 'asc']];
     const defaultColumnDefs = [
         {
             target: 0,
