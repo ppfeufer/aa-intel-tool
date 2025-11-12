@@ -11,7 +11,7 @@ $(document).ready(() => {
         fleetcompositionTable: $('table.aa-intel-fleetcomp-pilot-ships-list'),
         pilotsCount: $('span#aa-intel-fleet-participation-count')
     };
-    const defaultOrder = [[1, 'desc']];
+    const defaultOrder = [[1, 'desc'], [0, 'asc']];
     const defaultColumnDefs = [
         {
             target: 0,

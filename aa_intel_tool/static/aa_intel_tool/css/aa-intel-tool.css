@@ -123,10 +123,14 @@
 /* DataTables ColumnControl
 ------------------------------------------------------------------------------------- */
 @media all {
-    table.dataTable span.dtcc div.dtcc-search>div select {
+    table.dataTable span.dtcc div.dtcc-search > div select {
         background-color: var(--bs-body-bg);
         color: var(--bs-body-color);
         padding: 0.375rem;
+    }
+
+    table.dataTable .dt-column-header div.dtcc-search-title {
+        display: none;
     }
 }
 
