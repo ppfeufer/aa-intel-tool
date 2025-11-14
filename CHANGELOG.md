@@ -37,6 +37,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Changed
+
+- Improvements to the result tables
+
 ## [2.11.2] - 2025-11-12
 
 ### Fixed
