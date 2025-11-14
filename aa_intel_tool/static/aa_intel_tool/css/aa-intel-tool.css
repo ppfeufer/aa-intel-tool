@@ -118,6 +118,10 @@
     .aa-intel-tool td.fix-eve-image-position > span.alliance-id-1 {
         transform: none;
     }
+
+    .aa-intel-tool .dt-container .dt-info {
+        margin-top: 0.85rem;
+    }
 }
 
 /* DataTables ColumnControl
