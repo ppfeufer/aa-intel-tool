@@ -68,7 +68,7 @@ $(document).ready(() => {
                     paging: false,
                     language: settings.language.dataTables,
                     lengthChange: false,
-                    dom: settings.dataTables.dom,
+                    layout: settings.dataTables.dom,
                     ordering: settings.dataTables.ordering,
                     columnControl: settings.dataTables.columnControl,
                     columns: columns,
