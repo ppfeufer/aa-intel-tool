@@ -7,10 +7,8 @@ from django.contrib import admin
 from django.utils import html, safestring
 from django.utils.translation import gettext_lazy as _
 
-# Alliance Auth (External Libs)
-from app_utils.urls import reverse_absolute
-
 # AA Intel Tool
+from aa_intel_tool.helper.urls import reverse_absolute
 from aa_intel_tool.models import Scan
 
 

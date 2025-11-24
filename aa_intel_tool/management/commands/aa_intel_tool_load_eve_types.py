@@ -10,14 +10,14 @@ from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
 # Alliance Auth (External Libs)
-from app_utils.logging import LoggerAddTag
 from eveuniverse.constants import EveCategoryId
 
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AdditionalEveCategoryId
+from aa_intel_tool.providers import AppLogger
 
-logger = LoggerAddTag(logging.getLogger(__name__), __title__)
+logger = AppLogger(logging.getLogger(__name__), __title__)
 
 
 class Command(BaseCommand):

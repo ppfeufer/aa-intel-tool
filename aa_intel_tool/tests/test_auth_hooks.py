@@ -8,12 +8,9 @@ from http import HTTPStatus
 # Django
 from django.urls import reverse
 
-# Alliance Auth (External Libs)
-from app_utils.testing import create_fake_user
-
 # AA Intel Tool
 from aa_intel_tool.tests import BaseTestCase
-from aa_intel_tool.tests.utils import response_content_to_str
+from aa_intel_tool.tests.utils import create_fake_user, response_content_to_str
 
 
 class TestHooks(BaseTestCase):

@@ -15,7 +15,6 @@ from allianceauth.eveonline.evelinks import eveimageserver
 from allianceauth.services.hooks import get_extension_logger
 
 # Alliance Auth (External Libs)
-from app_utils.logging import LoggerAddTag
 from eveuniverse.constants import EveCategoryId
 from eveuniverse.models import EveType
 
@@ -30,8 +29,9 @@ from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.helper.data_structure import dict_to_list
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
+from aa_intel_tool.providers import AppLogger
 
-logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
 def _is_on_grid(distance: str) -> bool:

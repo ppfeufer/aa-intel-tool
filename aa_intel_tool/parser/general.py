@@ -11,15 +11,13 @@ from django.utils.translation import gettext_lazy as _
 # Alliance Auth
 from allianceauth.services.hooks import get_extension_logger
 
-# Alliance Auth (External Libs)
-from app_utils.logging import LoggerAddTag
-
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
 from aa_intel_tool.exceptions import ParserError
+from aa_intel_tool.providers import AppLogger
 
-logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
 def check_intel_type(scan_data: list) -> str:

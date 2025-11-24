@@ -13,7 +13,6 @@ from allianceauth.eveonline.evelinks import eveimageserver, evewho, zkillboard
 from allianceauth.services.hooks import get_extension_logger
 
 # Alliance Auth (External Libs)
-from app_utils.logging import LoggerAddTag
 from eveuniverse.models import EveEntity, EveType
 
 # AA Intel Tool
@@ -25,8 +24,9 @@ from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
 from aa_intel_tool.parser.module.chatlist import _get_character_info
 from aa_intel_tool.parser.module.chatlist import parse as parse_pilots
+from aa_intel_tool.providers import AppLogger
 
-logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
 def get_fleet_composition(pilots: dict, ships: dict) -> dict:
