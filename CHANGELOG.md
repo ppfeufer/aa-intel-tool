@@ -45,6 +45,10 @@ Section Order:
 
 - Improvements to the result tables
 
+### Removed
+
+- `allianceauth-app-utils` as dependency
+
 ## [2.11.2] - 2025-11-12
 
 ### Fixed

@@ -16,7 +16,6 @@ from allianceauth.eveonline.models import EveCharacter
 from allianceauth.services.hooks import get_extension_logger
 
 # Alliance Auth (External Libs)
-from app_utils.logging import LoggerAddTag
 from eveuniverse.models import EveEntity
 
 # AA Intel Tool
@@ -27,8 +26,9 @@ from aa_intel_tool.helper.data_structure import dict_to_list
 from aa_intel_tool.helper.eve_character import get_or_create_character
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
+from aa_intel_tool.providers import AppLogger
 
-logger = LoggerAddTag(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
 
 
 def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
