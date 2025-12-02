@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-11-10 01:52+0100\n"
-"PO-Revision-Date: 2025-11-07 03:17+0000\n"
+"POT-Creation-Date: 2025-12-02 06:23+0100\n"
+"PO-Revision-Date: 2025-11-24 17:49+0000\n"
 "Last-Translator: Dexsar <dexsar.paf@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14\n"
+"X-Generator: Weblate 5.14.3\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -28,15 +28,15 @@ msgstr ""
 msgid "Intel Parser"
 msgstr "インテル用の解析ツール"
 
-#: aa_intel_tool/admin.py:79 aa_intel_tool/models.py:46
+#: aa_intel_tool/admin.py:77 aa_intel_tool/models.py:46
 msgid "Scan type"
 msgstr "スキャンの種類"
 
-#: aa_intel_tool/admin.py:94
+#: aa_intel_tool/admin.py:92
 msgid "Open in a new browser tab"
 msgstr "ブラウザの新しいタブで開く"
 
-#: aa_intel_tool/admin.py:100
+#: aa_intel_tool/admin.py:98
 msgid "Raw data"
 msgstr "検証されていないデータ"
 
@@ -135,12 +135,12 @@ msgstr "配置可能ユニット（グリッド内）"
 
 #: aa_intel_tool/models.py:121
 msgid "Miscellaneous (on grid)"
-msgstr ""
+msgstr "その他（グリッド上）"
 
 #: aa_intel_tool/models.py:122
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
 msgid "System information"
-msgstr ""
+msgstr "システム（星系）の情報"
 
 #: aa_intel_tool/models.py:139
 msgid "Scan section"
@@ -154,69 +154,69 @@ msgstr ""
 msgid "Scan data"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:47
+#: aa_intel_tool/parser/general.py:45
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
-msgstr ""
+msgstr "適切なパーサーが見つかりません。入力はサポートされているIntelタイプではないか、不正な形式です…"
 
-#: aa_intel_tool/parser/general.py:65
+#: aa_intel_tool/parser/general.py:63
 msgid "No data to parse …"
-msgstr ""
+msgstr "パースすべきデータが存在しません…"
 
 #: aa_intel_tool/parser/module/chatlist.py:61
 msgid "Something went wrong while fetching the character information from ESI."
-msgstr ""
+msgstr "ESIからキャラクター情報を取得中に問題が発生しました。"
 
 #: aa_intel_tool/parser/module/chatlist.py:69
 msgid "Character unknown to ESI."
-msgstr ""
+msgstr "ESI上にないキャラクターです。"
 
 #: aa_intel_tool/parser/module/chatlist.py:258
 msgid "The chat list module is currently disabled."
-msgstr ""
+msgstr "チャットリストモジュールは現在無効化されています。"
 
 #: aa_intel_tool/parser/module/chatlist.py:277
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
-msgstr[0] ""
+msgstr[0] "チャットスキャンは現在、1回のスキャンにつき最大{max_allowed_pilots}名のパイロットに制限されています。指定されたパイロットリストはこの制限を超えています。"
 
 #: aa_intel_tool/parser/module/dscan.py:361
 msgid "The D-Scan module is currently disabled."
-msgstr ""
+msgstr "D-Scanモジュールは現在無効化されています。"
 
 #: aa_intel_tool/parser/module/fleetcomp.py:181
 msgid "The fleet composition module is currently disabled."
-msgstr ""
+msgstr "フリート編成モジュールは現在無効化されています。"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:23
 msgid "Permalink successfully copied"
-msgstr ""
+msgstr "パーマリンクのコピーに成功しました"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:24
 msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
-msgstr ""
+msgstr "何か問題が発生しました。何もコピーされませんでした。お使いのブラウザがこの機能をサポートしていない可能性があります。"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:25
 msgid "Unaffiliated"
-msgstr ""
+msgstr "無所属"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:26
 msgid "No Alliance"
-msgstr ""
+msgstr "同盟なし"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:27
 msgid "NPC Corp"
-msgstr ""
+msgstr "NPC 会社"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
 #, python-format
 msgid "Scans will be deleted after %(scan_retention_time)s day."
 msgid_plural "Scans will be deleted after %(scan_retention_time)s days."
-msgstr[0] ""
+msgstr[0] "スキャンは %(scan_retention_time)s 日後に削除されます。"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/common/loading-data.html:8
 msgid "Loading data …"
-msgstr ""
+msgstr "データをロード中…"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:5
 msgid "Do you want to help translate this app into your language or improve the existing translation?"
@@ -228,58 +228,58 @@ msgstr "翻訳者チームに参加しましょう！"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
-msgstr ""
+msgstr "何を貼り付けられますか？"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:16
 msgid "Chat member list"
-msgstr ""
+msgstr "チャットメンバーリスト"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:21
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
-msgstr[0] ""
+msgstr[0] "１スキャンごと最大 %(max_pilots)s パイロット。"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:40
 msgid "Please keep in mind, parsing large amounts of data can take some time. Be patient, CCP's API is not the fastest to answer …"
-msgstr ""
+msgstr "大量のデータを解析するには時間がかかる場合がありますので、ご了承ください。CCPのAPIは応答速度が速い方ではありませんので、少々お待ちください…"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:51
 msgid "Submit"
-msgstr ""
+msgstr "送信する"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:60
 msgid "Working on it, please be patient …"
-msgstr ""
+msgstr "作業中です、少々お待ちください…"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:63
 msgid "Detecting the intel type"
-msgstr ""
+msgstr "インテルのタイプを検出する"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:64
 msgid "Fetching potentially missing information from ESI (this might take a moment)"
-msgstr ""
+msgstr "ESIから欠落している可能性のある情報を取得中（少々お時間をいただく場合があります）"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:65
 msgid "Parsing data"
-msgstr ""
+msgstr "データを処理中"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:8
 msgid "New scan"
-msgstr ""
+msgstr "新しいスキャン"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:15
 msgid "Copy permalink"
-msgstr ""
+msgstr "パーマリンクをコピー"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:7
 msgid "Alliances breakdown"
-msgstr ""
+msgstr "アライアンス別内訳"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:18
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:19
 msgid "Alliance"
-msgstr ""
+msgstr "アライアンス"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:19
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:19
@@ -296,25 +296,25 @@ msgstr "数"
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-classes.html:41
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:34
 msgid "No data …"
-msgstr ""
+msgstr "データがない…"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:7
 msgid "Corporations breakdown"
-msgstr ""
+msgstr "会社別内訳"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/corporations.html:18
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:18
 msgid "Corporation"
-msgstr ""
+msgstr "会社"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:6
 msgid "Pilots breakdown"
-msgstr ""
+msgstr "パイロット別内訳"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/pilots.html:17
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:17
 msgid "Pilot"
-msgstr ""
+msgstr "パイロット"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/interesting-on-grid.html:8
 msgid "Interesting on grid"
@@ -401,17 +401,17 @@ msgstr "システム（星系）"
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:56
+#: aa_intel_tool/views/general.py:54
 #, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:68
+#: aa_intel_tool/views/general.py:66
 #, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:139
+#: aa_intel_tool/views/general.py:107 aa_intel_tool/views/general.py:137
 msgid "The scan you were looking for could not be found."
 msgstr ""
 
