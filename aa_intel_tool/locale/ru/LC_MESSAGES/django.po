@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-11-10 01:52+0100\n"
+"POT-Creation-Date: 2025-12-02 06:23+0100\n"
 "PO-Revision-Date: 2025-03-25 13:24+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ru/>\n"
@@ -29,15 +29,15 @@ msgstr ""
 msgid "Intel Parser"
 msgstr "Анализатор Скана"
 
-#: aa_intel_tool/admin.py:79 aa_intel_tool/models.py:46
+#: aa_intel_tool/admin.py:77 aa_intel_tool/models.py:46
 msgid "Scan type"
 msgstr "Тип скана"
 
-#: aa_intel_tool/admin.py:94
+#: aa_intel_tool/admin.py:92
 msgid "Open in a new browser tab"
 msgstr "Открыть в новой вкладке"
 
-#: aa_intel_tool/admin.py:100
+#: aa_intel_tool/admin.py:98
 msgid "Raw data"
 msgstr "Исходные данные"
 
@@ -157,11 +157,11 @@ msgstr "Обработанные данные скана"
 msgid "Scan data"
 msgstr "Данные скана"
 
-#: aa_intel_tool/parser/general.py:47
+#: aa_intel_tool/parser/general.py:45
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr "Не найден подходящий анализатор. Формат входных данных не поддерживается или данные неполны …"
 
-#: aa_intel_tool/parser/general.py:65
+#: aa_intel_tool/parser/general.py:63
 msgid "No data to parse …"
 msgstr "Нет данных для анализа …"
 
@@ -417,19 +417,19 @@ msgstr "Система"
 msgid "Participation details"
 msgstr "Подробности участия"
 
-#: aa_intel_tool/views/general.py:56
+#: aa_intel_tool/views/general.py:54
 #, fuzzy, python-brace-format
 #| msgid "The provided data could not be parsed."
 msgid "The provided data could not be parsed. ({exc})"
 msgstr "Предоставленные данные не могут быть проанализированы."
 
-#: aa_intel_tool/views/general.py:68
+#: aa_intel_tool/views/general.py:66
 #, fuzzy, python-brace-format
 #| msgid "(System Error) Something unexpected happened."
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr "(Системная ошибка) Случилось что-то непредвиденное."
 
-#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:139
+#: aa_intel_tool/views/general.py:107 aa_intel_tool/views/general.py:137
 msgid "The scan you were looking for could not be found."
 msgstr "Скан, который вы ищите, не может быть найден."
 
