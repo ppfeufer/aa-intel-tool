@@ -9,20 +9,21 @@
 # Chilmore <chenmo1203@gmail.com>, 2025.
 # Kelly Hsueh <kelly_hsueh@users.noreply.weblate.ppfeufer.de>, 2025.
 # AKA Patrick <hsc844766246@gmail.com>, 2025.
+# LichenKass <yuanchengwei_sz@163.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2025-12-02 06:23+0100\n"
-"PO-Revision-Date: 2025-11-15 14:59+0000\n"
-"Last-Translator: AKA Patrick <hsc844766246@gmail.com>\n"
+"POT-Creation-Date: 2026-01-05 21:34+0100\n"
+"PO-Revision-Date: 2025-12-21 13:32+0000\n"
+"Last-Translator: LichenKass <yuanchengwei_sz@163.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14.3\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -61,10 +62,8 @@ msgid "Fleet composition"
 msgstr "舰队组成"
 
 #: aa_intel_tool/exceptions.py:44
-#, fuzzy
-#| msgid "A parser error occurred » {message}"
 msgid "Unknown parser error"
-msgstr "发生了一个解析器错误 » {message}"
+msgstr "未知解析器错误 » {message}"
 
 #: aa_intel_tool/exceptions.py:46
 #, python-brace-format
@@ -81,7 +80,7 @@ msgstr "不可用的扫描数据"
 
 #: aa_intel_tool/models.py:31
 msgid "Scan hash"
-msgstr ""
+msgstr "哈希扫描"
 
 #: aa_intel_tool/models.py:37
 msgid "Creation date/time"
@@ -396,7 +395,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details.html:19
 msgid "Ship classes"
-msgstr ""
+msgstr "舰船类型"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/fleetcomp/fleet-details/pilots.html:6
 msgid "Who is flying what"
