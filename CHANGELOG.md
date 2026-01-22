@@ -37,6 +37,18 @@ Section Order:
 
 <!-- Your changes go here -->
 
+> [!IMPORTANT]
+>
+> This version is utilising features that are only available in Alliance Auth >= 4.12.0.
+> Please make sure to update your Alliance Auth instance before installing this version,
+> otherwise, an update to Alliance Auth will be pulled in unsupervised.
+
+### Changed
+
+- Switched to DataTables 2 provided by Alliance Auth, instead of bundling it ourselves
+- Minimum requirements:
+  - Alliance Auth >= 4.12.0
+
 ## [2.12.1] - 2026-01-05
 
 ### Changed
