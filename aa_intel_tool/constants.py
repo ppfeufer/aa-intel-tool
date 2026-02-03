@@ -4,6 +4,7 @@ App constants
 
 # Standard Library
 import re
+from enum import Enum
 
 # Django
 from django.utils.translation import gettext_lazy as _
@@ -17,56 +18,65 @@ import aa_intel_tool.parser.module.fleetcomp
 INTERNAL_URL_PREFIX = "-"
 
 
-# Localised units
-DISTANCE_UNITS_ON_GRID: str = """
-    km|m    # Client in: English, German, Chinese, French, Japanese, Korean, Spanish
-    |км|м   # Russian
-"""
-DISTANCE_UNITES_OFF_GRID: str = """
-    AU      # Client in: English, Chinese, Japanese, Korean, Spanish
-    |UA     # Client in: French
-    |AE     # German
-    |а.е.   # Russian
-"""
-DISTANCE_UNITS: str = f"{DISTANCE_UNITS_ON_GRID}|{DISTANCE_UNITES_OFF_GRID}"
+class DistanceUnits(Enum):
+    """
+    Localised distance units
+    """
+
+    ON_GRID = r"""
+        km|m    # Client in: English, German, Chinese, French, Japanese, Korean, Spanish
+        |км|м   # Client in: Russian
+    """
+    OFF_GRID = r"""
+        AU      # Client in: English, Chinese, Japanese, Korean, Spanish
+        |UA     # Client in: French
+        |AE     # Client in: German
+        |а.е.   # Client in: Russian
+    """
 
 
-# Pre-compiled regex patterns used throughout the app
-REGEX_PATTERN = {
-    "chatlist": re.compile(pattern=r"(?im)^[a-zA-Z0-9\u0080-\uFFFF -_]{3,37}$"),
-    "dscan": re.compile(
+DISTANCE_UNITS: str = f"{DistanceUnits.ON_GRID.value}|{DistanceUnits.OFF_GRID.value}"
+
+
+class RegexPattern(Enum):
+    """
+    Pre-compiled regex patterns
+    """
+
+    CHATLIST = re.compile(pattern=r"(?im)^[a-zA-Z0-9\u0080-\uFFFF -_]{3,37}$")
+    DSCAN = re.compile(
         pattern=rf"(?im)^(\d+)[\t](.*)[\t](.*)[\t](-|(.*) ({DISTANCE_UNITS}))$",
         flags=re.VERBOSE,
-    ),
-    "fleetcomp": re.compile(
-        pattern=r"(?im)^([a-zA-Z0-9 -_]{3,37})[\t](.*)[\t](.*)[\t](.*)[\t](.*)[\t]([0-5] - [0-5] - [0-5])([\t](.*))?$"  # pylint: disable=line-too-long
-    ),
-    "localised_on_grid": re.compile(
-        pattern=rf"{DISTANCE_UNITS_ON_GRID}", flags=re.VERBOSE
-    ),
-    "localised_off_grid": re.compile(
-        pattern=rf"{DISTANCE_UNITES_OFF_GRID}", flags=re.VERBOSE
-    ),
-}
+    )
+    FLEETCOMP = re.compile(
+        pattern=r"(?im)^([a-zA-Z0-9 -_]{3,37})[\t](.*)[\t](.*)[\t](.*)[\t](.*)[\t]([0-5] - [0-5] - [0-5])([\t](.*))?$"
+    )
+    LOCALISED_ON_GRID = re.compile(
+        pattern=rf"{DistanceUnits.ON_GRID.value}", flags=re.VERBOSE
+    )
+    LOCALISED_OFF_GRID = re.compile(
+        pattern=rf"{DistanceUnits.OFF_GRID.value}", flags=re.VERBOSE
+    )
+
 
 # Supported intel types and their parameters
 SUPPORTED_INTEL_TYPES = {
     "chatlist": {
         "name": _("Chat list"),
         "parser": aa_intel_tool.parser.module.chatlist.parse,
-        "pattern": REGEX_PATTERN["chatlist"],
+        "pattern": RegexPattern.CHATLIST.value,
         "template": "aa_intel_tool/views/scan/chatlist.html",
     },
     "dscan": {
         "name": _("D-Scan"),
         "parser": aa_intel_tool.parser.module.dscan.parse,
-        "pattern": REGEX_PATTERN["dscan"],
+        "pattern": RegexPattern.DSCAN.value,
         "template": "aa_intel_tool/views/scan/dscan.html",
     },
     "fleetcomp": {
         "name": _("Fleet composition"),
         "parser": aa_intel_tool.parser.module.fleetcomp.parse,
-        "pattern": REGEX_PATTERN["fleetcomp"],
+        "pattern": RegexPattern.FLEETCOMP.value,
         "template": "aa_intel_tool/views/scan/fleetcomp.html",
     },
 }

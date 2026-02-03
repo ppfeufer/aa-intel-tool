@@ -46,11 +46,11 @@ def _is_on_grid(distance: str) -> bool:
 
     # AA Intel Tool
     from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
-        REGEX_PATTERN,
+        RegexPattern,
     )
 
     # Check if we have a distance
-    match = re.search(pattern=REGEX_PATTERN["localised_on_grid"], string=distance)
+    match = re.search(pattern=RegexPattern.LOCALISED_ON_GRID.value, string=distance)
 
     # Check if the distance is within the grid size
     return (
@@ -298,7 +298,7 @@ def _get_scan_details(scan_data: list) -> tuple:
 
     # AA Intel Tool
     from aa_intel_tool.constants import (  # pylint: disable=import-outside-toplevel
-        REGEX_PATTERN,
+        RegexPattern,
     )
 
     ansiblex_destination = None
@@ -321,7 +321,7 @@ def _get_scan_details(scan_data: list) -> tuple:
         # This is why we use re.search() to get the parts of the D-Scan entry, instead of re-split()
         #
         # Thanks CCP for sanitizing your inputs! 😂
-        line = re.search(pattern=REGEX_PATTERN["dscan"], string=entry)
+        line = re.search(pattern=RegexPattern.DSCAN.value, string=entry)
         entry_id = int(line.group(1))
 
         counter["all"][entry_id] += 1

@@ -10,7 +10,7 @@ from django.urls import reverse
 
 # AA Intel Tool
 from aa_intel_tool.tests import BaseTestCase
-from aa_intel_tool.tests.utils import create_fake_user, response_content_to_str
+from aa_intel_tool.tests.utils import response_content_to_str
 
 
 class TestHooks(BaseTestCase):
@@ -25,11 +25,6 @@ class TestHooks(BaseTestCase):
         """
 
         super().setUpClass()
-
-        # User
-        cls.user_1001 = create_fake_user(
-            character_id=1001, character_name="Peter Parker"
-        )
 
         cls.html_menu = f"""
             <li class="d-flex flex-wrap m-2 p-2 pt-0 pb-0 mt-0 mb-0 me-0 pe-0">

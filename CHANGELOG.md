@@ -37,6 +37,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Changed
+
+- Dicts to Enum where applicable
+
 ## [2.13.0] - 2026-01-22
 
 > [!IMPORTANT]
