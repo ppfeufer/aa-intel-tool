@@ -30,12 +30,18 @@ def check_intel_type(scan_data: list) -> str:
     :rtype:
     """
 
+    logger.info(msg="Checking intel type …")
+    logger.info(msg=f"Supported intel types: {list(SUPPORTED_INTEL_TYPES.keys())}")
+
     for intel_type, intel_type_attributes in SUPPORTED_INTEL_TYPES.items():
+        logger.info(msg=f"Checking for intel type: {intel_type_attributes['name']}")
+        logger.info(msg=f"Using pattern: {intel_type_attributes['pattern']}")
+
         if all(
             re.match(pattern=intel_type_attributes["pattern"], string=string)
             for string in scan_data
         ):
-            logger.debug(msg=f"Detected intel type: {intel_type_attributes['name']}")
+            logger.info(msg=f"Detected intel type: {intel_type_attributes['name']}")
 
             return intel_type
 
