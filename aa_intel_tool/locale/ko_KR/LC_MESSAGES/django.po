@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-01-22 23:48+0100\n"
+"POT-Creation-Date: 2026-02-03 12:23+0100\n"
 "PO-Revision-Date: 2025-04-28 07:24+0000\n"
 "Last-Translator: SiO4 <hohoit0078@gmail.com>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ko/>\n"
@@ -42,16 +42,16 @@ msgstr "새 탭에서 열기"
 msgid "Raw data"
 msgstr "원본 데이터"
 
-#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "챗 리스트"
 
-#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "전방위 스캐너"
 
-#: aa_intel_tool/constants.py:74 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -158,11 +158,11 @@ msgstr "처리된 스캔 데이터"
 msgid "Scan data"
 msgstr "스캔 데이터"
 
-#: aa_intel_tool/parser/general.py:45
+#: aa_intel_tool/parser/general.py:51
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr "지원하는 파서를 찾을 수 없습니다. 지원하지 않는 인텔 타입이거나, 잘못된 형식입니다…"
 
-#: aa_intel_tool/parser/general.py:63
+#: aa_intel_tool/parser/general.py:69
 msgid "No data to parse …"
 msgstr "가져올 데이터가 없습니다…"
 

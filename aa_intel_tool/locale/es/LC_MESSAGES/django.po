@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-01-22 23:48+0100\n"
+"POT-Creation-Date: 2026-02-03 12:23+0100\n"
 "PO-Revision-Date: 2025-07-29 20:18+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Spanish <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/es/>\n"
@@ -40,16 +40,16 @@ msgstr "Abrir en una nueva pestaña del navegador"
 msgid "Raw data"
 msgstr "datos RAW"
 
-#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "Lista de Chat"
 
-#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "D-Scan"
 
-#: aa_intel_tool/constants.py:74 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -164,11 +164,11 @@ msgstr "Datos de escaneo no válidos"
 msgid "Scan data"
 msgstr "Datos de escaneo no válidos"
 
-#: aa_intel_tool/parser/general.py:45
+#: aa_intel_tool/parser/general.py:51
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:63
+#: aa_intel_tool/parser/general.py:69
 msgid "No data to parse …"
 msgstr ""
 
