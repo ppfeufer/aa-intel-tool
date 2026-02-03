@@ -37,9 +37,12 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [2.13.1] - 2026-02-03
+
 ### Changed
 
 - Dicts to Enum where applicable
+- Translations updated
 
 ## [2.13.0] - 2026-01-22
 
@@ -681,6 +684,7 @@ Hopefully the last one before official release …
 [2.12.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.11.2...v2.12.0 "v2.12.0"
 [2.12.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.12.0...v2.12.1 "v2.12.1"
 [2.13.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.12.1...v2.13.0 "v2.13.0"
+[2.13.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.13.0...v2.13.1 "v2.13.1"
 [2.2.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.1.1...v2.2.0 "v2.2.0"
 [2.3.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.2.0...v2.3.0 "v2.3.0"
 [2.4.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.3.0...v2.4.0 "v2.4.0"
@@ -698,6 +702,6 @@ Hopefully the last one before official release …
 [2.8.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.7.2...v2.8.0 "v2.8.0"
 [2.8.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.0...v2.8.1 "v2.8.1"
 [2.9.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.1...v2.9.0 "v2.9.0"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.13.0...HEAD "In Development"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.13.1...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
