@@ -18,37 +18,34 @@ INTERNAL_URL_PREFIX = "-"
 
 
 # Localised units
-distance_units_on_grid: str = """
+DISTANCE_UNITS_ON_GRID: str = """
     km|m    # Client in: English, German, Chinese, French, Japanese, Korean, Spanish
     |км|м   # Russian
-"""  # pylint: disable=invalid-name
-distance_units_off_grid: str = """
+"""
+DISTANCE_UNITES_OFF_GRID: str = """
     AU      # Client in: English, Chinese, Japanese, Korean, Spanish
     |UA     # Client in: French
     |AE     # German
     |а.е.   # Russian
-"""  # pylint: disable=invalid-name
-
-distance_units: str = (  # pylint: disable=invalid-name
-    f"{distance_units_on_grid}|{distance_units_off_grid}"
-)
+"""
+DISTANCE_UNITS: str = f"{DISTANCE_UNITS_ON_GRID}|{DISTANCE_UNITES_OFF_GRID}"
 
 
 # Pre-compiled regex patterns used throughout the app
 REGEX_PATTERN = {
     "chatlist": re.compile(pattern=r"(?im)^[a-zA-Z0-9\u0080-\uFFFF -_]{3,37}$"),
     "dscan": re.compile(
-        pattern=rf"(?im)^(\d+)[\t](.*)[\t](.*)[\t](-|(.*) ({distance_units}))$",
+        pattern=rf"(?im)^(\d+)[\t](.*)[\t](.*)[\t](-|(.*) ({DISTANCE_UNITS}))$",
         flags=re.VERBOSE,
     ),
     "fleetcomp": re.compile(
         pattern=r"(?im)^([a-zA-Z0-9 -_]{3,37})[\t](.*)[\t](.*)[\t](.*)[\t](.*)[\t]([0-5] - [0-5] - [0-5])([\t](.*))?$"  # pylint: disable=line-too-long
     ),
     "localised_on_grid": re.compile(
-        pattern=rf"{distance_units_on_grid}", flags=re.VERBOSE
+        pattern=rf"{DISTANCE_UNITS_ON_GRID}", flags=re.VERBOSE
     ),
     "localised_off_grid": re.compile(
-        pattern=rf"{distance_units_off_grid}", flags=re.VERBOSE
+        pattern=rf"{DISTANCE_UNITES_OFF_GRID}", flags=re.VERBOSE
     ),
 }
 
