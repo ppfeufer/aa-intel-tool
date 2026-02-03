@@ -4,20 +4,21 @@
 # Dehao Wu <wudehao2000@163.com>, 2024.
 # Faer Yili <yilifaer@gmail.com>, 2024.
 # SAM_FPS <sam_fps@163.com>, 2024.
-# Peter Pfeufer <info@ppfeufer.de>, 2024, 2025.
+# Peter Pfeufer <info@ppfeufer.de>, 2024, 2025, 2026.
 # 陈康立 <amadis0814@gmail.com>, 2024.
 # Chilmore <chenmo1203@gmail.com>, 2025.
 # Kelly Hsueh <kelly_hsueh@users.noreply.weblate.ppfeufer.de>, 2025.
 # AKA Patrick <hsc844766246@gmail.com>, 2025.
 # LichenKass <yuanchengwei_sz@163.com>, 2025.
 # Heimi <204420064@qq.com>, 2026.
+# nm l <mmttyyluo@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-01-22 23:48+0100\n"
-"PO-Revision-Date: 2026-01-22 22:44+0000\n"
-"Last-Translator: Heimi <204420064@qq.com>\n"
+"POT-Creation-Date: 2026-02-03 12:23+0100\n"
+"PO-Revision-Date: 2026-01-26 05:17+0000\n"
+"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Chinese (Simplified Han script) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
@@ -47,16 +48,16 @@ msgstr "新浏览器页签打开"
 msgid "Raw data"
 msgstr "原始数据"
 
-#: aa_intel_tool/constants.py:62 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr "聊天列表"
 
-#: aa_intel_tool/constants.py:68 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:28
 msgid "D-Scan"
 msgstr "定向扫描"
 
-#: aa_intel_tool/constants.py:74 aa_intel_tool/models.py:23
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:23
 #: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:33
 msgid "Fleet composition"
@@ -133,8 +134,9 @@ msgid "Structures (on grid)"
 msgstr "建筑（在场的）"
 
 #: aa_intel_tool/models.py:119
+#, fuzzy
 msgid "Starbases (on grid)"
-msgstr ""
+msgstr "母星（网格内）"
 
 #: aa_intel_tool/models.py:120
 msgid "Deployables (on grid)"
@@ -161,11 +163,11 @@ msgstr ""
 msgid "Scan data"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:45
+#: aa_intel_tool/parser/general.py:51
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:63
+#: aa_intel_tool/parser/general.py:69
 msgid "No data to parse …"
 msgstr ""
 
