@@ -3,6 +3,7 @@ Test the app settings in local.py
 """
 
 # Standard Library
+import importlib
 from unittest import mock
 
 # Django
@@ -10,6 +11,7 @@ from django.conf import settings
 from django.test import override_settings
 
 # AA Intel Tool
+from aa_intel_tool import app_settings
 from aa_intel_tool.app_settings import AppSettings, _clean_setting, debug_enabled
 from aa_intel_tool.tests import BaseTestCase
 
@@ -231,7 +233,7 @@ class TestAppSettings(BaseTestCase):
 
         self.assertEqual(first=retention_time, second=expected_retention_time)
 
-    @mock.patch(SETTINGS_PATH + ".AppSettings.INTELTOOL_SCAN_RETENTION_TIME", 75)
+    # @mock.patch(SETTINGS_PATH + ".AppSettings.INTELTOOL_SCAN_RETENTION_TIME", 75)
     def test_scan_retention_time_custom(self):
         """
         Test for a custom INTELTOOL_SCAN_RETENTION_TIME
@@ -240,10 +242,15 @@ class TestAppSettings(BaseTestCase):
         :rtype:
         """
 
-        retention_time = AppSettings.INTELTOOL_SCAN_RETENTION_TIME
-        expected_retention_time = 75
+        reloaded_module = importlib.reload(app_settings)
 
-        self.assertEqual(first=retention_time, second=expected_retention_time)
+        with mock.patch.object(
+            reloaded_module.AppSettings, "INTELTOOL_SCAN_RETENTION_TIME", 75
+        ):
+            retention_time = reloaded_module.AppSettings.INTELTOOL_SCAN_RETENTION_TIME
+            expected_retention_time = 75
+
+            self.assertEqual(first=retention_time, second=expected_retention_time)
 
     @override_settings()
     def test_chatscan_max_pilots_default(self):
@@ -254,9 +261,11 @@ class TestAppSettings(BaseTestCase):
         :rtype:
         """
 
-        del settings.INTELTOOL_CHATSCAN_MAX_PILOTS
+        if hasattr(settings, "INTELTOOL_CHATSCAN_MAX_PILOTS"):
+            delattr(settings, "INTELTOOL_CHATSCAN_MAX_PILOTS")
 
-        max_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
+        reloaded_module = importlib.reload(app_settings)
+        max_pilots = reloaded_module.AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
         expected_max_pilots = 500
 
         print("max_pilots:", max_pilots)
@@ -290,7 +299,7 @@ class TestAppSettings(BaseTestCase):
 
         self.assertEqual(first=grid_size, second=expected_grid_size)
 
-    @mock.patch(SETTINGS_PATH + ".AppSettings.INTELTOOL_DSCAN_GRID_SIZE", 1000)
+    # @mock.patch(SETTINGS_PATH + ".AppSettings.INTELTOOL_DSCAN_GRID_SIZE", 1000)
     def test_dscan_grid_size_custom(self):
         """
         Test for a custom INTELTOOL_DSCAN_GRID_SIZE
@@ -299,10 +308,15 @@ class TestAppSettings(BaseTestCase):
         :rtype:
         """
 
-        grid_size = AppSettings.INTELTOOL_DSCAN_GRID_SIZE
-        expected_grid_size = 1000
+        reloaded_module = importlib.reload(app_settings)
 
-        self.assertEqual(first=grid_size, second=expected_grid_size)
+        with mock.patch.object(
+            reloaded_module.AppSettings, "INTELTOOL_DSCAN_GRID_SIZE", 1000
+        ):
+            grid_size = reloaded_module.AppSettings.INTELTOOL_DSCAN_GRID_SIZE
+            expected_grid_size = 1000
+
+            self.assertEqual(first=grid_size, second=expected_grid_size)
 
     @override_settings(DEBUG=True)
     def test_debug_enabled_with_debug_true(self) -> None:

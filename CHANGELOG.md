@@ -37,6 +37,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Changed
+
+- Replace `eveuniverse` with ESI calls in chatscans to speed things up a little bit
+
 ## [2.13.1] - 2026-02-03
 
 ### Changed

@@ -4,6 +4,7 @@ Little helper functions to deal with Eve characters
 
 # Standard Library
 from collections.abc import Iterable
+from typing import Any
 
 # Django
 from django.db.models import QuerySet
@@ -18,9 +19,12 @@ from allianceauth.services.hooks import get_extension_logger
 
 # AA Intel Tool
 from aa_intel_tool import __title__
-from aa_intel_tool.providers import AppLogger
+from aa_intel_tool.providers import AppLogger, ESIHandler
 
 logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+
+temp_corp_data = {}
+temp_alliance_data = {}
 
 
 def _create_alliance(alliance_ids: Iterable[int]) -> None:
@@ -90,76 +94,277 @@ def _create_corporation(corporation_ids: Iterable[int]) -> None:
             )
 
 
-def _create_character(
-    character_ids: Iterable[int], with_affiliation: bool = True
-) -> None:
+def _get_corporation_info_from_affiliation(
+    affiliation_data: dict,
+) -> EveCorporationInfo | None:
+    """
+    Get corporation information from affiliation data
+
+    :param affiliation_data:
+    :type affiliation_data:
+    :return:
+    :rtype:
+    """
+
+    corporation_id = affiliation_data.get("corporation_id")
+
+    if corporation_id in temp_corp_data:
+        return temp_corp_data[corporation_id]
+
+    corp_info = ESIHandler.get_corporations_corporation_id(
+        corporation_id=corporation_id, use_etag=False
+    )
+    temp_corp_data[corporation_id] = corp_info
+
+    return corp_info
+
+
+def _get_alliance_info_from_affiliation(
+    affiliation_data: dict,
+) -> EveAllianceInfo | None:
+    """
+    Get alliance information from affiliation data
+
+    :param affiliation_data:
+    :type affiliation_data:
+    :return:
+    :rtype:
+    """
+
+    alliance_id = affiliation_data.get("alliance_id")
+
+    if not alliance_id:
+        return None
+
+    if alliance_id in temp_alliance_data:
+        return temp_alliance_data[alliance_id]
+
+    alliance_info = ESIHandler.get_alliances_alliance_id(
+        alliance_id=alliance_id, use_etag=False
+    )
+
+    temp_alliance_data[alliance_id] = alliance_info
+
+    return alliance_info
+
+
+def _fetch_affiliations_with_retry(chunk: list[int]) -> list[dict[str, Any]]:
+    """
+    Fetch affiliations with retry logic for handling ESI errors
+
+    :param chunk: List of character IDs to fetch affiliations for
+    :type chunk: list[int]
+    :return: List of affiliation data or empty list if all attempts fail
+    :rtype: list[dict[str, Any]]
+    """
+
+    try:
+        return ESIHandler.post_characters_affiliation(ids=chunk) or []
+    except Exception as exc:  # pylint: disable=broad-exception-caught
+        if len(chunk) <= 1:
+            # last entry failed — ignore it
+            logger.warning(
+                f"Ignoring character ID {chunk[0] if chunk else 'unknown'} after exception: {exc}"
+            )
+
+            return []
+
+        mid = len(chunk) // 2
+        left = _fetch_affiliations_with_retry(chunk[:mid])
+        right = _fetch_affiliations_with_retry(chunk[mid:])
+        results = []
+
+        if left:
+            results.extend(left)
+
+        if right:
+            results.extend(right)
+
+        return results
+
+
+def _fetch_ids_with_retry(chunk: list[str]) -> list[dict[str, Any]]:
+    """
+    Fetch IDs with retry logic for handling ESI errors
+
+    :param chunk: List of names to fetch IDs for
+    :type chunk: list[str]
+    :return: List of ID data or empty list if all attempts fail
+    :rtype: list[dict[str, Any]]
+    """
+
+    try:
+        return ESIHandler.post_universe_ids(names=chunk) or []
+    except Exception as exc:  # pylint: disable=broad-exception-caught
+        if len(chunk) <= 1:
+            # last entry failed — ignore it
+            logger.warning(
+                f"Ignoring name {chunk[0] if chunk else 'unknown'} after exception: {exc}"
+            )
+
+            return []
+
+        mid = len(chunk) // 2
+        left = _fetch_ids_with_retry(chunk[:mid])
+        right = _fetch_ids_with_retry(chunk[mid:])
+        results = []
+
+        if left:
+            results.extend(left)
+
+        if right:
+            results.extend(right)
+
+        return results
+
+
+def create_characters(  # pylint: disable=too-many-locals
+    character_data_from_esi: Iterable[int], with_affiliation: bool = True
+) -> QuerySet[EveCharacter]:
     """
     Bulk creation of EveCharacter objects
 
-    :param character_ids:
-    :type character_ids:
+    :param character_data_from_esi:
+    :type character_data_from_esi:
     :param with_affiliation:
     :type with_affiliation:
     :return:
     :rtype:
     """
 
-    character_ids = set(character_ids)
-    tmp_affiliation_ids = {"alliance": set(), "corporation": set()}
+    affiliations = []
+    affiliation_ids = {"alliances": set(), "corporations": set()}
+    characters_to_create = []
+    chunk_size = 1000  # ESI affiliation endpoint accepts up to 1000 IDs per request
 
-    logger.info(f"{len(character_ids)} EveCharacter object(s) need to be created …")
+    # Materialize input iterable so names remain available and build id->name map
+    character_ids_list = [c.id for c in character_data_from_esi]
+    id_to_name = {c.id: getattr(c, "name", None) for c in character_data_from_esi}
 
-    for loop_count, character_id in enumerate(character_ids, start=1):
-        # Create character
-        character = EveCharacter.objects.create_character(character_id=character_id)
+    for loop_count, chunk in enumerate(
+        [
+            list(character_ids_list)[i : i + chunk_size]
+            for i in range(0, len(character_ids_list), chunk_size)
+        ],
+        start=1,
+    ):
+        logger.debug(f"Processing chunk {loop_count} with {len(chunk)} character(s) …")
 
-        logger.debug(
-            f"({loop_count}/{len(character_ids)}) "
-            f"EveCharacter object created for: {character.character_name}"
+        esi_response = _fetch_affiliations_with_retry(chunk=chunk)
+
+        # Attach name from the original input when character_id matches
+        affiliations.extend(
+            [
+                {
+                    "character_id": item.character_id,
+                    "character_name": id_to_name.get(item.character_id),
+                    "corporation_id": getattr(item, "corporation_id", None),
+                    "alliance_id": getattr(item, "alliance_id", None),
+                    "faction_id": getattr(item, "faction_id", None),
+                }
+                for item in esi_response
+            ]
         )
-
-        affiliation_key = "alliance" if character.alliance_id else "corporation"
-        tmp_affiliation_ids[affiliation_key].add(
-            character.alliance_id or character.corporation_id
-        )
-
-    if with_affiliation:
-        if tmp_affiliation_ids["alliance"]:
-            _create_alliance(tmp_affiliation_ids["alliance"])
-
-        if tmp_affiliation_ids["corporation"]:
-            _create_corporation(tmp_affiliation_ids["corporation"])
-
-
-def get_or_create_character(
-    character_ids: Iterable[int] = None,
-) -> QuerySet[EveCharacter]:
-    """
-    This function takes a list of character IDs and checks if the characters already
-    exist in Auth and creates them with their corporation and alliance associations,
-    if needed.
-
-    :param character_ids:
-    :type character_ids:
-    :return:
-    :rtype:
-    """
-
-    character_ids = set(character_ids or [])
 
     logger.debug(
-        msg=f"Getting information for {len(character_ids)} character(s) from AA …"
+        f"Affiliation information for {len(affiliations)} character(s) received from ESI: {affiliations}"
     )
 
-    existing_character_ids = set(
-        EveCharacter.objects.filter(character_id__in=character_ids).values_list(
-            "character_id", flat=True
+    logger.info(
+        f"{len(character_ids_list)} EveCharacter object(s) need to be created …"
+    )
+
+    factions_response = ESIHandler.get_universe_factions(use_etag=False)
+    faction_id_to_name = {f.faction_id: f.name for f in factions_response}
+
+    for affiliation in affiliations:
+        logger.debug(
+            f"Processing affiliation for character ID {affiliation['character_id']}: {affiliation}"
         )
+
+        corp_info = _get_corporation_info_from_affiliation(affiliation_data=affiliation)
+        alliance_info = _get_alliance_info_from_affiliation(
+            affiliation_data=affiliation
+        )
+
+        characters_to_create.append(
+            EveCharacter(
+                character_id=affiliation["character_id"],
+                character_name=affiliation["character_name"],
+                corporation_id=affiliation["corporation_id"],
+                corporation_name=corp_info.name if corp_info else None,
+                corporation_ticker=corp_info.ticker if corp_info else None,
+                alliance_id=affiliation["alliance_id"],
+                alliance_name=alliance_info.name if alliance_info else None,
+                alliance_ticker=alliance_info.ticker if alliance_info else None,
+                faction_id=(
+                    affiliation["faction_id"] if affiliation["faction_id"] else None
+                ),
+                faction_name=(
+                    faction_id_to_name.get(affiliation["faction_id"])
+                    if affiliation["faction_id"]
+                    else None
+                ),
+            )
+        )
+
+        affiliation_key = "alliances" if affiliation["alliance_id"] else "corporations"
+        affiliation_ids[affiliation_key].add(
+            affiliation["alliance_id"] or affiliation["corporation_id"]
+        )
+
+    logger.debug(
+        f"Prepared {len(characters_to_create)} Character objects for bulk creation."
     )
+    logger.debug(f"Entities to be created: {affiliation_ids}")
 
-    character_ids_to_fetch = character_ids - existing_character_ids
+    # Only perform bulk_create when we actually have objects to create.
+    if characters_to_create:
+        logger.debug(
+            "Prepared %d Character objects for bulk creation.",
+            len(characters_to_create),
+        )
+        EveCharacter.objects.bulk_create(characters_to_create)
+    else:
+        logger.debug("No Character objects to bulk create; skipping bulk_create.")
 
-    if character_ids_to_fetch:
-        _create_character(character_ids=character_ids_to_fetch, with_affiliation=True)
+    if with_affiliation:
+        if affiliation_ids["alliances"]:
+            _create_alliance(affiliation_ids["alliances"])
 
-    return EveCharacter.objects.filter(character_id__in=character_ids)
+        if affiliation_ids["corporations"]:
+            _create_corporation(affiliation_ids["corporations"])
+
+    return EveCharacter.objects.filter(character_id__in=character_ids_list)
+
+
+def fetch_character_ids_from_esi(characters_to_fetch: set[Any]) -> list:
+    """
+    Fetch character IDs from ESI
+
+    :param characters_to_fetch: Set of character IDs to fetch from ESI
+    :type characters_to_fetch: set[Any]
+    :return: List of character IDs fetched from ESI or None if no characters were fetched
+    :rtype: list
+    """
+
+    chunk_size = 500
+    fetched_characters = []
+
+    for loop_count, chunk in enumerate(
+        [
+            list(characters_to_fetch)[i : i + chunk_size]
+            for i in range(0, len(characters_to_fetch), chunk_size)
+        ],
+        start=1,
+    ):
+        logger.debug(
+            f"Processing chunk {loop_count} with {len(chunk)} character(s): {chunk}"
+        )
+
+        esi_response = _fetch_ids_with_retry(chunk=chunk)
+
+        if esi_response.characters:
+            fetched_characters.extend(esi_response.characters)
+
+    return fetched_characters

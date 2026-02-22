@@ -3,6 +3,8 @@ Unit tests for the D-Scan parser module.
 """
 
 # Standard Library
+import importlib
+from unittest import mock
 from unittest.mock import MagicMock, patch
 
 # AA Intel Tool
@@ -789,10 +791,14 @@ class TestHelperIsOnGrid(BaseTestCase):
         :rtype:
         """
 
-        with patch(
-            "aa_intel_tool.app_settings.AppSettings.INTELTOOL_DSCAN_GRID_SIZE", 150
+        dscan_module = importlib.import_module("aa_intel_tool.parser.module.dscan")
+
+        importlib.reload(dscan_module)
+
+        with mock.patch.object(
+            dscan_module.AppSettings, "INTELTOOL_DSCAN_GRID_SIZE", 500
         ):
-            self.assertTrue(_is_on_grid("100 km"))
+            self.assertTrue(_is_on_grid("300 km"))
 
     def test_returns_false_for_distance_exceeding_grid_size(self):
         """
@@ -802,10 +808,14 @@ class TestHelperIsOnGrid(BaseTestCase):
         :rtype:
         """
 
-        with patch(
-            "aa_intel_tool.app_settings.AppSettings.INTELTOOL_DSCAN_GRID_SIZE", 150
+        dscan_module = importlib.import_module("aa_intel_tool.parser.module.dscan")
+
+        importlib.reload(dscan_module)
+
+        with mock.patch.object(
+            dscan_module.AppSettings, "INTELTOOL_DSCAN_GRID_SIZE", 500
         ):
-            self.assertFalse(_is_on_grid("200 km"))
+            self.assertFalse(dscan_module._is_on_grid("600 km"))
 
     def test_returns_false_for_invalid_distance_format(self):
         """
@@ -815,14 +825,28 @@ class TestHelperIsOnGrid(BaseTestCase):
         :rtype:
         """
 
-        self.assertFalse(_is_on_grid("invalid distance"))
+        dscan_module = importlib.import_module("aa_intel_tool.parser.module.dscan")
 
-    def test_returns_false_for_empty_distance_string(self):
+        importlib.reload(dscan_module)
+
+        with mock.patch.object(
+            dscan_module.AppSettings, "INTELTOOL_DSCAN_GRID_SIZE", 500
+        ):
+            self.assertFalse(_is_on_grid("invalid"))
+
+    def test_returns_false_for_empty_distance(self):
         """
-        Testing that false is returned for empty distance string
+        Testing that false is returned for empty distance
 
         :return:
         :rtype:
         """
 
-        self.assertFalse(_is_on_grid(""))
+        dscan_module = importlib.import_module("aa_intel_tool.parser.module.dscan")
+
+        importlib.reload(dscan_module)
+
+        with mock.patch.object(
+            dscan_module.AppSettings, "INTELTOOL_DSCAN_GRID_SIZE", 500
+        ):
+            self.assertFalse(_is_on_grid(""))
