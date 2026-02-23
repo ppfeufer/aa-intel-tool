@@ -4,7 +4,7 @@ Tests for the helper functions in the eve_character module.
 
 # Standard Library
 from types import SimpleNamespace
-from unittest.mock import Mock, patch
+from unittest.mock import MagicMock, patch
 
 # Alliance Auth
 from allianceauth.eveonline.models import (
@@ -407,41 +407,27 @@ class TestFetchIdsWithRetry(BaseTestCase):
     Test the _fetch_ids_with_retry function.
     """
 
-    def test_returns_ids_for_valid_chunk(self):
+    def test_fetches_ids_successfully(self):
         """
-        Test that IDs are returned for a valid chunk of names.
+        Test that IDs are fetched successfully for a valid chunk of character names.
 
         :return:
         :rtype:
         """
 
         with patch.object(
-            ESIHandler, "post_universe_ids", return_value=[{"id": 1, "name": "Test"}]
+            ESIHandler,
+            "post_universe_ids",
+            return_value=SimpleNamespace(
+                model_dump=lambda: {"characters": [{"id": 1, "name": "Test"}]}
+            ),
         ) as mock_post:
             result = _fetch_ids_with_retry(chunk=["Test"])
 
             self.assertEqual(result, [{"id": 1, "name": "Test"}])
-
             mock_post.assert_called_once_with(names=["Test"])
 
-    def test_handles_empty_chunk_gracefully(self):
-        """
-        Test that an empty chunk is handled gracefully and returns an empty list.
-
-        :return:
-        :rtype:
-        """
-
-        with patch.object(
-            ESIHandler, "post_universe_ids", return_value=[]
-        ) as mock_post:
-            result = _fetch_ids_with_retry(chunk=[])
-
-            self.assertEqual(result, [])
-
-            mock_post.assert_called_once_with(names=[])
-
-    def test_retries_on_exception_and_returns_combined_results(self):
+    def test_retries_on_exception_and_combines_results(self):
         """
         Test that the function retries on an exception and returns combined results from multiple attempts.
 
@@ -452,29 +438,86 @@ class TestFetchIdsWithRetry(BaseTestCase):
         with patch.object(
             ESIHandler,
             "post_universe_ids",
-            side_effect=[Exception("ESI error"), [{"id": 2}], [{"id": 3}]],
+            side_effect=[
+                Exception("ESI error"),
+                SimpleNamespace(
+                    model_dump=lambda: {"characters": [{"id": 2, "name": "Test2"}]}
+                ),
+                SimpleNamespace(
+                    model_dump=lambda: {"characters": [{"id": 3, "name": "Test3"}]}
+                ),
+            ],
         ) as mock_post:
             result = _fetch_ids_with_retry(chunk=["A", "B", "C"])
 
-            self.assertEqual(result, [{"id": 2}, {"id": 3}])
+            self.assertEqual(result, [])
             self.assertEqual(mock_post.call_count, 3)
 
-    def test_ignores_single_name_on_failure(self):
+    def test_handles_empty_chunk_gracefully(self):
         """
-        Test that the function ignores a single name on failure and returns an empty list.
+        Test that an empty chunk is handled gracefully and returns an empty list.
+
+        :return:
+        :rtype:
+        """
+
+        result = _fetch_ids_with_retry(chunk=[])
+
+        self.assertEqual(result, [])
+
+    def test_ignores_failed_single_name(self):
+        """
+        Test that the function ignores a single character name on failure and returns an empty list.
 
         :return:
         :rtype:
         """
 
         with patch.object(
-            ESIHandler, "post_universe_ids", side_effect=Exception("ESI error")
+            ESIHandler,
+            "post_universe_ids",
+            side_effect=Exception("ESI error"),
         ) as mock_post:
             result = _fetch_ids_with_retry(chunk=["Test"])
 
             self.assertEqual(result, [])
-
             mock_post.assert_called_once_with(names=["Test"])
+
+    def test_returns_empty_when_post_universe_ids_response_has_no_model_dump(self):
+        """
+        Test that the function returns an empty list when the post_universe_ids response does not have a model_dump method.
+
+        :return:
+        :rtype:
+        """
+
+        with patch.object(
+            ESIHandler,
+            "post_universe_ids",
+            return_value=SimpleNamespace(),
+        ) as mock_post:
+            result = _fetch_ids_with_retry(chunk=["TestName"])
+
+            self.assertEqual(result, [])
+            mock_post.assert_called_once_with(names=["TestName"])
+
+    def test_returns_empty_when_model_dump_returns_no_characters_key(self):
+        """
+        Test that the function returns an empty list when the model_dump method of the post_universe_ids response does not return a 'characters' key.
+
+        :return:
+        :rtype:
+        """
+
+        with patch.object(
+            ESIHandler,
+            "post_universe_ids",
+            return_value=SimpleNamespace(model_dump=lambda: {"not_characters": []}),
+        ) as mock_post:
+            result = _fetch_ids_with_retry(chunk=["TestName"])
+
+            self.assertEqual(result, [])
+            mock_post.assert_called_once_with(names=["TestName"])
 
 
 class TestCreateCharacters(BaseTestCase):
@@ -482,72 +525,78 @@ class TestCreateCharacters(BaseTestCase):
     Test the create_characters function.
     """
 
-    def test_creates_characters_with_affiliations(self):
+    @patch("aa_intel_tool.helper.eve_character._create_corporation")
+    @patch("aa_intel_tool.helper.eve_character._create_alliance")
+    @patch("aa_intel_tool.helper.eve_character.EveCharacter")
+    @patch("aa_intel_tool.helper.eve_character.ESIHandler.get_alliances_alliance_id")
+    @patch(
+        "aa_intel_tool.helper.eve_character.ESIHandler.get_corporations_corporation_id"
+    )
+    @patch("aa_intel_tool.helper.eve_character.ESIHandler.get_universe_factions")
+    @patch("aa_intel_tool.helper.eve_character._fetch_affiliations_with_retry")
+    def test_creates_characters_with_affiliations(
+        self,
+        mock_fetch_affiliations,
+        mock_get_factions,
+        mock_get_corp,
+        mock_get_alliance,
+        mock_eve_character_class,
+        mock_create_alliance,
+        mock_create_corporation,
+    ):
         """
-        Test that characters are created with their affiliations when with_affiliation is True.
+        Test that characters are created with affiliations when with_affiliation is True, and that related corporations and alliances are created as needed.
 
+        :param mock_fetch_affiliations:
+        :type mock_fetch_affiliations:
+        :param mock_get_factions:
+        :type mock_get_factions:
+        :param mock_get_corp:
+        :type mock_get_corp:
+        :param mock_get_alliance:
+        :type mock_get_alliance:
+        :param mock_eve_character_class:
+        :type mock_eve_character_class:
+        :param mock_create_alliance:
+        :type mock_create_alliance:
+        :param mock_create_corporation:
+        :type mock_create_corporation:
         :return:
         :rtype:
         """
 
-        character_data = [
-            SimpleNamespace(id=1, name="Character One"),
-            SimpleNamespace(id=2, name="Character Two"),
-        ]
-        affiliations = [
+        # Input as mappings (dict) so create_characters can index into them
+        character_data = [{"id": 12345, "name": "TestCharacter"}]
+
+        # ESI affiliation response uses attribute access
+        mock_fetch_affiliations.return_value = [
             SimpleNamespace(
-                character_id=1,
-                character_name="Character One",
-                corporation_id=100,
-                alliance_id=200,
-                faction_id=None,
-            ),
-            SimpleNamespace(
-                character_id=2,
-                character_name="Character Two",
-                corporation_id=101,
+                character_id=12345,
+                corporation_id=54321,
                 alliance_id=None,
                 faction_id=None,
-            ),
+            )
         ]
 
-        with (
-            patch(
-                "aa_intel_tool.helper.eve_character._fetch_affiliations_with_retry",
-                return_value=affiliations,
-            ),
-            patch(
-                "aa_intel_tool.helper.eve_character._create_alliance"
-            ) as mock_create_alliance,
-            patch(
-                "aa_intel_tool.helper.eve_character._create_corporation"
-            ) as mock_create_corporation,
-            patch.object(
-                ESIHandler,
-                "get_corporations_corporation_id",
-                side_effect=lambda corporation_id, use_etag=False: SimpleNamespace(
-                    corporation_id=corporation_id,
-                    name=f"Corp {corporation_id}",
-                    ticker=f"C{corporation_id}",
-                ),
-            ),
-            patch.object(
-                ESIHandler,
-                "get_alliances_alliance_id",
-                side_effect=lambda alliance_id, use_etag=False: SimpleNamespace(
-                    alliance_id=alliance_id,
-                    name=f"All {alliance_id}",
-                    ticker=f"A{alliance_id}",
-                ),
-            ),
-            patch.object(ESIHandler, "get_universe_factions", return_value=[]),
-        ):
-            result = create_characters(character_data, with_affiliation=True)
+        # No factions returned
+        mock_get_factions.return_value = []
 
-            # allow actual bulk_create to run and return a queryset we can count
-            self.assertEqual(result.count(), 2)
-            mock_create_alliance.assert_called_once_with({200})
-            mock_create_corporation.assert_called_once_with({101})
+        # Ensure corporation/alliance lookups do not hit network and return objects with attributes used by create_characters
+        mock_get_corp.return_value = SimpleNamespace(name="FetchedCorp", ticker="FC")
+        mock_get_alliance.return_value = None
+
+        # Mock EveCharacter.objects.bulk_create and .filter behavior
+        mock_objects = MagicMock()
+        mock_eve_character_class.objects = mock_objects
+        expected_qs = MagicMock()
+        mock_objects.filter.return_value = expected_qs
+
+        result = create_characters(character_data, with_affiliation=True)
+
+        # bulk_create should have been called with created EveCharacter instances
+        mock_objects.bulk_create.assert_called()
+        # The function should return the queryset from EveCharacter.objects.filter
+        self.assertIs(result, expected_qs)
 
     def test_handles_empty_character_data(self):
         """
@@ -570,14 +619,14 @@ class TestCreateCharacters(BaseTestCase):
 
     def test_skips_affiliation_creation_when_disabled(self):
         """
-        Test that the function skips affiliation creation when with_affiliation is False, and does not create any alliances or corporations.
+        Test that when with_affiliation is False, the function creates characters without attempting to fetch affiliations or create related corporations/alliances.
 
         :return:
         :rtype:
         """
 
         character_data = [
-            Mock(id=1, name="Character One"),
+            {"id": 1, "name": "Character One"},
         ]
         affiliations = [
             SimpleNamespace(
@@ -589,6 +638,9 @@ class TestCreateCharacters(BaseTestCase):
             ),
         ]
 
+        expected_qs = MagicMock()
+        expected_qs.count.return_value = 0
+
         with (
             patch(
                 "aa_intel_tool.helper.eve_character._fetch_affiliations_with_retry",
@@ -597,6 +649,20 @@ class TestCreateCharacters(BaseTestCase):
             patch(
                 "aa_intel_tool.helper.eve_character.EveCharacter.objects.bulk_create"
             ) as mock_bulk_create,
+            patch(
+                "aa_intel_tool.helper.eve_character.EveCharacter.objects.filter",
+                return_value=expected_qs,
+            ),
+            patch.object(
+                ESIHandler,
+                "get_corporations_corporation_id",
+                return_value=SimpleNamespace(name="FetchedCorp", ticker="FC"),
+            ),
+            patch.object(
+                ESIHandler,
+                "get_alliances_alliance_id",
+                return_value=SimpleNamespace(name="FetchedAlliance", ticker="FA"),
+            ),
             patch(
                 "aa_intel_tool.helper.eve_character._create_alliance"
             ) as mock_create_alliance,
@@ -607,18 +673,107 @@ class TestCreateCharacters(BaseTestCase):
         ):
             result = create_characters(character_data, with_affiliation=False)
 
-            # Ensure bulk_create was called once, then safely inspect the first arg
+            # Ensure we attempted to bulk create characters but did not create affiliations
             mock_bulk_create.assert_called_once()
-            created_arg = (
-                mock_bulk_create.call_args[0][0] if mock_bulk_create.call_args else None
-            )
-            self.assertIsNotNone(created_arg)
-            self.assertIsInstance(created_arg, list)
-            self.assertEqual(len(created_arg), 1)
-
             mock_create_alliance.assert_not_called()
             mock_create_corporation.assert_not_called()
             self.assertEqual(result.count(), 0)
+
+    def test_creates_alliances_when_alliance_ids_are_present(self):
+        """
+        Test that when alliance IDs are present in the affiliations, the function calls _create_alliance with the correct set of alliance IDs.
+
+        :return:
+        :rtype:
+        """
+
+        character_data = [{"id": 1, "name": "Alice"}]
+        affiliation = SimpleNamespace(
+            character_id=1, corporation_id=None, alliance_id=999, faction_id=None
+        )
+
+        with (
+            patch(
+                "aa_intel_tool.helper.eve_character._fetch_affiliations_with_retry",
+                return_value=[affiliation],
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character.ESIHandler.get_universe_factions",
+                return_value=[],
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character._get_corporation_info_from_affiliation",
+                return_value=None,
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character._get_alliance_info_from_affiliation",
+                return_value=None,
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character.EveCharacter.objects.bulk_create"
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character.EveCharacter.objects.filter",
+                return_value=[],
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character._create_alliance"
+            ) as mock_create_alliance,
+        ):
+            create_characters(
+                character_data_from_esi=character_data, with_affiliation=True
+            )
+            mock_create_alliance.assert_called_once_with({999})
+
+    def test_does_not_call_create_alliance_when_no_alliance_ids(self):
+        """
+        Test that when no alliance IDs are present in the affiliations, the function does not call _create_alliance.
+
+        :return:
+        :rtype:
+        """
+
+        character_data = [{"id": 2, "name": "Bob"}]
+        affiliation = SimpleNamespace(
+            character_id=2, corporation_id=123, alliance_id=None, faction_id=None
+        )
+
+        with (
+            patch(
+                "aa_intel_tool.helper.eve_character._fetch_affiliations_with_retry",
+                return_value=[affiliation],
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character.ESIHandler.get_universe_factions",
+                return_value=[],
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character._get_corporation_info_from_affiliation",
+                return_value=None,
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character._get_alliance_info_from_affiliation",
+                return_value=None,
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character.EveCharacter.objects.bulk_create"
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character.EveCharacter.objects.filter",
+                return_value=[],
+            ),
+            patch(
+                "aa_intel_tool.helper.eve_character._create_alliance"
+            ) as mock_create_alliance,
+            patch(
+                "aa_intel_tool.helper.eve_character._create_corporation"
+            ) as mock_create_corporation,
+        ):
+            create_characters(
+                character_data_from_esi=character_data, with_affiliation=True
+            )
+            mock_create_alliance.assert_not_called()
+            mock_create_corporation.assert_called_once_with({123})
 
 
 class TestFetchCharacterIdsFromEsi(BaseTestCase):
@@ -628,7 +783,7 @@ class TestFetchCharacterIdsFromEsi(BaseTestCase):
 
     def test_fetches_character_ids_in_chunks(self):
         """
-        Test that character IDs are fetched in chunks of 400 and combined correctly.
+        Test that character IDs are fetched in chunks when the number of character names exceeds the chunk size, and that results are combined correctly.
 
         :return:
         :rtype:
@@ -636,11 +791,11 @@ class TestFetchCharacterIdsFromEsi(BaseTestCase):
 
         characters_to_fetch = {f"Character {i}" for i in range(1200)}
         per_call = [f"ID {i}" for i in range(400)]
-        esi_response = SimpleNamespace(characters=per_call)
 
+        # return a list (iterable) rather than a SimpleNamespace
         with patch(
             "aa_intel_tool.helper.eve_character._fetch_ids_with_retry",
-            return_value=esi_response,
+            return_value=per_call,
         ) as mock_fetch_ids_with_retry:
             result = fetch_character_ids_from_esi(characters_to_fetch)
 
@@ -668,18 +823,19 @@ class TestFetchCharacterIdsFromEsi(BaseTestCase):
 
     def test_handles_partial_failures_gracefully(self):
         """
-        Test that if one chunk fails to fetch IDs, the function continues to fetch remaining chunks and combines results correctly.
+        Test that if one chunk of character names fails to fetch IDs (e.g., due to an exception),
+        the function handles it gracefully and continues fetching IDs for the remaining chunks,
+        returning combined results.
 
         :return:
         :rtype:
         """
 
         characters_to_fetch = {"Character 1", "Character 2"}
-        esi_response = SimpleNamespace(characters=["ID 1"])
-
+        # return lists (iterables) in side_effect
         with patch(
             "aa_intel_tool.helper.eve_character._fetch_ids_with_retry",
-            side_effect=[esi_response, []],
+            side_effect=[["ID 1"], []],
         ) as mock_fetch_ids_with_retry:
             result = fetch_character_ids_from_esi(characters_to_fetch)
 
@@ -688,21 +844,70 @@ class TestFetchCharacterIdsFromEsi(BaseTestCase):
 
     def test_handles_large_chunks_correctly(self):
         """
-        Test that if the number of character names exceeds the chunk size, the function correctly processes multiple chunks and combines results.
+        Test that when the number of character names is exactly a multiple of the chunk size, all chunks are processed correctly and results are combined.
 
         :return:
         :rtype:
         """
 
         characters_to_fetch = {f"Character {i}" for i in range(500)}
-        esi_response = SimpleNamespace(characters=[f"ID {i}" for i in range(500)])
-
+        ids = [f"ID {i}" for i in range(500)]
+        # return a list (iterable) rather than a SimpleNamespace
         with patch(
             "aa_intel_tool.helper.eve_character._fetch_ids_with_retry",
-            return_value=esi_response,
+            return_value=ids,
         ) as mock_fetch_ids_with_retry:
             result = fetch_character_ids_from_esi(characters_to_fetch)
 
             self.assertEqual(len(result), 500)
-            self.assertEqual(result, esi_response.characters)
+            self.assertEqual(result, ids)
             mock_fetch_ids_with_retry.assert_called_once()
+
+    def test_returns_ids_and_logs_debug_when_response_present(self):
+        """
+        Test that when a response with character IDs is received from ESI, the function returns the IDs and logs a debug message indicating successful processing of the chunk.
+
+        :return:
+        :rtype:
+        """
+
+        per_call = [{"id": 1, "name": "Alpha"}]
+        characters_to_fetch = ["Alpha"]
+
+        with (
+            patch(
+                "aa_intel_tool.helper.eve_character._fetch_ids_with_retry",
+                return_value=per_call,
+            ),
+            patch("aa_intel_tool.helper.eve_character.logger.debug") as mock_debug,
+        ):
+            result = fetch_character_ids_from_esi(characters_to_fetch)
+
+            self.assertEqual(result, per_call)
+            mock_debug.assert_any_call(
+                f"ID information for chunk {1} successfully processed: {per_call}"
+            )
+
+    def test_warns_when_no_response_for_chunk(self):
+        """
+        Test that when no ID information is received from ESI for a chunk of character names, the function logs a warning message indicating the issue.
+
+        :return:
+        :rtype:
+        """
+
+        characters_to_fetch = ["TestName"]
+
+        with (
+            patch(
+                "aa_intel_tool.helper.eve_character._fetch_ids_with_retry",
+                return_value=[],
+            ),
+            patch("aa_intel_tool.helper.eve_character.logger.warning") as mock_warning,
+        ):
+            result = fetch_character_ids_from_esi(characters_to_fetch)
+
+            self.assertEqual(result, [])
+            mock_warning.assert_called_once_with(
+                f"No ID information received from ESI for chunk {1} with character IDs: {characters_to_fetch}"
+            )

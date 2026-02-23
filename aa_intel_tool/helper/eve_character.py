@@ -159,7 +159,13 @@ def _fetch_affiliations_with_retry(chunk: list[int]) -> list[dict[str, Any]]:
     """
 
     try:
-        return ESIHandler.post_characters_affiliation(ids=chunk) or []
+        affiliations = ESIHandler.post_characters_affiliation(ids=chunk)
+
+        logger.debug(
+            f"Affiliation information for character IDs {chunk} received from ESI: {affiliations}"
+        )
+
+        return affiliations
     except Exception as exc:  # pylint: disable=broad-exception-caught
         if len(chunk) <= 1:
             # last entry failed — ignore it
@@ -174,11 +180,12 @@ def _fetch_affiliations_with_retry(chunk: list[int]) -> list[dict[str, Any]]:
         right = _fetch_affiliations_with_retry(chunk[mid:])
         results = []
 
-        if left:
-            results.extend(left)
+        results.extend(left or [])
+        results.extend(right or [])
 
-        if right:
-            results.extend(right)
+        logger.debug(
+            f"Affiliation information for character IDs {chunk} received from ESI after retry: {results}"
+        )
 
         return results
 
@@ -194,7 +201,20 @@ def _fetch_ids_with_retry(chunk: list[str]) -> list[dict[str, Any]]:
     """
 
     try:
-        return ESIHandler.post_universe_ids(names=chunk) or []
+        response = ESIHandler.post_universe_ids(names=chunk)
+
+        logger.debug(f"ID information for names {chunk} received from ESI: {response}")
+
+        try:
+            response_as_dict = response.model_dump()
+        except AttributeError:
+            response_as_dict = {}
+
+        logger.debug(f"ID information after model_dump: {response_as_dict}")
+
+        return (
+            response_as_dict["characters"] if "characters" in response_as_dict else []
+        )
     except Exception as exc:  # pylint: disable=broad-exception-caught
         if len(chunk) <= 1:
             # last entry failed — ignore it
@@ -205,21 +225,38 @@ def _fetch_ids_with_retry(chunk: list[str]) -> list[dict[str, Any]]:
             return []
 
         mid = len(chunk) // 2
+
+        # Recursively fetch left half of the chunk, and handle potential AttributeError when calling model_dump()
         left = _fetch_ids_with_retry(chunk[:mid])
+        try:
+            left_as_dict = left.model_dump()
+        except AttributeError:
+            left_as_dict = {}
+
+        # Recursively fetch right half of the chunk, and handle potential AttributeError when calling model_dump()
         right = _fetch_ids_with_retry(chunk[mid:])
+        try:
+            right_as_dict = right.model_dump()
+        except AttributeError:
+            right_as_dict = {}
+
         results = []
 
-        if left:
-            results.extend(left)
+        # Extract "characters" from left response if available, and handle cases where model_dump() might not return a dict
+        results.extend(left_as_dict.get("characters", []))
 
-        if right:
-            results.extend(right)
+        # Extract "characters" from right response if available, and handle cases where model_dump() might not return a dict
+        results.extend(right_as_dict.get("characters", []))
+
+        logger.debug(
+            f"ID information for names received from ESI after retry: {results}"
+        )
 
         return results
 
 
 def create_characters(  # pylint: disable=too-many-locals
-    character_data_from_esi: Iterable[int], with_affiliation: bool = True
+    character_data_from_esi: list[dict[str, Any]], with_affiliation: bool = True
 ) -> QuerySet[EveCharacter]:
     """
     Bulk creation of EveCharacter objects
@@ -232,14 +269,18 @@ def create_characters(  # pylint: disable=too-many-locals
     :rtype:
     """
 
+    logger.debug(
+        f"Character list: {character_data_from_esi} (#{len(character_data_from_esi)} characters) received for creation."
+    )
+
     affiliations = []
     affiliation_ids = {"alliances": set(), "corporations": set()}
     characters_to_create = []
     chunk_size = 1000  # ESI affiliation endpoint accepts up to 1000 IDs per request
 
     # Materialize input iterable so names remain available and build id->name map
-    character_ids_list = [c.id for c in character_data_from_esi]
-    id_to_name = {c.id: getattr(c, "name", None) for c in character_data_from_esi}
+    character_ids_list = [c["id"] for c in character_data_from_esi]
+    id_to_name = {c["id"]: c["name"] for c in character_data_from_esi}
 
     for loop_count, chunk in enumerate(
         [
@@ -251,6 +292,10 @@ def create_characters(  # pylint: disable=too-many-locals
         logger.debug(f"Processing chunk {loop_count} with {len(chunk)} character(s) …")
 
         esi_response = _fetch_affiliations_with_retry(chunk=chunk)
+
+        logger.debug(
+            f"Affiliation information for chunk {loop_count} received from ESI: {esi_response}"
+        )
 
         # Attach name from the original input when character_id matches
         affiliations.extend(
@@ -267,7 +312,7 @@ def create_characters(  # pylint: disable=too-many-locals
         )
 
     logger.debug(
-        f"Affiliation information for {len(affiliations)} character(s) received from ESI: {affiliations}"
+        f"Affiliation information received from ESI: {affiliations} (#{len(affiliations)} affiliations)"
     )
 
     logger.info(
@@ -321,10 +366,22 @@ def create_characters(  # pylint: disable=too-many-locals
     # Only perform bulk_create when we actually have objects to create.
     if characters_to_create:
         logger.debug(
-            "Prepared %d Character objects for bulk creation.",
-            len(characters_to_create),
+            f"Character objects to bulk create: count={len(characters_to_create)}; "
+            f"Example: {[c.character_name for c in characters_to_create[:10]]}"
         )
-        EveCharacter.objects.bulk_create(characters_to_create)
+
+        chunk_size = 500
+        total_chunks = (len(characters_to_create) + chunk_size - 1) // chunk_size
+        for idx in range(0, len(characters_to_create), chunk_size):
+            chunk = characters_to_create[idx : idx + chunk_size]
+            EveCharacter.objects.bulk_create(chunk)
+
+            logger.debug(
+                "Bulk created %d Character objects (chunk %d/%d).",
+                len(chunk),
+                idx // chunk_size + 1,
+                total_chunks,
+            )
     else:
         logger.debug("No Character objects to bulk create; skipping bulk_create.")
 
@@ -364,7 +421,23 @@ def fetch_character_ids_from_esi(characters_to_fetch: set[Any]) -> list:
 
         esi_response = _fetch_ids_with_retry(chunk=chunk)
 
-        if esi_response.characters:
-            fetched_characters.extend(esi_response.characters)
+        logger.debug(
+            f"ID information for chunk {loop_count} received from ESI: {esi_response}"
+        )
+
+        if esi_response:
+            fetched_characters += esi_response
+
+            logger.debug(
+                f"ID information for chunk {loop_count} successfully processed: {esi_response}"
+            )
+        else:
+            logger.warning(
+                f"No ID information received from ESI for chunk {loop_count} with character IDs: {chunk}"
+            )
+
+    logger.debug(
+        f"ID information for all chunks received from ESI: {fetched_characters} (#{len(fetched_characters)} characters)"
+    )
 
     return fetched_characters
