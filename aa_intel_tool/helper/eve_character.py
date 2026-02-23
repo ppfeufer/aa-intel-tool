@@ -109,6 +109,10 @@ def _get_corporation_info_from_affiliation(
     corporation_id = affiliation_data.get("corporation_id")
 
     if corporation_id in temp_corp_data:
+        logger.debug(
+            f"Corporation information for corporation ID {corporation_id} retrieved from temporary cache."
+        )
+
         return temp_corp_data[corporation_id]
 
     corp_info = ESIHandler.get_corporations_corporation_id(
@@ -137,6 +141,10 @@ def _get_alliance_info_from_affiliation(
         return None
 
     if alliance_id in temp_alliance_data:
+        logger.debug(
+            f"Alliance information for alliance ID {alliance_id} retrieved from temporary cache."
+        )
+
         return temp_alliance_data[alliance_id]
 
     alliance_info = ESIHandler.get_alliances_alliance_id(
@@ -297,17 +305,20 @@ def create_characters(  # pylint: disable=too-many-locals
             f"Affiliation information for chunk {loop_count} received from ESI: {esi_response}"
         )
 
-        # Attach name from the original input when character_id matches
+        # Build affiliation data for characters in the current chunk,
+        # while filtering out Doomheim (corporation ID 1000001) and
+        # handling potential missing attributes in the ESI response
         affiliations.extend(
             [
                 {
                     "character_id": item.character_id,
                     "character_name": id_to_name.get(item.character_id),
-                    "corporation_id": getattr(item, "corporation_id", None),
+                    "corporation_id": getattr(item, "corporation_id"),
                     "alliance_id": getattr(item, "alliance_id", None),
                     "faction_id": getattr(item, "faction_id", None),
                 }
                 for item in esi_response
+                if getattr(item, "corporation_id") != 1000001  # Doomheim (ID 1000001)
             ]
         )
 
