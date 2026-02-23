@@ -37,6 +37,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- `context["parser_title"]` being set at the wrong time
+
 ### Changed
 
 - Replace `eveuniverse` with ESI calls in chatscans to speed things up a little bit
