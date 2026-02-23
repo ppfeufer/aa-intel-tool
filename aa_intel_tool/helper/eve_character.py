@@ -7,6 +7,7 @@ from collections.abc import Iterable
 from typing import Any
 
 # Django
+from django.db import transaction
 from django.db.models import QuerySet
 
 # Alliance Auth
@@ -383,25 +384,28 @@ def create_characters(  # pylint: disable=too-many-locals
 
         chunk_size = 500
         total_chunks = (len(characters_to_create) + chunk_size - 1) // chunk_size
-        for idx in range(0, len(characters_to_create), chunk_size):
-            chunk = characters_to_create[idx : idx + chunk_size]
-            EveCharacter.objects.bulk_create(chunk)
 
-            logger.debug(
-                "Bulk created %d Character objects (chunk %d/%d).",
-                len(chunk),
-                idx // chunk_size + 1,
-                total_chunks,
-            )
+        with transaction.atomic():
+            for idx in range(0, len(characters_to_create), chunk_size):
+                chunk = characters_to_create[idx : idx + chunk_size]
+                EveCharacter.objects.bulk_create(chunk)
+
+                logger.debug(
+                    "Bulk created %d Character objects (chunk %d/%d).",
+                    len(chunk),
+                    idx // chunk_size + 1,
+                    total_chunks,
+                )
     else:
         logger.debug("No Character objects to bulk create; skipping bulk_create.")
 
-    if with_affiliation:
-        if affiliation_ids["alliances"]:
-            _create_alliance(affiliation_ids["alliances"])
+    with transaction.atomic():
+        if with_affiliation:
+            if affiliation_ids["alliances"]:
+                _create_alliance(affiliation_ids["alliances"])
 
-        if affiliation_ids["corporations"]:
-            _create_corporation(affiliation_ids["corporations"])
+            if affiliation_ids["corporations"]:
+                _create_corporation(affiliation_ids["corporations"])
 
     return EveCharacter.objects.filter(character_id__in=character_ids_list)
 
