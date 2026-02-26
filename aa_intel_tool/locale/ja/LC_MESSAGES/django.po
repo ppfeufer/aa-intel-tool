@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-02-03 12:23+0100\n"
+"POT-Creation-Date: 2026-02-26 12:04+0100\n"
 "PO-Revision-Date: 2026-01-28 15:53+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Japanese <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ja/>\n"
@@ -162,29 +162,21 @@ msgstr "適切なパーサーが見つかりません。入力はサポートさ
 msgid "No data to parse …"
 msgstr "パースすべきデータが存在しません…"
 
-#: aa_intel_tool/parser/module/chatlist.py:61
-msgid "Something went wrong while fetching the character information from ESI."
-msgstr "ESIからキャラクター情報を取得中に問題が発生しました。"
-
-#: aa_intel_tool/parser/module/chatlist.py:69
-msgid "Character unknown to ESI."
-msgstr "ESI上にないキャラクターです。"
-
-#: aa_intel_tool/parser/module/chatlist.py:258
+#: aa_intel_tool/parser/module/chatlist.py:269
 msgid "The chat list module is currently disabled."
 msgstr "チャットリストモジュールは現在無効化されています。"
 
-#: aa_intel_tool/parser/module/chatlist.py:277
+#: aa_intel_tool/parser/module/chatlist.py:288
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
 msgstr[0] "チャットスキャンは現在、1回のスキャンにつき最大{max_allowed_pilots}名のパイロットに制限されています。指定されたパイロットリストはこの制限を超えています。"
 
-#: aa_intel_tool/parser/module/dscan.py:361
+#: aa_intel_tool/parser/module/dscan.py:356
 msgid "The D-Scan module is currently disabled."
 msgstr "D-Scanモジュールは現在無効化されています。"
 
-#: aa_intel_tool/parser/module/fleetcomp.py:181
+#: aa_intel_tool/parser/module/fleetcomp.py:176
 msgid "The fleet composition module is currently disabled."
 msgstr "フリート編成モジュールは現在無効化されています。"
 
@@ -401,19 +393,25 @@ msgstr "システム（星系）"
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:54
+#: aa_intel_tool/views/general.py:56
 #, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:66
+#: aa_intel_tool/views/general.py:68
 #, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:107 aa_intel_tool/views/general.py:137
+#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:140
 msgid "The scan you were looking for could not be found."
 msgstr ""
+
+#~ msgid "Something went wrong while fetching the character information from ESI."
+#~ msgstr "ESIからキャラクター情報を取得中に問題が発生しました。"
+
+#~ msgid "Character unknown to ESI."
+#~ msgstr "ESI上にないキャラクターです。"
 
 #, python-brace-format
 #~ msgid "Intel Parser v{__version__}"

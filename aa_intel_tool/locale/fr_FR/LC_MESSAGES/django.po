@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-02-03 12:23+0100\n"
+"POT-Creation-Date: 2026-02-26 12:04+0100\n"
 "PO-Revision-Date: 2025-08-03 04:24+0000\n"
 "Last-Translator: The “Devcutter” Guy <mick162534@gmail.com>\n"
 "Language-Team: French <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/fr/>\n"
@@ -168,30 +168,22 @@ msgstr ""
 msgid "No data to parse …"
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:61
-msgid "Something went wrong while fetching the character information from ESI."
-msgstr "Quelque chose s'est mal passé lors de la recherche d'information sur le personnage depuis l'ESI."
-
-#: aa_intel_tool/parser/module/chatlist.py:69
-msgid "Character unknown to ESI."
-msgstr "Personnage inconnu de l'ESI."
-
-#: aa_intel_tool/parser/module/chatlist.py:258
+#: aa_intel_tool/parser/module/chatlist.py:269
 msgid "The chat list module is currently disabled."
 msgstr "Le module de liste de discussion est désactivé pour le moment."
 
-#: aa_intel_tool/parser/module/chatlist.py:277
+#: aa_intel_tool/parser/module/chatlist.py:288
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
 msgstr[0] "Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} pilote par scan. Votre liste de pilote dépasse cette limite."
 msgstr[1] "Le scan de la conversation est limitée pour le moment a {max_allowed_pilots} pilotes par scan. Votre liste de pilote dépasse cette limite."
 
-#: aa_intel_tool/parser/module/dscan.py:361
+#: aa_intel_tool/parser/module/dscan.py:356
 msgid "The D-Scan module is currently disabled."
 msgstr "Le module de scanner directionnel est désactivé pour le moment."
 
-#: aa_intel_tool/parser/module/fleetcomp.py:181
+#: aa_intel_tool/parser/module/fleetcomp.py:176
 msgid "The fleet composition module is currently disabled."
 msgstr "Le module de composition de flotte est désactivé pour le moment."
 
@@ -414,22 +406,28 @@ msgstr "Système"
 msgid "Participation details"
 msgstr "Détails de la participation"
 
-#: aa_intel_tool/views/general.py:54
+#: aa_intel_tool/views/general.py:56
 #, fuzzy, python-brace-format
 #| msgid "The provided data could not be parsed."
 msgid "The provided data could not be parsed. ({exc})"
 msgstr "Les données fournies n'ont pas pu être analysées."
 
-#: aa_intel_tool/views/general.py:66
+#: aa_intel_tool/views/general.py:68
 #, fuzzy, python-brace-format
 #| msgid "(System Error) Something unexpected happened."
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr "(System Error) un imprévu est arrivé."
 
-#: aa_intel_tool/views/general.py:107 aa_intel_tool/views/general.py:137
+#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:140
 #, fuzzy
 msgid "The scan you were looking for could not be found."
 msgstr "Les scans que vous cherchez n'ont pas été trouvés."
+
+#~ msgid "Something went wrong while fetching the character information from ESI."
+#~ msgstr "Quelque chose s'est mal passé lors de la recherche d'information sur le personnage depuis l'ESI."
+
+#~ msgid "Character unknown to ESI."
+#~ msgstr "Personnage inconnu de l'ESI."
 
 #, python-brace-format
 #~ msgid "Intel Parser v{__version__}"
