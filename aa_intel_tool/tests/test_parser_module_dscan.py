@@ -60,7 +60,7 @@ class TestParseDScan(BaseTestCase):
                 return_value=(None, {}, {"all": []}),
             ),
             patch(
-                "aa_intel_tool.parser.module.dscan.EveType.objects.bulk_get_or_create_esi",
+                "aa_intel_tool.parser.module.dscan.ItemType.objects.filter",
                 return_value=MagicMock(values_list=MagicMock(return_value=[])),
             ),
             patch(
@@ -123,7 +123,7 @@ class TestParseDScan(BaseTestCase):
                 return_value=("Destination", {"all": {1: 2}}, {"all": [1]}),
             ),
             patch(
-                "aa_intel_tool.parser.module.dscan.EveType.objects.bulk_get_or_create_esi"
+                "aa_intel_tool.parser.module.dscan.ItemType.objects.filter"
             ) as mock_bulk_get,
             patch(
                 "aa_intel_tool.parser.module.dscan._get_ships",

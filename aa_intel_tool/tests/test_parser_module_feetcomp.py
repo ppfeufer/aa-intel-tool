@@ -3,6 +3,7 @@ Unit tests for the fleetcomp parser module.
 """
 
 # Standard Library
+from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 # AA Intel Tool
@@ -24,6 +25,13 @@ class TestGetFleetComposition(BaseTestCase):
     """
 
     def test_returns_correct_fleet_composition_with_valid_data(self):
+        """
+        Test that get_fleet_composition returns the correct fleet composition when provided with valid pilots and ships data.
+
+        :return:
+        :rtype:
+        """
+
         pilots = {
             "Pilot 1": {"ship": "Ship Class 1"},
             "Pilot 2": {"ship": "Ship Class 2"},
@@ -32,79 +40,51 @@ class TestGetFleetComposition(BaseTestCase):
             "class": {"Ship Class 1": {"count": 1}, "Ship Class 2": {"count": 1}},
             "type": {"Group 1": {"count": 0}, "Group 2": {"count": 0}},
         }
-        ship_class_ids = [1, 2]
         ship_class_details = [
-            type(
-                "SC",
-                (),
-                {
-                    "id": 1,
-                    "name": "Ship Class 1",
-                    "eve_group__id": 10,
-                    "eve_group__name": "Group 1",
-                    "mass": 1000,
-                },
-            )(),
-            type(
-                "SC",
-                (),
-                {
-                    "id": 2,
-                    "name": "Ship Class 2",
-                    "eve_group__id": 20,
-                    "eve_group__name": "Group 2",
-                    "mass": 2000,
-                },
-            )(),
+            SimpleNamespace(
+                id=1,
+                name="Ship Class 1",
+                group__id=10,
+                group__name="Group 1",
+                mass=1000,
+            ),
+            SimpleNamespace(
+                id=2,
+                name="Ship Class 2",
+                group__id=20,
+                group__name="Group 2",
+                mass=2000,
+            ),
         ]
         pilot_details = [
-            type(
-                "P",
-                (),
-                {
-                    "character_name": "Pilot 1",
-                    "character_id": 101,
-                    "portrait_url_32": "url1",
-                },
-            )(),
-            type(
-                "P",
-                (),
-                {
-                    "character_name": "Pilot 2",
-                    "character_id": 102,
-                    "portrait_url_32": "url2",
-                },
-            )(),
+            SimpleNamespace(
+                character_name="Pilot 1",
+                character_id=101,
+                portrait_url_32="url1",
+            ),
+            SimpleNamespace(
+                character_name="Pilot 2",
+                character_id=102,
+                portrait_url_32="url2",
+            ),
         ]
 
-        fetch_qs = MagicMock()
-        fetch_filter_qs = MagicMock()
-        fetch_filter_qs.values_list.return_value = ship_class_ids
-        fetch_qs.filter.return_value = fetch_filter_qs
-
-        bulk_qs = MagicMock()
-        bulk_qs.values_list.return_value = ship_class_details
+        itemtype_filter_qs = MagicMock()
+        itemtype_filter_qs.values_list.return_value = ship_class_details
 
         with (
             patch(
-                "aa_intel_tool.parser.module.fleetcomp.EveEntity.objects.fetch_by_names_esi",
-                return_value=fetch_qs,
-            ) as mock_fetch,
-            patch(
-                "aa_intel_tool.parser.module.fleetcomp.EveType.objects.bulk_get_or_create_esi",
-                return_value=bulk_qs,
-            ) as mock_bulk_get,
+                "aa_intel_tool.parser.module.fleetcomp.ItemType.objects.filter",
+                return_value=itemtype_filter_qs,
+            ) as mock_filter,
             patch(
                 "aa_intel_tool.parser.module.fleetcomp._get_character_info",
                 return_value=pilot_details,
             ) as mock_get_character_info,
         ):
             result = get_fleet_composition(pilots=pilots, ships=ships)
-            mock_fetch.assert_called_once_with(names=ships["class"], update=True)
-            mock_bulk_get.assert_called_once_with(
-                ids=set(ship_class_ids), include_children=True
-            )
+
+            mock_filter.assert_called_once_with(name__in=ships["class"])
             mock_get_character_info.assert_called_once_with(
                 scan_data=["Pilot 1", "Pilot 2"]
             )
@@ -113,40 +93,45 @@ class TestGetFleetComposition(BaseTestCase):
             self.assertEqual(len(result["pilots"]), 2)
 
     def test_handles_empty_pilots_and_ships_gracefully(self):
+        """
+        Test that get_fleet_composition handles empty pilots and ships dictionaries gracefully without raising errors.
+
+        :return:
+        :rtype:
+        """
+
         pilots = {}
         ships = {"class": {}, "type": {}}
 
-        fetch_qs = MagicMock()
-        fetch_filter_qs = MagicMock()
-        fetch_filter_qs.values_list.return_value = []
-        fetch_qs.filter.return_value = fetch_filter_qs
-
-        bulk_qs = MagicMock()
-        bulk_qs.values_list.return_value = []
+        itemtype_filter_qs = MagicMock()
+        itemtype_filter_qs.values_list.return_value = []
 
         with (
             patch(
-                "aa_intel_tool.parser.module.fleetcomp.EveEntity.objects.fetch_by_names_esi",
-                return_value=fetch_qs,
-            ) as mock_fetch,
-            patch(
-                "aa_intel_tool.parser.module.fleetcomp.EveType.objects.bulk_get_or_create_esi",
-                return_value=bulk_qs,
-            ) as mock_bulk_get,
+                "aa_intel_tool.parser.module.fleetcomp.ItemType.objects.filter",
+                return_value=itemtype_filter_qs,
+            ) as mock_filter,
             patch(
                 "aa_intel_tool.parser.module.fleetcomp._get_character_info",
                 return_value=[],
             ) as mock_get_character_info,
         ):
             result = get_fleet_composition(pilots=pilots, ships=ships)
-            mock_fetch.assert_called_once_with(names=ships["class"], update=True)
-            mock_bulk_get.assert_called_once_with(ids=set(), include_children=True)
+
+            mock_filter.assert_called_once_with(name__in=ships["class"])
             mock_get_character_info.assert_called_once_with(scan_data=[])
             self.assertEqual(result["classes"], [])
             self.assertEqual(result["types"], [])
             self.assertEqual(result["pilots"], [])
 
     def test_raises_error_when_ship_class_not_found(self):
+        """
+        Test that get_fleet_composition raises a StopIteration error when a ship class in the pilots dictionary is not found in the ships dictionary.
+
+        :return:
+        :rtype:
+        """
+
         pilots = {
             "Pilot 1": {"ship": "Unknown Ship Class"},
         }
@@ -155,32 +140,19 @@ class TestGetFleetComposition(BaseTestCase):
             "type": {},
         }
 
-        fetch_qs = MagicMock()
-        fetch_filter_qs = MagicMock()
-        fetch_filter_qs.values_list.return_value = []
-        fetch_qs.filter.return_value = fetch_filter_qs
+        itemtype_filter_qs = MagicMock()
+        itemtype_filter_qs.values_list.return_value = []
 
-        bulk_qs = MagicMock()
-        bulk_qs.values_list.return_value = []
-
-        missing_pilot = type(
-            "P",
-            (),
-            {
-                "character_name": "Pilot 1",
-                "character_id": 101,
-                "portrait_url_32": "url1",
-            },
-        )()
+        missing_pilot = SimpleNamespace(
+            character_name="Pilot 1",
+            character_id=101,
+            portrait_url_32="url1",
+        )
 
         with (
             patch(
-                "aa_intel_tool.parser.module.fleetcomp.EveEntity.objects.fetch_by_names_esi",
-                return_value=fetch_qs,
-            ),
-            patch(
-                "aa_intel_tool.parser.module.fleetcomp.EveType.objects.bulk_get_or_create_esi",
-                return_value=bulk_qs,
+                "aa_intel_tool.parser.module.fleetcomp.ItemType.objects.filter",
+                return_value=itemtype_filter_qs,
             ),
             patch(
                 "aa_intel_tool.parser.module.fleetcomp._get_character_info",
@@ -197,8 +169,17 @@ class TestParseLine(BaseTestCase):
     """
 
     def test_parses_line_with_all_fields_correctly(self):
+        """
+        Test that parse_line correctly parses a line with all expected fields and returns a list of the parsed values.
+
+        :return:
+        :rtype:
+        """
+
         line = "Pilot Name\tSystem Name\tShip Class\tShip Type\tPosition\tFC\tWing Name"
+
         result = parse_line(line)
+
         self.assertEqual(
             result,
             [
@@ -219,6 +200,13 @@ class TestUpdateShips(BaseTestCase):
     """
 
     def test_updates_ships_with_new_class_and_type(self):
+        """
+        Test that update_ships correctly updates the ships dictionary with a new ship class and type when they are not already present.
+
+        :return:
+        :rtype:
+        """
+
         ships = {"class": {}, "type": {}}
         line = [
             "Pilot Name",
@@ -229,11 +217,20 @@ class TestUpdateShips(BaseTestCase):
             "",
             "",
         ]
+
         result = update_ships(ships, line)
+
         self.assertEqual(result["class"], {"New Ship Class": {"count": 1}})
         self.assertEqual(result["type"], {"New Ship Type": {"count": 1}})
 
     def test_increments_count_for_existing_class_and_type(self):
+        """
+        Test that update_ships correctly increments the count for an existing ship class and type in the ships dictionary.
+
+        :return:
+        :rtype:
+        """
+
         ships = {
             "class": {"Existing Ship Class": {"count": 1}},
             "type": {"Existing Ship Type": {"count": 2}},
@@ -247,21 +244,41 @@ class TestUpdateShips(BaseTestCase):
             "",
             "",
         ]
+
         result = update_ships(ships, line)
+
         self.assertEqual(result["class"], {"Existing Ship Class": {"count": 2}})
         self.assertEqual(result["type"], {"Existing Ship Type": {"count": 3}})
 
     def test_handles_empty_ships_dict(self):
+        """
+        Test that update_ships correctly handles an empty ships dictionary and initializes the counts for new ship classes and types.
+
+        :return:
+        :rtype:
+        """
+
         ships = {"class": {}, "type": {}}
         line = ["Pilot Name", "System Name", "", "", "", "", ""]
+
         result = update_ships(ships, line)
+
         self.assertEqual(result["class"], {"": {"count": 1}})
         self.assertEqual(result["type"], {"": {"count": 1}})
 
     def test_handles_empty_line(self):
+        """
+        Test that update_ships correctly handles an empty line and updates the ships dictionary with empty strings for class and type.
+
+        :return:
+        :rtype:
+        """
+
         ships = {"class": {}, "type": {}}
         line = ["", "", "", "", "", "", ""]
+
         result = update_ships(ships, line)
+
         self.assertEqual(result["class"], {"": {"count": 1}})
         self.assertEqual(result["type"], {"": {"count": 1}})
 
@@ -272,6 +289,13 @@ class TestHandleFleetCompositionAndParticipation(BaseTestCase):
     """
 
     def test_returns_fleet_composition_and_participation_when_chat_scan_enabled(self):
+        """
+        Test that handle_fleet_composition_and_participation returns both the fleet composition and participation data when the chat scan module is enabled.
+
+        :return:
+        :rtype:
+        """
+
         pilots = {"Pilot 1": {"ship": "Ship Class 1"}}
         ships = {
             "class": {"Ship Class 1": {"count": 1}},
@@ -295,6 +319,7 @@ class TestHandleFleetCompositionAndParticipation(BaseTestCase):
             ),
         ):
             result = handle_fleet_composition_and_participation(pilots, ships)
+
             mock_get_fleet_composition.assert_called_once_with(
                 pilots=pilots, ships=ships
             )
@@ -304,6 +329,13 @@ class TestHandleFleetCompositionAndParticipation(BaseTestCase):
             self.assertEqual(result, (fleet_composition, participation))
 
     def test_returns_fleet_composition_and_none_when_chat_scan_disabled(self):
+        """
+        Test that handle_fleet_composition_and_participation returns the fleet composition and None for participation when the chat scan module is disabled.
+
+        :return:
+        :rtype:
+        """
+
         pilots = {"Pilot 1": {"ship": "Ship Class 1"}}
         ships = {
             "class": {"Ship Class 1": {"count": 1}},
@@ -322,12 +354,20 @@ class TestHandleFleetCompositionAndParticipation(BaseTestCase):
             ),
         ):
             result = handle_fleet_composition_and_participation(pilots, ships)
+
             mock_get_fleet_composition.assert_called_once_with(
                 pilots=pilots, ships=ships
             )
             self.assertEqual(result, (fleet_composition, None))
 
     def test_handles_empty_pilots_and_ships(self):
+        """
+        Test that handle_fleet_composition_and_participation correctly handles empty pilots and ships dictionaries and returns the expected fleet composition and None for participation.
+
+        :return:
+        :rtype:
+        """
+
         pilots = {}
         ships = {"class": {}, "type": {}}
         fleet_composition = {"classes": [], "types": [], "pilots": []}
@@ -343,6 +383,7 @@ class TestHandleFleetCompositionAndParticipation(BaseTestCase):
             ),
         ):
             result = handle_fleet_composition_and_participation(pilots, ships)
+
             mock_get_fleet_composition.assert_called_once_with(
                 pilots=pilots, ships=ships
             )
@@ -355,18 +396,33 @@ class TestParse(BaseTestCase):
     """
 
     def test_raises_error_when_fleetcomp_module_disabled(self):
+        """
+        Test that parse raises a ParserError with the correct message when the fleet composition module is disabled in the app settings.
+
+        :return:
+        :rtype:
+        """
+
         with patch(
             "aa_intel_tool.parser.module.fleetcomp.AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP",
             False,
         ):
             with self.assertRaises(ParserError) as context:
                 parse(scan_data=[])
+
             self.assertEqual(
                 str(context.exception),
                 "A parser error occurred » The fleet composition module is currently disabled.",
             )
 
     def test_parses_empty_scan_data_correctly(self):
+        """
+        Test that parse correctly handles empty scan data and returns the expected result when the fleet composition module is enabled.
+
+        :return:
+        :rtype:
+        """
+
         with (
             patch(
                 "aa_intel_tool.parser.module.fleetcomp.AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP",
@@ -381,12 +437,20 @@ class TestParse(BaseTestCase):
             ),
         ):
             result = parse(scan_data=[])
+
             mock_safe_scan_to_db.assert_called_once_with(
                 scan_type=Scan.Type.FLEETCOMP, parsed_data={}
             )
             self.assertEqual(result, mock_safe_scan_to_db.return_value)
 
     def test_parses_scan_data_with_valid_entries(self):
+        """
+        Test that parse correctly processes valid scan data entries and returns the expected result when the fleet composition module is enabled.
+
+        :return:
+        :rtype:
+        """
+
         scan_data = [
             "Rounon Dax\tJita\tOmen\tCruiser\tFleet Commander (Boss)\t5 - 5 - 5",
             "Arodem Artemis\tPerimeter\tLeopard\tShuttle\tSquad Member\t0 - 0 - 5\tWing 1 / Squad 1",
@@ -430,7 +494,9 @@ class TestParse(BaseTestCase):
             ) as mock_safe_scan,
         ):
             mock_safe_scan.return_value = {"parsed": "data"}
+
             result = parse(scan_data=scan_data)
+
             mock_safe_scan.assert_called_once_with(
                 scan_type=Scan.Type.FLEETCOMP, parsed_data=expected_parsed
             )
