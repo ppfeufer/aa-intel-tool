@@ -174,7 +174,6 @@ class AdditionalEveCategoryId(IntEnum):
 
     DEPLOYABLE = 22
     STARBASE = 23
-    SCANNER_PROBE = 479
 
 
 class UpwellStructureId(IntEnum):
