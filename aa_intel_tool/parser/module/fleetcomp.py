@@ -5,15 +5,15 @@ Fleet composition parser
 # Standard Library
 import re
 
+# Third Party
+from eve_sde.models import ItemType
+
 # Django
 from django.utils.translation import gettext_lazy as _
 
 # Alliance Auth
 from allianceauth.eveonline.evelinks import eveimageserver, evewho, zkillboard
 from allianceauth.services.hooks import get_extension_logger
-
-# Alliance Auth (External Libs)
-from eveuniverse.models import EveEntity, EveType
 
 # AA Intel Tool
 from aa_intel_tool import __title__
@@ -39,17 +39,10 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
     :rtype:
     """
 
-    # Get ship class IDs
-    ship_class_ids = (
-        EveEntity.objects.fetch_by_names_esi(names=ships["class"], update=True)
-        .filter(category=EveEntity.CATEGORY_INVENTORY_TYPE)
-        .values_list("id", flat=True)
+    # Get ship class details from DB
+    ship_class_details = ItemType.objects.filter(name__in=ships["class"]).values_list(
+        "id", "name", "group__id", "group__name", "mass", named=True
     )
-
-    # Get ship class details
-    ship_class_details = EveType.objects.bulk_get_or_create_esi(
-        ids=set(ship_class_ids), include_children=True
-    ).values_list("id", "name", "eve_group__id", "eve_group__name", "mass", named=True)
 
     # Build ship class and type dictionaries
     for ship_class in list(ship_class_details):
@@ -58,18 +51,18 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
             {
                 "id": ship_class.id,
                 "name": ship_class.name,
-                "type_id": ship_class.eve_group__id,
-                "type_name": ship_class.eve_group__name,
+                "type_id": ship_class.group__id,
+                "type_name": ship_class.group__name,
                 "image": eveimageserver.type_icon_url(type_id=ship_class.id, size=32),
                 "mass": ship_class.mass * ships["class"][ship_class.name]["count"],
             }
         )
 
         # Build ship type dict
-        ships["type"][ship_class.eve_group__name].update(
+        ships["type"][ship_class.group__name].update(
             {
-                "id": ship_class.eve_group__id,
-                "name": ship_class.eve_group__name,
+                "id": ship_class.group__id,
+                "name": ship_class.group__name,
             }
         )
 
@@ -91,7 +84,7 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
                 "evewho": evewho.character_url(pilot.character_id),
                 "zkillboard": zkillboard.character_url(pilot.character_id),
                 "ship_id": pilot_ship_class.id,
-                "ship_type_id": pilot_ship_class.eve_group__id,
+                "ship_type_id": pilot_ship_class.group__id,
             }
         )
 
