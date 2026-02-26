@@ -5,15 +5,15 @@ Fleet composition parser
 # Standard Library
 import re
 
+# Third Party
+from eve_sde.models import ItemType
+
 # Django
 from django.utils.translation import gettext_lazy as _
 
 # Alliance Auth
 from allianceauth.eveonline.evelinks import eveimageserver, evewho, zkillboard
 from allianceauth.services.hooks import get_extension_logger
-
-# Alliance Auth (External Libs)
-from eveuniverse.models import EveEntity, EveType
 
 # AA Intel Tool
 from aa_intel_tool import __title__
@@ -31,25 +31,20 @@ logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title
 
 def get_fleet_composition(pilots: dict, ships: dict) -> dict:
     """
-    Getting the fleet composition
+    Get the fleet composition
 
-    :param ships:
-    :type ships:
-    :return:
-    :rtype:
+    :param pilots: Dictionary of pilots with their respective ship class and type
+    :type pilots: dict
+    :param ships: Dictionary of ships with their respective class and type counts
+    :type ships: dict
+    :return: Dictionary with fleet composition details
+    :rtype: dict
     """
 
-    # Get ship class IDs
-    ship_class_ids = (
-        EveEntity.objects.fetch_by_names_esi(names=ships["class"], update=True)
-        .filter(category=EveEntity.CATEGORY_INVENTORY_TYPE)
-        .values_list("id", flat=True)
+    # Get ship class details from DB
+    ship_class_details = ItemType.objects.filter(name__in=ships["class"]).values_list(
+        "id", "name", "group__id", "group__name", "mass", named=True
     )
-
-    # Get ship class details
-    ship_class_details = EveType.objects.bulk_get_or_create_esi(
-        ids=set(ship_class_ids), include_children=True
-    ).values_list("id", "name", "eve_group__id", "eve_group__name", "mass", named=True)
 
     # Build ship class and type dictionaries
     for ship_class in list(ship_class_details):
@@ -58,18 +53,18 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
             {
                 "id": ship_class.id,
                 "name": ship_class.name,
-                "type_id": ship_class.eve_group__id,
-                "type_name": ship_class.eve_group__name,
+                "type_id": ship_class.group__id,
+                "type_name": ship_class.group__name,
                 "image": eveimageserver.type_icon_url(type_id=ship_class.id, size=32),
                 "mass": ship_class.mass * ships["class"][ship_class.name]["count"],
             }
         )
 
         # Build ship type dict
-        ships["type"][ship_class.eve_group__name].update(
+        ships["type"][ship_class.group__name].update(
             {
-                "id": ship_class.eve_group__id,
-                "name": ship_class.eve_group__name,
+                "id": ship_class.group__id,
+                "name": ship_class.group__name,
             }
         )
 
@@ -91,7 +86,7 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
                 "evewho": evewho.character_url(pilot.character_id),
                 "zkillboard": zkillboard.character_url(pilot.character_id),
                 "ship_id": pilot_ship_class.id,
-                "ship_type_id": pilot_ship_class.eve_group__id,
+                "ship_type_id": pilot_ship_class.group__id,
             }
         )
 
@@ -106,10 +101,10 @@ def parse_line(line) -> list:
     """
     Parse a line from the fleet composition scan
 
-    :param line:
-    :type line:
-    :return:
-    :rtype:
+    :param line: A line from the fleet composition scan
+    :type line: str
+    :return: A list containing the parsed line data
+    :rtype: list
     """
 
     # Let's split this list up
@@ -126,16 +121,16 @@ def parse_line(line) -> list:
     return line if len(line) > 6 else line + [""]
 
 
-def update_ships(ships, line) -> dict:
+def update_ships(ships: dict, line) -> dict:
     """
     Update the ships dict
 
-    :param ships:
-    :type ships:
-    :param line:
-    :type line:
-    :return:
-    :rtype:
+    :param ships: Dictionary of ships with their respective class and type counts
+    :type ships: dict
+    :param line: A line from the fleet composition scan
+    :type line: list
+    :return: Updated ships dictionary
+    :rtype: dict
     """
 
     ships["class"].setdefault(line[2], {"count": 0})["count"] += 1
@@ -144,16 +139,16 @@ def update_ships(ships, line) -> dict:
     return ships
 
 
-def handle_fleet_composition_and_participation(pilots, ships) -> tuple:
+def handle_fleet_composition_and_participation(pilots: dict, ships: dict) -> tuple:
     """
     Handle the fleet composition and participation
 
-    :param pilots:
-    :type pilots:
-    :param ships:
-    :type ships:
-    :return:
-    :rtype:
+    :param pilots: Dictionary of pilots with their respective ship class and type
+    :type pilots: dict
+    :param ships: Dictionary of ships with their respective class and type counts
+    :type ships: dict
+    :return: Tuple containing the fleet composition and participation data
+    :rtype: tuple
     """
 
     fleet_composition = get_fleet_composition(pilots=pilots, ships=ships)
@@ -170,10 +165,10 @@ def parse(scan_data: list) -> Scan:
     """
     Parse the fleet composition scan
 
-    :param scan_data:
-    :type scan_data:
-    :return:
-    :rtype:
+    :param scan_data: List of lines from the fleet composition scan
+    :type scan_data: list
+    :return: Scan object containing the parsed fleet composition data
+    :rtype: Scan
     """
 
     if not AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP:

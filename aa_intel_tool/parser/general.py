@@ -24,10 +24,10 @@ def check_intel_type(scan_data: list) -> str:
     """
     Check which intel type we have
 
-    :param scan_data:
-    :type scan_data:
-    :return:
-    :rtype:
+    :param scan_data: List of strings to check for intel type patterns
+    :type scan_data: list
+    :return: Intel type as a string
+    :rtype: str
     """
 
     logger.info(msg="Checking intel type …")
@@ -58,10 +58,10 @@ def parse_intel(form_data: str) -> str:
     """
     Parse intel
 
-    :param form_data:
-    :type form_data:
-    :return:
-    :rtype:
+    :param form_data: Raw intel data as a string
+    :type form_data: str
+    :return: Hash of the created Scan object
+    :rtype: str
     """
     scan_data = form_data.splitlines()
 

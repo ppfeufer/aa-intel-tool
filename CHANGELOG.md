@@ -15,11 +15,17 @@ https://docs.github.com/assets/cb-41128/mw-1440/images/help/writing/alerts-rende
 > [!NOTE]
 > Highlights information that users should take into account, even when skimming.
 
+> [!TIP]
+> Optional information to help a user be more successful.
+
 > [!IMPORTANT]
 > Crucial information necessary for users to succeed.
 
 > [!WARNING]
-> Critical content demanding immediate user attention due to potential risks.
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advised about risks or negative outcomes of certain actions.
 -->
 
 ## [In Development] - Unreleased
@@ -37,13 +43,56 @@ Section Order:
 
 <!-- Your changes go here -->
 
+> [!WARNING]
+>
+> This version includes a dependency change, so please make sure to read the update
+> instructions carefully before updating to this version, otherwise, the app will
+> not work properly.
+
 ### Fixed
 
 - `context["parser_title"]` being set at the wrong time
 
 ### Changed
 
-- Replace `eveuniverse` with ESI calls in chatscans to speed things up a little bit
+- Replace `eveuniverse` with either SDE or ESI calls
+
+### Update Instructions
+
+After installing this version, modify your `INSTALLED_APPS` in your `local.py` (or
+`conf/local.py` for Docker installations):
+
+```python
+INSTALLED_APPS = [
+    # ...
+    "eve_sde",  # Only if not already added for another app
+    "aa_intel_tool",  # This one should already be in there
+    # ...
+]
+
+# This line is right below the `INSTALLED_APPS` list, and only if not already added for another app
+INSTALLED_APPS = ["modeltranslation"] + INSTALLED_APPS
+```
+
+Add the following new task to ensure the SDE data is kept up to date, if you haven't already added it for another app:
+
+```python
+if "eve_sde" in INSTALLED_APPS:
+    # Run at 12:00 UTC each day
+    CELERYBEAT_SCHEDULE["EVE SDE :: Check for SDE Updates"] = {
+        "task": "eve_sde.tasks.check_for_sde_updates",
+        "schedule": crontab(minute="0", hour="12"),
+    }
+```
+
+After running migrations, make sure to run the following commands to import the SDE
+data into your database, if you haven't already done so for another app:
+
+```shell
+python manage.py esde_load_sde
+```
+
+Restart your supervisor after running the commands.
 
 ## [2.13.1] - 2026-02-03
 

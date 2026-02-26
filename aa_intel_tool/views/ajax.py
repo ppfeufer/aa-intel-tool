@@ -18,14 +18,14 @@ def get_scan_data(
     """
     Get scan data for a specific section
 
-    :param request:
-    :type request:
-    :param scan_hash:
-    :type scan_hash:
-    :param scan_section:
-    :type scan_section:
-    :return:
-    :rtype:
+    :param request: The HTTP request object (not used in this function but included for consistency with Django view patterns)
+    :type request: WSGIRequest
+    :param scan_hash: The unique identifier for the scan whose data is being requested
+    :type scan_hash: str
+    :param scan_section: The specific section of the scan data being requested, defined as a member of the ScanData.Section enumeration
+    :type scan_section: ScanData.Section
+    :return: A JsonResponse containing the processed data for the specified scan and section, or an empty dictionary if no data is found
+    :rtype: JsonResponse
     """
 
     try:

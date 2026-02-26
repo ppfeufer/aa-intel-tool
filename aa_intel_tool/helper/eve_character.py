@@ -32,10 +32,10 @@ def _create_alliance(alliance_ids: Iterable[int]) -> None:
     """
     Bulk creation of EveAllianceInfo objects
 
-    :param alliance_ids:
-    :type alliance_ids:
-    :return:
-    :rtype:
+    :param alliance_ids: Iterable of alliance IDs to create EveAllianceInfo objects for
+    :type alliance_ids: Iterable[int]
+    :return: None
+    :rtype: None
     """
 
     alliance_ids = set(alliance_ids)
@@ -64,10 +64,10 @@ def _create_corporation(corporation_ids: Iterable[int]) -> None:
     """
     Bulk creation of EveCorporationInfo objects
 
-    :param corporation_ids:
-    :type corporation_ids:
-    :return:
-    :rtype:
+    :param corporation_ids: Iterable of corporation IDs to create EveCorporationInfo objects for
+    :type corporation_ids: Iterable[int]
+    :return: None
+    :rtype: None
     """
 
     corporation_ids = set(corporation_ids)
@@ -101,10 +101,10 @@ def _get_corporation_info_from_affiliation(
     """
     Get corporation information from affiliation data
 
-    :param affiliation_data:
-    :type affiliation_data:
-    :return:
-    :rtype:
+    :param affiliation_data: Affiliation data containing corporation ID
+    :type affiliation_data: dict
+    :return: EveCorporationInfo object for the corporation ID in the affiliation data, or None if corporation ID is not present
+    :rtype: EveCorporationInfo | None
     """
 
     corporation_id = affiliation_data.get("corporation_id")
@@ -130,10 +130,10 @@ def _get_alliance_info_from_affiliation(
     """
     Get alliance information from affiliation data
 
-    :param affiliation_data:
-    :type affiliation_data:
-    :return:
-    :rtype:
+    :param affiliation_data: Affiliation data containing alliance ID
+    :type affiliation_data: dict
+    :return: EveAllianceInfo object for the alliance ID in the affiliation data, or None if alliance ID is not present
+    :rtype: EveAllianceInfo | None
     """
 
     alliance_id = affiliation_data.get("alliance_id")
@@ -270,12 +270,12 @@ def create_characters(  # pylint: disable=too-many-locals
     """
     Bulk creation of EveCharacter objects
 
-    :param character_data_from_esi:
-    :type character_data_from_esi:
-    :param with_affiliation:
-    :type with_affiliation:
-    :return:
-    :rtype:
+    :param character_data_from_esi: List of character data dictionaries received from ESI, each containing at least "id" and "name" keys
+    :type character_data_from_esi: list[dict[str, Any]]
+    :param with_affiliation: Whether to also create affiliation objects (EveCorporationInfo and EveAllianceInfo) for the characters' corporations and alliances. Defaults to True.
+    :type with_affiliation: bool, optional
+    :return: QuerySet of EveCharacter objects corresponding to the character data provided, with related affiliation objects created if with_affiliation is True
+    :rtype: QuerySet[EveCharacter]
     """
 
     logger.debug(

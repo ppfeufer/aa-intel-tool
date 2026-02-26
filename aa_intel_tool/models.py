@@ -63,12 +63,12 @@ class Scan(models.Model):
         """
         Generates the scan hash on save
 
-        :param args:
-        :type args:
-        :param kwargs:
-        :type kwargs:
-        :return:
-        :rtype:
+        :param args: Positional arguments passed to the save method, which may include various parameters related to the saving process, such as update_fields or force_insert, depending on the context in which the save method is called
+        :type args: tuple
+        :param kwargs: Keyword arguments passed to the save method, which may include various parameters related to the saving process, such as update_fields or force_insert, depending on the context in which the save method is called
+        :type kwargs: dict
+        :return: None
+        :rtype: None
         """
 
         if self._state.adding is True:
@@ -85,8 +85,8 @@ class Scan(models.Model):
         """
         Get a random string we can use as hash
 
-        :return:
-        :rtype:
+        :return: A unique random string to be used as the scan hash, ensuring that it does not collide with existing hashes in the Scan model
+        :rtype: str
         """
 
         scan_hash = get_random_string(length=30)

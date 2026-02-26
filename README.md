@@ -31,9 +31,9 @@ ______________________________________________________________________
   - [Step 1: Install the Package](#step-1-install-the-package)
   - [Step 2: Configure Alliance Auth](#step-2-configure-alliance-auth)
     - [Add the App to Alliance Auth](#add-the-app-to-alliance-auth)
-    - [Add the Scheduled Task](#add-the-scheduled-task)
+    - [Add the Scheduled Tasks](#add-the-scheduled-tasks)
     - [(Optional) Allow Public Views](#optional-allow-public-views)
-  - [Step 4: Preload Eve Universe Data](#step-4-preload-eve-universe-data)
+  - [Step 4: Preload EVE SDE Data](#step-4-preload-eve-sde-data)
   - [Step 5: Finalizing the Installation](#step-5-finalizing-the-installation)
   - [Step 6: Update Your Webserver Configuration](#step-6-update-your-webserver-configuration)
     - [Apache 2](#apache-2)
@@ -84,8 +84,6 @@ See [Settings](#settings) section for details.
 - AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
   already, please install it first before proceeding. (see the official
   [Alliance Auth installation guide] for details)
-- AA Intel Tool needs [Eve Universe] to function. Please make sure it is installed,
-  before continuing.
 
 ### Step 1: Install the Package<a name="step-1-install-the-package"></a>
 
@@ -102,18 +100,23 @@ pip install aa-intel-tool
 
 This is fairly simple, configure your AA settings (`local.py`) as follows:
 
-Add `eveuniverse` (if not already done so for a different app) and `aa_intel_tool` to
+Add `eve_sde` (if not already done so for a different app) and `aa_intel_tool` to
 the list of `INSTALLED_APPS`.
 
 ```python
 # Add any additional apps to this list.
 INSTALLED_APPS += [
-    "eveuniverse",
+    # ...
+    "eve_sde",  # Only if not already added for another app
     "aa_intel_tool",  # https://github.com/ppfeufer/aa-intel-tool
+    # ...
 ]
+
+# This line right below the `INSTALLED_APPS` list, and only if not already added for another app
+INSTALLED_APPS = ["modeltranslation"] + INSTALLED_APPS
 ```
 
-#### Add the Scheduled Task<a name="add-the-scheduled-task"></a>
+#### Add the Scheduled Tasks<a name="add-the-scheduled-tasks"></a>
 
 To remove old scans from your DB, add the following task.
 The retention time can be adjusted through the `INTELTOOL_SCAN_RETENTION_TIME` setting.
@@ -124,6 +127,13 @@ if "aa_intel_tool" in INSTALLED_APPS:
     CELERYBEAT_SCHEDULE["AA Intel Tool :: Housekeeping"] = {
         "task": "aa_intel_tool.tasks.housekeeping",
         "schedule": crontab(minute="0", hour="1"),
+    }
+
+if "eve_sde" in INSTALLED_APPS:
+    # Run at 12:00 UTC each day
+    CELERYBEAT_SCHEDULE["EVE SDE :: Check for SDE Updates"] = {
+        "task": "eve_sde.tasks.check_for_sde_updates",
+        "schedule": crontab(minute="0", hour="12"),
     }
 ```
 
@@ -148,13 +158,13 @@ APPS_WITH_PUBLIC_VIEWS = [
 > block from here. This feature has been added in Alliance Auth v3.6.0 so you
 > might not yet have this list in your `local.py`.
 
-### Step 4: Preload Eve Universe Data<a name="step-4-preload-eve-universe-data"></a>
+### Step 4: Preload EVE SDE Data<a name="step-4-preload-eve-sde-data"></a>
 
-AA Intel Tool utilizes the EveUniverse module, so it doesn't need to ask ESI for ship
+AA Intel Tool utilizes the EVE SDE module, so it doesn't need to ask ESI for ship
 information. To set this up, you now need to run the following command.
 
 ```shell
-python manage.py aa_intel_tool_load_eve_types
+python manage.py esde_load_sde
 ```
 
 ### Step 5: Finalizing the Installation<a name="step-5-finalizing-the-installation"></a>
@@ -271,7 +281,6 @@ Please make sure to read the [Contribution Guidelines].\
 [changelog.md]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CHANGELOG.md
 [code of conduct]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CODE_OF_CONDUCT.md
 [contribution guidelines]: https://github.com/ppfeufer/aa-intel-tool/blob/master/CONTRIBUTING.md "Contribution Guidelines"
-[eve universe]: https://gitlab.com/ErikKalkoken/django-eveuniverse "Eve Universe"
 [image: chat scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/presentation/chat-scan.jpg "Chat Scan Module"
 [image: d-scan module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/presentation/d-scan.jpg "D-Scan Module"
 [image: fleet composition module]: https://raw.githubusercontent.com/ppfeufer/aa-intel-tool/master/docs/images/presentation/fleet-composition.jpg "Fleet Composition Module"

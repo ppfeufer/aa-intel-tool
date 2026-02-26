@@ -10,12 +10,12 @@ def safe_scan_to_db(scan_type: Scan.Type, parsed_data: dict) -> Scan:
     """
     Saving scan data to the DB
 
-    :param scan_type:
-    :type scan_type:
-    :param parsed_data:
-    :type parsed_data:
-    :return:
-    :rtype:
+    :param scan_type: The type of the scan being saved
+    :type scan_type: Scan.Type
+    :param parsed_data: The parsed data to be saved, structured as a dict with section names as keys and dicts with 'section' and 'data' as values
+    :type parsed_data: dict
+    :return: The created Scan object
+    :rtype: Scan
     """
 
     # Creating a new Scan object and saving it

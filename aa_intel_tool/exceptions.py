@@ -27,8 +27,8 @@ class ParserError(AaIntelToolException):
         """
         Message of the error.
 
-        :return:
-        :rtype:
+        :return: The error message as a string
+        :rtype: str
         """
 
         return self._message
@@ -37,8 +37,8 @@ class ParserError(AaIntelToolException):
         """
         String representation of the error.
 
-        :return:
-        :rtype:
+        :return: A user-friendly string representation of the parser error, including the specific error message if available, or a default message if not
+        :rtype: str
         """
 
         message = self.message if self.message else _("Unknown parser error")

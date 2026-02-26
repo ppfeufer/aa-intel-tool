@@ -29,10 +29,10 @@ class AaIntelToolMenuItem(MenuItemHook):  # pylint: disable=too-few-public-metho
         """
         Render the menu item
 
-        :param request:
-        :type request:
-        :return:
-        :rtype:
+        :param request: Django request object
+        :type request: HttpRequest
+        :return: Rendered menu item if user has permissions, otherwise None
+        :rtype: str or None
         """
 
         return MenuItemHook.render(self, request=request)
@@ -43,8 +43,8 @@ def register_menu():
     """
     Register our menu item
 
-    :return:
-    :rtype:
+    :return: Instance of AaIntelToolMenuItem to be registered as a menu item in the Alliance Auth sidebar
+    :rtype: AaIntelToolMenuItem
     """
 
     return AaIntelToolMenuItem()

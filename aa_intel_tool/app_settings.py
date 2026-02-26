@@ -34,20 +34,20 @@ def _clean_setting(  # pylint: disable=too-many-arguments,too-many-positional-ar
     Will use default_value if setting is not defined.
     Will use minimum or maximum value if respective boundary is exceeded.
 
-    :param name:
-    :type name:
-    :param default_value:
-    :type default_value:
-    :param min_value:
-    :type min_value:
-    :param max_value:
-    :type max_value:
-    :param required_type:
-    :type required_type:
-    :param choices:
-    :type choices:
-    :return:
-    :rtype:
+    :param name: The name of the setting to clean.
+    :type name: str
+    :param default_value: The default value to use if the setting is not defined or invalid.
+    :type default_value: Any
+    :param min_value: The minimum value for the setting (applicable for int types).
+    :type min_value: int | None
+    :param max_value: The maximum value for the setting (applicable for int types).
+    :type max_value: int | None
+    :param required_type: The required type for the setting value. If None, the type of default_value will be used.
+    :type required_type: type | None
+    :param choices: A list of valid choices for the setting value. If provided, the setting value must be one of these choices.
+    :type choices: list | None
+    :return: The cleaned setting value, which is either the valid value from settings or the default value if the setting is not defined or invalid.
+    :rtype: Any
     """
 
     if default_value is None and not required_type:
@@ -166,15 +166,15 @@ class AppSettings:
     )
 
 
-class AdditionalEveCategoryId(IntEnum):
+class EVECategory(IntEnum):
     """
-    Eve category IDs which are not covered by Eve Universe
-    Unfortunately Python doesn't allow to extend eveuniverse.constants.EveCategoryId
+    EVE Online category IDs
     """
 
+    SHIP = 6
     DEPLOYABLE = 22
     STARBASE = 23
-    SCANNER_PROBE = 479
+    STRUCTURE = 65
 
 
 class UpwellStructureId(IntEnum):
@@ -189,8 +189,8 @@ def debug_enabled() -> RegexFlag:
     """
     Check if DEBUG is enabled
 
-    :return:
-    :rtype:
+    :return: True if DEBUG is enabled, False otherwise
+    :rtype: bool
     """
 
     return settings.DEBUG
