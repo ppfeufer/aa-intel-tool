@@ -12,12 +12,13 @@
 # LichenKass <yuanchengwei_sz@163.com>, 2025.
 # Heimi <204420064@qq.com>, 2026.
 # nm l <mmttyyluo@gmail.com>, 2026.
+# shkno <l13244536339@163.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-02-03 12:23+0100\n"
-"PO-Revision-Date: 2026-01-26 05:17+0000\n"
+"POT-Creation-Date: 2026-02-26 12:04+0100\n"
+"PO-Revision-Date: 2026-02-12 17:50+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Chinese (Simplified Han script) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -149,7 +150,7 @@ msgstr ""
 #: aa_intel_tool/models.py:122
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
 msgid "System information"
-msgstr ""
+msgstr "系统信息"
 
 #: aa_intel_tool/models.py:139
 msgid "Scan section"
@@ -157,11 +158,11 @@ msgstr ""
 
 #: aa_intel_tool/models.py:143
 msgid "Processed scan data"
-msgstr ""
+msgstr "已处理的扫描数据"
 
 #: aa_intel_tool/models.py:152 aa_intel_tool/models.py:153
 msgid "Scan data"
-msgstr ""
+msgstr "扫描数据"
 
 #: aa_intel_tool/parser/general.py:51
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
@@ -169,45 +170,37 @@ msgstr ""
 
 #: aa_intel_tool/parser/general.py:69
 msgid "No data to parse …"
-msgstr ""
+msgstr "无数据 …"
 
-#: aa_intel_tool/parser/module/chatlist.py:61
-msgid "Something went wrong while fetching the character information from ESI."
-msgstr ""
-
-#: aa_intel_tool/parser/module/chatlist.py:69
-msgid "Character unknown to ESI."
-msgstr ""
-
-#: aa_intel_tool/parser/module/chatlist.py:258
+#: aa_intel_tool/parser/module/chatlist.py:269
 msgid "The chat list module is currently disabled."
-msgstr ""
+msgstr "聊天记录模块不可用."
 
-#: aa_intel_tool/parser/module/chatlist.py:277
+#: aa_intel_tool/parser/module/chatlist.py:288
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
 msgstr[0] ""
 
-#: aa_intel_tool/parser/module/dscan.py:361
+#: aa_intel_tool/parser/module/dscan.py:356
 msgid "The D-Scan module is currently disabled."
-msgstr ""
+msgstr "Dscan目前不可以."
 
-#: aa_intel_tool/parser/module/fleetcomp.py:181
+#: aa_intel_tool/parser/module/fleetcomp.py:176
 msgid "The fleet composition module is currently disabled."
-msgstr ""
+msgstr "舰队组成模块目前不可用."
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:23
 msgid "Permalink successfully copied"
-msgstr ""
+msgstr "Permalink复制成功"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:24
 msgid "Something went wrong. Nothing copied. Maybe your browser does not support this function."
-msgstr ""
+msgstr "出错.无法复制.可能浏览器不支持这个功能."
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:25
 msgid "Unaffiliated"
-msgstr ""
+msgstr "无小组的"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:26
 #, fuzzy
@@ -217,7 +210,7 @@ msgstr "联盟列表"
 
 #: aa_intel_tool/templates/aa_intel_tool/base.html:27
 msgid "NPC Corp"
-msgstr ""
+msgstr "NPC军团"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/body/scan-retention-note.html:5
 #, python-format
@@ -243,17 +236,17 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:16
 msgid "Chat member list"
-msgstr ""
+msgstr "聊天成员列表"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:21
 #, python-format
 msgid "Limited to a maximum of %(max_pilots)s pilot per scan."
 msgid_plural "Limited to a maximum of %(max_pilots)s pilots per scan."
-msgstr[0] ""
+msgstr[0] "每次扫描到的玩家上限是%(max_pilots)s."
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:40
 msgid "Please keep in mind, parsing large amounts of data can take some time. Be patient, CCP's API is not the fastest to answer …"
-msgstr ""
+msgstr "记住，分析大量数据需要一定时间，CCP的API回复的没那么快 …"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:51
 msgid "Submit"
@@ -273,15 +266,15 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:65
 msgid "Parsing data"
-msgstr ""
+msgstr "分析数据"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:8
 msgid "New scan"
-msgstr ""
+msgstr "新的扫描"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/buttons.html:15
 msgid "Copy permalink"
-msgstr ""
+msgstr "复制permalink"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/chatlist/alliances.html:7
 msgid "Alliances breakdown"
@@ -412,16 +405,24 @@ msgstr "星系"
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:54
+#: aa_intel_tool/views/general.py:56
 #, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:66
+#: aa_intel_tool/views/general.py:68
 #, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:107 aa_intel_tool/views/general.py:137
+#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:140
 msgid "The scan you were looking for could not be found."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Something went wrong while fetching the character information from ESI."
+#~ msgstr "ESI绑定错误."
+
+#, fuzzy
+#~ msgid "Character unknown to ESI."
+#~ msgstr "ESI有未知角色."
