@@ -31,12 +31,14 @@ logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title
 
 def get_fleet_composition(pilots: dict, ships: dict) -> dict:
     """
-    Getting the fleet composition
+    Get the fleet composition
 
-    :param ships:
-    :type ships:
-    :return:
-    :rtype:
+    :param pilots: Dictionary of pilots with their respective ship class and type
+    :type pilots: dict
+    :param ships: Dictionary of ships with their respective class and type counts
+    :type ships: dict
+    :return: Dictionary with fleet composition details
+    :rtype: dict
     """
 
     # Get ship class details from DB
@@ -99,10 +101,10 @@ def parse_line(line) -> list:
     """
     Parse a line from the fleet composition scan
 
-    :param line:
-    :type line:
-    :return:
-    :rtype:
+    :param line: A line from the fleet composition scan
+    :type line: str
+    :return: A list containing the parsed line data
+    :rtype: list
     """
 
     # Let's split this list up
@@ -119,16 +121,16 @@ def parse_line(line) -> list:
     return line if len(line) > 6 else line + [""]
 
 
-def update_ships(ships, line) -> dict:
+def update_ships(ships: dict, line) -> dict:
     """
     Update the ships dict
 
-    :param ships:
-    :type ships:
-    :param line:
-    :type line:
-    :return:
-    :rtype:
+    :param ships: Dictionary of ships with their respective class and type counts
+    :type ships: dict
+    :param line: A line from the fleet composition scan
+    :type line: list
+    :return: Updated ships dictionary
+    :rtype: dict
     """
 
     ships["class"].setdefault(line[2], {"count": 0})["count"] += 1
@@ -137,16 +139,16 @@ def update_ships(ships, line) -> dict:
     return ships
 
 
-def handle_fleet_composition_and_participation(pilots, ships) -> tuple:
+def handle_fleet_composition_and_participation(pilots: dict, ships: dict) -> tuple:
     """
     Handle the fleet composition and participation
 
-    :param pilots:
-    :type pilots:
-    :param ships:
-    :type ships:
-    :return:
-    :rtype:
+    :param pilots: Dictionary of pilots with their respective ship class and type
+    :type pilots: dict
+    :param ships: Dictionary of ships with their respective class and type counts
+    :type ships: dict
+    :return: Tuple containing the fleet composition and participation data
+    :rtype: tuple
     """
 
     fleet_composition = get_fleet_composition(pilots=pilots, ships=ships)
@@ -163,10 +165,10 @@ def parse(scan_data: list) -> Scan:
     """
     Parse the fleet composition scan
 
-    :param scan_data:
-    :type scan_data:
-    :return:
-    :rtype:
+    :param scan_data: List of lines from the fleet composition scan
+    :type scan_data: list
+    :return: Scan object containing the parsed fleet composition data
+    :rtype: Scan
     """
 
     if not AppSettings.INTELTOOL_ENABLE_MODULE_FLEETCOMP:

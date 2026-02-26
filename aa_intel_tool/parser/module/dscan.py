@@ -33,10 +33,10 @@ def _is_on_grid(distance: str) -> bool:
     """
     Determine if something is "on grid" or not
 
-    :param distance:
-    :type distance:
-    :return:
-    :rtype:
+    :param distance: The distance string from the D-Scan entry (e.g. "0 m", "12.345 km", "100 km", "Local (0 m)")
+    :type distance: str
+    :return: True if the distance is within the grid size, False otherwise
+    :rtype: bool
     """
 
     # AA Intel Tool
@@ -63,10 +63,10 @@ def _get_type_info_dict(eve_type: tuple) -> dict:
     eve_type[2] = Group ID
     eve_type[3] = Group Name
 
-    :param eve_type:
-    :type eve_type:
-    :return:
-    :rtype:
+    :param eve_type: A tuple containing the eve_type information
+    :type eve_type: tuple
+    :return: A dictionary containing the eve_type information
+    :rtype: dict
     """
 
     return {
@@ -87,12 +87,12 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
     » Off Grid
     » Ship Types
 
-    :param eve_types:
-    :type eve_types:
-    :param counter:
-    :type counter:
-    :return:
-    :rtype:
+    :param eve_types: A queryset containing the eve_types of the ships in the D-Scan
+    :type eve_types: QuerySet
+    :param counter: A dictionary containing the counts of each eve_type in the D-Scan, split by "all", "ongrid" and "offgrid"
+    :type counter: dict
+    :return: A dictionary containing the ship information for the D-Scan tables
+    :rtype: dict
     """
 
     ships = {"all": {}, "ongrid": {}, "offgrid": {}, "types": {}}
@@ -178,12 +178,14 @@ def _get_upwell_structures_on_grid(
     """
     Get all Upwell structures that are on grid
 
-    :param eve_types:
-    :type eve_types:
-    :param counter:
-    :type counter:
-    :return:
-    :rtype:
+    :param eve_types: A queryset containing the eve_types of the structures in the D-Scan
+    :type eve_types: QuerySet
+    :param counter: A dictionary containing the counts of each eve_type in the D-Scan, split by "all", "ongrid" and "offgrid"
+    :type counter: dict
+    :param ansiblex_destination: The destination system of the Ansiblex Jump Gate, if it is present in the D-Scan
+    :type ansiblex_destination: str
+    :return: A list containing the Upwell structures that are on grid in the D-Scan
+    :rtype: list
     """
 
     eve_types_structures = eve_types.filter(
@@ -212,12 +214,12 @@ def _get_deployables_on_grid(eve_types: QuerySet, counter: dict) -> list:
     """
     Get all deployables that are on grid
 
-    :param eve_types:
-    :type eve_types:
-    :param counter:
-    :type counter:
-    :return:
-    :rtype:
+    :param eve_types: A queryset containing the eve_types of the deployables in the D-Scan
+    :type eve_types: QuerySet
+    :param counter: A dictionary containing the counts of each eve_type in the D-Scan, split by "all", "ongrid" and "offgrid"
+    :type counter: dict
+    :return: A list containing the deployables that are on grid in the D-Scan
+    :rtype: list
     """
 
     eve_types_deployables = eve_types.filter(
@@ -240,12 +242,12 @@ def _get_starbases_on_grid(eve_types: QuerySet, counter: dict) -> list:
     """
     Get all starbases and starbase modules that are on grid
 
-    :param eve_types:
-    :type eve_types:
-    :param counter:
-    :type counter:
-    :return:
-    :rtype:
+    :param eve_types: A queryset containing the eve_types of the starbases and starbase modules in the D-Scan
+    :type eve_types: QuerySet
+    :param counter: A dictionary containing the counts of each eve_type in the D-Scan, split by "all", "ongrid" and "offgrid"
+    :type counter: dict
+    :return: A list containing the starbases and starbase modules that are on grid in the D-Scan
+    :rtype: list
     """
 
     eve_types_starbase = eve_types.filter(
@@ -268,10 +270,10 @@ def _get_ansiblex_jumpgate_destination(ansiblex_name: str) -> str:
     """
     Get the Ansiblex Jump Gate destination system
 
-    :param ansiblex_name:
-    :type ansiblex_name:
-    :return:
-    :rtype:
+    :param ansiblex_name: The name of the Ansiblex Jump Gate, which contains the destination system in the format "Current System » Destination System"
+    :type ansiblex_name: str
+    :return: The destination system of the Ansiblex Jump Gate
+    :rtype: str
     """
 
     return re.split(
@@ -283,10 +285,10 @@ def _get_scan_details(scan_data: list) -> tuple:
     """
     Split the D-Scan data into more convenient parts
 
-    :param scan_data:
-    :type scan_data:
-    :return:
-    :rtype:
+    :param scan_data: A list containing the lines of the D-Scan data
+    :type scan_data: list
+    :return: A tuple containing the Ansiblex Jump Gate destination system (if present), a counter dictionary with the counts of each eve_type in the D-Scan, split by "all", "ongrid" and "offgrid", and a dictionary containing lists of eve_type IDs for "all", "ongrid" and "offgrid"
+    :rtype: tuple
     """
 
     # AA Intel Tool
@@ -343,10 +345,10 @@ def parse(scan_data: list) -> Scan:
     """
     Parse D-Scan
 
-    :param scan_data:
-    :type scan_data:
-    :return:
-    :rtype:
+    :param scan_data: A list containing the lines of the D-Scan data
+    :type scan_data: list
+    :return: A Scan object containing the parsed D-Scan data
+    :rtype: Scan
     """
 
     # Only parse the d-scan if the module is enabled

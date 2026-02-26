@@ -28,8 +28,8 @@ def housekeeping() -> None:
     """
     Remove scans older than AppSettings.INTELTOOL_SCAN_RETENTION_TIME day(s)
 
-    :return:
-    :rtype:
+    :return: None
+    :rtype: None
     """
 
     if AppSettings.INTELTOOL_SCAN_RETENTION_TIME > 0:

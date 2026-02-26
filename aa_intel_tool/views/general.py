@@ -27,10 +27,12 @@ logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title
 
 def index(request: WSGIRequest) -> HttpResponse:
     """
-    Intel tool index (basically just the form)
+    Index view
 
-    :return:
-    :rtype:
+    :param request: The HTTP request object containing metadata about the request and user input
+    :type request: WSGIRequest
+    :return: An HTTP response object that renders the index page with the appropriate context, including the form for submitting intel data and application settings
+    :rtype: HttpResponse
     """
 
     if request.method == "POST":
@@ -90,12 +92,12 @@ def scan(request: WSGIRequest, scan_hash: str):
     """
     Scan view
 
-    :param request:
-    :type request:
-    :param scan_hash:
-    :type scan_hash:
-    :return:
-    :rtype:
+    :param request: The HTTP request object containing metadata about the request and user input
+    :type request: WSGIRequest
+    :param scan_hash: The unique identifier for the scan to be displayed, typically a hash value that corresponds to a specific Scan object in the database
+    :type scan_hash: str
+    :return: An HTTP response object that renders the scan page with the appropriate context, including the scan data and application settings, or redirects to the index page with an error message if the scan is not found
+    :rtype: HttpResponse
     """
 
     try:

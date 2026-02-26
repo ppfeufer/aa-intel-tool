@@ -35,10 +35,10 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
     """
     Get Eve character information and affiliation from a list of character names
 
-    :param scan_data:
-    :type scan_data:
-    :return:
-    :rtype:
+    :param scan_data: List of character names to get information for
+    :type scan_data: list
+    :return: QuerySet of EveCharacter objects matching the character names in the scan data
+    :rtype: QuerySet[EveCharacter]
     """
 
     # Excluding corporation_id=1000001 (Doomheim) to potentially force an update here …
@@ -82,8 +82,8 @@ def _get_unaffiliated_alliance_info() -> dict:
     """
     Get the alliance_info dict for characters that are in no alliance
 
-    :return:
-    :rtype:
+    :return: A dict with alliance information for unaffiliated characters
+    :rtype: dict
     """
 
     return {
@@ -100,10 +100,12 @@ def _parse_alliance_info(
     """
     Parse the alliance information from an EveCharacter
 
-    :param eve_character:
-    :type eve_character:
-    :return:
-    :rtype:
+    :param eve_character: The EveCharacter object to parse the alliance information from
+    :type eve_character: EveCharacter
+    :param with_evelinks: Whether to include links to Eve-related websites in the alliance information
+    :type with_evelinks: bool
+    :return: A dict with alliance information for the given EveCharacter
+    :rtype: dict
     """
 
     if eve_character.alliance_id is None:
@@ -136,10 +138,14 @@ def _parse_corporation_info(
     """
     Parse the corporation information from an EveCharacter
 
-    :param eve_character:
-    :type eve_character:
-    :return:
-    :rtype:
+    :param eve_character: The EveCharacter object to parse the corporation information from
+    :type eve_character: EveCharacter
+    :param with_alliance_info: Whether to include alliance information in the corporation information
+    :type with_alliance_info: bool
+    :param with_evelinks: Whether to include links to Eve-related websites in the corporation information
+    :type with_evelinks: bool
+    :return: A dict with corporation information for the given EveCharacter
+    :rtype: dict
     """
 
     corporation_info = {
@@ -173,10 +179,10 @@ def _parse_character_info(eve_character: EveCharacter) -> dict:
     """
     Parse the character information from an EveCharacter
 
-    :param eve_character:
-    :type eve_character:
-    :return:
-    :rtype:
+    :param eve_character: The EveCharacter object to parse the character information from
+    :type eve_character: EveCharacter
+    :return: A dict with character information for the given EveCharacter
+    :rtype: dict
     """
 
     return {
@@ -199,10 +205,10 @@ def _parse_chatscan_data(eve_characters: QuerySet[EveCharacter]) -> dict:
     Parse the chat scan data and return character information,
     corporation information and alliance information for each character
 
-    :param eve_characters:
-    :type eve_characters:
-    :return:
-    :rtype:
+    :param eve_characters: A QuerySet of EveCharacter objects to parse the information from
+    :type eve_characters: QuerySet[EveCharacter]
+    :return: A dict with three keys: 'pilots', 'corporations' and 'alliances'. Each key contains a list of dicts with the respective information for each character, corporation and alliance in the chat scan.
+    :rtype: dict
     """
 
     counter = defaultdict(int)
@@ -248,14 +254,14 @@ def parse(
     """
     Parse chat list
 
-    :param scan_data:
-    :type scan_data:
-    :param safe_to_db:
-    :type safe_to_db:
-    :param ignore_limit:
-    :type ignore_limit:
-    :return:
-    :rtype:
+    :param scan_data: List of character names to parse the chat list for
+    :type scan_data: list
+    :param safe_to_db: Whether the parsed data is safe to be saved to the database (i.e. whether it has been validated and cleaned). If True, the parsed data will be saved to the database and a Scan object will be returned. If False, the parsed data will not be saved to the database and a dict with the parsed data will be returned instead.
+    :type safe_to_db: bool
+    :param ignore_limit: Whether to ignore the maximum allowed number of pilots in a chat scan. If True, the parser will not check if the number of pilots in the scan exceeds the maximum allowed number and will parse the data regardless. If False, the parser will check if the number of pilots in the scan exceeds the maximum allowed number and will throw a ParserError if it does.
+    :type ignore_limit: bool
+    :return: A Scan object containing the parsed chat list data if safe_to_db is True, or a dict with the parsed chat list data if safe_to_db is False
+    :rtype: Scan | dict
     """
 
     # Only parse the chat scan if the module is enabled
