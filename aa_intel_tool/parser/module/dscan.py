@@ -6,6 +6,9 @@ D-Scan parser
 import re
 from collections import defaultdict
 
+# Third Party
+from eve_sde.models import ItemType
+
 # Django
 from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy as _
@@ -14,17 +17,9 @@ from django.utils.translation import gettext_lazy as _
 from allianceauth.eveonline.evelinks import eveimageserver
 from allianceauth.services.hooks import get_extension_logger
 
-# Alliance Auth (External Libs)
-from eveuniverse.constants import EveCategoryId
-from eveuniverse.models import EveType
-
 # AA Intel Tool
 from aa_intel_tool import __title__
-from aa_intel_tool.app_settings import (
-    AdditionalEveCategoryId,
-    AppSettings,
-    UpwellStructureId,
-)
+from aa_intel_tool.app_settings import AppSettings, EVECategory, UpwellStructureId
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.helper.data_structure import dict_to_list
 from aa_intel_tool.models import Scan, ScanData
@@ -130,9 +125,7 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
     #   - eve_type[2] = Group ID
     #   - eve_type[3] = Group Name
     #   - eve_type[4] = Mass
-    eve_types_ships = eve_types.filter(
-        eve_group__eve_category_id__exact=EveCategoryId.SHIP
-    )
+    eve_types_ships = eve_types.filter(group__category_id__exact=EVECategory.SHIP)
 
     # Loop through all ships types
     for eve_type in list(eve_types_ships):
@@ -194,7 +187,7 @@ def _get_upwell_structures_on_grid(
     """
 
     eve_types_structures = eve_types.filter(
-        eve_group__eve_category_id__exact=EveCategoryId.STRUCTURE
+        group__category_id__exact=EVECategory.STRUCTURE
     )
 
     upwell_structures = {
@@ -228,7 +221,7 @@ def _get_deployables_on_grid(eve_types: QuerySet, counter: dict) -> list:
     """
 
     eve_types_deployables = eve_types.filter(
-        eve_group__eve_category_id__exact=AdditionalEveCategoryId.DEPLOYABLE
+        group__category_id__exact=EVECategory.DEPLOYABLE
     )
 
     deployables = {
@@ -256,7 +249,7 @@ def _get_starbases_on_grid(eve_types: QuerySet, counter: dict) -> list:
     """
 
     eve_types_starbase = eve_types.filter(
-        eve_group__eve_category_id__exact=AdditionalEveCategoryId.STARBASE
+        group__category_id__exact=EVECategory.STARBASE
     )
 
     starbases = {
@@ -363,9 +356,11 @@ def parse(scan_data: list) -> Scan:
     parsed_data = {}
     ansiblex_destination, counter, eve_ids = _get_scan_details(scan_data=scan_data)
 
-    eve_types = EveType.objects.bulk_get_or_create_esi(
-        ids=set(eve_ids["all"]), include_children=True
-    ).values_list("id", "name", "eve_group__id", "eve_group__name", "mass", named=True)
+    eve_types = ItemType.objects.filter(id__in=set(eve_ids["all"])).values_list(
+        "id", "name", "group__id", "group__name", "mass", named=True
+    )
+
+    logger.debug(f"EVE Types for D-Scan: {list(eve_types)}")
 
     # Parse the data parts
     ships = _get_ships(eve_types=eve_types, counter=counter)

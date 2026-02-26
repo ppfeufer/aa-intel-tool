@@ -166,14 +166,15 @@ class AppSettings:
     )
 
 
-class AdditionalEveCategoryId(IntEnum):
+class EVECategory(IntEnum):
     """
-    Eve category IDs which are not covered by Eve Universe
-    Unfortunately Python doesn't allow to extend eveuniverse.constants.EveCategoryId
+    EVE Online category IDs
     """
 
+    SHIP = 6
     DEPLOYABLE = 22
     STARBASE = 23
+    STRUCTURE = 65
 
 
 class UpwellStructureId(IntEnum):
