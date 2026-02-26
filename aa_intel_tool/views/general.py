@@ -121,11 +121,12 @@ def scan(request: WSGIRequest, scan_hash: str):
         "scan_hash": scan_hash,
         "scan": scan_data,
         "scan_data_section": ScanData.Section,
-        "parser_title": SUPPORTED_INTEL_TYPES[intel_scan.scan_type]["name"],
         "app_settings": AppSettings,
     }
 
     if intel_scan.scan_type in SUPPORTED_INTEL_TYPES:
+        context["parser_title"] = SUPPORTED_INTEL_TYPES[intel_scan.scan_type]["name"]
+
         return render(
             request=request,
             template_name=SUPPORTED_INTEL_TYPES[intel_scan.scan_type]["template"],

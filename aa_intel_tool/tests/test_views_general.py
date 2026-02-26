@@ -4,12 +4,13 @@ Tests for the general views of the AA Intel Tool application.
 
 # Standard Library
 from http import HTTPStatus
-from unittest.mock import Mock, patch
+from unittest.mock import MagicMock, Mock, patch
 
 # Django
 from django.contrib.messages import get_messages
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.contrib.sessions.middleware import SessionMiddleware
+from django.shortcuts import redirect
 from django.test import RequestFactory
 
 # AA Intel Tool
@@ -17,6 +18,7 @@ from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.models import Scan
 from aa_intel_tool.tests import BaseTestCase
 from aa_intel_tool.views import general as general_view
+from aa_intel_tool.views.general import scan
 
 
 class TestViewIndex(BaseTestCase):
@@ -156,6 +158,30 @@ class TestViewScan(BaseTestCase):
     Tests for the scan view
     """
 
+    def test_redirects_to_index_for_unsupported_scan_type(self):
+        """
+        Testing redirection to index view for unsupported scan type
+
+        :return:
+        :rtype:
+        """
+
+        scan_instance = MagicMock(scan_type="unsupported_type")
+
+        with (
+            patch("aa_intel_tool.models.Scan.objects.exclude") as mock_exclude,
+            patch("aa_intel_tool.views.general.SUPPORTED_INTEL_TYPES", {}),
+        ):
+            mock_exclude.return_value.get.return_value = scan_instance
+            request = MagicMock()
+
+            response = scan(request, "valid_hash")
+
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(
+                response.url, redirect("aa_intel_tool:intel_tool_index").url
+            )
+
     def test_shows_error_message_when_scan_does_not_exist(self):
         """
         Testing error message when scan does not exist
@@ -172,6 +198,7 @@ class TestViewScan(BaseTestCase):
         request.session.save()
 
         request._messages = FallbackStorage(request)
+
         with patch("aa_intel_tool.views.general.Scan.objects.exclude") as mock_exclude:
             mock_exclude.return_value.get.side_effect = Scan.DoesNotExist
 

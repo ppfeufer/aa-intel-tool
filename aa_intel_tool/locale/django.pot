@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.13.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-02-03 12:23+0100\n"
+"POT-Creation-Date: 2026-02-26 09:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,19 +162,11 @@ msgstr ""
 msgid "No data to parse …"
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:61
-msgid "Something went wrong while fetching the character information from ESI."
-msgstr ""
-
-#: aa_intel_tool/parser/module/chatlist.py:69
-msgid "Character unknown to ESI."
-msgstr ""
-
-#: aa_intel_tool/parser/module/chatlist.py:258
+#: aa_intel_tool/parser/module/chatlist.py:263
 msgid "The chat list module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:277
+#: aa_intel_tool/parser/module/chatlist.py:282
 #, python-brace-format
 msgid ""
 "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot "
@@ -425,6 +417,6 @@ msgstr ""
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:107 aa_intel_tool/views/general.py:137
+#: aa_intel_tool/views/general.py:107 aa_intel_tool/views/general.py:138
 msgid "The scan you were looking for could not be found."
 msgstr ""

@@ -15,15 +15,15 @@ from allianceauth.eveonline.evelinks import dotlan, eveimageserver, evewho, zkil
 from allianceauth.eveonline.models import EveCharacter
 from allianceauth.services.hooks import get_extension_logger
 
-# Alliance Auth (External Libs)
-from eveuniverse.models import EveEntity
-
 # AA Intel Tool
 from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.helper.data_structure import dict_to_list
-from aa_intel_tool.helper.eve_character import get_or_create_character
+from aa_intel_tool.helper.eve_character import (
+    create_characters,
+    fetch_character_ids_from_esi,
+)
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
 from aa_intel_tool.providers import AppLogger
@@ -46,29 +46,34 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
         corporation_id=1000001
     )
 
-    # Check if we have to bother Eve Universe or if we have all characters already
+    # Check if we have to bother ESI or if we have all characters already
     if len(scan_data) != eve_characters.count():
-        try:
-            eve_character_ids = (
-                EveEntity.objects.fetch_by_names_esi(names=scan_data, update=True)
-                .filter(category=EveEntity.CATEGORY_CHARACTER)
-                .values_list("id", flat=True)
+        existing_character_names = set(
+            eve_characters.values_list("character_name", flat=True)
+        )
+
+        characters_to_fetch = set(scan_data) - existing_character_names
+        logger.debug(
+            f"{len(characters_to_fetch)} character(s) need to be fetched from ESI: {characters_to_fetch}"
+        )
+
+        fetched_characters = fetch_character_ids_from_esi(
+            characters_to_fetch=characters_to_fetch
+        )
+
+        logger.debug(f"Fetched character data from ESI: {fetched_characters}")
+
+        if len(fetched_characters) > 0:
+            new_eve_characters = create_characters(
+                character_data_from_esi=fetched_characters
             )
-        except EveEntity.DoesNotExist as exc:  # pylint: disable=no-member
-            raise ParserError(
-                message=str(
-                    _(
-                        "Something went wrong while fetching the character information from ESI."
-                    )
-                )
-            ) from exc
 
-        # In case the name does not belong to an Eve character,
-        # EveEntity returns an empty object
-        if not eve_character_ids:
-            raise ParserError(message=str(_("Character unknown to ESI.")))
+            logger.debug(
+                f"Created {len(new_eve_characters)} new EveCharacter object(s) from ESI data."
+            )
 
-        eve_characters = get_or_create_character(character_ids=eve_character_ids)
+            # Combine existing and new characters
+            eve_characters = eve_characters | new_eve_characters
 
     return eve_characters
 
