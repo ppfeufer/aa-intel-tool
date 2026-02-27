@@ -33,8 +33,8 @@ ______________________________________________________________________
     - [Add the App to Alliance Auth](#add-the-app-to-alliance-auth)
     - [Add the Scheduled Tasks](#add-the-scheduled-tasks)
     - [(Optional) Allow Public Views](#optional-allow-public-views)
-  - [Step 4: Preload EVE SDE Data](#step-4-preload-eve-sde-data)
-  - [Step 5: Finalizing the Installation](#step-5-finalizing-the-installation)
+  - [Step 4: Finalizing the Installation](#step-4-finalizing-the-installation)
+  - [Step 5: Preload EVE SDE Data](#step-5-preload-eve-sde-data)
   - [Step 6: Update Your Webserver Configuration](#step-6-update-your-webserver-configuration)
     - [Apache 2](#apache-2)
     - [Nginx](#nginx)
@@ -158,22 +158,22 @@ APPS_WITH_PUBLIC_VIEWS = [
 > block from here. This feature has been added in Alliance Auth v3.6.0 so you
 > might not yet have this list in your `local.py`.
 
-### Step 4: Preload EVE SDE Data<a name="step-4-preload-eve-sde-data"></a>
-
-AA Intel Tool utilizes the EVE SDE module, so it doesn't need to ask ESI for ship
-information. To set this up, you now need to run the following command.
-
-```shell
-python manage.py esde_load_sde
-```
-
-### Step 5: Finalizing the Installation<a name="step-5-finalizing-the-installation"></a>
+### Step 4: Finalizing the Installation<a name="step-4-finalizing-the-installation"></a>
 
 Run static files collection and migrations.
 
 ```shell
 python manage.py collectstatic
 python manage.py migrate
+```
+
+### Step 5: Preload EVE SDE Data<a name="step-5-preload-eve-sde-data"></a>
+
+AA Intel Tool utilizes the EVE SDE module, so it doesn't need to ask ESI for ship
+information. To set this up, you now need to run the following command.
+
+```shell
+python manage.py esde_load_sde
 ```
 
 Restart your supervisor services for Auth.
