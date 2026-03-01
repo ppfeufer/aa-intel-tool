@@ -87,11 +87,18 @@ if "eve_sde" in INSTALLED_APPS:
     }
 ```
 
-After running migrations, make sure to run the following commands to import the SDE
-data into your database, if you haven't already done so for another app:
+Migrate and populate SDE:
 
 ```shell
+python manage.py migrate eve_sde
 python manage.py esde_load_sde
+```
+
+Migare the app and run static collection:
+
+```shell
+python manage.py migrate aa_intel_tool
+python manage.py collectstatic --noinput
 ```
 
 Restart your supervisor after running the commands.
