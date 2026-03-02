@@ -53,10 +53,8 @@ urls.GitHub = "https://github.com/ppfeufer/aa-intel-tool"
 urls.Tracker = "https://github.com/ppfeufer/aa-intel-tool/issues"
 urls.Translation = "https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/"
 
-[tool.hatch.build]
-include = [
+[tool.hatch]
+build.include = [
     "/aa_intel_tool",
 ]
-
-[tool.hatch.version]
-path = "aa_intel_tool/__init__.py"
+version.path = "aa_intel_tool/__init__.py"
