@@ -130,11 +130,15 @@ if "aa_intel_tool" in INSTALLED_APPS:
     }
 
 if "eve_sde" in INSTALLED_APPS:
-    # Run at 12:00 UTC each day
+    # Run at 12:00 each day
     CELERYBEAT_SCHEDULE["EVE SDE :: Check for SDE Updates"] = {
         "task": "eve_sde.tasks.check_for_sde_updates",
         "schedule": crontab(minute="0", hour="12"),
     }
+
+    # Set the following when you have a bare metal installation, or Docker with a
+    # non-standard storage for `myauth`
+    ESDE_TASK_SPLIT = True
 ```
 
 #### (Optional) Allow Public Views<a name="optional-allow-public-views"></a>

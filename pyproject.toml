@@ -38,7 +38,7 @@ dynamic = [
 ]
 dependencies = [
     "allianceauth>=4.12",
-    "django-eveonline-sde>=0.0.1b1",
+    "django-eveonline-sde>=0.0.1b9",
 ]
 optional-dependencies.tests-allianceauth-latest = [
     "coverage",
