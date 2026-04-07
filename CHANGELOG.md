@@ -43,6 +43,12 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [3.0.1] - 2026-04-07
+
+### Changed
+
+- Translations updated
+
 ## [3.0.0] - 2026-02-26
 
 > [!WARNING]
@@ -773,6 +779,7 @@ Hopefully the last one before official release …
 [2.8.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.0...v2.8.1 "v2.8.1"
 [2.9.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.8.1...v2.9.0 "v2.9.0"
 [3.0.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.13.1...v3.0.0 "v3.0.0"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.0.0...HEAD "In Development"
+[3.0.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.0.0...v3.0.1 "v3.0.1"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.0.1...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
