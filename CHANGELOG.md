@@ -39,6 +39,7 @@ Section Order:
 ### Deprecated
 ### Removed
 ### Security
+### Miscellaneous
 -->
 
 <!-- Your changes go here -->
