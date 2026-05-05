@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-04-07 18:09+0200\n"
-"PO-Revision-Date: 2026-02-01 14:23+0000\n"
+"POT-Creation-Date: 2026-05-05 15:43+0200\n"
+"PO-Revision-Date: 2026-04-18 04:23+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Dutch <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/nl/>\n"
 "Language: nl_NL\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16.2\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -216,7 +216,7 @@ msgstr ""
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/footer/app-translation-footer.html:8
 msgid "Join our team of translators!"
-msgstr ""
+msgstr "Kom ons team van vertalers versterken!"
 
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:10
 msgid "What can I paste?"
