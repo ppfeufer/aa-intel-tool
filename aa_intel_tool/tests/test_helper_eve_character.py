@@ -26,7 +26,7 @@ from aa_intel_tool.helper.eve_character import (
     temp_corp_data,
 )
 from aa_intel_tool.providers.esi import ESIHandler
-from aa_intel_tool.tests import BaseTestCase
+from aa_intel_tool.tests import BaseTestCase, random_id
 
 
 class TestCreateAlliance(BaseTestCase):
@@ -42,7 +42,11 @@ class TestCreateAlliance(BaseTestCase):
         :rtype:
         """
 
-        alliance_ids = [1001, 1002, 1003]
+        alliance_id_1 = random_id()
+        alliance_id_2 = random_id()
+        alliance_id_3 = random_id()
+
+        alliance_ids = [alliance_id_1, alliance_id_2, alliance_id_3]
 
         with (
             patch.object(
@@ -66,14 +70,22 @@ class TestCreateAlliance(BaseTestCase):
         :rtype:
         """
 
-        alliance_ids = [1001, 1002, 1003]
+        alliance_id_1 = random_id()
+        alliance_id_2 = random_id()
+        alliance_id_3 = random_id()
+
+        alliance_ids = [alliance_id_1, alliance_id_2, alliance_id_3]
 
         # Create existing alliances in the database
         EveAllianceInfo.objects.create(
-            alliance_id=1001, alliance_name="Alliance 1001", executor_corp_id=2001
+            alliance_id=alliance_id_1,
+            alliance_name="Alliance 1001",
+            executor_corp_id=2001,
         )
         EveAllianceInfo.objects.create(
-            alliance_id=1002, alliance_name="Alliance 1002", executor_corp_id=2002
+            alliance_id=alliance_id_2,
+            alliance_name="Alliance 1002",
+            executor_corp_id=2002,
         )
 
         with (
@@ -88,7 +100,7 @@ class TestCreateAlliance(BaseTestCase):
         ):
             _create_alliance(alliance_ids)
 
-            mock_create_alliance.assert_called_once_with(alliance_id=1003)
+            mock_create_alliance.assert_called_once_with(alliance_id=alliance_id_3)
 
     def test_handles_empty_alliance_ids(self):
         """
@@ -124,7 +136,11 @@ class TestCreateCorporation(BaseTestCase):
         :rtype:
         """
 
-        corporation_ids = [2001, 2002, 2003]
+        corp_id_1 = random_id()
+        corp_id_2 = random_id()
+        corp_id_3 = random_id()
+
+        corporation_ids = [corp_id_1, corp_id_2, corp_id_3]
 
         with (
             patch.object(
@@ -148,13 +164,21 @@ class TestCreateCorporation(BaseTestCase):
         :rtype:
         """
 
-        corporation_ids = [2001, 2002, 2003]
+        corp_id_1 = random_id()
+        corp_id_2 = random_id()
+        corp_id_3 = random_id()
+
+        corporation_ids = [corp_id_1, corp_id_2, corp_id_3]
 
         EveCorporationInfo.objects.create(
-            corporation_id=2001, corporation_name="Corporation 2001", member_count=10
+            corporation_id=corp_id_1,
+            corporation_name="Corporation 2001",
+            member_count=10,
         )
         EveCorporationInfo.objects.create(
-            corporation_id=2002, corporation_name="Corporation 2002", member_count=20
+            corporation_id=corp_id_2,
+            corporation_name="Corporation 2002",
+            member_count=20,
         )
 
         with (
@@ -169,7 +193,7 @@ class TestCreateCorporation(BaseTestCase):
         ):
             _create_corporation(corporation_ids)
 
-            mock_create_corporation.assert_called_once_with(corp_id=2003)
+            mock_create_corporation.assert_called_once_with(corp_id=corp_id_3)
 
     def test_handles_empty_corporation_ids(self):
         """
