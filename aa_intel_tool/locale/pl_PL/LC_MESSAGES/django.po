@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-05-05 15:43+0200\n"
+"POT-Creation-Date: 2026-05-27 09:03+0200\n"
 "PO-Revision-Date: 2024-05-10 14:07+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Polish <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/pl/>\n"
@@ -152,19 +152,19 @@ msgstr ""
 msgid "Scan data"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:51
+#: aa_intel_tool/parser/general.py:50
 msgid "No suitable parser found. Input is not a supported intel type or malformed …"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:69
+#: aa_intel_tool/parser/general.py:68
 msgid "No data to parse …"
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:269
+#: aa_intel_tool/parser/module/chatlist.py:268
 msgid "The chat list module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/chatlist.py:288
+#: aa_intel_tool/parser/module/chatlist.py:287
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
@@ -172,11 +172,11 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: aa_intel_tool/parser/module/dscan.py:356
+#: aa_intel_tool/parser/module/dscan.py:355
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
-#: aa_intel_tool/parser/module/fleetcomp.py:176
+#: aa_intel_tool/parser/module/fleetcomp.py:175
 msgid "The fleet composition module is currently disabled."
 msgstr ""
 
@@ -397,16 +397,16 @@ msgstr "System Solarny"
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:56
+#: aa_intel_tool/views/general.py:55
 #, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:68
+#: aa_intel_tool/views/general.py:67
 #, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:140
+#: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr ""
