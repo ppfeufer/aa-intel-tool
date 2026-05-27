@@ -9,7 +9,7 @@ import socket
 from django.test import TestCase
 
 # AA Intel Tool
-from aa_intel_tool.tests.utils import create_fake_user
+from aa_intel_tool.tests.utils import create_fake_user, random_id
 
 
 class SocketAccessError(Exception):
@@ -45,7 +45,7 @@ class BaseTestCase(TestCase):
         super().setUp()
 
         self.user_1001 = create_fake_user(
-            character_id=10001, character_name="Wesley Crusher"
+            character_id=random_id(), character_name="Wesley Crusher"
         )
 
     @classmethod
