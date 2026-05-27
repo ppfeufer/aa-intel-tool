@@ -13,16 +13,15 @@ from django.utils.translation import gettext_lazy as _
 from allianceauth.services.hooks import get_extension_logger
 
 # AA Intel Tool
-from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.form import IntelForm
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.general import parse_intel
-from aa_intel_tool.providers import AppLogger
+from aa_intel_tool.providers.applogger import AppLogger
 
-logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__))
 
 
 def index(request: WSGIRequest) -> HttpResponse:

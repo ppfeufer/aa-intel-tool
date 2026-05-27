@@ -4,18 +4,18 @@ Test for the providers module.
 
 # Standard Library
 import logging
-from http import HTTPStatus
 from unittest.mock import MagicMock, patch
 
 # Third Party
-from aiopenapi3 import ContentTypeError
+from aiopenapi3 import ContentTypeError, RequestError
 
 # Alliance Auth
 from esi.exceptions import HTTPClientError, HTTPNotModified
 
 # AA Intel Tool
-from aa_intel_tool import providers
-from aa_intel_tool.providers import AppLogger, ESIHandler
+from aa_intel_tool import __title__, providers
+from aa_intel_tool.providers.applogger import AppLogger
+from aa_intel_tool.providers.esi import ESIHandler
 from aa_intel_tool.tests import BaseTestCase
 
 
@@ -33,62 +33,12 @@ class TestAppLogger(BaseTestCase):
         """
 
         logger = logging.getLogger("test_logger")
-        app_logger = AppLogger(logger, "PREFIX")
+        app_logger = AppLogger(logger)
 
         with self.assertLogs("test_logger", level="INFO") as log:
             app_logger.info("This is a test message")
 
-        self.assertIn("[PREFIX] This is a test message", log.output[0])
-
-    def test_handles_empty_prefix(self):
-        """
-        Tests that the AppLogger handles an empty prefix correctly.
-
-        :return:
-        :rtype:
-        """
-
-        logger = logging.getLogger("test_logger")
-        app_logger = AppLogger(logger, "")
-
-        with self.assertLogs("test_logger", level="INFO") as log:
-            app_logger.info("Message without prefix")
-
-        self.assertIn("Message without prefix", log.output[0])
-
-    def test_handles_non_string_prefix(self):
-        """
-        Tests that the AppLogger handles a non-string prefix correctly.
-
-        :return:
-        :rtype:
-        """
-
-        logger = logging.getLogger("test_logger")
-        app_logger = AppLogger(logger, 123)
-
-        with self.assertLogs("test_logger", level="INFO") as log:
-            app_logger.info("Message with numeric prefix")
-
-        self.assertIn("[123] Message with numeric prefix", log.output[0])
-
-    def test_handles_special_characters_in_prefix(self):
-        """
-        Tests that the AppLogger handles special characters in the prefix correctly.
-
-        :return:
-        :rtype:
-        """
-
-        logger = logging.getLogger("test_logger")
-        app_logger = AppLogger(logger, "!@#$%^&*()")
-
-        with self.assertLogs("test_logger", level="INFO") as log:
-            app_logger.info("Message with special characters in prefix")
-
-        self.assertIn(
-            "[!@#$%^&*()] Message with special characters in prefix", log.output[0]
-        )
+        self.assertIn(f"[{__title__}] This is a test message", log.output[0])
 
     def test_handles_empty_message(self):
         """
@@ -99,12 +49,12 @@ class TestAppLogger(BaseTestCase):
         """
 
         logger = logging.getLogger("test_logger")
-        app_logger = AppLogger(logger, "PREFIX")
+        app_logger = AppLogger(logger)
 
         with self.assertLogs("test_logger", level="INFO") as log:
             app_logger.info("")
 
-        self.assertIn("[PREFIX] ", log.output[0])
+        self.assertIn(f"[{__title__}] ", log.output[0])
 
 
 class TestESIHandlerResult(BaseTestCase):
@@ -112,102 +62,161 @@ class TestESIHandlerResult(BaseTestCase):
     Test the ESIHandler.result method.
     """
 
-    def test_handles_successful_operation(self):
+    def test_returns_result_when_operation_succeeds(self):
         """
-        Test that a successful ESI operation returns the expected result.
+        Test returning an ESIHandler result.
 
         :return:
         :rtype:
         """
 
-        mock_operation = MagicMock()
-        mock_operation.result.return_value = "success"
+        operation = MagicMock()
+        operation.operation = MagicMock(operationId="GetSomething")
+        operation.result.return_value = {"data": 1}
 
-        response = ESIHandler.result(mock_operation)
-
-        self.assertEqual(response, "success")
-        mock_operation.result.assert_called_once()
-
-    def test_handles_http_not_modified_exception(self):
-        """
-        Test that an HTTPNotModified exception is handled correctly.
-
-        :return:
-        :rtype:
-        """
-
-        mock_operation = MagicMock()
-        mock_operation.result.side_effect = HTTPNotModified(
-            status_code=HTTPStatus.NOT_MODIFIED, headers={}
-        )
-
-        response = ESIHandler.result(mock_operation)
-
-        self.assertIsNone(response)
-        mock_operation.result.assert_called_once()
-
-    def test_handles_content_type_error(self):
-        """
-        Test that a ContentTypeError exception is handled correctly.
-
-        :return:
-        :rtype:
-        """
-
-        mock_operation = MagicMock()
-        mock_response = MagicMock()
-        mock_operation.result.side_effect = ContentTypeError(
-            operation=mock_operation,
-            content_type="application/json",
-            message="Invalid content type",
-            response=mock_response,
-        )
-
-        response = ESIHandler.result(mock_operation)
-
-        self.assertIsNone(response)
-        mock_operation.result.assert_called_once()
-
-    def test_returns_none_when_http_client_error_occurs(self):
-        """
-        Test that an HTTPClientError exception is raised correctly.
-
-        :return:
-        :rtype:
-        """
-
-        mock_operation = MagicMock()
-        mock_operation.result.side_effect = HTTPClientError(
-            HTTPStatus.BAD_REQUEST, headers={}, data={}
-        )
-
-        response = ESIHandler.result(mock_operation)
-
-        self.assertIsNone(response)
-        mock_operation.result.assert_called_once()
-
-    def test_passes_extra_parameters_to_operation(self):
-        """
-        Test that extra parameters are passed correctly to the ESI operation.
-
-        :return:
-        :rtype:
-        """
-
-        mock_operation = MagicMock()
-        mock_operation.result.return_value = "success"
-
-        response = ESIHandler.result(
-            mock_operation, use_etag=False, extra_param="value"
-        )
-
-        self.assertEqual(response, "success")
-        mock_operation.result.assert_called_once_with(
-            use_etag=False,
+        result = ESIHandler.result(
+            operation=operation,
+            use_etag=True,
             return_response=False,
             force_refresh=False,
             use_cache=True,
-            extra_param="value",
+        )
+
+        self.assertEqual(result, {"data": 1})
+        operation.result.assert_called_once_with(
+            use_etag=True, return_response=False, force_refresh=False, use_cache=True
+        )
+
+    def test_returns_result_and_response_when_return_response_true(self):
+        """
+        Test returning an ESIHandler result along with the response when `return_response` is set to `True`.
+
+        :return:
+        :rtype:
+        """
+
+        operation = MagicMock()
+        operation.operation = MagicMock(operationId="GetSomething")
+        response_obj = MagicMock()
+        operation.result.return_value = ([1, 2, 3], response_obj)
+
+        result = ESIHandler.result(
+            operation=operation,
+            use_etag=False,
+            return_response=True,
+            force_refresh=True,
+            use_cache=False,
+        )
+
+        self.assertIsInstance(result, tuple)
+        self.assertEqual(result[0], [1, 2, 3])
+        self.assertIs(result[1], response_obj)
+        operation.result.assert_called_once_with(
+            use_etag=False, return_response=True, force_refresh=True, use_cache=False
+        )
+
+    def test_returns_none_on_http_not_modified(self):
+        """
+        Test returns `None` on HTTP Not Modified.
+
+        :return:
+        :rtype:
+        """
+
+        operation = MagicMock()
+        operation.operation = MagicMock(operationId="GetSomething")
+        # HTTPNotModified requires status_code and headers
+        operation.result.side_effect = HTTPNotModified(304, {})
+
+        result = ESIHandler.result(operation=operation, return_response=False)
+
+        self.assertIsNone(result)
+
+    def test_returns_none_tuple_on_http_not_modified_when_return_response_true(self):
+        """
+        Test returns `None` on HTTP Not Modified when `return_response` is set to `True`.
+
+        :return:
+        :rtype:
+        """
+
+        operation = MagicMock()
+        operation.operation = MagicMock(operationId="GetSomething")
+        # HTTPNotModified requires status_code and headers
+        operation.result.side_effect = HTTPNotModified(304, {})
+
+        result = ESIHandler.result(operation=operation, return_response=True)
+
+        self.assertEqual(result, (None, None))
+
+    def test_returns_none_on_content_type_error(self):
+        """
+        Test returns `None` on content type error.
+
+        :return:
+        :rtype:
+        """
+
+        operation = MagicMock()
+        operation.operation = MagicMock(operationId="GetSomething")
+        # ContentTypeError requires operation, content_type, message and response
+        operation.result.side_effect = ContentTypeError(
+            None, "application/json", "invalid", None
+        )
+
+        result = ESIHandler.result(operation=operation)
+
+        self.assertIsNone(result)
+
+    def test_returns_none_on_client_or_request_error(self):
+        """
+        Test returns `None` on client or request error.
+
+        :return:
+        :rtype:
+        """
+
+        # HTTPClientError requires status_code, headers and data; construct with dummy values
+        client_exc = HTTPClientError(500, {}, None)
+        # RequestError requires operation, request, data and parameters
+        request_exc = RequestError(None, None, None, None)
+
+        for exc in (client_exc, request_exc):
+            operation = MagicMock()
+            operation.operation = MagicMock(operationId="GetSomething")
+            operation.result.side_effect = exc
+
+            result = ESIHandler.result(operation=operation)
+            self.assertIsNone(result)
+
+    def test_passes_extra_kwargs_to_operation_result(self):
+        """
+        Test passes extra kwargs to operation result.
+
+        :return:
+        :rtype:
+        """
+
+        operation = MagicMock()
+        operation.operation = MagicMock(operationId="GetSomething")
+        operation.result.return_value = "ok"
+
+        result = ESIHandler.result(
+            operation=operation,
+            use_etag=False,
+            return_response=False,
+            force_refresh=True,
+            use_cache=False,
+            foo="bar",
+        )
+
+        self.assertEqual(result, "ok")
+        operation.result.assert_called_once_with(
+            use_etag=False,
+            return_response=False,
+            force_refresh=True,
+            use_cache=False,
+            foo="bar",
         )
 
 
@@ -230,7 +239,7 @@ class TestESIHandlerGetAlliancesAllianceId(BaseTestCase):
                 "result",
                 return_value={"alliance_id": 12345, "name": "Test Alliance"},
             ) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_alliances_alliance_id(alliance_id=12345)
 
@@ -247,7 +256,7 @@ class TestESIHandlerGetAlliancesAllianceId(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=None) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_alliances_alliance_id(alliance_id=99999)
 
@@ -268,7 +277,7 @@ class TestESIHandlerGetAlliancesAllianceId(BaseTestCase):
                 "result",
                 return_value={"alliance_id": 12345, "name": "Cached Alliance"},
             ) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_alliances_alliance_id(
                 alliance_id=12345, use_etag=True
@@ -287,7 +296,7 @@ class TestESIHandlerGetAlliancesAllianceId(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=None) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_alliances_alliance_id(alliance_id=12345)
 
@@ -304,7 +313,7 @@ class TestESIHandlerGetAlliancesAllianceId(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=None) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_alliances_alliance_id(alliance_id=12345)
 
@@ -331,7 +340,7 @@ class TestESIHandlerGetCorporationsCorporationId(BaseTestCase):
                 "result",
                 return_value={"corporation_id": 67890, "name": "Test Corporation"},
             ) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_corporations_corporation_id(corporation_id=67890)
 
@@ -350,7 +359,7 @@ class TestESIHandlerGetCorporationsCorporationId(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=None) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_corporations_corporation_id(corporation_id=99999)
 
@@ -371,7 +380,7 @@ class TestESIHandlerGetCorporationsCorporationId(BaseTestCase):
                 "result",
                 return_value={"corporation_id": 67890, "name": "Cached Corporation"},
             ) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_corporations_corporation_id(
                 corporation_id=67890, use_etag=True
@@ -392,7 +401,7 @@ class TestESIHandlerGetCorporationsCorporationId(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=None) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_corporations_corporation_id(corporation_id=67890)
 
@@ -419,7 +428,7 @@ class TestGetUniverseFactions(BaseTestCase):
                 "result",
                 return_value=[{"faction_id": 1, "name": "Faction One"}],
             ) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_universe_factions()
 
@@ -436,7 +445,7 @@ class TestGetUniverseFactions(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=None) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_universe_factions()
 
@@ -457,7 +466,7 @@ class TestGetUniverseFactions(BaseTestCase):
                 "result",
                 return_value=[{"faction_id": 1, "name": "Cached Faction"}],
             ) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.get_universe_factions(use_etag=True)
 
@@ -482,7 +491,7 @@ class TestPostCharactersAffiliation(BaseTestCase):
             patch.object(
                 ESIHandler, "result", return_value=[{"id": 1, "name": "Character One"}]
             ) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.post_characters_affiliation(ids=[1, 2, 3])
 
@@ -499,7 +508,7 @@ class TestPostCharactersAffiliation(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=None) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.post_characters_affiliation(ids=[99999])
 
@@ -516,7 +525,7 @@ class TestPostCharactersAffiliation(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=[]) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.post_characters_affiliation(ids=[])
 
@@ -541,7 +550,7 @@ class TestPostUniverseIds(BaseTestCase):
             patch.object(
                 ESIHandler, "result", return_value=[{"id": 1, "name": "Valid Name"}]
             ) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.post_universe_ids(names=["Valid Name"])
 
@@ -558,7 +567,7 @@ class TestPostUniverseIds(BaseTestCase):
 
         with (
             patch.object(ESIHandler, "result", return_value=None) as mock_result,
-            patch.object(providers, "esi", new=MagicMock()),
+            patch.object(providers.esi, "esi", new=MagicMock()),
         ):
             result = ESIHandler.post_universe_ids(names=["Nonexistent Name"])
 

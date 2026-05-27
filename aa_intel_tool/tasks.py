@@ -15,12 +15,11 @@ from django.utils import timezone
 from allianceauth.services.hooks import get_extension_logger
 
 # AA Intel Tool
-from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.models import Scan
-from aa_intel_tool.providers import AppLogger
+from aa_intel_tool.providers.applogger import AppLogger
 
-logger = AppLogger(get_extension_logger(__name__), __title__)
+logger = AppLogger(get_extension_logger(__name__))
 
 
 @shared_task
