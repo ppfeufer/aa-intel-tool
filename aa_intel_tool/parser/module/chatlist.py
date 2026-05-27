@@ -16,7 +16,6 @@ from allianceauth.eveonline.models import EveCharacter
 from allianceauth.services.hooks import get_extension_logger
 
 # AA Intel Tool
-from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.helper.data_structure import dict_to_list
@@ -26,9 +25,9 @@ from aa_intel_tool.helper.eve_character import (
 )
 from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
-from aa_intel_tool.providers import AppLogger
+from aa_intel_tool.providers.applogger import AppLogger
 
-logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__))
 
 
 def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
@@ -54,7 +53,7 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
 
         characters_to_fetch = set(scan_data) - existing_character_names
         logger.debug(
-            f"{len(characters_to_fetch)} character(s) need to be fetched from ESI: {characters_to_fetch}"
+            f"{len(characters_to_fetch)} character(s) need to be fetched from ESI"
         )
 
         fetched_characters = fetch_character_ids_from_esi(

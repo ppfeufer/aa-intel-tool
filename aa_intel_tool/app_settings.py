@@ -14,10 +14,9 @@ from django.conf import settings
 from allianceauth.services.hooks import get_extension_logger
 
 # AA Intel Tool
-from aa_intel_tool import __title__
-from aa_intel_tool.providers import AppLogger
+from aa_intel_tool.providers.applogger import AppLogger
 
-logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__))
 
 
 def _clean_setting(  # pylint: disable=too-many-arguments,too-many-positional-arguments

@@ -44,6 +44,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Changed
+
+- Modular providers
+
 ## [3.0.2] - 2026-05-05
 
 ### Changed

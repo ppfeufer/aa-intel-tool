@@ -25,7 +25,7 @@ from aa_intel_tool.helper.eve_character import (
     temp_alliance_data,
     temp_corp_data,
 )
-from aa_intel_tool.providers import ESIHandler
+from aa_intel_tool.providers.esi import ESIHandler
 from aa_intel_tool.tests import BaseTestCase
 
 

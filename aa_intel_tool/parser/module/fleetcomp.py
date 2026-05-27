@@ -16,7 +16,6 @@ from allianceauth.eveonline.evelinks import eveimageserver, evewho, zkillboard
 from allianceauth.services.hooks import get_extension_logger
 
 # AA Intel Tool
-from aa_intel_tool import __title__
 from aa_intel_tool.app_settings import AppSettings
 from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.helper.data_structure import dict_to_list
@@ -24,9 +23,9 @@ from aa_intel_tool.models import Scan, ScanData
 from aa_intel_tool.parser.helper.db import safe_scan_to_db
 from aa_intel_tool.parser.module.chatlist import _get_character_info
 from aa_intel_tool.parser.module.chatlist import parse as parse_pilots
-from aa_intel_tool.providers import AppLogger
+from aa_intel_tool.providers.applogger import AppLogger
 
-logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__))
 
 
 def get_fleet_composition(pilots: dict, ships: dict) -> dict:

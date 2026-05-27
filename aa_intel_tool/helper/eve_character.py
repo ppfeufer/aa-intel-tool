@@ -19,10 +19,10 @@ from allianceauth.eveonline.models import (
 from allianceauth.services.hooks import get_extension_logger
 
 # AA Intel Tool
-from aa_intel_tool import __title__
-from aa_intel_tool.providers import AppLogger, ESIHandler
+from aa_intel_tool.providers.applogger import AppLogger
+from aa_intel_tool.providers.esi import ESIHandler
 
-logger = AppLogger(my_logger=get_extension_logger(name=__name__), prefix=__title__)
+logger = AppLogger(my_logger=get_extension_logger(name=__name__))
 
 temp_corp_data = {}
 temp_alliance_data = {}
