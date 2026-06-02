@@ -2,15 +2,15 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Nikolay <nick.postnikov@gmail.com>, 2023, 2024.
-# Peter Pfeufer <info@ppfeufer.de>, 2023, 2024, 2025.
+# Peter Pfeufer <info@ppfeufer.de>, 2023, 2024, 2025, 2026.
 # Max <mark25@inbox.ru>, 2023, 2024.
 # Roycce_ <malyasov.roma@mail.ru>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-05-05 15:43+0200\n"
-"PO-Revision-Date: 2025-03-25 13:24+0000\n"
+"POT-Creation-Date: 2026-06-02 13:56+0200\n"
+"PO-Revision-Date: 2026-06-02 12:07+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 2026.5\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -68,8 +68,8 @@ msgid "A parser error occurred » {message}"
 msgstr "Произошла ошибка анализа » {message}"
 
 #: aa_intel_tool/form.py:20
-msgid "Paste here …"
-msgstr "Вставить сюда …"
+msgid "Paste here…"
+msgstr "Вставить сюда…"
 
 #: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
 msgid "Invalid scan data"
@@ -157,19 +157,19 @@ msgstr "Обработанные данные скана"
 msgid "Scan data"
 msgstr "Данные скана"
 
-#: aa_intel_tool/parser/general.py:51
-msgid "No suitable parser found. Input is not a supported intel type or malformed …"
-msgstr "Не найден подходящий анализатор. Формат входных данных не поддерживается или данные неполны …"
+#: aa_intel_tool/parser/general.py:50
+msgid "No suitable parser found. Input is not a supported intel type or malformed…"
+msgstr "Не найден подходящий анализатор. Формат входных данных не поддерживается или данные неполны…"
 
-#: aa_intel_tool/parser/general.py:69
-msgid "No data to parse …"
-msgstr "Нет данных для анализа …"
+#: aa_intel_tool/parser/general.py:68
+msgid "No data to parse…"
+msgstr "Нет данных для анализа…"
 
-#: aa_intel_tool/parser/module/chatlist.py:269
+#: aa_intel_tool/parser/module/chatlist.py:268
 msgid "The chat list module is currently disabled."
 msgstr "Анализатор списка чата отключен."
 
-#: aa_intel_tool/parser/module/chatlist.py:288
+#: aa_intel_tool/parser/module/chatlist.py:287
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
@@ -178,11 +178,11 @@ msgstr[1] "Анализатор чата в настоящее время огр
 msgstr[2] "Анализатор чата в настоящее время ограничен максимум {max_allowed_pilots} пилотами в скане. Размер вашего списка превышает это ограничение."
 msgstr[3] "Анализатор чата в настоящее время ограничен максимум одним пилотом в скане. Размер вашего списка превышает это ограничение."
 
-#: aa_intel_tool/parser/module/dscan.py:356
+#: aa_intel_tool/parser/module/dscan.py:355
 msgid "The D-Scan module is currently disabled."
 msgstr "Анализатор подскана отключен."
 
-#: aa_intel_tool/parser/module/fleetcomp.py:176
+#: aa_intel_tool/parser/module/fleetcomp.py:175
 msgid "The fleet composition module is currently disabled."
 msgstr "Анализатор состава флота отключен."
 
@@ -409,19 +409,19 @@ msgstr "Система"
 msgid "Participation details"
 msgstr "Подробности участия"
 
-#: aa_intel_tool/views/general.py:56
+#: aa_intel_tool/views/general.py:55
 #, fuzzy, python-brace-format
 #| msgid "The provided data could not be parsed."
 msgid "The provided data could not be parsed. ({exc})"
 msgstr "Предоставленные данные не могут быть проанализированы."
 
-#: aa_intel_tool/views/general.py:68
+#: aa_intel_tool/views/general.py:67
 #, fuzzy, python-brace-format
 #| msgid "(System Error) Something unexpected happened."
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr "(Системная ошибка) Случилось что-то непредвиденное."
 
-#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:140
+#: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr "Скан, который вы ищите, не может быть найден."
 

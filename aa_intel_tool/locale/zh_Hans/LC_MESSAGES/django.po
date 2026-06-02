@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-05-05 15:43+0200\n"
-"PO-Revision-Date: 2026-02-12 17:50+0000\n"
+"POT-Creation-Date: 2026-06-02 13:56+0200\n"
+"PO-Revision-Date: 2026-06-02 12:07+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Chinese (Simplified Han script) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 2026.5\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -74,7 +74,7 @@ msgid "A parser error occurred » {message}"
 msgstr "发生了一个解析器错误 » {message}"
 
 #: aa_intel_tool/form.py:20
-msgid "Paste here …"
+msgid "Paste here…"
 msgstr "粘贴到这里…"
 
 #: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
@@ -164,29 +164,29 @@ msgstr "已处理的扫描数据"
 msgid "Scan data"
 msgstr "扫描数据"
 
-#: aa_intel_tool/parser/general.py:51
-msgid "No suitable parser found. Input is not a supported intel type or malformed …"
+#: aa_intel_tool/parser/general.py:50
+msgid "No suitable parser found. Input is not a supported intel type or malformed…"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:69
-msgid "No data to parse …"
-msgstr "无数据 …"
+#: aa_intel_tool/parser/general.py:68
+msgid "No data to parse…"
+msgstr "无数据…"
 
-#: aa_intel_tool/parser/module/chatlist.py:269
+#: aa_intel_tool/parser/module/chatlist.py:268
 msgid "The chat list module is currently disabled."
 msgstr "聊天记录模块不可用."
 
-#: aa_intel_tool/parser/module/chatlist.py:288
+#: aa_intel_tool/parser/module/chatlist.py:287
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
 msgstr[0] ""
 
-#: aa_intel_tool/parser/module/dscan.py:356
+#: aa_intel_tool/parser/module/dscan.py:355
 msgid "The D-Scan module is currently disabled."
 msgstr "Dscan目前不可以."
 
-#: aa_intel_tool/parser/module/fleetcomp.py:176
+#: aa_intel_tool/parser/module/fleetcomp.py:175
 msgid "The fleet composition module is currently disabled."
 msgstr "舰队组成模块目前不可用."
 
@@ -405,17 +405,17 @@ msgstr "星系"
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:56
+#: aa_intel_tool/views/general.py:55
 #, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:68
+#: aa_intel_tool/views/general.py:67
 #, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:140
+#: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr ""
 
