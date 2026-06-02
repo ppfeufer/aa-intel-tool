@@ -49,7 +49,7 @@ def _create_alliance(alliance_ids: Iterable[int]) -> None:
 
     if alliances_to_fetch:
         logger.debug(
-            f"{len(alliances_to_fetch)} EveAllianceInfo object(s) need to be created …"
+            f"{len(alliances_to_fetch)} EveAllianceInfo object(s) need to be created…"
         )
 
         for loop_count, alliance_id in enumerate(alliances_to_fetch, start=1):
@@ -81,7 +81,7 @@ def _create_corporation(corporation_ids: Iterable[int]) -> None:
 
     if corporations_to_fetch:
         logger.debug(
-            f"{len(corporations_to_fetch)} EveCorporationInfo object(s) need to be created …"
+            f"{len(corporations_to_fetch)} EveCorporationInfo object(s) need to be created…"
         )
 
         for loop_count, corporation_id in enumerate(corporations_to_fetch, start=1):
@@ -298,7 +298,7 @@ def create_characters(  # pylint: disable=too-many-locals
         ],
         start=1,
     ):
-        logger.debug(f"Processing chunk {loop_count} with {len(chunk)} character(s) …")
+        logger.debug(f"Processing chunk {loop_count} with {len(chunk)} character(s)…")
 
         esi_response = _fetch_affiliations_with_retry(chunk=chunk)
 
@@ -327,9 +327,7 @@ def create_characters(  # pylint: disable=too-many-locals
         f"Affiliation information received from ESI: {affiliations} (#{len(affiliations)} affiliations)"
     )
 
-    logger.info(
-        f"{len(character_ids_list)} EveCharacter object(s) need to be created …"
-    )
+    logger.info(f"{len(character_ids_list)} EveCharacter object(s) need to be created…")
 
     factions_response = ESIHandler.get_universe_factions(use_etag=False)
     faction_id_to_name = {f.faction_id: f.name for f in factions_response}
