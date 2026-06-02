@@ -83,7 +83,7 @@ class TestCheckIntelType(BaseTestCase):
         scan_data = str(form_data).splitlines()
 
         expected_exception = ParserError
-        expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed …"
+        expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed…"
 
         with self.assertRaises(expected_exception=expected_exception):
             check_intel_type(scan_data=scan_data)
@@ -104,7 +104,7 @@ class TestCheckIntelType(BaseTestCase):
         form_data = load_chatscan_faulty_txt()
 
         expected_exception = ParserError
-        expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed …"
+        expected_message = "A parser error occurred » No suitable parser found. Input is not a supported intel type or malformed…"
 
         with self.assertRaises(ParserError):
             parse_intel(form_data=form_data)
@@ -125,7 +125,7 @@ class TestCheckIntelType(BaseTestCase):
         form_data = ""
 
         expected_exception = ParserError
-        expected_message = "A parser error occurred » No data to parse …"
+        expected_message = "A parser error occurred » No data to parse…"
 
         with self.assertRaises(expected_exception=expected_exception):
             parse_intel(form_data=form_data)

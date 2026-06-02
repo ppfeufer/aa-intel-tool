@@ -1,5 +1,5 @@
 """
-The views …
+The views…
 """
 
 # Django

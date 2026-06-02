@@ -241,7 +241,7 @@ your `local.py`.
 > It is advised to keep the `INTELTOOL_CHATSCAN_MAX_PILOTS` to a sane number. Large
 > chat scans can take quite some time to parse and from a certain number of pilots, the
 > bottleneck might be your browser refusing to render the results page.
-> (Source: Trust me, bro …)
+> (Source: Trust me, bro…)
 
 ## Changelog<a name="changelog"></a>
 

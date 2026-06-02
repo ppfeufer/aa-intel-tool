@@ -44,6 +44,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- Grammar - No space before ellipsis
+
 ### Changed
 
 - Modular providers
@@ -610,7 +614,7 @@ Once done, exit out of your MySQL server and run the update as usual.
 
 ## [0.0.1-alpha.14] - 2023-08-28
 
-Hopefully the last one before official release …
+Hopefully the last one before official release…
 
 ### Added
 
@@ -683,7 +687,7 @@ Hopefully the last one before official release …
 
 ### Fixed
 
-- Bootstrap CSS fix (Sounds weird, but it is what it is …)
+- Bootstrap CSS fix (Sounds weird, but it is what it is…)
 - Make D-Scan regex less greedy
 
 ### Changed

@@ -29,7 +29,7 @@ def check_intel_type(scan_data: list) -> str:
     :rtype: str
     """
 
-    logger.info(msg="Checking intel type …")
+    logger.info(msg="Checking intel type…")
     logger.info(msg=f"Supported intel types: {list(SUPPORTED_INTEL_TYPES.keys())}")
 
     for intel_type, intel_type_attributes in SUPPORTED_INTEL_TYPES.items():
@@ -47,7 +47,7 @@ def check_intel_type(scan_data: list) -> str:
     raise ParserError(
         message=str(
             _(
-                "No suitable parser found. Input is not a supported intel type or malformed …"
+                "No suitable parser found. Input is not a supported intel type or malformed…"
             )
         )
     )
@@ -65,7 +65,7 @@ def parse_intel(form_data: str) -> str:
     scan_data = form_data.splitlines()
 
     if not scan_data:
-        raise ParserError(message=str(_("No data to parse …")))
+        raise ParserError(message=str(_("No data to parse…")))
 
     try:
         intel_type = check_intel_type(scan_data=scan_data)

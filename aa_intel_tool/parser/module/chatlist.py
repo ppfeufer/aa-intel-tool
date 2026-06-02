@@ -40,7 +40,7 @@ def _get_character_info(scan_data: list) -> QuerySet[EveCharacter]:
     :rtype: QuerySet[EveCharacter]
     """
 
-    # Excluding corporation_id=1000001 (Doomheim) to potentially force an update here …
+    # Excluding corporation_id=1000001 (Doomheim) to potentially force an update here…
     eve_characters = EveCharacter.objects.filter(character_name__in=scan_data).exclude(
         corporation_id=1000001
     )
@@ -267,7 +267,7 @@ def parse(
     if not AppSettings.INTELTOOL_ENABLE_MODULE_CHATSCAN:
         raise ParserError(message=str(_("The chat list module is currently disabled.")))
 
-    logger.debug(msg=f"{len(scan_data)} name(s) to work through …")
+    logger.debug(msg=f"{len(scan_data)} name(s) to work through…")
 
     pilots_in_scan = len(scan_data)
     max_allowed_pilots = AppSettings.INTELTOOL_CHATSCAN_MAX_PILOTS
@@ -277,7 +277,7 @@ def parse(
         logger.debug(
             msg=(
                 f"Number of pilots in scan ({pilots_in_scan}) exceeds the maximum "
-                f"allowed number ({max_allowed_pilots}). Throwing a tantrum …"
+                f"allowed number ({max_allowed_pilots}). Throwing a tantrum…"
             )
         )
 
@@ -291,7 +291,7 @@ def parse(
         )
 
     eve_characters = _get_character_info(scan_data=scan_data)
-    logger.debug(msg=f"Got {len(eve_characters)} EveCharacter object(s) back from AA …")
+    logger.debug(msg=f"Got {len(eve_characters)} EveCharacter object(s) back from AA…")
 
     # Parse the data
     parsed_chatscan = _parse_chatscan_data(eve_characters=eve_characters)
