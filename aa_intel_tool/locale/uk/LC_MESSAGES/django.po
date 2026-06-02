@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-05-05 15:43+0200\n"
-"PO-Revision-Date: 2026-03-22 19:23+0000\n"
+"POT-Creation-Date: 2026-06-02 13:56+0200\n"
+"PO-Revision-Date: 2026-06-02 12:07+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/uk/>\n"
 "Language: uk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.16.2\n"
+"X-Generator: Weblate 2026.5\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -65,8 +65,8 @@ msgid "A parser error occurred » {message}"
 msgstr "Помилка парсера » {message}"
 
 #: aa_intel_tool/form.py:20
-msgid "Paste here …"
-msgstr "Постити сюди (ctrl+V) …"
+msgid "Paste here…"
+msgstr "Постити сюди…"
 
 #: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
 msgid "Invalid scan data"
@@ -154,19 +154,19 @@ msgstr "Оброблені дані скану"
 msgid "Scan data"
 msgstr "Дані скану"
 
-#: aa_intel_tool/parser/general.py:51
-msgid "No suitable parser found. Input is not a supported intel type or malformed …"
+#: aa_intel_tool/parser/general.py:50
+msgid "No suitable parser found. Input is not a supported intel type or malformed…"
 msgstr "Нема підходящого парсеру для даних. Введені дані не підтримуються або пошкоджені…"
 
-#: aa_intel_tool/parser/general.py:69
-msgid "No data to parse …"
+#: aa_intel_tool/parser/general.py:68
+msgid "No data to parse…"
 msgstr "Нема даних для розбору…"
 
-#: aa_intel_tool/parser/module/chatlist.py:269
+#: aa_intel_tool/parser/module/chatlist.py:268
 msgid "The chat list module is currently disabled."
 msgstr "Модуль чатлістів відключений."
 
-#: aa_intel_tool/parser/module/chatlist.py:288
+#: aa_intel_tool/parser/module/chatlist.py:287
 #, python-brace-format
 msgid "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilot per scan. Your list of pilots exceeds this limit."
 msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilots} pilots per scan. Your list of pilots exceeds this limit."
@@ -175,11 +175,11 @@ msgstr[1] "АналІзатор чату зараз обмежений макс�
 msgstr[2] "АналІзатор чату зараз обмежений максимум {max_allowed_pilots} пілотами у скані. Розмір Вашего списку перевищує це обмеження."
 msgstr[3] "АналІзатор чату зараз обмежений максимум одним пілотом у скані. Розмір Вашего списку перевищує це обмеження."
 
-#: aa_intel_tool/parser/module/dscan.py:356
+#: aa_intel_tool/parser/module/dscan.py:355
 msgid "The D-Scan module is currently disabled."
 msgstr "Модуль D-Scan відключений."
 
-#: aa_intel_tool/parser/module/fleetcomp.py:176
+#: aa_intel_tool/parser/module/fleetcomp.py:175
 msgid "The fleet composition module is currently disabled."
 msgstr "модуль фліткомпозішену відключений."
 
@@ -402,17 +402,17 @@ msgstr "Система"
 msgid "Participation details"
 msgstr "Деталі про учасників"
 
-#: aa_intel_tool/views/general.py:56
+#: aa_intel_tool/views/general.py:55
 #, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
 msgstr "Надані дані не можна розібрати. ({exc})"
 
-#: aa_intel_tool/views/general.py:68
+#: aa_intel_tool/views/general.py:67
 #, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr "(System Error) Трапилась якась системна помилка-халепа. ({exc})"
 
-#: aa_intel_tool/views/general.py:109 aa_intel_tool/views/general.py:140
+#: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr "Скан який Ви шукаєте, не можна знайти."
 
