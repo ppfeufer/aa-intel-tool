@@ -44,6 +44,8 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [3.1.0] - 2026-06-02
+
 ### Fixed
 
 - Grammar - No space before ellipsis
@@ -51,6 +53,7 @@ Section Order:
 ### Changed
 
 - Modular providers
+- Translations updated
 
 ## [3.0.2] - 2026-05-05
 
@@ -800,6 +803,7 @@ Hopefully the last one before official release…
 [3.0.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v2.13.1...v3.0.0 "v3.0.0"
 [3.0.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.0.0...v3.0.1 "v3.0.1"
 [3.0.2]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.0.1...v3.0.2 "v3.0.2"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.0.2...HEAD "In Development"
+[3.1.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.0.2...v3.1.0 "v3.1.0"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.1.0...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
