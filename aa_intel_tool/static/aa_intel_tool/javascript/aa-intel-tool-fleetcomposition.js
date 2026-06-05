@@ -64,13 +64,14 @@ $(document).ready(() => {
                 $(`div.${containerClass}`).removeClass('d-none');
 
                 tableElement.DataTable({
+                    ...settings.dataTables,
                     data: tableData,
                     paging: false,
                     language: settings.language.dataTables,
                     lengthChange: false,
-                    layout: settings.dataTables.dom,
-                    ordering: settings.dataTables.ordering,
-                    columnControl: settings.dataTables.columnControl,
+                    // layout: settings.dataTables.dom,
+                    // ordering: settings.dataTables.ordering,
+                    // columnControl: settings.dataTables.columnControl,
                     columns: columns,
                     order: order || defaultOrder,
                     columnDefs: columnDefs || defaultColumnDefs,

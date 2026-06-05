@@ -71,13 +71,11 @@ $(document).ready(() => {
                 $(`div.${containerClass}`).removeClass('d-none');
 
                 const dt = new DataTable(table, { // eslint-disable-line no-unused-vars
+                    ...settings.dataTables,
                     data: tableData,
                     paging: false,
                     language: settings.language.dataTables,
                     lengthChange: false,
-                    layout: settings.dataTables.layout,
-                    ordering: settings.dataTables.ordering,
-                    columnControl: settings.dataTables.columnControl,
                     columns: columns,
                     order: order || defaultOrder,
                     columnDefs: columnDefs || defaultColumnDefs,
