@@ -102,13 +102,14 @@ $(document).ready(() => {
 
                 // initialize DataTable
                 const dt = new DataTable(tableEl, { // eslint-disable-line no-unused-vars
+                    ...settings.dataTables,
                     data: tableData,
                     paging: false,
                     language: settings.language.dataTables,
                     lengthChange: false,
-                    layout: settings.dataTables.layout,
-                    ordering: settings.dataTables.ordering,
-                    columnControl: settings.dataTables.columnControl,
+                    // layout: settings.dataTables.layout,
+                    // ordering: settings.dataTables.ordering,
+                    // columnControl: settings.dataTables.columnControl,
                     columns: columns,
                     order: order || defaultOrder,
                     columnDefs: columnsDefs,
