@@ -76,15 +76,9 @@ See [Settings](#settings) section for details.
 
 > [!IMPORTANT]
 >
-> This app is utilising features that are only available in Alliance Auth >= 4.12.0.
-> Please make sure to update your Alliance Auth instance before installing this app,
-> otherwise, an update to Alliance Auth will be pulled in unsupervised.
-
-**Important**: Please make sure you meet all preconditions before you proceed:
-
-- AA Intel Tool is a plugin for [Alliance Auth]. If you don't have Alliance Auth running
-  already, please install it first before proceeding. (see the official
-  [Alliance Auth installation guide] for details)
+> This app is a plugin for [Alliance Auth]. \
+> If you don't have Alliance Auth running already, please install it first before
+> proceeding. (see the official [Alliance Auth installation guide] for details)
 
 ### Step 1: Install the Package<a name="step-1-install-the-package"></a>
 

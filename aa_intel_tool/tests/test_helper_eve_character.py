@@ -193,7 +193,7 @@ class TestCreateCorporation(BaseTestCase):
         ):
             _create_corporation(corporation_ids)
 
-            mock_create_corporation.assert_called_once_with(corp_id=corp_id_3)
+            mock_create_corporation.assert_called_once_with(corporation_id=corp_id_3)
 
     def test_handles_empty_corporation_ids(self):
         """

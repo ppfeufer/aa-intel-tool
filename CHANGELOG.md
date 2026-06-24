@@ -46,6 +46,7 @@ Section Order:
 
 ### Fixed
 
+- Unexpected argument `corp_id`
 - `alliance_name` cannot be NULL
 
 ## [4.0.0] - 2026-06-07
