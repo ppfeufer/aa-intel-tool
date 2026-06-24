@@ -44,6 +44,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- `alliance_name` cannot be NULL
+
 ## [4.0.0] - 2026-06-07
 
 > [!IMPORTANT]

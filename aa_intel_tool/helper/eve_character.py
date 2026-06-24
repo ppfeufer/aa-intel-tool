@@ -347,18 +347,18 @@ def create_characters(  # pylint: disable=too-many-locals
                 character_id=affiliation["character_id"],
                 character_name=affiliation["character_name"],
                 corporation_id=affiliation["corporation_id"],
-                corporation_name=corp_info.name if corp_info else None,
-                corporation_ticker=corp_info.ticker if corp_info else None,
+                corporation_name=corp_info.name if corp_info else "",
+                corporation_ticker=corp_info.ticker if corp_info else "",
                 alliance_id=affiliation["alliance_id"],
-                alliance_name=alliance_info.name if alliance_info else None,
-                alliance_ticker=alliance_info.ticker if alliance_info else None,
+                alliance_name=alliance_info.name if alliance_info else "",
+                alliance_ticker=alliance_info.ticker if alliance_info else "",
                 faction_id=(
                     affiliation["faction_id"] if affiliation["faction_id"] else None
                 ),
                 faction_name=(
                     faction_id_to_name.get(affiliation["faction_id"])
                     if affiliation["faction_id"]
-                    else None
+                    else ""
                 ),
             )
         )
