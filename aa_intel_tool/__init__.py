@@ -5,7 +5,7 @@ App init
 # Django
 from django.utils.translation import gettext_lazy as _
 
-__version__ = "4.0.0"
+__version__ = "4.1.0"
 __title__ = "Intel Parser"
 __title_translated__ = _("Intel Parser")
 __verbose_name__ = "Intel Parser for Alliance Auth"
