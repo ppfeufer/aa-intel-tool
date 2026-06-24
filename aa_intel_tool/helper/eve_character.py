@@ -86,7 +86,7 @@ def _create_corporation(corporation_ids: Iterable[int]) -> None:
 
         for loop_count, corporation_id in enumerate(corporations_to_fetch, start=1):
             corporation = EveCorporationInfo.objects.create_corporation(
-                corp_id=corporation_id
+                corporation_id=corporation_id
             )
 
             logger.debug(
