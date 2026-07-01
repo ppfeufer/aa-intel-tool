@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
-"Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-06-02 13:56+0200\n"
-"PO-Revision-Date: 2026-06-02 12:07+0000\n"
+"Report-Msgid-Bugs-To: https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/\n"
+"POT-Creation-Date: 2026-07-01 03:41+0000\n"
+"PO-Revision-Date: 2026-06-26 17:57+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.5\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -410,16 +410,14 @@ msgid "Participation details"
 msgstr "Подробности участия"
 
 #: aa_intel_tool/views/general.py:55
-#, fuzzy, python-brace-format
-#| msgid "The provided data could not be parsed."
+#, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
-msgstr "Предоставленные данные не могут быть проанализированы."
+msgstr "Предоставленные данные не могут быть проанализированы. ({exc})"
 
 #: aa_intel_tool/views/general.py:67
-#, fuzzy, python-brace-format
-#| msgid "(System Error) Something unexpected happened."
+#, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
-msgstr "(Системная ошибка) Случилось что-то непредвиденное."
+msgstr "(Системная ошибка) Случилось что-то непредвиденное. ({exc})"
 
 #: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
