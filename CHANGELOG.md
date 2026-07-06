@@ -44,6 +44,16 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [4.1.1] - 2026-07-06
+
+### Added
+
+- Support for Python 3.14
+
+### Changed
+
+- Translations updated
+
 ## [4.1.0] - 2026-06-24
 
 ### Fixed
@@ -830,6 +840,7 @@ Hopefully the last one before official release…
 [3.1.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.0.2...v3.1.0 "v3.1.0"
 [4.0.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.1.0...v4.0.0 "v4.0.0"
 [4.1.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.0.0...v4.1.0 "v4.1.0"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.0...HEAD "In Development"
+[4.1.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.0...v4.1.1 "v4.1.1"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.1...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
