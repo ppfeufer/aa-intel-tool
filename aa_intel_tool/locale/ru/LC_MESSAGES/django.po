@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Nikolay <nick.postnikov@gmail.com>, 2023, 2024.
+# Nikolay <nick.postnikov@gmail.com>, 2023, 2024, 2026.
 # Peter Pfeufer <info@ppfeufer.de>, 2023, 2024, 2025, 2026.
-# Max <mark25@inbox.ru>, 2023, 2024.
-# Roycce_ <malyasov.roma@mail.ru>, 2024.
+# Max <mark25@inbox.ru>, 2023, 2024, 2026.
+# Roycce_ <malyasov.roma@mail.ru>, 2024, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-06-02 13:56+0200\n"
-"PO-Revision-Date: 2026-06-02 12:07+0000\n"
-"Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
+"POT-Creation-Date: 2026-07-06 22:54+0200\n"
+"PO-Revision-Date: 2026-07-06 21:01+0000\n"
+"Last-Translator: Roycce_ <malyasov.roma@mail.ru>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : (n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.5\n"
+"X-Generator: Weblate 2026.7\n"
 
 #: aa_intel_tool/__init__.py:10
 #: aa_intel_tool/templates/aa_intel_tool/base.html:7
@@ -410,16 +410,14 @@ msgid "Participation details"
 msgstr "Подробности участия"
 
 #: aa_intel_tool/views/general.py:55
-#, fuzzy, python-brace-format
-#| msgid "The provided data could not be parsed."
+#, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
-msgstr "Предоставленные данные не могут быть проанализированы."
+msgstr "Предоставленные данные не могут быть проанализированы. ({exc})"
 
 #: aa_intel_tool/views/general.py:67
-#, fuzzy, python-brace-format
-#| msgid "(System Error) Something unexpected happened."
+#, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
-msgstr "(Системная ошибка) Случилось что-то непредвиденное."
+msgstr "(Системная ошибка) Случилось что-то непредвиденное. ({exc})"
 
 #: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
