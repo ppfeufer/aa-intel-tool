@@ -8,11 +8,11 @@ import secrets
 from pathlib import Path
 
 # Django
-from django.contrib.auth.models import User
 from django.core.handlers.wsgi import WSGIRequest
 from django.template import Context, Template
 
 # Alliance Auth
+from allianceauth.authentication.models import User
 from allianceauth.tests.auth_utils import AuthUtils
 
 
