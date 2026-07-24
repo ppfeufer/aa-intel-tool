@@ -42,7 +42,7 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
 
     # Get ship class details from DB
     ship_class_details = ItemType.objects.filter(name__in=ships["class"]).values_list(
-        "id", "name", "group__id", "group__name", "mass", named=True
+        "pk", "name", "group__pk", "group__name", "mass", named=True
     )
 
     # Build ship class and type dictionaries
@@ -50,11 +50,11 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
         # Build ship class dict
         ships["class"][ship_class.name].update(
             {
-                "id": ship_class.id,
+                "id": ship_class.pk,
                 "name": ship_class.name,
-                "type_id": ship_class.group__id,
+                "type_id": ship_class.group__pk,
                 "type_name": ship_class.group__name,
-                "image": eveimageserver.type_icon_url(type_id=ship_class.id, size=32),
+                "image": eveimageserver.type_icon_url(type_id=ship_class.pk, size=32),
                 "mass": ship_class.mass * ships["class"][ship_class.name]["count"],
             }
         )
@@ -62,7 +62,7 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
         # Build ship type dict
         ships["type"][ship_class.group__name].update(
             {
-                "id": ship_class.group__id,
+                "id": ship_class.group__pk,
                 "name": ship_class.group__name,
             }
         )
@@ -84,8 +84,8 @@ def get_fleet_composition(pilots: dict, ships: dict) -> dict:
                 "portrait": pilot.portrait_url_32,
                 "evewho": evewho.character_url(pilot.character_id),
                 "zkillboard": zkillboard.character_url(pilot.character_id),
-                "ship_id": pilot_ship_class.id,
-                "ship_type_id": pilot_ship_class.group__id,
+                "ship_id": pilot_ship_class.pk,
+                "ship_type_id": pilot_ship_class.group__pk,
             }
         )
 
