@@ -358,7 +358,7 @@ def parse(scan_data: list) -> Scan:
     ansiblex_destination, counter, eve_ids = _get_scan_details(scan_data=scan_data)
 
     eve_types = ItemType.objects.filter(id__in=set(eve_ids["all"])).values_list(
-        "id", "name", "group__id", "group__name", "mass", named=True
+        "pk", "name", "group__pk", "group__name", "mass", named=True
     )
 
     logger.debug(f"EVE Types for D-Scan: {list(eve_types)}")

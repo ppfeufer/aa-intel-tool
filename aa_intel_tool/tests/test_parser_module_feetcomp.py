@@ -42,16 +42,16 @@ class TestGetFleetComposition(BaseTestCase):
         }
         ship_class_details = [
             SimpleNamespace(
-                id=1,
+                pk=1,
                 name="Ship Class 1",
-                group__id=10,
+                group__pk=10,
                 group__name="Group 1",
                 mass=1000,
             ),
             SimpleNamespace(
-                id=2,
+                pk=2,
                 name="Ship Class 2",
-                group__id=20,
+                group__pk=20,
                 group__name="Group 2",
                 mass=2000,
             ),
