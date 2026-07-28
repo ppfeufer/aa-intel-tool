@@ -55,6 +55,7 @@ Section Order:
 
 - Use `pk` instead of `id` when referring to the primary key of a model instance, since `id` is not guaranteed to be the primary key in Django.
 - Migrated to Alliance Auth proxy models for `Permission`, `User` and `Group`
+- CSS modernized
 
 ## [4.1.1] - 2026-07-06
 

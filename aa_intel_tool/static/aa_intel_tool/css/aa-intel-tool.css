@@ -1,145 +1,146 @@
 @media all {
-    .aa-intel-tool .aa-intel-scan-page-buttons ul li {
-        display: block;
-        float: left;
-        width: 150px;
-    }
+    .aa-intel-tool {
+        .aa-intel-scan-page-buttons {
+            ul li {
+                display: block;
+                float: left;
+                width: 150px;
+            }
 
-    .aa-intel-tool .aa-intel-scan-page-buttons button {
-        position: relative;
-        width: 100%;
-    }
+            button {
+                position: relative;
+                width: 100%;
+            }
+        }
 
-    .aa-intel-tool .aa-intel-copy-result {
-        max-width: 310px;
-    }
+        .aa-intel-copy-result {
+            max-width: 310px;
+        }
 
-    .aa-intel-tool .paste-explanation ul {
-        list-style-type: none;
-    }
+        .paste-explanation {
+            ul {
+                list-style-type: none;
+            }
 
-    .aa-intel-tool .paste-explanation li > small {
-        color: var(--bs-gray);
-    }
+            li > small {
+                color: var(--bs-gray);
+            }
+        }
 
-    .aa-intel-tool .aa-intel-section-header {
-        border-bottom: 1px solid var(--bs-gray-200);
-    }
+        .aa-intel-section-header {
+            border-bottom: 1px solid var(--bs-gray-200);
 
-    .aa-intel-tool .aa-intel-section-header .aa-intel-section-title {
-        font-size: 1.25em;
-    }
+            .aa-intel-section-title {
+                font-size: 1.25em;
+            }
+        }
 
-    .aa-intel-tool .aa-intel-eve-image-wrapper {
-        display: inline-block;
-        margin-right: 0.5rem;
-    }
+        .aa-intel-eve-image-wrapper {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
 
-    .aa-intel-tool .aa-intel-eve-information-wrapper {
-        display: inline-block;
-        vertical-align: inherit;
-    }
+        .aa-intel-eve-information-wrapper {
+            display: inline-block;
+            max-width: calc(100% - 35px);
+            vertical-align: inherit;
+        }
 
-    .aa-intel-tool .aa-intel-eve-name-wrapper,
-    .aa-intel-tool .aa-intel-additional-information-wrapper {
-        display: block;
-    }
-}
+        .aa-intel-eve-name-wrapper,
+        .aa-intel-additional-information-wrapper {
+            display: block;
+        }
 
-/* Form
-------------------------------------------------------------------------------------- */
-@media all {
-    .aa-intel-tool .aa-intel-form-submitted-info {
-        display: none;
-    }
+        /* Form
+        ----------------------------------------------------------------------------- */
+        .aa-intel-form-submitted-info {
+            display: none;
+        }
 
-    .aa-intel-tool form.is-submitting button[type="submit"] {
-        cursor: not-allowed;
-        opacity: 0.5;
-    }
+        form {
+            &.is-submitting {
+                button[type="submit"] {
+                    cursor: not-allowed;
+                    opacity: 0.5;
+                }
 
-    .aa-intel-tool form.is-submitting .aa-intel-form-submitted-info {
-        display: block;
-    }
-}
+                .aa-intel-form-submitted-info {
+                    display: block;
+                }
+            }
+        }
 
-/* Loading Spinner
-------------------------------------------------------------------------------------- */
-@media all {
-    svg.aa-intel-loading-spinner {
-        height: 1rem;
-        width: 1rem;
-    }
+        /* Loading Spinner
+        ----------------------------------------------------------------------------- */
+        svg.aa-intel-loading-spinner {
+            height: 1rem;
+            width: 1rem;
+        }
 
-    .aa-intel-tool .aa-intel-form-submitted-info svg.aa-intel-loading-spinner {
-        height: 2rem;
-        width: 2rem;
-    }
-}
+        .aa-intel-form-submitted-info svg.aa-intel-loading-spinner {
+            height: 2rem;
+            width: 2rem;
+        }
 
-/* Data Tables
-------------------------------------------------------------------------------------- */
-@media all {
-    .aa-intel-tool .dataTable tr {
-        border-left: 1px solid transparent;
-        border-right: 1px solid transparent;
-    }
+        /* Data Tables
+        ----------------------------------------------------------------------------- */
+        .dataTable {
+            tr {
+                border-left: 1px solid transparent;
+                border-right: 1px solid transparent;
+            }
 
-    .aa-intel-tool .dataTable tbody tr:hover,
-    .aa-intel-tool .dataTable tbody tr.aa-intel-highlight,
-    .aa-intel-tool .dataTable tbody tr.aa-intel-highlight-sticky {
-        --bs-table-bg-type: var(--bs-table-hover-bg);
-        --bs-table-color-type: var(--bs-table-striped-color);
-    }
+            tbody {
+                tr:hover,
+                tr.aa-intel-highlight,
+                tr.aa-intel-highlight-sticky {
+                    --bs-table-bg-type: var(--bs-table-hover-bg);
+                    --bs-table-color-type: var(--bs-table-striped-color);
+                }
+            }
 
-    .aa-intel-tool .table-aa-intel tbody > tr > td {
-        vertical-align: middle;
-    }
+            /* DataTables ColumnControl
+            ------------------------------------------------------------------------- */
+            span.dtcc div.dtcc-search > div select {
+                background-color: var(--bs-body-bg);
+                color: var(--bs-body-color);
+                padding: 0.375rem;
+            }
 
-    .aa-intel-tool .table-no-images > tbody > tr > td {
-        padding-bottom: 12px;
-        padding-top: 11px;
-    }
+            .dt-column-header div.dtcc-search-title {
+                display: none;
+            }
+        }
 
-    .aa-intel-tool td.text-ellipsis {
-        max-width: 50px;
-        white-space: nowrap;
-    }
+        .table-aa-intel tbody > tr > td {
+            vertical-align: middle;
+        }
 
-    .aa-intel-tool .aa-intel-eve-information-wrapper {
-        max-width: calc(100% - 35px);
-    }
+        .table-no-images > tbody > tr > td {
+            padding-bottom: 12px;
+            padding-top: 11px;
+        }
 
-    .aa-intel-tool .aa-intel-eve-name-wrapper {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+        td.text-ellipsis {
+            max-width: 50px;
+            white-space: nowrap;
+        }
 
-    .aa-intel-tool td.fix-eve-image-position > span.alliance-id-1 {
-        transform: none;
-    }
-}
+        .aa-intel-eve-name-wrapper {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-/* DataTables ColumnControl
-------------------------------------------------------------------------------------- */
-@media all {
-    table.dataTable span.dtcc div.dtcc-search > div select {
-        background-color: var(--bs-body-bg);
-        color: var(--bs-body-color);
-        padding: 0.375rem;
-    }
+        td.fix-eve-image-position > span.alliance-id-1 {
+            transform: none;
+        }
 
-    table.dataTable .dt-column-header div.dtcc-search-title {
-        display: none;
-    }
-}
-
-/* Highlighting
-------------------------------------------------------------------------------------- */
-@media all {
-    .aa-intel-tool tr.aa-intel-highlight,
-    .aa-intel-tool tr.aa-intel-highlight-sticky {
-        border-left: 1px solid var(--bs-red);
-        border-right: 1px solid var(--bs-red);
+        /* Highlighting
+        ----------------------------------------------------------------------------- */
+        tr.aa-intel-highlight,
+        tr.aa-intel-highlight-sticky {
+            border-left: 1px solid var(--bs-red);
+            border-right: 1px solid var(--bs-red);
+        }
     }
 }
