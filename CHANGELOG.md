@@ -44,6 +44,8 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [4.2.0] - 2026-08-03
+
 > [!IMPORTANT]
 >
 > **This version needs Alliance Auth v5.2.0 or newer!**
@@ -55,7 +57,8 @@ Section Order:
 
 - Use `pk` instead of `id` when referring to the primary key of a model instance, since `id` is not guaranteed to be the primary key in Django.
 - Migrated to Alliance Auth proxy models for `Permission`, `User` and `Group`
-- CSS modernized
+- CSS modernized (If you have an older browser that can't handle the new CSS, update your browser…)
+- Translations updated
 
 ## [4.1.1] - 2026-07-06
 
@@ -854,6 +857,7 @@ Hopefully the last one before official release…
 [4.0.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v3.1.0...v4.0.0 "v4.0.0"
 [4.1.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.0.0...v4.1.0 "v4.1.0"
 [4.1.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.0...v4.1.1 "v4.1.1"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.1...HEAD "In Development"
+[4.2.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.1...v4.2.0 "v4.2.0"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.2.0...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
