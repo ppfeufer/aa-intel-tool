@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-07-06 22:54+0200\n"
+"POT-Creation-Date: 2026-08-03 22:50+0200\n"
 "PO-Revision-Date: 2026-07-06 21:01+0000\n"
 "Last-Translator: Peter Pfeufer <info@ppfeufer.de>\n"
 "Language-Team: German <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/de/>\n"
@@ -407,69 +407,3 @@ msgstr "(Systemfehler) Es ist etwas Unerwartetes passiert. ({exc})"
 #: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr "Der gesuchte Scan konnte nicht gefunden werden."
-
-#~ msgid "Something went wrong while fetching the character information from ESI."
-#~ msgstr "Beim Abrufen der Charakterinformationen von ESI ist ein Fehler aufgetreten."
-
-#~ msgid "Character unknown to ESI."
-#~ msgstr "Charakter ist in ESI nicht bekannt."
-
-#, python-brace-format
-#~ msgid "Intel Parser v{__version__}"
-#~ msgstr "Intel Parser v{__version__}"
-
-#~ msgctxt "Decimal separator"
-#~ msgid "."
-#~ msgstr ","
-
-#~ msgctxt "Thousands separator"
-#~ msgid ","
-#~ msgstr "."
-
-#~ msgid "No data available in this table"
-#~ msgstr "In dieser Tabelle sind keine Daten verfügbar"
-
-#~ msgctxt "Keep _END_ as it is. It will be replaced by a number."
-#~ msgid "Showing _END_ entries"
-#~ msgstr "Zeige _END_ Einträge"
-
-#~ msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
-#~ msgid "(filtered from _MAX_ total entries)"
-#~ msgstr "(gefiltert von _MAX_ Einträgen)"
-
-#~ msgid "No records available"
-#~ msgstr "Keine Datensätze vorhanden"
-
-#~ msgid "Loading …"
-#~ msgstr "Lade …"
-
-#~ msgid "Processing …"
-#~ msgstr "Verarbeite …"
-
-#~ msgid "Nothing found, sorry …"
-#~ msgstr "Nichts gefunden, tut mir leid …"
-
-#~ msgid "Search …"
-#~ msgstr "Suche …"
-
-#~ msgid "First"
-#~ msgstr "Erster"
-
-#~ msgid "Last"
-#~ msgstr "Letzter"
-
-#~ msgid "Next"
-#~ msgstr "Nächster"
-
-#~ msgid "Previous"
-#~ msgstr "Vorheriger"
-
-#~ msgid ": activate to sort column ascending"
-#~ msgstr ": aktivieren, um die Spalte aufsteigend zu sortieren"
-
-#~ msgid ": activate to sort column descending"
-#~ msgstr ": aktivieren, um die Spalte absteigend zu sortieren"
-
-#~ msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
-#~ msgid "Show _MENU_"
-#~ msgstr "Zeige _MENU_"
