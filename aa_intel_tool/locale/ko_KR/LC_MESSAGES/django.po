@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-07-06 22:54+0200\n"
+"POT-Creation-Date: 2026-08-03 22:50+0200\n"
 "PO-Revision-Date: 2026-07-06 21:01+0000\n"
 "Last-Translator: SiO4 <hohoit0078@gmail.com>\n"
 "Language-Team: Korean <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ko/>\n"
@@ -420,69 +420,3 @@ msgstr "(성계 오류) 예측하지 못한 오류 발생. ({exc})"
 #: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr "요구하는 스캔을 찾을 수 없습니다."
-
-#~ msgid "Something went wrong while fetching the character information from ESI."
-#~ msgstr "ESI에서 캐릭터 정보를 가져오는 중 오류가 발생했습니다."
-
-#~ msgid "Character unknown to ESI."
-#~ msgstr "ESI에 등록되지 않은 캐릭터입니다."
-
-#, python-brace-format
-#~ msgid "Intel Parser v{__version__}"
-#~ msgstr "인텔 파싱 v{__version__}"
-
-#~ msgctxt "Decimal separator"
-#~ msgid "."
-#~ msgstr "."
-
-#~ msgctxt "Thousands separator"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgid "No data available in this table"
-#~ msgstr "테이블에 유효한 데이터가 없습니다"
-
-#~ msgctxt "Keep _END_ as it is. It will be replaced by a number."
-#~ msgid "Showing _END_ entries"
-#~ msgstr "_END_ 개의 결과 표시중"
-
-#~ msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
-#~ msgid "(filtered from _MAX_ total entries)"
-#~ msgstr "(총 _MAX_ 개의 결과 에서 필터링됨)"
-
-#~ msgid "No records available"
-#~ msgstr "사용 가능한 레코드가 없습니다"
-
-#~ msgid "Loading …"
-#~ msgstr "로딩 …"
-
-#~ msgid "Processing …"
-#~ msgstr "처리 중 …"
-
-#~ msgid "Nothing found, sorry …"
-#~ msgstr "아무것도 찾지 못했습니다, 죄송합니다 …"
-
-#~ msgid "Search …"
-#~ msgstr "검색 …"
-
-#~ msgid "First"
-#~ msgstr "첫 번째"
-
-#~ msgid "Last"
-#~ msgstr "마지막"
-
-#~ msgid "Next"
-#~ msgstr "다음"
-
-#~ msgid "Previous"
-#~ msgstr "이전"
-
-#~ msgid ": activate to sort column ascending"
-#~ msgstr ": 열 오름차순으로 정렬 활성화"
-
-#~ msgid ": activate to sort column descending"
-#~ msgstr ": 열 내림차순으로 정렬 활성화"
-
-#~ msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
-#~ msgid "Show _MENU_"
-#~ msgstr "_MENU_ 보기"

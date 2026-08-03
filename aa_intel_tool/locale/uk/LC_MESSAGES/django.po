@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-07-06 22:54+0200\n"
+"POT-Creation-Date: 2026-08-03 22:50+0200\n"
 "PO-Revision-Date: 2026-07-06 21:02+0000\n"
 "Last-Translator: Bandera Primary <skrypets@gmail.com>\n"
 "Language-Team: Ukrainian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/uk/>\n"
@@ -416,57 +416,3 @@ msgstr "(System Error) Трапилась якась системна помил
 #: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr "Скан який Ви шукаєте, не можна знайти."
-
-#~ msgid "Something went wrong while fetching the character information from ESI."
-#~ msgstr "Щось пішло не так при виборці даних персонажа з ESI."
-
-#~ msgid "Character unknown to ESI."
-#~ msgstr "Персонаж не відомий ESI."
-
-#, python-brace-format
-#~ msgid "Intel Parser v{__version__}"
-#~ msgstr "Парсер інтелу v{__version__}"
-
-#~ msgid "No data available in this table"
-#~ msgstr "Немає даних у цій таблиці"
-
-#~ msgctxt "Keep _END_ as it is. It will be replaced by a number."
-#~ msgid "Showing _END_ entries"
-#~ msgstr "Показано _END_ записів"
-
-#~ msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
-#~ msgid "(filtered from _MAX_ total entries)"
-#~ msgstr "(відфільтровано з _MAX_ загальних записів)"
-
-#~ msgid "No records available"
-#~ msgstr "Записів не знайдено"
-
-#~ msgid "Loading …"
-#~ msgstr "Завантаження …"
-
-#~ msgid "Processing …"
-#~ msgstr "Обробка …"
-
-#~ msgid "Nothing found, sorry …"
-#~ msgstr "Нічого не знайдено, вибачте …"
-
-#~ msgid "Search …"
-#~ msgstr "Пошук …"
-
-#~ msgid "First"
-#~ msgstr "Перший"
-
-#~ msgid "Last"
-#~ msgstr "Останній"
-
-#~ msgid "Next"
-#~ msgstr "Далі"
-
-#~ msgid "Previous"
-#~ msgstr "Назад"
-
-#~ msgid ": activate to sort column ascending"
-#~ msgstr ": активуйте щоб сортувати за зростанням"
-
-#~ msgid ": activate to sort column descending"
-#~ msgstr ": активуйте щоб сортувати за спаданням"

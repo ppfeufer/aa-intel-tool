@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-07-06 22:54+0200\n"
+"POT-Creation-Date: 2026-08-03 22:50+0200\n"
 "PO-Revision-Date: 2026-07-06 21:01+0000\n"
 "Last-Translator: Roycce_ <malyasov.roma@mail.ru>\n"
 "Language-Team: Russian <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/ru/>\n"
@@ -422,69 +422,3 @@ msgstr "(Системная ошибка) Случилось что-то неп�
 #: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr "Скан, который вы ищите, не может быть найден."
-
-#~ msgid "Something went wrong while fetching the character information from ESI."
-#~ msgstr "Что-то пошло не так при загрузке информации о персонаже через ESI."
-
-#~ msgid "Character unknown to ESI."
-#~ msgstr "Персонаж не известен для ESI."
-
-#, python-brace-format
-#~ msgid "Intel Parser v{__version__}"
-#~ msgstr "Анализатор Скана v{__version__}"
-
-#~ msgctxt "Decimal separator"
-#~ msgid "."
-#~ msgstr ","
-
-#~ msgctxt "Thousands separator"
-#~ msgid ","
-#~ msgstr " "
-
-#~ msgid "No data available in this table"
-#~ msgstr "Данные в таблице отсутствуют"
-
-#~ msgctxt "Keep _END_ as it is. It will be replaced by a number."
-#~ msgid "Showing _END_ entries"
-#~ msgstr "Отображаются _END_ записей"
-
-#~ msgctxt "Keep _MAX_ as it is. It will be replaced by a number."
-#~ msgid "(filtered from _MAX_ total entries)"
-#~ msgstr "(отфильтрованы из _MAX_ записей)"
-
-#~ msgid "No records available"
-#~ msgstr "Записи недоступны"
-
-#~ msgid "Loading …"
-#~ msgstr "Загрузка …"
-
-#~ msgid "Processing …"
-#~ msgstr "Обработка …"
-
-#~ msgid "Nothing found, sorry …"
-#~ msgstr "Ничего не найдено …"
-
-#~ msgid "Search …"
-#~ msgstr "Поиск…"
-
-#~ msgid "First"
-#~ msgstr "Первый"
-
-#~ msgid "Last"
-#~ msgstr "Последний"
-
-#~ msgid "Next"
-#~ msgstr "Следующий"
-
-#~ msgid "Previous"
-#~ msgstr "Предыдущий"
-
-#~ msgid ": activate to sort column ascending"
-#~ msgstr ": активируйте для сортировки по возрастанию"
-
-#~ msgid ": activate to sort column descending"
-#~ msgstr ": активируйте для сортировки по убыванию"
-
-#~ msgctxt "Keep _MENU_ as it is. It will be replaced by an HTML construct."
-#~ msgid "Show _MENU_"
-#~ msgstr "Показывать _MENU_"

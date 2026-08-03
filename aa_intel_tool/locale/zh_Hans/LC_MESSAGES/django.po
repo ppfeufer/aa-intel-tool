@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool 2.5.1\n"
 "Report-Msgid-Bugs-To: https://github.com/ppfeufer/aa-intel-tool/issues\n"
-"POT-Creation-Date: 2026-07-06 22:54+0200\n"
+"POT-Creation-Date: 2026-08-03 22:50+0200\n"
 "PO-Revision-Date: 2026-07-06 21:02+0000\n"
 "Last-Translator: Heimi <204420064@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/zh_Hans/>\n"
@@ -418,11 +418,3 @@ msgstr ""
 #: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
 msgid "The scan you were looking for could not be found."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Something went wrong while fetching the character information from ESI."
-#~ msgstr "ESI绑定错误."
-
-#, fuzzy
-#~ msgid "Character unknown to ESI."
-#~ msgstr "ESI有未知角色."
