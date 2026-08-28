@@ -44,6 +44,10 @@ Section Order:
 
 <!-- Your changes go here -->
 
+### Fixed
+
+- Highlight/Sticky behaviour in Ship Types table on D-Scan result page not working as expected
+
 ## [4.2.0] - 2026-08-03
 
 > [!IMPORTANT]
