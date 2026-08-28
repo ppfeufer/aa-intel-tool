@@ -39,6 +39,7 @@ const manipulateDscanTableHighlight = ({byData, tableRow, className, add}) => {
 
     if (byData === 'shiptype') {
         elementShipClassTable.find(`tr[data-shiptype-id="${shiptypeId}"]`)[action](className);
+        elementShipTypeTable.find(`tr[data-shiptype-id="${shiptypeId}"]`)[action](className);
     } else if (byData === 'shipclass') {
         elementShipClassTable.find(`tr[data-shipclass-id="${dataId}"]`)[action](className);
 
