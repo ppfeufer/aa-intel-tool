@@ -78,7 +78,12 @@ const addFleetcompositionHighlight = (byData, tableRow) => { // eslint-disable-l
  * @returns {void}
  */
 const removeFleetcompositionHighlight = (byData, tableRow) => { // eslint-disable-line no-unused-vars
-    manipulateFleetcompTableHighlight({byData: byData, tableRow: tableRow, className: 'aa-intel-highlight', add: false});
+    manipulateFleetcompTableHighlight({
+        byData: byData,
+        tableRow: tableRow,
+        className: 'aa-intel-highlight',
+        add: false
+    });
 };
 
 /**
