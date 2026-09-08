@@ -1,5 +1,6 @@
 {
-    "name": "aa-intel-tool",
+    "name": "@ppfeufer/aa-intel-tool",
+    "version": "4.2.0",
     "type": "module",
     "devDependencies": {
         "@eslint/js": "^10.0.1",
