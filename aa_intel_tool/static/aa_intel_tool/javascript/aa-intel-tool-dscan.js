@@ -97,7 +97,7 @@ $(document).ready(() => {
                 }
 
                 if (extraSelectors) {
-                    extraSelectors.forEach(s => $(s).removeClass('d-none'));
+                    extraSelectors.forEach((s) => $(s).removeClass('d-none'));
                 }
 
                 // initialize DataTable
