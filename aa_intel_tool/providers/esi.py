@@ -7,7 +7,7 @@ from typing import Any
 
 # Third Party
 from aiopenapi3 import ContentTypeError, RequestError
-from httpx import Response
+from httpx2 import Response
 
 # Alliance Auth
 from allianceauth.services.hooks import get_extension_logger

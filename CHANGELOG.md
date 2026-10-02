@@ -48,6 +48,10 @@ Section Order:
 
 - Highlight/Sticky behaviour in Ship Types table on D-Scan result page not working as expected
 
+### Changed
+
+- Switch to `httpx2`
+
 ## [4.2.0] - 2026-08-03
 
 > [!IMPORTANT]
