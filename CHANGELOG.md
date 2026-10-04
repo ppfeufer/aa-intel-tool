@@ -44,6 +44,15 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [4.3.0] - 2026-10-04
+
+> [!IMPORTANT]
+>
+> **This version needs Alliance Auth v5.5.0 or newer!**
+>
+> Please make sure to update your Alliance Auth instance **before** you install this
+> version; otherwise, an update to Alliance Auth will be pulled in unsupervised.
+
 ### Fixed
 
 - Highlight/Sticky behaviour in Ship Types table on D-Scan result page not working as expected
@@ -51,6 +60,7 @@ Section Order:
 ### Changed
 
 - Switch to `httpx2`
+- Translations updated
 
 ## [4.2.0] - 2026-08-03
 
@@ -866,6 +876,7 @@ Hopefully the last one before official release…
 [4.1.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.0.0...v4.1.0 "v4.1.0"
 [4.1.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.0...v4.1.1 "v4.1.1"
 [4.2.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.1...v4.2.0 "v4.2.0"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.2.0...HEAD "In Development"
+[4.3.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.2.0...v4.3.0 "v4.3.0"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.3.0...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
