@@ -11,7 +11,7 @@
 
     {% include "aa_intel_tool/partials/scan/evetime.html" %}
     {% include "aa_intel_tool/partials/scan/buttons.html" %}
-{% endblock %}
+{% endblock aa_intel_tool_header %}
 
 {% block aa_intel_tool_body %}
     <div class="local-scan-result row" id="aa-intel-chatscan-row">
@@ -19,14 +19,14 @@
         {% include "aa_intel_tool/partials/scan/chatlist/corporations.html" %}
         {% include "aa_intel_tool/partials/scan/chatlist/pilots.html" %}
     </div>
-{% endblock %}
+{% endblock aa_intel_tool_body %}
 
 {% block extra_css %}
     {% include "bundles/datatables-2-css-bs5.html" %}
     {% include "bundles/datatables-2-columncontrol-css-bs5.html" %}
     {% include "bundles/datatables-2-responsive-css.html" %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-css.html" %}
-{% endblock %}
+{% endblock extra_css %}
 
 {% block extra_javascript %}
     <script>
