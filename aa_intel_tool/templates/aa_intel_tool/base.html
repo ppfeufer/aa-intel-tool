@@ -1,11 +1,10 @@
 {% extends "allianceauth/base-bs5.html" %}
 
-{% load i18n %}
-{% load aa_i18n %}
+{% load aa_i18n i18n %}
 
 {% block page_title %}
     {% translate "Intel Parser" %}
-{% endblock %}
+{% endblock page_title %}
 
 {% block header_nav_brand %}
     {% translate "Intel Parser" %}
@@ -94,4 +93,4 @@
             {% include "aa_intel_tool/partials/footer/app-translation-footer.html" %}
         </div>
     </div>
-{% endblock %}
+{% endblock content %}

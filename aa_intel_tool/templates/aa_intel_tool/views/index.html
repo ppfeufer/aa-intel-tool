@@ -1,16 +1,15 @@
 {% extends "aa_intel_tool/base.html" %}
 
-{% load evelinks %}
-{% load i18n %}
+{% load evelinks i18n %}
 
 {% block aa_intel_tool_body %}
     {% include "aa_intel_tool/partials/index/form.html" %}
     {% include "aa_intel_tool/partials/body/scan-retention-note.html" %}
-{% endblock %}
+{% endblock aa_intel_tool_body %}
 
 {% block extra_css %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-css.html" %}
-{% endblock %}
+{% endblock extra_css %}
 
 {% block extra_javascript %}
     {% include "aa_intel_tool/bundles/aa-intel-tool-js.html" %}
