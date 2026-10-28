@@ -18,7 +18,7 @@ from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.models import Scan
 from aa_intel_tool.tests import BaseTestCase
 from aa_intel_tool.views import general as general_view
-from aa_intel_tool.views.general import scan
+from aa_intel_tool.views.general import intel_scan
 
 
 class TestViewIndex(BaseTestCase):
@@ -44,12 +44,15 @@ class TestViewIndex(BaseTestCase):
         ):
             mock_form.return_value.is_valid.return_value = True
             mock_form.return_value.cleaned_data = form_data
-            mock_parse.return_value = "valid_scan_hash"
+            mock_parse.return_value = "00000000-0000-0000-0000-000000000003"
 
             response = general_view.index(request)
 
             self.assertEqual(response.status_code, HTTPStatus.FOUND)
-            self.assertEqual(response["Location"], "/intel/scan/valid_scan_hash/")
+            self.assertEqual(
+                response["Location"],
+                "/intel/scan/00000000-0000-0000-0000-000000000003/",
+            )
 
     def test_shows_error_message_on_parser_error_direct_call(self):
         """
@@ -152,6 +155,23 @@ class TestViewIndex(BaseTestCase):
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertIn("<form", response.content.decode("utf-8"))
 
+    def test_renders_form_with_errors_on_invalid_post_direct_call(self):
+        """
+        Testing rendering of form with errors when the submitted form is invalid
+
+        :return:
+        :rtype:
+        """
+
+        rf = RequestFactory()
+        request = rf.post("/intel/", data={})
+
+        response = general_view.index(request)
+
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertIn("<form", response.content.decode("utf-8"))
+        self.assertIn("This field is required", response.content.decode("utf-8"))
+
 
 class TestViewScan(BaseTestCase):
     """
@@ -175,7 +195,7 @@ class TestViewScan(BaseTestCase):
             mock_exclude.return_value.get.return_value = scan_instance
             request = MagicMock()
 
-            response = scan(request, "valid_hash")
+            response = intel_scan(request, "valid_hash")
 
             self.assertEqual(response.status_code, 302)
             self.assertEqual(
@@ -202,7 +222,7 @@ class TestViewScan(BaseTestCase):
         with patch("aa_intel_tool.views.general.Scan.objects.exclude") as mock_exclude:
             mock_exclude.return_value.get.side_effect = Scan.DoesNotExist
 
-            response = general_view.scan(request, scan_hash="nonexistent-scan-hash")
+            response = general_view.intel_scan(request, scan="nonexistent-scan-hash")
 
             self.assertEqual(response.status_code, HTTPStatus.FOUND)
 
@@ -260,7 +280,7 @@ class TestViewScan(BaseTestCase):
                     "aa_intel_tool.views.general.render", return_value=dummy_response
                 ) as mock_render,
             ):
-                response = general_view.scan(request, scan_hash="supported-scan-hash")
+                response = general_view.intel_scan(request, scan="supported-scan-hash")
 
                 self.assertEqual(response.status_code, HTTPStatus.OK)
                 self.assertTemplateUsed(response, "supported_template.html")

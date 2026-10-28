@@ -40,7 +40,6 @@ def index(request: WSGIRequest) -> HttpResponse:
 
         # Check whether it's valid:
         if form.is_valid():
-            exception_caught = False
             scan_data = form.cleaned_data["eve_intel"]
 
             try:
@@ -48,8 +47,6 @@ def index(request: WSGIRequest) -> HttpResponse:
 
             # Catching our own parser exceptions
             except ParserError as exc:
-                exception_caught = True
-
                 messages.error(
                     request=request,
                     message=_("The provided data could not be parsed. ({exc})").format(
@@ -57,10 +54,10 @@ def index(request: WSGIRequest) -> HttpResponse:
                     ),
                 )
 
+                return redirect(to="aa_intel_tool:intel_tool_index")
+
             # Catching every other exception we can't think of (hopefully)
             except Exception as exc:  # pylint: disable=broad-exception-caught
-                exception_caught = True
-
                 messages.error(
                     request=request,
                     message=_(
@@ -68,10 +65,9 @@ def index(request: WSGIRequest) -> HttpResponse:
                     ).format(exc=exc),
                 )
 
-            if exception_caught:
                 return redirect(to="aa_intel_tool:intel_tool_index")
 
-            return redirect(to="aa_intel_tool:intel_tool_scan", scan_hash=parsed_intel)
+            return redirect(to="aa_intel_tool:intel_tool_scan", scan=parsed_intel)
 
         context = {"form": form, "app_settings": AppSettings}
 
@@ -87,21 +83,21 @@ def index(request: WSGIRequest) -> HttpResponse:
     )
 
 
-def scan(request: WSGIRequest, scan_hash: str):
+def intel_scan(request: WSGIRequest, scan: Scan):
     """
     Scan view
 
     :param request: The HTTP request object containing metadata about the request and user input
     :type request: WSGIRequest
-    :param scan_hash: The unique identifier for the scan to be displayed, typically a hash value that corresponds to a specific Scan object in the database
-    :type scan_hash: str
+    :param scan: The Scan object to be displayed
+    :type scan: Scan
     :return: An HTTP response object that renders the scan page with the appropriate context, including the scan data and application settings, or redirects to the index page with an error message if the scan is not found
     :rtype: HttpResponse
     """
 
     try:
         # pylint: disable=no-member
-        intel_scan = Scan.objects.exclude(scan_type=Scan.Type.INVALID).get(pk=scan_hash)
+        scan = Scan.objects.exclude(scan_type=Scan.Type.INVALID).get(pk=scan)
     except Scan.DoesNotExist:
         messages.error(
             request=request,
@@ -110,27 +106,27 @@ def scan(request: WSGIRequest, scan_hash: str):
 
         return redirect(to="aa_intel_tool:intel_tool_index")
 
-    logger.debug(msg=f"Intel Type: {intel_scan.scan_type}")
+    logger.debug(msg=f"Intel Type: {scan.scan_type}")
 
     scan_data = {
-        "scan_type": intel_scan.scan_type,
-        "created": intel_scan.created,
-        "raw_data": intel_scan.raw_data,
+        "scan_type": scan.scan_type,
+        "created": scan.created,
+        "raw_data": scan.raw_data,
     }
 
     context = {
-        "scan_hash": scan_hash,
-        "scan": scan_data,
+        "scan_data": scan_data,
         "scan_data_section": ScanData.Section,
         "app_settings": AppSettings,
+        "scan": scan,
     }
 
-    if intel_scan.scan_type in SUPPORTED_INTEL_TYPES:
-        context["parser_title"] = SUPPORTED_INTEL_TYPES[intel_scan.scan_type]["name"]
+    if scan.scan_type in SUPPORTED_INTEL_TYPES:
+        context["parser_title"] = SUPPORTED_INTEL_TYPES[scan.scan_type]["name"]
 
         return render(
             request=request,
-            template_name=SUPPORTED_INTEL_TYPES[intel_scan.scan_type]["template"],
+            template_name=SUPPORTED_INTEL_TYPES[scan.scan_type]["template"],
             context=context,
         )
 

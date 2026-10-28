@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool\n"
 "Report-Msgid-Bugs-To: https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/\n"
-"POT-Creation-Date: 2026-10-09 12:24+0200\n"
+"POT-Creation-Date: 2026-10-28 16:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,11 +153,11 @@ msgstr ""
 msgid "Scan data"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:50
+#: aa_intel_tool/parser/general.py:51
 msgid "No suitable parser found. Input is not a supported intel type or malformed…"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:68
+#: aa_intel_tool/parser/general.py:70
 msgid "No data to parse…"
 msgstr ""
 
@@ -172,7 +172,7 @@ msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilo
 msgstr[0] ""
 msgstr[1] ""
 
-#: aa_intel_tool/parser/module/dscan.py:355
+#: aa_intel_tool/parser/module/dscan.py:356
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
@@ -395,16 +395,16 @@ msgstr ""
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:55
+#: aa_intel_tool/views/general.py:52
 #, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:67
+#: aa_intel_tool/views/general.py:64
 #, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
+#: aa_intel_tool/views/general.py:104 aa_intel_tool/views/general.py:135
 msgid "The scan you were looking for could not be found."
 msgstr ""

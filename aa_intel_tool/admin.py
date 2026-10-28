@@ -69,7 +69,7 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
     Scan Admin
     """
 
-    list_display = ("hash", "scan_type", "created")
+    list_display = ("pk", "scan_type", "created")
     fields = ("_scan_type", "_raw_data")
 
     ordering = ("-created",)
@@ -79,7 +79,7 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
         """
         Add link to open the scan in a new browser tab
 
-        :param obj: The Scan object being displayed in the admin interface, which contains information about the scan type and its unique hash identifier, used to generate a link to the scan's detail view in a new browser tab
+        :param obj: The Scan object being displayed in the admin interface, which contains information about the scan type and its unique identifier, used to generate a link to the scan's detail view in a new browser tab
         :type obj: Scan
         :return: A string containing the human-readable scan type along with an HTML link that opens the scan's detail view in a new browser tab, allowing administrators to quickly access the full details of the scan directly from the admin list view
         :rtype: str
@@ -87,7 +87,7 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
 
         intel_type = obj.get_scan_type_display()
         scan_link = reverse_absolute(
-            viewname="aa_intel_tool:intel_tool_scan", args=[obj.hash]
+            viewname="aa_intel_tool:intel_tool_scan", args=[obj.pk]
         )
         link_text = _("Open in a new browser tab")
 

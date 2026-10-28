@@ -161,7 +161,8 @@ def _get_ships(eve_types: QuerySet, counter: dict) -> dict:
             }
 
         # Add the count to the ship types
-        ships["types"][eve_type[3]]["count"] += counter["all"][eve_type[0]]
+        if eve_type[0] in counter["all"]:
+            ships["types"][eve_type[3]]["count"] += counter["all"][eve_type[0]]
 
     return {
         "all": dict_to_list(input_dict=ships["all"]),

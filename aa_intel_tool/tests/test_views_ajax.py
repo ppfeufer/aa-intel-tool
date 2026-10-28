@@ -29,11 +29,12 @@ class TestGetScanData(BaseTestCase):
         :rtype:
         """
 
+        scan_uuid = "00000000-0000-0000-0000-000000000001"
         rf = RequestFactory()
         request = rf.get(
             reverse(
                 "aa_intel_tool:ajax_get_scan_data",
-                kwargs={"scan_hash": "valid-hash", "scan_section": "valid-section"},
+                kwargs={"scan": scan_uuid, "scan_section": "valid-section"},
             )
         )
 
@@ -42,7 +43,7 @@ class TestGetScanData(BaseTestCase):
             mock_scan_data.processed_data = {"key": "value"}
             mock_filter.return_value.get.return_value = mock_scan_data
 
-            response = get_scan_data(request, "valid-hash", "valid-section")
+            response = get_scan_data(request, scan_uuid, "valid-section")
 
             self.assertEqual(response.status_code, HTTPStatus.OK)
             self.assertJSONEqual(response.content, {"key": "value"})
@@ -55,18 +56,19 @@ class TestGetScanData(BaseTestCase):
         :rtype:
         """
 
+        scan_uuid = "00000000-0000-0000-0000-000000000002"
         rf = RequestFactory()
         request = rf.get(
             reverse(
                 "aa_intel_tool:ajax_get_scan_data",
-                kwargs={"scan_hash": "invalid-hash", "scan_section": "invalid-section"},
+                kwargs={"scan": scan_uuid, "scan_section": "invalid-section"},
             )
         )
 
         with patch("aa_intel_tool.views.ajax.ScanData.objects.filter") as mock_filter:
             mock_filter.return_value.get.side_effect = ScanData.DoesNotExist
 
-            response = get_scan_data(request, "invalid-hash", "invalid-section")
+            response = get_scan_data(request, scan_uuid, "invalid-section")
 
             self.assertEqual(response.status_code, HTTPStatus.OK)
             self.assertJSONEqual(response.content, {})

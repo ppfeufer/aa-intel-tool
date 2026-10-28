@@ -14,6 +14,7 @@ from allianceauth.services.hooks import get_extension_logger
 # AA Intel Tool
 from aa_intel_tool.constants import SUPPORTED_INTEL_TYPES
 from aa_intel_tool.exceptions import ParserError
+from aa_intel_tool.models import Scan
 from aa_intel_tool.providers.applogger import AppLogger
 
 logger = AppLogger(my_logger=get_extension_logger(name=__name__))
@@ -53,15 +54,16 @@ def check_intel_type(scan_data: list) -> str:
     )
 
 
-def parse_intel(form_data: str) -> str:
+def parse_intel(form_data: str) -> Scan:
     """
     Parse intel
 
     :param form_data: Raw intel data as a string
     :type form_data: str
-    :return: Hash of the created Scan object
-    :rtype: str
+    :return: The created Scan object
+    :rtype: Scan
     """
+
     scan_data = form_data.splitlines()
 
     if not scan_data:
@@ -69,7 +71,9 @@ def parse_intel(form_data: str) -> str:
 
     try:
         intel_type = check_intel_type(scan_data=scan_data)
-        new_scan = SUPPORTED_INTEL_TYPES[intel_type]["parser"](scan_data=scan_data)
+        new_scan: Scan = SUPPORTED_INTEL_TYPES[intel_type]["parser"](
+            scan_data=scan_data
+        )
     except ParserError as exc:
         # Re-raise the Exception
         raise ParserError(message=exc.message) from exc
@@ -77,4 +81,4 @@ def parse_intel(form_data: str) -> str:
     new_scan.raw_data = form_data
     new_scan.save()
 
-    return new_scan.hash
+    return new_scan
