@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool\n"
 "Report-Msgid-Bugs-To: https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/\n"
-"POT-Creation-Date: 2026-10-28 13:58+0100\n"
+"POT-Creation-Date: 2026-10-28 15:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Intel Parser"
 msgstr ""
 
-#: aa_intel_tool/admin.py:77 aa_intel_tool/models.py:49
+#: aa_intel_tool/admin.py:77 aa_intel_tool/models.py:48
 msgid "Scan type"
 msgstr ""
 
@@ -39,17 +39,17 @@ msgstr ""
 msgid "Raw data"
 msgstr ""
 
-#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:27
+#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:26
 msgid "Chat list"
 msgstr ""
 
-#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:25
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:24
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:27
 msgid "D-Scan"
 msgstr ""
 
-#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:26
-#: aa_intel_tool/models.py:126
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:25
+#: aa_intel_tool/models.py:94
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:32
 msgid "Fleet composition"
 msgstr ""
@@ -67,93 +67,93 @@ msgstr ""
 msgid "Paste here…"
 msgstr ""
 
-#: aa_intel_tool/models.py:24 aa_intel_tool/models.py:113
+#: aa_intel_tool/models.py:23 aa_intel_tool/models.py:81
 msgid "Invalid scan data"
 msgstr ""
 
-#: aa_intel_tool/models.py:34
-msgid "Scan hash"
+#: aa_intel_tool/models.py:33
+msgid "Scan UUID"
 msgstr ""
 
-#: aa_intel_tool/models.py:40
+#: aa_intel_tool/models.py:39
 msgid "Creation date/time"
 msgstr ""
 
-#: aa_intel_tool/models.py:43
+#: aa_intel_tool/models.py:42
 msgid "Scan raw data"
 msgstr ""
 
-#: aa_intel_tool/models.py:58 aa_intel_tool/models.py:142
+#: aa_intel_tool/models.py:57 aa_intel_tool/models.py:111
 msgid "Scan"
 msgstr ""
 
-#: aa_intel_tool/models.py:59
+#: aa_intel_tool/models.py:58
 msgid "Scans"
 msgstr ""
 
-#: aa_intel_tool/models.py:114
+#: aa_intel_tool/models.py:82
 msgid "Pilot list"
 msgstr ""
 
-#: aa_intel_tool/models.py:115
+#: aa_intel_tool/models.py:83
 msgid "Corporation list"
 msgstr ""
 
-#: aa_intel_tool/models.py:116
+#: aa_intel_tool/models.py:84
 msgid "Alliance list"
 msgstr ""
 
-#: aa_intel_tool/models.py:117
+#: aa_intel_tool/models.py:85
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
 msgstr ""
 
-#: aa_intel_tool/models.py:118
+#: aa_intel_tool/models.py:86
 msgid "Ship list"
 msgstr ""
 
-#: aa_intel_tool/models.py:119
+#: aa_intel_tool/models.py:87
 msgid "Ship list (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:120
+#: aa_intel_tool/models.py:88
 msgid "Ship list (off grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:121
+#: aa_intel_tool/models.py:89
 msgid "Structures (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:122
+#: aa_intel_tool/models.py:90
 msgid "Starbases (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:123
+#: aa_intel_tool/models.py:91
 msgid "Deployables (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:124
+#: aa_intel_tool/models.py:92
 msgid "Miscellaneous (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:125
+#: aa_intel_tool/models.py:93
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
 msgid "System information"
 msgstr ""
 
-#: aa_intel_tool/models.py:132
+#: aa_intel_tool/models.py:101
 msgid "Scan data UUID"
 msgstr ""
 
-#: aa_intel_tool/models.py:149
+#: aa_intel_tool/models.py:118
 msgid "Scan section"
 msgstr ""
 
-#: aa_intel_tool/models.py:153
+#: aa_intel_tool/models.py:122
 msgid "Processed scan data"
 msgstr ""
 
-#: aa_intel_tool/models.py:162 aa_intel_tool/models.py:163
+#: aa_intel_tool/models.py:131 aa_intel_tool/models.py:132
 msgid "Scan data"
 msgstr ""
 
@@ -176,7 +176,7 @@ msgid_plural "Chat scans are currently limited to a maximum of {max_allowed_pilo
 msgstr[0] ""
 msgstr[1] ""
 
-#: aa_intel_tool/parser/module/dscan.py:355
+#: aa_intel_tool/parser/module/dscan.py:356
 msgid "The D-Scan module is currently disabled."
 msgstr ""
 
