@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool\n"
 "Report-Msgid-Bugs-To: https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/\n"
-"POT-Creation-Date: 2026-10-09 12:24+0200\n"
+"POT-Creation-Date: 2026-10-28 13:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Intel Parser"
 msgstr ""
 
-#: aa_intel_tool/admin.py:77 aa_intel_tool/models.py:46
+#: aa_intel_tool/admin.py:77 aa_intel_tool/models.py:49
 msgid "Scan type"
 msgstr ""
 
@@ -39,17 +39,17 @@ msgstr ""
 msgid "Raw data"
 msgstr ""
 
-#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:27
 msgid "Chat list"
 msgstr ""
 
-#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:22
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:25
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:27
 msgid "D-Scan"
 msgstr ""
 
-#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:23
-#: aa_intel_tool/models.py:123
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:26
+#: aa_intel_tool/models.py:126
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:32
 msgid "Fleet composition"
 msgstr ""
@@ -67,97 +67,101 @@ msgstr ""
 msgid "Paste here…"
 msgstr ""
 
-#: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
+#: aa_intel_tool/models.py:24 aa_intel_tool/models.py:113
 msgid "Invalid scan data"
 msgstr ""
 
-#: aa_intel_tool/models.py:31
+#: aa_intel_tool/models.py:34
 msgid "Scan hash"
 msgstr ""
 
-#: aa_intel_tool/models.py:37
+#: aa_intel_tool/models.py:40
 msgid "Creation date/time"
 msgstr ""
 
-#: aa_intel_tool/models.py:40
+#: aa_intel_tool/models.py:43
 msgid "Scan raw data"
 msgstr ""
 
-#: aa_intel_tool/models.py:55 aa_intel_tool/models.py:132
+#: aa_intel_tool/models.py:58 aa_intel_tool/models.py:142
 msgid "Scan"
 msgstr ""
 
-#: aa_intel_tool/models.py:56
+#: aa_intel_tool/models.py:59
 msgid "Scans"
 msgstr ""
 
-#: aa_intel_tool/models.py:111
+#: aa_intel_tool/models.py:114
 msgid "Pilot list"
 msgstr ""
 
-#: aa_intel_tool/models.py:112
+#: aa_intel_tool/models.py:115
 msgid "Corporation list"
 msgstr ""
 
-#: aa_intel_tool/models.py:113
+#: aa_intel_tool/models.py:116
 msgid "Alliance list"
 msgstr ""
 
-#: aa_intel_tool/models.py:114
+#: aa_intel_tool/models.py:117
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
 msgstr ""
 
-#: aa_intel_tool/models.py:115
+#: aa_intel_tool/models.py:118
 msgid "Ship list"
 msgstr ""
 
-#: aa_intel_tool/models.py:116
+#: aa_intel_tool/models.py:119
 msgid "Ship list (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:117
+#: aa_intel_tool/models.py:120
 msgid "Ship list (off grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:118
+#: aa_intel_tool/models.py:121
 msgid "Structures (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:119
+#: aa_intel_tool/models.py:122
 msgid "Starbases (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:120
+#: aa_intel_tool/models.py:123
 msgid "Deployables (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:121
+#: aa_intel_tool/models.py:124
 msgid "Miscellaneous (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:122
+#: aa_intel_tool/models.py:125
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
 msgid "System information"
 msgstr ""
 
-#: aa_intel_tool/models.py:139
+#: aa_intel_tool/models.py:132
+msgid "Scan data UUID"
+msgstr ""
+
+#: aa_intel_tool/models.py:149
 msgid "Scan section"
 msgstr ""
 
-#: aa_intel_tool/models.py:143
+#: aa_intel_tool/models.py:153
 msgid "Processed scan data"
 msgstr ""
 
-#: aa_intel_tool/models.py:152 aa_intel_tool/models.py:153
+#: aa_intel_tool/models.py:162 aa_intel_tool/models.py:163
 msgid "Scan data"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:50
+#: aa_intel_tool/parser/general.py:51
 msgid "No suitable parser found. Input is not a supported intel type or malformed…"
 msgstr ""
 
-#: aa_intel_tool/parser/general.py:68
+#: aa_intel_tool/parser/general.py:70
 msgid "No data to parse…"
 msgstr ""
 
@@ -395,16 +399,16 @@ msgstr ""
 msgid "Participation details"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:55
+#: aa_intel_tool/views/general.py:52
 #, python-brace-format
 msgid "The provided data could not be parsed. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:67
+#: aa_intel_tool/views/general.py:64
 #, python-brace-format
 msgid "(System Error) Something unexpected happened. ({exc})"
 msgstr ""
 
-#: aa_intel_tool/views/general.py:108 aa_intel_tool/views/general.py:139
+#: aa_intel_tool/views/general.py:104 aa_intel_tool/views/general.py:135
 msgid "The scan you were looking for could not be found."
 msgstr ""
