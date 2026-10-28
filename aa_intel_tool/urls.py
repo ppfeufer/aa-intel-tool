@@ -14,12 +14,12 @@ app_name: str = "aa_intel_tool"  # pylint: disable=invalid-name
 
 app_urls = [
     path(route="", view=general.index, name="intel_tool_index"),
-    path(route="scan/<uuid:scan>/", view=general.intel_scan, name="intel_tool_scan"),
+    path(route="scan/<str:scan>/", view=general.intel_scan, name="intel_tool_scan"),
 ]
 
 ajax_urls = [
     path(
-        route="get-scan-data/<uuid:scan>/<str:scan_section>/",
+        route="get-scan-data/<str:scan>/<str:scan_section>/",
         view=ajax.get_scan_data,
         name="ajax_get_scan_data",
     ),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AA Intel Tool\n"
 "Report-Msgid-Bugs-To: https://weblate.ppfeufer.de/projects/alliance-auth-apps/aa-intel-tool/\n"
-"POT-Creation-Date: 2026-10-28 15:36+0100\n"
+"POT-Creation-Date: 2026-10-28 16:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Intel Parser"
 msgstr ""
 
-#: aa_intel_tool/admin.py:77 aa_intel_tool/models.py:48
+#: aa_intel_tool/admin.py:77 aa_intel_tool/models.py:46
 msgid "Scan type"
 msgstr ""
 
@@ -39,17 +39,17 @@ msgstr ""
 msgid "Raw data"
 msgstr ""
 
-#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:26
+#: aa_intel_tool/constants.py:65 aa_intel_tool/models.py:24
 msgid "Chat list"
 msgstr ""
 
-#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:24
+#: aa_intel_tool/constants.py:71 aa_intel_tool/models.py:22
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:27
 msgid "D-Scan"
 msgstr ""
 
-#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:25
-#: aa_intel_tool/models.py:94
+#: aa_intel_tool/constants.py:77 aa_intel_tool/models.py:23
+#: aa_intel_tool/models.py:123
 #: aa_intel_tool/templates/aa_intel_tool/partials/index/form.html:32
 msgid "Fleet composition"
 msgstr ""
@@ -67,93 +67,89 @@ msgstr ""
 msgid "Paste here…"
 msgstr ""
 
-#: aa_intel_tool/models.py:23 aa_intel_tool/models.py:81
+#: aa_intel_tool/models.py:21 aa_intel_tool/models.py:110
 msgid "Invalid scan data"
 msgstr ""
 
-#: aa_intel_tool/models.py:33
-msgid "Scan UUID"
+#: aa_intel_tool/models.py:31
+msgid "Scan hash"
 msgstr ""
 
-#: aa_intel_tool/models.py:39
+#: aa_intel_tool/models.py:37
 msgid "Creation date/time"
 msgstr ""
 
-#: aa_intel_tool/models.py:42
+#: aa_intel_tool/models.py:40
 msgid "Scan raw data"
 msgstr ""
 
-#: aa_intel_tool/models.py:57 aa_intel_tool/models.py:111
+#: aa_intel_tool/models.py:55 aa_intel_tool/models.py:132
 msgid "Scan"
 msgstr ""
 
-#: aa_intel_tool/models.py:58
+#: aa_intel_tool/models.py:56
 msgid "Scans"
 msgstr ""
 
-#: aa_intel_tool/models.py:82
+#: aa_intel_tool/models.py:111
 msgid "Pilot list"
 msgstr ""
 
-#: aa_intel_tool/models.py:83
+#: aa_intel_tool/models.py:112
 msgid "Corporation list"
 msgstr ""
 
-#: aa_intel_tool/models.py:84
+#: aa_intel_tool/models.py:113
 msgid "Alliance list"
 msgstr ""
 
-#: aa_intel_tool/models.py:85
+#: aa_intel_tool/models.py:114
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/ships-breakdown/ship-types.html:6
 msgid "Ship types"
 msgstr ""
 
-#: aa_intel_tool/models.py:86
+#: aa_intel_tool/models.py:115
 msgid "Ship list"
 msgstr ""
 
-#: aa_intel_tool/models.py:87
+#: aa_intel_tool/models.py:116
 msgid "Ship list (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:88
+#: aa_intel_tool/models.py:117
 msgid "Ship list (off grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:89
+#: aa_intel_tool/models.py:118
 msgid "Structures (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:90
+#: aa_intel_tool/models.py:119
 msgid "Starbases (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:91
+#: aa_intel_tool/models.py:120
 msgid "Deployables (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:92
+#: aa_intel_tool/models.py:121
 msgid "Miscellaneous (on grid)"
 msgstr ""
 
-#: aa_intel_tool/models.py:93
+#: aa_intel_tool/models.py:122
 #: aa_intel_tool/templates/aa_intel_tool/partials/scan/dscan/system-information.html:8
 msgid "System information"
 msgstr ""
 
-#: aa_intel_tool/models.py:101
-msgid "Scan data UUID"
-msgstr ""
-
-#: aa_intel_tool/models.py:118
+#: aa_intel_tool/models.py:139
 msgid "Scan section"
 msgstr ""
 
-#: aa_intel_tool/models.py:122
+#: aa_intel_tool/models.py:143
 msgid "Processed scan data"
 msgstr ""
 
-#: aa_intel_tool/models.py:131 aa_intel_tool/models.py:132
+#: aa_intel_tool/models.py:152 aa_intel_tool/models.py:153
 msgid "Scan data"
 msgstr ""
 
