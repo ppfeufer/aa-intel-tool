@@ -2,6 +2,9 @@
 The models
 """
 
+# Standard Library
+import uuid
+
 # Django
 from django.db import models, transaction
 from django.utils.crypto import get_random_string
@@ -121,6 +124,13 @@ class ScanData(models.Model):
         MISCELLANEOUS_ON_GRID = "miscellaneous_on_grid", _("Miscellaneous (on grid)")
         SOLAR_SYSTEM_INFORMATION = "solar_system_information", _("System information")
         FLEETCOMPOSITION = "fleetcomposition", _("Fleet composition")
+
+    uuid = models.UUIDField(
+        primary_key=True,
+        editable=False,
+        default=uuid.uuid4,
+        verbose_name=_("Scan data UUID"),
+    )
 
     scan = models.ForeignKey(
         Scan,

@@ -63,6 +63,20 @@ db-restore:
 	fi; \
 	# Perform the restore operation \
 	echo "Restoring database $(DB__NAME) from backup $$sel..."; \
+	# Remove all DB tables before importing again \
+	$(DB__MYSQL_EXECUTABLE) -u$(DB__USER) -p$(DB__PASSWORD) -h$(DB__HOST) $(DB__NAME) -e \
+		"SET FOREIGN_KEY_CHECKS = 0; \
+		SET @tables = NULL; \
+		SELECT GROUP_CONCAT(CONCAT(CHAR(96), table_name, CHAR(96))) INTO @tables \
+		FROM information_schema.tables \
+		WHERE table_schema = '$(DB__NAME)'; \
+		SET @tables = IFNULL(CONCAT('DROP TABLE IF EXISTS ', @tables), 'SELECT 1'); \
+		PREPARE stmt FROM @tables; \
+		EXECUTE stmt; \
+		DEALLOCATE PREPARE stmt; \
+		SET FOREIGN_KEY_CHECKS = 1;"; \
+	# Import the backup file into the database \
+	echo "Importing backup into database $(DB__NAME)..."; \
 	zcat "$$sel" | $(DB__MYSQL_EXECUTABLE) -u$(DB__USER) -p$(DB__PASSWORD) -h$(DB__HOST) $(DB__NAME)
 
 # List available backup files in the backup directory.
