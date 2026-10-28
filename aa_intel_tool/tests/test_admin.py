@@ -81,7 +81,7 @@ class TestScanAdmin(BaseTestCase):
         result = admin_instance._scan_type(scan)
 
         self.assertIn("Open in a new browser tab", result)
-        self.assertIn(scan.pk, result)
+        self.assertIn(str(scan.pk), result)
 
     def test_displays_raw_data_in_pre_tag(self):
         """

@@ -6,8 +6,7 @@ The models
 import uuid
 
 # Django
-from django.db import models, transaction
-from django.utils.crypto import get_random_string
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
@@ -26,12 +25,12 @@ class Scan(models.Model):
         FLEETCOMP = "fleetcomp", _("Fleet composition")
         CHATLIST = "chatlist", _("Chat list")
 
-    hash = models.CharField(
+    uuid = models.UUIDField(
         primary_key=True,
+        default=uuid.uuid4,
         editable=False,
         unique=True,
-        max_length=30,
-        verbose_name=_("Scan hash"),
+        verbose_name=_("Scan UUID"),
     )
 
     created = models.DateTimeField(
@@ -59,45 +58,14 @@ class Scan(models.Model):
         verbose_name_plural = _("Scans")
 
     def __str__(self) -> str:
-        return str(self.pk)
-
-    @transaction.atomic()
-    def save(self, *args, **kwargs):
         """
-        Generates the scan hash on save
+        Returns a string representation of the Scan instance, which is the primary key (pk) of the instance.
 
-        :param args: Positional arguments passed to the save method, which may include various parameters related to the saving process, such as update_fields or force_insert, depending on the context in which the save method is called
-        :type args: tuple
-        :param kwargs: Keyword arguments passed to the save method, which may include various parameters related to the saving process, such as update_fields or force_insert, depending on the context in which the save method is called
-        :type kwargs: dict
-        :return: None
-        :rtype: None
-        """
-
-        if self._state.adding is True:
-            self.hash = Scan.generate_scan_hash()
-
-        super().save(*args, **kwargs)
-
-        if self.hash == "":
-            self.hash = Scan.generate_scan_hash()
-            self.save()
-
-    @staticmethod
-    def generate_scan_hash():
-        """
-        Get a random string we can use as hash
-
-        :return: A unique random string to be used as the scan hash, ensuring that it does not collide with existing hashes in the Scan model
+        :return: The primary key of the Scan instance as a string.
         :rtype: str
         """
 
-        scan_hash = get_random_string(length=30)
-
-        while Scan.objects.filter(hash=scan_hash).exists():  # pylint: disable=no-member
-            scan_hash = get_random_string(length=30)
-
-        return scan_hash
+        return str(self.pk)
 
 
 class ScanData(models.Model):

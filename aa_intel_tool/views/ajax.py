@@ -12,7 +12,7 @@ from aa_intel_tool.models import ScanData
 
 def get_scan_data(
     request: WSGIRequest,  # pylint: disable=unused-argument
-    scan_hash: str,
+    scan: str,
     scan_section: ScanData.Section,
 ) -> JsonResponse:
     """
@@ -20,8 +20,8 @@ def get_scan_data(
 
     :param request: The HTTP request object (not used in this function but included for consistency with Django view patterns)
     :type request: WSGIRequest
-    :param scan_hash: The unique identifier for the scan whose data is being requested
-    :type scan_hash: str
+    :param scan: The unique identifier for the scan whose data is being requested
+    :type scan: str
     :param scan_section: The specific section of the scan data being requested, defined as a member of the ScanData.Section enumeration
     :type scan_section: ScanData.Section
     :return: A JsonResponse containing the processed data for the specified scan and section, or an empty dictionary if no data is found
@@ -30,7 +30,7 @@ def get_scan_data(
 
     try:
         scan_data = ScanData.objects.filter(  # pylint: disable=no-member
-            scan_id__exact=scan_hash, section__exact=scan_section
+            scan_id__exact=scan, section__exact=scan_section
         ).get()
         processed_data = scan_data.processed_data
     except ScanData.DoesNotExist:  # pylint: disable=no-member

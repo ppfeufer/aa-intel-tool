@@ -2,9 +2,6 @@
 Tests for our models
 """
 
-# Standard Library
-from unittest.mock import patch
-
 # Django
 from django.db import IntegrityError
 
@@ -18,90 +15,6 @@ class TestScanModel(BaseTestCase):
     Test the Scan model
     """
 
-    def test_generates_unique_hash(self):
-        """
-        Test that the hash is unique
-
-        :return:
-        :rtype:
-        """
-
-        hash1 = Scan.generate_scan_hash()
-        hash2 = Scan.generate_scan_hash()
-
-        self.assertNotEqual(hash1, hash2)
-
-    def test_generates_hash_of_correct_length(self):
-        """
-        Test that the hash is of the correct length
-
-        :return:
-        :rtype:
-        """
-
-        scan_hash = Scan.generate_scan_hash()
-
-        self.assertEqual(len(scan_hash), 30)
-
-    def test_generates_hash_not_in_database(self):
-        """
-        Test that the generated hash is not in the database
-
-        :return:
-        :rtype:
-        """
-
-        existing_scan = Scan.objects.create(raw_data="test data")
-        scan_hash = Scan.generate_scan_hash()
-
-        self.assertNotEqual(scan_hash, existing_scan.pk)
-
-    def test_handles_collision_by_generating_new_hash(self):
-        """
-        Test that the hash collision is handled by generating a new hash
-
-        :return:
-        :rtype:
-        """
-
-        with patch("aa_intel_tool.models.Scan.objects.filter") as mock_filter:
-            # Simulate hash collision by returning True for the first two calls
-            mock_filter.return_value.exists.side_effect = [True, True, False]
-
-            new_hash = Scan.generate_scan_hash()
-
-            self.assertIsNotNone(new_hash)
-            self.assertEqual(len(new_hash), 30)
-            self.assertNotIn(new_hash, ["collision_hash1", "collision_hash2"])
-
-    def test_saves_with_generated_hash(self):
-        """
-        Test that the hash is generated on save
-
-        :return:
-        :rtype:
-        """
-
-        scan = Scan(raw_data="test data")
-        scan.save()
-
-        self.assertIsNotNone(scan.pk)
-        self.assertEqual(len(scan.pk), 30)
-
-    def test_generates_new_hash_if_empty_on_save(self):
-        """
-        Test that a new hash is generated if the hash is empty on save
-
-        :return:
-        :rtype:
-        """
-
-        scan = Scan(hash="", raw_data="test data")
-        scan.save()
-
-        self.assertNotEqual(scan.pk, "")
-        self.assertEqual(len(scan.pk), 30)
-
     def test_model_string_names(self):
         """
         Test model string name
@@ -114,7 +27,7 @@ class TestScanModel(BaseTestCase):
             raw_data="Foobar",
         )
         scan.save()
-        expected_hash = scan.pk
+        expected_hash = str(scan.pk)
 
         self.assertEqual(first=str(scan), second=expected_hash)
 
@@ -123,11 +36,8 @@ class TestScanModel(BaseTestCase):
 
         self.assertEqual(first=str(scan), second=expected_hash)
 
-        scan.pk = ""
-        scan.save()
-
         self.assertNotEqual(first=str(scan), second="")
-        self.assertNotEqual(first=str(scan), second=expected_hash)
+        self.assertEqual(first=str(scan), second=expected_hash)
 
 
 class TestScanDataModel(BaseTestCase):

@@ -47,7 +47,8 @@ Section Order:
 ### Changed
 
 - Use `.pk` instead of `.hash` when referring to the Scan model's primary key
-- Use UUID as primary key for ScanData model, instead of auto-incrementing integer
+- Use UUID as the primary key for the ScanData model, instead of an auto-incrementing integer
+- Use UUID as the primary key for the Scan model, instead of a generated hash
 
 ## [4.3.0] - 2026-10-04
 

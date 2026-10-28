@@ -715,6 +715,75 @@ class TestHelperGetShips(BaseTestCase):
             self.assertEqual(result["types"][0]["name"], "Frigate")
             self.assertEqual(result["types"][0]["count"], 5)
 
+    def test_skips_ship_type_count_when_missing_from_all_counter(self):
+        """
+        Testing that ship types without an all-count entry are skipped safely
+
+        :return:
+        :rtype:
+        """
+
+        eve_types = [
+            (1, "Ship Alpha", 100, "Frigate", 500),
+            (2, "Ship Beta", 101, "Frigate", 1000),
+        ]
+        counter = {"all": {}, "ongrid": {}, "offgrid": {}}
+
+        eve_types_qs = MagicMock()
+        eve_types_qs.filter.return_value = eve_types
+
+        with patch(
+            "aa_intel_tool.parser.module.dscan._get_type_info_dict"
+        ) as mock_type_info:
+            mock_type_info.side_effect = lambda eve_type: {
+                "id": eve_type[0],
+                "name": eve_type[1],
+                "type_id": eve_type[2],
+                "type_name": eve_type[3],
+                "image": f"url/{eve_type[0]}",
+            }
+
+            result = _get_ships(eve_types=eve_types_qs, counter=counter)
+
+            self.assertEqual(len(result["types"]), 1)
+            self.assertEqual(result["types"][0]["name"], "Frigate")
+            self.assertEqual(result["types"][0]["count"], 0)
+
+    def test_skips_duplicate_ship_names_when_adding_ship_info(self):
+        """
+        Testing that duplicate ship names are not added twice to the ship dict
+
+        :return:
+        :rtype:
+        """
+
+        eve_types = [
+            (1, "Ship Alpha", 100, "Frigate", 500),
+            (2, "Ship Alpha", 101, "Frigate", 1000),
+        ]
+        counter = {"all": {1: 3, 2: 2}, "ongrid": {1: 2}, "offgrid": {2: 1}}
+
+        eve_types_qs = MagicMock()
+        eve_types_qs.filter.return_value = eve_types
+
+        with patch(
+            "aa_intel_tool.parser.module.dscan._get_type_info_dict"
+        ) as mock_type_info:
+            mock_type_info.side_effect = lambda eve_type: {
+                "id": eve_type[0],
+                "name": eve_type[1],
+                "type_id": eve_type[2],
+                "type_name": eve_type[3],
+                "image": f"url/{eve_type[0]}",
+            }
+
+            result = _get_ships(eve_types=eve_types_qs, counter=counter)
+
+            self.assertEqual(len(result["all"]), 1)
+            self.assertEqual(result["all"][0]["name"], "Ship Alpha")
+            self.assertEqual(result["all"][0]["count"], 3)
+            self.assertEqual(result["all"][0]["mass"], 1500)
+
 
 class TestHelperGetTypeInfoDict(BaseTestCase):
     """

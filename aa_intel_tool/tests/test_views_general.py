@@ -44,12 +44,15 @@ class TestViewIndex(BaseTestCase):
         ):
             mock_form.return_value.is_valid.return_value = True
             mock_form.return_value.cleaned_data = form_data
-            mock_parse.return_value = "valid_scan_hash"
+            mock_parse.return_value = "00000000-0000-0000-0000-000000000003"
 
             response = general_view.index(request)
 
             self.assertEqual(response.status_code, HTTPStatus.FOUND)
-            self.assertEqual(response["Location"], "/intel/scan/valid_scan_hash/")
+            self.assertEqual(
+                response["Location"],
+                "/intel/scan/00000000-0000-0000-0000-000000000003/",
+            )
 
     def test_shows_error_message_on_parser_error_direct_call(self):
         """
@@ -151,6 +154,23 @@ class TestViewIndex(BaseTestCase):
 
         self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertIn("<form", response.content.decode("utf-8"))
+
+    def test_renders_form_with_errors_on_invalid_post_direct_call(self):
+        """
+        Testing rendering of form with errors when the submitted form is invalid
+
+        :return:
+        :rtype:
+        """
+
+        rf = RequestFactory()
+        request = rf.post("/intel/", data={})
+
+        response = general_view.index(request)
+
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertIn("<form", response.content.decode("utf-8"))
+        self.assertIn("This field is required", response.content.decode("utf-8"))
 
 
 class TestViewScan(BaseTestCase):
