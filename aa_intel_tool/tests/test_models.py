@@ -54,7 +54,7 @@ class TestScanModel(BaseTestCase):
         existing_scan = Scan.objects.create(raw_data="test data")
         scan_hash = Scan.generate_scan_hash()
 
-        self.assertNotEqual(scan_hash, existing_scan.hash)
+        self.assertNotEqual(scan_hash, existing_scan.pk)
 
     def test_handles_collision_by_generating_new_hash(self):
         """
@@ -85,8 +85,8 @@ class TestScanModel(BaseTestCase):
         scan = Scan(raw_data="test data")
         scan.save()
 
-        self.assertIsNotNone(scan.hash)
-        self.assertEqual(len(scan.hash), 30)
+        self.assertIsNotNone(scan.pk)
+        self.assertEqual(len(scan.pk), 30)
 
     def test_generates_new_hash_if_empty_on_save(self):
         """
@@ -99,8 +99,8 @@ class TestScanModel(BaseTestCase):
         scan = Scan(hash="", raw_data="test data")
         scan.save()
 
-        self.assertNotEqual(scan.hash, "")
-        self.assertEqual(len(scan.hash), 30)
+        self.assertNotEqual(scan.pk, "")
+        self.assertEqual(len(scan.pk), 30)
 
     def test_model_string_names(self):
         """
@@ -114,7 +114,7 @@ class TestScanModel(BaseTestCase):
             raw_data="Foobar",
         )
         scan.save()
-        expected_hash = scan.hash
+        expected_hash = scan.pk
 
         self.assertEqual(first=str(scan), second=expected_hash)
 
@@ -123,7 +123,7 @@ class TestScanModel(BaseTestCase):
 
         self.assertEqual(first=str(scan), second=expected_hash)
 
-        scan.hash = ""
+        scan.pk = ""
         scan.save()
 
         self.assertNotEqual(first=str(scan), second="")

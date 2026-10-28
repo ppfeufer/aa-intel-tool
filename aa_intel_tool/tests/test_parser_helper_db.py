@@ -23,9 +23,9 @@ class TestParserHelperDb(BaseTestCase):
 
         new_scan = safe_scan_to_db(scan_type=Scan.Type.DSCAN, parsed_data={})
 
-        from_db = Scan.objects.get(pk=new_scan.hash, scan_type__exact=Scan.Type.DSCAN)
+        from_db = Scan.objects.get(pk=new_scan.pk, scan_type__exact=Scan.Type.DSCAN)
 
-        self.assertEqual(first=new_scan.hash, second=from_db.hash)
+        self.assertEqual(first=new_scan.pk, second=from_db.pk)
 
     def test_safe_scan_to_db_with_associated_data(self):
         """
@@ -45,14 +45,14 @@ class TestParserHelperDb(BaseTestCase):
         new_scan = safe_scan_to_db(scan_type=Scan.Type.DSCAN, parsed_data=parsed_data)
 
         scan_from_db = Scan.objects.get(
-            pk=new_scan.hash, scan_type__exact=Scan.Type.DSCAN
+            pk=new_scan.pk, scan_type__exact=Scan.Type.DSCAN
         )
         scan_data_from_db = ScanData.objects.get(
-            scan_id__exact=scan_from_db.hash,
+            scan_id__exact=scan_from_db.pk,
             section__exact=ScanData.Section.PILOTLIST,
         )
 
-        self.assertEqual(first=new_scan.hash, second=scan_from_db.hash)
+        self.assertEqual(first=new_scan.pk, second=scan_from_db.pk)
         self.assertEqual(
             first=scan_data_from_db.processed_data, second=parsed_data["foobar"]["data"]
         )

@@ -32,9 +32,9 @@
     <script>
         const aaIntelToolJsSettingsOverride = {
             url: {
-                getPilotList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.PILOTLIST.value %}',
-                getCorporationList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.CORPORATIONLIST.value %}',
-                getAllianceList: '{% url "aa_intel_tool:ajax_get_scan_data" scan_hash scan_data_section.ALLIANCELIST.value %}'
+                getPilotList: '{% url "aa_intel_tool:ajax_get_scan_data" scan.pk scan_data_section.PILOTLIST.value %}',
+                getCorporationList: '{% url "aa_intel_tool:ajax_get_scan_data" scan.pk scan_data_section.CORPORATIONLIST.value %}',
+                getAllianceList: '{% url "aa_intel_tool:ajax_get_scan_data" scan.pk scan_data_section.ALLIANCELIST.value %}'
             }
         }
     </script>

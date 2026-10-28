@@ -11,7 +11,7 @@
         </li>
 
         <li class="me-2 mb-2">
-            <button id="btn-copy-permalink-to-clipboard" class="btn btn-secondary btn-sm" data-clipboard-action="copy" data-clipboard-text="{{ SITE_URL }}{% url 'aa_intel_tool:intel_tool_scan' scan_hash %}">
+            <button id="btn-copy-permalink-to-clipboard" class="btn btn-secondary btn-sm" data-clipboard-action="copy" data-clipboard-text="{{ SITE_URL }}{% url 'aa_intel_tool:intel_tool_scan' scan.pk %}">
                 {% translate "Copy permalink" %}
             </button>
         </li>

@@ -87,7 +87,7 @@ class ScanAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
 
         intel_type = obj.get_scan_type_display()
         scan_link = reverse_absolute(
-            viewname="aa_intel_tool:intel_tool_scan", args=[obj.hash]
+            viewname="aa_intel_tool:intel_tool_scan", args=[obj.pk]
         )
         link_text = _("Open in a new browser tab")
 

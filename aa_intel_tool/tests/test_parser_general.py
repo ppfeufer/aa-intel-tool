@@ -144,7 +144,7 @@ class TestParseIntel(BaseTestCase):
     @patch("aa_intel_tool.parser.general.check_intel_type")
     @patch(
         "aa_intel_tool.parser.general.SUPPORTED_INTEL_TYPES",
-        {"dscan": {"parser": MagicMock(return_value=MagicMock(hash="hash1"))}},
+        {"dscan": {"parser": MagicMock(return_value=MagicMock(pk="hash1"))}},
     )
     def test_parses_valid_dscan_data(self, mock_check_intel_type):
         """
@@ -160,12 +160,12 @@ class TestParseIntel(BaseTestCase):
         form_data = load_dscan_txt()
         result = parse_intel(form_data)
 
-        self.assertEqual(result, "hash1")
+        self.assertEqual(result.pk, "hash1")
 
     @patch("aa_intel_tool.parser.general.check_intel_type")
     @patch(
         "aa_intel_tool.parser.general.SUPPORTED_INTEL_TYPES",
-        {"fleetcomp": {"parser": MagicMock(return_value=MagicMock(hash="hash2"))}},
+        {"fleetcomp": {"parser": MagicMock(return_value=MagicMock(pk="hash2"))}},
     )
     def test_parses_valid_fleetcomp_data(self, mock_check_intel_type):
         """
@@ -181,12 +181,12 @@ class TestParseIntel(BaseTestCase):
         form_data = load_fleetcomp_txt()
         result = parse_intel(form_data)
 
-        self.assertEqual(result, "hash2")
+        self.assertEqual(result.pk, "hash2")
 
     @patch("aa_intel_tool.parser.general.check_intel_type")
     @patch(
         "aa_intel_tool.parser.general.SUPPORTED_INTEL_TYPES",
-        {"chatscan": {"parser": MagicMock(return_value=MagicMock(hash="hash3"))}},
+        {"chatscan": {"parser": MagicMock(return_value=MagicMock(pk="hash3"))}},
     )
     def test_parses_valid_chatscan_data(self, mock_check_intel_type):
         """
@@ -202,7 +202,7 @@ class TestParseIntel(BaseTestCase):
         form_data = load_chatscan_txt()
         result = parse_intel(form_data)
 
-        self.assertEqual(result, "hash3")
+        self.assertEqual(result.pk, "hash3")
 
     @patch("aa_intel_tool.parser.general.check_intel_type")
     def test_raises_error_for_invalid_data(self, mock_check_intel_type):

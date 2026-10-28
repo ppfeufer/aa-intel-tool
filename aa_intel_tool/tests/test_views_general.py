@@ -18,7 +18,7 @@ from aa_intel_tool.exceptions import ParserError
 from aa_intel_tool.models import Scan
 from aa_intel_tool.tests import BaseTestCase
 from aa_intel_tool.views import general as general_view
-from aa_intel_tool.views.general import scan
+from aa_intel_tool.views.general import intel_scan
 
 
 class TestViewIndex(BaseTestCase):
@@ -175,7 +175,7 @@ class TestViewScan(BaseTestCase):
             mock_exclude.return_value.get.return_value = scan_instance
             request = MagicMock()
 
-            response = scan(request, "valid_hash")
+            response = intel_scan(request, "valid_hash")
 
             self.assertEqual(response.status_code, 302)
             self.assertEqual(
@@ -202,7 +202,7 @@ class TestViewScan(BaseTestCase):
         with patch("aa_intel_tool.views.general.Scan.objects.exclude") as mock_exclude:
             mock_exclude.return_value.get.side_effect = Scan.DoesNotExist
 
-            response = general_view.scan(request, scan_hash="nonexistent-scan-hash")
+            response = general_view.intel_scan(request, scan="nonexistent-scan-hash")
 
             self.assertEqual(response.status_code, HTTPStatus.FOUND)
 
@@ -260,7 +260,7 @@ class TestViewScan(BaseTestCase):
                     "aa_intel_tool.views.general.render", return_value=dummy_response
                 ) as mock_render,
             ):
-                response = general_view.scan(request, scan_hash="supported-scan-hash")
+                response = general_view.intel_scan(request, scan="supported-scan-hash")
 
                 self.assertEqual(response.status_code, HTTPStatus.OK)
                 self.assertTemplateUsed(response, "supported_template.html")
