@@ -129,6 +129,7 @@ class ScanData(models.Model):
         primary_key=True,
         editable=False,
         default=uuid.uuid4,
+        unique=True,
         verbose_name=_("Scan data UUID"),
     )
 
