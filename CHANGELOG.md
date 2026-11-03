@@ -44,6 +44,8 @@ Section Order:
 
 <!-- Your changes go here -->
 
+## [4.4.0] - 2026-11-03
+
 ### Changed
 
 - Use `.pk` instead of `.hash` when referring to the Scan model's primary key
@@ -881,6 +883,7 @@ Hopefully the last one before official release…
 [4.1.1]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.0...v4.1.1 "v4.1.1"
 [4.2.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.1.1...v4.2.0 "v4.2.0"
 [4.3.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.2.0...v4.3.0 "v4.3.0"
-[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.3.0...HEAD "In Development"
+[4.4.0]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.3.0...v4.4.0 "v4.4.0"
+[in development]: https://github.com/ppfeufer/aa-intel-tool/compare/v4.4.0...HEAD "In Development"
 [keep a changelog]: http://keepachangelog.com/ "Keep a Changelog"
 [semantic versioning]: http://semver.org/ "Semantic Versioning"
