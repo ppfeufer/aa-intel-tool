@@ -11,14 +11,21 @@ $(document).ready(() => {
         fleetcompositionTable: $('table.aa-intel-fleetcomp-pilot-ships-list'),
         pilotsCount: $('span#aa-intel-fleet-participation-count')
     };
-    const defaultOrder = [[1, 'desc'], [0, 'asc']];
+    const defaultDtColumn = {
+        name: 0,
+        count: 1
+    };
+    const defaultOrder = [
+        [defaultDtColumn.count, 'desc'],
+        [defaultDtColumn.name, 'asc']
+    ];
     const defaultColumnDefs = [
         {
-            target: 0,
+            target: defaultDtColumn.name,
             createdCell: (td) => $(td).addClass('text-ellipsis fix-eve-image-position')
         },
         {
-            target: 1,
+            target: defaultDtColumn.count,
             width: 35,
             createdCell: (td) => $(td).addClass('text-end'),
             columnControl: _removeSearchFromColumnControl(settings.dataTables.columnControl, 1)
@@ -143,6 +150,11 @@ $(document).ready(() => {
     });
 
     // Create Fleet Composition Pilot Ships DataTable
+    const pilotShipColumn = {
+        pilot: 0,
+        ship: 1,
+        solarsystem: 2
+    };
     createDataTable({
         tableElement: elements.fleetcompositionTable,
         url: settings.url.getFleetComposition,
@@ -155,10 +167,13 @@ $(document).ready(() => {
             {data: 'solarsystem'}
         ],
         order: [
-            [0, 'asc']
+            [pilotShipColumn.pilot, 'asc']
         ],
         columnDefs: [
-            {target: 0, createdCell: (td) => $(td).addClass('fix-eve-image-position')}
+            {
+                target: pilotShipColumn.pilot,
+                createdCell: (td) => $(td).addClass('fix-eve-image-position')
+            }
         ],
         createdRowCallback: (row, data) => {
             const currentTotal = elements.pilotsCount.html();

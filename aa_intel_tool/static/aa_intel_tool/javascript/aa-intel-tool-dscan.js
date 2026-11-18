@@ -22,14 +22,21 @@ $(document).ready(() => {
         starbasesTable: $('table.aa-intel-dscan-starbases-list'),
         dscanCountStarbases: $('span#aa-intel-dscan-starbases-count')
     };
-    const defaultOrder = [[1, 'desc'], [0, 'asc']];
+    const dtColumn = {
+        itemName: 0,
+        count: 1
+    };
+    const defaultOrder = [
+        [dtColumn.count, 'desc'],
+        [dtColumn.itemName, 'asc']
+    ];
     const columnsDefs = [
         {
-            target: 0,
+            target: dtColumn.itemName,
             createdCell: (td) => $(td).addClass('text-ellipsis fix-eve-image-position')
         },
         {
-            target: 1,
+            target: dtColumn.count,
             width: 35,
             createdCell: (td) => $(td).addClass('text-end'),
             columnControl: _removeSearchFromColumnControl(settings.dataTables.columnControl, 1)

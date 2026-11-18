@@ -12,14 +12,21 @@ $(document).ready(() => {
         corporationsTotalCount: $('span#aa-intel-corporations-count'),
         alliancesTotalCount: $('span#aa-intel-alliances-count')
     };
-    const defaultOrder = [[1, 'desc'], [0, 'asc']];
+    const defaultDtColumn = {
+        entityName: 0,
+        count: 1
+    };
+    const defaultOrder = [
+        [defaultDtColumn.count, 'desc'],
+        [defaultDtColumn.entityName, 'asc']
+    ];
     const defaultColumnDefs = [
         {
-            target: 0,
+            target: defaultDtColumn.entityName,
             createdCell: (td) => $(td).addClass('text-ellipsis fix-eve-image-position')
         },
         {
-            target: 1,
+            target: defaultDtColumn.count,
             width: 35,
             createdCell: (td) => $(td).addClass('text-end'),
             columnControl: _removeSearchFromColumnControl(settings.dataTables.columnControl, 1)
@@ -149,6 +156,11 @@ $(document).ready(() => {
     });
 
     // Create the pilots DataTable.
+    const pilotDtColumn = {
+        pilotName: 0,
+        corporation: 1,
+        alliance: 2
+    };
     createDataTable({
         table: elements.pilotsTable,
         url: settings.url.getPilotList,
@@ -162,20 +174,20 @@ $(document).ready(() => {
         ],
         // custom order
         order: [
-            [0, 'asc']
+            [pilotDtColumn.pilotName, 'asc']
         ],
         // custom columnDefs
         columnDefs: [
             {
-                target: 0,
+                target: pilotDtColumn.pilotName,
                 createdCell: (td) => $(td).addClass('text-ellipsis fix-eve-image-position')
             },
             {
-                target: 1,
+                target: pilotDtColumn.corporation,
                 width: 125
             },
             {
-                target: 2,
+                target: pilotDtColumn.alliance,
                 width: 125
             }
         ],
