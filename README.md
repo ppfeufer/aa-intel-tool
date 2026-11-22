@@ -129,6 +129,7 @@ if "eve_sde" in INSTALLED_APPS:
     CELERYBEAT_SCHEDULE["EVE SDE :: Check for SDE Updates"] = {
         "task": "eve_sde.tasks.check_for_sde_updates",
         "schedule": crontab(minute="30"),
+        "apply_offset": True,
     }
 
     # Set the following when you have a bare metal installation, or Docker with a
